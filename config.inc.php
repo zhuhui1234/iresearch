@@ -25,7 +25,7 @@ define('WEBSITE_TITLE', '艾瑞数据平台');
 //导出报表配置
 define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
 //永洪单点登陆地址
-define('YH_LOGIN','http://203.156.255.161/bi/Viewer?isSSO=true');
+define('YH_LOGIN','http://203.156.255.149/bi/Viewer?isSSO=true');
 define("__PAGENUM__", 10);
 //session 前缀
 define('SITE_PREFIX', 'idex');

@@ -21,11 +21,18 @@ class IndexController extends Controller
     function index()
     {
         $data = array(
-            "YH" =>YH_LOGIN
+            "YH" => YH_LOGIN
         );
         View::instance('index/index.tpl')->show($data);
     }
 
+    function demo()
+    {
+        $data = array(
+            "YH" => YH_LOGIN
+        );
+        View::instance('index/demo.tpl')->show($data);
+    }
 }
 
 ?>
