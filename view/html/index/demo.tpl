@@ -11,17 +11,22 @@
         $(function ($) {
             var yhDomain = '203.156.255.149';
             $("._showNowUser").on("click", function () {
-                url = "http://"+yhDomain+"/bi/Viewer";
+                url = "http://" + yhDomain + "/bi/Viewer";
                 console.log("显示身份");
                 $("#frameReport").attr("src", url);
             });
+            $("._ajaxLogin").on("click", function () {
+                var yu = $(this).attr("data-user");
+                logYH(yu);
+            });
+
             $("._showReport").on("click", function () {
                 var yu = $(this).attr("data-user");
                 var sKey = getKey(yu);
                 console.log(sKey);
                 $("#frameYH").remove();//删除对象
                 var iframe = document.createElement("iframe");
-                iframe.src = "http://"+yhDomain+"/bi/Viewer?proc=11&action=logout&isJs=true";
+                iframe.src = "http://" + yhDomain + "/bi/Viewer?proc=11&action=logout&isJs=true";
                 iframe.id = "frameYH";
                 if (iframe.attachEvent) {
                     iframe.attachEvent("onload", function () {
@@ -37,11 +42,11 @@
                 document.body.appendChild(iframe);
                 $(iframe).hide();
                 setTimeout(function () {
-                    var url = "http://"+yhDomain+"/bi/Viewer?proc=1&action=viewer&hback=true&db=iAdMatrix_Home.db&browserType=Firefox";
+                    var url = "http://" + yhDomain + "/bi/Viewer?proc=1&action=viewer&hback=true&db=iAdMatrix_Home.db&browserType=Firefox";
                     if (yu === 'admin') {
-                        url = "http://"+yhDomain+"/bi/Viewer?proc=1&action=viewer&hback=true&db=^76d1^^63a7^^7cfb^^7edf^^2f^JVM^4fe1^^606f^^7edf^^8ba1^.db&browserType=Firefox";
+                        url = "http://" + yhDomain + "/bi/Viewer?proc=1&action=viewer&hback=true&db=^76d1^^63a7^^7cfb^^7edf^^2f^JVM^4fe1^^606f^^7edf^^8ba1^.db&browserType=Firefox";
                     } else if (yu === 'davidwei') {
-                        url = "http://"+yhDomain+"/bi/Viewer?proc=1&action=viewer&hback=true&db=DXStock^2f^^9ed8^^8ba4^^62a5^^8868^.db";
+                        url = "http://" + yhDomain + "/bi/Viewer?proc=1&action=viewer&hback=true&db=DXStock^2f^^9ed8^^8ba4^^62a5^^8868^.db";
                     }
                     console.log("展示报告");
                     $("#frameReport").attr("src", url);
@@ -78,9 +83,9 @@
                 return rs;
             }
 
-            /**
-             function logYH(sessionKey) {
-                var rs;
+
+            function logYH(sessionKey) {
+                var rs =false;
                 var url = '{YH}';
                 $.ajax({
                     async: false,
@@ -88,11 +93,26 @@
                     url: url,
                     data: {"sessionKey":sessionKey},
                     success: function (res) {
+                        rs = true
                     }
                 });
                 return rs;
             }
-             */
+
+            function logoutYH() {
+                var rs =false;
+                var url = 'http://" + yhDomain + "/bi/Viewer?proc=11&action=logout&isJs=true';
+                $.ajax({
+                    async: false,
+                    type: 'POST',
+                    url: url,
+                    data: {"sessionKey":sessionKey},
+                    success: function (res) {
+                        rs = true
+                    }
+                });
+                return rs;
+            }
         });
 
     </script>
@@ -111,6 +131,8 @@
                         <li role="presentation"><a href="#" class="_showReport" data-user="davidwei">davidwei身份报告</a>
                         </li>
                         <li role="presentation"><a href="#" class="_showNowUser" data-user="showUser">查看当前用户身份</a></li>
+                        <li role="presentation"><a href="#" class="_ajaxLogin" data-user="davidwei">ajax方式登录-调试用</a></li>
+                        <li role="presentation"><a href="#" class="_ajaxLogout">ajax方式登出-调试用</a></li>
                     </ul>
                 </div>
             </div>
