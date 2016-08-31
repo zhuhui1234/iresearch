@@ -28,8 +28,12 @@ class IndexController extends Controller
 
     function demo()
     {
+        $userInfo = Session::instance()->get('userInfo');
+        $data['token'] = $userInfo['u_token'];
+        $data['cfg_model'] = 7;
+        $ret = Model::instance('industry')->configList($data);
         $data = array(
-            "YH" => YH_LOGIN
+            "listInfo" => $ret['data']['ConfigMaxList'][0]['ConfigMinList']
         );
         View::instance('index/demo.tpl')->show($data);
     }

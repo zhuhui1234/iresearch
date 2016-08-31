@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-user"></i>登录</a>
+                    <a href="#" id="login"><i class="fa fa-user"></i>登录</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-sign-in"></i>注册</a>
@@ -307,7 +307,7 @@
     require([
         'app/indicator',
         'app/swiper',
-        'app/wow',
+        'app/user/login'
     ]);
 </script>
 <!-- 生产环境 -->

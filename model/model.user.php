@@ -8,14 +8,29 @@
  * FileName:model.user.php
  * 描述:
  */
-class UserModel extends AgentModel {
-    public function upUserSessionKey($yu){
+class UserModel extends API
+{
+    public function upUserSessionKey($yu)
+    {
 //        $userSessionKey = md5(KEY.time());
         $userSessionKey = $yu;
         $upInfo = array(
-            "userinfo"=>$userSessionKey
+            "userinfo" => $userSessionKey
         );
-        $res = $this->mysqlEdit("user",$upInfo,'uid=1');
+        $res = $this->mysqlEdit("user", $upInfo, 'uid=1');
         return $userSessionKey;
+    }
+
+    public function login($data)
+    {
+        $url = API_URL . '?m=user&a=login';
+        $ret = $this->_curlPost($url, $data,'cs_login');
+        $ret = json_decode($ret,true);
+        $rs = false;
+        if($ret['resCode']=='000000'){
+            $rs = true;
+            Session::instance()->set('userInfo',$ret['data'] );
+        }
+        return $rs;
     }
 }

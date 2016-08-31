@@ -18,6 +18,23 @@ class UserController extends Controller
         $this->model =Model::instance('user');
     }
 
+    function login(){
+        $userInfo = Session::instance()->get('userInfo');
+        if($userInfo){
+            echo $userInfo['u_name'];
+        }
+        $data = array(
+        );
+        View::instance('user/login.tpl')->show($data);
+    }
+    function loginAPI(){
+        $data = array(
+            "loginAccount"=>$this->request()->requestAll("loginAccount"),
+            "loginPassword"=>$this->request()->requestAll("loginPassword")
+        );
+        $rs = $this->model->login($data);
+        echo $rs;
+    }
     /**
      *
      */
