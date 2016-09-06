@@ -20,7 +20,7 @@ define('VIEW_PATH', ROOT_PATH . VIEW . DS);
 //微信配置
 define('W_APP_ID', 'wxd96928ba062cffec');
 define('W_SECRET', 'abbf51a741f7608394727debe1e51b43');
-define('WECHAT_API_URL','https://api.weixin.qq.com/sns/oauth2/access_token?');
+define('WECHAT_API_URL','https://api.weixin.qq.com/sns/oauth2/access_token');
 //	define('WEBSITE','http://localhost');
 define('WEBSITE', $_SERVER['SERVER_ADDR']);
 define('WEBSITE_URL', '');
