@@ -36,6 +36,31 @@ function l($txt = '{}')
     fun_write_file($new_log . 'log.txt', $content);
 }
 
+/**
+ * Mad Test , test log
+ * @param $str
+ * @param string $fileName
+ */
+function madTest($str, $fileName = 'test')
+{
+    if (DEBUG_LOG) {
+        $log_path = ROOT_PATH . 'log/' . date('Ymd') . '/test/';
+        if (is_array($str)) {
+            $log_str = json_encode($str);
+        } else {
+            $log_str = $str;
+        }
+
+        if (!is_dir($log_path)) {
+            mkdir($log_path);
+        }
+
+        $content = getIp() . ' [' . date('Y-m-d H:i:s') . '] ' . $log_str;
+
+        fun_write_file($log_path, $fileName, $content);
+    }
+}
+
 
 function gUid()
 {
@@ -561,12 +586,10 @@ function fun_set_mkdir($file)
     //if(!@is_dir($file)&&!@mkdir($file))@mkdir($file,0777);
     if (@is_dir($file) || @mkdir($file, 0777)) {
         return true;
-    }
-    ;
+    };
     if (fun_set_mkdir(dirname($file), 0777)) {
         return @mkdir($file, 0777);
-    }
-    ;
+    };
 }
 
 //模板初始化
@@ -641,6 +664,7 @@ function array_to_number($array)
 //一纬数组
 function array_to_number_one($array)
 {
+    $j = 0;
     $countarray1 = count($array);
     for ($i = 0; $i < $countarray1; $i++) {
         if (is_numeric($array[$i][$j])) {
@@ -653,6 +677,7 @@ function array_to_number_one($array)
 //转换并将数据设置为0
 function array_to_number_one_null($array)
 {
+    $j = 0;
     $countarray1 = count($array);
     for ($i = 0; $i < $countarray1; $i++) {
         if (is_numeric($array[$i][$j])) {
@@ -727,5 +752,3 @@ function clean_xss(&$string, $low = False)
         clean_xss($string [$key]);
     }
 }
-
-?>
