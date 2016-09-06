@@ -17,16 +17,20 @@ define('MODEL_PATH', ROOT_PATH . MODEL . DS);
 define('CONTROLLER_PATH', ROOT_PATH . CONTROLLER . DS);
 define('VIEW_PATH', ROOT_PATH . VIEW . DS);
 //站点配置
+//微信配置
+define('W_APP_ID', 'wxd96928ba062cffec');
+define('W_SECRET', 'abbf51a741f7608394727debe1e51b43');
+define('WECHAT_API_URL','https://api.weixin.qq.com/sns/oauth2/access_token?');
 //	define('WEBSITE','http://localhost');
 define('WEBSITE', $_SERVER['SERVER_ADDR']);
 define('WEBSITE_URL', '');
 define('WEBSITE_SOURCE_URL', WEBSITE_URL . 'public');
 define('WEBSITE_TITLE', '艾瑞数据平台');
 //导出报表配置
-define('API_URL','http://180.169.19.208/iview_deskapi/');
+define('API_URL', 'http://180.169.19.208/iview_deskapi/');
 define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
 //永洪单点登陆地址
-define('YH_LOGIN','http://203.156.255.149/bi/Viewer?isSSO=true');
+define('YH_LOGIN', 'http://203.156.255.149/bi/Viewer?isSSO=true');
 define("__PAGENUM__", 10);
 //session 前缀
 define('SITE_PREFIX', 'idex');
@@ -42,6 +46,8 @@ define('COOKIE_DOMAIN', '');
 define('CACHE_ON', false);
 //是否开启调试
 define('DEBUG', false || isset($_GET['debug']));
+//是否开启测试日志
+define('DEBUG_LOG', TRUE);
 //define('DEBUG', true);
 define('START_TIME', microtime(true));
 define('NOW', date('Y-m-d H:i:s'));
