@@ -1,0 +1,2 @@
+/*! iResearchView-1.0.0-2016-08-15 */
+define(["jquery","upload"],function(a){a(function(){a("#input01").filestyle({buttonText:"选择文件",placeholder:"上传文件",iconName:"fa fa-folder-open"}),a("#input02").filestyle({buttonName:"btn-primary",placeholder:"上传文件",buttonText:"选择文件",iconName:"fa fa-folder-open"}),a("#input03").filestyle({iconName:"fa fa-plus",buttonText:"上传"}),a("#input04").filestyle({disabled:!0,buttonText:"选择文件"}),a("#input05").filestyle({input:!1,buttonText:"上传文件",buttonName:"btn-primary"}),a("#clear").click(function(){a("#input02").filestyle("clear")})})});

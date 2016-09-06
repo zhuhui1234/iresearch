@@ -1,0 +1,2 @@
+/*! iResearchView-1.0.0-2016-08-15 */
+define(["jquery","radialIndicator"],function(a){a("#indicatorContainer").radialIndicator({barColor:"#87CEEB",barWidth:10,initValue:40,roundCorner:!0,percentage:!0})});
