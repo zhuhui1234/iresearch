@@ -23,6 +23,11 @@ class ServiceController extends Controller
         $res = $this->model->callBackYH();
         echo $res;
     }
+    function upUserSessionKey()
+    {
+        $yu = $this->request()->requestAll("guid");
+        $res = Model::instance('user')->upUserSessionKey($yu);
+    }
 }
 
 ?>

@@ -57,11 +57,6 @@ class UserController extends Controller
     /**
      *
      */
-    function upUserSessionKey()
-    {
-        $yu = $this->request()->requestAll("yu");
-        $res = $this->model->upUserSessionKey($yu);
-        $this->success($res);
-    }
+
 
 }

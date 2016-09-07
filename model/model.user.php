@@ -10,16 +10,16 @@
  */
 class UserModel extends API
 {
-    public function upUserSessionKey($yu)
+    /**
+     * @param $guid
+     * 用户访问报告写入记录,用户只能访问一次,访问一次后回删除该条记录
+     */
+    public function upUserSessionKey($guid)
     {
-//        $userSessionKey = md5(KEY.time());
-        $userSessionKey = $yu;
-        $upInfo = array(
-            "userinfo" => $userSessionKey
-        );
-        $res = $this->mysqlEdit("user", $upInfo, 'uid=1');
-        return $userSessionKey;
-    }
+        $data = array("guid"=>$guid);
+        $url = API_URL_REPORT . '?m=user&a=setReportToken';
+        $ret = $this->_curlPost($url, $data,'cs_login');
+   }
 
     public function login($data)
     {
