@@ -6,6 +6,7 @@
  * Create 14-03-05 14:34
  */
 require_once("api.url.php");
+
 class Api extends Url{
     private $_sessionid = null;
     private $_csrftoken = null;
@@ -80,7 +81,6 @@ class Api extends Url{
 
 //        $csrftoken = isset($_SESSION['csrftoken']) ? $_SESSION['csrftoken'] : '';
 //        $sessionid = isset($_SESSION['sessionid']) ? $_SESSION['sessionid'] : '';
-        $ch = curl_init();
         if(!empty($params)){
             $params = $params ? http_build_query($params) : '';
             if(strpos($url, '?') > 0){
@@ -90,10 +90,18 @@ class Api extends Url{
             }
 
         }
-        $url = $this->createSign($url);
         if(DEBUG){
             echo $url,'<br>';
         }
+
+        $ch = curl_init();
+
+        $url = $this->createSign($url);
+        if(DEBUG){
+            echo 'url: ';
+            pr($url);
+        }
+
         if(substr($url,0,5) == 'https'){
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
