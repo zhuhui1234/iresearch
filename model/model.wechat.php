@@ -52,7 +52,7 @@ class WeChatModel extends API
     {
         if (!empty($this->token)) {
             $this->userInfo       =  $this->__getUserInfo();
-            return json_decode($this->userInfo, TRUE);
+            return $this->userInfo;
         }else{
             if (!empty($code)) {
                 $this->wxCheckLogin($code);
@@ -118,6 +118,7 @@ class WeChatModel extends API
             if (isset($userInfo['unionid'])) {
                 $this->unionid    = $userInfo['unionid'];
             }
+
             return $userInfo;
         } else {
                 return FALSE;
