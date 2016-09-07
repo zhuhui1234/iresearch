@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by 艾瑞咨询集团.
  * User: DavidWei
@@ -15,26 +16,44 @@ class UserController extends Controller
 
     function __construct()
     {
-        $this->model =Model::instance('user');
+        $this->model = Model::instance('user');
     }
 
-    function login(){
+    function login()
+    {
         $userInfo = Session::instance()->get('userInfo');
-        if($userInfo){
+        if ($userInfo) {
             echo $userInfo['u_name'];
         }
-        $data = array(
-        );
+        $data = array();
         View::instance('user/login.tpl')->show($data);
     }
-    function loginAPI(){
+
+    function loginAPI()
+    {
+
         $data = array(
-            "loginAccount"=>$this->request()->requestAll("loginAccount"),
-            "loginPassword"=>$this->request()->requestAll("loginPassword")
+            "loginAccount" => $this->request()->requestAll("loginAccount"),
+            "loginPassword" => $this->request()->requestAll("loginPassword")
         );
         $rs = $this->model->login($data);
         echo $rs;
     }
+
+    function wxLoginAPI()
+    {
+        $wechatModel = Model::instance('wechat');
+        $code = $this->request()->get('code');
+        $weChatObj   = $wechatModel->wxCheckLogin($code);
+
+//        if (DEBUG) {
+            pr('微信返回值:');
+            var_dump($weChatObj);
+            var_dump($wechatModel->getUserInfo($code));
+//        }
+
+    }
+
     /**
      *
      */
