@@ -20,7 +20,8 @@ define('VIEW_PATH', ROOT_PATH . VIEW . DS);
 define('W_APP_ID', 'wxd96928ba062cffec');
 define('W_SECRET', 'abbf51a741f7608394727debe1e51b43');
 define('WECHAT_API_URL','https://api.weixin.qq.com/sns/oauth2/access_token');
-define('WECHAT_API_TOKEN_URL','https://api.weixin.qq.com/sns/oauth2/access_token');
+define('WECHAT_API_REFRESH_URL','https://api.weixin.qq.com/sns/oauth2/refresh_token');
+define('WECHAT_API_USERINFO', 'https://api.weixin.qq.com/sns/userinfo');
 //站点配置
 //	define('WEBSITE','http://localhost');
 define('WEBSITE', $_SERVER['SERVER_ADDR']);
