@@ -25,13 +25,4 @@ class ServiceModel extends AgentModel {
         }
         return $str;
     }
-    function callBackYH(){
-        $sessionKey = $this->request()->requestAll('sessionKey');
-        $yhUser = $sessionKey;
-        $rs = "<root><username>".$yhUser."</username></root>";
-        l($sessionKey);
-        return $rs;
-    }
-
-
 }
