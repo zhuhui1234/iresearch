@@ -13,15 +13,10 @@ class ServiceController extends Controller
     {
         $this->model =Model::instance('service');
     }
-
-    /**
-     *
-     */
-    function userAuthByYH()
+    function upUserSessionKey()
     {
-        $data = array();
-        $res = $this->model->callBackYH();
-        echo $res;
+        $yu = $this->request()->requestAll("guid");
+        $res = Model::instance('user')->upUserSessionKey($yu);
     }
 
     /**

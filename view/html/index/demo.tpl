@@ -11,9 +11,28 @@
         $(function ($) {
             $("._showReport").on("click", function () {
                 var url = $(this).attr("cfg_url");
-                console.log("展示报告");
-                $("#frameReport").attr("src", url);
+                var urlInfo = url.split("=");
+                var rs = setReport(urlInfo[3]);
+                if (rs) {
+                    console.log("展示报告");
+                    $("#frameReport").attr("src", url);
+                }
             });
+            function setReport(guid) {
+                var rs = false;
+                var url = '?m=service&a=upUserSessionKey';
+                var guid = guid;
+                $.ajax({
+                    async: false,
+                    type: 'POST',
+                    data: {"guid":guid},
+                    url: url,
+                    success: function (res) {
+                        rs = true
+                    }
+                });
+                return rs;
+            }
         });
 
     </script>
@@ -28,7 +47,8 @@
                 <div class="col-md-12">
                     <ul class="nav nav-tabs nav-stacked">
                         <!-- BEGIN listInfo -->
-                        <li role="presentation"><a href="#" class="_showReport" cfg_url="{cfg_url}">{cfg_name}</a></li>
+                        <li role="presentation"><a href="#" class="_showReport" cfg_url="{cfg_url}"
+                                                   >{cfg_name}</a></li>
                         <!-- END listInfo -->
                         </li>
                     </ul>
@@ -36,7 +56,7 @@
             </div>
         </div>
         <div class="col-md-10">
-            <iframe id="frameReport"  scrolling="no" width="100%" height="850"
+            <iframe id="frameReport" scrolling="no" width="100%" height="850"
                     frameborder="0">
             </iframe>
         </div>

@@ -30,6 +30,7 @@ define('WEBSITE_SOURCE_URL', WEBSITE_URL . 'public');
 define('WEBSITE_TITLE', '艾瑞数据平台');
 //导出报表配置
 define('API_URL', 'http://180.169.19.208/iview_deskapi/');
+define('API_URL_REPORT', 'http://10.10.21.163/iReport/');
 define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
 //永洪单点登陆地址
 define('YH_LOGIN', 'http://203.156.255.149/bi/Viewer?isSSO=true');

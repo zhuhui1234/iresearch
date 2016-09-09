@@ -162,6 +162,7 @@ class Api extends Url{
         $userAgent = 'Mozilla/4.0+(compatible;+MSIE+6.0;+Windows+NT+5.1;+SV1)';
         $referer = $url;
         if(!is_array($data) || !$url) return '';
+        $data['userIP']=getIp();
         $post = json_encode($data);
         if(DEBUG){
             echo $url,'<br>';
