@@ -19,44 +19,98 @@ class UserController extends Controller
         $this->model = Model::instance('user');
     }
 
-    function login()
+    /**
+     *  login page
+     */
+    public function login()
     {
         $userInfo = Session::instance()->get('userInfo');
         if ($userInfo) {
             echo $userInfo['u_name'];
         }
-        $data = array();
+        $data     = array();
         View::instance('user/login.tpl')->show($data);
     }
 
-    function loginAPI()
+    /**
+     * user register page
+     */
+    public function register()
+    {
+        $data     = array();
+        View::instance('user/register.tpl')->show($data);
+    }
+
+    /**
+     * 忘记用户密码
+     */
+    public function forgotPassword()
+    {
+
+    }
+
+    /**
+     * 个人信息
+     */
+    public function profile()
+    {
+
+    }
+
+
+    public function permissionAccess()
+    {
+
+    }
+
+    public function logout()
+    {
+
+    }
+    ######################################################################################
+    ##################################                     ###############################
+    #################################     API METHODS     ################################
+    ################################                     #################################
+    ######################################################################################
+
+    /**
+     * register api
+     */
+    public function registerAPI()
+    {
+
+    }
+
+    /**
+     * login api
+     */
+    public function loginAPI()
     {
 
         $data = array(
-            "loginAccount" => $this->request()->requestAll("loginAccount"),
+            "loginAccount"  => $this->request()->requestAll("loginAccount"),
             "loginPassword" => $this->request()->requestAll("loginPassword")
         );
         $rs = $this->model->login($data);
         echo $rs;
     }
 
-    function wxLoginAPI()
+    /**
+     * wechat login api
+     */
+    public function wxLoginAPI()
     {
-        $wechatModel = Model::instance('wechat');
-        $code = $this->request()->get('code');
-        $weChatObj   = $wechatModel->wxCheckLogin($code);
-
-//        if (DEBUG) {
-            pr('微信返回值:');
-            var_dump($weChatObj);
-            var_dump($wechatModel->getUserInfo($code));
-//        }
-
+        $wechatModel        = Model::instance('wechat');
+        $code               = $this->request()->get('code');
+        $weChatObj          = $wechatModel->wxCheckLogin($code);
+        pr('微信返回值:');
+        var_dump($weChatObj);
+        var_dump($wechatModel->getUserInfo($code));
     }
 
-    /**
-     *
-     */
+    public function forgotPasswordAPI()
+    {
 
+    }
 
 }
