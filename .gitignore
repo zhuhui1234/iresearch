@@ -130,5 +130,11 @@ crashlytics-build.properties
 fabric.properties
 
 /log
-/view/html_tpl
+/view/html_tpl/
 .idea/
+
+# FOR Gruntjs
+#
+node_modules
+.grunt
+.npm-debug.log*
