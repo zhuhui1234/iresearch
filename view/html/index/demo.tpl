@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="{WEBSITE_SOURCE_URL}/js/jquery.min.js"></script>
+    <script src="{WEBSITE_SOURCE_URL}/js/lib/jquery/v2.1.4/jquery.min.js"></script>
+
     <title></title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
