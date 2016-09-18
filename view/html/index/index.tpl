@@ -1,42 +1,5 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- IE 兼容模式 -->
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!-- 国产浏览器高速模式 -->
-    <meta name="renderer" content="webkit">
-    <!-- bootstrap核心样式 -->
-    <link href="{WEBSITE_SOURCE_URL}/css/app.css" rel="stylesheet">
-    <!-- 自定义 -->
-    <link href="{WEBSITE_SOURCE_URL}/css/docs.min.css" rel="stylesheet">
-</head>
-<body>
-<div class="header">
-    <div class="top-header">
-        <div class="container-fluid">
-            <a class="logo" href="index.html">
-                <img src="{WEBSITE_SOURCE_URL}/img/irv_logo.png" alt="">
-            </a>
-            <ul class="pull-right">
-                <li>
-                    <a href="search.html">
-                        <div class="search-icon">
-                            <i class="fa fa-search"></i>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" id="login"><i class="fa fa-user"></i>登录</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-sign-in"></i>注册</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<!-- INCLUDE ../header.tpl -->
+
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide" style="background-image:url('{WEBSITE_SOURCE_URL}/img/map_bg.png')">
@@ -44,7 +7,7 @@
             <h4 data-swiper-parallax="-500">总览网民覆盖</h4>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 text-center" data-swiper-parallax="-500">
+                    <div class="col-xs-3 text-center" data-swiper-parallax="-500">
                         <div class="index-data">
                             <h5>视频全民覆盖</h5>
                             <h4>343,43.44</h4>
@@ -52,7 +15,7 @@
                             <p><span class="fa fa-caret-up"></span> 环比30%</p>
                         </div>
                     </div>
-                    <div class="col-md-3 text-center" data-swiper-parallax="-1000">
+                    <div class="col-xs-3 text-center" data-swiper-parallax="-1000">
                         <div class="index-data">
                             <h5>视频全民覆盖</h5>
                             <h4>343,43.44</h4>
@@ -60,7 +23,7 @@
                             <p><span class="fa fa-caret-up"></span> 环比30%</p>
                         </div>
                     </div>
-                    <div class="col-md-3 text-center" data-swiper-parallax="-1500">
+                    <div class="col-xs-3 text-center" data-swiper-parallax="-1500">
                         <div class="index-data">
                             <h5>视频全民覆盖</h5>
                             <h4>343,43.44</h4>
@@ -68,7 +31,7 @@
                             <p><span class="fa fa-caret-up"></span> 环比30%</p>
                         </div>
                     </div>
-                    <div class="col-md-3 text-center" data-swiper-parallax="-2000">
+                    <div class="col-xs-3 text-center" data-swiper-parallax="-2000">
                         <div class="index-data">
                             <h5>视频全民覆盖</h5>
                             <h4>343,43.44</h4>
@@ -95,42 +58,42 @@
     <div class="container">
         <h2 class="text-center wow fadeIn">服务内容</h2>
         <div class="row">
-            <div class="col-md-4 wow fadeIn">
+            <div class="col-xs-4 wow fadeIn">
                 <a href="#">
                     <img src="{WEBSITE_SOURCE_URL}/img/icon-1.png" class="img-responsive center-block" alt="">
                     <h4>网络应用行业</h4>
                     <p>PC网站、移动App、电视盒子、KOL网红、PC网站、移动App、电视</p>
                 </a>
             </div>
-            <div class="col-md-4 wow fadeIn">
+            <div class="col-xs-4 wow fadeIn">
                 <a href="#">
                     <img src="{WEBSITE_SOURCE_URL}/img/icon-2.png" class="img-responsive center-block" alt="">
                     <h4>网络应用行业</h4>
                     <p>PC网站、移动App、电视盒子、KOL网红、PC网站、移动App、电视</p>
                 </a>
             </div>
-            <div class="col-md-4 wow fadeIn">
+            <div class="col-xs-4 wow fadeIn">
                 <a href="#">
                     <img src="{WEBSITE_SOURCE_URL}/img/icon-3.png" class="img-responsive center-block" alt="">
                     <h4>网络应用行业</h4>
                     <p>PC网站、移动App、电视盒子、KOL网红、PC网站、移动App、电视</p>
                 </a>
             </div>
-            <div class="col-md-4 wow fadeIn">
+            <div class="col-xs-4 wow fadeIn">
                 <a href="#">
                     <img src="{WEBSITE_SOURCE_URL}/img/icon-4.png" class="img-responsive center-block" alt="">
                     <h4>网络应用行业</h4>
                     <p>PC网站、移动App、电视盒子、KOL网红、PC网站、移动App、电视</p>
                 </a>
             </div>
-            <div class="col-md-4 wow fadeIn">
+            <div class="col-xs-4 wow fadeIn">
                 <a href="#">
                     <img src="{WEBSITE_SOURCE_URL}/img/icon-5.png" class="img-responsive center-block" alt="">
                     <h4>网络应用行业</h4>
                     <p>PC网站、移动App、电视盒子、KOL网红、PC网站、移动App、电视</p>
                 </a>
             </div>
-            <div class="col-md-4 wow fadeIn">
+            <div class="col-xs-4 wow fadeIn">
                 <a href="#">
                     <img src="{WEBSITE_SOURCE_URL}/img/icon-6.png" class="img-responsive center-block" alt="">
                     <h4>网络应用行业</h4>
@@ -143,16 +106,16 @@
 <div class="news">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-xs-8">
                 <div class="inner-news">
                     <h3 class="news-title">新闻资讯</h3>
                     <ul>
                         <li class="wow fadeIn">
                             <div class="row">
-                                <div class="col-md-3 text-center">
+                                <div class="col-xs-3 text-center">
                                     <img src="{WEBSITE_SOURCE_URL}/img/img-1.png" alt="" class="img-responsive center-block">
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-xs-9">
                                     <h4>买下这家店后,联合利华终于有了剃须品牌</h4>
                                     <p>联合利华以 10 亿美金价格全资收购了一家做老朋友切赫的大门老朋友切赫的大门老朋友切赫</p>
                                     <p>一小时前 新浪</p>
@@ -161,10 +124,10 @@
                         </li>
                         <li class="wow fadeIn">
                             <div class="row">
-                                <div class="col-md-3 text-center">
+                                <div class="col-xs-3 text-center">
                                     <img src="{WEBSITE_SOURCE_URL}/img/img-1.png" alt="" class="img-responsive center-block">
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-xs-9">
                                     <h4>买下这家店后,联合利华终于有了剃须品牌</h4>
                                     <p>联合利华以 10 亿美金价格全资收购了一家做老朋友切赫的大门老朋友切赫的大门老朋友切赫</p>
                                     <p>一小时前 新浪</p>
@@ -173,10 +136,10 @@
                         </li>
                         <li class="wow fadeIn">
                             <div class="row">
-                                <div class="col-md-3 text-center">
+                                <div class="col-xs-3 text-center">
                                     <img src="{WEBSITE_SOURCE_URL}/img/img-1.png" alt="" class="img-responsive center-block">
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-xs-9">
                                     <h4>买下这家店后,联合利华终于有了剃须品牌</h4>
                                     <p>联合利华以 10 亿美金价格全资收购了一家做老朋友切赫的大门老朋友切赫的大门老朋友切赫</p>
                                     <p>一小时前 新浪</p>
@@ -185,10 +148,10 @@
                         </li>
                         <li class="wow fadeIn">
                             <div class="row">
-                                <div class="col-md-3 text-center">
+                                <div class="col-xs-3 text-center">
                                     <img src="{WEBSITE_SOURCE_URL}/img/img-1.png" alt="" class="img-responsive center-block">
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-xs-9">
                                     <h4>买下这家店后,联合利华终于有了剃须品牌</h4>
                                     <p>联合利华以 10 亿美金价格全资收购了一家做老朋友切赫的大门老朋友切赫的大门老朋友切赫</p>
                                     <p>一小时前 新浪</p>
@@ -197,10 +160,10 @@
                         </li>
                         <li class="wow fadeIn">
                             <div class="row">
-                                <div class="col-md-3 text-center">
+                                <div class="col-xs-3 text-center">
                                     <img src="{WEBSITE_SOURCE_URL}/img/img-1.png" alt="" class="img-responsive center-block">
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-xs-9">
                                     <h4>买下这家店后,联合利华终于有了剃须品牌</h4>
                                     <p>联合利华以 10 亿美金价格全资收购了一家做老朋友切赫的大门老朋友切赫的大门老朋友切赫</p>
                                     <p>一小时前 新浪</p>
@@ -211,7 +174,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-4">
                 <div class="download-app wow fadeIn">
                     <img src="{WEBSITE_SOURCE_URL}/img/img-2.png" alt="">
                     <ul>
@@ -271,20 +234,6 @@
         </div>
     </div>
 </div>
-<!--<div id="myScrollspy">-->
-<!--<ul class="sider-nav nav nav-stacked" data-spy="affix">-->
-<!--<li class="active">-->
-<!--<a href="#section-1">总览</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="#section-2">分析</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="#section-3">资讯</a>-->
-<!--</li>-->
-<!--</ul>-->
-
-<!--</div>-->
 <div class="footer">
     <p>
         <a href="#">关于我们</a>
@@ -307,7 +256,7 @@
     require([
         'app/indicator',
         'app/swiper',
-        'app/user/login'
+        'app/user/index'
     ]);
 </script>
 <!-- 生产环境 -->
