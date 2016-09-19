@@ -1,0 +1,23 @@
+.treeview{
+  margin: 0;
+  padding: 0;
+  > .list-group{
+    > .list-group-item {
+      cursor: pointer;
+      > span{
+        &.indent{
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+        &.icon{
+          margin-left: 10px;
+          margin-right: 5px;
+          color: #888;
+        }
+        &.badge{
+          background: #c2c2c2;
+        }
+      }
+    }
+  }
+}

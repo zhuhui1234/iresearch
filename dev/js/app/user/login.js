@@ -1,4 +1,8 @@
-define(['helper', 'wxLogin', 'jquery'], function (Helper) {
+/**
+ * user login js
+ */
+define(['helper', 'wxLogin', 'jquery'], function (Helper,wxLogin) {
+
     //loading QRCode
     var obj = new wxLogin({
         id:            "wxLogin",
@@ -9,4 +13,7 @@ define(['helper', 'wxLogin', 'jquery'], function (Helper) {
         style:         "",
         href:          ""
     });
+
+
+
 });

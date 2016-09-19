@@ -1,0 +1,43 @@
+.headroom-animated {
+  transition: transform .2s ease-in-out;
+}
+
+.headroom--pinned {
+  transform: translateY(0)
+}
+
+.headroom--unpinned {
+  transform: translateY(-100%)
+}
+
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.headroom-animated.slideDown {
+  animation-name: slideDown;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.headroom-animated.slideUp {
+  animation-name: slideUp;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
