@@ -20,8 +20,12 @@ class IndexController extends Controller
      */
     function index()
     {
+        $userInfo = Session::instance()->get('userInfo');
+        $data['token'] = $userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
-            "YH" => YH_LOGIN
+            "YH" => YH_LOGIN,
+            "userIndustry"=>$userIndustry
         );
         View::instance('index/index.tpl')->show($data);
     }

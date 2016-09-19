@@ -44,8 +44,11 @@ class IndustryModel extends API {
                     $rs['min'][$i]['info']=$minInfo['data']['IndustryMinList'];
                     $rs['min'][$i]['pid']=$data['ity_sid'];
                 }
+                else {
+                    $rs['min'][$i]['info']=array("ity_name"=>"暂无数据");
+                    $rs['min'][$i]['pid']=$data['ity_sid'];
+                }
             }
-
         }
         return $rs;
     }

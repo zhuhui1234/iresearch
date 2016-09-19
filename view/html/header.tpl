@@ -66,79 +66,25 @@
                             <div class="col-menu col-xs-6">
                                 <div class="content">
                                     <ul class="menu-col menu-tabs">
-                                        <li class="active"><a href="#tab1" data-toggle="tab" data-hover="tab">用户行为研究</a></li>
-                                        <li><a href="#tab2" data-toggle="tab" data-hover="tab">广告客户研究</a></li>
-                                        <li><a id='demo' href="#tab3" data-toggle="tab" data-hover="tab">服务网络研究</a></li>
-                                        <li><a href="#tab4" data-toggle="tab" data-hover="tab">其他研究</a></li>
+                                        <!-- BEGIN userIndustry.max -->
+                                        <li><a href="#tab{ity_id}" data-toggle="tab" data-hover="tab">{ity_name}</a></li>
+                                        <!-- END userIndustry.max -->
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-menu col-xs-6">
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="tab2">
+                                <!-- BEGIN userIndustry.min -->
+                                    <div class="tab-pane" id="tab{pid}">
                                         <div class="content">
                                             <ul class="menu-col">
-                                                <li><a href="#">静态框</a></li>
-                                                <li><a href="#">下拉菜单</a></li>
-                                                <li><a href="#">标签页</a></li>
-                                                <li><a href="#">气泡</a></li>
-                                                <li><a href="#">提示框</a></li>
-                                                <li><a href="#">警告框</a></li>
-                                                <li><a href="#">Collapse</a></li>
-                                                <li><a href="#">静态框</a></li>
-                                                <li><a href="#">下拉菜单</a></li>
-                                                <li><a href="#">标签页</a></li>
-                                                <li><a href="#">气泡</a></li>
-                                                <li><a href="#">提示框</a></li>
-                                                <li><a href="#">警告框</a></li>
-                                                <li><a href="#">Collapse</a></li>
+                                                <!-- BEGIN info -->
+                                                <li><a href="#">{ity_name}</a></li>
+                                                <!-- END info -->
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="tab1">
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="#">111</a></li>
-                                                <li><a href="#">222</a></li>
-                                                <li><a href="#">333</a></li>
-                                                <li><a href="#">444</a></li>
-                                                <li><a href="#">555</a></li>
-                                                <li><a href="#">666</a></li>
-                                                <li><a href="#">111</a></li>
-                                                <li><a href="#">222</a></li>
-                                                <li><a href="#">333</a></li>
-                                                <li><a href="#">444</a></li>
-                                                <li><a href="#">555</a></li>
-                                                <li><a href="#">666</a></li>
-                                                <li><a href="#">111</a></li>
-                                                <li><a href="#">222</a></li>
-                                                <li><a href="#">333</a></li>
-                                                <li><a href="#">444</a></li>
-                                                <li><a href="#">555</a></li>
-                                                <li><a href="#">666</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab3">
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="#">777</a></li>
-                                                <li><a href="#">888</a></li>
-                                                <li><a href="#">999</a></li>
-                                                <li><a href="#">000</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab4">
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="#">aaa</a></li>
-                                                <li><a href="#">bbb</a></li>
-                                                <li><a href="#">ccc</a></li>
-                                                <li><a href="#">ddd</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <!-- END userIndustry.min -->
                                 </div>
 
                             </div>
