@@ -296,7 +296,7 @@
         'app/wow',
         'app/validator',
         'app/user/index',
-            'app/user/login'
+        'app/user/login'
     ]);
 </script>
 <!-- 生产环境 -->
