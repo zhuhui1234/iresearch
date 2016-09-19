@@ -42,7 +42,7 @@ requirejs.config({
         'scrollbar': 'lib/jquery.slimscroll/jquery.slimscroll',
         'cropper': 'lib/cropper/cropper',
         // 'wxLogin':"empty:"
-        'wxLogin':'http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
+        'WxLogin':'http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
         'api':'apiurl',
         'helper':'lib/helper'
     },
