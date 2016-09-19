@@ -1,2 +1,2 @@
-/*! iResearchView-1.0.0-2016-08-15 */
-define(["swiper"],function(){new Swiper(".swiper-container",{paginationClickable:!0,autoplay:3e3,autoplayDisableOnInteraction:!1,loop:!0,calculateHeight:!0,roundLengths:!0,pagination:".swiper-pagination",prevButton:".swiper-button-prev",nextButton:".swiper-button-next"})});
+/*! iResearchView-1.0.0-2016-09-19 */
+define(["swiper"],function(){new Swiper(".swiper-container",{paginationClickable:!0,autoplayDisableOnInteraction:!1,loop:!0,calculateHeight:!0,roundLengths:!0,parallax:!0,speed:1e3,pagination:".swiper-pagination-white",prevButton:".swiper-button-prev",nextButton:".swiper-button-next"})});

@@ -248,6 +248,43 @@
         <span>上海·北京·广州·东京·硅谷·香港</span>
     </p>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">登录</h4>
+            </div>
+            <div class="modal-body" style="padding: 30px;">
+                <form role="form" id="index-login">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label>请输入企业邮箱</label>
+                                <input type="email" class="form-control" name="email" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>请输入密码</label>
+                                <input type="password" class="form-control" name="password" placeholder="">
+                            </div>
+                            <p class="text-right"><a href="#">忘记密码？</a></p>
+                            <button type="submit" class="btn btn-primary btn-block mbm">登录</button>
+                            <a href="register.html" class="btn btn-warning btn-block">注册</a>
+                        </div>
+                        <div class="col-xs-4 col-xs-offset-1 text-center">
+                            <!-- <img  src="{WEBSITE_SOURCE_URL}/img/w3cplus-weixin.jpg" class="mtl img-thumbnail" width="200" alt=""> -->
+                            <div id="wxLogin"></div>
+                            <p class="text-center mtm">已绑定微信扫一扫登录</p>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
 <script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>
@@ -256,7 +293,10 @@
     require([
         'app/indicator',
         'app/swiper',
-        'app/user/index'
+        'app/wow',
+        'app/validator',
+        'app/user/index',
+            'app/user/login'
     ]);
 </script>
 <!-- 生产环境 -->

@@ -1,2 +1,0 @@
-/*! iResearchView-1.0.0-2016-08-15 */
-define(["handsontable"],function(a){var b,c=document.getElementById("hdt");b=new a(c,{data:a.helper.createSpreadsheetData(100,100),width:584,height:320,colWidths:47,rowHeights:23,rowHeaders:!0,colHeaders:!0})});

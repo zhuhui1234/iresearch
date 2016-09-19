@@ -1,4 +1,4 @@
-/*! iResearchView-1.0.0-2016-08-15 */
+/*! iResearchView-1.0.0-2016-09-19 */
 /*!
  * Copyright 2012, Chris Wanstrath
  * Released under the MIT License

@@ -1,2 +1,2 @@
-/*! iResearchView-1.0.0-2016-08-15 */
+/*! iResearchView-1.0.0-2016-09-19 */
 define(["jquery","datetimepicker"],function(a){a(function(){a(".form_datetime").datetimepicker({format:"yyyy-MM-dd",weekStart:1,todayBtn:1,autoclose:1,todayHighlight:1,startView:2,minView:2,forceParse:0,pickerPosition:"bottom-left"}),a(".form_datetime1").datetimepicker({autoclose:1,format:"yyyy-mm-dd hh:ii",pickerPosition:"bottom-left"})})});

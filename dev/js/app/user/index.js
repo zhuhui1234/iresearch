@@ -1,8 +1,7 @@
 /**
  * Created by robinwong51 on 9/18/16.
  */
-define(["helper", "jquery"], function (helper) {
-    console.log('a');
+define(["helper","bootstrap", "jquery"], function (helper) {
     //test report
     $("#demo").click(function () {
         // 登入Yong Hong

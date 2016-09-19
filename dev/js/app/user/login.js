@@ -1,6 +1,6 @@
 define(['helper', 'wxLogin', 'jquery'], function (Helper) {
     //loading QRCode
-    new wxLogin({
+    var obj = new wxLogin({
         id:            "wxLogin",
         appid:         "wxd96928ba062cffec",
         scope:         "snsapi_login",
