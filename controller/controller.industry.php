@@ -30,9 +30,11 @@ class IndustryController extends Controller
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
+        $data['ity_sid'] = $this->request()->requestAll("ity_sid");
         $ret = $this->model->industryMinList($data);
         print_r($ret);
     }
+
     function getConfigListAPI()
     {
         $userInfo = Session::instance()->get('userInfo');
@@ -40,5 +42,12 @@ class IndustryController extends Controller
         $data['cfg_model'] = 7;
         $ret = $this->model->configList($data);
         print_r($ret);
+    }
+
+    function getUserIndustry()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $data['token'] = $userInfo['u_token'];
+        $ret = $this->model->getUserIndustry($data);
     }
 }

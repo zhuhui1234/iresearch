@@ -28,4 +28,25 @@ class IndustryModel extends API {
         $ret = json_decode($ret,true);
         return $ret;
     }
+
+    /**
+     * 取得用户大行业、小行业
+     */
+    public function getUserIndustry($data){
+        $rs=array();
+        $ret = $this->industryMaxList($data);
+        if($ret['resCode']=='000000'){
+            for($i=0;$i<count($ret['data']['IndustryMaxList']['data']);$i++){
+                $rs['max'][$i] = $ret['data']['IndustryMaxList']['data'][$i];
+                $data['ity_sid']=$ret['data']['IndustryMaxList']['data'][$i]['ity_id'];
+                $minInfo = $this->industryMinList($data);
+                if($minInfo['data']['totalSize']>0){
+                    $rs['min'][$i]['info']=$minInfo['data']['IndustryMinList'];
+                    $rs['min'][$i]['pid']=$data['ity_sid'];
+                }
+            }
+
+        }
+        return $rs;
+    }
 }

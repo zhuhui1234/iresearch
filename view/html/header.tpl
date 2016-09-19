@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-menu col-xs-6">
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="tab1">
+                                    <div class="tab-pane active" id="tab2">
                                         <div class="content">
                                             <ul class="menu-col">
                                                 <li><a href="#">静态框</a></li>
@@ -95,7 +95,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="tab2">
+                                    <div class="tab-pane" id="tab1">
                                         <div class="content">
                                             <ul class="menu-col">
                                                 <li><a href="#">111</a></li>
