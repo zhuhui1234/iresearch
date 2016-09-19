@@ -33,7 +33,7 @@ module.exports = function (grunt) {
                     optimizeCss: 'standard',
                     modules: arrModules,
                     paths:{
-                        wxLogin: "empty:"
+                        WxLogin: "empty:"
                     }
                 }
             }
