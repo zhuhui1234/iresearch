@@ -22,7 +22,7 @@
                     <a href="" data-toggle="modal" data-target="#login">登录</a>
                 </li>
                 <li class="attr-btn">
-                    <a href="#">注册</a>
+                    <a href="?m=user&a=register">注册</a>
                 </li>
             </ul>
         </div>
