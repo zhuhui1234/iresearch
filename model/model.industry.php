@@ -39,10 +39,17 @@ class IndustryModel extends API {
             for($i=0;$i<count($ret['data']['IndustryMaxList']['data']);$i++){
                 $rs['max'][$i] = $ret['data']['IndustryMaxList']['data'][$i];
                 $data['ity_sid']=$ret['data']['IndustryMaxList']['data'][$i]['ity_id'];
+                $data['ity_name']=$ret['data']['IndustryMaxList']['data'][$i]['ity_name'];
                 $minInfo = $this->industryMinList($data);
+
                 if($minInfo['data']['totalSize']>0){
                     $rs['min'][$i]['info']=$minInfo['data']['IndustryMinList'];
+                    //大行业写入
+                    for($j=0;$j<count($rs['min'][$i]['info']);$j++){
+                        $rs['min'][$i]['info'][$j]['pname'] = $data['ity_name'];
+                    }
                     $rs['min'][$i]['pid']=$data['ity_sid'];
+                    $rs['min'][$i]['pname']=$data['ity_name'];
                 }
                 else {
                     $rs['min'][$i]['info']=array("ity_name"=>"暂无数据");

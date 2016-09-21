@@ -29,7 +29,7 @@
         <!-- End Atribute Navigation -->
         <!-- Start Header Navigation -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#brand"><img src="{WEBSITE_SOURCE_URL}/img/irv_logo.png" class="logo" alt=""></a>
+            <a class="navbar-brand" href="?"><img src="{WEBSITE_SOURCE_URL}/img/irv_logo.png" class="logo" alt=""></a>
         </div>
         <!-- End Header Navigation -->
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -67,24 +67,34 @@
                                 <div class="content">
                                     <ul class="menu-col menu-tabs">
                                         <!-- BEGIN userIndustry.max -->
-                                        <li><a href="#tab{ity_id}" data-toggle="tab" data-hover="tab">{ity_name}</a></li>
+                                        <li><a href="#tab{ity_id}" data-toggle="tab" data-hover="tab">{ity_name}</a>
+                                        </li>
                                         <!-- END userIndustry.max -->
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-menu col-xs-6">
                                 <div class="tab-content">
-                                <!-- BEGIN userIndustry.min -->
+                                    <!-- BEGIN userIndustry.min -->
                                     <div class="tab-pane" id="tab{pid}">
                                         <div class="content">
                                             <ul class="menu-col">
                                                 <!-- BEGIN info -->
-                                                <li><a href="#">{ity_name}</a></li>
+                                                <!-- IF ity_name = "暂无数据" -->
+                                                <li>
+                                                    <a href="#">{ity_name}</a>
+                                                </li>
+                                                <!-- ELSE -->
+                                                <li>
+                                                    <a href="?m=industry&a=showIndustryReport&cfg_model={ity_id}&ity_name={ity_name}&pname={pname}">{ity_name}</a>
+                                                </li>
+                                                <!-- ENDIF -->
+
                                                 <!-- END info -->
                                             </ul>
                                         </div>
                                     </div>
-                                <!-- END userIndustry.min -->
+                                    <!-- END userIndustry.min -->
                                 </div>
 
                             </div>
