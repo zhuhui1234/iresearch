@@ -17,8 +17,8 @@ class UserModel extends API
     public function upUserSessionKey($guid)
     {
         $data = array("guid"=>$guid);
-        $url = API_URL_REPORT . '?m=user&a=setReportToken';
-        $ret = $this->_curlPost($url, $data,'cs_login');
+        $url  = API_URL_REPORT . '?m=user&a=setReportToken';
+        $ret  = $this->_curlPost($url, $data,'cs_login');
    }
 
     public function login($data)
@@ -26,11 +26,20 @@ class UserModel extends API
         $url = API_URL . '?m=user&a=login';
         $ret = $this->_curlPost($url, $data,'cs_login');
         $ret = json_decode($ret,true);
-        $rs = false;
+        $rs  = false;
         if($ret['resCode']=='000000'){
             $rs = true;
             Session::instance()->set('userInfo',$ret['data'] );
         }
         return $rs;
     }
+
+    public function registerUserInfo($data)
+    {
+        $url = API_URL . '?m=user&a=createUserinfo';
+        $ret = $this->_curlPost($url, $data, 'createUserinfo');
+        return $ret;
+    }
+
+
 }
