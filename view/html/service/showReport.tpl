@@ -10,23 +10,17 @@
     </a>
 </div>
 <div class="sidebar show">
-    <h4>{pname}</h4>
+    <h4>{ity_name}</h4>
     <ul>
-        <li class="submenu open"><a href="#">{ity_name}</a>
-            <ul style="display: block">
-                <!-- BEGIN listInfo -->
+        <!-- BEGIN listInfo -->
+        <li class="submenu <!-- IF cfg_name = top.default.pname -->open<!-- ENDIF -->"><a href="#">{cfg_name}</a>
+            <ul <!-- IF cfg_name = top.default.pname -->style="display: block"<!-- ENDIF -->>
+                <!-- BEGIN ConfigMinList -->
                 <li><a href="#" class="_showReport" cfg_url="{cfg_url}"><i class="fa fa-angle-right"></i>{cfg_name}</a></li>
-                <!-- END listInfo -->
+                <!-- END ConfigMinList -->
             </ul>
         </li>
-        <li class="submenu"><a href="#">控股公司资产排名</a>
-            <ul>
-                <li><a href="#"><i class="fa fa-angle-right"></i> PC网站公司资产排名趋势</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i> 移动端安卓系统公司资产排名趋势</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i> 移动端IOS系统公司资产排名趋势</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i> 控股公司资产构成信息</a></li>
-            </ul>
-        </li>
+        <!-- END listInfo -->
     </ul>
 </div>
 <div class="wrap active">
@@ -34,6 +28,7 @@
         <ol class="breadcrumb">
             <li><a href="#">{pname}</a></li>
             <li><a href="#">{ity_name}</a></li>
+            <li><a href="#">{default.pname}</a></li>
             <li class="active">{default.name}</li>
             <a href="#" class="btn btn-outline btn-primary pull-right">下载研究方案说明文档</a>
         </ol>

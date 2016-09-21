@@ -61,11 +61,12 @@ class IndustryController extends Controller
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data['cfg_model'] = $this->request()->requestAll("cfg_model");
         $ret = Model::instance('industry')->configList($data);
-        $listInfo =$ret['data']['ConfigMaxList'][0]['ConfigMinList'];
+        $listInfo =$ret['data']['ConfigMaxList'];
         $default=array();
         if(count($listInfo)>0){
-            $default['url'] = $listInfo[0]['cfg_url'];
-            $default['name'] = $listInfo[0]['cfg_name'];
+            $default['url'] = $listInfo[0]['ConfigMinList'][0]['cfg_url'];
+            $default['name'] = $listInfo[0]['ConfigMinList'][0]['cfg_name'];
+            $default['pname'] = $listInfo[0]['cfg_name'];
         }
         $data = array(
             "userIndustry"=>$userIndustry,
