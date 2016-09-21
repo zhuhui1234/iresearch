@@ -12,6 +12,9 @@ define(["helper", "jquery"], function (helper) {
         var url = $("#frameReport").attr("default");
         showReport(url);
     }
+    else{
+        $(".loading-report").html("暂无数据");
+    }
     $("._showReport").click(function () {
         $(".show-report").hide();
         $(".loading-report").show();
@@ -28,15 +31,13 @@ define(["helper", "jquery"], function (helper) {
     });
     function showReport(url) {
         var urlInfo = url.split("=");
-        console.log(urlInfo);
+//        console.log(urlInfo);
         var rs = setReport(urlInfo[3]);
         if (rs) {
-            console.log("展示报告");
             $("#frameReport").attr("src", url);
 
         }
     }
-
     function setReport(guid) {
         var rs = false;
         var url = '?m=service&a=upUserSessionKey';
