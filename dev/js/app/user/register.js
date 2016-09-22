@@ -119,7 +119,7 @@ define(["helper", "jquery", "bootstrap", "validator"], function (helper, $) {
                         console.log(data);
 
                         if (data.resCode == "000000") {
-                            alert('我们已经向您发送了注册邀请邮件, 请查看邮件,完成注册! 谢谢');
+                            alert('注册成功! 请在首页登入使用!');
                             window.location.href = '?m=index';
                         } else {
                             alert(data.resMsg)

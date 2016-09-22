@@ -134,7 +134,7 @@ class UserController extends Controller
             echo $ret;
         } else {
             $this->__json();
-            echo 'error';
+            echo "{resMsg:'验证码错误'}";
         }
     }
 
