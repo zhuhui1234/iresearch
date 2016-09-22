@@ -30,7 +30,7 @@ class ServiceController extends Controller
         imagefill($im, 0, 0, $back); //背景
         srand((double) microtime() * 1000000);
         //生成4位数字
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $font = ImageColorAllocate($im, rand(100, 255), rand(0, 100), rand(100, 255));
             $authnum = rand(1, 9);
             $vcodes .= $authnum;
@@ -38,7 +38,7 @@ class ServiceController extends Controller
         }
         for ($i = 0; $i < 100; $i++) //加入干扰象素
         {
-            $randcolor = ImageColorallocate($im, rand(0, 255), rand(0, 255), rand(0, 255));
+            $randcolor = ImageColorallocate($im, rand(0, 255), rand(44, 255), rand(0, 255));
             imagesetpixel($im, rand(), rand(), $randcolor);
         }
         @ob_clean();

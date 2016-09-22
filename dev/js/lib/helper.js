@@ -2,9 +2,9 @@
  * lib/Helper
  * Created by robinwong51 on 9/14/16.
  */
-define(["api", "jquery"], function (api) {
+define(["api", "WxLogin", "jquery"], function (api) {
         "use strict";
-        function apiFunc() {
+        function Helper() {
             /**
              * get
              * @param apiName
@@ -81,10 +81,52 @@ define(["api", "jquery"], function (api) {
                     },
                     function (errInfo) {
                         console.log(errInfo)
-                    }),getValue
+                    }), getValue
             };
+
+
+            /**
+             *
+             */
+            this.getQueryString = function (name) {
+                'use strict';
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) {
+                    return unescape(r[2]).toLowerCase();
+                }
+                return null;
+            };
+
+            /**
+             * get resource uri
+             * @param name
+             */
+            this.getQuery = function (name) {
+                'use strict';
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) {
+                    return unescape(r[2]);
+                }
+                return null;
+            };
+
+
+            this.WeChatQRCode = function () {
+                var obj = new WxLogin({
+                    id: "wxLogin",
+                    appid: "wxd96928ba062cffec",
+                    scope: "snsapi_login",
+                    redirect_uri: "http%3a%2f%2firv.iresearch.com.cn%2fiResearchDataWeb%2f%3fm%3duser%26a%3dwxLoginAPI",
+                    state: "suiJi",
+                    style: "",
+                    href: ""
+                });
+            };
+
         }
 
-        return new apiFunc();
+        return new Helper();
     }
 );

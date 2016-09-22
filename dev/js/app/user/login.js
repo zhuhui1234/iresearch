@@ -1,7 +1,7 @@
 /**
  * user login js
  */
-define(['helper', 'WxLogin', 'jquery'], function (Helper) {
+define(['jquery','helper','validator', 'WxLogin'], function ($,Helper) {
 
     //loading QRCode
 
@@ -17,6 +17,7 @@ define(['helper', 'WxLogin', 'jquery'], function (Helper) {
             });
         }
     );
+
 
 
 });

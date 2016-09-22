@@ -28,7 +28,7 @@ class UserController extends Controller
         if ($userInfo) {
             echo $userInfo['u_name'];
         }
-        $data     = array();
+        $data = array();
         View::instance('user/login.tpl')->show($data);
     }
 
@@ -37,8 +37,39 @@ class UserController extends Controller
      */
     public function register()
     {
-        $data     = array();
+        $data = array();
         View::instance('user/register.tpl')->show($data);
+    }
+
+    /**
+     * 预留注册成功页面
+     */
+    public function registerSuccess()
+    {
+        $data = array();
+        View::instance('usr/success.tpl')->show($data);
+    }
+
+    /**
+     * 预留注册失败页面
+     */
+    public function registerFail()
+    {
+        $data = array();
+        View::instance('user/fail.tpl')->show($data);
+    }
+
+    /**
+     * 更新注册信息
+     */
+    public function registerUserInfo()
+    {
+        $data = array(
+            'mailto' => $this->request()->get('mailto'),
+            'mailkey' => $this->request()->get('mailkey')
+        );
+
+        View::instance('user/registerUserInfo.tpl')->show($data);
     }
 
     /**
@@ -67,18 +98,44 @@ class UserController extends Controller
     {
 
     }
+
     ######################################################################################
     ##################################                     ###############################
     #################################     API METHODS     ################################
     ################################                     #################################
     ######################################################################################
 
-    /**
-     * register api
-     */
-    public function registerAPI()
-    {
 
+    public function registerUserInfoAPI()
+    {
+        $data = array(
+            'mailkey' => $this->request()->post('mailkey'),
+            'u_account'    => $this->request()->post('u_account'),
+            'u_department' => $this->request()->post('u_department'),
+            'u_mobile' => $this->request()->post('u_mobile'),
+            'u_password' => $this->request()->post('u_password'),
+            'u_position' => $this->request()->post('u_position'),
+        );
+        $this->__json();
+        echo $this->model->registerUserInfo($data);
+    }
+
+
+    /**
+     * register send mail
+     */
+    public function registerSendMail()
+    {
+        $getVcodes = Session::instance()->get('vcodes');
+        $getAll = $this->request()->requestAll();
+        if ($getAll['vcode'] == $getVcodes) {
+            $ret = $this->__sendMail('http://localhost/iresearchdataweb/?m=user&a=registerUserInfo&', '用户注册确认邮件', 1, $getAll['registerMail'], REGISTER_MAILADDR);
+            $this->__json();
+            echo $ret;
+        } else {
+            $this->__json();
+            echo 'error';
+        }
     }
 
     /**
@@ -88,7 +145,7 @@ class UserController extends Controller
     {
 
         $data = array(
-            "loginAccount"  => $this->request()->requestAll("loginAccount"),
+            "loginAccount" => $this->request()->requestAll("loginAccount"),
             "loginPassword" => $this->request()->requestAll("loginPassword")
         );
         $rs = $this->model->login($data);
@@ -100,9 +157,9 @@ class UserController extends Controller
      */
     public function wxLoginAPI()
     {
-        $wechatModel        = Model::instance('wechat');
-        $code               = $this->request()->get('code');
-        $weChatObj          = $wechatModel->wxCheckLogin($code);
+        $wechatModel = Model::instance('wechat');
+        $code = $this->request()->get('code');
+        $weChatObj = $wechatModel->wxCheckLogin($code);
         pr('微信返回值:');
         var_dump($weChatObj);
         var_dump($wechatModel->getUserInfo($code));
@@ -111,6 +168,18 @@ class UserController extends Controller
     public function forgotPasswordAPI()
     {
 
+    }
+
+    private function __sendMail($mailContent, $mailTitle, $mailType, $MailTo, $mailFrom)
+    {
+        $service = Model::instance('Service');
+        return $service->sendmail($mailContent, $mailTitle, $mailType, $MailTo, $mailFrom);
+    }
+
+    private function __json()
+    {
+        @@ob_clean();
+        header('Content-type: application/json');
     }
 
 }
