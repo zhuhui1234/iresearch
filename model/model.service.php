@@ -8,7 +8,7 @@
  * FileName:model.service.php
  * 描述:
  */
-class ServiceModel extends AgentModel {
+class ServiceModel extends API {
 
     /**
      * 生成随即字符串
@@ -24,5 +24,19 @@ class ServiceModel extends AgentModel {
             $str.=$strPol[rand(0,$max)];//rand($min,$max)生成介于min和max两个数之间的一个随机整数
         }
         return $str;
+    }
+
+    public function sendMail($mailContent, $mailTitle, $mailType, $MailTo, $mailFrom )
+    {
+        $url = API_URL . '?m=user&a=mailService';
+        $ret = $this->_curlPost($url, array(
+            'mailcontent'   => $mailContent,
+            'mailtitle'     => $mailTitle,
+            'mailtype'      => $mailType,
+            'smtpemailto'    => $MailTo,
+            'smtpusermail'  => $mailFrom
+        ), 'mailService');
+
+        return $ret;
     }
 }
