@@ -17,6 +17,7 @@
     <div class="container-fluid">
         <!-- Start Atribute Navigation -->
         <div class="attr-nav">
+            <!-- IF loginStatus -->
             <ul>
                 <li class="attr-btn">
                     <a href="" data-toggle="modal" data-target="#login">登录</a>
@@ -25,6 +26,31 @@
                     <a href="?m=user&a=register">注册</a>
                 </li>
             </ul>
+            <!-- ELSE -->
+            <ul>
+                <li>
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="搜索">
+                        <i class="iconfont icon-my-search"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="消息">
+                        <i class="iconfont icon-my-msg"></i>
+                        <span class="badge">3</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="个人中心">
+                        <i class="iconfont icon-my-user"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="?m=user&a=loginOut" data-toggle="tooltip" data-placement="bottom" title="退出登录">
+                        <i class="iconfont icon-my-logout"></i>
+                    </a>
+                </li>
+            </ul>
+            <!-- ENDIF -->
         </div>
         <!-- End Atribute Navigation -->
         <!-- Start Header Navigation -->

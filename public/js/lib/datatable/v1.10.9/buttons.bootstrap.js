@@ -1,4 +1,4 @@
-/*! iResearchView-1.0.0-2016-09-19 */
+/*! iResearchView-1.0.0-2016-09-21 */
 /*! Bootstrap integration for DataTables' Buttons
  * ©2016 SpryMedia Ltd - datatables.net/license
  */

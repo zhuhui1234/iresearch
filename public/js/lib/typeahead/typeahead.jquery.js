@@ -1,4 +1,4 @@
-/*! iResearchView-1.0.0-2016-09-19 */
+/*! iResearchView-1.0.0-2016-09-21 */
 /*!
  * typeahead.js 0.11.1
  * https://github.com/twitter/typeahead.js

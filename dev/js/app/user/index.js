@@ -3,15 +3,16 @@
  */
 define(["helper","bootstrap", "jquery"], function (helper) {
     //test report
-    $(function(){
-        $("#demo").click(function () {
-            // 登入Yong Hong
-            helper.loginYongHong({
-                "loginAccount": "admin",
-                "loginPassword": "admin"
-            },"?m=index&a=demo");
-        });
-
+    // $(function(){
+    //     //登入永红demo
+    //     $("#demo").click(function () {
+    //         // 登入Yong Hong
+    //         helper.loginYongHong({
+    //             "loginAccount": "admin",
+    //             "loginPassword": "admin"
+    //         },"?m=index&a=demo");
+    //     });
+    //
         helper.WeChatQRCode();
-    });
+    // });
 });

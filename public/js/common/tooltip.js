@@ -1,2 +1,2 @@
-/*! iResearchView-1.0.0-2016-09-19 */
-define(["jquery","bootstrap"],function(){$(function(){$('[data-toggle="tooltip"]').tooltip()})});
+/*! iResearchView-1.0.0-2016-09-21 */
+define(["jquery","bootstrap"],function(a){a(function(){a('[data-toggle="tooltip"]').tooltip()})});

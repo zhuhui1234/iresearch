@@ -1,4 +1,4 @@
-/*! iResearchView-1.0.0-2016-09-19 */
+/*! iResearchView-1.0.0-2016-09-21 */
 /*!
  * BootstrapValidator (http://bootstrapvalidator.com)
  * The best jQuery plugin to validate form fields. Designed to use with Bootstrap 3

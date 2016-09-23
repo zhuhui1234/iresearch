@@ -1,4 +1,4 @@
-/*! iResearchView-1.0.0-2016-09-19 */
+/*! iResearchView-1.0.0-2016-09-21 */
 /*! Buttons for DataTables 1.2.1
  * ©2016 SpryMedia Ltd - datatables.net/license
  */

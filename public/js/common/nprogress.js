@@ -1,2 +1,2 @@
-/*! iResearchView-1.0.0-2016-09-19 */
+/*! iResearchView-1.0.0-2016-09-21 */
 define(["jquery","nprogress"],function(a){var b=require("nprogress");$("body").show(),$(".version").text(b.version),b.start(),setTimeout(function(){b.done(),$(".fade").removeClass("out")},1e3),$("#b-0").click(function(){b.start()}),$("#b-40").click(function(){b.set(.4)}),$("#b-inc").click(function(){b.inc()}),$("#b-100").click(function(){b.done()})});

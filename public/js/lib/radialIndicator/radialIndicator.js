@@ -1,4 +1,4 @@
-/*! iResearchView-1.0.0-2016-09-19 */
+/*! iResearchView-1.0.0-2016-09-21 */
 /*
     radialIndicator.js v 1.0.0
     Author: Sudhanshu Yadav

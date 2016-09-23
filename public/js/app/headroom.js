@@ -1,2 +1,2 @@
-/*! iResearchView-1.0.0-2016-09-19 */
+/*! iResearchView-1.0.0-2016-09-21 */
 define(["headroom","headroom-jq"],function(a){window.Headroom=a,$("nav").headroom({tolerance:5,offset:205,classes:{initial:"headroom-animated",pinned:"slideDown",unpinned:"slideUp"}})});

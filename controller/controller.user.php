@@ -12,11 +12,17 @@
 class UserController extends Controller
 {
 
-    private $model;
+    private $model, $userInfo, $loginStatus;
 
     function __construct()
     {
         $this->model = Model::instance('user');
+        $this->userInfo = Session::instance()->get('userInfo');
+        if (!empty($this->userInfo)) {
+            $this->loginStatus = FALSE;
+        }else{
+            $this->loginStatus = TRUE;
+        }
     }
 
     /**
@@ -37,7 +43,9 @@ class UserController extends Controller
      */
     public function register()
     {
-        $data = array();
+        $data = array(
+
+        );
         View::instance('user/register.tpl')->show($data);
     }
 
@@ -72,6 +80,12 @@ class UserController extends Controller
         View::instance('user/registerUserInfo.tpl')->show($data);
     }
 
+    public function loginOut()
+    {
+        Session::instance()->destroy();
+        header("Location: ?m=index");
+    }
+
     /**
      * 忘记用户密码
      */
@@ -94,10 +108,6 @@ class UserController extends Controller
 
     }
 
-    public function logout()
-    {
-
-    }
 
     ######################################################################################
     ##################################                     ###############################
@@ -143,12 +153,13 @@ class UserController extends Controller
      */
     public function loginAPI()
     {
-
         $data = array(
             "loginAccount" => $this->request()->requestAll("loginAccount"),
             "loginPassword" => $this->request()->requestAll("loginPassword")
         );
+
         $rs = $this->model->login($data);
+        $this->__json();
         echo $rs;
     }
 

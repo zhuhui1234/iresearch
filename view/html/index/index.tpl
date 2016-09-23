@@ -258,19 +258,19 @@
                 <h4 class="modal-title" id="myModalLabel">登录</h4>
             </div>
             <div class="modal-body" style="padding: 30px;">
-                <form role="form" id="index-login">
+                <form role="form" id="userLogin" action="?m=user&a=loginAPI" method="post">
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="form-group">
                                 <label>请输入企业邮箱</label>
-                                <input type="email" class="form-control" name="email" placeholder="">
+                                <input type="email" class="form-control" name="loginAccount" placeholder="注册邮箱">
                             </div>
                             <div class="form-group">
                                 <label>请输入密码</label>
-                                <input type="password" class="form-control" name="password" placeholder="">
+                                <input type="password" class="form-control" name="loginPassword" placeholder="登入密码">
                             </div>
                             <p class="text-right"><a href="#">忘记密码？</a></p>
-                            <button type="submit" class="btn btn-primary btn-block mbm">登录</button>
+                            <button type="" class="btn btn-primary btn-block mbm">登录</button>
                             <a href="?m=user&a=register" class="btn btn-warning btn-block">注册</a>
                         </div>
                         <div class="col-xs-4 col-xs-offset-1 text-center">
@@ -294,7 +294,7 @@
         'app/indicator',
         'app/swiper',
         'app/wow',
-        'app/validator',
+        //'app/validator',
         'app/user/index',
         'app/user/login'
     ]);

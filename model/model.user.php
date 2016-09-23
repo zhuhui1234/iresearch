@@ -25,13 +25,12 @@ class UserModel extends API
     {
         $url = API_URL . '?m=user&a=login';
         $ret = $this->_curlPost($url, $data,'cs_login');
-        $ret = json_decode($ret,true);
-        $rs  = false;
-        if($ret['resCode']=='000000'){
-            $rs = true;
-            Session::instance()->set('userInfo',$ret['data'] );
+        $rs = json_decode($ret,true);
+
+        if($rs['resCode']=='000000'){
+            Session::instance()->set('userInfo',$rs['data'] );
         }
-        return $rs;
+        return $ret;
     }
 
     public function registerUserInfo($data)
