@@ -8,7 +8,6 @@
 define(['jquery'], function () {
     //默认展示
     if ($("#frameReport").attr("default") !== "") {
-        console.log("default show ");
         var url = $("#frameReport").attr("default");
         showReport(url);
     }
@@ -19,6 +18,9 @@ define(['jquery'], function () {
         $(".show-report").hide();
         $(".loading-report").show();
         var url = $(this).attr("cfg_url");
+        $("._nowReport").html($(this).attr("cfg_name"));
+        var nowPname = $(this).parent().parent().prev();
+        $("._nowReportPname").html(nowPname);
         showReport(url);
     });
     $("#frameReport").load(function () {
