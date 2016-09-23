@@ -20,7 +20,8 @@ define(['jquery'], function () {
         var url = $(this).attr("cfg_url");
         $("._nowReport").html($(this).attr("cfg_name"));
         var nowPname = $(this).parent().parent().prev();
-        $("._nowReportPname").html(nowPname);
+//        console.log(nowPname.text());
+        $("._nowReportPname").html(nowPname.text());
         showReport(url);
     });
     $("#frameReport").load(function () {
