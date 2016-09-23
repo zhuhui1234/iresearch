@@ -70,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                    <form id="registerUserInfo" name="registerUserInfo" class="form-horizontal" action="?m=user&a=registerUserInfoAPI" method="post">
+                    <form id="registerUserInfo" name="registerUserInfo" class="form-horizontal" action="?m=user&a=registerUserInfoAPI&mailto={mailto}&mailkey={mailkey}" method="post">
                         <div class="form-group">
                             <div class="col-xs-offset-3 col-xs-9">
                             </div>
@@ -105,8 +105,11 @@
                                 <input name="u_mobile" type="text" class="form-control" required>
                             </div>
                         </div>
-                        <input type="text" value="{mailto}" name="u_account" >
-                        <input type="text" value="{mailkey}" name="mailkey">
+                        <div style="display: none">
+                            <input type="text" value="{mailto}" name="u_account" disabled="disabled" >
+                            <input type="text" value="{mailkey}" name="mailkey" disabled="disabled" >
+                        </div>
+
                         <div class="form-group">
                             <div class="col-xs-offset-3 col-xs-9">
                                 <div class="row">

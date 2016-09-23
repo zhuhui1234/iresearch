@@ -7,7 +7,7 @@
 class ServiceController extends Controller
 {
 
-    private $model;
+    private $model,$userInfo, $loginStatus;
 
     function __construct()
     {
@@ -47,5 +47,11 @@ class ServiceController extends Controller
         ImageDestroy($im);
         Session::instance()->set('vcodes',$vcodes);
     }
+
+    public function isLogin()
+    {
+
+    }
+
 
 }

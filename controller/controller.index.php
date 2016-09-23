@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © 艾瑞咨询集团(http://www.iresearch.com.cn/)
  * Author DavidWei <davidwei@iresearch.com.cn>
@@ -7,12 +8,16 @@
 class IndexController extends Controller
 {
 
-    private $model;
-    private $_api;
+    private $loginStatus, $userInfo;
 
     function __construct()
     {
-
+        $this->userInfo = Session::instance()->get('userInfo');
+        if (!empty($this->userInfo)) {
+            $this->loginStatus = FALSE;
+        }else{
+            $this->loginStatus = TRUE;
+        }
     }
 
     /**
@@ -25,8 +30,11 @@ class IndexController extends Controller
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
             "YH" => YH_LOGIN,
-            "userIndustry"=>$userIndustry
+            "userIndustry" => $userIndustry,
+            'loginStatus' => $this->loginStatus,
+            'userInfo' => $this->userInfo
         );
+
         View::instance('index/index.tpl')->show($data);
     }
 
@@ -42,5 +50,3 @@ class IndexController extends Controller
         View::instance('index/demo.tpl')->show($data);
     }
 }
-
-?>

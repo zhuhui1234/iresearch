@@ -119,8 +119,9 @@ class UserController extends Controller
     public function registerUserInfoAPI()
     {
         $data = array(
-            'mailkey' => $this->request()->post('mailkey'),
-            'u_account'    => $this->request()->post('u_account'),
+            'mailkey' => $this->request()->get('mailkey'),
+            'u_account'    => $this->request()->get('mailto'),
+            'u_name' => $this->request()->post('u_name'),
             'u_department' => $this->request()->post('u_department'),
             'u_mobile' => $this->request()->post('u_mobile'),
             'u_password' => $this->request()->post('u_password'),
