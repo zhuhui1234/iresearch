@@ -46,17 +46,12 @@
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
 <script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>
 <script type="text/javascript">
-    require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
+    require.config({
+        baseUrl: '{WEBSITE_SOURCE_URL}/js'
+    });
     require([
         'app/service/showReport'
     ]);
 </script>
-<!-- 生产环境 -->
-<!--<script src="../public/js/lib/requirejs/requirejs.js"></script>-->
-<!--<script src="../public/js/config.js"></script>-->
-<!--<script type="text/javascript">-->
-<!--require.config({baseUrl: '../public/js'});-->
-<!--require(['app/select2','app/slider']);-->
-<!--</script>-->
 </body>
 </html>

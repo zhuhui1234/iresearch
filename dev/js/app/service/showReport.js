@@ -5,7 +5,7 @@
  * Time: 上午11:38
  * To change this template use File | Settings | File Templates.
  */
-define(["helper", "jquery"], function (helper) {
+define(['jquery'], function () {
     //默认展示
     if ($("#frameReport").attr("default") !== "") {
         console.log("default show ");
