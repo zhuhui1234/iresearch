@@ -38,7 +38,7 @@ define(['jquery', 'helper', 'validator'], function ($, Helper) {
                         console.log(data);
 
                         if (data.resCode == "000000") {
-                            alert('登入成功');
+                            //alert('登入成功');
                             window.location.href = '?m=index'
                         } else {
                             alert(data.resMsg)
