@@ -7,6 +7,8 @@ requirejs.config({
         'bootstrap': 'lib/bootstrap/v3.3.6/bootstrap.min',
         'html5shiv': 'lib/bootstrap/v3.3.6/html5shiv.min',
         'respond': 'lib/bootstrap/v3.3.6/respond.min',
+        'domReady': 'lib/domReady/domReady',
+        'step':'lib/step/step',
         'boostrap-hover-dropdown': 'lib/bootstrap/v3.3.6/boostrap-hover-dropdown',
         'datatables.net': 'lib/datatable/v1.10.9/jquery.dataTables',
         'datatables.net-bs': 'lib/datatable/v1.10.9/dataTables.bootstrap',
@@ -44,7 +46,8 @@ requirejs.config({
         // 'wxLogin':"empty:"
         'WxLogin':'http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
         'api':'apiurl',
-        'helper':'lib/helper'
+        'helper':'lib/helper',
+        //'bootstrapValidator': 'lib/validator/validator.min'
     },
     shim: {
         'jquery': {
@@ -150,11 +153,20 @@ requirejs.config({
         'cropper': {
             deps: ['jquery'],
             exports: '$'
-        }
+        },
+        // 'bootstrapValidator' : {
+        //     deps: ['jquery'],
+        //     exports: '$'
+        // }
     },
     config: {
         moment:{
             noGlobal: true
+        },
+        step:{
+            steps:[
+                ['bootstrapValidator']
+            ]
         }
     }
 });

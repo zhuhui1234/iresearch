@@ -271,12 +271,12 @@
                             </div>
                             <p class="text-right"><a href="#">忘记密码？</a></p>
                             <button type="submit" class="btn btn-primary btn-block mbm">登录</button>
-                            <a href="register.html" class="btn btn-warning btn-block">注册</a>
+                            <a href="?m=user&a=register" class="btn btn-warning btn-block">注册</a>
                         </div>
                         <div class="col-xs-4 col-xs-offset-1 text-center">
                             <!-- <img  src="{WEBSITE_SOURCE_URL}/img/w3cplus-weixin.jpg" class="mtl img-thumbnail" width="200" alt=""> -->
                             <div id="wxLogin"></div>
-                            <p class="text-center mtm">已绑定微信扫一扫登录</p>
+                            <!--<p class="text-center mtm">已绑定微信扫一扫登录</p> -->
                         </div>
                     </div>
 
