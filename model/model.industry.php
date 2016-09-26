@@ -34,6 +34,30 @@ class IndustryModel extends API
         return $ret;
     }
 
+    public function configListJson($data)
+    {
+        $ret = $this->configList($data);
+        $info = $ret['data']['ConfigMaxList'];
+        $rs = array();
+        for ($i = 0; $i < count($info); $i++) {
+            $rs[$i]['text'] = $info[$i]['cfg_name'];
+            for ($j = 0; $j < count($info[$i]['ConfigMinList']); $j++) {
+                $rs[$i]['nodes'][$j]['text'] = $info[$i]['ConfigMinList'][$j]['cfg_name'];
+                $rs[$i]['nodes'][$j]['href'] = $info[$i]['ConfigMinList'][$j]['cfg_id'];
+            }
+        }
+        return $rs;
+    }
+
+    public function getPermissionsList($data)
+    {
+
+        $url = API_URL . '?m=user&a=getPermissionsList';
+        $ret = $this->_curlPost($url, $data, 'getPermissionsList');
+        $ret = json_decode($ret, true);
+        return $ret;
+    }
+
     /**
      * 取得用户大行业、小行业
      */
@@ -63,7 +87,7 @@ class IndustryModel extends API
                     }
                 }
             }
-            Session::instance()->set('userIndustry',$rs );
+            Session::instance()->set('userIndustry', $rs);
         }
         return $rs;
     }

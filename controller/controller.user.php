@@ -20,7 +20,7 @@ class UserController extends Controller
         $this->userInfo = Session::instance()->get('userInfo');
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
-        }else{
+        } else {
             $this->loginStatus = TRUE;
         }
     }
@@ -43,9 +43,7 @@ class UserController extends Controller
      */
     public function register()
     {
-        $data = array(
-
-        );
+        $data = array();
         View::instance('user/register.tpl')->show($data);
     }
 
@@ -115,10 +113,29 @@ class UserController extends Controller
 
     }
 
+    /**
+     * 权限设置
+     */
 
     public function permissionAccess()
     {
-
+        $userInfo = Session::instance()->get('userInfo');
+        $data['token'] = $userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);//用户的行业
+        //大行业
+        $bigIndustry = Model::instance('Industry')->industryMaxList($data);//大行业
+        //小行业
+        $data['ity_sid'] = $bigIndustry['data']['IndustryMaxList']['data'][0]['ity_id'];
+        $smallIndustry = Model::instance('Industry')->industryMinList($data);//小行业
+        //默认报告列表
+        $data['cfg_model'] = $smallIndustry['data']['IndustryMinList'][0]['ity_id'];
+        $data = array(
+            "userIndustry" => $userIndustry,
+            'userInfo' => $this->userInfo,
+            'bigIndustry'=>$bigIndustry['data']['IndustryMaxList']['data'],
+            'smallIndustry'=>$smallIndustry['data']['IndustryMinList']
+        );
+        View::instance('user/permissionAccess.tpl')->show($data);
     }
 
 
@@ -133,7 +150,7 @@ class UserController extends Controller
     {
         $data = array(
             'mailkey' => $this->request()->get('mailkey'),
-            'u_account'    => $this->request()->get('mailto'),
+            'u_account' => $this->request()->get('mailto'),
             'u_name' => $this->request()->post('u_name'),
             'u_department' => $this->request()->post('u_department'),
             'u_mobile' => $this->request()->post('u_mobile'),
