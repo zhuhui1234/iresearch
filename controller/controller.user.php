@@ -80,9 +80,22 @@ class UserController extends Controller
         View::instance('user/registerUserInfo.tpl')->show($data);
     }
 
+    /**
+     * editUserInfo
+     */
+    public function editUserInfo()
+    {
+        $data = array();
+        View::instance('user/editUserInfo.tpl')->show($data);
+    }
+
+    /**
+     * logout
+     */
     public function loginOut()
     {
         Session::instance()->destroy();
+
         header("Location: ?m=index");
     }
 
@@ -171,10 +184,35 @@ class UserController extends Controller
     {
         $wechatModel = Model::instance('wechat');
         $code = $this->request()->get('code');
+        $state = $this->request()->get('state');
         $weChatObj = $wechatModel->wxCheckLogin($code);
-        pr('微信返回值:');
-        var_dump($weChatObj);
-        var_dump($wechatModel->getUserInfo($code));
+//        pr('微信返回值:');
+//        var_dump($state);
+//        var_dump($weChatObj);
+//        var_dump($wechatModel->getUserInfo($code));
+
+        switch ($state) {
+
+            case 'wxLogin':
+                $ret = $this->__weChatAutoLogin(array(
+                    'loginOpenid' => $weChatObj['openid'],
+                    'loginUnionid' => $weChatObj['unionid']
+                ));
+                var_dump($ret);
+                if ($ret){
+//                    header();
+                }else{
+//                    Controller::instance('user')->{'register'}();
+                    @@header("Location: {WEBSITE_URL}?m=user&a=register");
+                }
+
+                break;
+
+            case 'binding':
+                break;
+        }
+
+
     }
 
     public function forgotPasswordAPI()
@@ -192,6 +230,15 @@ class UserController extends Controller
     {
         @@ob_clean();
         header('Content-type: application/json');
+    }
+
+    private function __weChatAutoLogin($data)
+    {
+        return $this->model->WeChatAutoLogin($data);
+    }
+    private function __bindingWeChat($data)
+    {
+        return $this->model->bindWeChat($data);
     }
 
 }
