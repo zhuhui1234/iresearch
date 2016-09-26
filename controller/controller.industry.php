@@ -32,7 +32,7 @@ class IndustryController extends Controller
         $data['token'] = $userInfo['u_token'];
         $data['ity_sid'] = $this->request()->requestAll("ity_sid");
         $ret = $this->model->industryMinList($data);
-        print_r($ret);
+        $this->success($ret);
     }
 
     function getConfigListAPI()
@@ -44,13 +44,27 @@ class IndustryController extends Controller
         print_r($ret);
     }
 
+    function getConfigListJsonAPI()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $data['token'] = $userInfo['u_token'];
+        $data['cfg_model'] = $this->request()->requestAll("cfg_id");
+        $ret = $this->model->configListJson($data);
+        $this->success($ret);
+    }
+
     function getUserIndustry()
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
         $ret = $this->model->getUserIndustry($data);
     }
-
+    function getPermissionsListAPI(){
+        $userInfo = Session::instance()->get('userInfo');
+        $data['token'] = $userInfo['u_token'];
+        $data['cfg_id'] = 4;
+        $ret = $this->model->getPermissionsList($data);
+    }
     /**
      * 展示小行业报告
      */
@@ -61,19 +75,19 @@ class IndustryController extends Controller
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data['cfg_model'] = $this->request()->requestAll("cfg_model");
         $ret = Model::instance('industry')->configList($data);
-        $listInfo =$ret['data']['ConfigMaxList'];
-        $default=array();
-        if(count($listInfo)>0){
+        $listInfo = $ret['data']['ConfigMaxList'];
+        $default = array();
+        if (count($listInfo) > 0) {
             $default['url'] = $listInfo[0]['ConfigMinList'][0]['cfg_url'];
             $default['name'] = $listInfo[0]['ConfigMinList'][0]['cfg_name'];
             $default['pname'] = $listInfo[0]['cfg_name'];
         }
         $data = array(
-            "userIndustry"=>$userIndustry,
-            "listInfo" =>$listInfo,
-            "default"=>$default,
-            "pname"=>$this->request()->requestAll("pname"),
-            "ity_name"=>$this->request()->requestAll("ity_name")
+            "userIndustry" => $userIndustry,
+            "listInfo" => $listInfo,
+            "default" => $default,
+            "pname" => $this->request()->requestAll("pname"),
+            "ity_name" => $this->request()->requestAll("ity_name")
         );
         View::instance('service/showReport.tpl')->show($data);
     }
