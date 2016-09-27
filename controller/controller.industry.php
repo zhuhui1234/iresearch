@@ -63,6 +63,7 @@ class IndustryController extends Controller
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
         $data['cfg_id'] = 4;
+        $data['u_account'] = $userInfo['u_account'];
         $ret = $this->model->getPermissionsList($data);
     }
     /**

@@ -30,7 +30,7 @@
             <li><a href="#">{ity_name}</a></li>
             <li><a href="#" class="_nowReportPname">{default.pname}</a></li>
             <li class="active _nowReport" >{default.name}</li>
-            <a href="#" class="btn btn-outline btn-primary pull-right">下载研究方案说明文档</a>
+            <!--<a href="#" class="btn btn-outline btn-primary pull-right">下载研究方案说明文档</a>-->
         </ol>
         <div>
             <div class="loading-report" style="text-align: center; vertical-align: middle; margin-top: 10%">
