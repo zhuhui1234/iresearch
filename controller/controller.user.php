@@ -34,7 +34,9 @@ class UserController extends Controller
         if ($userInfo) {
             echo $userInfo['u_name'];
         }
-        $data = array();
+        $data = array(
+            'loginStatus' => $this->loginStatus,
+        );
         View::instance('user/login.tpl')->show($data);
     }
 
@@ -83,7 +85,9 @@ class UserController extends Controller
      */
     public function editUserInfo()
     {
-        $data = array();
+        $data = array(
+            'loginStatus' => $this->loginStatus,
+        );
         View::instance('user/editUserInfo.tpl')->show($data);
     }
 
@@ -132,6 +136,7 @@ class UserController extends Controller
         $data = array(
             "userIndustry" => $userIndustry,
             'userInfo' => $this->userInfo,
+            'loginStatus' => $this->loginStatus,
             'bigIndustry'=>$bigIndustry['data']['IndustryMaxList']['data'],
             'smallIndustry'=>$smallIndustry['data']['IndustryMinList']
         );
@@ -228,8 +233,11 @@ class UserController extends Controller
             case 'binding':
                 break;
         }
+    }
 
-
+    public function updateUserInfoAPI()
+    {
+        $data = array();
     }
 
     public function forgotPasswordAPI()
