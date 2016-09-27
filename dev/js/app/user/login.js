@@ -4,7 +4,7 @@
 define(['jquery', 'helper', 'validator'], function ($, Helper) {
     $(function () {
         $("#userLogin").bootstrapValidator({
-            message: 'This value is not valid',
+            message: '请正确输入登入信息',
             feedbackIcons: {
                 valid: 'fa fa-check',
                 invalid: 'fa fa-remove',
