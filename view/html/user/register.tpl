@@ -31,8 +31,8 @@
                 <div class="user-center">
                     <address>
                         <strong>联系客服</strong><br><br>
-                        <p>邮箱：last@example.com</p>
-                        <p>电话：400-888-8888</p>
+                        <p>邮箱：irv@iresearch.com.cn</p>
+                        <p>电话：400-026-2099</p>
                         <p>地址：上海市漕溪北路333号B座701</p>
                     </address>
                 </div>
