@@ -79,6 +79,7 @@ require_once(ROOT_PATH . COMMON . DS . COMMON . '.response.php');
 require_once(ROOT_PATH . COMMON . DS . COMMON . '.cookie.php');
 require_once(ROOT_PATH . COMMON . DS . COMMON . '.page.php');
 require_once(ROOT_PATH . COMMON . DS . COMMON . '.ajaxpage.php');
+require_once(ROOT_PATH . COMMON . DS . COMMON . '.cropavatar.php');
 
 require_once(ROOT_PATH . API . DS . API . '.api.php');
 require_once(ROOT_PATH . API . DS . API . '.soap.php');
