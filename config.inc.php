@@ -19,8 +19,8 @@ define('VIEW_PATH', ROOT_PATH . VIEW . DS);
 //微信配置
 define('W_APP_ID', 'wxd96928ba062cffec');
 define('W_SECRET', 'abbf51a741f7608394727debe1e51b43');
-define('WECHAT_API_URL','https://api.weixin.qq.com/sns/oauth2/access_token');
-define('WECHAT_API_REFRESH_URL','https://api.weixin.qq.com/sns/oauth2/refresh_token');
+define('WECHAT_API_URL', 'https://api.weixin.qq.com/sns/oauth2/access_token');
+define('WECHAT_API_REFRESH_URL', 'https://api.weixin.qq.com/sns/oauth2/refresh_token');
 define('WECHAT_API_USERINFO', 'https://api.weixin.qq.com/sns/userinfo');
 //站点配置
 //	define('WEBSITE','http://localhost');
@@ -103,3 +103,19 @@ gUid();
 //if (!$soap->isLogin()) {
 //    $guid = Session::instance()->get('guid');
 //}
+
+//var_dump(isLoginState());
+//exit();
+if (!isLoginState()
+    AND $_GET['a'] != 'login'
+    AND $_GET['a'] != 'registerUserInfoAPI'
+    AND $_GET['a'] != 'loginAPI'
+    AND $_GET['a'] != 'register'
+    AND $_GET['a'] != 'authImg'
+    AND $_GET['a'] != 'sendMail'
+    AND $_GET['a'] != 'registerSendMail'
+    AND $_GET['a'] != 'forgotPassword'
+) {
+        header('Location:?m=user&a=login');
+}
+
