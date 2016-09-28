@@ -752,3 +752,12 @@ function clean_xss(&$string, $low = False)
         clean_xss($string [$key]);
     }
 }
+
+/**
+ * check login
+ */
+function isLoginState()
+{
+    $userInfo = Session::instance()->get('userInfo');
+    return !empty($userInfo) AND !empty($userInfo['u_account']);
+}
