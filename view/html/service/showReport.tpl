@@ -13,7 +13,7 @@
     <h4>{ity_name}</h4>
     <ul>
         <!-- BEGIN listInfo -->
-        <li class="submenu <!-- IF cfg_name = top.default.pname -->open<!-- ENDIF --> <!-- IF ConfigMinList = "" -->_showReport<!-- ENDIF -->"  cfg_url="{cfg_url}" cfg_name="{cfg_name}"><a href="#">{cfg_name}</a>
+        <li class=" <!-- IF cfg_name = top.default.pname -->open<!-- ENDIF --> <!-- IF ConfigMinList = "" -->_showReport<!-- ELSE -->submenu<!-- ENDIF -->"  cfg_url="{cfg_url}" cfg_name="{cfg_name}"><a href="#">{cfg_name}</a>
             <ul <!-- IF cfg_name = top.default.pname -->style="display: block"<!-- ENDIF -->>
                 <!-- BEGIN ConfigMinList -->
                 <li><a href="#" class="_showReport" cfg_url="{cfg_url}" cfg_name="{cfg_name}"><i class="fa fa-angle-right"></i>{cfg_name}</a></li>

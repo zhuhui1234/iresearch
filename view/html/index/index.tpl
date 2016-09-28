@@ -61,14 +61,14 @@
             <div class="col-xs-4 wow fadeIn">
                 <a href="?m=industry&a=showIndustryReport&cfg_model=7&ity_name=公司资产服务排名&pname=网络应用行业">
                     <img src="{WEBSITE_SOURCE_URL}/img/icon-1.png" class="img-responsive center-block" alt="">
-                    <h4>网络应用行业</h4>
-                    <p>PC网站、移动App、电视盒子、KOL网红、PC网站、移动App、电视</p>
+                    <h4>互联网行业</h4>
+                    <p>PC端移动端用户网络行为等</p>
                 </a>
             </div>
             <div class="col-xs-4 wow fadeIn">
-                <a href="#">
+                <a href="?m=industry&a=showIndustryReport&cfg_model=12&ity_name=视频跨屏行为研究&pname=网络视频行业">
                     <img src="{WEBSITE_SOURCE_URL}/img/icon-2.png" class="img-responsive center-block" alt="">
-                    <h4>网络应用行业</h4>
+                    <h4>网络视频行业</h4>
                     <p>PC网站、移动App、电视盒子、KOL网红、PC网站、移动App、电视</p>
                 </a>
             </div>
