@@ -48,10 +48,25 @@ class ServiceController extends Controller
         Session::instance()->set('vcodes',$vcodes);
     }
 
-    public function isLogin()
+    /**
+     * crop avatar
+     */
+    public function cropAvatar()
     {
+        $crop = new CropAvatar(
+            isset($_POST['avatar_src']) ? $_POST['avatar_src'] : null,
+            isset($_POST['avatar_data']) ? $_POST['avatar_data'] : null,
+            isset($_FILES['avatar_file']) ? $_FILES['avatar_file'] : null
+        );
 
+        $response = array(
+            'state'  => 200,
+            'message' => $crop -> getMsg(),
+            'result' => $crop -> getResult()
+        );
+
+        @@ob_clean();
+        echo json_encode($response);
     }
-
 
 }
