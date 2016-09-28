@@ -78,17 +78,25 @@ class IndustryController extends Controller
         $ret = Model::instance('industry')->configList($data);
         $listInfo = $ret['data']['ConfigMaxList'];
         $default = array();
-        if (count($listInfo) > 0) {
+        $level = 4 ;
+        if (count($listInfo[0]['ConfigMinList']) > 0) {
             $default['url'] = $listInfo[0]['ConfigMinList'][0]['cfg_url'];
             $default['name'] = $listInfo[0]['ConfigMinList'][0]['cfg_name'];
             $default['pname'] = $listInfo[0]['cfg_name'];
+        }
+        else {
+            $default['url'] = $listInfo[0]['cfg_url'];
+            $default['name'] = $listInfo[0]['cfg_name'];
+            $default['pname'] = $listInfo[0]['cfg_name'];
+            $level = 3 ;
         }
         $data = array(
             "userIndustry" => $userIndustry,
             "listInfo" => $listInfo,
             "default" => $default,
             "pname" => $this->request()->requestAll("pname"),
-            "ity_name" => $this->request()->requestAll("ity_name")
+            "ity_name" => $this->request()->requestAll("ity_name"),
+            "level"=>$level
         );
         View::instance('service/showReport.tpl')->show($data);
     }
