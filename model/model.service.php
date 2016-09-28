@@ -26,6 +26,16 @@ class ServiceModel extends API {
         return $str;
     }
 
+    /**
+     * send mail
+     *
+     * @param $mailContent
+     * @param $mailTitle
+     * @param $mailType
+     * @param $MailTo
+     * @param $mailFrom
+     * @return mixed
+     */
     public function sendMail($mailContent, $mailTitle, $mailType, $MailTo, $mailFrom )
     {
         $url = API_URL . '?m=user&a=mailService';
@@ -38,5 +48,13 @@ class ServiceModel extends API {
         ), 'mailService');
 
         return $ret;
+    }
+
+    /**
+     * send sms
+     */
+    public function sendSMS()
+    {
+
     }
 }
