@@ -92,6 +92,17 @@ class UserController extends Controller
     }
 
     /**
+     * set safe
+     */
+    public function setSafe()
+    {
+        $data = array(
+            'loginStatus' => $this->loginStatus
+        );
+        View::instance('user/user_safe.tpl')->show($data);
+    }
+
+    /**
      * logout
      */
     public function loginOut()
