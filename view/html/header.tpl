@@ -28,7 +28,7 @@
             </ul>
             <!-- ELSE -->
             <ul>
-                <li>
+                <!-- <li>
                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="搜索">
                         <i class="iconfont icon-my-search"></i>
                     </a>
@@ -38,9 +38,9 @@
                         <i class="iconfont icon-my-msg"></i>
                         <span class="badge">3</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="个人中心">
+                    <a href="?m=user&a=editUserInfo" data-toggle="tooltip" data-placement="bottom" title="个人中心">
                         <i class="iconfont icon-my-user"></i>
                     </a>
                 </li>
