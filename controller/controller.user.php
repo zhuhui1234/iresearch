@@ -103,6 +103,26 @@ class UserController extends Controller
     }
 
     /**
+     * binding we chat
+     */
+    public function setSafeWeChat()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $data = array();
+//        var_dump($userInfo);
+        View::instance('user/user_safe_wx.tpl')->show($data);
+    }
+
+    /**
+     * change pwd
+     */
+    public function changePwd()
+    {
+        $data = array();
+        View:self::instance('user/changePwd.tpl')->show($data);
+    }
+
+    /**
      * logout
      */
     public function loginOut()
@@ -201,7 +221,7 @@ class UserController extends Controller
     public function loginAPI()
     {
         $data = array(
-            "loginAccount" => $this->request()->requestAll("loginAccount"),
+            "loginAccount"  => $this->request()->requestAll("loginAccount"),
             "loginPassword" => $this->request()->requestAll("loginPassword")
         );
 
@@ -219,29 +239,43 @@ class UserController extends Controller
         $code = $this->request()->get('code');
         $state = $this->request()->get('state');
         $weChatObj = $wechatModel->wxCheckLogin($code);
+        $userInfo = Session::instance()->get('userInfo');
 //        pr('微信返回值:');
 //        var_dump($state);
 //        var_dump($weChatObj);
 //        var_dump($wechatModel->getUserInfo($code));
-
+//        var_dump($userInfo);
+//        exit();
         switch ($state) {
 
             case 'wxLogin':
                 $ret = $this->__weChatAutoLogin(array(
-                    'loginOpenid' => $weChatObj['openid'],
+                    'loginOpenid'  => $weChatObj['openid'],
                     'loginUnionid' => $weChatObj['unionid']
                 ));
                 var_dump($ret);
                 if ($ret){
-//                    header();
+                    header('Location: ?m=index');
                 }else{
 //                    Controller::instance('user')->{'register'}();
-                    @@header("Location: {WEBSITE_URL}?m=user&a=register");
+                    header("Location: ?m=user&a=register");
                 }
 
                 break;
-
+            //binding wechat
             case 'binding':
+                $ret =  $this->__bindingWeChat(array(
+                    'loginOpenid'  => $weChatObj['openid'],
+                    'loginUnionid' => $weChatObj['unionid'],
+                    'u_account'    => $userInfo['u_account'],
+                    'token'        => $userInfo['u_token']
+                ));
+                $j_ret = json_decode($ret, TRUE);
+                if ($j_ret['resCode'] == '000000') {
+                    View::instance('usr/success.tpl')->show($j_ret);
+                }else{
+                    View::instance('user/fail.tpl')->show($j_ret);
+                }
                 break;
         }
     }
