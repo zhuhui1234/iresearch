@@ -19,6 +19,9 @@ define(['jquery'], function () {
         $(".loading-report").show();
         var url = $(this).attr("cfg_url");
         $("._nowReport").html($(this).attr("cfg_name"));
+        $(this).parent().children().removeClass("open");
+        $(this).addClass("open");
+
         var nowPname = $(this).parent().parent().prev();
 //        console.log(nowPname.text());
         $("._nowReportPname").html(nowPname.text());
@@ -30,7 +33,7 @@ define(['jquery'], function () {
         setTimeout(function(){
                 $(".loading-report").hide();
                 $(".show-report").show();
-            }, 1000);
+            }, 2000);
     });
     function showReport(url) {
         var urlInfo = url.split("=");
