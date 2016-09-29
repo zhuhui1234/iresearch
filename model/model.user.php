@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by 艾瑞咨询集团.
  * User: DavidWei
@@ -16,23 +17,34 @@ class UserModel extends API
      */
     public function upUserSessionKey($guid)
     {
-        $data = array("guid"=>$guid);
-        $url  = API_URL_REPORT . '?m=user&a=setReportToken';
-        $ret  = $this->_curlPost($url, $data,'cs_login');
-   }
+        $data = array("guid" => $guid);
+        $url = API_URL_REPORT . '?m=user&a=setReportToken';
+        $ret = $this->_curlPost($url, $data, 'cs_login');
+    }
 
+    /**
+     * login
+     *
+     * @param $data
+     * @return mixed
+     */
     public function login($data)
     {
         $url = API_URL . '?m=user&a=login';
-        $ret = $this->_curlPost($url, $data,'cs_login');
-        $rs = json_decode($ret,true);
+        $ret = $this->_curlPost($url, $data, 'cs_login');
+        $rs = json_decode($ret, true);
 
-        if($rs['resCode']=='000000'){
-            Session::instance()->set('userInfo',$rs['data'] );
+        if ($rs['resCode'] == '000000') {
+            Session::instance()->set('userInfo', $rs['data']);
         }
         return $ret;
     }
 
+    /**
+     * register user info
+     * @param $data
+     * @return mixed
+     */
     public function registerUserInfo($data)
     {
         $url = API_URL . '?m=user&a=createUserinfo';
@@ -40,5 +52,34 @@ class UserModel extends API
         return $ret;
     }
 
+    /**
+     * check wechat openid
+     * @param $data
+     * @return mixed
+     */
+    public function WeChatAutoLogin($data)
+    {
+        $url = API_URL . '?m=user&a=wxlogin';
+        $ret = $this->_curlPost($url, $data, 'wxlogin');
+        $rs = json_decode($ret, true);
+        if ($rs['resCode'] == '000000') {
+            Session::instance()->set('userInfo', $rs['data']);
+            return TRUE;
+        }else{
+            return FALSE;
+        }
 
+    }
+
+    /**
+     * bind WeChat
+     * @param $data
+     * @return mixed
+     */
+    public function bindWeChat($data)
+    {
+        $url = API_URL . '?m=user&a=bindingWeixin';
+        $ret = $this->_curlPost($url, $data, 'bindingWeixin');
+        return $ret;
+    }
 }

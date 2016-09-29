@@ -46,4 +46,5 @@ define(['jquery', 'helper', 'validator'], function ($, Helper) {
                     });
             });
     });
+    Helper.WeChatQRCode('wxLogin', 'wxLogin');
 });

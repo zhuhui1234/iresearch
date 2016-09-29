@@ -6,7 +6,7 @@ define(["helper", "jquery", "bootstrap", "validator"], function (helper, $) {
 
     $(function () {
         console.log(helper);
-        helper.WeChatQRCode();
+        helper.WeChatQRCode('wxLogin','wxLogin');
         $('#registerMail').bootstrapValidator({
             message: 'This value is not valid',
             feedbackIcons: {
@@ -35,7 +35,6 @@ define(["helper", "jquery", "bootstrap", "validator"], function (helper, $) {
 
 
             }
-
 
         })
             .on('success.form.bv', function (e) {

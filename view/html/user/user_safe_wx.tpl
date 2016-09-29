@@ -26,7 +26,10 @@
             <div class="col-xs-6">
                 <div class="user-center">
                     <div class="bind-wx">
-                        {resMsg}
+                        <h4>扫一扫绑定微信</h4>
+                        <!-- <img src="{WEBSITE_SOURCE_URL}/img/w3cplus-weixin.jpg" alt="">
+                        <p><span class="fa fa-refresh"></span> 刷新</p> -->
+                        <div id="bindWeChat"></div>
                     </div>
                 </div>
             </div>

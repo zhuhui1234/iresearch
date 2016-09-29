@@ -13,6 +13,6 @@ define(["helper","bootstrap", "jquery"], function (helper) {
     //         },"?m=index&a=demo");
     //     });
     //
-        helper.WeChatQRCode();
+        helper.WeChatQRCode("wxLogin","wxLogin");
     // });
 });
