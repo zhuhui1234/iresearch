@@ -28,7 +28,7 @@
         <ol class="breadcrumb">
             <li><a href="#">{pname}</a></li>
             <li><a href="#">{ity_name}</a></li>
-            <!-- IF level = 4 -->
+            <!-- IF level = "4" -->
             <li><a href="#" class="_nowReportPname">{default.pname}</a></li>
             <!-- ENDIF -->
             <li class="active _nowReport" >{default.name}</li>
