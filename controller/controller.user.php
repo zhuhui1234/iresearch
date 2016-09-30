@@ -12,16 +12,24 @@
 class UserController extends Controller
 {
 
-    private $model, $userInfo, $loginStatus;
+    private $model, $userInfo, $loginStatus, $wechatStatus;
 
     function __construct()
     {
         $this->model = Model::instance('user');
         $this->userInfo = Session::instance()->get('userInfo');
+//        var_dump($this->userInfo);
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
+
         } else {
             $this->loginStatus = TRUE;
+        }
+
+        if (!empty($this->userInfo['u_wxopid']) AND $this->userInfo['u_wxopid'] != '') {
+            $this->wechatStatus = TRUE;
+        }else{
+            $this->wechatStatus = FALSE;
         }
     }
 
@@ -85,8 +93,11 @@ class UserController extends Controller
      */
     public function editUserInfo()
     {
+        $data['token'] = $this->userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
             'loginStatus' => $this->loginStatus,
+            "userIndustry" => $userIndustry
         );
         View::instance('user/editUserInfo.tpl')->show($data);
     }
@@ -96,8 +107,12 @@ class UserController extends Controller
      */
     public function setSafe()
     {
+        $data['token'] = $this->userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
-            'loginStatus' => $this->loginStatus
+            'loginStatus'  => $this->loginStatus,
+            'wechatStatus' => $this->wechatStatus,
+            "userIndustry" => $userIndustry
         );
         View::instance('user/user_safe.tpl')->show($data);
     }
@@ -108,7 +123,11 @@ class UserController extends Controller
     public function setSafeWeChat()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data = array();
+        $data['token'] = $this->userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $data = array(
+            "userIndustry" => $userIndustry
+        );
 //        var_dump($userInfo);
         View::instance('user/user_safe_wx.tpl')->show($data);
     }
@@ -272,6 +291,7 @@ class UserController extends Controller
                 ));
                 $j_ret = json_decode($ret, TRUE);
                 if ($j_ret['resCode'] == '000000') {
+                    $this->wechatStatus = TRUE;
                     View::instance('usr/success.tpl')->show($j_ret);
                 }else{
                     View::instance('user/fail.tpl')->show($j_ret);
