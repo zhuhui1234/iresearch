@@ -5,7 +5,7 @@
  * Time: 上午11:38
  * To change this template use File | Settings | File Templates.
  */
-define(['jquery'], function () {
+define(['jquery','helper'], function ($,Helper) {
     //默认展示
     if ($("#frameReport").attr("default") !== "") {
         var url = $("#frameReport").attr("default");
@@ -16,7 +16,14 @@ define(['jquery'], function () {
     }
     $("._showReport").click(function () {
         $(".show-report").hide();
+        $(".loading-report").html('<i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>');
         $(".loading-report").show();
+        console.log($(this).attr("cfg_id"));
+        //测试用，若改报告是收费的执行以下方法
+        if($(this).attr("cfg_id")==='15'){
+            weiXin($(this).attr("cfg_id"));
+            return;
+        }
         var url = $(this).attr("cfg_url");
         $("._nowReport").html($(this).attr("cfg_name"));
         $(this).parent().children().removeClass("open");
@@ -58,5 +65,8 @@ define(['jquery'], function () {
             }
         });
         return rs;
+    }
+    function weiXin(cfg_id){
+        Helper.WeChatQRCode('wxLogin', 'viewReport_'+cfg_id);
     }
 });
