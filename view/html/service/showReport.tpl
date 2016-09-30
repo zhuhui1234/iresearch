@@ -16,7 +16,7 @@
         <li class=" <!-- IF cfg_name = top.default.pname -->open<!-- ENDIF --> <!-- IF ConfigMinList = "" -->_showReport<!-- ELSE -->submenu<!-- ENDIF -->"  cfg_url="{cfg_url}" cfg_name="{cfg_name}"><a href="#">{cfg_name}</a>
             <ul <!-- IF cfg_name = top.default.pname -->style="display: block"<!-- ENDIF -->>
                 <!-- BEGIN ConfigMinList -->
-                <li><a href="#" class="_showReport" cfg_url="{cfg_url}" cfg_name="{cfg_name}"><i class="fa fa-angle-right"></i>{cfg_name}</a></li>
+                <li><a href="#" class="_showReport" cfg_url="{cfg_url}" cfg_name="{cfg_name}" cfg_id="{cfg_id}"><i class="fa fa-angle-right"></i>{cfg_name}</a></li>
                 <!-- END ConfigMinList -->
             </ul>
         </li>
@@ -35,7 +35,7 @@
             <!--<a href="#" class="btn btn-outline btn-primary pull-right">下载研究方案说明文档</a>-->
         </ol>
         <div>
-            <div class="loading-report" style="text-align: center; vertical-align: middle; margin-top: 10%">
+            <div class="loading-report" style="text-align: center; vertical-align: middle; margin-top: 10%" id="wxLogin">
                 <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
             </div>
             <div class="show-report">
