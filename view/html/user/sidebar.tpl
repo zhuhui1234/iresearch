@@ -1,5 +1,5 @@
 <ul>
-    <li>
+    <!-- <li>
         <a href="?m=user&a=editUserInfo">个人资料</a>
     </li>
     <li class="active">
@@ -13,11 +13,11 @@
     </li>
     <li>
         <a href="?m=user&a=actionlog">操作日志</a>
-    </li>
+    </li> -->
     <li>
         <a href="?m=user&a=setsafe">安全设置</a>
     </li>
     <li>
-        <a href="#">退出登录</a>
+        <a href="?m=user&a=loginOut">退出登录</a>
     </li>
 </ul>

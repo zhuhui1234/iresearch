@@ -30,9 +30,15 @@
                             <a class="pull-right" href="?m=user&a=changePwd">修改密码 <i class="fa fa-angle-right"></i></a>
                         </li>
                         <li class="list-group-item">
+                            <!-- IF wechatStatus -->
+                            <span class="fa fa-check text-primary"></span>
+                            已绑定微信
+                            <a class="pull-right" href="#">绑定微信 <i class="fa fa-angle-right"></i></a>
+                            <!-- ELSE -->
                             <span class="fa fa-warning text-danger"></span>
                             未绑定微信
                             <a class="pull-right" href="?m=user&a=setSafeWeChat">绑定微信 <i class="fa fa-angle-right"></i></a>
+                            <!-- ENDIF -->
                         </li>
                     </ul>
                 </div>
