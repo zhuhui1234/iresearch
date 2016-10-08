@@ -265,6 +265,11 @@ class UserController extends Controller
 //        var_dump($wechatModel->getUserInfo($code));
 //        var_dump($userInfo);
 //        exit();
+        if(substr($state,0,10)=='viewReport'){
+            $state_tmp = explode('_',$state);
+            $state = $state_tmp[0];
+            $cfg_id = $state_tmp[1];
+        }
         switch ($state) {
 
             case 'wxLogin':
@@ -296,6 +301,9 @@ class UserController extends Controller
                 }else{
                     View::instance('user/fail.tpl')->show($j_ret);
                 }
+                break;
+            case 'viewReport':
+                print_r($state_tmp);
                 break;
         }
     }
