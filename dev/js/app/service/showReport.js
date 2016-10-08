@@ -35,7 +35,7 @@ define(['jquery','helper'], function ($,Helper) {
         showReport(url);
     });
     $("#frameReport").load(function () {
-        var mainheight = $(document).height() - 160;
+        var mainheight = $(document).height() - 30;
         $(this).height(mainheight);
         setTimeout(function(){
                 $(".loading-report").hide();

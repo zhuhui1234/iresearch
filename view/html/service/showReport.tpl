@@ -25,15 +25,15 @@
 </div>
 <div class="wrap active">
     <div class="container-fluid">
+<!--
         <ol class="breadcrumb">
             <li><a href="#">{pname}</a></li>
             <li><a href="#">{ity_name}</a></li>
-            <!-- IF level = "4" -->
             <li><a href="#" class="_nowReportPname">{default.pname}</a></li>
-            <!-- ENDIF -->
             <li class="active _nowReport" >{default.name}</li>
-            <!--<a href="#" class="btn btn-outline btn-primary pull-right">下载研究方案说明文档</a>-->
+            <a href="#" class="btn btn-outline btn-primary pull-right">下载研究方案说明文档</a>
         </ol>
+-->
         <div>
             <div class="loading-report" style="text-align: center; vertical-align: middle; margin-top: 10%" id="wxLogin">
                 <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
