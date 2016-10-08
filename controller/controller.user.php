@@ -146,6 +146,11 @@ class UserController extends Controller
      */
     public function loginOut()
     {
+        $this->model->setCancellation(array(
+            'token'      => $this->userInfo['u_token'],
+            'u_account'  => $this->userInfo['u_account']
+        ));
+
         Session::instance()->destroy();
 
         header("Location: ?m=index");
