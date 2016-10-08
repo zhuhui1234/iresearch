@@ -31,6 +31,7 @@ define('WEBSITE_TITLE', '艾瑞数据平台');
 define('REGISTER_MAILADDR', 'wanghaiyan@iresearch.com.cn');
 define('FORGOTPWD_MAILADDR', 'wanghaiyan@iresearch.com.cn');
 //导出报表配置
+//define('API_URL', 'http://180.169.19.208/iview_deskapi/');
 define('API_URL', 'http://203.156.255.168/iview_deskapi/');
 define('API_URL_REPORT', 'http://10.10.21.163/iReport/');
 define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
@@ -110,12 +111,14 @@ gUid();
 if (!isLoginState()
     AND $_GET['a'] != 'login'
     AND $_GET['a'] != 'registerUserInfoAPI'
+    AND $_GET['a'] != 'registerUserInfo'
     AND $_GET['a'] != 'loginAPI'
     AND $_GET['a'] != 'register'
     AND $_GET['a'] != 'authImg'
     AND $_GET['a'] != 'sendMail'
     AND $_GET['a'] != 'registerSendMail'
     AND $_GET['a'] != 'forgotPassword'
+    AND $_GET['a'] != 'wxLoginAPI'
 ) {
         header('Location:?m=user&a=login');
 }

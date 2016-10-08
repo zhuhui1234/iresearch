@@ -82,4 +82,82 @@ class UserModel extends API
         $ret = $this->_curlPost($url, $data, 'bindingWeixin');
         return $ret;
     }
+
+    /**
+     * get userinfo list
+     *
+     * @param $data
+     */
+    public function getUserInfoList($data)
+    {
+        $url = API_URL . '?m=user&a=getUserInfoList';
+        $ret = $this->_curlPost($url, $data, 'getUserInfoList');
+        return $ret;
+    }
+
+    /**
+     * 冰结接口
+     *
+     * @param $data
+     * @return mixed
+     */
+    public function setState($data)
+    {
+        $url = API_URL . '?m=user&a=setState';
+        $ret = $this->_curlPost($url, $data, 'setState');
+        return $ret;
+    }
+
+    /**
+     * 用户编辑
+     *
+     * @param $data
+     * @return mixed
+     */
+    public function setUserInfo($data)
+    {
+        $url = API_URL . '?m=user&a=setUserInfo';
+        $ret = $this->_curlPost($url, $data, 'setUserInfo');
+        return $ret;
+    }
+
+    /**
+     * 用户详情
+     *
+     * @param $data
+     * @return mixed
+     */
+    public function getUserInfo($data)
+    {
+        $url = API_URL . '?m=user&a=getUserInfo';
+        $ret = $this->_curlPost($url, $data, 'getUserInfo');
+        return $ret;
+    }
+
+    /**
+     * 退出登录
+     *
+     * @param $data
+     * @return mixed
+     */
+    public function setCancellation($data)
+    {
+        $url = API_URL . '?m=user&a=setCancellation';
+        $ret = $this->_curlPost($url, $data, 'setCancellation');
+        return $ret;
+    }
+
+    /**
+     * 重置密码
+     *
+     * @param $data
+     * @return mixed
+     */
+    public function resetPassword($data)
+    {
+        $url = API_URL . '?m=user&a=resetPassword';
+        $ret = $this->_curlPost($url, $data, 'resetPassword');
+        return $ret;
+    }
+
 }
