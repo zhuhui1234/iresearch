@@ -225,9 +225,9 @@
                 </div>
                 <div class="contact-us wow fadeIn">
                     <h4>联系我们</h4>
-                    <p><span class="fa fa-chevron-right"></span> 客服电话:400-000-000</p>
-                    <p><span class="fa fa-chevron-right"></span> 企业QQ:88888888</p>
-                    <p><span class="fa fa-chevron-right"></span> Email:xxx@iresearch.com.cn</p>
+                    <p><span class="fa fa-chevron-right"></span> 客服电话:400-026-2099</p>
+                    <!-- <p><span class="fa fa-chevron-right"></span> 企业QQ:88888888</p> -->
+                    <p><span class="fa fa-chevron-right"></span> Email:irv@iresearch.com.cn</p>
                     <p>工作时间:周一到周五 9:00-18:00</p>
                 </div>
             </div>
