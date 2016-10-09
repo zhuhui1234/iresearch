@@ -28,7 +28,7 @@
                             <div id="crop-avatar">
                                 <!-- Current avatar -->
                                 <div class="avatar-view mbl" title="点击上传头像">
-                                    <img src="{WEBSITE_SOURCE_URL}/img/user-head.png" class="center-block user-head-img"
+                                    <img id="avatar_icon" src="{WEBSITE_SOURCE_URL}/img/user-head.png" class="center-block user-head-img"
                                          alt="Avatar">
                                 </div>
                                 <!-- Cropping modal -->
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                     </div>
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" action="?m=user&a=setUserInfoAPI">
                         <div class="form-group">
                             <div class="col-xs-offset-3 col-xs-9">
                             </div>
@@ -103,27 +103,30 @@
                         <div class="form-group">
                             <label class="col-xs-3 control-label">姓名:</label>
                             <div class="col-xs-9">
-                                <input type="text" class="form-control">
+                                <input id="u_name" name="u_name" type="text" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">部门:</label>
                             <div class="col-xs-9">
-                                <input type="text" class="form-control">
+                                <input id="u_department" name="u_department" type="text" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">职位:</label>
                             <div class="col-xs-9">
-                                <input type="text" class="form-control">
+                                <input id="u_position" name="u_position" type="text" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">联系电话:</label>
                             <div class="col-xs-9">
-                                <input type="text" class="form-control">
+                                <input id="mobile" name="u_mobile" type="text" class="form-control">
                             </div>
                         </div>
+
+                        <input type="hidden" id="u_head" name="u_head" class="form-control">
+
                         <div class="form-group">
                             <div class="col-xs-offset-3 col-xs-9">
                                 <div class="row">
@@ -149,7 +152,8 @@
     require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
     require([
         'app/cropper',
-        'app/user_info'
+        'app/user_info',
+        'app/user/editor'
     ]);
 </script>
 <!-- 生产环境 -->
