@@ -267,7 +267,7 @@ define(['jquery','bootstrap','upload','cropper'], function($) {
             if ($.isPlainObject(data) && data.state === 200) {
                 if (data.result) {
                     this.url = data.result;
-
+                    $('#u_head').val(data.result);
                     if (this.support.datauri || this.uploaded) {
                         this.uploaded = false;
                         this.cropDone();

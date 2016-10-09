@@ -761,3 +761,8 @@ function isLoginState()
     $userInfo = Session::instance()->get('userInfo');
     return !empty($userInfo) AND !empty($userInfo['u_account']);
 }
+
+function toBase64($filePath)
+{
+    return base64_encode(file_get_contents($filePath));
+}

@@ -18,12 +18,23 @@ class UserController extends Controller
     {
         $this->model = Model::instance('user');
         $this->userInfo = Session::instance()->get('userInfo');
+
+
+
 //        var_dump($this->userInfo);
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
 
         } else {
             $this->loginStatus = TRUE;
+            $this->userInfo['token'] = $this->userInfo['u_token'];
+            if (empty($this->userInfo['u_head'])) {
+                //没头像
+                $this->userInfo['u_head'] = 'dev/img/user-head.png';
+            }else{
+                //头像
+                $this->userInfo['u_head'] = IMG_URL . $this->userInfo['u_head'];
+            }
         }
 
         if (!empty($this->userInfo['u_wxopid']) AND $this->userInfo['u_wxopid'] != '') {
@@ -97,7 +108,8 @@ class UserController extends Controller
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
             'loginStatus' => $this->loginStatus,
-            "userIndustry" => $userIndustry
+            'userIndustry' => $userIndustry,
+            'u_head' => $this->userInfo['u_head']
         );
         View::instance('user/editUserInfo.tpl')->show($data);
     }
@@ -122,11 +134,12 @@ class UserController extends Controller
      */
     public function setSafeWeChat()
     {
-        $userInfo = Session::instance()->get('userInfo');
+//        $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $this->userInfo['u_token'];
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
-            "userIndustry" => $userIndustry
+            'userIndustry' => $userIndustry,
+            'u_head'       => $this->userInfo['u_head']
         );
 //        var_dump($userInfo);
         View::instance('user/user_safe_wx.tpl')->show($data);
@@ -139,6 +152,11 @@ class UserController extends Controller
     {
         $data = array();
         View:self::instance('user/changePwd.tpl')->show($data);
+    }
+
+    public function test()
+    {
+        pr($this->userInfo);
     }
 
     /**
@@ -198,6 +216,15 @@ class UserController extends Controller
         View::instance('user/permissionAccess.tpl')->show($data);
     }
 
+    public function checkToken()
+    {
+        $userInfoArr = json_decode($this->model->getUserInfo(array('token'=> $this->userInfo['u_token'])), TRUE);
+
+        if ($userInfoArr['resCode'] != '000000') {
+            Session::instance()->destroy();
+        }
+
+    }
 
     ######################################################################################
     ##################################                     ###############################
@@ -313,9 +340,70 @@ class UserController extends Controller
         }
     }
 
-    public function updateUserInfoAPI()
+    /**
+     * update userinfo
+     * @return mixed
+     */
+    public function setUserInfoAPI()
     {
-        $data = array();
+        $updateUserInfo = array();
+        $u_name = $this->request()->post('u_name');
+        $u_department = $this->request()->post('u_department');
+        $u_position = $this->request()->post('u_position');
+        $u_mobile = $this->request()->post('u_mobile');
+        $u_head = $this->request()->post('u_head');
+
+        if (!empty($u_name)) {
+            $updateUserInfo['u_name'] = $u_name;
+        }
+
+        if (!empty($u_department)) {
+            $updateUserInfo['u_department'] = $u_department;
+        }
+
+        if (!empty($u_position)) {
+            $updateUserInfo['u_position'] = $u_position;
+        }
+
+        if (!empty($u_mobile)) {
+            $updateUserInfo['u_mobile'] = $u_mobile;
+        }
+
+        if (!empty($u_head)) {
+            $serviceModel = Model::instance('Service');
+
+            $imgUrl = $serviceModel->uploadImage($this->userInfo['u_token'],toBase64(UPLOAD_PATH . trim($u_head, 'uploads')),'png');
+            $imgData = json_decode($imgUrl, true);
+//            pr($imgData);
+            $updateUserInfo['u_head'] = $imgData['data']['imageUrl'];
+        }
+
+        if (!empty($u_mobile) || !empty($u_name) || !empty($u_position) || !empty($u_department)) {
+            $updateUserInfo['token'] = $this->userInfo['u_token'];
+            $updateUserInfo['u_account'] = $this->userInfo['u_account'];
+            pr($updateUserInfo);
+            $ret = json_decode($this->model->setUserInfo($updateUserInfo),TRUE);
+            pr($ret);
+
+            if ($ret['resCode'] == '000000') {
+                echo '成功';
+            }else{
+                echo '失败';
+            }
+        }
+
+
+    }
+
+    /**
+     * 用户信息
+     */
+    public function getUserInfo()
+    {
+        echo $this->model->getUserInfo(array(
+            'token'      => $this->userInfo['u_token'],
+            'u_account'  => $this->userInfo['u_account']
+        ));
     }
 
     public function forgotPasswordAPI()
@@ -335,10 +423,23 @@ class UserController extends Controller
         header('Content-type: application/json');
     }
 
+    /**
+     * 自动登入
+     *
+     * @param $data
+     * @return mixed
+     */
     private function __weChatAutoLogin($data)
     {
         return $this->model->WeChatAutoLogin($data);
     }
+
+    /**
+     * 绑定微信
+     *
+     * @param $data
+     * @return mixed
+     */
     private function __bindingWeChat($data)
     {
         return $this->model->bindWeChat($data);

@@ -112,7 +112,12 @@ define(["api", "WxLogin", "jquery"], function (api) {
                 return null;
             };
 
-
+            /**
+             * weChat qr code
+             * @param qrCodeID
+             * @param state
+             * @constructor
+             */
             this.WeChatQRCode = function (qrCodeID, state) {
                 var obj = new WxLogin({
                     id: qrCodeID,
@@ -124,6 +129,8 @@ define(["api", "WxLogin", "jquery"], function (api) {
                     href: ""
                 });
             };
+
+            this.imgServer = "http://203.156.255.168/iview_deskapi/";
 
         }
 

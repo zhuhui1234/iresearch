@@ -53,12 +53,12 @@ class ServiceController extends Controller
      */
     public function cropAvatar()
     {
+        $data = $this->request()->requestAll();
         $crop = new CropAvatar(
-            isset($_POST['avatar_src']) ? $_POST['avatar_src'] : null,
-            isset($_POST['avatar_data']) ? $_POST['avatar_data'] : null,
+            isset($data['avatar_src']) ? $data['avatar_src'] : null,
+            isset($data['avatar_data']) ? $data['avatar_data'] : null,
             isset($_FILES['avatar_file']) ? $_FILES['avatar_file'] : null
         );
-
         $response = array(
             'state'  => 200,
             'message' => $crop -> getMsg(),
