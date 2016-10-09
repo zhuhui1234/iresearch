@@ -23,12 +23,12 @@ define(['jquery', 'treeview'], function ($) {
                 success: function (res) {
                     rs = $.parseJSON(res);
                     rs = rs.content;
-                    console.log(rs);
                 }
             });
             return rs;
         }
-        function getPermissionsList(cfg_id){
+
+        function getPermissionsList(cfg_id) {
             var rs = false;
             var url = '?m=industry&a=getPermissionsListAPI';
             $.ajax({
@@ -38,15 +38,53 @@ define(['jquery', 'treeview'], function ($) {
                 url: url,
                 success: function (res) {
                     rs = $.parseJSON(res);
-                    console.log(rs);
                 }
             });
             return rs;
         }
+
         var defaultData = setReport(7);
         $('#treeview').treeview({
             showTags: true,
-            data: defaultData
+            data: defaultData,
+            onNodeSelected: function (event, data) {
+                console.log(data);
+            }
         });
+        $("#bigIndustry").on("change", function (e) {
+            var bigClass = $(this).val();
+            var url = '?m=industry&a=getMinIndustryAPI';
+            $.ajax({
+                type: 'POST',
+                data: {"ity_sid": bigClass},
+                url: url,
+                success: function (res) {
+                    rs = $.parseJSON(res);
+                    var smallClass = rs.content.data.IndustryMinList;
+                    var smallClassArray = new Array();
+                    $.each(smallClass, function (n, value) {
+                        smallClassArray[n] = {"id": value.ity_id, "text": value.ity_name};
+                    });
+                    $("#smallIndustry").html("");
+                    $("#smallIndustry").select2({
+                        data: smallClassArray,
+                        theme: "bootstrap",
+                        tags: true
+                    });
+                    showTree();
+                }
+            });
+        });
+        function showTree() {
+            var smallClassID = $("#smallIndustry").val();
+            var defaultData = setReport(smallClassID);
+            $('#treeview').treeview({
+                showTags: true,
+                data: defaultData,
+                onNodeSelected: function (event, data) {
+                    console.log(data);
+                }
+            });
+        }
     });
 });

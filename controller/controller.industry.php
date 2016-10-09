@@ -59,12 +59,20 @@ class IndustryController extends Controller
         $data['token'] = $userInfo['u_token'];
         $ret = $this->model->getUserIndustry($data);
     }
+
+    /**
+     * 获取某个报告的用户权限列表
+     */
     function getPermissionsListAPI(){
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
-        $data['cfg_id'] = 4;
+        $data['cfg_id'] = $this->request()->requestAll("cfg_id");
         $data['u_account'] = $userInfo['u_account'];
-        $ret = $this->model->getPermissionsList($data);
+        $data['pageSize'] = $this->request()->requestAll("pageSize",2);
+        $start = $this->request()->requestAll("start",0);
+        $data['pageNo'] = $start/$data['pageSize']+1;
+        $ret = $this->model->getPermissionsListDataTable($data);
+        echo json_encode($ret);
     }
     /**
      * 展示小行业报告
