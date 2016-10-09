@@ -35,6 +35,7 @@ define('FORGOTPWD_MAILADDR', 'wanghaiyan@iresearch.com.cn');
 //导出报表配置
 //define('API_URL', 'http://180.169.19.208/iview_deskapi/');
 define('API_URL', 'http://203.156.255.168/iview_deskapi/');
+define('IMG_URL', 'http://203.156.255.168/iview_deskapi/');
 define('API_URL_REPORT', 'http://10.10.21.163/iReport/');
 define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
 //永洪单点登陆地址
@@ -102,6 +103,8 @@ if (!empty($v) && in_array($v, array('beta', 'test', 'final'))) {
 }
 //登录处理
 gUid();
+$user = Controller::instance('user');
+$user->checkToken();
 //    Session::instance()->set('uid', 1);//游客使用
 //$soap = new Soap();
 //if (!$soap->isLogin()) {

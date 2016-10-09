@@ -18,12 +18,23 @@ class UserController extends Controller
     {
         $this->model = Model::instance('user');
         $this->userInfo = Session::instance()->get('userInfo');
+
+
+
 //        var_dump($this->userInfo);
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
 
         } else {
             $this->loginStatus = TRUE;
+            $this->userInfo['token'] = $this->userInfo['u_token'];
+            if (empty($this->userInfo['u_head'])) {
+                //没头像
+                $this->userInfo['u_head'] = 'dev/img/user-head.png';
+            }else{
+                //头像
+                $this->userInfo['u_head'] = IMG_URL . $this->userInfo['u_head'];
+            }
         }
 
         if (!empty($this->userInfo['u_wxopid']) AND $this->userInfo['u_wxopid'] != '') {
@@ -97,7 +108,8 @@ class UserController extends Controller
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
             'loginStatus' => $this->loginStatus,
-            "userIndustry" => $userIndustry
+            'userIndustry' => $userIndustry,
+            'u_head' => $this->userInfo['u_head']
         );
         View::instance('user/editUserInfo.tpl')->show($data);
     }
@@ -122,11 +134,12 @@ class UserController extends Controller
      */
     public function setSafeWeChat()
     {
-        $userInfo = Session::instance()->get('userInfo');
+//        $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $this->userInfo['u_token'];
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
-            "userIndustry" => $userIndustry
+            'userIndustry' => $userIndustry,
+            'u_head'       => $this->userInfo['u_head']
         );
 //        var_dump($userInfo);
         View::instance('user/user_safe_wx.tpl')->show($data);
@@ -139,6 +152,11 @@ class UserController extends Controller
     {
         $data = array();
         View:self::instance('user/changePwd.tpl')->show($data);
+    }
+
+    public function test()
+    {
+        pr($this->userInfo);
     }
 
     /**
@@ -198,6 +216,15 @@ class UserController extends Controller
         View::instance('user/permissionAccess.tpl')->show($data);
     }
 
+    public function checkToken()
+    {
+        $userInfoArr = json_decode($this->model->getUserInfo(array('token'=> $this->userInfo['u_token'])), TRUE);
+
+        if ($userInfoArr['resCode'] != '000000') {
+            Session::instance()->destroy();
+        }
+
+    }
 
     ######################################################################################
     ##################################                     ###############################
