@@ -1,7 +1,8 @@
 <ul>
-    <!-- <li>
+    <li>
         <a href="?m=user&a=editUserInfo">个人资料</a>
     </li>
+    <!--
     <li class="active">
         <a href="?m=user&a=usermanger">用户管理</a>
     </li>
