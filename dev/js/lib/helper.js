@@ -130,6 +130,8 @@ define(["api", "WxLogin", "jquery"], function (api) {
                 });
             };
 
+            this.imgServer = "http://203.156.255.168/iview_deskapi/";
+
         }
 
         return new Helper();

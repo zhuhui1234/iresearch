@@ -323,7 +323,7 @@ class UserController extends Controller
         $u_name = $this->request()->post('u_name');
         $u_department = $this->request()->post('u_department');
         $u_position = $this->request()->post('u_position');
-        $u_mobile = $this->request()->post('u_position');
+        $u_mobile = $this->request()->post('u_mobile');
         $u_head = $this->request()->post('u_head');
 
         if (!empty($u_name)) {
@@ -344,27 +344,39 @@ class UserController extends Controller
 
         if (!empty($u_head)) {
             $serviceModel = Model::instance('Service');
-//            $updateUserInfo['u_head'] = json_encode(array(
-//                'filename'=> trim($u_head, 'uploads'),
-//                'base64' => toBase64(UPLOAD_PATH . trim($u_head, 'uploads'))
-//            ));
+
             $imgUrl = $serviceModel->uploadImage($this->userInfo['u_token'],toBase64(UPLOAD_PATH . trim($u_head, 'uploads')),'png');
-            echo $imgUrl;
+            $imgData = json_decode($imgUrl, true);
+//            pr($imgData);
+            $updateUserInfo['u_head'] = $imgData['data']['imageUrl'];
         }
 
         if (!empty($u_mobile) || !empty($u_name) || !empty($u_position) || !empty($u_department)) {
             $updateUserInfo['token'] = $this->userInfo['u_token'];
             $updateUserInfo['u_account'] = $this->userInfo['u_account'];
             pr($updateUserInfo);
-            //echo $this->model->setUserInfo($updateUserInfo);
+            $ret = json_decode($this->model->setUserInfo($updateUserInfo),TRUE);
+            pr($ret);
+
+            if ($ret['resCode'] == '000000') {
+                echo '成功';
+            }else{
+                echo '失败';
+            }
         }
 
 
     }
 
+    /**
+     * 用户信息
+     */
     public function getUserInfo()
     {
-
+        echo $this->model->getUserInfo(array(
+            'token'      => $this->userInfo['u_token'],
+            'u_account'  => $this->userInfo['u_account']
+        ));
     }
 
     public function forgotPasswordAPI()
