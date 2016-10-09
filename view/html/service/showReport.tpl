@@ -24,7 +24,7 @@
     </ul>
 </div>
 <div class="wrap active">
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-left: 0px;padding-right: 0px">
 <!--
         <ol class="breadcrumb">
             <li><a href="#">{pname}</a></li>

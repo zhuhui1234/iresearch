@@ -5,10 +5,13 @@
  * Time: 上午11:11
  * To change this template use File | Settings | File Templates.
  */
-define(['jquery','datatables.net','datatables.net-bs','select2'],function($){
-    $(function(){
+define(['jquery', 'datatables.net', 'datatables.net-bs', 'select2'], function ($) {
+    $(function () {
         console.log('Module datatables loaded');
-        var table = $('#user-table').DataTable( {
+        var table = $('#user-table').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": "?m=industry&a=getPermissionsListAPI&cfg_id=1",
             language: {
                 "sProcessing": "处理中...",
                 "sLengthMenu": "显示 _MENU_ 项结果",
@@ -29,28 +32,24 @@ define(['jquery','datatables.net','datatables.net-bs','select2'],function($){
                     "sLast": "末页"
                 }
             },
-            //禁止排序
-            ordering:false,
-            //指定禁止排序的列
-            // columnDefs:[{
-            //     orderable:false,//禁用排序
-            //     targets:[0,4]   //指定的列
-            // }]
-            //按钮
-            // buttons: [
-            //     'copy', 'excel', 'pdf'
-            // ]
+            pageLength:2,
+            "columns": [
+                { "data": "u_account" },
+                { "data": "cfg_id" },
+                { "data": "adt_state" },
+                {
+                    "data": "adt_state",
+                    mRender: function (data, type, full) {
+                        if (data == 1) {
+                            return '是';
+                        } else {
+                            return '否';
+                        }
+                    }
+                }
+            ],
+            ordering:true
         });
-        /**
-         获取json数据请参考下面地址
-         */
-        // https://datatables.net/reference/api/ajax.json()
-        /**
-         拷贝导出
-         */
-        //table.buttons().container().appendTo( $('.dbt', table.table().container()));
     });
-    $("#bigIndustry").on("change", function (e) {
-        console.log("change select ");
-    });
+
 });
