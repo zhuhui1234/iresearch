@@ -103,8 +103,8 @@ if (!empty($v) && in_array($v, array('beta', 'test', 'final'))) {
 }
 //登录处理
 gUid();
-$user = Controller::instance('user');
-$user->checkToken();
+//$user = Controller::instance('user');
+//$user->checkToken();
 //    Session::instance()->set('uid', 1);//游客使用
 //$soap = new Soap();
 //if (!$soap->isLogin()) {

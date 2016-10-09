@@ -19,22 +19,16 @@ class UserController extends Controller
         $this->model = Model::instance('user');
         $this->userInfo = Session::instance()->get('userInfo');
 
-
-
-//        var_dump($this->userInfo);
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
-
-        } else {
-            $this->loginStatus = TRUE;
             $this->userInfo['token'] = $this->userInfo['u_token'];
-            if (empty($this->userInfo['u_head'])) {
-                //没头像
+            if(empty($this->userInfo['u_head'])) {
                 $this->userInfo['u_head'] = 'dev/img/user-head.png';
             }else{
-                //头像
                 $this->userInfo['u_head'] = IMG_URL . $this->userInfo['u_head'];
             }
+        } else {
+            $this->loginStatus = TRUE;
         }
 
         if (!empty($this->userInfo['u_wxopid']) AND $this->userInfo['u_wxopid'] != '') {
@@ -71,18 +65,32 @@ class UserController extends Controller
     /**
      * 预留注册成功页面
      */
-    public function registerSuccess()
+    public function Success()
     {
-        $data = array();
-        View::instance('usr/success.tpl')->show($data);
+        $data['token'] = $this->userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $data = array(
+            'loginStatus' => $this->loginStatus,
+            'userIndustry' => $userIndustry,
+            'u_head' =>  $this->userInfo['u_head'],
+            'u_name' => $this->userInfo['u_name']
+        );
+        View::instance('user/success.tpl')->show($data);
     }
 
     /**
      * 预留注册失败页面
      */
-    public function registerFail()
+    public function Fail()
     {
-        $data = array();
+        $data['token'] = $this->userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $data = array(
+            'loginStatus' => $this->loginStatus,
+            'userIndustry' => $userIndustry,
+            'u_head' =>  $this->userInfo['u_head'],
+            'u_name' => $this->userInfo['u_name']
+        );
         View::instance('user/fail.tpl')->show($data);
     }
 
@@ -109,7 +117,9 @@ class UserController extends Controller
         $data = array(
             'loginStatus' => $this->loginStatus,
             'userIndustry' => $userIndustry,
-            'u_head' => $this->userInfo['u_head']
+            'u_head' => $this->userInfo['u_head'],
+//            'u_head' =>  IMG_URL . $this->userInfo['u_head'],
+            'u_name' => $this->userInfo['u_name']
         );
         View::instance('user/editUserInfo.tpl')->show($data);
     }
@@ -139,7 +149,8 @@ class UserController extends Controller
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
             'userIndustry' => $userIndustry,
-            'u_head'       => $this->userInfo['u_head']
+            'u_head'       => $this->userInfo['u_head'],
+            'u_name'       => $this->userInfo['u_name']
         );
 //        var_dump($userInfo);
         View::instance('user/user_safe_wx.tpl')->show($data);
@@ -216,13 +227,14 @@ class UserController extends Controller
         View::instance('user/permissionAccess.tpl')->show($data);
     }
 
+    /**
+     * check token
+     */
     public function checkToken()
     {
         $userInfoArr = json_decode($this->model->getUserInfo(array('token'=> $this->userInfo['u_token'])), TRUE);
 
-        if ($userInfoArr['resCode'] != '000000') {
-            Session::instance()->destroy();
-        }
+        return $userInfoArr['resCode'] != '000000';
 
     }
 
@@ -309,11 +321,10 @@ class UserController extends Controller
                     'loginOpenid'  => $weChatObj['openid'],
                     'loginUnionid' => $weChatObj['unionid']
                 ));
-                var_dump($ret);
+//                var_dump($ret);
                 if ($ret){
                     header('Location: ?m=index');
                 }else{
-//                    Controller::instance('user')->{'register'}();
                     header("Location: ?m=user&a=register");
                 }
 
@@ -386,9 +397,9 @@ class UserController extends Controller
             pr($ret);
 
             if ($ret['resCode'] == '000000') {
-                echo '成功';
+                header("Location: ?m=user&a=success");
             }else{
-                echo '失败';
+                header("Location: ?m=user&a=fail");
             }
         }
 
@@ -411,12 +422,25 @@ class UserController extends Controller
 
     }
 
+    /**
+     * send mail
+     *
+     * @param $mailContent
+     * @param $mailTitle
+     * @param $mailType
+     * @param $MailTo
+     * @param $mailFrom
+     * @return mixed
+     */
     private function __sendMail($mailContent, $mailTitle, $mailType, $MailTo, $mailFrom)
     {
         $service = Model::instance('Service');
         return $service->sendmail($mailContent, $mailTitle, $mailType, $MailTo, $mailFrom);
     }
 
+    /**
+     * trans to  json
+     */
     private function __json()
     {
         @@ob_clean();

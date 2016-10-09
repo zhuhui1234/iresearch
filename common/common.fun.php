@@ -759,7 +759,9 @@ function clean_xss(&$string, $low = False)
 function isLoginState()
 {
     $userInfo = Session::instance()->get('userInfo');
+
     return !empty($userInfo) AND !empty($userInfo['u_account']);
+    //AND Controller::instance('user')->checkToken();
 }
 
 function toBase64($filePath)
