@@ -6,5 +6,6 @@ define({
     loginYongHongURI : '?m=user&a=loginAPI',
     login            : '?m=user&a=loginAPI',
     regMail          : '?m=user&a=registerAPI',
-    regUserInfo      : '?m=user&a=registerUserInfoAPI'
+    regUserInfo      : '?m=user&a=registerUserInfoAPI',
+    getUserInfo      : '?m=user&a=getUserInfo'
 });
