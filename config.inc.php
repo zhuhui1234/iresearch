@@ -16,6 +16,8 @@ define('LIB_PATH', ROOT_PATH . LIB . DS);
 define('MODEL_PATH', ROOT_PATH . MODEL . DS);
 define('CONTROLLER_PATH', ROOT_PATH . CONTROLLER . DS);
 define('VIEW_PATH', ROOT_PATH . VIEW . DS);
+//uploads
+define('UPLOAD_PATH', ROOT_PATH.'uploads'.DS);
 //微信配置
 define('W_APP_ID', 'wxd96928ba062cffec');
 define('W_SECRET', 'abbf51a741f7608394727debe1e51b43');

@@ -313,9 +313,58 @@ class UserController extends Controller
         }
     }
 
-    public function updateUserInfoAPI()
+    /**
+     * update userinfo
+     * @return mixed
+     */
+    public function setUserInfoAPI()
     {
-        $data = array();
+        $updateUserInfo = array();
+        $u_name = $this->request()->post('u_name');
+        $u_department = $this->request()->post('u_department');
+        $u_position = $this->request()->post('u_position');
+        $u_mobile = $this->request()->post('u_position');
+        $u_head = $this->request()->post('u_head');
+
+        if (!empty($u_name)) {
+            $updateUserInfo['u_name'] = $u_name;
+        }
+
+        if (!empty($u_department)) {
+            $updateUserInfo['u_department'] = $u_department;
+        }
+
+        if (!empty($u_position)) {
+            $updateUserInfo['u_position'] = $u_position;
+        }
+
+        if (!empty($u_mobile)) {
+            $updateUserInfo['u_mobile'] = $u_mobile;
+        }
+
+        if (!empty($u_head)) {
+            $serviceModel = Model::instance('Service');
+//            $updateUserInfo['u_head'] = json_encode(array(
+//                'filename'=> trim($u_head, 'uploads'),
+//                'base64' => toBase64(UPLOAD_PATH . trim($u_head, 'uploads'))
+//            ));
+            $imgUrl = $serviceModel->uploadImage($this->userInfo['u_token'],toBase64(UPLOAD_PATH . trim($u_head, 'uploads')),'png');
+            echo $imgUrl;
+        }
+
+        if (!empty($u_mobile) || !empty($u_name) || !empty($u_position) || !empty($u_department)) {
+            $updateUserInfo['token'] = $this->userInfo['u_token'];
+            $updateUserInfo['u_account'] = $this->userInfo['u_account'];
+            pr($updateUserInfo);
+            //echo $this->model->setUserInfo($updateUserInfo);
+        }
+
+
+    }
+
+    public function getUserInfo()
+    {
+
     }
 
     public function forgotPasswordAPI()
@@ -335,10 +384,23 @@ class UserController extends Controller
         header('Content-type: application/json');
     }
 
+    /**
+     * 自动登入
+     *
+     * @param $data
+     * @return mixed
+     */
     private function __weChatAutoLogin($data)
     {
         return $this->model->WeChatAutoLogin($data);
     }
+
+    /**
+     * 绑定微信
+     *
+     * @param $data
+     * @return mixed
+     */
     private function __bindingWeChat($data)
     {
         return $this->model->bindWeChat($data);

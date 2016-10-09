@@ -57,4 +57,25 @@ class ServiceModel extends API {
     {
 
     }
+
+    /**
+     * 上传图片
+     *
+     * @param $base64
+     * @param string $type
+     * @return mixed
+     */
+    public function uploadImage($token,$base64,$type='png')
+    {
+        $url = API_URL . '?m=upfile&a=imgs';
+        $img = array(
+            'token' => $token,
+            'filebase64' => $base64,
+            'filetype' => $type
+        );
+        pr($img);
+        $ret = $this->_curlPost($url,$img,'imgs');
+
+        return $ret;
+    }
 }
