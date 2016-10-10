@@ -65,7 +65,7 @@ class UserModel extends API
         if ($rs['resCode'] == '000000') {
             Session::instance()->set('userInfo', $rs['data']);
             return TRUE;
-        }else{
+        } else {
             return FALSE;
         }
 
@@ -160,4 +160,20 @@ class UserModel extends API
         return $ret;
     }
 
+    /**
+     * check token
+     * 判断当前token是否有效
+     */
+    public function checkToken()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $data['token'] = $userInfo['u_token'];
+        $userInfoArr = json_decode($this->getUserInfo($data), TRUE);
+        $rs = True;
+        if($userInfoArr['resCode'] != '000000'){
+            Session::instance()->destroy();
+            $rs = False;
+        }
+        return $rs;
+    }
 }

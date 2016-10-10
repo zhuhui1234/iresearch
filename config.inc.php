@@ -102,17 +102,6 @@ if (!empty($v) && in_array($v, array('beta', 'test', 'final'))) {
     define('VERSION', 'test');
 }
 //登录处理
-gUid();
-//$user = Controller::instance('user');
-//$user->checkToken();
-//    Session::instance()->set('uid', 1);//游客使用
-//$soap = new Soap();
-//if (!$soap->isLogin()) {
-//    $guid = Session::instance()->get('guid');
-//}
-
-//var_dump(isLoginState());
-//exit();
 if (!isLoginState()
     AND $_GET['a'] != 'login'
     AND $_GET['a'] != 'registerUserInfoAPI'
@@ -125,6 +114,9 @@ if (!isLoginState()
     AND $_GET['a'] != 'forgotPassword'
     AND $_GET['a'] != 'wxLoginAPI'
 ) {
-        header('Location:?m=user&a=login');
+    echo("<SCRIPT LANGUAGE=\"JavaScript\">
+    alert(\"登录超时,请重新登录\");
+    window.location.href=\"?m=user&a=login\";
+    </SCRIPT>");
 }
 

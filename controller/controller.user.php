@@ -182,7 +182,7 @@ class UserController extends Controller
 
         Session::instance()->destroy();
 
-        header("Location: ?m=index");
+        header("Location:?m=user&a=login");
     }
 
     /**
@@ -227,16 +227,7 @@ class UserController extends Controller
         View::instance('user/permissionAccess.tpl')->show($data);
     }
 
-    /**
-     * check token
-     */
-    public function checkToken()
-    {
-        $userInfoArr = json_decode($this->model->getUserInfo(array('token'=> $this->userInfo['u_token'])), TRUE);
 
-        return $userInfoArr['resCode'] != '000000';
-
-    }
 
     ######################################################################################
     ##################################                     ###############################
