@@ -17,7 +17,7 @@ define('MODEL_PATH', ROOT_PATH . MODEL . DS);
 define('CONTROLLER_PATH', ROOT_PATH . CONTROLLER . DS);
 define('VIEW_PATH', ROOT_PATH . VIEW . DS);
 //uploads
-define('UPLOAD_PATH', ROOT_PATH.'uploads'.DS);
+define('UPLOAD_PATH', ROOT_PATH . 'uploads' . DS);
 //微信配置
 define('W_APP_ID', 'wxd96928ba062cffec');
 define('W_SECRET', 'abbf51a741f7608394727debe1e51b43');
@@ -104,19 +104,27 @@ if (!empty($v) && in_array($v, array('beta', 'test', 'final'))) {
 //登录处理
 if (!isLoginState()
     AND $_GET['a'] != 'login'
-    AND $_GET['a'] != 'registerUserInfoAPI'
-    AND $_GET['a'] != 'registerUserInfo'
-    AND $_GET['a'] != 'loginAPI'
-    AND $_GET['a'] != 'register'
-    AND $_GET['a'] != 'authImg'
-    AND $_GET['a'] != 'sendMail'
-    AND $_GET['a'] != 'registerSendMail'
-    AND $_GET['a'] != 'forgotPassword'
-    AND $_GET['a'] != 'wxLoginAPI'
+        AND $_GET['a'] != 'registerUserInfoAPI'
+            AND $_GET['a'] != 'registerUserInfo'
+                AND $_GET['a'] != 'loginAPI'
+                    AND $_GET['a'] != 'register'
+                        AND $_GET['a'] != 'authImg'
+                            AND $_GET['a'] != 'sendMail'
+                                AND $_GET['a'] != 'registerSendMail'
+                                    AND $_GET['a'] != 'forgotPassword'
+                                        AND $_GET['a'] != 'wxLoginAPI'
 ) {
-    echo("<SCRIPT LANGUAGE=\"JavaScript\">
-    alert(\"登录超时,请重新登录\");
-    window.location.href=\"?m=user&a=login\";
-    </SCRIPT>");
+
+    if ($_GET['a'] != '' && $_GET['m'] != '') {
+        echo("<SCRIPT LANGUAGE=\"JavaScript\">
+        alert(\"登录超时,请重新登录\");
+        window.location.href=\"?m=user&a=login\";
+        </SCRIPT>");
+    } else {
+        echo("<SCRIPT LANGUAGE=\"JavaScript\">
+        window.location.href=\"?m=user&a=login\";
+        </SCRIPT>");
+    }
+
 }
 

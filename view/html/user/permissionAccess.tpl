@@ -47,19 +47,19 @@
                     <form class="form-inline" role="form">
                         <div class="radio">
                             <label>
-                                <input type="radio" name="radio1" checked value="" data-toggle="radio">
+                                <input type="radio" name="setAll"  value="_p_yes" data-toggle="radio">
                                 全有权限
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="radio1" value="" data-toggle="radio">
+                                <input type="radio" name="setAll" value="_p_no" data-toggle="radio">
                                 全无权限
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="radio1" value="" data-toggle="radio">
+                                <input type="radio" name="setAll" value="_p_hidden" data-toggle="radio">
                                 全隐藏
                             </label>
                         </div>
@@ -103,7 +103,6 @@
 <script type="text/javascript">
     require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
     require([
-        'app/user/permissionAccess',
         'app/user/permissionAccess_tree'
     ]);
 </script>

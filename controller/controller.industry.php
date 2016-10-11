@@ -68,7 +68,9 @@ class IndustryController extends Controller
         $data['token'] = $userInfo['u_token'];
         $data['cfg_id'] = $this->request()->requestAll("cfg_id");
         $data['u_account'] = $userInfo['u_account'];
-        $data['pageSize'] = $this->request()->requestAll("pageSize",2);
+        $data['pageSize'] = $this->request()->requestAll("length",10);
+        $search = $this->request()->requestAll("search");
+        $data['keyword'] = $search['value'];
         $start = $this->request()->requestAll("start",0);
         $data['pageNo'] = $start/$data['pageSize']+1;
         $ret = $this->model->getPermissionsListDataTable($data);
