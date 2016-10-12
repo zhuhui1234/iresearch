@@ -44,9 +44,6 @@ class UserController extends Controller
     public function login()
     {
         $userInfo = Session::instance()->get('userInfo');
-        if ($userInfo) {
-            echo $userInfo['u_name'];
-        }
         $data = array(
             'loginStatus' => $this->loginStatus,
         );
@@ -260,7 +257,8 @@ class UserController extends Controller
         $getVcodes = Session::instance()->get('vcodes');
         $getAll = $this->request()->requestAll();
         if ($getAll['vcode'] == $getVcodes) {
-            $ret = $this->__sendMail('http://localhost/iresearchdataweb/?m=user&a=registerUserInfo&', '用户注册确认邮件', 1, $getAll['registerMail'], REGISTER_MAILADDR);
+            $ret = $this->__sendMail('请点击以下链接完成邮箱绑定：
+	     http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=registerUserInfo&', '用户注册确认邮件', 1, $getAll['registerMail'], REGISTER_MAILADDR);
             $this->__json();
             echo $ret;
         } else {

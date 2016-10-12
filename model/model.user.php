@@ -171,7 +171,7 @@ class UserModel extends API
         $userInfoArr = json_decode($this->getUserInfo($data), TRUE);
         $rs = True;
         if($userInfoArr['resCode'] != '000000'){
-            Session::instance()->destroy();
+//            Session::instance()->destroy();
             $rs = False;
         }
         return $rs;
