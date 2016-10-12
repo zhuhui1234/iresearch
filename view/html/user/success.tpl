@@ -39,7 +39,7 @@
 <script type="text/javascript">
     require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
     require([
-
+        'app/cropper'
     ]);
 </script>
 <!-- 生产环境 -->

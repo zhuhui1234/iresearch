@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by 艾瑞咨询集团.
  * User: DavidWei
@@ -131,7 +130,9 @@ class UserController extends Controller
         $data = array(
             'loginStatus'  => $this->loginStatus,
             'wechatStatus' => $this->wechatStatus,
-            "userIndustry" => $userIndustry
+            'userIndustry' => $userIndustry,
+            'u_name'       => $this->userInfo['u_name'],
+            'u_head'       => $this->userInfo['u_head'],
         );
         View::instance('user/user_safe.tpl')->show($data);
     }
@@ -381,11 +382,43 @@ class UserController extends Controller
         if (!empty($u_mobile) || !empty($u_name) || !empty($u_position) || !empty($u_department)) {
             $updateUserInfo['token'] = $this->userInfo['u_token'];
             $updateUserInfo['u_account'] = $this->userInfo['u_account'];
-            pr($updateUserInfo);
+//            pr($updateUserInfo);
             $ret = json_decode($this->model->setUserInfo($updateUserInfo),TRUE);
-            pr($ret);
+//            pr($ret);
 
             if ($ret['resCode'] == '000000') {
+                $userinfo = json_decode($this->getUserInfo(),true);
+                @ob_clean();
+//                if (!empty($u_head)) {
+                    $this->userInfo['u_head'] = $userinfo['data']['u_head'];
+//                }else{
+//                    echo 'no head';
+//                    $this->userInfo['u_head'] =
+//                }
+//
+                if (!empty($u_name)) {
+                    $this->userInfo['u_name'] = $userinfo['data']['u_name'];
+                }
+//
+//                if (!empty($u_department)) {
+//                    $this->userInfo['u_department'] = $u_department;
+//                }
+//
+//                if (!empty($u_position)) {
+//                    $this->userInfo['u_position'] = $u_position;
+//                }
+//
+//                if (!empty($u_mobile)) {
+//                    $this->userInfo['u_mobile'] = $u_mobile;
+//                }
+
+
+//                $userinfo['token'] = $userinfo['data']['u_token'];
+
+                var_dump($this->userInfo);
+
+                Session::instance()->set('userInfo',$this->userInfo);
+
                 header("Location: ?m=user&a=success");
             }else{
                 header("Location: ?m=user&a=fail");
@@ -400,10 +433,13 @@ class UserController extends Controller
      */
     public function getUserInfo()
     {
-        echo $this->model->getUserInfo(array(
+        $ret = $this->model->getUserInfo(array(
             'token'      => $this->userInfo['u_token'],
             'u_account'  => $this->userInfo['u_account']
         ));
+//        return $ret;
+        echo $ret;
+        return $ret;
     }
 
     public function forgotPasswordAPI()

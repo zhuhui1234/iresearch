@@ -8,8 +8,8 @@
 </div>
 <div class="sidebar show">
     <div class="user-info">
-        <img src="{WEBSITE_SOURCE_URL}/img/herry.png" alt="" class="img-circle img-responsive">
-        <p>Herry</p>
+        <img src="{u_head}" alt="" class="img-circle img-responsive">
+        <p>{u_name}</p>
         <span class="btn btn-warning btn-xs">管理员</span>
     </div>
     <!-- INCLUDE sidebar.tpl -->
@@ -24,11 +24,11 @@
             <div class="col-xs-8">
                 <div class="user-center">
                     <ul class="list-group">
-                        <li class="list-group-item">
+                        <!-- <li class="list-group-item">
                             <span class="fa fa-check text-primary"></span>
                             登录密码
                             <a class="pull-right" href="?m=user&a=changePwd">修改密码 <i class="fa fa-angle-right"></i></a>
-                        </li>
+                        </li> -->
                         <li class="list-group-item">
                             <!-- IF wechatStatus -->
                             <span class="fa fa-check text-primary"></span>
