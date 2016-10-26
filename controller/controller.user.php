@@ -218,6 +218,8 @@ class UserController extends Controller
         $data = array(
             "userIndustry" => $userIndustry,
             'userInfo' => $this->userInfo,
+            'u_head' =>  $this->userInfo['u_head'],
+            'u_name' => $this->userInfo['u_name'],
             'loginStatus' => $this->loginStatus,
             'bigIndustry'=>$bigIndustry['data']['IndustryMaxList']['data'],
             'smallIndustry'=>$smallIndustry['data']['IndustryMinList']
