@@ -9,8 +9,8 @@
 </div>
 <div class="sidebar show">
     <div class="user-info">
-        <img src="{WEBSITE_SOURCE_URL}/img/herry.png" alt="" class="img-circle img-responsive">
-        <p>Herry</p>
+        <img src="{u_head}" alt="" class="img-circle img-responsive">
+        <p>{u_name}</p>
         <span class="btn btn-warning btn-xs">管理员</span>
     </div>
     <!-- INCLUDE sidebar.tpl -->
