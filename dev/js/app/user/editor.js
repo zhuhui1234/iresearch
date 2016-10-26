@@ -3,6 +3,7 @@
  */
 
 define(["helper", "bootstrap", "jquery"], function(helper){
+    $("#sidebar_userInfo").addClass("active");
     helper.post('getUserInfo',null,function(data){
         console.log(data);
         $("#u_name").val(data.data.u_name);

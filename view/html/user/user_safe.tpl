@@ -52,7 +52,8 @@
 <script type="text/javascript">
     require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
     require([
-        'app/cropper'
+        'app/cropper',
+        'app/user/setsafe'
     ]);
 </script>
 
