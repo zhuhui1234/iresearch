@@ -6,22 +6,27 @@
  * Time: 上午11:11
  * To change this template use File | Settings | File Templates.
  */
-define(['jquery', 'treeview', 'datatables.net', 'datatables.net-bs', 'select2'], function ($) {
+define(['jquery','helper', 'treeview', 'datatables.net', 'datatables.net-bs', 'select2'], function ($,Helper) {
     console.log('Module treeview.init loaded.');
     // console.log($.fn.bootstrapSwitch);
     $(function () {
-        function setReport(cfg_id) {
+        function setReport(cfg_model) {
+            // var rs = false;
+            // var url = '?m=industry&a=getConfigListJsonAPI';
+            // $.ajax({
+            //     async: false,
+            //     type: 'POST',
+            //     data: {"cfg_id": cfg_id},
+            //     url: url,
+            //     success: function (res) {
+            //         rs = $.parseJSON(res);
+            //         rs = rs.content;
+            //     }
+            // });
+            // return rs;
             var rs = false;
-            var url = '?m=industry&a=getConfigListJsonAPI';
-            $.ajax({
-                async: false,
-                type: 'POST',
-                data: {"cfg_id": cfg_id},
-                url: url,
-                success: function (res) {
-                    rs = $.parseJSON(res);
-                    rs = rs.content;
-                }
+            Helper.post('getConfigListJsonAPI',{"cfg_model": cfg_model},function(res){
+                rs = res.content;
             });
             return rs;
         }
@@ -29,14 +34,17 @@ define(['jquery', 'treeview', 'datatables.net', 'datatables.net-bs', 'select2'],
         function getPermissionsList(cfg_id) {
             var rs = false;
             var url = '?m=industry&a=getPermissionsListAPI';
-            $.ajax({
-                async: false,
-                type: 'POST',
-                data: {"cfg_id": cfg_id},
-                url: url,
-                success: function (res) {
-                    rs = $.parseJSON(res);
-                }
+            // $.ajax({
+            //     async: false,
+            //     type: 'POST',
+            //     data: {"cfg_id": cfg_id},
+            //     url: url,
+            //     success: function (res) {
+            //         rs = $.parseJSON(res);
+            //     }
+            // });
+            Helper.post('getPermissionsListAPI',{"cfg_id": cfg_id},function(res){
+                rs = res;
             });
             return rs;
         }
@@ -54,27 +62,43 @@ define(['jquery', 'treeview', 'datatables.net', 'datatables.net-bs', 'select2'],
         });
         $("#bigIndustry").on("change", function (e) {
             var bigClass = $(this).val();
-            var url = '?m=industry&a=getMinIndustryAPI';
-            $.ajax({
-                type: 'POST',
-                data: {"ity_sid": bigClass},
-                url: url,
-                success: function (res) {
-                    rs = $.parseJSON(res);
-                    var smallClass = rs.content.data.IndustryMinList;
-                    var smallClassArray = new Array();
-                    $.each(smallClass, function (n, value) {
-                        smallClassArray[n] = {"id": value.ity_id, "text": value.ity_name};
-                    });
-                    $("#smallIndustry").html("");
-                    $("#smallIndustry").select2({
-                        data: smallClassArray,
-                        theme: "bootstrap",
-                        tags: true
-                    });
-                    showTree();
-                }
+            // var url = '?m=industry&a=getMinIndustryAPI';
+            // $.ajax({
+            //     type: 'POST',
+            //     data: {"ity_sid": bigClass},
+            //     url: url,
+            //     success: function (res) {
+            //         rs = $.parseJSON(res);
+            //         var smallClass = rs.content.data.IndustryMinList;
+            //         var smallClassArray = new Array();
+            //         $.each(smallClass, function (n, value) {
+            //             smallClassArray[n] = {"id": value.ity_id, "text": value.ity_name};
+            //         });
+            //         $("#smallIndustry").html("");
+            //         $("#smallIndustry").select2({
+            //             data: smallClassArray,
+            //             theme: "bootstrap",
+            //             tags: true
+            //         });
+            //         showTree();
+            //     }
+            // });
+            Helper.post('getMinIndustryAPI',{"ity_sid": bigClass},function(res){
+                        rs = res;
+                        var smallClass = rs.content.data.IndustryMinList;
+                        var smallClassArray = new Array();
+                        $.each(smallClass, function (n, value) {
+                            smallClassArray[n] = {"id": value.ity_id, "text": value.ity_name};
+                        });
+                        $("#smallIndustry").html("");
+                        $("#smallIndustry").select2({
+                            data: smallClassArray,
+                            theme: "bootstrap",
+                            tags: true
+                        });
+                        showTree();
             });
+
         });
         function showTree() {
             var smallClassID = $("#smallIndustry").val();
