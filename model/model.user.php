@@ -84,7 +84,7 @@ class UserModel extends API
     }
 
     /**
-     * get userinfo list
+     * get user info list
      *
      * @param $data
      */
@@ -92,7 +92,10 @@ class UserModel extends API
     {
         $url = API_URL . '?m=user&a=getUserInfoList';
         $ret = $this->_curlPost($url, $data, 'getUserInfoList');
-        return $ret;
+        $ret = json_decode($ret, TRUE);
+        $ret['recordsFiltered'] = $ret['recordsTotal'] = $ret['data']['totalSize'];
+        $ret['data'] = $ret['data']['UserInfoList'];
+        return json_encode($ret);
     }
 
     /**
