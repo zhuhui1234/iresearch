@@ -13,12 +13,12 @@ class IndustryController extends Controller
 
     private $model;
 
-    function __construct()
+    public function __construct()
     {
         $this->model = Model::instance('Industry');
     }
 
-    function getMaxIndustryAPI()
+    public function getMaxIndustryAPI()
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
@@ -26,7 +26,7 @@ class IndustryController extends Controller
         print_r($ret);
     }
 
-    function getMinIndustryAPI()
+    public function getMinIndustryAPI()
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
@@ -35,7 +35,7 @@ class IndustryController extends Controller
         $this->success($ret);
     }
 
-    function getConfigListAPI()
+    public function getConfigListAPI()
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
@@ -44,16 +44,16 @@ class IndustryController extends Controller
         print_r($ret);
     }
 
-    function getConfigListJsonAPI()
+    public function getConfigListJsonAPI()
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
-        $data['cfg_model'] = $this->request()->requestAll("cfg_id");
+        $data['cfg_model'] = $this->request()->requestAll("cfg_model");
         $ret = $this->model->configListJson($data);
         $this->success($ret);
     }
 
-    function getUserIndustry()
+    public function getUserIndustry()
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
@@ -63,7 +63,7 @@ class IndustryController extends Controller
     /**
      * 获取某个报告的用户权限列表
      */
-    function getPermissionsListAPI(){
+    public function getPermissionsListAPI(){
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
         $data['cfg_id'] = $this->request()->requestAll("cfg_id");
@@ -79,7 +79,7 @@ class IndustryController extends Controller
     /**
      * 展示小行业报告
      */
-    function showIndustryReport()
+    public function showIndustryReport()
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
@@ -110,4 +110,63 @@ class IndustryController extends Controller
         );
         View::instance('service/showReport.tpl')->show($data);
     }
+
+    /**
+     * 服务列表
+     */
+    public function getAuditList()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $postData = [
+            'keyword'           => $this->request()->requestAll('keyword'),
+            'orderByColumn'     => $this->request()->requestAll('orderByColumn'),
+            'orderByType'       => $this->request()->requestAll('orderByType'),
+            'pageNo'            => $this->request()->requestAll('pageNo'),
+            'pageSize'          => $this->request()->requestAll('pageSize'),
+            'token'             => $userInfo['u_token'],
+            'u_account'         => $userInfo['u_account']
+        ];
+        $this->__json();
+        echo $this->model->getAuditList($postData);
+    }
+
+    /**
+     * 服务审核
+     */
+    public function upAudit()
+    {
+
+    }
+
+    /**
+     * 服务申请
+     */
+    public function setAudit()
+    {
+
+    }
+
+    /**
+     * 服务详情
+     */
+    public function getAuditInfo()
+    {
+
+    }
+
+    ######################################################################################
+    ##################################                     ###############################
+    #################################   PRIVATE METHODS   ################################
+    ################################                     #################################
+    ######################################################################################
+
+    /**
+     * trans to  json
+     */
+    private function __json()
+    {
+        @@ob_clean();
+        header('Content-type: application/json');
+    }
+
 }

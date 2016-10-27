@@ -103,4 +103,36 @@ class IndustryModel extends API
         }
         return $rs;
     }
+
+    public function getAuditList($data)
+    {
+        $url = API_URL . '?m=config&a=getAuditList';
+        $ret = $this->_curlPost($url, $data, 'getAuditList');
+        $ret = json_decode($ret, true);
+        return $ret;
+    }
+
+    public function upAudit($data)
+    {
+        $url = API_URL . '?m=config&a=upAudit';
+        $ret = $this->_curlPost($url, $data, 'upAudit');
+        $ret = json_decode($ret, true);
+        return $ret;
+    }
+
+    public function setAudit($data)
+    {
+        $url = API_URL . '?m=config&a=setAudit';
+        $ret = $this->_curlPost($url, $data, 'setAudit');
+        $ret = json_decode($ret, true);
+        return $ret;
+    }
+
+    public function getAuditInfo($data)
+    {
+        $url = API_URL . '?m=config&a=getAuditInfo';
+        $ret = $this->_curlPost($url, $data, 'getAuditInfo');
+        $ret = json_decode($ret, true);
+        return $ret;
+    }
 }
