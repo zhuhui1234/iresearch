@@ -42,7 +42,6 @@ class UserController extends Controller
      */
     public function login()
     {
-        $userInfo = Session::instance()->get('userInfo');
         $data = array(
             'loginStatus' => $this->loginStatus,
         );
@@ -184,6 +183,33 @@ class UserController extends Controller
     }
 
     /**
+     * 用户权限申请
+     */
+    public function applyManager()
+    {
+        $data['token'] = $this->userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $data = array(
+            'userIndustry' => $userIndustry,
+            'u_head'       => $this->userInfo['u_head'],
+            'u_name'       => $this->userInfo['u_name']
+        );
+        View::instance('user/user_apply.tpl')->show($data);
+    }
+
+    public function userManger()
+    {
+        $data['token'] = $this->userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $data = array(
+            'userIndustry' => $userIndustry,
+            'u_head'       => $this->userInfo['u_head'],
+            'u_name'       => $this->userInfo['u_name']
+        );
+        View::instance('user/user_manager.tpl')->show($data);
+    }
+
+    /**
      * 忘记用户密码
      */
     public function forgotPassword()
@@ -227,15 +253,15 @@ class UserController extends Controller
         View::instance('user/permissionAccess.tpl')->show($data);
     }
 
-
-
     ######################################################################################
     ##################################                     ###############################
     #################################     API METHODS     ################################
     ################################                     #################################
     ######################################################################################
 
-
+    /**
+     * register user api
+     */
     public function registerUserInfoAPI()
     {
         $data = array(
@@ -313,7 +339,6 @@ class UserController extends Controller
                     'loginOpenid'  => $weChatObj['openid'],
                     'loginUnionid' => $weChatObj['unionid']
                 ));
-//                var_dump($ret);
                 if ($ret){
                     header('Location: ?m=index');
                 }else{
@@ -321,7 +346,7 @@ class UserController extends Controller
                 }
 
                 break;
-            //binding wechat
+            //binding weChat
             case 'binding':
                 $ret =  $this->__bindingWeChat(array(
                     'loginOpenid'  => $weChatObj['openid'],
@@ -341,6 +366,23 @@ class UserController extends Controller
                 print_r($state_tmp);
                 break;
         }
+    }
+
+    public function getUserInfoList()
+    {
+
+        $userInfo = Session::instance()->get('userInfo');
+        $postData = [
+            'token'             => $userInfo['u_token'],
+            'u_account'         => $userInfo['u_account'],
+            'orderByColumn'     => $this->request()->requestAll('orderByColumn'),
+            'orderByType'       => $this->request()->requestAll('orderByType'),
+            'pageNo'            => $this->request()->requestAll('pageNo'),
+            'pageSize'          => $this->request()->requestAll('pageSize')
+        ];
+
+        $this->__json();
+        echo $this->model->getUserInfoList($postData);
     }
 
     /**
@@ -377,16 +419,13 @@ class UserController extends Controller
 
             $imgUrl = $serviceModel->uploadImage($this->userInfo['u_token'],toBase64(UPLOAD_PATH . trim($u_head, 'uploads')),'png');
             $imgData = json_decode($imgUrl, true);
-//            pr($imgData);
             $updateUserInfo['u_head'] = $imgData['data']['imageUrl'];
         }
 
         if (!empty($u_mobile) || !empty($u_name) || !empty($u_position) || !empty($u_department)) {
             $updateUserInfo['token'] = $this->userInfo['u_token'];
             $updateUserInfo['u_account'] = $this->userInfo['u_account'];
-//            pr($updateUserInfo);
             $ret = json_decode($this->model->setUserInfo($updateUserInfo),TRUE);
-//            pr($ret);
 
             if ($ret['resCode'] == '000000') {
                 $userinfo = json_decode($this->getUserInfo(),true);
@@ -448,6 +487,12 @@ class UserController extends Controller
     {
 
     }
+
+    ######################################################################################
+    ##################################                     ###############################
+    #################################   PRIVATE METHODS   ################################
+    ################################                     #################################
+    ######################################################################################
 
     /**
      * send mail
