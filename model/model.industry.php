@@ -109,7 +109,9 @@ class IndustryModel extends API
         $url = API_URL . '?m=config&a=getAuditList';
         $ret = $this->_curlPost($url, $data, 'getAuditList');
         $ret = json_decode($ret, true);
-        return $ret;
+        $ret['recordsFiltered'] = $ret['recordsTotal'] = $ret['data']['totalSize'];
+        $ret['data'] = $ret['data']['AuditList'];
+        return json_encode($ret);
     }
 
     public function upAudit($data)
@@ -133,6 +135,7 @@ class IndustryModel extends API
         $url = API_URL . '?m=config&a=getAuditInfo';
         $ret = $this->_curlPost($url, $data, 'getAuditInfo');
         $ret = json_decode($ret, true);
+
         return $ret;
     }
 }

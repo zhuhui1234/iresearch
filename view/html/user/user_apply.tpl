@@ -33,83 +33,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>herry@iresearch.com.cn</td>
-                    <td>vivi</td>
-                    <td>18666666666</td>
-                    <td>PC网站应用资产排名分析</td>
-                    <td>2016/5/5 12:22</td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-xs mrm">通过</button>
-                        <button type="button" class="btn btn-warning btn-xs">拒绝</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>herry@iresearch.com.cn</td>
-                    <td>vivi</td>
-                    <td>18666666666</td>
-                    <td>PC网站应用资产排名分析</td>
-                    <td>2016/5/5 12:22</td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-xs mrm">通过</button>
-                        <button type="button" class="btn btn-warning btn-xs">拒绝</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>herry@iresearch.com.cn</td>
-                    <td>vivi</td>
-                    <td>18666666666</td>
-                    <td>PC网站应用资产排名分析</td>
-                    <td>2016/5/5 12:22</td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-xs mrm">通过</button>
-                        <button type="button" class="btn btn-warning btn-xs">拒绝</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>herry@iresearch.com.cn</td>
-                    <td>vivi</td>
-                    <td>18666666666</td>
-                    <td>PC网站应用资产排名分析</td>
-                    <td>2016/5/5 12:22</td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-xs mrm">通过</button>
-                        <button type="button" class="btn btn-warning btn-xs">拒绝</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>herry@iresearch.com.cn</td>
-                    <td>vivi</td>
-                    <td>18666666666</td>
-                    <td>PC网站应用资产排名分析</td>
-                    <td>2016/5/5 12:22</td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-xs mrm">通过</button>
-                        <button type="button" class="btn btn-warning btn-xs">拒绝</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>herry@iresearch.com.cn</td>
-                    <td>vivi</td>
-                    <td>18666666666</td>
-                    <td>PC网站应用资产排名分析</td>
-                    <td>2016/5/5 12:22</td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-xs mrm">通过</button>
-                        <button type="button" class="btn btn-warning btn-xs">拒绝</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>herry@iresearch.com.cn</td>
-                    <td>vivi</td>
-                    <td>18666666666</td>
-                    <td>PC网站应用资产排名分析</td>
-                    <td>2016/5/5 12:22</td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-xs mrm">通过</button>
-                        <button type="button" class="btn btn-warning btn-xs">拒绝</button>
-                    </td>
-                </tr>
+
                 </tbody>
             </table>
         </div>
@@ -121,7 +45,7 @@
 <script type="text/javascript">
     require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
     require([
-        'app/user_apply'
+        'app/user/userapply'
     ]);
 </script>
 <!-- 生产环境 -->
