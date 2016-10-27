@@ -10,7 +10,7 @@
         <a href="?m=user&a=permissionAccess">权限分配管理</a>
     </li>
     <li id="sidebar_applyManager">
-        <a href="?m=user&a=applyManager">申请管理 <span class="badge pull-right">3</span></a>
+        <a href="?m=user&a=applyManager">申请管理<!-- <span class="badge pull-right">3</span> --></a>
     </li>
     <li id="sidebar_actionLog">
         <a href="?m=user&a=actionlog">操作日志</a>

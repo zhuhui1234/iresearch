@@ -9,6 +9,7 @@
 define(['jquery','helper', 'treeview', 'datatables.net', 'datatables.net-bs', 'select2'], function ($,Helper) {
     console.log('Module treeview.init loaded.');
     // console.log($.fn.bootstrapSwitch);
+    $('#sidebar_permissionAccess').addClass('active');
     $(function () {
         function setReport(cfg_model) {
             // var rs = false;

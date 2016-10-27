@@ -378,7 +378,7 @@ class UserController extends Controller
             'orderByColumn'     => $this->request()->requestAll('orderByColumn'),
             'orderByType'       => $this->request()->requestAll('orderByType'),
             'pageNo'            => $this->request()->requestAll('pageNo'),
-            'pageSize'          => $this->request()->requestAll('pageSize')
+            'pageSize'          => $this->request()->requestAll('length')
         ];
 
         $this->__json();

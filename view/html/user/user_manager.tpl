@@ -38,7 +38,7 @@
                 <thead>
                 <tr>
                     <th>用户名</th>
-                    <th>邮箱</th>
+                    <th>部门</th>
                     <th>职位</th>
                     <th>状态</th>
                     <th>操作</th>
