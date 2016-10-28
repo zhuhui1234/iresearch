@@ -11,6 +11,7 @@ define({
     getUserInfo           : '?m=user&a=getUserInfo',
     getUserInfoList       : '?m=user&a=getUserInfoList',
     user_head             : 'http://203.156.255.168/iview_deskapi/',
+    setState              : '?m=user&a=setStateAPI',
     //industry
     getPermissionsListAPI : '?m=industry&a=getPermissionsListAPI',
     getConfigListJsonAPI  : '?m=industry&a=getConfigListJsonAPI',
