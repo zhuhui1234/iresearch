@@ -767,3 +767,19 @@ function toBase64($filePath)
 {
     return base64_encode(file_get_contents($filePath));
 }
+
+/**
+ * log
+ * @param $str
+ * @param string $pre
+ */
+function write_to_log($str,$pre='') {
+    $str=$str.PHP_EOL;
+    $time =time();
+    $log_file = 'irs_'.date('Y-m-d',$time).$pre.'.log';
+    if ($fd = fopen ( "./log/".$log_file, "a" )) {
+        fwrite($fd, date('Y-m-d H:i:s',$time).' --> ['.getIp().'] '.$str);
+        fclose ( $fd );
+    }
+    unset($str);
+}
