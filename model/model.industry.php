@@ -117,8 +117,10 @@ class IndustryModel extends API
     public function upAudit($data)
     {
         $url = API_URL . '?m=config&a=upAudit';
+        write_to_log('send url: '.$url, '_toApi');
+        write_to_log(json_encode($data),'_toApi');
         $ret = $this->_curlPost($url, $data, 'upAudit');
-        $ret = json_decode($ret, true);
+//        $ret = json_decode($ret, true);
         return $ret;
     }
 

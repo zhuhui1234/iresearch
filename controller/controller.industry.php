@@ -132,10 +132,17 @@ class IndustryController extends Controller
 
     /**
      * 服务审核
+     * 	0审核中,1通过(有权限),2不通过,3无权限,4隐藏
      */
     public function upAudit()
     {
-
+        $userInfo = Session::instance()->get('userInfo');
+        echo $this->model->upAudit([
+            'adt_id'     => $this->request()->requestAll('adt_id'),
+            'adt_state'  => $this->request()->requestAll('adt_state'),
+            'u_account'  => $userInfo['u_account'],
+            'token'      => $userInfo['u_token']
+        ]);
     }
 
     /**

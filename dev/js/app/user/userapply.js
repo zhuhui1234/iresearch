@@ -79,8 +79,17 @@ define(['jquery', 'helper', 'api', 'datatables.net', 'datatables.net-bs'], funct
                     {'data': 'adt_cdate'},
                     {
                         'data': 'adt_id', mRender: function (data, type, full) {
-                        return '<button type="button" adt_id="' + data + '" class="allow btn btn-primary btn-xs mrm">通过</button>' +
-                            '<button adt_id="' + data + '" type="button" class="btn deny btn-warning btn-xs">拒绝</button>';
+                        if (parseInt(full.adt_state) == 0) {
+                            return '<button type="button" adt_id="' + data + '" class="allow btn btn-primary btn-xs mrm">通过</button>' +
+                                '<button adt_id="' + data + '" type="button" class="btn deny btn-warning btn-xs">拒绝</button>';
+                        }else{
+                            if (parseInt(full.adt_state) == 1) {
+                                return '<span class="text-primary">已通过审核</span>'
+                            }else{
+                                return '<span class="text-danger">审核已被拒绝</span>'
+                            }
+                        }
+
                     }
                     }
                 ]
