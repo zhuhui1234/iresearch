@@ -44,13 +44,16 @@ define(['jquery', 'helper', 'api', 'datatables.net', 'datatables.net-bs'], funct
                 searching: false,
                 ordering: false,
                 drawCallback: function (settings) {
+                    var dtApi = this.api();
                     $('.allow').click(function () {
                         console.log($(this).attr('adt_id'));
                         var ret = confirm('确定要审核通过吗？');
                         if (ret) {
+
                             console.log('ok');
                             helper.post('upAudit', {'adt_id': $(this).attr('adt_id'), 'adt_state': 1}, function (ret) {
                                 console.log(ret);
+                                dtApi.ajax.reload();
                             })
                         } else {
                             console.log('cancel');
@@ -63,6 +66,7 @@ define(['jquery', 'helper', 'api', 'datatables.net', 'datatables.net-bs'], funct
                             console.log('deny');
                             helper.post('upAudit', {'adt_id': $(this).attr('adt_id'), 'adt_state': 2}, function (ret) {
                                 console.log(ret);
+                                dtApi.ajax.reload();
                             });
                         }
                     });
@@ -79,7 +83,7 @@ define(['jquery', 'helper', 'api', 'datatables.net', 'datatables.net-bs'], funct
                     {'data': 'adt_cdate'},
                     {
                         'data': 'adt_id', mRender: function (data, type, full) {
-                        if (parseInt(full.adt_state) == 0) {
+                        if (parseInt(full.adt_state == 0)) {
                             return '<button type="button" adt_id="' + data + '" class="allow btn btn-primary btn-xs mrm">通过</button>' +
                                 '<button adt_id="' + data + '" type="button" class="btn deny btn-warning btn-xs">拒绝</button>';
                         }else{
