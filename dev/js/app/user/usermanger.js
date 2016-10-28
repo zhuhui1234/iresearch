@@ -47,25 +47,29 @@ define(['jquery', 'helper', 'api', 'datatables.net', 'datatables.net-bs', 'selec
                             console.log(full.u_head);
                             if (full.u_head == null || full.u_head == '' || full.u_head == 'head.png' || full.u_head == 'head2.png') {
                                 return '<img src="public/img/user-head.png" />' + data;
-                            }else{
-                                return '<img src="'+api.user_head + full.u_head+'"/>' + data;
+                            } else {
+                                return '<img src="' + api.user_head + full.u_head + '"/>' + data;
                             }
                         }
                     },
-                    {'data':'u_department'},
+                    {'data': 'u_department'},
                     {'data': 'u_position'},
-                    {'data': 'u_state',mRender:function(data, type, full){
-                        if(data == 0) {
+                    {
+                        'data': 'u_state', mRender: function (data, type, full) {
+                        if (data == 0) {
                             return '<span class="text-primary">已有权限</span>';
-                        }else if (data == 1){
+                        } else if (data == 1) {
                             return '<span class="text-danger">已冻结</span>';
-                        }else{
+                        } else {
                             return '<span class="text-danger">未知</span>';
                         }
-                    }},
-                    {'data':'u_id',mRender:function(data, type, full){
-                        return '<a href="#"><i class="fa fa-edit"></i></a>';
-                    }}
+                    }
+                    },
+                    {
+                        'data': 'u_id', mRender: function (data, type, full) {
+                        return '<a href="?m=user&a=userAccessDetail&u_account=' + full.u_account + '"><i class="fa fa-edit"></i></a>';
+                    }
+                    }
 
                 ],
                 //禁止排序

@@ -47,6 +47,7 @@ requirejs.config({
         'WxLogin':'http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
         'api':'apiurl',
         'helper':'lib/helper',
+        'vue':'lib/vue/dist/vue.min'
         //'bootstrapValidator': 'lib/validator/validator.min'
     },
     shim: {
@@ -154,6 +155,10 @@ requirejs.config({
             deps: ['jquery'],
             exports: '$'
         },
+        'vue': {
+            deps: ['jquery'],
+            exports: '$'
+        }
         // 'bootstrapValidator' : {
         //     deps: ['jquery'],
         //     exports: '$'

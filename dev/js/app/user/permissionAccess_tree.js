@@ -36,7 +36,6 @@ define(['jquery','helper', 'treeview', 'datatables.net', 'datatables.net-bs', 's
             var rs = false;
             var url = '?m=industry&a=getPermissionsListAPI';
             // $.ajax({
-            //     async: false,
             //     type: 'POST',
             //     data: {"cfg_id": cfg_id},
             //     url: url,

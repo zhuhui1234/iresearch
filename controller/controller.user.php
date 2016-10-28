@@ -197,6 +197,9 @@ class UserController extends Controller
         View::instance('user/user_apply.tpl')->show($data);
     }
 
+    /**
+     * 用户管理
+     */
     public function userManger()
     {
         $data['token'] = $this->userInfo['u_token'];
@@ -207,6 +210,32 @@ class UserController extends Controller
             'u_name'       => $this->userInfo['u_name']
         );
         View::instance('user/user_manager.tpl')->show($data);
+    }
+
+    /**
+     * 用户权限详细
+     */
+    public function userAccessDetail()
+    {
+        $data['token'] = $this->userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $getUser = json_decode($this->model->getUserInfo(['token'=>$this->userInfo['u_token'],'u_account'=>$this->request()->get('u_account')]),TRUE);
+        $getUser = $getUser['data'];
+
+        if (empty($getUser['u_head']) OR $getUser['u_head'] == 'head.png') {
+            $getUser['u_head'] = 'dev/img/user-head.png';
+        }else{
+            $getUser['u_head'] = IMG_URL . $getUser['u_head'];
+        }
+
+        $data = array(
+            'userIndustry' => $userIndustry,
+            'u_head'       => $this->userInfo['u_head'],
+            'u_name'       => $this->userInfo['u_name'],
+            'getUser'      => $getUser
+        );
+
+        View::instance('user/userAccess.tpl')->show($data);
     }
 
     /**
@@ -294,6 +323,17 @@ class UserController extends Controller
             $this->__json();
             echo "{resMsg:'验证码错误'}";
         }
+    }
+
+    public function setStateAPI()
+    {
+        $data = [
+            'operation' => $this->request()->requestAll('operation'),
+            'token'     => $this->userInfo['u_token'],
+            'u_account' => $this->request()->requestAll('u_account')
+        ];
+
+        echo $this->model->setState($data);
     }
 
     /**
