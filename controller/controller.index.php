@@ -15,7 +15,7 @@ class IndexController extends Controller
         $this->userInfo = Session::instance()->get('userInfo');
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
-        }else{
+        } else {
             $this->loginStatus = TRUE;
         }
     }
@@ -23,7 +23,7 @@ class IndexController extends Controller
     /**
      * 首页
      */
-    function index()
+    public function index()
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
@@ -38,7 +38,20 @@ class IndexController extends Controller
         View::instance('index/index.tpl')->show($data);
     }
 
-    function demo()
+    /**
+     * 媒介计划
+     */
+    public function mutMedia()
+    {
+        $data = array(
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
+        );
+
+        View::instance('index/mutmedia.tpl')->show($data);
+    }
+
+    public function demo()
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
