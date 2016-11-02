@@ -141,6 +141,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="#">营销优化工具</a></li>
                     <li><a href="#">产品运营工具</a></li>
+                    <li><a href="/MUTmedia/?m=index&a=index&token={token}&u_account={u_account}">媒体计划</a></li>
                 </ul>
             </li>
             <li class="dropdown megamenu-sw">
