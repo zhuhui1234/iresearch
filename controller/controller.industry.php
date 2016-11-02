@@ -106,7 +106,9 @@ class IndustryController extends Controller
             "default" => $default,
             "pname" => $this->request()->requestAll("pname"),
             "ity_name" => $this->request()->requestAll("ity_name"),
-            "level"=>$level
+            "level"=>$level,
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
         );
         View::instance('service/showReport.tpl')->show($data);
     }

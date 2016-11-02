@@ -114,7 +114,9 @@ class UserController extends Controller
             'userIndustry' => $userIndustry,
             'u_head' => $this->userInfo['u_head'],
 //            'u_head' =>  IMG_URL . $this->userInfo['u_head'],
-            'u_name' => $this->userInfo['u_name']
+            'u_name' => $this->userInfo['u_name'],
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
         );
         View::instance('user/editUserInfo.tpl')->show($data);
     }
@@ -132,6 +134,8 @@ class UserController extends Controller
             'userIndustry' => $userIndustry,
             'u_name'       => $this->userInfo['u_name'],
             'u_head'       => $this->userInfo['u_head'],
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
         );
         View::instance('user/user_safe.tpl')->show($data);
     }
@@ -147,7 +151,9 @@ class UserController extends Controller
         $data = array(
             'userIndustry' => $userIndustry,
             'u_head'       => $this->userInfo['u_head'],
-            'u_name'       => $this->userInfo['u_name']
+            'u_name'       => $this->userInfo['u_name'],
+            'token'        => $this->userInfo['u_token'],
+            'u_account'    => $this->userInfo['u_account']
         );
 //        var_dump($userInfo);
         View::instance('user/user_safe_wx.tpl')->show($data);
@@ -158,7 +164,13 @@ class UserController extends Controller
      */
     public function changePwd()
     {
-        $data = array();
+        $data['token'] = $this->userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $data = array(
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account'],
+            'userIndustry' => $userIndustry,
+        );
         View:self::instance('user/changePwd.tpl')->show($data);
     }
 
@@ -192,7 +204,9 @@ class UserController extends Controller
         $data = array(
             'userIndustry' => $userIndustry,
             'u_head'       => $this->userInfo['u_head'],
-            'u_name'       => $this->userInfo['u_name']
+            'u_name'       => $this->userInfo['u_name'],
+            'token'        => $this->userInfo['u_token'],
+            'u_account'    => $this->userInfo['u_account']
         );
         View::instance('user/user_apply.tpl')->show($data);
     }
@@ -207,7 +221,9 @@ class UserController extends Controller
         $data = array(
             'userIndustry' => $userIndustry,
             'u_head'       => $this->userInfo['u_head'],
-            'u_name'       => $this->userInfo['u_name']
+            'u_name'       => $this->userInfo['u_name'],
+            'token'        => $this->userInfo['u_token'],
+            'u_account'    => $this->userInfo['u_account']
         );
         View::instance('user/user_manager.tpl')->show($data);
     }
@@ -232,7 +248,9 @@ class UserController extends Controller
             'userIndustry' => $userIndustry,
             'u_head'       => $this->userInfo['u_head'],
             'u_name'       => $this->userInfo['u_name'],
-            'getUser'      => $getUser
+            'getUser'      => $getUser,
+            'token'        => $this->userInfo['u_token'],
+            'u_account'    => $this->userInfo['u_account']
         );
 
         View::instance('user/userAccess.tpl')->show($data);
@@ -277,7 +295,9 @@ class UserController extends Controller
             'u_name' => $this->userInfo['u_name'],
             'loginStatus' => $this->loginStatus,
             'bigIndustry'=>$bigIndustry['data']['IndustryMaxList']['data'],
-            'smallIndustry'=>$smallIndustry['data']['IndustryMinList']
+            'smallIndustry'=>$smallIndustry['data']['IndustryMinList'],
+            'token'        => $this->userInfo['u_token'],
+            'u_account'    => $this->userInfo['u_account']
         );
         View::instance('user/permissionAccess.tpl')->show($data);
     }
@@ -301,6 +321,8 @@ class UserController extends Controller
             'u_mobile' => $this->request()->post('u_mobile'),
             'u_password' => $this->request()->post('u_password'),
             'u_position' => $this->request()->post('u_position'),
+            'token'        => $this->userInfo['u_token'],
+            'u_account'    => $this->userInfo['u_account']
         );
         $this->__json();
         echo $this->model->registerUserInfo($data);
@@ -496,7 +518,7 @@ class UserController extends Controller
 
 //                $userinfo['token'] = $userinfo['data']['u_token'];
 
-                var_dump($this->userInfo);
+//                var_dump($this->userInfo);
 
                 Session::instance()->set('userInfo',$this->userInfo);
 

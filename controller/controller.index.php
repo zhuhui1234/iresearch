@@ -32,7 +32,9 @@ class IndexController extends Controller
             "YH" => YH_LOGIN,
             "userIndustry" => $userIndustry,
             'loginStatus' => $this->loginStatus,
-            'userInfo' => $this->userInfo
+            'userInfo' => $this->userInfo,
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
         );
 
         View::instance('index/index.tpl')->show($data);
