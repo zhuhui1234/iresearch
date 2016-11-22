@@ -1,2 +1,0 @@
-/*! iResearchView-1.0.0-2016-09-21 */
-define(["jquery","slider"],function(a){a("#ex1").slider({formatter:function(a){return"数量: "+a}}),a("#ex2").slider({tooltip:"always"}),a("#ex4").slider({reversed:!0}),a("#ex5").slider({reversed:!0,tooltip:"always"}),a("#ex6").slider(),a("#ex6").on("slide",function(b){a("#ex6SliderVal").text(b.value)}),a("#ex8").slider({tooltip:"always"})});

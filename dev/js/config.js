@@ -43,12 +43,11 @@ requirejs.config({
         'wow': 'lib/wow/wow',
         'scrollbar': 'lib/jquery.slimscroll/jquery.slimscroll',
         'cropper': 'lib/cropper/cropper',
+        'canvas': 'lib/canvas/jquery.particleground',
         // 'wxLogin':"empty:"
-        'WxLogin':'http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
+        'WxLogin':'//res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
         'api':'apiurl',
         'helper':'lib/helper',
-        'vue':'lib/vue/dist/vue.min'
-        //'bootstrapValidator': 'lib/validator/validator.min'
     },
     shim: {
         'jquery': {
@@ -66,14 +65,15 @@ requirejs.config({
             deps: ['jquery'],
             exports: '$'
         },
+        'canvas': {
+            deps: ['jquery'],
+            exports: '$'
+        },
         'slider': {
             deps: ['jquery'],
             exports: '$'
         },
-        'validator': {
-            deps: ['jquery'],
-            exports: '$'
-        },
+        'validator': ['jquery'],
         'daterangepicker': {
             deps: ['jquery'],
             exports: '$'
@@ -140,10 +140,7 @@ requirejs.config({
             deps: ['css!./lib/handsontable//handsontable.css'],
             exports: 'Handsontable'
         },
-        'radialIndicator': {
-            deps: ['jquery'],
-            exports: '$'
-        },
+        'radialIndicator': ['jquery'],
         'wow': {
             exports: 'wow'
         },
@@ -154,24 +151,11 @@ requirejs.config({
         'cropper': {
             deps: ['jquery'],
             exports: '$'
-        },
-        'vue': {
-            deps: ['jquery'],
-            exports: '$'
         }
-        // 'bootstrapValidator' : {
-        //     deps: ['jquery'],
-        //     exports: '$'
-        // }
     },
     config: {
         moment:{
             noGlobal: true
-        },
-        step:{
-            steps:[
-                ['bootstrapValidator']
-            ]
         }
     }
 });

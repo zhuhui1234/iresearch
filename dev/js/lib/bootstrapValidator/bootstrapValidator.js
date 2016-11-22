@@ -2460,7 +2460,7 @@
 }(window.jQuery));
 ;(function($) {
     $.fn.bootstrapValidator.i18n.ean = $.extend($.fn.bootstrapValidator.i18n.ean || {}, {
-        'default': '请正确填写数值'
+        'default': 'Please enter a valid EAN number'
     });
 
     $.fn.bootstrapValidator.validators.ean = {
@@ -2500,7 +2500,7 @@
 }(window.jQuery));
 ;(function($) {
     $.fn.bootstrapValidator.i18n.emailAddress = $.extend($.fn.bootstrapValidator.i18n.emailAddress || {}, {
-        'default': '请正确填写邮件'
+        'default': 'Please enter a valid email address'
     });
 
     $.fn.bootstrapValidator.validators.emailAddress = {
@@ -2531,7 +2531,7 @@
 }(window.jQuery));
 ;(function($) {
     $.fn.bootstrapValidator.i18n.file = $.extend($.fn.bootstrapValidator.i18n.file || {}, {
-        'default': '请选择正确的文件'
+        'default': 'Please choose a valid file'
     });
 
     $.fn.bootstrapValidator.validators.file = {

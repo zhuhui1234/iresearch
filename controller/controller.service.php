@@ -25,20 +25,21 @@ class ServiceController extends Controller
     public function authImg()
     {
         $vcodes = '';
-        $im = imagecreate(146, 40);
+        $im = imagecreate(100, 40);
         $back = ImageColorAllocate($im, 245, 245, 245);
-        imagefill($im, 0, 0, $back); //背景
+        imagefill($im, 0, 1, $back); //背景
         srand((double) microtime() * 1000000);
         //生成4位数字
-        for ($i = 0; $i < 5; $i++) {
+        $co = 4;
+        for ($i = 0; $i < $co; $i++) {
             $font = ImageColorAllocate($im, rand(100, 255), rand(0, 100), rand(100, 255));
             $authnum = rand(1, 9);
             $vcodes .= $authnum;
-            imagestring($im, 5, 35 + $i * 20, 12, $authnum, $font);
+            imagestring($im, $co, 20 + $i * 20, 12, $authnum, $font);
         }
         for ($i = 0; $i < 100; $i++) //加入干扰象素
         {
-            $randcolor = ImageColorallocate($im, rand(0, 255), rand(44, 255), rand(0, 255));
+            $randcolor = ImageColorallocate($im, rand(5, 255), rand(44, 255), rand(10, 255));
             imagesetpixel($im, rand(), rand(), $randcolor);
         }
         @ob_clean();

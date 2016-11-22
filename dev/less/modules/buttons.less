@@ -95,7 +95,15 @@
     color: @inverse !important;
   }
 }
-
+.btn-outline-warning {
+  .button-variant(@btn-outline-warning-color; @btn-outline-warning-bg; @btn-outline-warning-border);
+  &:hover,
+  &:focus,
+  &:active{
+    background: @brand-warning !important;
+    color: @inverse !important;
+  }
+}
 // Link buttons
 // -------------------------
 

@@ -23,7 +23,7 @@ class IndexController extends Controller
     /**
      * 首页
      */
-    public function index()
+    public function home()
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
@@ -38,6 +38,25 @@ class IndexController extends Controller
         );
 
         View::instance('index/index.tpl')->show($data);
+    }
+
+    /**
+     * home page
+     */
+    public function index()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $data['token'] = $userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $data = array(
+            "YH" => YH_LOGIN,
+            "userIndustry" => $userIndustry,
+            'loginStatus' => $this->loginStatus,
+            'userInfo' => $this->userInfo,
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
+        );
+        View::instance('index/home.tpl') -> show($data);
     }
 
     /**

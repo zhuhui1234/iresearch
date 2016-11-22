@@ -12,15 +12,13 @@
   position: relative;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
-  border: 1px solid transparent;
+  //border: 1px solid transparent;
 
   // Prevent floats from breaking the navbar
   &:extend(.clearfix all);
+
   @media (min-width: @grid-float-breakpoint) {
     border-radius: @navbar-border-radius;
-  }
-  @media (max-width: @screen-md-max) {
-    min-height: (@navbar-height + 25);
   }
 }
 
@@ -164,7 +162,7 @@
 
 .navbar-brand {
   float: left;
-  padding: 7px 15px;
+  padding: 10px 15px; //@navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
   height: @navbar-height;
@@ -176,6 +174,7 @@
 
   > img {
     display: block;
+    width: 110px;
   }
 
   @media (min-width: @grid-float-breakpoint) {
@@ -267,7 +266,7 @@
   // Uncollapse the nav
   @media (min-width: @grid-float-breakpoint) {
     float: left;
-    margin: 0 0 0 60px;
+    margin: 0;
 
     > li {
       float: left;
@@ -443,7 +442,7 @@
     border-color: @navbar-default-toggle-border-color;
     &:hover,
     &:focus {
-      //background-color: @navbar-default-toggle-hover-bg;
+      background-color: @navbar-default-toggle-hover-bg;
     }
     .icon-bar {
       background-color: @navbar-default-toggle-icon-bar-bg;
@@ -530,15 +529,15 @@
 
 .navbar-inverse {
   background-color: @navbar-inverse-bg;
-  //border-color: @navbar-inverse-border;
+  border-color: @navbar-inverse-border;
 
   .navbar-brand {
     color: @navbar-inverse-brand-color;
-    //&:hover,
-    //&:focus {
-    //  color: @navbar-inverse-brand-hover-color;
-    //  background-color: @navbar-inverse-brand-hover-bg;
-    //}
+    &:hover,
+    &:focus {
+      color: @navbar-inverse-brand-hover-color;
+      background-color: @navbar-inverse-brand-hover-bg;
+    }
   }
 
   .navbar-text {
@@ -555,14 +554,14 @@
         background-color: @navbar-inverse-link-hover-bg;
       }
     }
-    > .active > a {
-      &,
-      &:hover,
-      &:focus {
-        color: @navbar-inverse-link-active-color;
-        background-color: @navbar-inverse-link-active-bg;
-      }
-    }
+    //> .active > a {
+    //  &,
+    //  &:hover,
+    //  &:focus {
+    //    color: @navbar-inverse-link-active-color;
+    //    background-color: @navbar-inverse-link-active-bg;
+    //  }
+    //}
     > .disabled > a {
       &,
       &:hover,
@@ -575,11 +574,11 @@
 
   // Darken the responsive nav toggle
   .navbar-toggle {
-    //border-color: @navbar-inverse-toggle-border-color;
-    //&:hover,
-    //&:focus {
-    //  background-color: @navbar-inverse-toggle-hover-bg;
-    //}
+    border-color: @navbar-inverse-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: @navbar-inverse-toggle-hover-bg;
+    }
     .icon-bar {
       background-color: @navbar-inverse-toggle-icon-bar-bg;
     }

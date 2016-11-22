@@ -29,7 +29,7 @@
                     <span>
 
                         <h4>{u_name}</h4>
-                        <p>{u_account}</p>
+                        <p class="user_account">{u_account}</p>
                         <p>{u_department}/{u_position}</p>
 
                     </span>

@@ -364,8 +364,8 @@ class UserController extends Controller
     public function loginAPI()
     {
         $data = array(
-            "loginAccount"  => $this->request()->requestAll("loginAccount"),
-            "loginPassword" => $this->request()->requestAll("loginPassword")
+            "loginAccount"  => 'robinwong51@qq.com',
+            "loginPassword" => 'wangwang'
         );
 
         $rs = $this->model->login($data);

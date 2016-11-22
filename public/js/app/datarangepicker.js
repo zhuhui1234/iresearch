@@ -1,2 +1,0 @@
-/*! iResearchView-1.0.0-2016-09-21 */
-define(["jquery","daterangepicker","moment"],function(a,b,c){a(function(){c().format(),c.locale("zh-cn"),a("#daterangepicker").daterangepicker({ranges:{"今天":[c(),c()],"昨天":[c().add(-1,"day"),c().add(-1,"day")],"最近一周":[c(),c().add(7,"day")],"最近三个月":[c(),c().add(3,"month")],"最近一年":[c(),c().add(1,"years")]},startDate:"2015-01-01",endDate:"2015-02-01"},function(a,b){})})});

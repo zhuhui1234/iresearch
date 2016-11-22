@@ -24,6 +24,14 @@ define('W_SECRET', 'abbf51a741f7608394727debe1e51b43');
 define('WECHAT_API_URL', 'https://api.weixin.qq.com/sns/oauth2/access_token');
 define('WECHAT_API_REFRESH_URL', 'https://api.weixin.qq.com/sns/oauth2/refresh_token');
 define('WECHAT_API_USERINFO', 'https://api.weixin.qq.com/sns/userinfo');
+//REDIS SERVER
+define('REDIS_STATUS', TRUE);
+define('REDIS_SERVER','127.0.0.1');
+define('REDIS_SRV_PORT',6379);
+define('REDIS_TIME_OUT', 86400);
+define('REDIS_PREFIX','_iclick_');
+//    define('REDIS_PWD','!QAZ@WSX');
+define('REDIS_PWD',FALSE);
 //站点配置
 //	define('WEBSITE','http://localhost');
 define('WEBSITE', $_SERVER['SERVER_ADDR']);
@@ -60,6 +68,7 @@ define('DEBUG_LOG', TRUE);
 //define('DEBUG', true);
 define('START_TIME', microtime(true));
 define('NOW', date('Y-m-d H:i:s'));
+
 if (DEBUG) {
     ini_set('display_errors', 1);
     error_reporting(E_ALL ^ E_NOTICE);

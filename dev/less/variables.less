@@ -16,10 +16,10 @@
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 @silver:                 #bcbfc2;
 
-@brand-primary:         #49b26f;
+@brand-primary:         #69c72b;
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
-@brand-warning:         #f0ad4e;
+@brand-warning:         #ff8400;
 @brand-danger:          #d9534f;
 
 
@@ -28,7 +28,7 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@body-bg:               #f4f4f4;
 //** Global text color on `<body>`.
 @text-color:            @gray-dark;
 
@@ -162,6 +162,10 @@
 @btn-outline-color:              @brand-primary;
 @btn-outline-bg:                 transparent;
 @btn-outline-border:             @brand-primary;
+
+@btn-outline-warning-color:              @brand-warning;
+@btn-outline-warning-bg:                 transparent;
+@btn-outline-warning-border:             @brand-warning;
 
 @btn-link-disabled-color:        @gray-light;
 
@@ -352,7 +356,7 @@
 //##
 
 // Basics of a navbar
-@navbar-height:                    30px;
+@navbar-height:                    40px;
 @navbar-margin-bottom:             @line-height-computed;
 @navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
@@ -385,12 +389,12 @@
 
 //=== Inverted navbar
 // Reset inverted navbar basics
-@navbar-inverse-color:                      lighten(@gray-light, 15%);
-@navbar-inverse-bg:                         #222;
-@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-color:                      #fff; //lighten(@gray-light, 15%);
+@navbar-inverse-bg:                         @brand-primary;
+@navbar-inverse-border:                     @brand-primary; //darken(@navbar-inverse-bg, 10%);
 
 // Inverted navbar links
-@navbar-inverse-link-color:                 lighten(@gray-light, 15%);
+@navbar-inverse-link-color:                 #fff; //lighten(@gray-light, 15%);
 @navbar-inverse-link-hover-color:           #fff;
 @navbar-inverse-link-hover-bg:              transparent;
 @navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
