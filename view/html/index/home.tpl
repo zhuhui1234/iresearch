@@ -66,7 +66,7 @@
                     <img src="./public/img/img_1.jpg" alt="" class="img-responsive center-block">
                     <p class="notes">The MUT version is Ai Ruiquan media terminal based on massive user data </p>
                     <p class="text-center">
-                        <a href="?a=index&m=mutMedia" class="btn btn-outline-warning">立即进入 <i class="fa fa-angle-right"></i></a>
+                        <a href="?m=index&a=mutMedia" class="btn btn-outline-warning">立即进入 <i class="fa fa-angle-right"></i></a>
                     </p>
                 </li>
                 <li>

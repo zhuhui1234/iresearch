@@ -30,14 +30,20 @@ class UserModel extends API
      */
     public function login($data)
     {
-        $url = API_URL . '?m=user&a=login';
-        $ret = $this->_curlPost($url, $data, 'cs_login');
-        $rs = json_decode($ret, true);
+        $getVcode = Session::instance()->get('vcodes');
+        if ($getVcode == $data['vCode']) {
+            $url = API_URL . '?m=user&a=login';
+            $ret = $this->_curlPost($url, $data, 'cs_login');
+            $rs = json_decode($ret, true);
 
-        if ($rs['resCode'] == '000000') {
-            Session::instance()->set('userInfo', $rs['data']);
+            if ($rs['resCode'] == '000000') {
+                Session::instance()->set('userInfo', $rs['data']);
+            }
+            return $ret;
+        } else {
+            return json_encode(['resCode' => -1]);
         }
-        return $ret;
+
     }
 
     /**

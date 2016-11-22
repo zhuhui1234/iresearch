@@ -1,10 +1,10 @@
 /**
  * user login js
  */
-define(['helper','app/main', 'validator','canvas'], function (Helper) {
-    (function($) {
+define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
+    (function ($) {
         $.fn.extend({
-            getSms: function(value) {
+            getSms: function (value) {
                 value = $.extend({
                     wait: 60, //参数, 默认60秒
                 }, value);
@@ -20,12 +20,13 @@ define(['helper','app/main', 'validator','canvas'], function (Helper) {
                         $("#" + id).addClass("disabled");
                         $("#" + id).text("重新发送(" + wait + ")");
                         wait--;
-                        setTimeout(function() {
+                        setTimeout(function () {
                             time(id)
                         }, 1000)
                     }
                 }
-                $(this).click(function() {
+
+                $(this).click(function () {
                     time(id);
                 })
             }
@@ -33,29 +34,39 @@ define(['helper','app/main', 'validator','canvas'], function (Helper) {
     })(jQuery);
 
     var checkLoginFormat = function () {
-            var phoneVal = $("#mobile").val();
-            if (phoneVal.length <= 0) {
-                $(".alert:first").fadeIn().text("手机号码不能为空！");
-                $("#mobile").focus();
-                return false;
-            }
-            if(!(/^1[34578]\d{9}$/.test(phoneVal))){
-                $(".alert:first").fadeIn().text("手机号码有误，请重填！");
-                return false;
-            }
-            return true;
+        var phoneVal = $("#mobile").val();
+        if (phoneVal.length <= 0) {
+            $(".alert:first").fadeIn().text("手机号码不能为空！");
+            $("#mobile").focus();
+            return false;
+        }
+        if (!(/^1[34578]\d{9}$/.test(phoneVal))) {
+            $(".alert:first").fadeIn().text("手机号码有误，请重填！");
+            return false;
+        }
+        return true;
     };
 
     //action
-    $(function(){
+    $(function () {
         $("#verification").getSms();
 
 
-        $("#login_action").submit(function(e){
+        $("#login_action").submit(function (e) {
             e.preventDefault();
             if (checkLoginFormat()) {
-                Helper.post('login',{},function (ret) {
-                   console.log(ret);
+
+                Helper.post('login', {
+                    mobileNum: $("#mobile").val(),
+                    verNum: $("#vernum").val(),
+                    vCode: $("#vcode").val()
+                }, function (ret) {
+                    console.log(ret);
+                    if (ret.resCode ==  "000000"){
+                        window.location.href = '?m=index&a=index';
+                    }else {
+                        alert('验证错误');
+                    }
 
                 });
             }

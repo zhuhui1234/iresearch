@@ -365,7 +365,9 @@ class UserController extends Controller
     {
         $data = array(
             "loginAccount"  => 'robinwong51@qq.com',
-            "loginPassword" => 'wangwang'
+            "loginPassword" => 'wangwang',
+            "vCode" => $this->request()->post('vCode'),
+            'verNum' => $this->request()->post('verNum')
         );
 
         $rs = $this->model->login($data);
