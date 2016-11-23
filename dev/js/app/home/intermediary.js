@@ -15,6 +15,12 @@ define(['helper', 'app/main'], function (Helper) {
             var $frame = $('iframe:eq(0)');
             $frame.css('height',innerHeight-topBar);
             $('body').css('overflow-y','hidden');
+            $(window).resize(function(){
+                $frame.css('min-height',innerHeight-topBar);
+                $('body').css('overflow-y','hidden');
+            });
+
+
         });
     });
 });
