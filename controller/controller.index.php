@@ -12,12 +12,12 @@ class IndexController extends Controller
 
     function __construct()
     {
-        $this->userInfo = Session::instance()->get('userInfo');
-        if (!empty($this->userInfo)) {
-            $this->loginStatus = FALSE;
-        } else {
-            $this->loginStatus = TRUE;
-        }
+//        $this->userInfo = Session::instance()->get('userInfo');
+//        if (!empty($this->userInfo)) {
+//            $this->loginStatus = FALSE;
+//        } else {
+//            $this->loginStatus = TRUE;
+//        }
     }
 
     /**

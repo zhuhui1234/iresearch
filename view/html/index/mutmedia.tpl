@@ -15,7 +15,7 @@
 <!-- INCLUDE ../nav.tpl -->
 
 
-<iframe id="mut_iFrame" style="width: 100%;" src="/MUTmedia/?m=index&a=index" scrolling="no"></iframe>
+<iframe id="mut_iFrame" style="width: 100%;" src="/MUTmedia/?m=index&a=index" ></iframe>
 
 
 <!-- 开发环境 -->
