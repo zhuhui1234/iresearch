@@ -64,7 +64,7 @@
                     </h1>
                     <p>MUT媒介版是基于艾瑞全终端海量用户数据，用规则识别，机器学习等方法进行用户属性，习惯，兴趣，偏好等的知识挖掘，形成强大的人群规划用于用户画像与媒介计划。助力媒体公司更全面的发现自己的优势，帮助广告公司更精准的广告投放。</p>
                     <img src="./public/img/img_1.jpg" alt="" class="img-responsive center-block">
-                    <p class="notes">The MUT version is Ai Ruiquan media terminal based on massive user data </p>
+                    <p class="notes">助力媒体公司更全面的发现自己的优势，帮助广告公司更精准的广告投放。</p>
                     <p class="text-center">
                         <a href="?m=index&a=mutMedia" class="btn btn-outline-warning">立即进入 <i class="fa fa-angle-right"></i></a>
                     </p>
