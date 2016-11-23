@@ -17,7 +17,7 @@
 
 <iframe id="mut_iFrame" style="width: 100%;" src="/MUTmedia/?m=index&a=index" scrolling="no"></iframe>
 
-<!-- INCLUDE ../foot.tpl -->
+
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
 <script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>

@@ -7,6 +7,9 @@
 .navbar.navbar-inverse:hover {
   background: #57a524;
 }
+.navbar .container-fluid {
+  padding: 0 40px;
+}
 .navbar .navbar-right a {
   position: relative;
   padding: 24px 15px;
@@ -116,6 +119,7 @@
   top: 0;
   left: 0;
   display: none;
+  width: 100%;
   list-style-type: none;
 }
 .navbar .nav-bg .tab-content ul > li:first-child {

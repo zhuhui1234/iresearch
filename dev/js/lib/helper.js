@@ -155,7 +155,7 @@ define(["api", "WxLogin", "jquery"], function (api) {
                     $(under).trigger(evt.type);
                 });
                 var isHover = false;
-                $(".nav_con li").hover(function(){
+                $(".nav_con .nav_active").hover(function(){
                     var li_width = $(this).outerWidth();
                     var li_left = $(this).position().left;
                     isHover = true;

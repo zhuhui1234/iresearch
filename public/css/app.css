@@ -2573,6 +2573,9 @@ textarea {
   font-size: inherit;
   line-height: inherit;
 }
+iframe {
+  border: none;
+}
 a {
   color: #69c72b;
   text-decoration: none;
