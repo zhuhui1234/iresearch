@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="?m=user&a=loginOut">
                     <i class="fa fa-user-o"></i>
                 </a>
             </li>
@@ -59,18 +59,19 @@
                     <div class="row">
                         <div class="col-xs-3">
                             <ul class="tab-menu">
-                                <li class="active"><a href="?m=index&a=mutMedia">MUT媒介版</a></li>
-                                <li><a href="#">PC用户行为监测<i class="fa fa-angle-right"></i></a></li>
+
+                                <li class="active"><a href="#">PC用户行为监测<i class="fa fa-angle-right"></i></a></li>
                                 <li><a href="#">移动用户行为监测<i class="fa fa-angle-right"></i></a></li>
                                 <li><a href="#">视频内容分析<i class="fa fa-angle-right"></i></a></li>
+                                <li><a href="#">意见领袖市场监测</a></li>
+                                <li ><a href="?m=index&a=mutMedia">MUT媒介版</a></li>
+
                             </ul>
                         </div>
                         <div class="col-xs-9">
                             <div class="tab-content">
                                 <ul>
-                                    <li>
 
-                                    </li>
                                     <li>
                                         <div class="row">
                                             <div class="col-xs-6">
@@ -126,45 +127,13 @@
 
                                         </div>
                                     </li>
+                                    
+
                                     <li>
-                                        <div class="row">
-                                            <div class="col-xs-6">
-                                                <a href="#">
-                                                    <h4>媒体视频行为研究666 <span>试用版</span></h4>
-                                                    <p>助力媒体公司更全面的发现自己的优势</p>
-                                                </a>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <a href="#">
-                                                    <h4>媒体视频行为研究</h4>
-                                                    <p>助力媒体公司更全面的发现自己的优势</p>
-                                                </a>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <a href="#">
-                                                    <h4>媒体视频行为研究</h4>
-                                                    <p>助力媒体公司更全面的发现自己的优势</p>
-                                                </a>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <a href="#">
-                                                    <h4>媒体视频行为研究</h4>
-                                                    <p>助力媒体公司更全面的发现自己的优势</p>
-                                                </a>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <a href="#">
-                                                    <h4>媒体视频行为研究</h4>
-                                                    <p>助力媒体公司更全面的发现自己的优势</p>
-                                                </a>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <a href="#">
-                                                    <h4>媒体视频行为研究</h4>
-                                                    <p>助力媒体公司更全面的发现自己的优势</p>
-                                                </a>
-                                            </div>
-                                        </div>
+
+                                    </li>
+                                    <li>
+
                                     </li>
                                 </ul>
                             </div>
@@ -646,6 +615,7 @@
                                             </div>
                                         </div>
                                     </li>
+                                    <li></li>
                                     <li>
                                         <div class="row">
                                             <div class="col-xs-6">
