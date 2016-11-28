@@ -9,14 +9,24 @@ class ServiceController extends Controller
 
     private $model,$userInfo, $loginStatus;
 
-    function __construct()
+    public function __construct()
     {
         $this->model =Model::instance('service');
     }
-    function upUserSessionKey()
+    public function upUserSessionKey()
     {
         $yu = $this->request()->requestAll("guid");
         $res = Model::instance('user')->upUserSessionKey($yu);
+    }
+
+    /**
+     * send sms
+     */
+    public function sendSMS()
+    {
+        $data = ['Mobile' => $this->request()->post('mobile')];
+        jsonHead();
+        echo $this->model->sendSMS($data);
     }
 
     /**
