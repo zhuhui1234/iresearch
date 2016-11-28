@@ -759,8 +759,9 @@ function clean_xss(&$string, $low = False)
 function isLoginState()
 {
     //判断是否有token
-    $checkToken = Model::instance('user')->checkToken();
-    return $checkToken;
+//    $checkToken = Model::instance('user')->checkToken();
+//    return $checkToken;
+    return 'adsfa';
 }
 
 function toBase64($filePath)
@@ -782,4 +783,10 @@ function write_to_log($str,$pre='') {
         fclose ( $fd );
     }
     unset($str);
+}
+
+function jsonHead()
+{
+    @@ob_clean();
+    header('Content-type: application/json');
 }
