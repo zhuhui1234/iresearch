@@ -45,6 +45,7 @@ class UserController extends Controller
     {
         $data = array(
             'loginStatus' => $this->loginStatus,
+            'title' => WEBSITE_TITLE
         );
         View::instance('user/login.tpl')->show($data);
     }
@@ -60,7 +61,7 @@ class UserController extends Controller
     /**
      * 预留注册成功页面
      */
-    public function Success()
+    public function SuccessPage()
     {
         $data['token'] = $this->userInfo['u_token'];
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
@@ -82,6 +83,7 @@ class UserController extends Controller
             $data = [
                 'WeChatAvatar' => $weChatObj['headimgurl'],
                 'WeChatNickName' => $weChatObj['nickname'],
+                'title' => WEBSITE_TITLE
             ];
             View::instance('user/bindwx.tpl')->show($data);
         } else {

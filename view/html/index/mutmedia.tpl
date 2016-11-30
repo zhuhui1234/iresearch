@@ -10,6 +10,7 @@
     <!-- bootstrap核心样式 -->
     <link href="./public/css/app.css" rel="stylesheet">
     <!-- 自定义 -->
+    <title>{title}</title>
     <link href="./public/css/docs.min.css" rel="stylesheet">
 </head>
 <!-- INCLUDE ../nav.tpl -->

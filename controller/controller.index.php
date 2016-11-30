@@ -27,12 +27,14 @@ class IndexController extends Controller
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
 //            "YH" => YH_LOGIN,
             'loginStatus' => $this->loginStatus,
             'userInfo' => $this->userInfo,
             'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account']
+            'u_account' => $this->userInfo['u_account'],
+            'title' => WEBSITE_TITLE
         );
 
         View::instance('index/index.tpl')->show($data);
@@ -52,7 +54,8 @@ class IndexController extends Controller
             'loginStatus' => $this->loginStatus,
             'userInfo' => $this->userInfo,
             'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account']
+            'u_account' => $this->userInfo['u_account'],
+	    'title' => WEBSITE_TITLE
         );
         View::instance('index/home.tpl') -> show($data);
     }
@@ -63,9 +66,10 @@ class IndexController extends Controller
     public function mutMedia()
     {
         $data = array(
-//            'token' => $this->userInfo['u_token'],
-            'token' => 'sdadfasdfasdfad',
-            'u_account' => 'asdfadfadf'
+            'token' => $this->userInfo['u_token'],
+//            'token' => 'sdadfasdfasdfad',
+            'u_account' => $this->userInfo['u_account'],
+            'title' => WEBSITE_TITLE
         );
 
         View::instance('index/mutmedia.tpl')->show($data);

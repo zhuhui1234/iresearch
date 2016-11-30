@@ -22,14 +22,14 @@
                 </li>
                 <li id="nav_irvcloud" class="">
                     <a href="#">
-                        <span>艾瑞数云</span>
+                        <span>艾瑞智数</span>
                         <i>IRCLOUD</i>
                     </a>
                 </li>
                 <li id="nav_irvcount" class="">
                     <a href="#">
-                        <span>艾瑞统计</span>
-                        <i>IRCOUNT</i>
+                        <span>开发者服务</span>
+                        <i>IRDEVELOPERS</i>
                     </a>
                 </li>
             </ul>
