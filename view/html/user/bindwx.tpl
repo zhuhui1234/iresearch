@@ -22,7 +22,7 @@
         <div class="col-xs-7 col-xs-offset-2">
             <h4>绑定手机</h4>
             <form id="bindWx" method="POST">
-                <p><img src="{WeChatAvatar}" alt=""> Hi，{WeChatNickName} 欢迎进入艾瑞数据，请先绑定您的手机</p>
+                <p><img src="{WeChatAvatar}" alt=""> 您好，欢迎进入艾瑞数据，请先绑定您的手机</p>
                 <div class="form-group">
                     <span>手机号码</span>
                     <div class="form-right">
