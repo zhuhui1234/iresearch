@@ -57,6 +57,8 @@ class ServiceController extends Controller
         ImagePNG($im);
         ImageDestroy($im);
         Session::instance()->set('vcodes',$vcodes);
+        write_to_log('check vcodes: '.Session::instance()->get('vcodes'),'_session');
+        write_to_log('set Session vcodes: '. $vcodes,'_session');
     }
 
     /**

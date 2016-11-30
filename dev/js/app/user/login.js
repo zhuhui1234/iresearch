@@ -27,7 +27,13 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 }
 
                 $(this).click(function () {
-                    time(id);
+                    if (checkLoginFormat()) {
+                        time(id);
+                        //send sms
+                        Helper.post("sendSms",{mobile:$("#mobile").val()},function(ret) {
+                            console.log(ret);
+                        });
+                    }
                 })
             }
         });
@@ -55,9 +61,9 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         $("#login_action").submit(function (e) {
             e.preventDefault();
             if (checkLoginFormat()) {
-
+                $(".alert").fadeOut();
                 Helper.post('login', {
-                    mobileNum: $("#mobile").val(),
+                    mobile: $("#mobile").val(),
                     verNum: $("#vernum").val(),
                     vCode: $("#vcode").val()
                 }, function (ret) {
@@ -65,7 +71,15 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     if (ret.resCode ==  "000000"){
                         window.location.href = '?m=index&a=index';
                     }else {
-                        alert('验证错误');
+                        if (ret.resCode ==  -1) {
+                            $('.alert').eq(1).fadeIn().text('手机验证码失败');
+                        }else if (ret.resCode == "1" ) {
+                            $('.alert').eq(2).fadeIn().text('验证码失败');
+                        }else if (ret.resCode == '00002') {
+                            $(".alert").eq(1).fadeIn().text('请不要重复发送验证码');
+                        }else {
+                            alert(ret.resMsg);
+                        }
                     }
 
                 });

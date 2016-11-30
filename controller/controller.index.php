@@ -12,12 +12,12 @@ class IndexController extends Controller
 
     function __construct()
     {
-//        $this->userInfo = Session::instance()->get('userInfo');
-//        if (!empty($this->userInfo)) {
-//            $this->loginStatus = FALSE;
-//        } else {
-//            $this->loginStatus = TRUE;
-//        }
+        $this->userInfo = Session::instance()->get('userInfo');
+        if (!empty($this->userInfo)) {
+            $this->loginStatus = FALSE;
+        } else {
+            $this->loginStatus = TRUE;
+        }
     }
 
     /**
@@ -27,10 +27,8 @@ class IndexController extends Controller
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
-        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
-            "YH" => YH_LOGIN,
-            "userIndustry" => $userIndustry,
+//            "YH" => YH_LOGIN,
             'loginStatus' => $this->loginStatus,
             'userInfo' => $this->userInfo,
             'token' => $this->userInfo['u_token'],
@@ -47,10 +45,10 @@ class IndexController extends Controller
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
-        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+//        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
-            "YH" => YH_LOGIN,
-            "userIndustry" => $userIndustry,
+//            "YH" => YH_LOGIN,
+//            "userIndustry" => $userIndustry,
             'loginStatus' => $this->loginStatus,
             'userInfo' => $this->userInfo,
             'token' => $this->userInfo['u_token'],
@@ -65,8 +63,9 @@ class IndexController extends Controller
     public function mutMedia()
     {
         $data = array(
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account']
+//            'token' => $this->userInfo['u_token'],
+            'token' => 'sdadfasdfasdfad',
+            'u_account' => 'asdfadfadf'
         );
 
         View::instance('index/mutmedia.tpl')->show($data);

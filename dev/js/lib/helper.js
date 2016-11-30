@@ -126,7 +126,7 @@ define(["api", "WxLogin", "jquery"], function (api) {
                     id: qrCodeID,
                     appid: "wxd96928ba062cffec",
                     scope: "snsapi_login",
-                    redirect_uri: "http%3a%2f%2firv.iresearch.com.cn%2fiResearchDataWeb%2f%3fm%3duser%26a%3dwxLoginAPI",
+                    redirect_uri: "http%3a%2f%2firv.iresearch.com.cn%2fiResearchDataWeb%2f%3fm%3dwechat%26a%3dwxLoginAPI",
                     state: state,
                     style: "",
                     href: cssFileUrl

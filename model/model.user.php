@@ -31,47 +31,46 @@ class UserModel extends API
     public function login($data)
     {
         $getVcode = Session::instance()->get('vcodes');
+        write_to_log($getVcode, '_session');
         if ($getVcode == $data['vCode']) {
             $url = API_URL . '?m=user&a=login';
             $ret = $this->_curlPost($url, $data, 'cs_login');
             $rs = json_decode($ret, true);
-
             if ($rs['resCode'] == '000000') {
+                write_to_log('mobile login: '. $ret,'_login');
                 Session::instance()->set('userInfo', $rs['data']);
+            } else {
+                write_to_log('mobile error login: '. $ret, '_login');
             }
             return $ret;
         } else {
-            return json_encode(['resCode' => -1]);
+            return json_encode(['resCode' => -1, 'resMsg'=> '输入的图形验证码错误']);
         }
 
     }
 
-    /**
-     * register user info
-     * @param $data
-     * @return mixed
-     */
-    public function registerUserInfo($data)
-    {
-        $url = API_URL . '?m=user&a=createUserinfo';
-        $ret = $this->_curlPost($url, $data, 'createUserinfo');
-        return $ret;
-    }
 
     /**
      * check wechat openid
      * @param $data
      * @return mixed
      */
-    public function WeChatAutoLogin($data)
+    public function WeChatAutoLogin($data, $weChatData)
     {
-        $url = API_URL . '?m=user&a=wxlogin';
+        $url = API_URL . '?m=user&a=login';
+        $data['LoginType'] = 'weixin';
         $ret = $this->_curlPost($url, $data, 'wxlogin');
         $rs = json_decode($ret, true);
+//        pr($data);
+//        pr($rs);
+//        exit();
         if ($rs['resCode'] == '000000') {
+            write_to_log('wechat login: '. $ret , '_login');
             Session::instance()->set('userInfo', $rs['data']);
             return TRUE;
         } else {
+            write_to_log('wechat error login: '. $ret, '_login');
+            Session::instance()->set('wechatBinding', $weChatData);
             return FALSE;
         }
 
@@ -84,9 +83,22 @@ class UserModel extends API
      */
     public function bindWeChat($data)
     {
-        $url = API_URL . '?m=user&a=bindingWeixin';
-        $ret = $this->_curlPost($url, $data, 'bindingWeixin');
-        return $ret;
+        $getVCode = Session::instance()->get('vcodes');
+        if ($getVCode == $data['vCode']) {
+            $url = API_URL . '?m=user&a=addUser';
+            $ret = $this->_curlPost($url, $data, 'bindingWeixin');
+            $rs = json_decode($ret, true);
+            if ($rs['resCode'] == '000000') {
+                write_to_log('binding wx: '. $ret,'_wx');
+                Session::instance()->set('userInfo', $rs['data']);
+            } else {
+                write_to_log('post binding: '.json_encode($data), '_wx');
+                write_to_log('binding error: ' . $ret, '_wx');
+            }
+            return $ret;
+        } else {
+            return json_encode(['resCode' => 1 , 'getvcode' => $getVCode, 'vcode' => $data['vCode']]);
+        }
     }
 
     /**
@@ -177,11 +189,13 @@ class UserModel extends API
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
+//        $userInfoArr = json_decode($this->getUserInfo($data), TRUE);
         $userInfoArr = json_decode($this->getUserInfo($data), TRUE);
         $rs = True;
-        if($userInfoArr['resCode'] != '000000'){
+        if ($userInfoArr['resCode'] != '000000' || $userInfo == null) {
 //            Session::instance()->destroy();
             $rs = False;
+//            $rs = true;
         }
         return $rs;
     }

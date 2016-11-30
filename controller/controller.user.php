@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by 艾瑞咨询集团.
  * User: DavidWei
@@ -21,9 +22,9 @@ class UserController extends Controller
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
             $this->userInfo['token'] = $this->userInfo['u_token'];
-            if(empty($this->userInfo['u_head'])) {
+            if (empty($this->userInfo['u_head'])) {
                 $this->userInfo['u_head'] = 'dev/img/user-head.png';
-            }else{
+            } else {
                 $this->userInfo['u_head'] = IMG_URL . $this->userInfo['u_head'];
             }
         } else {
@@ -32,7 +33,7 @@ class UserController extends Controller
 
         if (!empty($this->userInfo['u_wxopid']) AND $this->userInfo['u_wxopid'] != '') {
             $this->wechatStatus = TRUE;
-        }else{
+        } else {
             $this->wechatStatus = FALSE;
         }
     }
@@ -53,8 +54,7 @@ class UserController extends Controller
      */
     public function register()
     {
-        $data = array();
-        View::instance('user/register.tpl')->show($data);
+
     }
 
     /**
@@ -67,10 +67,26 @@ class UserController extends Controller
         $data = array(
             'loginStatus' => $this->loginStatus,
             'userIndustry' => $userIndustry,
-            'u_head' =>  $this->userInfo['u_head'],
+            'u_head' => $this->userInfo['u_head'],
             'u_name' => $this->userInfo['u_name']
         );
         View::instance('user/success.tpl')->show($data);
+    }
+
+    public function BindingWeChat()
+    {
+        $weChatObj = Session::instance()->get('wechatBinding');
+//        var_dump($weChatObj);
+//        exit();
+        if (!empty($weChatObj)) {
+            $data = [
+                'WeChatAvatar' => $weChatObj['headimgurl'],
+                'WeChatNickName' => $weChatObj['nickname'],
+            ];
+            View::instance('user/bindwx.tpl')->show($data);
+        } else {
+            header('Location: ?m=user&a=login');
+        }
     }
 
     /**
@@ -83,7 +99,7 @@ class UserController extends Controller
         $data = array(
             'loginStatus' => $this->loginStatus,
             'userIndustry' => $userIndustry,
-            'u_head' =>  $this->userInfo['u_head'],
+            'u_head' => $this->userInfo['u_head'],
             'u_name' => $this->userInfo['u_name']
         );
         View::instance('user/fail.tpl')->show($data);
@@ -94,12 +110,7 @@ class UserController extends Controller
      */
     public function registerUserInfo()
     {
-        $data = array(
-            'mailto' => $this->request()->get('mailto'),
-            'mailkey' => $this->request()->get('mailkey')
-        );
 
-        View::instance('user/registerUserInfo.tpl')->show($data);
     }
 
     /**
@@ -107,18 +118,7 @@ class UserController extends Controller
      */
     public function editUserInfo()
     {
-        $data['token'] = $this->userInfo['u_token'];
-        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
-        $data = array(
-            'loginStatus' => $this->loginStatus,
-            'userIndustry' => $userIndustry,
-            'u_head' => $this->userInfo['u_head'],
-//            'u_head' =>  IMG_URL . $this->userInfo['u_head'],
-            'u_name' => $this->userInfo['u_name'],
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account']
-        );
-        View::instance('user/editUserInfo.tpl')->show($data);
+
     }
 
     /**
@@ -126,18 +126,7 @@ class UserController extends Controller
      */
     public function setSafe()
     {
-        $data['token'] = $this->userInfo['u_token'];
-        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
-        $data = array(
-            'loginStatus'  => $this->loginStatus,
-            'wechatStatus' => $this->wechatStatus,
-            'userIndustry' => $userIndustry,
-            'u_name'       => $this->userInfo['u_name'],
-            'u_head'       => $this->userInfo['u_head'],
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account']
-        );
-        View::instance('user/user_safe.tpl')->show($data);
+
     }
 
     /**
@@ -145,18 +134,7 @@ class UserController extends Controller
      */
     public function setSafeWeChat()
     {
-//        $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $this->userInfo['u_token'];
-        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
-        $data = array(
-            'userIndustry' => $userIndustry,
-            'u_head'       => $this->userInfo['u_head'],
-            'u_name'       => $this->userInfo['u_name'],
-            'token'        => $this->userInfo['u_token'],
-            'u_account'    => $this->userInfo['u_account']
-        );
-//        var_dump($userInfo);
-        View::instance('user/user_safe_wx.tpl')->show($data);
+
     }
 
     /**
@@ -164,14 +142,7 @@ class UserController extends Controller
      */
     public function changePwd()
     {
-        $data['token'] = $this->userInfo['u_token'];
-        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
-        $data = array(
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account'],
-            'userIndustry' => $userIndustry,
-        );
-        View:self::instance('user/changePwd.tpl')->show($data);
+
     }
 
     public function test()
@@ -184,10 +155,6 @@ class UserController extends Controller
      */
     public function loginOut()
     {
-        $this->model->setCancellation(array(
-            'token'      => $this->userInfo['u_token'],
-            'u_account'  => $this->userInfo['u_account']
-        ));
 
         Session::instance()->destroy();
 
@@ -203,10 +170,10 @@ class UserController extends Controller
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
             'userIndustry' => $userIndustry,
-            'u_head'       => $this->userInfo['u_head'],
-            'u_name'       => $this->userInfo['u_name'],
-            'token'        => $this->userInfo['u_token'],
-            'u_account'    => $this->userInfo['u_account']
+            'u_head' => $this->userInfo['u_head'],
+            'u_name' => $this->userInfo['u_name'],
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
         );
         View::instance('user/user_apply.tpl')->show($data);
     }
@@ -220,10 +187,10 @@ class UserController extends Controller
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
             'userIndustry' => $userIndustry,
-            'u_head'       => $this->userInfo['u_head'],
-            'u_name'       => $this->userInfo['u_name'],
-            'token'        => $this->userInfo['u_token'],
-            'u_account'    => $this->userInfo['u_account']
+            'u_head' => $this->userInfo['u_head'],
+            'u_name' => $this->userInfo['u_name'],
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
         );
         View::instance('user/user_manager.tpl')->show($data);
     }
@@ -235,22 +202,22 @@ class UserController extends Controller
     {
         $data['token'] = $this->userInfo['u_token'];
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
-        $getUser = json_decode($this->model->getUserInfo(['token'=>$this->userInfo['u_token'],'u_account'=>$this->request()->get('u_account')]),TRUE);
+        $getUser = json_decode($this->model->getUserInfo(['token' => $this->userInfo['u_token'], 'u_account' => $this->request()->get('u_account')]), TRUE);
         $getUser = $getUser['data'];
 
         if (empty($getUser['u_head']) OR $getUser['u_head'] == 'head.png') {
             $getUser['u_head'] = 'dev/img/user-head.png';
-        }else{
+        } else {
             $getUser['u_head'] = IMG_URL . $getUser['u_head'];
         }
 
         $data = array(
             'userIndustry' => $userIndustry,
-            'u_head'       => $this->userInfo['u_head'],
-            'u_name'       => $this->userInfo['u_name'],
-            'getUser'      => $getUser,
-            'token'        => $this->userInfo['u_token'],
-            'u_account'    => $this->userInfo['u_account']
+            'u_head' => $this->userInfo['u_head'],
+            'u_name' => $this->userInfo['u_name'],
+            'getUser' => $getUser,
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
         );
 
         View::instance('user/userAccess.tpl')->show($data);
@@ -291,13 +258,13 @@ class UserController extends Controller
         $data = array(
             "userIndustry" => $userIndustry,
             'userInfo' => $this->userInfo,
-            'u_head' =>  $this->userInfo['u_head'],
+            'u_head' => $this->userInfo['u_head'],
             'u_name' => $this->userInfo['u_name'],
             'loginStatus' => $this->loginStatus,
-            'bigIndustry'=>$bigIndustry['data']['IndustryMaxList']['data'],
-            'smallIndustry'=>$smallIndustry['data']['IndustryMinList'],
-            'token'        => $this->userInfo['u_token'],
-            'u_account'    => $this->userInfo['u_account']
+            'bigIndustry' => $bigIndustry['data']['IndustryMaxList']['data'],
+            'smallIndustry' => $smallIndustry['data']['IndustryMinList'],
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
         );
         View::instance('user/permissionAccess.tpl')->show($data);
     }
@@ -308,31 +275,59 @@ class UserController extends Controller
     ################################                     #################################
     ######################################################################################
 
+
+    /**
+     * login api
+     */
+    public function loginAPI()
+    {
+        $data = array(
+            'Account' => $this->request()->post('mobile'),
+            'vCode' => $this->request()->post('vCode'),
+            'LoginKey' => $this->request()->post('verNum'),
+            'LoginType' => 'mobile'
+        );
+
+        $rs = $this->model->login($data);
+        $this->__json();
+        echo $rs;
+    }
+
+    public function bindingWxAPI()
+    {
+        $weChatObj = Session::instance()->get('wechatBinding');
+//        var_dump($weChatObj);
+//        exit();
+        if (!empty($weChatObj)) {
+            $data = [
+                'loginMobile' => $this->request()->post('mobile'),
+                'loginKey' => $this->request()->post('verNum'),
+                'vCode' => $this->request()->post('vCode'),
+                'wxOpenid' => $weChatObj['openid'],
+                'wxUnionid' => $weChatObj['unionid']
+            ];
+            $this->__json();
+            echo $this->model->bindWeChat($data);
+        } else  {
+            echo json_encode([resCode=>'00005','msg'=>'扫描微信异常']);
+        }
+
+
+    }
+
     /**
      * register user api
      */
     public function registerUserInfoAPI()
     {
-        $data = array(
-            'mailkey' => $this->request()->get('mailkey'),
-            'u_account' => $this->request()->get('mailto'),
-            'u_name' => $this->request()->post('u_name'),
-            'u_department' => $this->request()->post('u_department'),
-            'u_mobile' => $this->request()->post('u_mobile'),
-            'u_password' => $this->request()->post('u_password'),
-            'u_position' => $this->request()->post('u_position'),
-            'token'        => $this->userInfo['u_token'],
-            'u_account'    => $this->userInfo['u_account']
-        );
-        $this->__json();
-        echo $this->model->registerUserInfo($data);
+
     }
 
 
     /**
      * register send mail
      */
-    public function registerSendMail()
+    public function registerSendMailAPI()
     {
         $getVcodes = Session::instance()->get('vcodes');
         $getAll = $this->request()->requestAll();
@@ -351,102 +346,17 @@ class UserController extends Controller
     {
         $data = [
             'operation' => $this->request()->requestAll('operation'),
-            'token'     => $this->userInfo['u_token'],
+            'token' => $this->userInfo['u_token'],
             'u_account' => $this->request()->requestAll('u_account')
         ];
 
         echo $this->model->setState($data);
     }
 
-    /**
-     * login api
-     */
-    public function loginAPI()
-    {
-        $data = array(
-            "loginAccount"  => 'robinwong51@qq.com',
-            "loginPassword" => 'wangwang',
-            "vCode" => $this->request()->post('vCode'),
-            'verNum' => $this->request()->post('verNum')
-        );
-
-        $rs = $this->model->login($data);
-        $this->__json();
-        echo $rs;
-    }
-
-    /**
-     * wechat login api
-     */
-    public function wxLoginAPI()
-    {
-        $wechatModel = Model::instance('wechat');
-        $code = $this->request()->get('code');
-        $state = $this->request()->get('state');
-        $weChatObj = $wechatModel->wxCheckLogin($code);
-        $userInfo = Session::instance()->get('userInfo');
-//        pr('微信返回值:');
-//        var_dump($state);
-//        var_dump($weChatObj);
-//        var_dump($wechatModel->getUserInfo($code));
-//        var_dump($userInfo);
-//        exit();
-        if(substr($state,0,10)=='viewReport'){
-            $state_tmp = explode('_',$state);
-            $state = $state_tmp[0];
-            $cfg_id = $state_tmp[1];
-        }
-        switch ($state) {
-
-            case 'wxLogin':
-                $ret = $this->__weChatAutoLogin(array(
-                    'loginOpenid'  => $weChatObj['openid'],
-                    'loginUnionid' => $weChatObj['unionid']
-                ));
-                if ($ret){
-                    header('Location: ?m=index');
-                }else{
-                    header("Location: ?m=user&a=register");
-                }
-
-                break;
-            //binding weChat
-            case 'binding':
-                $ret =  $this->__bindingWeChat(array(
-                    'loginOpenid'  => $weChatObj['openid'],
-                    'loginUnionid' => $weChatObj['unionid'],
-                    'u_account'    => $userInfo['u_account'],
-                    'token'        => $userInfo['u_token']
-                ));
-                $j_ret = json_decode($ret, TRUE);
-                if ($j_ret['resCode'] == '000000') {
-                    $this->wechatStatus = TRUE;
-                    View::instance('usr/success.tpl')->show($j_ret);
-                }else{
-                    View::instance('user/fail.tpl')->show($j_ret);
-                }
-                break;
-            case 'viewReport':
-                print_r($state_tmp);
-                break;
-        }
-    }
 
     public function getUserInfoList()
     {
 
-        $userInfo = Session::instance()->get('userInfo');
-        $postData = [
-            'token'             => $userInfo['u_token'],
-            'u_account'         => $userInfo['u_account'],
-            'orderByColumn'     => $this->request()->requestAll('orderByColumn'),
-            'orderByType'       => $this->request()->requestAll('orderByType'),
-            'pageNo'            => $this->request()->requestAll('pageNo'),
-            'pageSize'          => $this->request()->requestAll('length')
-        ];
-
-        $this->__json();
-        echo $this->model->getUserInfoList($postData);
     }
 
     /**
@@ -481,7 +391,7 @@ class UserController extends Controller
         if (!empty($u_head)) {
             $serviceModel = Model::instance('Service');
 
-            $imgUrl = $serviceModel->uploadImage($this->userInfo['u_token'],toBase64(UPLOAD_PATH . trim($u_head, 'uploads')),'png');
+            $imgUrl = $serviceModel->uploadImage($this->userInfo['u_token'], toBase64(UPLOAD_PATH . trim($u_head, 'uploads')), 'png');
             $imgData = json_decode($imgUrl, true);
             $updateUserInfo['u_head'] = $imgData['data']['imageUrl'];
         }
@@ -489,13 +399,13 @@ class UserController extends Controller
         if (!empty($u_mobile) || !empty($u_name) || !empty($u_position) || !empty($u_department)) {
             $updateUserInfo['token'] = $this->userInfo['u_token'];
             $updateUserInfo['u_account'] = $this->userInfo['u_account'];
-            $ret = json_decode($this->model->setUserInfo($updateUserInfo),TRUE);
+            $ret = json_decode($this->model->setUserInfo($updateUserInfo), TRUE);
 
             if ($ret['resCode'] == '000000') {
-                $userinfo = json_decode($this->getUserInfo(),true);
+                $userinfo = json_decode($this->getUserInfo(), true);
                 @ob_clean();
 //                if (!empty($u_head)) {
-                    $this->userInfo['u_head'] = $userinfo['data']['u_head'];
+                $this->userInfo['u_head'] = $userinfo['data']['u_head'];
 //                }else{
 //                    echo 'no head';
 //                    $this->userInfo['u_head'] =
@@ -522,10 +432,10 @@ class UserController extends Controller
 
 //                var_dump($this->userInfo);
 
-                Session::instance()->set('userInfo',$this->userInfo);
+                Session::instance()->set('userInfo', $this->userInfo);
 
                 header("Location: ?m=user&a=success");
-            }else{
+            } else {
                 header("Location: ?m=user&a=fail");
             }
         }
@@ -539,8 +449,8 @@ class UserController extends Controller
     public function getUserInfo()
     {
         $ret = $this->model->getUserInfo(array(
-            'token'      => $this->userInfo['u_token'],
-            'u_account'  => $this->userInfo['u_account']
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
         ));
 //        return $ret;
         echo $ret;
@@ -581,28 +491,6 @@ class UserController extends Controller
     {
         @@ob_clean();
         header('Content-type: application/json');
-    }
-
-    /**
-     * 自动登入
-     *
-     * @param $data
-     * @return mixed
-     */
-    private function __weChatAutoLogin($data)
-    {
-        return $this->model->WeChatAutoLogin($data);
-    }
-
-    /**
-     * 绑定微信
-     *
-     * @param $data
-     * @return mixed
-     */
-    private function __bindingWeChat($data)
-    {
-        return $this->model->bindWeChat($data);
     }
 
 }

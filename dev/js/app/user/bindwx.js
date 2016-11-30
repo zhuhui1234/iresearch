@@ -33,7 +33,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     if (checkLoginFormat()) {
                         time(id);
                         //send sms
-                        Helper.post("sendSms",{mobile:$("#mobile").val()},function(ret) {
+                        Helper.post("sendSms", {mobile: $("#mobile").val()}, function (ret) {
                             console.log(ret);
                         });
                     }
@@ -71,15 +71,19 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     vCode: $("#vcode").val()
                 }, function (ret) {
                     console.log(ret);
-                    if (ret.resCode ==  "000000"){
+                    if (ret.resCode == "000000") {
                         window.location.href = '?m=index&a=index';
-                    }else {
-                        if (ret.resCode ==  -1) {
+                    } else {
+                        if (ret.resCode == -1) {
                             $('.alert').eq(1).fadeIn().text('手机验证码失败')
-                        }
-
-                        if (ret.resCode == 1 ) {
+                        } else if (ret.resCode == "1") {
                             $('.alert').eq(2).fadeIn().text('验证码失败')
+                        } else if (ret.resCode == '000002') {
+                            $(".alert").eq(1).fadeIn().text('请不要重复发送验证码')
+                        } else if (ret.resCode == '000001') {
+                            alert(ret.resMsg);
+                        } else {
+                            alert(ret.resMsg);
                         }
                     }
                 });

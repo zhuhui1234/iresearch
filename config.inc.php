@@ -42,7 +42,7 @@ define('REGISTER_MAILADDR', 'irv@iresearch.com.cn');
 define('FORGOTPWD_MAILADDR', 'irv@iresearch.com.cn');
 //导出报表配置
 //define('API_URL', 'http://180.169.19.208/iview_deskapi/');
-define('API_URL', 'http://203.156.255.168/iview_deskapi/');
+define('API_URL', 'http://180.169.19.208/idata_deskapi/');
 define('IMG_URL', 'http://203.156.255.168/iview_deskapi/');
 define('API_URL_REPORT', 'http://10.10.21.163/iReport/');
 define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
@@ -113,7 +113,7 @@ if (!empty($v) && in_array($v, array('beta', 'test', 'final'))) {
 //登录处理
 if (!isLoginState()
     AND $_GET['a'] != 'login'
-        AND $_GET['a'] != 'registerUserInfoAPI'
+           AND $_GET['a'] != 'registerUserInfoAPI'
             AND $_GET['a'] != 'registerUserInfo'
                 AND $_GET['a'] != 'loginAPI'
                     AND $_GET['a'] != 'register'
@@ -122,6 +122,8 @@ if (!isLoginState()
                                 AND $_GET['a'] != 'registerSendMail'
                                     AND $_GET['a'] != 'forgotPassword'
                                         AND $_GET['a'] != 'wxLoginAPI'
+                                            AND $_GET['a'] != 'sendSMS'
+                                                AND $_GET['a'] != 'BindingWeChat'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {
