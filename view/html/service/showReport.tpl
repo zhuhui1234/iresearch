@@ -1,4 +1,4 @@
-<!-- INCLUDE ../header.tpl -->
+<!-- INCLUDE ../nav.tpl -->
 <style>
     html { overflow: hidden; }
 </style>

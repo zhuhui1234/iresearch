@@ -11,6 +11,10 @@
     <link href="./public/css/app.css" rel="stylesheet">
     <!-- 自定义 -->
     <link href="./public/css/docs.min.css" rel="stylesheet">
+    <title><?php
+echo $_obj['title'];
+?>
+</title>
 </head>
 <body class="login">
 <div id="particles" class="particles"></div>
@@ -35,7 +39,7 @@
                 <div class="form-group">
                     <span>手机验证码</span>
                     <div class="form-right">
-                        <input type="text" placeholder="请输入手机验证码">
+                        <input style="width: 60%;" id="vernum" type="text" placeholder="请输入手机验证码">
                         <a class="btn btn-warning" id="verification">获取验证码</a>
                     </div>
                 </div>
@@ -43,7 +47,7 @@
                 <div class="form-group">
                     <span>验证码</span>
                     <div class="form-right">
-                        <input type="text" placeholder="请输入验证码">
+                        <input style="width: 60%;" id="vcode" type="text" placeholder="请输入验证码">
                         <div class="code-img">
                             <img src="?m=service&a=authImg" alt="">
                         </div>
