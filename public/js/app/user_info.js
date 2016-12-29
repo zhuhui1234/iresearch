@@ -1,0 +1,2 @@
+/*! iResearchView-1.0.0-2016-09-21 */
+define(["jquery"],function(a){a(function(){a(".panel-heading").on("click",function(){a(this).toggleClass("arrow");var b=a(this).siblings(".panel-body");a(this).hasClass("arrow")?b.stop().slideUp("fast"):b.stop().slideDown("fast")})})});

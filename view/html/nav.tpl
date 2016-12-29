@@ -64,7 +64,12 @@
                                 <li><a href="#">移动用户行为监测<i class="fa fa-angle-right"></i></a></li>
                                 <li><a href="#">视频内容分析<i class="fa fa-angle-right"></i></a></li>
                                 <li><a href="#">意见领袖市场监测</a></li>
-                                <li ><a href="?m=index&a=mutMedia">MUT媒介版</a></li>
+                                <li ><a href="?m=index&a=mutMedia&token={token}&u_account={u_account}">MUT媒介版
+                                        <!-- IF role="0" -->
+                                        <small>未开通</small>
+                                        <!-- ENDIF --></a>
+
+                                </li>
 
                             </ul>
                         </div>
@@ -110,7 +115,11 @@
                                             </div>
                                             <div class="col-xs-6">
                                                 <a href="?m=industry&a=showIndustryReport">
-                                                    <h4>MVT</h4>
+                                                    <h4>MVT
+                                                        <!-- IF role="0" -->
+                                                        <span>未开通</span>
+                                                        <!-- ENDIF -->
+                                                    </h4>
                                                     <p>MOBILE端的视频分析</p>
                                                 </a>
                                             </div>

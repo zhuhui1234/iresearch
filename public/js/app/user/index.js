@@ -1,0 +1,2 @@
+/*! iResearchView-1.0.0-2016-09-21 */
+define(["helper","bootstrap","jquery"],function(a){$("#demo").click(function(){a.loginYongHong({loginAccount:"admin",loginPassword:"admin"},"?m=index&a=demo")})});

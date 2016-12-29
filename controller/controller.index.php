@@ -53,11 +53,13 @@ class IndexController extends Controller
 //            "userIndustry" => $userIndustry,
             'loginStatus' => $this->loginStatus,
             'userInfo' => $this->userInfo,
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account'],
-	    'title' => WEBSITE_TITLE
+            'token' => $this->userInfo['token'],
+            'guid' => $this->userInfo['guid'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE
         );
-        View::instance('index/home.tpl') -> show($data);
+
+        View::instance('index/home.tpl')->show($data);
     }
 
     /**
@@ -66,13 +68,22 @@ class IndexController extends Controller
     public function mutMedia()
     {
         $data = array(
-            'token' => $this->userInfo['u_token'],
-//            'token' => 'sdadfasdfasdfad',
-            'u_account' => $this->userInfo['u_account'],
+            'token' => $this->userInfo['token'],
+            'guid' => $this->userInfo['guid'],
+            'role' => $this->userInfo['permissions'],
             'title' => WEBSITE_TITLE
         );
 
-        View::instance('index/mutmedia.tpl')->show($data);
+
+        if ((int)$this->userInfo['permissions'] > 0) {
+            View::instance('index/mutmedia.tpl')->show($data);
+        } else {
+            echo("<SCRIPT LANGUAGE=\"JavaScript\">
+            alert(\"您并未开通此功能\");
+            window.location.href=\"?m=index\";
+            </SCRIPT>");
+        }
+
     }
 
     public function demo()
