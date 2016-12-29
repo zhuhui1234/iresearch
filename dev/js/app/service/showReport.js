@@ -41,7 +41,7 @@ define(['jquery', 'helper'], function ($, Helper) {
         showReport(url);
     });
     $("#frameReport").load(function () {
-        var mainheight = $(document).height() - 30;
+        var mainheight = $(document).height() - 100;
         $(this).height(mainheight);
         setTimeout(function () {
             $(".loading-report").hide();
@@ -51,11 +51,11 @@ define(['jquery', 'helper'], function ($, Helper) {
     function showReport(url) {
         var urlInfo = url.split("=");
 //        console.log(urlInfo);
-        var rs = setReport(urlInfo[3]);
-        if (rs) {
+        //var rs = setReport(urlInfo[3]);
+        //if (rs) {
             $("#frameReport").attr("src", url);
 
-        }
+        //}
     }
 
     function setReport(guid) {

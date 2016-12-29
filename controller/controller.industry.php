@@ -100,6 +100,7 @@ class IndustryController extends Controller
             $default['pname'] = $listInfo[0]['cfg_name'];
             $level = 3 ;
         }
+        $default['url'] = 'http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B616';
         $data = array(
             "userIndustry" => $userIndustry,
             "listInfo" => $listInfo,
