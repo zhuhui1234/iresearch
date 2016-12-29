@@ -16,42 +16,27 @@
 <body>
 <!-- INCLUDE ../nav.tpl -->
 <div class="container">
-    <div class="index-ad">
-        <a href="#">
-            <img src="./public/img/ad.jpg" alt="">
-        </a>
-    </div>
     <div class="focus-main">
         <div class="focus-main-right">
             <ul>
                 <li class="active">
                     <a href="#">
-                        <i class="fa fa-calendar-check-o"></i>
-                        <p>MUT媒介版</p>
+                        <i class="iconfont icon-iResearchData"></i>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fa fa-desktop"></i>
-                        <p>PC用户行为监测</p>
+                        <i class="iconfont icon-iKolTracker"></i>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fa fa-mobile"></i>
-                        <p>移动用户行为监测</p>
+                        <i class="iconfont icon-mVideoTracker"></i>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fa fa-film"></i>
-                        <p>视频内容分析</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-podcast"></i>
-                        <p>意见领袖市场监测</p>
+                        <i class="iconfont icon-MUTmeijieban"></i>
                     </a>
                 </li>
             </ul>
@@ -61,64 +46,61 @@
             <ul>
                 <li class="active">
                     <h1>
-                        MUT<span>媒介版</span>
+                        <img src="./public/img/iResearchData.png" height="55" alt="">
+                    </h1>
+                    <p>iResearchData是艾瑞咨询集团推出的互联网综合数据服务平台，整合了艾瑞旗下所有数据产品，实现数据互联互通，为互联网企业提供杰出数据服务</p>
+                    <img src="./public/img/iResearchData.jpg" alt="" class="img-responsive center-block">
+                    <!-- <p class="text-center">
+                        <a href="#" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal">绑定历史版 <i class="fa fa-angle-right"></i></a>
+                    </p> -->
+                </li>
+                <li>
+                    <h1>
+                        <img src="./public/img/IKOlogo.png" height="55" alt="">
+                    </h1>
+                    <p></p>
+                    <img src="./public/img/iko.jpg" alt="" class="img-responsive center-block">
+                    <p class="text-center">
+                        <!-- IF role="0" -->
+                        <span class="btn btn-outline-warning">未开通</span>
+                        <!-- ELSE -->
+                        <a href="#" class="btn btn-outline-warning">即将上线<i class="fa fa-angle-right"></i></a>
+                        <!-- ENDIF -->
+                    </p>
+                </li>
+                <li>
+                    <h1>
+                        <img src="./public/img/mvtlogo.png" height="55" alt="">
+                    </h1>
+                    <p>mVideoTracker基于运营商级别的家庭用户观看移动网络视频内容的收视行为数据，助力广告主优化广告投放策略，提升广告投放效果。</p>
+                    <img src="./public/img/MVT.jpg" alt="" class="img-responsive center-block">
+                    <p class="text-center">
+                        <!-- IF role="0" -->
+                        <span class="btn btn-outline-warning">未开通</span>
+                        <!-- ELSE -->
+                        <a href="?m=industry&a=showIndustryReport" class="btn btn-outline-warning">立即进入 <i class="fa fa-angle-right"></i></a>
+                        <!-- ENDIF -->
+                    </p>
+                </li>
+                <li>
+                    <h1>
+                        <img src="./public/img/MUTlogo.png" height="25" alt="">
                     </h1>
                     <p>MUT媒介版是基于艾瑞全终端海量用户数据，用规则识别，机器学习等方法进行用户属性，习惯，兴趣，偏好等的知识挖掘，形成强大的人群规划用于用户画像与媒介计划。助力媒体公司更全面的发现自己的优势，帮助广告公司更精准的广告投放。</p>
-                    <img src="./public/img/img_1.jpg" alt="" class="img-responsive center-block">
-                    <p class="notes">助力媒体公司更全面的发现自己的优势，帮助广告公司更精准的广告投放。</p>
+                    <img src="./public/img/MUT.jpg" alt="" class="img-responsive center-block">
                     <p class="text-center">
+                        <!-- IF role="0" -->
+                        <span class="btn btn-outline-warning">未开通</span>
+                        <!-- ELSE -->
                         <a href="?m=index&a=mutMedia" class="btn btn-outline-warning">立即进入 <i class="fa fa-angle-right"></i></a>
-                    </p>
-                </li>
-                <li>
-                    <h1>
-                        PC<span>用户行为监测</span>
-                    </h1>
-                    <p>MUT媒介版是基于艾瑞全终端海量用户数据，用规则识别，机器学习等方法进行用户属性，习惯，兴趣，偏好等的知识挖掘，形成强大的人群规划用于用户画像与媒介计划。助力媒体公司更全面的发现自己的优势，帮助广告公司更精准的广告投放。</p>
-                    <img src="./public/img/img_1.jpg" alt="" class="img-responsive center-block">
-                    <p class="notes">The MUT version is Ai Ruiquan media terminal based on massive user data </p>
-                    <p class="text-center">
-                        <a href="#" class="btn btn-outline-warning">立即进入 <i class="fa fa-angle-right"></i></a>
-                    </p>
-                </li>
-                <li>
-                    <h1>
-                        移动<span>用户行为监测</span>
-                    </h1>
-                    <p>MUT媒介版是基于艾瑞全终端海量用户数据，用规则识别，机器学习等方法进行用户属性，习惯，兴趣，偏好等的知识挖掘，形成强大的人群规划用于用户画像与媒介计划。助力媒体公司更全面的发现自己的优势，帮助广告公司更精准的广告投放。</p>
-                    <img src="./public/img/img_1.jpg" alt="" class="img-responsive center-block">
-                    <p class="notes">The MUT version is Ai Ruiquan media terminal based on massive user data </p>
-                    <p class="text-center">
-                        <a href="#" class="btn btn-outline-warning">立即进入 <i class="fa fa-angle-right"></i></a>
-                    </p>
-                </li>
-                <li>
-                    <h1>
-                        视频<span>内容分析</span>
-                    </h1>
-                    <p>MUT媒介版是基于艾瑞全终端海量用户数据，用规则识别，机器学习等方法进行用户属性，习惯，兴趣，偏好等的知识挖掘，形成强大的人群规划用于用户画像与媒介计划。助力媒体公司更全面的发现自己的优势，帮助广告公司更精准的广告投放。</p>
-                    <img src="./public/img/img_1.jpg" alt="" class="img-responsive center-block">
-                    <p class="notes">The MUT version is Ai Ruiquan media terminal based on massive user data </p>
-                    <p class="text-center">
-                        <a href="#" class="btn btn-outline-warning">立即进入 <i class="fa fa-angle-right"></i></a>
-                    </p>
-                </li>
-                <li>
-                    <h1>
-                        意见领袖<span>市场监测</span>
-                    </h1>
-                    <p>MUT媒介版是基于艾瑞全终端海量用户数据，用规则识别，机器学习等方法进行用户属性，习惯，兴趣，偏好等的知识挖掘，形成强大的人群规划用于用户画像与媒介计划。助力媒体公司更全面的发现自己的优势，帮助广告公司更精准的广告投放。</p>
-                    <img src="./public/img/img_1.jpg" alt="" class="img-responsive center-block">
-                    <p class="notes">The MUT version is Ai Ruiquan media terminal based on massive user data </p>
-                    <p class="text-center">
-                        <a href="#" class="btn btn-outline-warning">立即进入 <i class="fa fa-angle-right"></i></a>
+                        <!-- ENDIF -->
                     </p>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-<!-- INCLUDE ../foot.tpl -->
+<!-- --INCLUDE ../foot.tpl -->
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
 <script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>
@@ -129,10 +111,10 @@
     ]);
 </script>
 <!-- 生产环境 -->
-<!--<script src="../public/js/lib/requirejs/requirejs.js"></script>-->
-<!--<script src="../public/js/config.js"></script>-->
+<!--<script src="./public/js/lib/requirejs/requirejs.js"></script>-->
+<!--<script src="./public/js/config.js"></script>-->
 <!--<script type="text/javascript">-->
-    <!--require.config({baseUrl: '../public/js'});-->
+    <!--require.config({baseUrl: './public/js'});-->
     <!--require([-->
         <!--'app/swiper',-->
         <!--'app/wow'-->
