@@ -2548,7 +2548,7 @@ th {
 }
 html {
   width: 100%;
-  height: auto;
+  height: 100%;
   padding: 0;
   margin: 0;
   font-size: 10px;
@@ -3676,8 +3676,8 @@ table {
   background-color: transparent;
 }
 caption {
-  padding-top: 10px 8px;
-  padding-bottom: 10px 8px;
+  padding-top: 12px 15px;
+  padding-bottom: 12px 15px;
   color: #777;
   text-align: left;
 }
@@ -3695,15 +3695,18 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 10px 8px;
+  padding: 12px 15px;
   line-height: 1.42857143;
   vertical-align: middle;
-  border-top: 1px solid #ddd;
 }
 .table > thead > tr > th {
-  color: #777;
+  color: #fff;
   vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
+  background: #97a3b1;
+  border-right: 1px solid #fff;
+}
+.table > thead > tr > th:last-child {
+  border-right: none;
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -8567,7 +8570,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar {
   position: relative;
   min-height: 40px;
-  margin-bottom: 20px;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -9086,8 +9088,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .breadcrumb {
   padding: 8px 0;
-  margin-bottom: 0;
-  font-size: 16px;
+  margin: 10px 0;
+  font-size: 14px;
   list-style: none;
   border-radius: 0;
 }
@@ -10349,9 +10351,9 @@ button.close {
 .tooltip-inner {
   max-width: 200px;
   padding: 3px 8px;
-  color: #666;
+  color: #fff;
   text-align: center;
-  background-color: rgba(238, 238, 238, .95);
+  background-color: #69c72b;
   border-radius: 3px;
 }
 .tooltip-arrow {
@@ -10366,56 +10368,56 @@ button.close {
   left: 50%;
   margin-left: -5px;
   border-width: 5px 5px 0;
-  border-top-color: rgba(238, 238, 238, .95);
+  border-top-color: #69c72b;
 }
 .tooltip.top-left .tooltip-arrow {
   right: 5px;
   bottom: 0;
   margin-bottom: -5px;
   border-width: 5px 5px 0;
-  border-top-color: rgba(238, 238, 238, .95);
+  border-top-color: #69c72b;
 }
 .tooltip.top-right .tooltip-arrow {
   bottom: 0;
   left: 5px;
   margin-bottom: -5px;
   border-width: 5px 5px 0;
-  border-top-color: rgba(238, 238, 238, .95);
+  border-top-color: #69c72b;
 }
 .tooltip.right .tooltip-arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;
   border-width: 5px 5px 5px 0;
-  border-right-color: rgba(238, 238, 238, .95);
+  border-right-color: #69c72b;
 }
 .tooltip.left .tooltip-arrow {
   top: 50%;
   right: 0;
   margin-top: -5px;
   border-width: 5px 0 5px 5px;
-  border-left-color: rgba(238, 238, 238, .95);
+  border-left-color: #69c72b;
 }
 .tooltip.bottom .tooltip-arrow {
   top: 0;
   left: 50%;
   margin-left: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: rgba(238, 238, 238, .95);
+  border-bottom-color: #69c72b;
 }
 .tooltip.bottom-left .tooltip-arrow {
   top: 0;
   right: 5px;
   margin-top: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: rgba(238, 238, 238, .95);
+  border-bottom-color: #69c72b;
 }
 .tooltip.bottom-right .tooltip-arrow {
   top: 0;
   left: 5px;
   margin-top: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: rgba(238, 238, 238, .95);
+  border-bottom-color: #69c72b;
 }
 .popover {
   position: absolute;
@@ -11591,9 +11593,6 @@ table.dataTable th {
      -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
-table.dataTable tbody tr:last-child {
-  border-bottom: 1px solid #ddd;
-}
 table.dataTable tbody tr td a {
   margin-right: 10px;
   color: #999;
@@ -11629,6 +11628,7 @@ div.dataTables_wrapper div.dataTables_filter input {
   margin-left: .5em;
 }
 div.dataTables_wrapper div.dataTables_info {
+  float: left;
   padding-top: 4px;
   white-space: nowrap;
 }
@@ -12671,11 +12671,15 @@ button.swiper-pagination-bullet {
 }
 .avatar-view {
   display: block;
+  width: 100px;
+  height: 100px;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 5px;
 }
 .avatar-view img {
   width: 100%;
+  border-radius: 50%;
 }
 .avatar-body {
   padding-right: 15px;
@@ -12687,7 +12691,6 @@ button.swiper-pagination-bullet {
 .avatar-upload label {
   display: block;
   float: left;
-  width: 100px;
   clear: left;
 }
 .avatar-upload input {
@@ -12717,13 +12720,15 @@ button.swiper-pagination-bullet {
   margin-right: 15px;
   overflow: hidden;
   background-color: #fff;
-  border-radius: 50%;
 }
 .avatar-preview:hover {
-  box-shadow: 0 0 5px rgba(0, 0, 0, .35);
+  border-color: #ccf;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .15);
 }
 .avatar-preview img {
   width: 100%;
+  border-radius: 50%;
 }
 .preview-lg {
   width: 184px;
@@ -12756,9 +12761,8 @@ button.swiper-pagination-bullet {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 20140628;
+  z-index: 800;
   display: none;
-  background: url("../img/loading.gif") no-repeat center center;
   filter: alpha(opacity=75);
   opacity: .75;
 }

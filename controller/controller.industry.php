@@ -110,7 +110,7 @@ class IndustryController extends Controller
             'token' => $this->userInfo['u_token'],
             'u_account' => $this->userInfo['u_account']
         );
-        View::instance('service/showReport.tpl')->show($data);
+        View::instance('service/showReport2.tpl')->show($data);
     }
 
     /**

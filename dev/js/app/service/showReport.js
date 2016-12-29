@@ -5,13 +5,19 @@
  * Time: 上午11:38
  * To change this template use File | Settings | File Templates.
  */
-define(['jquery','helper'], function ($,Helper) {
-    //默认展示
+define(['jquery', 'helper'], function ($, Helper) {
+
+    var a = $(document).height(), b = $("nav").height();
+    $(".report-wrapper").css({height: a - b}), $(".report-menu ul li a").on("click", function (a) {
+        a.preventDefault(), $(this).parent().toggleClass("open"), $(this).parent().hasClass("open") ? $(this).siblings().stop().slideDown("fast") : $(this).siblings().stop().slideUp("fast")
+    }), $(".full-screen").on("click", function () {
+        $(".report-menu").toggleClass("toggle"), $(".report-menu").hasClass("toggle") ? ($(this).find("i").removeClass("fa-times").addClass("fa-bars"), $(".report-wrapper").addClass("full")) : ($(this).find("i").removeClass("fa-bars").addClass("fa-times"), $(".report-wrapper").removeClass("full"))
+    })    //默认展示
     if ($("#frameReport").attr("default") !== "") {
         var url = $("#frameReport").attr("default");
         showReport(url);
     }
-    else{
+    else {
         $(".loading-report").html("暂无数据");
     }
     $("._showReport").click(function () {
@@ -20,7 +26,7 @@ define(['jquery','helper'], function ($,Helper) {
         $(".loading-report").show();
         console.log($(this).attr("cfg_id"));
         //测试用，若改报告是收费的执行以下方法
-        if($(this).attr("cfg_id")==='15'){
+        if ($(this).attr("cfg_id") === '15') {
             weiXin($(this).attr("cfg_id"));
             return;
         }
@@ -37,10 +43,10 @@ define(['jquery','helper'], function ($,Helper) {
     $("#frameReport").load(function () {
         var mainheight = $(document).height() - 30;
         $(this).height(mainheight);
-        setTimeout(function(){
-                $(".loading-report").hide();
-                $(".show-report").show();
-            }, 2000);
+        setTimeout(function () {
+            $(".loading-report").hide();
+            $(".show-report").show();
+        }, 2000);
     });
     function showReport(url) {
         var urlInfo = url.split("=");
@@ -51,6 +57,7 @@ define(['jquery','helper'], function ($,Helper) {
 
         }
     }
+
     function setReport(guid) {
         var rs = false;
         var url = '?m=service&a=upUserSessionKey';
@@ -66,7 +73,8 @@ define(['jquery','helper'], function ($,Helper) {
         });
         return rs;
     }
-    function weiXin(cfg_id){
-        Helper.WeChatQRCode('wxLogin', 'viewReport_'+cfg_id);
+
+    function weiXin(cfg_id) {
+        Helper.WeChatQRCode('wxLogin', 'viewReport_' + cfg_id);
     }
 });
