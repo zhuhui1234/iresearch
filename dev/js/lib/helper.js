@@ -121,6 +121,8 @@ define(["api", "WxLogin", "jquery"], function (api) {
             this.WeChatQRCode = function (qrCodeID, state,cssFileUrl) {
                 if (cssFileUrl == null) {
                     cssFileUrl = '';
+                } else {
+                    cssFileUrl = encodeURIComponent(cssFileUrl);
                 }
                 var obj = new WxLogin({
                     id: qrCodeID,
