@@ -99,5 +99,5 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
     });
 
-    Helper.WeChatQRCode('wxLogin', 'wxLogin');
+    Helper.WeChatQRCode('wxLogin', 'wxLogin','https://ic.irs01.com/iResearchDataWeb/public/css/wechat.css');
 });
