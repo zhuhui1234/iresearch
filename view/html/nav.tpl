@@ -109,7 +109,7 @@
                                                 </a>
                                             </div>
                                             <div class="col-xs-6">
-                                                <a href="#">
+                                                <a href="?m=industry&a=showIndustryReport">
                                                     <h4>MVT</h4>
                                                     <p>MOBILE端的视频分析</p>
                                                 </a>
