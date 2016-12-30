@@ -214,11 +214,11 @@
   width: 100%;
 }
 .container .focus-main {
-  margin: 30px 0;
+  margin: 30px 0 0 0;
 }
 .container .focus-main .focus-main-right {
   float: right;
-  width: 190px;
+  width: 220px;
   margin-left: 15px;
   background: #fff;
 }
@@ -227,13 +227,39 @@
   margin: 0;
 }
 .container .focus-main .focus-main-right ul li {
+  position: relative;
+  display: block;
+  text-align: center;
   list-style-type: none;
+}
+.container .focus-main .focus-main-right ul li:nth-of-type(1) a {
+  background: url("../../public/img/iResearchDataGray.png") no-repeat center;
+}
+.container .focus-main .focus-main-right ul li:nth-of-type(1).active a {
+  background: url("../../public/img/iResearchDataClick.png") no-repeat center;
+}
+.container .focus-main .focus-main-right ul li:nth-of-type(2) a {
+  background: url("../../public/img/iKolTrackerGray.png") no-repeat center;
+}
+.container .focus-main .focus-main-right ul li:nth-of-type(2).active a {
+  background: url("../../public/img/iKolTrackerClick.png") no-repeat center;
+}
+.container .focus-main .focus-main-right ul li:nth-of-type(3) a {
+  background: url("../../public/img/mVideoTrackerGray.png") no-repeat center;
+}
+.container .focus-main .focus-main-right ul li:nth-of-type(3).active a {
+  background: url("../../public/img/mVideoTrackerClick.png") no-repeat center;
+}
+.container .focus-main .focus-main-right ul li:nth-of-type(4) a {
+  background: url("../../public/img/mutGray.png") no-repeat center;
+}
+.container .focus-main .focus-main-right ul li:nth-of-type(4).active a {
+  background: url("../../public/img/mutClick.png") no-repeat center;
 }
 .container .focus-main .focus-main-right ul li:last-child a {
   border-bottom: none;
 }
 .container .focus-main .focus-main-right ul li.active {
-  position: relative;
   background: #69c72b;
 }
 .container .focus-main .focus-main-right ul li.active:before {
@@ -252,15 +278,19 @@
   color: #fff;
   border-bottom: none;
 }
+.container .focus-main .focus-main-right ul li.active a i {
+  font-size: 42px;
+  line-height: 42px;
+}
 .container .focus-main .focus-main-right ul li a {
   display: block;
-  padding: 55px 0;
+  height: 150px;
   color: #8c9bb1;
-  text-align: center;
   border-bottom: 1px dashed #e8edf1;
 }
 .container .focus-main .focus-main-right ul li a i {
-  overflow: hidden;
+  display: inline-block;
+  height: 42px;
   font-size: 42px;
   line-height: 42px;
 }
@@ -309,9 +339,6 @@
   line-height: 20px;
   color: #b8beca;
 }
-.container .focus-main .focus-main-left ul li p.text-center {
-  margin-top: 30px;
-}
 .container .focus-main .focus-main-left ul li p.text-center .btn {
   color: #ff8400;
   border-color: #ff8400;
@@ -321,7 +348,7 @@
 }
 footer {
   padding: 50px 0 20px 0;
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 14px;
   color: rgba(255, 255, 255, .8);
   background: #404b57;
@@ -470,6 +497,7 @@ footer .copyright .cpr {
   float: left;
   width: 100px;
   line-height: 30px;
+  color: #999;
 }
 .login .login-wrap .row .col-xs-7 form .form-group .form-right {
   overflow: hidden;
@@ -878,6 +906,7 @@ footer .copyright .cpr {
 }
 .report {
   position: relative;
+  background: #eee;
 }
 .report .report-menu {
   position: absolute;

@@ -21,22 +21,22 @@
             <ul>
                 <li class="active">
                     <a href="#">
-                        <i class="iconfont icon-iResearchData"></i>
+
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="iconfont icon-iKolTracker"></i>
+
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="iconfont icon-mVideoTracker"></i>
+
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="iconfont icon-MUTmeijieban"></i>
+
                     </a>
                 </li>
             </ul>
@@ -50,21 +50,21 @@
                     </h1>
                     <p>iResearchData是艾瑞咨询集团推出的互联网综合数据服务平台，整合了艾瑞旗下所有数据产品，实现数据互联互通，为互联网企业提供杰出数据服务</p>
                     <img src="./public/img/iResearchData.jpg" alt="" class="img-responsive center-block">
-                    <!-- <p class="text-center">
-                        <a href="#" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal">绑定历史版 <i class="fa fa-angle-right"></i></a>
-                    </p> -->
+                    <p class="text-center">
+                        <a href="#" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal">即将上线</a>
+                    </p>
                 </li>
                 <li>
                     <h1>
                         <img src="./public/img/IKOlogo.png" height="55" alt="">
                     </h1>
                     <p></p>
-                    <img src="./public/img/iko.jpg" alt="" class="img-responsive center-block">
+                    <img style="margin: 40px 0" alt=""  src="./public/img/iko.jpg" alt="" class="img-responsive center-block">
                     <p class="text-center">
                         <!-- IF role="0" -->
                         <span class="btn btn-outline-warning">未开通</span>
                         <!-- ELSE -->
-                        <a href="#" class="btn btn-outline-warning">即将上线<i class="fa fa-angle-right"></i></a>
+                        <a href="#" class="btn btn-outline-warning">即将上线</a>
                         <!-- ENDIF -->
                     </p>
                 </li>
@@ -78,7 +78,7 @@
                         <!-- IF role="0" -->
                         <span class="btn btn-outline-warning">未开通</span>
                         <!-- ELSE -->
-                        <a href="?m=industry&a=showIndustryReport" class="btn btn-outline-warning">立即进入 <i class="fa fa-angle-right"></i></a>
+                        <a href="?m=industry&a=showIndustryReport" class="btn btn-outline-warning">立即进入</a>
                         <!-- ENDIF -->
                     </p>
                 </li>
@@ -92,7 +92,7 @@
                         <!-- IF role="0" -->
                         <span class="btn btn-outline-warning">未开通</span>
                         <!-- ELSE -->
-                        <a href="?m=index&a=mutMedia" class="btn btn-outline-warning">立即进入 <i class="fa fa-angle-right"></i></a>
+                        <a href="?m=index&a=mutMedia" class="btn btn-outline-warning">立即进入</a>
                         <!-- ENDIF -->
                     </p>
                 </li>
@@ -100,14 +100,15 @@
         </div>
     </div>
 </div>
-<!-- --INCLUDE ../foot.tpl -->
+<!-- INCLUDE ../foot.tpl -->
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
 <script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>
 <script type="text/javascript">
     require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
     require([
-        'app/home/index'
+        'app/home/index',
+        'app/home/index-focus'
     ]);
 </script>
 <!-- 生产环境 -->
