@@ -6,7 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 define(['jquery', 'helper'], function ($, Helper) {
-
+    $("#nav_irv").addClass("active");
+    Helper.nav();
     var a = $(document).height(), b = $("nav").height();
     $(".report-wrapper").css({height: a - b}), $(".report-menu ul li a").on("click", function (a) {
         a.preventDefault(), $(this).parent().toggleClass("open"), $(this).parent().hasClass("open") ? $(this).siblings().stop().slideDown("fast") : $(this).siblings().stop().slideUp("fast")
