@@ -81,13 +81,13 @@
                                         <div class="row">
                                             <div class="col-xs-6">
                                                 <a href="#">
-                                                    <h4>网络服务排名<span>试用版</span></h4>
+                                                    <h4>网络服务排名<span>研发中</span></h4>
                                                     <p>各主流网络软件服务的使用情况排名</p>
                                                 </a>
                                             </div>
                                             <div class="col-xs-6">
                                                 <a href="#">
-                                                    <h4>用户特征排名</h4>
+                                                    <h4>用户特征排名<span>研发中</span></h4>
                                                     <p>使用用户纬度的用户特征排名</p>
                                                 </a>
                                             </div>
@@ -98,7 +98,7 @@
                                         <div class="row">
                                             <div class="col-xs-6">
                                                 <a href="#">
-                                                    <h4>APP排名<span>试用版</span></h4>
+                                                    <h4>APP排名<span>研发中</span></h4>
                                                     <p>APP端应用的使用情况排名</p>
                                                 </a>
                                             </div>
@@ -109,13 +109,13 @@
                                         <div class="row">
                                             <div class="col-xs-6">
                                                 <a href="#">
-                                                    <h4>IVT<span>试用版</span></h4>
+                                                    <h4>IVT<span>研发中</span></h4>
                                                     <p>PC端的视频分析</p>
                                                 </a>
                                             </div>
                                             <div class="col-xs-6">
                                                 <a href="?m=industry&a=showIndustryReport">
-                                                    <h4>MVT
+                                                    <h4>MVT<span>试用版</span>
                                                         <!-- IF role="0" -->
                                                         <span>未开通</span>
                                                         <!-- ENDIF -->
@@ -125,7 +125,7 @@
                                             </div>
                                             <div class="col-xs-6">
                                                 <a href="#">
-                                                    <h4>OVT</h4>
+                                                    <h4>OVT<span>研发中</span></h4>
                                                     <p>OTT端的视频分析</p>
                                                 </a>
                                             </div>
