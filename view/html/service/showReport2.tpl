@@ -116,7 +116,8 @@
 <script type="text/javascript">
     require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
     require([
-        'app/service/showReport'
+        'app/service/showReport',
+
     ]);
 </script>
 </body>
