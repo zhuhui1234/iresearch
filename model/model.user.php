@@ -34,6 +34,8 @@ class UserModel extends API
         write_to_log($getVcode, '_session');
         if ($getVcode == $data['vCode']) {
             $url = API_URL . '?m=user&a=login';
+            write_to_log('login url :' . $url, '_login');
+            write_to_log('post data: '. json_encode($data),'_login');
             $ret = $this->_curlPost($url, $data, 'cs_login');
             $rs = json_decode($ret, true);
             if ($rs['resCode'] == '000000') {
