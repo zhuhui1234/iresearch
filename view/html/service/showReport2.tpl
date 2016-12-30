@@ -16,7 +16,7 @@
 <!-- INCLUDE ../nav.tpl -->
 
 <div class="report">
-    <div class="report-menu">
+    <div class="report-menu toggle">
         <h4>
             <img src="./public/img/mVideoTracker.png" width="150" height="40"/>
         </h4>
@@ -96,8 +96,8 @@
             </li>
         </ul>
     </div>
-    <div class="report-wrapper">
-        <div class="iframe-content ">
+    <div class="report-wrapper full">
+        <div class="iframe-content full">
             <div class="loading-report" style="text-align: center; vertical-align: middle; margin-top: 10%">
                 <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
             </div>
@@ -108,7 +108,7 @@
     </div>
 </div>
 <div class="full-screen">
-    <i class="fa fa-times"></i>
+    <i class="fa fa-bars"></i>
 </div>
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
