@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="copyright">
-            <h5><span>Contact us</span></h5>
+            <h5><span>Contact Us</span></h5>
             <i class="fa fa-phone"></i>
             <span>0086+021-51082699</span>
             <i class="fa fa-envelope-o"></i>
