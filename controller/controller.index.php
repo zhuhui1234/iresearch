@@ -56,7 +56,8 @@ class IndexController extends Controller
             'token' => $this->userInfo['token'],
             'guid' => $this->userInfo['guid'],
             'role' => $this->userInfo['permissions'],
-            'title' => WEBSITE_TITLE
+            'title' => WEBSITE_TITLE,
+            'kolLink' => $this->kolLink()
         );
 
         View::instance('index/home.tpl')->show($data);
@@ -96,5 +97,22 @@ class IndexController extends Controller
             "listInfo" => $ret['data']['ConfigMaxList'][0]['ConfigMinList']
         );
         View::instance('index/demo.tpl')->show($data);
+    }
+
+    public function kolLink()
+    {
+        $rMail = 'davidwei@iresearch.com.cn';
+
+        $mail = urlencode($rMail);
+        $rkey = $rMail . $rMail . date('YmdH');
+        $key = strtoupper(md5($rkey,false));
+
+        $ret = KOL_API . "?u={$mail}&e={$mail}&ukey={$key}";
+//        pr($mail);
+//        pr($rkey);
+//        pr($key);
+//        pr($ret);
+        return $ret;
+
     }
 }
