@@ -36,12 +36,17 @@
             <div class="line"></div>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <!--<li>
+            <!-- <li>
                 <a href="#">
                     <i class="fa fa-envelope-o"></i>
                     <span class="badge">4</span>
                 </a>
             </li> -->
+            <li>
+                <a href="?m=user&a=editUserInfo">
+                    <i class="fa fa-user-o"></i>
+                </a>
+            </li>
             <li>
                 <a href="?m=user&a=loginOut" data-toggle="tooltip" title="注销" data-placement="bottom">
                     <i class="fa fa-sign-out"></i>
