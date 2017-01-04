@@ -63,6 +63,26 @@ class IndexController extends Controller
         View::instance('index/home.tpl')->show($data);
     }
 
+    public function kolPage()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $data['token'] = $userInfo['u_token'];
+//        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $data = array(
+//            "YH" => YH_LOGIN,
+//            "userIndustry" => $userIndustry,
+            'loginStatus' => $this->loginStatus,
+            'userInfo' => $this->userInfo,
+            'token' => $this->userInfo['token'],
+            'guid' => $this->userInfo['guid'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'kolLink' => $this->kolLink()
+        );
+
+        View::instance('service/kol.tpl')->show($data);
+    }
+
     /**
      * 媒介计划
      */
@@ -101,7 +121,7 @@ class IndexController extends Controller
 
     public function kolLink()
     {
-        $rMail = 'davidwei@iresearch.com.cn';
+        $rMail = $this->userInfo['mobile'];
 
         $mail = urlencode($rMail);
         $rkey = $rMail . $rMail . date('YmdH');

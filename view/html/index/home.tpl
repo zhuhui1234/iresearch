@@ -64,7 +64,7 @@
                         <!-- IF role="0" -->
                         <span class="btn btn-outline-warning">未开通</span>
                         <!-- ELSE -->
-                        <a href="#" class="btn btn-outline-warning">即将上线</a>
+                        <a href="?m=index&a=kolPage" class="btn btn-outline-warning">立即进入</a>
                         <!-- ENDIF -->
                     </p>
                 </li>
