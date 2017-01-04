@@ -773,13 +773,14 @@ function toBase64($filePath)
  * @param $str
  * @param string $pre
  */
-function write_to_log($str,$pre='') {
-    $str=$str.PHP_EOL;
-    $time =time();
-    $log_file = 'irs_'.date('Y-m-d',$time).$pre.'.log';
-    if ($fd = fopen ( "./log/".$log_file, "a" )) {
-        fwrite($fd, date('Y-m-d H:i:s',$time).' --> ['.getIp().'] '.$str);
-        fclose ( $fd );
+function write_to_log($str, $pre = '')
+{
+    $str = $str . PHP_EOL;
+    $time = time();
+    $log_file = 'irs_' . date('Y-m-d', $time) . $pre . '.log';
+    if ($fd = fopen("./log/" . $log_file, "a")) {
+        fwrite($fd, date('Y-m-d H:i:s', $time) . ' --> [' . getIp() . '] ' . $str);
+        fclose($fd);
     }
     unset($str);
 }
@@ -788,4 +789,46 @@ function jsonHead()
 {
     @@ob_clean();
     header('Content-type: application/json');
+}
+
+//
+
+function fnEncrypt($sValue, $sSecretKey)
+{
+    return rtrim(
+//        base64_encode(
+        mcrypt_encrypt(
+            MCRYPT_RIJNDAEL_256,
+            $sSecretKey, $sValue,
+            MCRYPT_MODE_ECB,
+            mcrypt_create_iv(
+                mcrypt_get_iv_size(
+                    MCRYPT_RIJNDAEL_256,
+                    MCRYPT_MODE_ECB
+                ),
+                MCRYPT_RAND)
+        )
+//        )
+        , "\0"
+    );
+}
+
+function fnDecrypt($sValue, $sSecretKey)
+{
+    return rtrim(
+        mcrypt_decrypt(
+            MCRYPT_RIJNDAEL_256,
+            $sSecretKey,
+//            base64_decode($sValue),
+            $sValue,
+            MCRYPT_MODE_ECB,
+            mcrypt_create_iv(
+                mcrypt_get_iv_size(
+                    MCRYPT_RIJNDAEL_256,
+                    MCRYPT_MODE_ECB
+                ),
+                MCRYPT_RAND
+            )
+        ), "\0"
+    );
 }
