@@ -51,7 +51,7 @@
                     <p>iResearchData是艾瑞咨询集团推出的互联网综合数据服务平台，整合了艾瑞旗下所有数据产品，实现数据互联互通，为互联网企业提供杰出数据服务</p>
                     <img src="./public/img/iResearchData.jpg" alt="" class="img-responsive center-block">
                     <p class="text-center">
-                        <a href="#" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal">即将上线</a>
+                        <a href="#" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal">绑定历史版 <i class="fa fa-angle-right"></i></a>
                     </p>
                 </li>
                 <li>
@@ -100,6 +100,34 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content history">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    <img src="./public/img/irdpop.png" alt="">
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <p class="text-center text-danger"><i class="fa fa-warning"></i> 绑定失败，请输入正确的账号密码</p>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="用户名">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="密码">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">确定</button>
+                </form>
+                <p>如有账号问题，请联系 400-000-000</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- INCLUDE ../foot.tpl -->
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
