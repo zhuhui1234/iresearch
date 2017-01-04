@@ -11,25 +11,25 @@
                 <li id="nav_home" >
                     <a href="?m=index&a=index">
                         <span>首页</span>
-                        <i>HOME</i>
+                        <i>Home</i>
                     </a>
                 </li>
                 <li id="nav_irv" class="nav_active">
                     <a href="#">
                         <span>艾瑞睿见</span>
-                        <i>IRVIEW</i>
+                        <i>iRView</i>
                     </a>
                 </li>
                 <li id="nav_irvcloud" class="">
                     <a href="#">
                         <span>艾瑞智数</span>
-                        <i>IRCLOUD</i>
+                        <i>iROnes</i>
                     </a>
                 </li>
                 <li id="nav_irvcount" class="">
                     <a href="#">
                         <span>开发者服务</span>
-                        <i>IRDEVELOPERS</i>
+                        <i>iRDevs</i>
                     </a>
                 </li>
             </ul>
