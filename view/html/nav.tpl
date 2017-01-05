@@ -100,12 +100,20 @@
                                                 </a>
                                             </div>
                                             <div class="col-xs-6">
-                                                <a href="?m=index&a=mutMedia&token={token}&u_account={u_account}">
-                                                    <h4>mUserTracker <span>研发中</span>
-
-                                                    </h4>
-                                                    <p>移动端用户行为监测</p>
-                                                </a>
+                                                <!-- IF role="0" -->
+                                                <a href="#">
+                                                    <!-- ELSE -->
+                                                    <a href="?m=industry&a=showIndustryReport">
+                                                        <!-- ENDIF -->
+                                                        <h4>mUserTracker
+                                                            <!-- IF role="0" -->
+                                                            <span>未开通</span>
+                                                            <!-- ELSE -->
+                                                            <span>试用版</span>
+                                                            <!-- ENDIF -->
+                                                        </h4>
+                                                        <p>移动端用户行为监测</p>
+                                                    </a>
                                             </div>
                                             <div class="col-xs-6">
                                                 <a href="?m=industry&a=showIndustryReport">
