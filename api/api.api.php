@@ -188,6 +188,45 @@ class Api extends Url{
         return $content;
     }
 
+    /**
+     * no json post
+     * @param $url
+     * @param array $data
+     * @param string $cookiepath
+     * @param int $timeout
+     * @return mixed|string
+     */
+    public function _curlAPost($url, $data = array(), $cookiepath = '/',$timeout=300){
+        $userAgent = 'Mozilla/4.0+(compatible;+MSIE+6.0;+Windows+NT+5.1;+SV1)';
+        $referer = $url;
+        if(!is_array($data) || !$url) return '';
+        $data['userIP']=getIp();
+//        $post = json_encode($data);
+        $post = $data;
+        if(DEBUG){
+            echo $url,'<br>';
+            print_r($post);
+            echo '<br>';
+        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);				// 设置访问的url地址
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);        // 设置超时
+        curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);	// 用户访问代理 User-Agent
+        curl_setopt($ch, CURLOPT_REFERER, $referer);		// 设置 referer
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);		// 跟踪301
+        curl_setopt($ch, CURLOPT_POST, 1);					// 指定post数据
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);		// 添加变量
+        curl_setopt($ch, CURLOPT_COOKIEJAR, $cookiepath);	// COOKIE的存储路径,返回时保存COOKIE的路径
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);		// 返回结果
+        $content = curl_exec($ch);
+        curl_close($ch);
+        if(DEBUG){
+            pr($content, 1);
+            echo '<br>';
+        }
+        return $content;
+    }
+
 
 }
 ?>
