@@ -112,13 +112,14 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <form role="form">
-                    <p class="text-center text-danger"><i class="fa fa-warning"></i> 绑定失败，请输入正确的账号密码</p>
+                <iframe style="display: none;" src="" name="target_submit"></iframe>
+                <form role="form" target="target_submit" id="bindingIRDA">
+                    <p style="display: none" id="binding_irda_error" class="text-center text-danger"><i class="fa fa-warning"></i> 绑定失败，请输入正确的账号密码</p>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="用户名">
+                        <input id="irda_email" name="mail" type="text" class="form-control" placeholder="用户名">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="密码">
+                        <input id="irda_pwd" type="password" name="pwd" class="form-control" placeholder="密码">
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">确定</button>
                 </form>
@@ -127,7 +128,6 @@
         </div>
     </div>
 </div>
-
 <!-- INCLUDE ../foot.tpl -->
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
