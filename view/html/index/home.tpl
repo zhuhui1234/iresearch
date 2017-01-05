@@ -51,7 +51,7 @@
                     <p>iResearchData是艾瑞咨询集团推出的互联网综合数据服务平台，整合了艾瑞旗下所有数据产品，实现数据互联互通，为互联网企业提供杰出数据服务</p>
                     <img src="./public/img/iResearchData.jpg" alt="" class="img-responsive center-block">
                     <p class="text-center">
-                        <a href="#" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal">绑定历史版 <i class="fa fa-angle-right"></i></a>
+                        <a href="#" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal">绑定经典版</a>
                     </p>
                 </li>
                 <li>
