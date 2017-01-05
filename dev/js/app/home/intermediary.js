@@ -5,11 +5,9 @@ define(['helper', 'app/main'], function (Helper) {
         $('#nav_irv').addClass('active');
         Helper.nav();
 
-
         //render
         jQuery(function ($) {
-
-            var topBar = 70;
+            var topBar = 140;
             var innerHeight = window.innerHeight;
             console.log(innerHeight);
             var $frame = $('iframe:eq(0)');
@@ -20,8 +18,6 @@ define(['helper', 'app/main'], function (Helper) {
                 $frame.css('height',window.innerHeight-topBar);
                 $('body').css('overflow-y','hidden');
             });
-
-
         });
     });
 });
