@@ -35,18 +35,18 @@ class UserModel extends API
         if ($getVcode == $data['vCode']) {
             $url = API_URL . '?m=user&a=login';
             write_to_log('login url :' . $url, '_login');
-            write_to_log('post data: '. json_encode($data),'_login');
+            write_to_log('post data: ' . json_encode($data), '_login');
             $ret = $this->_curlPost($url, $data, 'cs_login');
             $rs = json_decode($ret, true);
             if ($rs['resCode'] == '000000') {
-                write_to_log('mobile login: '. $ret,'_login');
+                write_to_log('mobile login: ' . $ret, '_login');
                 Session::instance()->set('userInfo', $rs['data']);
             } else {
-                write_to_log('mobile error login: '. $ret, '_login');
+                write_to_log('mobile error login: ' . $ret, '_login');
             }
             return $ret;
         } else {
-            return json_encode(['resCode' => -1, 'resMsg'=> '输入的图形验证码错误']);
+            return json_encode(['resCode' => -1, 'resMsg' => '输入的图形验证码错误']);
         }
 
     }
@@ -67,11 +67,11 @@ class UserModel extends API
 //        pr($rs);
 //        exit();
         if ($rs['resCode'] == '000000') {
-            write_to_log('wechat login: '. $ret , '_login');
+            write_to_log('wechat login: ' . $ret, '_login');
             Session::instance()->set('userInfo', $rs['data']);
             return TRUE;
         } else {
-            write_to_log('wechat error login: '. $ret, '_login');
+            write_to_log('wechat error login: ' . $ret, '_login');
             Session::instance()->set('wechatBinding', $weChatData);
             return FALSE;
         }
@@ -91,15 +91,15 @@ class UserModel extends API
             $ret = $this->_curlPost($url, $data, 'bindingWeixin');
             $rs = json_decode($ret, true);
             if ($rs['resCode'] == '000000') {
-                write_to_log('binding wx: '. $ret,'_wx');
+                write_to_log('binding wx: ' . $ret, '_wx');
                 Session::instance()->set('userInfo', $rs['data']);
             } else {
-                write_to_log('post binding: '.json_encode($data), '_wx');
+                write_to_log('post binding: ' . json_encode($data), '_wx');
                 write_to_log('binding error: ' . $ret, '_wx');
             }
             return $ret;
         } else {
-            return json_encode(['resCode' => 1 , 'getvcode' => $getVCode, 'vcode' => $data['vCode']]);
+            return json_encode(['resCode' => 1, 'getvcode' => $getVCode, 'vcode' => $data['vCode']]);
         }
     }
 
@@ -200,6 +200,26 @@ class UserModel extends API
 //            $rs = true;
         }
         return $rs;
+    }
+
+    /**
+     * binding iReSearch Data Account
+     *
+     * @param $data
+     * @return mixed|string
+     */
+    public function bindingIResearchDataAccount($data)
+    {
+        $url = 'http://sys.itracker.cn/api/WebForm1.aspx';
+        $encryptData = fnEncrypt($data, KEY);
+        if(DEBUG){
+            echo 'Resource:';
+            var_dump($data);
+            echo 'Encrypt: ';
+            var_dump($encryptData);
+        }
+        $ret = $this->_curlAPost($url, ['v' => $encryptData]);
+        return $ret;
     }
 
 }
