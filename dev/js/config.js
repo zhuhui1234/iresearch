@@ -43,6 +43,7 @@ requirejs.config({
         'wow': 'lib/wow/wow',
         'scrollbar': 'lib/jquery.slimscroll/jquery.slimscroll',
         'cropper': 'lib/cropper/cropper',
+        'cropper-main': 'lib/cropper/main',
         'canvas': 'lib/canvas/jquery.particleground',
         // 'wxLogin':"empty:"
         'WxLogin':'//res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
@@ -150,6 +151,10 @@ requirejs.config({
         },
         'cropper': {
             deps: ['jquery'],
+            exports: '$'
+        },
+        'cropper-main': {
+            deps: ['jquery','bootstrap'],
             exports: '$'
         }
     },

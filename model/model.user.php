@@ -202,17 +202,50 @@ class UserModel extends API
         return $rs;
     }
 
+
     /**
-     * binding iReSearch Data Account
-     *
+     * binding IRDA
+     * @param $data
+     */
+    public function bindingIRDAToUser($data)
+    {
+        $irda = $this->__getIResearchDataAccount($data);
+        if ($irda != '登录失败ws,returntxt:-2') {
+            //binding
+            return $irda;
+        } else {
+            return $irda;
+        }
+    }
+
+    /**
+     * get IRDA
      * @param $data
      * @return mixed|string
      */
-    public function bindingIResearchDataAccount($data)
+    public function getIResearchDataAccount($data)
+    {
+        return $this->__getIResearchDataAccount($data);
+    }
+
+
+    ######################################################################################
+    ##################################                     ###############################
+    #################################   PRIVATE METHODS   ################################
+    ################################                     #################################
+    ######################################################################################
+
+
+    /**
+     * iReSearch Data Account
+     * @param $data
+     * @return mixed|string
+     */
+    private function __getIResearchDataAccount($data)
     {
         $url = 'http://sys.itracker.cn/api/WebForm1.aspx';
         $encryptData = fnEncrypt($data, KEY);
-        if(DEBUG){
+        if (DEBUG) {
             echo 'Resource:';
             var_dump($data);
             echo 'Encrypt: ';

@@ -7,6 +7,7 @@ define({
     loginYongHongURI      : '?m=user&a=loginAPI',
     login                 : '?m=user&a=loginAPI',
     bingWx                : '?m=user&a=bindingWxAPI',
+    bindIRDA              : '?m=user&a=bindingIRDA',
     sendSms               : '?m=service&a=sendSMS',
     regMail               : '?m=user&a=registerAPI',
     regUserInfo           : '?m=user&a=registerUserInfoAPI',

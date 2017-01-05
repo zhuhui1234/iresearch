@@ -74,6 +74,9 @@ class UserController extends Controller
         View::instance('user/success.tpl')->show($data);
     }
 
+    /**
+     * 绑定微信
+     */
     public function BindingWeChat()
     {
         $weChatObj = Session::instance()->get('wechatBinding');
@@ -110,7 +113,7 @@ class UserController extends Controller
     /**
      * 更新注册信息
      */
-    public function registerUserInfo()
+    public function trailApply()
     {
 
     }
@@ -120,29 +123,40 @@ class UserController extends Controller
      */
     public function editUserInfo()
     {
-
+        $data['token'] = $this->userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $data = array(
+            'loginStatus' => $this->loginStatus,
+            'userIndustry' => $userIndustry,
+            'u_head' => $this->userInfo['u_head'],
+            'u_name' => $this->userInfo['u_name']
+        );
+        View::instance('user/user.tpl')->show($data);
     }
 
     /**
-     * set safe
+     * 用户管理
      */
-    public function setSafe()
+    public function userManger()
+    {
+        $data['token'] = $this->userInfo['u_token'];
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $data = array(
+            'userIndustry' => $userIndustry,
+            'u_head' => $this->userInfo['u_head'],
+            'u_name' => $this->userInfo['u_name'],
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->userInfo['u_account']
+        );
+        View::instance('user/manager.tpl')->show($data);
+    }
+
+    public function permissionManager()
     {
 
     }
 
-    /**
-     * binding we chat
-     */
-    public function setSafeWeChat()
-    {
-
-    }
-
-    /**
-     * change pwd
-     */
-    public function changePwd()
+    public function userLog()
     {
 
     }
@@ -180,22 +194,7 @@ class UserController extends Controller
         View::instance('user/user_apply.tpl')->show($data);
     }
 
-    /**
-     * 用户管理
-     */
-    public function userManger()
-    {
-        $data['token'] = $this->userInfo['u_token'];
-        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
-        $data = array(
-            'userIndustry' => $userIndustry,
-            'u_head' => $this->userInfo['u_head'],
-            'u_name' => $this->userInfo['u_name'],
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account']
-        );
-        View::instance('user/user_manager.tpl')->show($data);
-    }
+
 
     /**
      * 用户权限详细
@@ -225,13 +224,6 @@ class UserController extends Controller
         View::instance('user/userAccess.tpl')->show($data);
     }
 
-    /**
-     * 忘记用户密码
-     */
-    public function forgotPassword()
-    {
-
-    }
 
     /**
      * 个人信息
@@ -315,6 +307,12 @@ class UserController extends Controller
         }
 
 
+    }
+
+    public function bindingIRDA()
+    {
+        $data = json_encode($this->request()->post('data'));
+        echo $this->model->getIResearchDataAccount($data);
     }
 
     /**
