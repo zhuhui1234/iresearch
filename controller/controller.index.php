@@ -47,6 +47,8 @@ class IndexController extends Controller
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
+//        var_dump($userInfo);
+//        exit();
 //        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
 //            "YH" => YH_LOGIN,
@@ -122,17 +124,17 @@ class IndexController extends Controller
     public function kolLink()
     {
         $rMail = $this->userInfo['mobile'];
-
         $mail = urlencode($rMail);
         $rkey = $rMail . $rMail . date('YmdH');
         $key = strtoupper(md5($rkey,false));
-
         $ret = KOL_API . "?u={$mail}&e={$mail}&ukey={$key}";
-//        pr($mail);
-//        pr($rkey);
-//        pr($key);
-//        pr($ret);
         return $ret;
+    }
 
+    public function test()
+    {
+        $Clear = json_encode(['mail'=>'wanghaiyan@iresearch.com.cn','pwd'=>'123456']);
+        $userModel = Model::instance('user');
+        echo $userModel->getIResearchDataAccount($Clear);
     }
 }
