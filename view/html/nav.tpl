@@ -28,7 +28,7 @@
                 </li>
                 <li id="nav_irvcloud" class="">
                     <a href="#">
-                        <span>艾瑞智数</span>
+                        <span>艾瑞智云</span>
                         <i>iROnes</i>
                     </a>
                 </li>
