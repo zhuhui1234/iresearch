@@ -16,8 +16,13 @@ define(['helper', 'app/main'], function (Helper) {
             $("#binding_irda_error").show();
         } else {
             Helper.post('bindIRDA', {data: getData}, function (ret) {
-
-                alert('绑定成功');
+                if (ret.resCode == '000000') {
+                    alert('绑定成功');
+                    $('#bindingClassicIRD').removeAttribute('data-target');
+                    $('#bindingClassicIRD').html('已绑定');
+                }else{
+                    alert('绑定失败');
+                }
                 $("#myModal").modal("hide");
             }, function (errRet) {
                 console.log(errRet);
