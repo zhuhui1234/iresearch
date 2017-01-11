@@ -185,6 +185,11 @@ class Api extends Url{
             pr($content, 1);
             echo '<br>';
         }
+
+        //LOG
+        write_to_log('POST URL:'. $url, '_API');
+        write_to_log('POST VALUE' . $post, '_API');
+        write_to_log('RETURN: '. $content, '_API');
         return $content;
     }
 
@@ -224,6 +229,11 @@ class Api extends Url{
             pr($content, 1);
             echo '<br>';
         }
+
+        //LOG
+        write_to_log('POST URL:'. $url, '_ird');
+        write_to_log('POST VALUE' . $post, '_ird');
+        write_to_log('RETURN: '. $content, '_ird');
         return $content;
     }
 
