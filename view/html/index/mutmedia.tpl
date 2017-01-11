@@ -16,8 +16,8 @@
 <!-- INCLUDE ../nav.tpl -->
 
 
-<iframe id="mut_iFrame" style="width: 100%;" src="/MUTmedia/?m=index&a=intermediaryPlan&token={token}&guid={guid}" ></iframe>
-
+<iframe id="mut_iFrame" style="width: 100%;" src="/MUTmedia/?m=index&a=intermediaryPlan&token={token}&guid={userID}" ></iframe>
+<!-- INCLUDE ../foot.tpl -->
 
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
