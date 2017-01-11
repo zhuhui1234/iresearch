@@ -10249,12 +10249,19 @@ button.close {
   opacity: .5;
 }
 .modal-header {
-  padding: 15px;
-  background: #f5f5f5;
+  padding: 12px 15px;
+  color: #fff;
+  text-align: center;
+  background: #69c72b;
   border-bottom: 1px solid #e5e5e5;
 }
 .modal-header .close {
   margin-top: -2px;
+  color: #fff;
+  opacity: .8;
+}
+.modal-header .close:hover {
+  opacity: 1;
 }
 .modal-title {
   margin: 0;

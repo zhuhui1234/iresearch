@@ -232,7 +232,7 @@ class Api extends Url{
 
         //LOG
         write_to_log('POST URL:'. $url, '_ird');
-        write_to_log('POST VALUE' . $post, '_ird');
+        write_to_log('POST VALUE' . json_encode($post), '_ird');
         write_to_log('RETURN: '. $content, '_ird');
         return $content;
     }

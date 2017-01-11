@@ -21,11 +21,11 @@ class UserController extends Controller
 
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
-            $this->userInfo['token'] = $this->userInfo['u_token'];
+            $this->userInfo['token'] = $this->userInfo['token'];
             if (empty($this->userInfo['u_head'])) {
-                $this->userInfo['u_head'] = 'dev/img/user-head.png';
+                $this->userInfo['headimg'] = 'dev/img/user-head.png';
             } else {
-                $this->userInfo['u_head'] = IMG_URL . $this->userInfo['u_head'];
+                $this->userInfo['headimg'] = IMG_URL . $this->userInfo['u_head'];
             }
         } else {
             $this->loginStatus = TRUE;
@@ -68,8 +68,8 @@ class UserController extends Controller
         $data = array(
             'loginStatus' => $this->loginStatus,
             'userIndustry' => $userIndustry,
-            'u_head' => $this->userInfo['u_head'],
-            'u_name' => $this->userInfo['u_name']
+            'u_head' => $this->userInfo['headimg'],
+            'u_name' => $this->userInfo['uname']
         );
         View::instance('user/success.tpl')->show($data);
     }
@@ -104,8 +104,8 @@ class UserController extends Controller
         $data = array(
             'loginStatus' => $this->loginStatus,
             'userIndustry' => $userIndustry,
-            'u_head' => $this->userInfo['u_head'],
-            'u_name' => $this->userInfo['u_name']
+            'u_head' => $this->userInfo['headimg'],
+            'u_name' => $this->userInfo['name']
         );
         View::instance('user/fail.tpl')->show($data);
     }
@@ -128,8 +128,8 @@ class UserController extends Controller
         $data = array(
             'loginStatus' => $this->loginStatus,
             'userIndustry' => $userIndustry,
-            'u_head' => $this->userInfo['u_head'],
-            'u_name' => $this->userInfo['u_name']
+            'u_head' => $this->userInfo['headimg'],
+            'u_name' => $this->userInfo['name']
         );
         View::instance('user/user.tpl')->show($data);
     }
@@ -143,10 +143,10 @@ class UserController extends Controller
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
             'userIndustry' => $userIndustry,
-            'u_head' => $this->userInfo['u_head'],
-            'u_name' => $this->userInfo['u_name'],
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account']
+            'u_head' => $this->userInfo['headimg'],
+            'u_name' => $this->userInfo['uname'],
+            'token' => $this->userInfo['token'],
+            'u_account' => $this->userInfo['mail']
         );
         View::instance('user/manager.tpl')->show($data);
     }
@@ -186,10 +186,10 @@ class UserController extends Controller
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
             'userIndustry' => $userIndustry,
-            'u_head' => $this->userInfo['u_head'],
-            'u_name' => $this->userInfo['u_name'],
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account']
+            'u_head' => $this->userInfo['headimg'],
+            'u_name' => $this->userInfo['uname'],
+            'token' => $this->userInfo['token'],
+            'u_account' => $this->userInfo['mail']
         );
         View::instance('user/user_apply.tpl')->show($data);
     }
@@ -201,7 +201,7 @@ class UserController extends Controller
      */
     public function userAccessDetail()
     {
-        $data['token'] = $this->userInfo['u_token'];
+        $data['token'] = $this->userInfo['token'];
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $getUser = json_decode($this->model->getUserInfo(['token' => $this->userInfo['u_token'], 'u_account' => $this->request()->get('u_account')]), TRUE);
         $getUser = $getUser['data'];
@@ -209,16 +209,16 @@ class UserController extends Controller
         if (empty($getUser['u_head']) OR $getUser['u_head'] == 'head.png') {
             $getUser['u_head'] = 'dev/img/user-head.png';
         } else {
-            $getUser['u_head'] = IMG_URL . $getUser['u_head'];
+            $getUser['u_head'] = IMG_URL . $getUser['headimg'];
         }
 
         $data = array(
             'userIndustry' => $userIndustry,
-            'u_head' => $this->userInfo['u_head'],
-            'u_name' => $this->userInfo['u_name'],
+            'u_head' => $this->userInfo['headimg'],
+            'u_name' => $this->userInfo['uname'],
             'getUser' => $getUser,
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account']
+            'token' => $this->userInfo['token'],
+            'u_account' => $this->userInfo['mail']
         );
 
         View::instance('user/userAccess.tpl')->show($data);
@@ -240,7 +240,7 @@ class UserController extends Controller
     public function permissionAccess()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
+        $data['token'] = $userInfo['token'];
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);//用户的行业
         //大行业
         $bigIndustry = Model::instance('Industry')->industryMaxList($data);//大行业
@@ -252,13 +252,13 @@ class UserController extends Controller
         $data = array(
             "userIndustry" => $userIndustry,
             'userInfo' => $this->userInfo,
-            'u_head' => $this->userInfo['u_head'],
-            'u_name' => $this->userInfo['u_name'],
+            'u_head' => $this->userInfo['headimg'],
+            'u_name' => $this->userInfo['uname'],
             'loginStatus' => $this->loginStatus,
             'bigIndustry' => $bigIndustry['data']['IndustryMaxList']['data'],
             'smallIndustry' => $smallIndustry['data']['IndustryMinList'],
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account']
+            'token' => $this->userInfo['token'],
+            'u_account' => $this->userInfo['mail']
         );
         View::instance('user/permissionAccess.tpl')->show($data);
     }
@@ -309,10 +309,13 @@ class UserController extends Controller
 
     }
 
+    /**
+     *
+     */
     public function bindingIRDA()
     {
         $data = json_encode($this->request()->post('data'));
-        echo $this->model->getIResearchDataAccount($data);
+        echo $this->model->bindingIRDAToUser($data);
     }
 
     /**
@@ -346,8 +349,8 @@ class UserController extends Controller
     {
         $data = [
             'operation' => $this->request()->requestAll('operation'),
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->request()->requestAll('u_account')
+            'token' => $this->userInfo['token'],
+            'u_account' => $this->request()->requestAll('mail')
         ];
 
         echo $this->model->setState($data);
@@ -366,7 +369,7 @@ class UserController extends Controller
     public function setUserInfoAPI()
     {
         $updateUserInfo = array();
-        $u_name = $this->request()->post('u_name');
+        $u_name = $this->request()->post('uname');
         $u_department = $this->request()->post('u_department');
         $u_position = $this->request()->post('u_position');
         $u_mobile = $this->request()->post('u_mobile');
@@ -449,8 +452,8 @@ class UserController extends Controller
     public function getUserInfo()
     {
         $ret = $this->model->getUserInfo(array(
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account']
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
         ));
 //        return $ret;
         echo $ret;

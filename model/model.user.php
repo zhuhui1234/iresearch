@@ -41,6 +41,9 @@ class UserModel extends API
             if ($rs['resCode'] == '000000') {
                 write_to_log('mobile login: ' . $ret, '_login');
                 Session::instance()->set('userInfo', $rs['data']);
+                if (!empty($rs['data']['productKey'])) {
+                    $this->getIResearchDataAccount($rs['data']['productKey']);
+                }
             } else {
                 write_to_log('mobile error login: ' . $ret, '_login');
             }
@@ -93,6 +96,9 @@ class UserModel extends API
             if ($rs['resCode'] == '000000') {
                 write_to_log('binding wx: ' . $ret, '_wx');
                 Session::instance()->set('userInfo', $rs['data']);
+                if (!empty($rs['data']['productKey'])) {
+
+                }
             } else {
                 write_to_log('post binding: ' . json_encode($data), '_wx');
                 write_to_log('binding error: ' . $ret, '_wx');
@@ -190,8 +196,8 @@ class UserModel extends API
     public function checkToken()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
-//        $userInfoArr = json_decode($this->getUserInfo($data), TRUE);
+        $data['token'] = $userInfo['token'];
+        $data['userID'] = $userInfo['userID'];
         $userInfoArr = json_decode($this->getUserInfo($data), TRUE);
         $rs = True;
         if ($userInfoArr['resCode'] != '000000' || $userInfo == null) {
@@ -209,13 +215,34 @@ class UserModel extends API
      */
     public function bindingIRDAToUser($data)
     {
+        $userInfo = Session::instance()->get('userInfo');
+        write_to_log('binding post: ' . $data, '_ird');
+//        pr($userInfo);
+//        exit();
         $irda = $this->__getIResearchDataAccount($data);
-        if ($irda != '登录失败ws,returntxt:-2') {
-            //binding
-            return $irda;
+        write_to_log('bing return: ' . $irda, '_ird');
+        $irD = json_decode($irda, true);
+//        pr($irD['message']);
+        if ((int)$irD['iUserID'] > 0) {
+            //verify success
+            $ir = json_decode($irda, true);
+            $bindingData = [
+                'token' => $userInfo['token'],
+                'userID' => $userInfo['userID'],
+                'productKey' => $irD['iUserID']
+            ];
+            $userInfo['productKey'] = $ir['iUserID'];
+            Session::instance()->set('userInfo', $userInfo);
+            $userInfo['productKey'] = $ir['iUserID'];
+            Session::instance()->set('iResearchDataUserInfo', $irda);
+            Session::instance()->set('irdTimeOut', time() * 60);
+//            $this->getIResearchDataAccount($ir['iUserID']);
+            $ret = $this->__bindingProduct($bindingData);
+            return $ret;
         } else {
-            return $irda;
+            return json_encode(['resCode' => '000003', 'resMsg' => '用户认证失败']);
         }
+
     }
 
     /**
@@ -223,9 +250,12 @@ class UserModel extends API
      * @param $data
      * @return mixed|string
      */
-    public function getIResearchDataAccount($data)
+    public function getIResearchDataAccount($productKey)
     {
-        return $this->__getIResearchDataAccount($data);
+        $saveOldIResearchDataInfo = $this->__getIResearchDataAccount(json_encode(['iUserID' => $productKey]));
+        Session::instance()->set('iResearchDataUserInfo', $saveOldIResearchDataInfo);
+        Session::instance()->set('irdTimeOut', time() * 60);
+        return $saveOldIResearchDataInfo;
     }
 
 
@@ -245,6 +275,7 @@ class UserModel extends API
     {
         $url = 'http://sys.itracker.cn/api/WebForm1.aspx';
         $encryptData = fnEncrypt($data, KEY);
+
         if (DEBUG) {
             echo 'Resource:';
             var_dump($data);
@@ -253,6 +284,19 @@ class UserModel extends API
         }
         $ret = $this->_curlAPost($url, ['v' => $encryptData]);
         return $ret;
+    }
+
+
+    private function __bindingProduct($data)
+    {
+        $url = API_URL . '?m=User&a=setProductKey';
+        $ret = $this->_curlPost($url, $data, 'setProduct');
+        return $ret;
+    }
+
+    private function __checkProductKey()
+    {
+//        $iUserID = Session::instance()
     }
 
 }
