@@ -26,16 +26,19 @@ class IndexController extends Controller
     public function home()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
+        $data['token'] = $userInfo['token'];
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
 //            "YH" => YH_LOGIN,
             'loginStatus' => $this->loginStatus,
             'userInfo' => $this->userInfo,
-            'token' => $this->userInfo['u_token'],
-            'u_account' => $this->userInfo['u_account'],
-            'title' => WEBSITE_TITLE
+            'token' => $this->userInfo['token'],
+//            'u_account' => $this->userInfo['u_account'],
+            'title' => WEBSITE_TITLE,
         );
+        if (empty($userInfo['productKey'])) {
+            $data['irdStatus'] = 1;
+        }
 
         View::instance('index/index.tpl')->show($data);
     }
@@ -46,7 +49,7 @@ class IndexController extends Controller
     public function index()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
+        $data['token'] = $userInfo['token'];
 //        var_dump($userInfo);
 //        exit();
 //        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
@@ -56,7 +59,7 @@ class IndexController extends Controller
             'loginStatus' => $this->loginStatus,
             'userInfo' => $this->userInfo,
             'token' => $this->userInfo['token'],
-            'guid' => $this->userInfo['guid'],
+            'userID' => $this->userInfo['userID'],
             'role' => $this->userInfo['permissions'],
             'title' => WEBSITE_TITLE,
             'kolLink' => $this->kolLink()
@@ -76,7 +79,7 @@ class IndexController extends Controller
             'loginStatus' => $this->loginStatus,
             'userInfo' => $this->userInfo,
             'token' => $this->userInfo['token'],
-            'guid' => $this->userInfo['guid'],
+            'userID' => $this->userInfo['userID'],
             'role' => $this->userInfo['permissions'],
             'title' => WEBSITE_TITLE,
             'kolLink' => $this->kolLink()
@@ -92,7 +95,7 @@ class IndexController extends Controller
     {
         $data = array(
             'token' => $this->userInfo['token'],
-            'guid' => $this->userInfo['guid'],
+            'userID' => $this->userInfo['userID'],
             'role' => $this->userInfo['permissions'],
             'title' => WEBSITE_TITLE
         );
@@ -103,7 +106,7 @@ class IndexController extends Controller
         } else {
             echo("<SCRIPT LANGUAGE=\"JavaScript\">
             alert(\"您并未开通此功能\");
-            window.location.href=\"?m=index\";
+            window.parent.frames.location.href=\"?m=index\";
             </SCRIPT>");
         }
 
@@ -112,7 +115,7 @@ class IndexController extends Controller
     public function demo()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
+        $data['token'] = $userInfo['token'];
         $data['cfg_model'] = 7;
         $ret = Model::instance('industry')->configList($data);
         $data = array(
@@ -134,7 +137,21 @@ class IndexController extends Controller
     public function test()
     {
         $Clear = json_encode(['mail'=>'wanghaiyan@iresearch.com.cn','pwd'=>'123456']);
+//        $b = json_encode();
+//        var_dump($b);
         $userModel = Model::instance('user');
-        echo $userModel->getIResearchDataAccount($Clear);
+//        echo $userModel->getIResearchDataAccount($this->userInfo['productKey']);
+        pr(Session::instance()->get('userInfo'));
+    }
+
+    ######################################################################################
+    ##################################                     ###############################
+    #################################   PRIVATE METHODS   ################################
+    ################################                     #################################
+    ######################################################################################
+
+    private function __checkIRD()
+    {
+        $pp = Session::instance()->get('');
     }
 }
