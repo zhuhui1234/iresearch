@@ -29,7 +29,15 @@ class IRDataController extends Controller
         if (!empty($this->userInfo['productKey'])) {
             $ppname = $this->request()->get('ppname');
             $stat = false;
-            $data = [];
+            $data = [
+                'loginStatus' => $this->loginStatus,
+                'userInfo' => $this->userInfo,
+                'token' => $this->userInfo['token'],
+                'userID' => $this->userInfo['userID'],
+                'role' => $this->userInfo['permissions'],
+                'title' => WEBSITE_TITLE,
+                'kolLink' => $this->kolLink()
+            ];
             if (DEBUG) {
 //                pr($this->userInfo);
                 var_dump($this->irdUserInfo);
@@ -41,6 +49,8 @@ class IRDataController extends Controller
                     $stat = true;
                 }
             }
+//            pr($data);
+//            exit();
             if ($stat) {
                 View::instance('service/ird.tpl')->show($data);
             } else {
@@ -52,9 +62,20 @@ class IRDataController extends Controller
 
     }
 
+    public function kolLink()
+    {
+        $rMail = $this->userInfo['mobile'];
+        $mail = urlencode($rMail);
+        $rkey = $rMail . $rMail . date('YmdH');
+        $key = strtoupper(md5($rkey,false));
+        $ret = KOL_API . "?u={$mail}&e={$mail}&ukey={$key}";
+        return $ret;
+    }
+
     public function errorPage($msg)
     {
         $data = ['message' => $msg];
+
         View::instance('index/error.tpl')->show($data);
     }
 
