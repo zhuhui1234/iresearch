@@ -36,10 +36,11 @@ class IndexController extends Controller
 //            'u_account' => $this->userInfo['u_account'],
             'title' => WEBSITE_TITLE,
         );
-        if (empty($userInfo['productKey'])) {
+        if (empty(trim($userInfo['productKey']))) {
             $data['irdStatus'] = 1;
+        } else {
+            $data['irdStatus'] = 0;
         }
-
         View::instance('index/index.tpl')->show($data);
     }
 
@@ -64,10 +65,18 @@ class IndexController extends Controller
             'title' => WEBSITE_TITLE,
             'kolLink' => $this->kolLink()
         );
+        if (empty(trim($userInfo['productKey']))) {
+            $data['irdStatus'] = 1;
+        } else {
+            $data['irdStatus'] = 0;
+        }
 
         View::instance('index/home.tpl')->show($data);
     }
 
+    /**
+     *
+     */
     public function kolPage()
     {
         $userInfo = Session::instance()->get('userInfo');
@@ -140,7 +149,7 @@ class IndexController extends Controller
 //        $b = json_encode();
 //        var_dump($b);
         $userModel = Model::instance('user');
-//        echo $userModel->getIResearchDataAccount($this->userInfo['productKey']);
+        echo $userModel->getIResearchDataAccount($this->userInfo['productKey']);
         pr(Session::instance()->get('userInfo'));
     }
 
