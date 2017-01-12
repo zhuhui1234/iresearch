@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: robinwong51
  * Date: 25/11/2016
  * Time: 7:14 PM
  */
-
 class WeChatController extends Controller
 {
 
@@ -26,7 +26,7 @@ class WeChatController extends Controller
         $state = $this->request()->get('state');
         $weChatObj = $wechatModel->wxCheckLogin($code);
         $userInfo = Session::instance()->get('userInfo');
-        if(DEBUG) {
+        if (DEBUG) {
             pr('微信返回值:');
             var_dump($state);
             var_dump($weChatObj);
@@ -43,33 +43,37 @@ class WeChatController extends Controller
 
             case 'wxLogin':
                 $ret = $this->__weChatAutoLogin(array(
-                    'Account'  => $weChatObj['openid'],
+                    'Account' => $weChatObj['openid'],
                     'LoginKey' => $weChatObj['unionid']
-                ),$wechatModel->getUserInfo($code));
+                ), $wechatModel->getUserInfo($code));
 //                var_dump($ret);
 //                exit();
-                if ($ret){
+                if ($ret) {
                     header('Location: ?m=index');
-                }else{
+                } else {
                     header("Location: ?m=user&a=BindingWeChat");
                 }
 
                 break;
             //binding weChat
             case 'binding':
-                $ret =  $this->__bindingWeChat(array(
-                    'loginOpenid'  => $weChatObj['openid'],
+                $ret = $this->__bindingWeChat(array(
+                    'loginOpenid' => $weChatObj['openid'],
                     'loginUnionid' => $weChatObj['unionid'],
-//                    'u_account'    => $userInfo['u_account'],
-                    'token'        => $userInfo['token']
+                    'u_account' => $userInfo[''],
+                    'token' => $userInfo['token']
                 ));
                 $j_ret = json_decode($ret, TRUE);
                 if ($j_ret['resCode'] == '000000') {
                     $this->wechatStatus = TRUE;
                     View::instance('usr/success.tpl')->show($j_ret);
-                }else{
+                } else {
                     View::instance('user/fail.tpl')->show($j_ret);
                 }
+                break;
+
+            case 'bindingUser':
+                $ret = $this ->__bindingWeChatForUser([]);
                 break;
 //            case 'viewReport':
 //                print_r($state_tmp);
@@ -84,13 +88,18 @@ class WeChatController extends Controller
      * @param $data
      * @return mixed
      */
-    private function __weChatAutoLogin($data,$weChatData)
+    private function __weChatAutoLogin($data, $weChatData)
     {
-        return $this->model->WeChatAutoLogin($data,$weChatData);
+        return $this->model->WeChatAutoLogin($data, $weChatData);
     }
 
     private function __bindingWeChat($data)
     {
         return $this->model->bindWeChat($data);
+    }
+
+    private function __bindingWeChatForUser($data)
+    {
+        return $this->model->bindingWeChartUser($data);
     }
 }
