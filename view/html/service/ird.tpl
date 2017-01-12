@@ -17,6 +17,7 @@
 
 
 <iframe id="mut_iFrame" style="width: 100%;" src="{ppurl}" ></iframe>
+<!-- <iframe id="mut_iFrame" style="width: 100%;" src="http://h.home/ivt/jump/?guid=a5d61c0e-3ab3-497f-945e-4c96cadcd10f" ></iframe> -->
 
 
 <!-- 开发环境 -->
@@ -25,7 +26,8 @@
 <script type="text/javascript">
     require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
     require([
-        'app/home/intermediary'
+        'app/home/intermediary',
+        'app/home/ird'
     ]);
 </script>
 <!-- 生产环境 -->
