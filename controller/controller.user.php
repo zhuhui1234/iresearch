@@ -12,12 +12,13 @@
 class UserController extends Controller
 {
 
-    private $model, $userInfo, $loginStatus, $wechatStatus;
+    private $model, $userInfo, $loginStatus, $wechatStatus, $userDetail;
 
     function __construct()
     {
         $this->model = Model::instance('user');
         $this->userInfo = Session::instance()->get('userInfo');
+        $this->userDetail = $this->model->getUserInfo(['token' => $this->userInfo['token'], 'userID' => $this->userInfo['userID']]);
 
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
@@ -124,13 +125,12 @@ class UserController extends Controller
     public function editUserInfo()
     {
         $data['token'] = $this->userInfo['u_token'];
-        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
-        $data = array(
-            'loginStatus' => $this->loginStatus,
-            'userIndustry' => $userIndustry,
-            'u_head' => $this->userInfo['headimg'],
-            'u_name' => $this->userInfo['name']
-        );
+        var_dump($this->loginStatus);
+        $data = $this->userDetail;
+//        $data['loginStatus'] = $this->loginStatus;
+        pr($data);
+        var_dump($this->userInfo);
+        exit();
         View::instance('user/user.tpl')->show($data);
     }
 
@@ -193,7 +193,6 @@ class UserController extends Controller
         );
         View::instance('user/user_apply.tpl')->show($data);
     }
-
 
 
     /**
@@ -302,8 +301,8 @@ class UserController extends Controller
             ];
             $this->__json();
             echo $this->model->bindWeChat($data);
-        } else  {
-            echo json_encode([resCode=>'00005','msg'=>'扫描微信异常']);
+        } else {
+            echo json_encode([resCode => '00005', 'msg' => '扫描微信异常']);
         }
 
 
@@ -418,22 +417,7 @@ class UserController extends Controller
                     $this->userInfo['u_name'] = $userinfo['data']['u_name'];
                 }
 //
-//                if (!empty($u_department)) {
-//                    $this->userInfo['u_department'] = $u_department;
-//                }
-//
-//                if (!empty($u_position)) {
-//                    $this->userInfo['u_position'] = $u_position;
-//                }
-//
-//                if (!empty($u_mobile)) {
-//                    $this->userInfo['u_mobile'] = $u_mobile;
-//                }
 
-
-//                $userinfo['token'] = $userinfo['data']['u_token'];
-
-//                var_dump($this->userInfo);
 
                 Session::instance()->set('userInfo', $this->userInfo);
 
