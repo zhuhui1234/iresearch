@@ -22,7 +22,7 @@ class IndustryController extends Controller
     public function getMaxIndustryAPI()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
+        $data['token'] = $userInfo['token'];
         $ret = $this->model->industryMaxList($data);
         print_r($ret);
     }
@@ -30,7 +30,7 @@ class IndustryController extends Controller
     public function getMinIndustryAPI()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
+        $data['token'] = $userInfo['token'];
         $data['ity_sid'] = $this->request()->requestAll("ity_sid");
         $ret = $this->model->industryMinList($data);
         $this->success($ret);
@@ -39,7 +39,7 @@ class IndustryController extends Controller
     public function getConfigListAPI()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
+        $data['token'] = $userInfo['token'];
         $data['cfg_model'] = 7;
         $ret = $this->model->configList($data);
         print_r($ret);
@@ -48,7 +48,7 @@ class IndustryController extends Controller
     public function getConfigListJsonAPI()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
+        $data['token'] = $userInfo['token'];
         $data['cfg_model'] = $this->request()->requestAll("cfg_model");
         $ret = $this->model->configListJson($data);
         $this->success($ret);
@@ -57,7 +57,7 @@ class IndustryController extends Controller
     public function getUserIndustry()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
+        $data['token'] = $userInfo['token'];
         $ret = $this->model->getUserIndustry($data);
     }
 
@@ -67,7 +67,7 @@ class IndustryController extends Controller
     public function getPermissionsListAPI()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
+        $data['token'] = $userInfo['token'];
         $data['cfg_id'] = $this->request()->requestAll("cfg_id");
         $data['u_account'] = $userInfo['u_account'];
         $data['pageSize'] = $this->request()->requestAll("length", 10);
@@ -85,7 +85,7 @@ class IndustryController extends Controller
     public function showIndustryReport()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $data['token'] = $userInfo['u_token'];
+        $data['token'] = $userInfo['token'];
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data['cfg_model'] = $this->request()->requestAll("cfg_model");
         $ret = Model::instance('industry')->configList($data);
@@ -110,7 +110,7 @@ class IndustryController extends Controller
             "pname" => $this->request()->requestAll("pname"),
             "ity_name" => $this->request()->requestAll("ity_name"),
             "level" => $level,
-            'token' => $this->userInfo['u_token'],
+            'token' => $this->userInfo['token'],
             'u_account' => $this->userInfo['u_account'],
             'role' => $userInfo['permissions']
         );
@@ -136,7 +136,7 @@ class IndustryController extends Controller
             'orderByType' => $this->request()->requestAll('orderByType'),
             'pageNo' => $this->request()->requestAll('pageNo'),
             'pageSize' => $this->request()->requestAll('pageSize'),
-            'token' => $userInfo['u_token'],
+            'token' => $userInfo['token'],
             'u_account' => $userInfo['u_account']
         ];
         $this->__json();
@@ -154,7 +154,7 @@ class IndustryController extends Controller
             'adt_id' => $this->request()->requestAll('adt_id'),
             'adt_state' => $this->request()->requestAll('adt_state'),
             'u_account' => $userInfo['u_account'],
-            'token' => $userInfo['u_token']
+            'token' => $userInfo['token']
         ]);
     }
 

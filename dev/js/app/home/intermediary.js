@@ -7,7 +7,7 @@ define(['helper', 'app/main'], function (Helper) {
 
         //render
         jQuery(function ($) {
-            var topBar = 140;
+            var topBar = 70;
             var innerHeight = window.innerHeight;
             console.log(innerHeight);
             var $frame = $('iframe:eq(0)');

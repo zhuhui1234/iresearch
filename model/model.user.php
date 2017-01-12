@@ -110,6 +110,15 @@ class UserModel extends API
     }
 
     /**
+     * 绑定已注册用户
+     * @param $data
+     */
+    public function bindingWeChartUser($data)
+    {
+
+    }
+
+    /**
      * get user info list
      *
      * @param $data
@@ -145,8 +154,8 @@ class UserModel extends API
      */
     public function setUserInfo($data)
     {
-        $url = API_URL . '?m=user&a=setUserInfo';
-        $ret = $this->_curlPost($url, $data, 'setUserInfo');
+        $url = API_URL . '?m=user&a=editUserInfo';
+        $ret = $this->_curlPost($url, $data, 'editUserInfo');
         return $ret;
     }
 
@@ -233,7 +242,6 @@ class UserModel extends API
             ];
             $userInfo['productKey'] = $ir['iUserID'];
             Session::instance()->set('userInfo', $userInfo);
-            $userInfo['productKey'] = $ir['iUserID'];
             Session::instance()->set('iResearchDataUserInfo', $irda);
             Session::instance()->set('irdTimeOut', time() * 60);
 //            $this->getIResearchDataAccount($ir['iUserID']);

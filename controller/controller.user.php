@@ -24,9 +24,9 @@ class UserController extends Controller
             $this->loginStatus = FALSE;
             $this->userInfo['token'] = $this->userInfo['token'];
             if (empty($this->userInfo['u_head'])) {
-                $this->userInfo['headimg'] = 'dev/img/user-head.png';
+                $this->userInfo['headImg'] = 'dev/img/user-head.png';
             } else {
-                $this->userInfo['headimg'] = IMG_URL . $this->userInfo['u_head'];
+                $this->userInfo['headImg'] = IMG_URL . $this->userInfo['headImg'];
             }
         } else {
             $this->loginStatus = TRUE;
@@ -125,7 +125,7 @@ class UserController extends Controller
     public function editUserInfo()
     {
         $data['token'] = $this->userInfo['u_token'];
-        var_dump($this->loginStatus);
+//        var_dump($this->loginStatus);
         $data = $this->userDetail;
 //        $data['loginStatus'] = $this->loginStatus;
         pr($data);

@@ -22,14 +22,14 @@
 	<div class="user-center">
 		<div class="user-left">
 			<div class="user-header">
-				<img src="./public/img/head_default.png" alt="">
+				<img src="{headImg}" alt="">
 				<p class="mts">
 					<span class="label label-warning">管理员</span>
 				</p>
 				<h4>{u_name}</h4>
 				<p class="user-time">
 					<i class="iconfont icon-clock"></i>
-					<span>2017-11-30  到期</span>
+					<span>{validity}到期</span>
 				</p>
 			</div>
 			<ul class="user-left-menu">
