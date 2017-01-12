@@ -26,7 +26,7 @@
 				<p class="mts">
 					<span class="label label-warning">管理员</span>
 				</p>
-				<h4>Herry Yang</h4>
+				<h4>{u_name}</h4>
 				<p class="user-time">
 					<i class="iconfont icon-clock"></i>
 					<span>2017-11-30  到期</span>
@@ -142,7 +142,7 @@
 					<label class="col-sm-2 control-label">手机号码</label>
 					<div class="col-sm-6">
 						<label class="control-label">
-							186******32
+
 						</label>
 					</div>
 				</div>
