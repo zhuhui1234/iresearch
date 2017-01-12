@@ -110,16 +110,31 @@
                                                             <!-- IF role="0" -->
                                                             <span>未开通</span>
                                                             <!-- ELSE -->
-                                                            <span>试用版</span>
+                                                            <span>经典版</span>
                                                             <!-- ENDIF -->
                                                         </h4>
                                                         <p>移动端用户行为监测</p>
                                                     </a>
                                             </div>
                                             <div class="col-xs-6">
+                                                <!-- IF role="0" -->
+                                                <a href="#">
+                                                    <!-- ELSE -->
+                                                    <a href="?m=irdata&a=classicSys&ppname=iut">
+                                                        <!-- ENDIF -->
+                                                        <h4>iUserTracker
+                                                            <!-- IF role="0" -->
+                                                            <span>未开通</span>
+                                                            <!-- ELSE -->
+                                                            <span>经典版</span>
+                                                            <!-- ENDIF -->
+                                                        </h4>
+                                                        <p>PC端用户行为监测</p>
+                                                    </a>
+                                            </div>
+                                            <div class="col-xs-6">
                                                 <a href="#">
                                                     <h4>oUserTracker<span>研发中</span>
-
                                                     </h4>
                                                     <p>OTT端用户行为监测</p>
                                                 </a>
@@ -143,17 +158,17 @@
                                             </div>
                                             <div class="col-xs-6">
                                                 <a href="?m=irdata&a=classicSys&ppname=ivt">
-                                                    <h4>iVideoTracker<span>研发中</span></h4>
+                                                    <h4>iVideoTracker<span>经典版</span></h4>
                                                     <p>PC端视频内容市场监测</p>
                                                 </a>
                                             </div>
                                             <div class="col-xs-6">
-                                                <!-- IF role="0" -->
+                                                <!-- IF role="1" -->
                                                 <a href="?m=industry&a=showIndustryReport">
                                                     <!-- ELSE -->
                                                     <a href="#">
                                                         <!-- ENDIF -->
-                                                        <h4>mVideoTracker<span>试用版</span>
+                                                        <h4>mVideoTracker<span>经典版</span>
                                                             <!-- IF role="0" -->
                                                             <span>未开通</span>
                                                             <!-- ENDIF -->
@@ -224,7 +239,7 @@
                                             </div>
                                             <div class="col-xs-6">
                                                 <a href="?m=irdata&a=classicSys&ppname=madt">
-                                                    <h4>mAdTracker<span>试用版</span></h4>
+                                                    <h4>mAdTracker<span>经典版</span></h4>
                                                     <p>移动端营销广告市场监测</p>
                                                 </a>
                                             </div>
