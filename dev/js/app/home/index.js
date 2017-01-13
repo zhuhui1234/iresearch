@@ -20,6 +20,7 @@ define(['helper', 'app/main'], function (Helper) {
                     alert('绑定成功');
                     $('#bindingClassicIRD').removeAttribute('data-target');
                     $('#bindingClassicIRD').html('已绑定');
+                    $("#myModal").hide();
                 }else{
                     alert('绑定失败');
                 }
