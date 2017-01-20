@@ -34,13 +34,13 @@
 
                     </a>
                 </li>
-                <!-- IF company="艾瑞咨询" -->
-                <li>
-                    <a href="#">
+
+                <li >
+                    <a href="#" <!-- IF company!="艾瑞咨询" -->class="haveNotRole" style="background:none"<!-- ENDIF -->>
 
                     </a>
                 </li>
-                <!-- ENDIF -->
+
             </ul>
             <div class="menu_bg"></div>
         </div>

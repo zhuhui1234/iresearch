@@ -27,7 +27,7 @@ define(['jquery', 'helper'], function ($, Helper) {
         $(".show-report").hide();
         $(".loading-report").html('<i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>');
         $(".loading-report").show();
-        console.log($(this).attr("cfg_id"));
+        //console.log($(this).attr("cfg_id"));
         //测试用，若改报告是收费的执行以下方法
         if ($(this).attr("cfg_id") === '15') {
             weiXin($(this).attr("cfg_id"));

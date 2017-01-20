@@ -64,7 +64,8 @@ class IndexController extends Controller
             'userID' => $this->userInfo['userID'],
             'role' => $this->userInfo['permissions'],
             'title' => WEBSITE_TITLE,
-            'kolLink' => $this->kolLink()
+            'kolLink' => $this->kolLink(),
+            'company'=>$this->userInfo['companyName']
         );
         if (empty(trim($userInfo['productKey']))) {
             $data['irdStatus'] = 1;
@@ -92,7 +93,7 @@ class IndexController extends Controller
             'role' => $this->userInfo['permissions'],
             'title' => WEBSITE_TITLE,
             'kolLink' => $this->kolLink(),
-            'company'=>"艾瑞咨询"
+            'company'=>$this->userInfo['companyName']
         );
         print_r($data);
         if (empty(trim($userInfo['productKey']))) {
