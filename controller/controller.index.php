@@ -75,6 +75,34 @@ class IndexController extends Controller
         View::instance('index/home.tpl')->show($data);
     }
 
+    public function indexTest()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $data['token'] = $userInfo['token'];
+//        var_dump($userInfo);
+//        exit();
+//        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $data = array(
+//            "YH" => YH_LOGIN,
+//            "userIndustry" => $userIndustry,
+            'loginStatus' => $this->loginStatus,
+            'userInfo' => $this->userInfo,
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'kolLink' => $this->kolLink(),
+            'company'=>"艾瑞咨询"
+        );
+        print_r($data);
+        if (empty(trim($userInfo['productKey']))) {
+            $data['irdStatus'] = 1;
+        } else {
+            $data['irdStatus'] = 0;
+        }
+
+        View::instance('index/home.tpl')->show($data);
+    }
     /**
      * KOL PAGE
      */

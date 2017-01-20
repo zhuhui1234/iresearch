@@ -54,10 +54,18 @@ class IRDataController extends Controller
             if ($stat) {
                 View::instance('service/ird.tpl')->show($data);
             } else {
-                $this->errorPage('你并没有权限访问该模块功能');
+                echo("<SCRIPT LANGUAGE=\"JavaScript\">
+            alert(\"你并没有权限访问该模块功能\");
+            top.location.href=\"?m=index\";
+            </SCRIPT>");
+//                $this->errorPage('你并没有权限访问该模块功能');
             }
         } else {
-            $this->errorPage('你并没有权限访问该模块功能');
+            echo("<SCRIPT LANGUAGE=\"JavaScript\">
+            alert(\"你并没有权限访问该模块功能\");
+            top.location.href=\"?m=index\";
+            </SCRIPT>");
+//            $this->errorPage('你并没有权限访问该模块功能');
         }
 
     }
@@ -67,7 +75,7 @@ class IRDataController extends Controller
         $rMail = $this->userInfo['mobile'];
         $mail = urlencode($rMail);
         $rkey = $rMail . $rMail . date('YmdH');
-        $key = strtoupper(md5($rkey,false));
+        $key = strtoupper(md5($rkey, false));
         $ret = KOL_API . "?u={$mail}&e={$mail}&ukey={$key}";
         return $ret;
     }

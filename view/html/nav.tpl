@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li id="nav_top" class="">
-                    <a href="http://index.iresearch.com.cn" target="_blank">
+                    <a href="#" target="_blank">
                         <span>艾瑞指数</span>
                         <i>iRTops</i>
                     </a>
@@ -29,7 +29,7 @@
                 <li id="nav_irvcloud" class="">
                     <a href="#">
                         <span>艾瑞智云</span>
-                        <i>iROnes</i>
+                        <i>iRCloud</i>
                     </a>
                 </li>
                 <li id="nav_irvcount" class="">
@@ -48,11 +48,6 @@
                     <span class="badge">4</span>
                 </a>
             </li> -->
-            <li>
-                <a href="?m=user&a=editUserInfo">
-                    <i class="fa fa-user-o"></i>
-                </a>
-            </li>
             <li>
                 <a href="?m=user&a=loginOut" data-toggle="tooltip" title="注销" data-placement="bottom">
                     <i class="fa fa-sign-out"></i>
@@ -100,6 +95,8 @@
                                                         <p>跨屏媒体市场评估</p>
                                                     </a>
                                             </div>
+
+                                            <!-- IF company="艾瑞咨询" -->
                                             <div class="col-xs-6">
                                                 <!-- IF role="0" -->
                                                 <a href="#">
@@ -108,7 +105,7 @@
                                                 <a href="?m=index&a=mutMedia">
                                                     <!-- ENDIF -->
 
-                                                    <h4>xMediaPlaner
+                                                    <h4>xMediaPlanner
                                                         <!-- IF role="0" -->
                                                         <span>未开通</span>
                                                         <!-- ELSE -->
@@ -118,6 +115,7 @@
                                                     <p>跨屏媒介效果评估</p>
                                                 </a>
                                             </div>
+                                            <!-- ENDIF -->
                                             <div class="col-xs-6">
                                                 <!-- IF role="0" -->
                                                 <a href="#">
@@ -150,18 +148,20 @@
                                                         <p>PC端用户行为监测</p>
                                                     </a>
                                             </div>
-                                            <div class="col-xs-6">
+                                            <!--<div class="col-xs-6">
                                                 <a href="#">
                                                     <h4>oUserTracker<span>研发中</span>
                                                     </h4>
                                                     <p>OTT端用户行为监测</p>
                                                 </a>
                                             </div>
+                                            -->
                                         </div>
                                     </li>
                                     <!-- 视频内容市场研究 -->
                                     <li>
                                         <div class="row">
+                                            <!--
                                             <div class="col-xs-6">
                                                 <a href="#">
                                                     <h4>xVideoMatrix<span>研发中</span></h4>
@@ -170,10 +170,11 @@
                                             </div>
                                             <div class="col-xs-6">
                                                 <a href="#">
-                                                    <h4>xVideoPlaner<span>研发中</span></h4>
+                                                    <h4>xVideoPlanner<span>研发中</span></h4>
                                                     <p>跨屏视频媒介效果评估</p>
                                                 </a>
                                             </div>
+                                            -->
                                             <div class="col-xs-6">
                                                 <a href="?m=irdata&a=classicSys&ppname=ivt">
                                                     <h4>iVideoTracker<span>经典版</span></h4>
@@ -193,18 +194,20 @@
                                                     </a>
                                                 </a>
                                             </div>
-
+                                            <!--
                                             <div class="col-xs-6">
                                                 <a href="#">
                                                     <h4>oVideoTracker<span>研发中</span></h4>
                                                     <p>OTT端视频内容市场监测</p>
                                                 </a>
                                             </div>
+                                            -->
 
                                         </div>
                                     </li>
                                     <li>
                                         <div class="row">
+                                            <!--
                                             <div class="col-xs-6">
                                                 <a href="#">
                                                     <h4>xNewsMatrix<span>研发中</span></h4>
@@ -213,7 +216,7 @@
                                             </div>
                                             <div class="col-xs-6">
                                                 <a href="#">
-                                                    <h4>xNewsPlaner<span>研发中</span></h4>
+                                                    <h4>xNewsPlanner<span>研发中</span></h4>
                                                     <p>跨屏资讯媒介效果评估</p>
                                                 </a>
                                             </div>
@@ -229,6 +232,7 @@
                                                     <p>移动端资讯内容市场监测</p>
                                                 </a>
                                             </div>
+                                            -->
 
                                         </div>
                                     </li>
@@ -246,12 +250,14 @@
                                                     <p>跨屏营销广告市场评估</p>
                                                 </a>
                                             </div>
+                                            <!--
                                             <div class="col-xs-6">
                                                 <a href="#">
-                                                    <h4>xAdPlaner<span>研发中</span></h4>
+                                                    <h4>xAdPlanner<span>研发中</span></h4>
                                                     <p>跨屏广告媒介效果评估</p>
                                                 </a>
                                             </div>
+                                            -->
                                             <div class="col-xs-6">
                                                 <a href="?m=irdata&a=classicSys&ppname=iadt">
                                                     <h4>iAdTracker<span>经典版</span></h4>
@@ -264,12 +270,12 @@
                                                     <p>移动端营销广告市场监测</p>
                                                 </a>
                                             </div>
-                                            <div class="col-xs-6">
+                                            <!--<div class="col-xs-6">
                                                 <a href="#">
                                                     <h4>oAdTracker<span>研发中</span></h4>
                                                     <p>OTT端营销广告市场监测</p>
                                                 </a>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </li>
                                     <li>
