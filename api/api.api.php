@@ -163,6 +163,9 @@ class Api extends Url{
         $referer = $url;
         if(!is_array($data) || !$url) return '';
         $data['userIP']=getIp();
+        if (!empty($data['token'])) {
+            $data['TOKEN'] = $data['token'];
+        }
         $post = json_encode($data);
         if(DEBUG){
             echo $url,'<br>';
@@ -190,6 +193,9 @@ class Api extends Url{
         write_to_log('POST URL:'. $url, '_API');
         write_to_log('POST VALUE' . $post, '_API');
         write_to_log('RETURN: '. $content, '_API');
+        if (!empty($content['TOKEN'])) {
+            $content['token'] = $content['TOKEN'];
+        }
         return $content;
     }
 
