@@ -49,7 +49,12 @@
                 </a>
             </li> -->
             <li>
-                <a href="?m=user&a=loginOut" data-toggle="tooltip" title="注销" data-placement="bottom">
+                <a href="?m=user&a=editUserInfo">
+                    <i class="fa fa-user"></i>
+                </a>
+            </li>
+            <li>
+                <a href="?m=user&a=logOut" data-toggle="tooltip" title="注销" data-placement="bottom">
                     <i class="fa fa-sign-out"></i>
                 </a>
             </li>
