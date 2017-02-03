@@ -18,7 +18,7 @@ class UserModel extends API
     public function upUserSessionKey($guid)
     {
         $data = array("guid" => $guid);
-        $url = API_URL_REPORT . '?m=user&a=setReportToken';
+        $url = API_URL_REPORT . '?m=User&a=setReportToken';
         $ret = $this->_curlPost($url, $data, 'cs_login');
     }
 
@@ -33,7 +33,7 @@ class UserModel extends API
         $getVcode = Session::instance()->get('vcodes');
         write_to_log($getVcode, '_session');
         if ($getVcode == $data['vCode']) {
-            $url = API_URL . '?m=user&a=login';
+            $url = API_URL . '?m=User&a=login';
             write_to_log('login url :' . $url, '_login');
             write_to_log('post data: ' . json_encode($data), '_login');
             $ret = $this->_curlPost($url, $data, 'cs_login');
@@ -51,9 +51,7 @@ class UserModel extends API
         } else {
             return json_encode(['resCode' => -1, 'resMsg' => '输入的图形验证码错误']);
         }
-
     }
-
 
     /**
      * check wechat openid
@@ -62,13 +60,10 @@ class UserModel extends API
      */
     public function WeChatAutoLogin($data, $weChatData)
     {
-        $url = API_URL . '?m=user&a=login';
+        $url = API_URL . '?m=User&a=login';
         $data['LoginType'] = 'weixin';
         $ret = $this->_curlPost($url, $data, 'wxlogin');
         $rs = json_decode($ret, true);
-//        pr($data);
-//        pr($rs);
-//        exit();
         if ($rs['resCode'] == '000000') {
             write_to_log('wechat login: ' . $ret, '_login');
             Session::instance()->set('userInfo', $rs['data']);
@@ -78,7 +73,6 @@ class UserModel extends API
             Session::instance()->set('wechatBinding', $weChatData);
             return FALSE;
         }
-
     }
 
     /**
@@ -90,7 +84,7 @@ class UserModel extends API
     {
         $getVCode = Session::instance()->get('vcodes');
         if ($getVCode == $data['vCode']) {
-            $url = API_URL . '?m=user&a=addUser';
+            $url = API_URL . '?m=User&a=addUser';
             $ret = $this->_curlPost($url, $data, 'bindingWeixin');
             $rs = json_decode($ret, true);
             if ($rs['resCode'] == '000000') {
@@ -125,7 +119,7 @@ class UserModel extends API
      */
     public function getUserInfoList($data)
     {
-        $url = API_URL . '?m=user&a=getUserInfoList';
+        $url = API_URL . '?m=User&a=getUserInfoList';
         $ret = $this->_curlPost($url, $data, 'getUserInfoList');
         $ret = json_decode($ret, TRUE);
         $ret['recordsFiltered'] = $ret['recordsTotal'] = $ret['data']['totalSize'];
@@ -141,7 +135,7 @@ class UserModel extends API
      */
     public function setState($data)
     {
-        $url = API_URL . '?m=user&a=setState';
+        $url = API_URL . '?m=User&a=setState';
         $ret = $this->_curlPost($url, $data, 'setState');
         return $ret;
     }
@@ -154,9 +148,18 @@ class UserModel extends API
      */
     public function setUserInfo($data)
     {
-        $url = API_URL . '?m=user&a=editUserInfo';
+        $url = API_URL . '?m=User&a=editUserInfo';
         $ret = $this->_curlPost($url, $data, 'editUserInfo');
         return $ret;
+    }
+
+    public function getMyInfo()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        return $this->getUserInfo([
+            'userID' => $userInfo['userID'],
+            'TOKEN' => $userInfo['token']
+        ]);
     }
 
     /**
@@ -167,9 +170,14 @@ class UserModel extends API
      */
     public function getUserInfo($data)
     {
-        $url = API_URL . '?m=user&a=getUserInfo';
+        $url = API_URL . '?m=User&a=getUserInfo';
         $ret = $this->_curlPost($url, $data, 'getUserInfo');
         return $ret;
+    }
+
+    public function showMenu()
+    {
+
     }
 
     /**
@@ -180,7 +188,7 @@ class UserModel extends API
      */
     public function setCancellation($data)
     {
-        $url = API_URL . '?m=user&a=setCancellation';
+        $url = API_URL . '?m=User&a=setCancellation';
         $ret = $this->_curlPost($url, $data, 'setCancellation');
         return $ret;
     }
@@ -193,7 +201,7 @@ class UserModel extends API
      */
     public function resetPassword($data)
     {
-        $url = API_URL . '?m=user&a=resetPassword';
+        $url = API_URL . '?m=User&a=resetPassword';
         $ret = $this->_curlPost($url, $data, 'resetPassword');
         return $ret;
     }
@@ -207,13 +215,19 @@ class UserModel extends API
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['token'];
         $data['userID'] = $userInfo['userID'];
-        $userInfoArr = json_decode($this->getUserInfo($data), TRUE);
-        $rs = True;
-        if ($userInfoArr['resCode'] != '000000' || $userInfo == null) {
+        if (empty($data['token']) && empty($data['userID'])) {
+            $rs = false;
+        } else {
+            $userInfoArr = json_decode($this->getUserInfo($data), TRUE);
+            $rs = true;
+            if ($userInfoArr['resCode'] != '000000' || $userInfo == null) {
 //            Session::instance()->destroy();
-            $rs = False;
+                $rs = false;
 //            $rs = true;
+            }
         }
+
+
         return $rs;
     }
 
@@ -225,32 +239,17 @@ class UserModel extends API
     public function bindingIRDAToUser($data)
     {
         $userInfo = Session::instance()->get('userInfo');
-        write_to_log('binding post: ' . $data, '_ird');
-//        pr($userInfo);
-//        exit();
-        $irda = $this->__getIResearchDataAccount($data);
-        write_to_log('bing return: ' . $irda, '_ird');
-        $irD = json_decode($irda, true);
-//        pr($irD['message']);
-        if ((int)$irD['iUserID'] > 0) {
-            //verify success
-            $ir = json_decode($irda, true);
-            $bindingData = [
-                'token' => $userInfo['token'],
-                'userID' => $userInfo['userID'],
-                'productKey' => $irD['iUserID']
-            ];
-            $userInfo['productKey'] = $ir['iUserID'];
+        $data = json_decode($data, true);
+        $data['userID'] = $userInfo['userID'];
+        $data['token'] = $userInfo['token'];
+        $ret = $this->__bindingProduct($data);
+        $tempRet = json_decode($ret, true);
+        if ($tempRet['resCode'] == '000000') {
+            $userInfo['productKey'] = '1';
             Session::instance()->set('userInfo', $userInfo);
-            Session::instance()->set('iResearchDataUserInfo', $irda);
-            Session::instance()->set('irdTimeOut', time() * 60);
-//            $this->getIResearchDataAccount($ir['iUserID']);
-            $ret = $this->__bindingProduct($bindingData);
-            return $ret;
-        } else {
-            return json_encode(['resCode' => '000003', 'resMsg' => '用户认证失败']);
+            unset($tempRet);
         }
-
+        return $ret;
     }
 
     /**
@@ -266,6 +265,31 @@ class UserModel extends API
         return $saveOldIResearchDataInfo;
     }
 
+    public function logOut()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $url = API_URL . '?m=Login&a=cancel';
+        $ret = $this->_curlPost($url, ['TOKEN' => $userInfo['token'], 'userID' => $userInfo['userID']], 'cancel');
+    }
+
+    /**
+     * get binding user info
+     * @param $userInfo
+     * @return mixed
+     */
+    public function bindUserInfo($userInfo)
+    {
+        if (empty($userInfo)) {
+            $ui = Session::instance()->get('userInfo');
+            $userInfo = [
+                'TOKEN' => $ui['token'],
+                'userID' => $ui['userID']
+            ];
+        }
+        $url = API_URL . '?m=Service&a=getService';
+        $ret = $this->_curlPost($url, $userInfo, 'getService');
+        return $ret;
+    }
 
     ######################################################################################
     ##################################                     ###############################
@@ -294,7 +318,11 @@ class UserModel extends API
         return $ret;
     }
 
-
+    /**
+     * binding product key
+     * @param $data
+     * @return mixed
+     */
     private function __bindingProduct($data)
     {
         $url = API_URL . '?m=User&a=setProductKey';
@@ -302,9 +330,30 @@ class UserModel extends API
         return $ret;
     }
 
-    private function __checkProductKey()
+    /**
+     * 更新Session
+     * 但更新UserInfo
+     */
+    private function __updateUserInfoSession()
     {
-//        $iUserID = Session::instance()
+        $userInfo = Session::instance()->get('userInfo');
+        $data = [
+            'userID' => $userInfo['userID'],
+            'token' => $userInfo['token']
+        ];
+        $userInfo = $this->getUserInfo($data);
+        Session::instance()->set('userInfo', json_decode($userInfo, true));
     }
 
+    /**
+     * show menu
+     * @param $data
+     * @return mixed
+     */
+    private function __showMenu($data)
+    {
+        $url = API_URL . '?m=Permissions&a=getHomeMenu';
+        $ret = $this->_curlPost($url, $data, 'getHomeMenu');
+        return $ret;
+    }
 }
