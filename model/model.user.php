@@ -155,6 +155,10 @@ class UserModel extends API
         return $ret;
     }
 
+    /**
+     * get user info
+     * @return mixed
+     */
     public function getMyInfo()
     {
         $userInfo = Session::instance()->get('userInfo');
@@ -293,6 +297,30 @@ class UserModel extends API
         $userInfo = Session::instance()->get('userInfo');
         $url = API_URL . '?m=Login&a=cancel';
         $ret = $this->_curlPost($url, ['TOKEN' => $userInfo['token'], 'userID' => $userInfo['userID']], 'cancel');
+    }
+
+    /**
+     * block user
+     * @param array $data
+     * @return mixed
+     */
+    public function freezeUser(array $data)
+    {
+        $url = API_URL . '?m=User&a=iceUser';
+        $ret = $this->_curlPost($url, $data, 'iceUser');
+        return $ret;
+    }
+
+    /**
+     * unblock user
+     * @param array $data
+     * @return mixed
+     */
+    public function unblockUser(array $data)
+    {
+        $url = API_URL . '?m=User&a=thawUser';
+        $ret = $this->_curlPost($url, $data, 'thawUser');
+        return $ret;
     }
 
     /**
