@@ -22,7 +22,7 @@
     <div class="user-center">
         <div class="user-left">
             <div class="user-header">
-                <!-- IF headImg = "" -->
+                <!-- IF headImg = "upload/head/" -->
                 <img class="userAvatar" src="{avatar}" alt="">
                 <!-- ELSE -->
                 <img class="userAvatar" src="./public/img/head_default.png" alt="">
@@ -54,7 +54,12 @@
                         <div id="crop-avatar">
                             <!-- Current avatar -->
                             <div class="avatar-view" title="更改头像">
+                                <!-- IF avatar = "upload/head/" -->
+                                <img src="./public/img/head_default.png" alt="Avatar" width="200">
+                                <!-- ELSE -->
                                 <img src="{avatar}" alt="Avatar" width="200">
+                                <!-- ENDIF -->
+
                             </div>
                             <!-- Cropping modal -->
                             <div class="modal fade" id="avatar-modal" aria-hidden="true"
@@ -210,7 +215,7 @@
                     <div class="col-sm-6">
                         <label class="control-label text-danger">
                             <!-- IF wechat="1" -->
-                            已绑定
+                            已绑定 / {weChatNickName}
                             <!-- ELSE -->
                             未绑定
                             <!-- ENDIF -->
