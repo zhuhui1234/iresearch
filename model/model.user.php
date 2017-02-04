@@ -109,7 +109,9 @@ class UserModel extends API
      */
     public function bindingWeChartUser($data)
     {
-
+        $url = API_URL . '?m=Service&a=setWxService';
+        $ret = $this->_curlPost($url, $data, 'setWxService');
+        return $ret;
     }
 
     /**
@@ -175,9 +177,30 @@ class UserModel extends API
         return $ret;
     }
 
+    /**
+     * show home menu
+     * @return mixed
+     */
     public function showMenu()
     {
+        $userInfo = Session::instance()->get('userInfo');
+        return $this->__showHomeMenu([
+            'TOKEN' => $userInfo['token'],
+            'companyID' => $userInfo['companyID'],
+            'userID' => $userInfo['userID']
+        ]);
+    }
 
+    /**
+     * user logs
+     * @param array $data
+     * @return mixed
+     */
+    public function userLogs(array $data)
+    {
+        $url = API_URL . '?m=Logs&a=logList';
+        $ret = $this->_curlPost($url, $data, 'logList');
+        return $ret;
     }
 
     /**
@@ -350,7 +373,7 @@ class UserModel extends API
      * @param $data
      * @return mixed
      */
-    private function __showMenu($data)
+    private function __showHomeMenu($data)
     {
         $url = API_URL . '?m=Permissions&a=getHomeMenu';
         $ret = $this->_curlPost($url, $data, 'getHomeMenu');
