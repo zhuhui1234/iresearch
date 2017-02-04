@@ -25,7 +25,12 @@ class WeChatController extends Controller
         $code = $this->request()->get('code');
         $state = $this->request()->get('state');
         $weChatObj = $wechatModel->wxCheckLogin($code);
+        $weChatUser = $wechatModel->getUserInfo($code);
         $userInfo = Session::instance()->get('userInfo');
+
+        write_to_log("get state: {$state}",'_wx');
+        write_to_log('wechatObj: '.json_encode($weChatObj),'_wx');
+        write_to_log('wechatUser: '.json_encode($weChatUser),'_wx');
         if (DEBUG) {
             pr('微信返回值:');
             var_dump($state);
@@ -44,7 +49,8 @@ class WeChatController extends Controller
             case 'wxLogin':
                 $ret = $this->__weChatAutoLogin(array(
                     'Account' => $weChatObj['openid'],
-                    'LoginKey' => $weChatObj['unionid']
+                    'LoginKey' => $weChatObj['unionid'],
+                    'wxName' => $weChatUser['nickname'],
                 ), $wechatModel->getUserInfo($code));
 //                var_dump($ret);
 //                exit();
@@ -60,12 +66,13 @@ class WeChatController extends Controller
                 $ret = $this->__bindingWeChat(array(
                     'loginOpenid' => $weChatObj['openid'],
                     'loginUnionid' => $weChatObj['unionid'],
-                    'u_account' => $userInfo[''],
+                    'u_account' => $userInfo['u_account'],
+
                     'token' => $userInfo['token']
                 ));
                 $j_ret = json_decode($ret, TRUE);
                 if ($j_ret['resCode'] == '000000') {
-                    $this->wechatStatus = TRUE;
+                    $this->wechatStatus = true;
                     View::instance('usr/success.tpl')->show($j_ret);
                 } else {
                     View::instance('user/fail.tpl')->show($j_ret);
@@ -73,8 +80,18 @@ class WeChatController extends Controller
                 break;
 
             case 'bindingUser':
-                $ret = $this ->__bindingWeChatForUser([]);
+                $bindingData = [
+                    'TOKEN' => $userInfo['token'],
+                    'userID' => $userInfo['userID'],
+                    'wxName' => $weChatUser['nickname'],
+                    'wxOpenid' => $weChatObj['openid'],
+                    'wxUnionid' => $weChatObj['unionid']
+                ];
+                pr($bindingData);
+                $ret = $this ->__bindingWeChatForUser($bindingData);
+                var_dump($ret);
                 break;
+
 //            case 'viewReport':
 //                print_r($state_tmp);
 //                break;

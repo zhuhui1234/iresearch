@@ -55,7 +55,7 @@ class ServiceModel extends API {
      */
     public function sendSMS($data)
     {
-        $url = API_URL . '?m=user&a=setMobileKey';
+        $url = API_URL . '?m=User&a=setMobileKey';
         $ret = $this->_curlPost($url, $data, 'setMobileKey');
         return $ret;
     }

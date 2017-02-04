@@ -124,14 +124,30 @@ class UserController extends Controller
      */
     public function editUserInfo()
     {
-        $data['token'] = $this->userInfo['u_token'];
+        $data['token'] = $this->userInfo['token'];
 //        var_dump($this->loginStatus);
         $data = $this->userDetail;
-//        $data['loginStatus'] = $this->loginStatus;
-        pr($data);
-        var_dump($this->userInfo);
-        exit();
-        View::instance('user/user.tpl')->show($data);
+        $data['loginStatus'] = $this->loginStatus;
+        $userInfo = json_decode($this->model->getMyInfo(), true);
+        $bindingUserInfo = json_decode($this->model->bindUserInfo(),true);
+        if($userInfo['headImg']!='upload/head/') {
+            $userInfo['headImg'] = IMG_URL.$userInfo['headImg'];
+        }
+        $userInfo = $userInfo['data'];
+        View::instance('user/user.tpl')->show(
+            [
+                'username' => $userInfo['uname'],
+                'company' => $userInfo['company'],
+                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
+                'expireDate' => substr($this->userInfo['validity'],0,10),
+                'avatar' => $userInfo['headImg'],
+                'permissions' => $this->userInfo['permissions'],
+                'uname' => $userInfo['uname'],
+                'position' => $userInfo['position'],
+                'wechat' => $bindingUserInfo['data']['weixin']['type'],
+                'weChatNickName' => $bindingUserInfo['data']['weixin']['name']
+            ]
+        );
     }
 
     /**
@@ -169,11 +185,10 @@ class UserController extends Controller
     /**
      * logout
      */
-    public function loginOut()
+    public function logOut()
     {
-
+        $this->model->logOut();
         Session::instance()->destroy();
-
         header("Location:?m=user&a=login");
     }
 
@@ -208,12 +223,12 @@ class UserController extends Controller
         if (empty($getUser['u_head']) OR $getUser['u_head'] == 'head.png') {
             $getUser['u_head'] = 'dev/img/user-head.png';
         } else {
-            $getUser['u_head'] = IMG_URL . $getUser['headimg'];
+            $getUser['u_head'] = IMG_URL . $getUser['headmg'];
         }
 
         $data = array(
             'userIndustry' => $userIndustry,
-            'u_head' => $this->userInfo['headimg'],
+            'u_head' => IMG_URL.$this->userInfo['headimg'],
             'u_name' => $this->userInfo['uname'],
             'getUser' => $getUser,
             'token' => $this->userInfo['token'],
@@ -297,7 +312,8 @@ class UserController extends Controller
                 'loginKey' => $this->request()->post('verNum'),
                 'vCode' => $this->request()->post('vCode'),
                 'wxOpenid' => $weChatObj['openid'],
-                'wxUnionid' => $weChatObj['unionid']
+                'wxUnionid' => $weChatObj['unionid'],
+                'wxName' => $weChatObj['nickname']
             ];
             $this->__json();
             echo $this->model->bindWeChat($data);
@@ -314,6 +330,7 @@ class UserController extends Controller
     public function bindingIRDA()
     {
         $data = json_encode($this->request()->post('data'));
+
         echo $this->model->bindingIRDAToUser($data);
     }
 
@@ -367,67 +384,55 @@ class UserController extends Controller
      */
     public function setUserInfoAPI()
     {
-        $updateUserInfo = array();
-        $u_name = $this->request()->post('uname');
-        $u_department = $this->request()->post('u_department');
-        $u_position = $this->request()->post('u_position');
-        $u_mobile = $this->request()->post('u_mobile');
-        $u_head = $this->request()->post('u_head');
+        $updateUserInfo = [];
+        $uname = $this->request()->post('uname');
+        $position = $this->request()->post('position');
+        $headImg = $this->request()->post('headImg');
+        $companyEmail = $this->request()->post('companyEmail');
 
-        if (!empty($u_name)) {
-            $updateUserInfo['u_name'] = $u_name;
+        if (!empty($uname)) {
+            $updateUserInfo['uname'] = $uname;
         }
 
-        if (!empty($u_department)) {
-            $updateUserInfo['u_department'] = $u_department;
+        if (!empty($position)) {
+            $updateUserInfo['position'] = $position;
         }
 
-        if (!empty($u_position)) {
-            $updateUserInfo['u_position'] = $u_position;
+        if (!empty($headImg)) {
+//            $serviceModel = Model::instance('Service');
+//
+//            $imgUrl = $serviceModel->uploadImage($this->userInfo['u_token'], toBase64(UPLOAD_PATH . trim($getData['headImg'], 'uploads')), 'png');
+//            $imgData = json_decode($imgUrl, true);
+            $updateUserInfo['headImg'] = toBase64(UPLOAD_PATH . trim($headImg, 'uploads'));
         }
 
-        if (!empty($u_mobile)) {
-            $updateUserInfo['u_mobile'] = $u_mobile;
-        }
+        if (!empty($uname) || !empty($companyEmail) || !empty($position) || !empty($headImg)) {
+            $updateUserInfo['TOKEN'] = $this->userInfo['token'];
+            $updateUserInfo['userID'] = $this->userInfo['userID'];
+            $ret = json_decode($this->model->setUserInfo($updateUserInfo), true);
 
-        if (!empty($u_head)) {
-            $serviceModel = Model::instance('Service');
-
-            $imgUrl = $serviceModel->uploadImage($this->userInfo['u_token'], toBase64(UPLOAD_PATH . trim($u_head, 'uploads')), 'png');
-            $imgData = json_decode($imgUrl, true);
-            $updateUserInfo['u_head'] = $imgData['data']['imageUrl'];
-        }
-
-        if (!empty($u_mobile) || !empty($u_name) || !empty($u_position) || !empty($u_department)) {
-            $updateUserInfo['token'] = $this->userInfo['u_token'];
-            $updateUserInfo['u_account'] = $this->userInfo['u_account'];
-            $ret = json_decode($this->model->setUserInfo($updateUserInfo), TRUE);
 
             if ($ret['resCode'] == '000000') {
                 $userinfo = json_decode($this->getUserInfo(), true);
                 @ob_clean();
 //                if (!empty($u_head)) {
-                $this->userInfo['u_head'] = $userinfo['data']['u_head'];
+                $this->userInfo['u_head'] = $userinfo['data']['headImg'];
 //                }else{
 //                    echo 'no head';
 //                    $this->userInfo['u_head'] =
 //                }
 //
-                if (!empty($u_name)) {
-                    $this->userInfo['u_name'] = $userinfo['data']['u_name'];
+                if (!empty($uname)) {
+                    $this->userInfo['uname'] = $userinfo['data']['uname'];
                 }
 //
-
-
                 Session::instance()->set('userInfo', $this->userInfo);
 
-                header("Location: ?m=user&a=success");
             } else {
-                header("Location: ?m=user&a=fail");
+//                header("Location: ?m=user&a=fail");
             }
+            echo json_encode($ret);
         }
-
-
     }
 
     /**

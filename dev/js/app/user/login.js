@@ -33,7 +33,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                         Helper.post("sendSms",{mobile:$("#mobile").val()},function(ret) {
                             console.log(ret);
                             if (ret.resCode == "000002") {
-                                $(".alert").eq(1).fadeIn().text('请不要重复发送验证码');
+                                $(".alert").eq(1).fadeIn().text('验证错误');
                             }
                         });
                     }

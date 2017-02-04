@@ -85,7 +85,7 @@ class UserModel extends API
         $getVCode = Session::instance()->get('vcodes');
         if ($getVCode == $data['vCode']) {
             $url = API_URL . '?m=User&a=addUser';
-            $ret = $this->_curlPost($url, $data, 'bindingWeixin');
+            $ret = $this->_curlPost($url, $data, 'addUser');
             $rs = json_decode($ret, true);
             if ($rs['resCode'] == '000000') {
                 write_to_log('binding wx: ' . $ret, '_wx');

@@ -273,12 +273,12 @@
 
         submitDone: function (data) {
             console.log(data);
-
             if ($.isPlainObject(data) && data.state === 200) {
                 if (data.result) {
                     this.url = data.result;
 
                     if (this.support.datauri || this.uploaded) {
+                        console.log('upload false');
                         this.uploaded = false;
                         this.cropDone();
                     } else {
@@ -287,7 +287,7 @@
                         this.startCropper();
                     }
 
-                    this.$avatarInput.val('');
+                    this.$avatarSrc.val(this.url);
                 } else if (data.message) {
                     this.alert(data.message);
                 }
@@ -324,7 +324,7 @@
     };
 
     $(function () {
-        return new CropAvatar($('#crop-avatar'));
+            return new CropAvatar($('#crop-avatar'));
     });
 
 });
