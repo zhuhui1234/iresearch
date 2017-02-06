@@ -2557,6 +2557,7 @@ html {
 }
 body {
   position: relative;
+  height: 100%;
   padding: 0;
   margin: 0;
   font-family: PingFangSC-Light, HanHei SC, Helvetica Neue, Helvetica, STHeitiSC-Light, Arial, Microsoft YaHei, sans-serif;
