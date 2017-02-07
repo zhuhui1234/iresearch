@@ -821,3 +821,32 @@ function fnDecrypt($sValue, $sSecretKey)
         ), "\0"
     );
 }
+
+/**
+ * fill menu
+ * @param $menu
+ * @param string $strURL
+ * @return mixed
+ */
+function fillMenu($menu,$strURL = '?m=irdata&a=classicSys')
+{
+    foreach ($menu as $itemKey => $item) {
+        if (empty($item['lowerTree'])) {
+            $menu[$itemKey]['isSubMenu'] = 1;
+        } else {
+            $menu[$itemKey]['isSubMenu'] = 0;
+            $menu[$itemKey]['subMenu'] = $item['lowerTree'];
+            foreach ($item['lowerTree'] as $subMenuKey => $subMenuCon) {
+                foreach ($subMenuCon['lowerTree'] as $lowerKey => $lowerCon) {
+                    if (!empty($lowerCon['curl']) AND strpos($lowerCon['curl'], 'guid') AND !strpos($lowerCon['curl'],'iReport') ) {
+                        //is old system
+                        $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['curl'] = $strURL . '&ppname='.$lowerCon['menuName'];
+                    }
+                }
+            }
+            unset($menu[$itemKey]['lowerTree']);
+        }
+    }
+    return $menu;
+}
+
