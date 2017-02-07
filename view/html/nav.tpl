@@ -14,11 +14,12 @@
                         <i>Home</i>
                     </a>
                 </li>
+                <!-- 前置菜单 -->
                 <!-- BEGIN menu -->
                 <!-- IF isSubMenu=0  -->
-                <li id="nav_top {menuIntro}" class="nav_active">
+                <li id="{menuIntro}" class="nav_active">
                     <!-- ELSE -->
-                <li id="nav_top {menuIntro}" class="">
+                <li id="{menuIntro}" class="">
                     <!-- ENDIF -->
                     <a href="#" target="_blank">
                         <span>{menuName}</span>
@@ -48,6 +49,7 @@
             </li>
         </ul>
     </div>
+    <!-- 后帘菜单 -->
     <div class="nav-bg">
         <div class="container">
             <ul class="dropdown-list">
@@ -57,15 +59,14 @@
                 <li>
                     <div class="row">
                         <!-- BEGIN subMenu -->
-
                         <div class="col-xs-2">
                             <h5>{menuName}</h5>
                             <ul>
                                 <!-- BEGIN lowerTree -->
-                                <!-- IF ptype=1 -->
-                                <!-- ELSE -->
+                                <!-- IF ptype!=1 -->
                                 <li>
                                     <a href="{curl}">
+
                                         <div class="proimg">
                                             <img src="./public/img/navIcon_2.png" alt=""
                                                  class="img-responsive center-block">
