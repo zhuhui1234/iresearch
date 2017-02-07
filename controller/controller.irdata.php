@@ -8,19 +8,23 @@
  */
 class IRDataController extends Controller
 {
-    private $userModel, $irdUserInfo, $userInfo;
+    private $userModel, $irdUserInfo, $userInfo, $menu;
 
     function __construct($classname)
     {
         $this->userModel = Model::instance('User');
         $this->userInfo = Session::instance()->get('userInfo');
-        if (!empty($this->userInfo['productKey'])) {
-            if (time() > Session::instance()->get('irdTimeOut') || empty(Session::instance()->get('irdTimeOut'))) {
-                $this->userModel->getIResearchDataAccount($this->userInfo['productKey']);
-            }
+        $this->menu = json_decode($this->userModel->showMenu(),true);
+        $this->menu = $this->menu['data']['dataList'];
+//        if (!empty($this->userInfo['productKey'])) {
+//            if (time() > Session::instance()->get('irdTimeOut') || empty(Session::instance()->get('irdTimeOut'))) {
+//                $this->userModel->getIResearchDataAccount($this->userInfo['productKey']);
+//            }
+//
+//            $this->irdUserInfo = json_decode(Session::instance()->get('iResearchDataUserInfo'), true);
+//        }
 
-            $this->irdUserInfo = json_decode(Session::instance()->get('iResearchDataUserInfo'), true);
-        }
+
     }
 
     public function classicSys()
@@ -28,43 +32,48 @@ class IRDataController extends Controller
 
         if (!empty($this->userInfo['productKey'])) {
             $ppname = $this->request()->get('ppname');
-            $stat = false;
+//            pr($ppname);
+//            pr($this->__getCURL($ppname));
+//            exit();
+            $stat = true;
             $data = [
                 'loginStatus' => $this->loginStatus,
                 'userInfo' => $this->userInfo,
                 'token' => $this->userInfo['token'],
-                'userID' => $this->userInfo['userID'],
-                'role' => $this->userInfo['permissions'],
+//                'userID' => $this->userInfo['userID'],
+//                'role' => $this->userInfo['permissions'],
                 'title' => WEBSITE_TITLE,
-                'kolLink' => $this->kolLink()
+                'kolLink' => $this->kolLink(),
+                'menu' => fillMenu($this->menu),
+                'ppurl' => $this->__getCURL($ppname)
             ];
             if (DEBUG) {
 //                pr($this->userInfo);
-                var_dump($this->irdUserInfo);
+//                var_dump($this->irdUserInfo);
             }
 
-            foreach ($this->irdUserInfo['pplist'] as $p) {
-                if ($p['ppname'] == $ppname) {
-                    $data['ppurl'] = $p['ppurl'] . '?guid=' . $this->irdUserInfo['iRGuid'];
-                    $stat = true;
-                }
-            }
+//            foreach ($this->irdUserInfo['pplist'] as $p) {
+//                if ($p['ppname'] == $ppname) {
+//                    $data['ppurl'] = $p['ppurl'] . '?guid=' . $this->irdUserInfo['iRGuid'];
+//                    $stat = true;
+//                }
+//            }
 //            pr($data);
 //            exit();
             if ($stat) {
                 View::instance('service/ird.tpl')->show($data);
             } else {
-                echo("<SCRIPT LANGUAGE=\"JavaScript\">
-            alert(\"你并没有权限访问该模块功能\");
-            top.location.href=\"?m=index\";
-            </SCRIPT>");
+//                echo("<SCRIPT LANGUAGE=\"JavaScript\">
+//            alert(\"你并没有权限访问该模块功能\");
+//            top.location.href=\"?m=index\";
+//            </SCRIPT>");
 //                $this->errorPage('你并没有权限访问该模块功能');
             }
         } else {
-            echo("<SCRIPT LANGUAGE=\"JavaScript\">
-            alert(\"你并没有权限访问该模块功能\");
-            top.location.href=\"?m=index\";
-            </SCRIPT>");
+//            echo("<SCRIPT LANGUAGE=\"JavaScript\">
+//            alert(\"你并没有权限访问该模块功能\");
+//            top.location.href=\"?m=index\";
+//            </SCRIPT>");
 //            $this->errorPage('你并没有权限访问该模块功能');
         }
 
@@ -87,9 +96,31 @@ class IRDataController extends Controller
         View::instance('index/error.tpl')->show($data);
     }
 
-    private function menuDictionary()
-    {
+    ######################################################################################
+    ##################################                     ###############################
+    #################################   PRIVATE METHODS   ################################
+    ################################                     #################################
+    ######################################################################################
 
+    private function __getCURL($keyName)
+    {
+        $metaData = $this->menu[1]['lowerTree'];
+//        pr($metaData);
+        foreach ($metaData as $key => $value) {
+//            pr(len($value['lowerTree']));
+
+            if (count($value['lowerTree']) > 0) {
+                foreach ($value['lowerTree'] as $lowerKey => $lowerCon) {
+//                    var_dump($lowerCon);
+
+                    if ($keyName == $lowerCon['menuName'] AND !empty($lowerCon['curl'] )) {
+                        $url = $lowerCon['curl'];
+                    }
+                }
+
+            }
+        }
+        return $url;
     }
 
 }
