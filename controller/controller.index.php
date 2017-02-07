@@ -54,7 +54,12 @@ class IndexController extends Controller
         $data['token'] = $userInfo['token'];
 //        var_dump($userInfo);
 //        exit();
-//        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(),true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+
         $data = array(
 //            "YH" => YH_LOGIN,
 //            "userIndustry" => $userIndustry,
@@ -64,14 +69,16 @@ class IndexController extends Controller
             'userID' => $this->userInfo['userID'],
             'role' => $this->userInfo['permissions'],
             'title' => WEBSITE_TITLE,
-            'kolLink' => $this->kolLink(),
-            'company'=>$this->userInfo['companyName']
+//            'kolLink' => $this->kolLink(),
+            'company'=>$this->userInfo['companyName'],
+            'menu' => $menu
         );
         if (empty(trim($userInfo['productKey']))) {
             $data['irdStatus'] = 1;
         } else {
             $data['irdStatus'] = 0;
         }
+
 
         View::instance('index/home.tpl')->show($data);
     }
