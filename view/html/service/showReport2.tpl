@@ -64,14 +64,16 @@
                 <ul>
                     <li>
                         <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B662">
-                            媒体内容分析-周
+                            媒体内容分析
                         </a>
                     </li>
+                    <!--
                     <li>
                         <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B663">
                             媒体内容分析-日
                         </a>
                     </li>
+                    -->
                 </ul>
             </li>
             <li class="open">
@@ -79,7 +81,7 @@
                 <ul>
                     <li>
                         <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B665">
-                            视频人群分析-周
+                            视频人群分析
                         </a>
                     </li>
                 </ul>
@@ -89,7 +91,7 @@
                 <ul>
                     <li>
                         <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B666" cfg_name="{cfg_name}" cfg_id="{cfg_id}">
-                            视频时段分析-周
+                            视频时段分析
                         </a>
                     </li>
                 </ul>
