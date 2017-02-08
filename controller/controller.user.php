@@ -129,17 +129,18 @@ class UserController extends Controller
         $data = $this->userDetail;
         $data['loginStatus'] = $this->loginStatus;
         $userInfo = json_decode($this->model->getMyInfo(), true);
-        $bindingUserInfo = json_decode($this->model->bindUserInfo(),true);
-        if($userInfo['headImg']!='upload/head/') {
-            $userInfo['headImg'] = IMG_URL.$userInfo['headImg'];
-        }
+        $bindingUserInfo = json_decode($this->model->bindUserInfo(), true);
         $userInfo = $userInfo['data'];
+
+        if ($userInfo['headImg'] != 'upload/head/') {
+            $userInfo['headImg'] = IMG_URL . $userInfo['headImg'];
+        }
         View::instance('user/user.tpl')->show(
             [
                 'username' => $userInfo['uname'],
                 'company' => $userInfo['company'],
                 'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
-                'expireDate' => substr($this->userInfo['validity'],0,10),
+                'expireDate' => substr($this->userInfo['validity'], 0, 10),
                 'avatar' => $userInfo['headImg'],
                 'permissions' => $this->userInfo['permissions'],
                 'uname' => $userInfo['uname'],
@@ -179,7 +180,8 @@ class UserController extends Controller
 
     public function test()
     {
-        pr($this->userInfo);
+        $menu = json_decode($this->model->showMenu(), true);
+        pr(fillMenu($menu['data']['dataList']));
     }
 
     /**
@@ -228,7 +230,7 @@ class UserController extends Controller
 
         $data = array(
             'userIndustry' => $userIndustry,
-            'u_head' => IMG_URL.$this->userInfo['headimg'],
+            'u_head' => IMG_URL . $this->userInfo['headimg'],
             'u_name' => $this->userInfo['uname'],
             'getUser' => $getUser,
             'token' => $this->userInfo['token'],
@@ -484,5 +486,7 @@ class UserController extends Controller
         @@ob_clean();
         header('Content-type: application/json');
     }
+
+
 
 }

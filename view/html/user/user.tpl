@@ -22,10 +22,10 @@
     <div class="user-center">
         <div class="user-left">
             <div class="user-header">
-                <!-- IF headImg = "upload/head/" -->
-                <img class="userAvatar" src="{avatar}" alt="">
-                <!-- ELSE -->
+                <!-- IF avatar = "upload/head/" -->
                 <img class="userAvatar" src="./public/img/head_default.png" alt="">
+                <!-- ELSE -->
+                <img class="userAvatar" src="{avatar}" alt="">
                 <!-- ENDIF -->
                 <p class="mts">
 

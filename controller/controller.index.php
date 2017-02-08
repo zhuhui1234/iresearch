@@ -52,17 +52,16 @@ class IndexController extends Controller
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['token'];
-//        var_dump($userInfo);
-//        exit();
+
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $userModel = Model::instance('user');
-        $menu = json_decode($userModel->showMenu(),true);
+        $menu = json_decode($userModel->showMenu(), true);
         $menu = $menu['data']['dataList'];
         $menu = fillMenu($menu);
 
         $data = array(
-//            "YH" => YH_LOGIN,
-//            "userIndustry" => $userIndustry,
+            "YH" => YH_LOGIN,
+            "userIndustry" => $userIndustry,
             'loginStatus' => $this->loginStatus,
             'userInfo' => $this->userInfo,
             'token' => $this->userInfo['token'],
@@ -70,8 +69,10 @@ class IndexController extends Controller
             'role' => $this->userInfo['permissions'],
             'title' => WEBSITE_TITLE,
 //            'kolLink' => $this->kolLink(),
-            'company'=>$this->userInfo['companyName'],
-            'menu' => $menu
+            'company' => $this->userInfo['companyName'],
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => $this->__mainMenu($menu[1]['subMenu'])
         );
         if (empty(trim($userInfo['productKey']))) {
             $data['irdStatus'] = 1;
@@ -87,9 +88,12 @@ class IndexController extends Controller
     {
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['token'];
-//        var_dump($userInfo);
-//        exit();
-//        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+        pr($this->__mainMenu($menu[1]['subMenu']));
+        exit();
         $data = array(
 //            "YH" => YH_LOGIN,
 //            "userIndustry" => $userIndustry,
@@ -100,9 +104,10 @@ class IndexController extends Controller
             'role' => $this->userInfo['permissions'],
             'title' => WEBSITE_TITLE,
             'kolLink' => $this->kolLink(),
-            'company'=>$this->userInfo['companyName']
+            'company' => $this->userInfo['companyName'],
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu']
         );
-        print_r($data);
         if (empty(trim($userInfo['productKey']))) {
             $data['irdStatus'] = 1;
         } else {
@@ -111,13 +116,19 @@ class IndexController extends Controller
 
         View::instance('index/home.tpl')->show($data);
     }
+
     /**
      * KOL PAGE
      */
     public function kolPage()
     {
+
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
 //        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $data = array(
 //            "YH" => YH_LOGIN,
@@ -175,14 +186,14 @@ class IndexController extends Controller
         $rMail = $this->userInfo['mobile'];
         $mail = urlencode($rMail);
         $rkey = $rMail . $rMail . date('YmdH');
-        $key = strtoupper(md5($rkey,false));
+        $key = strtoupper(md5($rkey, false));
         $ret = KOL_API . "?u={$mail}&e={$mail}&ukey={$key}";
         return $ret;
     }
 
     public function test()
     {
-        $Clear = json_encode(['mail'=>'wanghaiyan@iresearch.com.cn','pwd'=>'123456']);
+        $Clear = json_encode(['mail' => 'wanghaiyan@iresearch.com.cn', 'pwd' => '123456']);
 //        $b = json_encode();
 //        var_dump($b);
         $userModel = Model::instance('user');
@@ -196,8 +207,28 @@ class IndexController extends Controller
     ################################                     #################################
     ######################################################################################
 
-    private function __checkIRD()
+    /**
+     * main menu
+     * @param array $menuData
+     * @return array
+     */
+    private function __mainMenu(array $menuData)
     {
-        $pp = Session::instance()->get('');
+        foreach ($menuData as $menuDataKey => $menuDatum) {
+            $re = [];
+            if (count($menuDatum['lowerTree']) > 4) {
+                for ($i=0;$i<ceil(count($menuDatum['lowerTree']));$i++) {
+                    $v = array_slice($menuDatum['lowerTree'],$i*4, 4);
+                    if (!empty($v)) {
+                        $re[$i]['list'] = $v;
+                    }
+                }
+            }else{
+                $re[0]['list']=$menuDatum['lowerTree'];
+            }
+            $menuData[$menuDataKey]['reTree'] = $re;
+        }
+//        pr($menuData);
+        return $menuData;
     }
 }

@@ -15,99 +15,98 @@
 </head>
 <body>
 <!-- INCLUDE ../nav.tpl -->
-<div class="container">
-    <div class="focus-main">
-        <div class="focus-main-right">
-            <ul>
-                <li class="active">
-                    <a href="#">
-
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-
-                    </a>
-                </li>
-
-                <li >
-                    <a href="#" <!-- IF company!="艾瑞咨询" -->class="haveNotRole" style="background:none"<!-- ENDIF -->>
-
-                    </a>
-                </li>
-
-            </ul>
-            <div class="menu_bg"></div>
-        </div>
-        <div class="focus-main-left">
-            <ul>
-                <li class="active">
-                    <h1>
-                        <img src="./public/img/iResearchData.png" height="55" alt="">
-                    </h1>
-                    <p>iResearchData是艾瑞咨询集团推出的互联网综合数据服务平台，整合了艾瑞旗下所有数据产品，实现数据互联互通，为互联网企业提供杰出数据服务</p>
-                    <img src="./public/img/iResearchData.jpg" alt="" class="img-responsive center-block">
-                    <p class="text-center">
-                        <!-- IF irdStatus="1" -->
-                        <a href="#" class="btn btn-outline-warning" id="bindingClassicIRD" data-toggle="modal" data-target="#myModal">绑定经典版</a>
-                        <!-- ELSE -->
-                        <a href="#" class="btn btn-outline-warning" >已绑定</a>
-                        <!-- ENDIF -->
-                    </p>
-                </li>
-                <li>
-                    <h1>
-                        <img src="./public/img/IKOlogo.png" height="55" alt="">
-                    </h1>
-                    <p></p>
-                    <img style="margin: 40px 0" alt=""  src="./public/img/iko.jpg" alt="" class="img-responsive center-block">
-                    <p class="text-center">
-                        <!-- IF role="0" -->
-                        <span class="btn btn-outline-warning">未开通</span>
-                        <!-- ELSE -->
-                        <a href="?m=index&a=kolPage" class="btn btn-outline-warning">立即进入</a>
-                        <!-- ENDIF -->
-                    </p>
-                </li>
-                <li>
-                    <h1>
-                        <img src="./public/img/mvtlogo.png" height="55" alt="">
-                    </h1>
-                    <p>mVideoTracker基于运营商级别的家庭用户观看移动网络视频内容的收视行为数据，助力广告主优化广告投放策略，提升广告投放效果。</p>
-                    <img src="./public/img/MVT.jpg" alt="" class="img-responsive center-block">
-                    <p class="text-center">
-                        <!-- IF role="0" -->
-                        <span class="btn btn-outline-warning">未开通</span>
-                        <!-- ELSE -->
-                        <a href="?m=industry&a=showIndustryReport" class="btn btn-outline-warning">立即进入</a>
-                        <!-- ENDIF -->
-                    </p>
-                </li>
-                <!-- IF company="艾瑞咨询" -->
-                <li >
-                    <h1>
-                        <img src="./public/img/MUTlogo.png" height="25" alt="">
-                    </h1>
-                    <p>MUT媒介版是基于艾瑞全终端海量用户数据，用规则识别，机器学习等方法进行用户属性，习惯，兴趣，偏好等的知识挖掘，形成强大的人群规划用于用户画像与媒介计划。助力媒体公司更全面的发现自己的优势，帮助广告公司更精准的广告投放。</p>
-                    <img src="./public/img/MUT.jpg" alt="" class="img-responsive center-block">
-                    <p class="text-center">
-                        <!-- IF role="0" -->
-                        <span class="btn btn-outline-warning">未开通</span>
-                        <!-- ELSE -->
-                        <a href="?m=index&a=mutMedia" class="btn btn-outline-warning">立即进入</a>
-                        <!-- ENDIF -->
-                    </p>
-                </li>
-                <!-- ENDIF -->
-            </ul>
-        </div>
+<div class="index-tab">
+    <div class="container">
+        <ul class="nav" role="tablist">
+            <!-- BEGIN titleMenu -->
+            <!-- IF menuID="5" -->
+            <li id="titleMenuID{menuID}" role="presentation" class="active">
+            <!-- ELSE -->
+            <li id="titleMenuID{menuID}" role="presentation" class="">
+            <!-- ENDIF -->
+            <a href="#menuID{menuID}" role="tab" data-toggle="tab">
+                    <span>{menuName}</span>
+                </a>
+            </li>
+            <!-- END BEGIN -->
+        </ul>
     </div>
 </div>
+
+
+<!-- PAGE -->
+
+<div class="container index-tab-content">
+    <div class="tab-content">
+        <!-- BEGIN mainMenu -->
+        <!-- IF menuID="5" -->
+        <div role="tabpanel" class="tab-pane active" id="menuID{menuID}">
+        <!-- ELSE -->
+        <div role="tabpanel" class="tab-pane" id="menuID{menuID}">
+        <!-- ENDIF -->
+            <div class="swiper-container">
+
+                <div class="swiper-wrapper">
+                    <!-- BEGIN reTree -->
+                    <div class="swiper-slide">
+                        <div class="row">
+                            <!-- BEGIN list -->
+                            <div class="col-xs-6" data-swiper-parallax="-100">
+                                <div class="product-content has-active">
+                                    <div class="product-content-header s2">
+                                        <div class="product-icon">
+                                            <img src="./public/img/product-icon-1.png" alt="">
+                                        </div>
+                                        <div class="product-title">
+                                            <div class="product-title">
+                                                <h3>{menuIntro}</h3>
+                                                <h4 class="pepsi">{menuName}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content-body">
+                                        <p>
+                                            在特区政府卫生局当晚11时许召开的记者会上，局长李展润表示，患者为72岁女性，患有高血压、糖尿病等慢性病，平时居住在广东中山五桂山镇桂南马溪村。
+                                        </p>
+                                        <p>
+                                            <span><i class="fa fa-check-square-o"></i>自定义人群</span>
+                                            <span><i class="fa fa-check-square-o"></i>媒介计划</span>
+                                            <span><i class="fa fa-check-square-o"></i>用户画像</span>
+                                            <span><i class="fa fa-check-square-o"></i>信息管理</span>
+                                        </p>
+                                    </div>
+                                    <!-- IF ptype=1 -->
+                                    <div class="product-content-footer">
+                                        <a href="{curl}">
+                                            <i class="fa fa-arrow-circle-right"></i>申请试用
+                                        </a>
+                                    </div>
+                                    <!-- ELSE -->
+                                    <div class="product-content-footer">
+                                        <a href="{curl}">
+                                            <i class="fa fa-arrow-circle-right"></i>进入产品
+                                        </a>
+                                    </div>
+                                    <!-- ENDIF -->
+                                </div>
+                            </div>
+
+                            <!-- END BEGIN -->
+                        </div>
+                    </div>
+                    <!-- END BEGIN -->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <!-- END BEGIN -->
+
+
+    </div>
+</div>
+
+<!-- end PAGE -->
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
