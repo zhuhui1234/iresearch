@@ -20,11 +20,11 @@
         <ul class="nav" role="tablist">
             <!-- BEGIN titleMenu -->
             <!-- IF menuID="5" -->
-            <li id="titleMenuID{menuID}" role="presentation" class="active">
+            <li  id="titleMenuID{menuID}" role="presentation" data-toggle="tab" class="tabMenu active">
             <!-- ELSE -->
-            <li id="titleMenuID{menuID}" role="presentation" class="">
+            <li id="titleMenuID{menuID}" role="presentation" data-toggle="tab" class="tabMenu">
             <!-- ENDIF -->
-            <a href="#menuID{menuID}" role="tab" data-toggle="tab">
+            <a href="#menuID{menuID}" role="presentation" data-toggle="tab">
                     <span>{menuName}</span>
                 </a>
             </li>
@@ -100,8 +100,6 @@
             </div>
         </div>
         <!-- END BEGIN -->
-
-
     </div>
 </div>
 
