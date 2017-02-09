@@ -78,7 +78,7 @@ class WeChatController extends Controller
                     View::instance('user/fail.tpl')->show($j_ret);
                 }
                 break;
-
+            //用户在个人信息里绑定
             case 'bindingUser':
                 $bindingData = [
                     'TOKEN' => $userInfo['token'],
@@ -89,6 +89,18 @@ class WeChatController extends Controller
                 ];
                 pr($bindingData);
                 $ret = $this ->__bindingWeChatForUser($bindingData);
+                $j_ret = json_decode($ret, true);
+                if ($j_ret['resCode'] == "000000") {
+                    echo("<SCRIPT LANGUAGE=\"JavaScript\">
+                    alert(\"微信绑定成功\");
+                    window.location.href=\"?m=user&a=editUserInfo\";
+                    </SCRIPT>");
+                } else  {
+                    echo("<SCRIPT LANGUAGE=\"JavaScript\">
+                    alert(\"微信绑定失败\");
+                    window.location.href=\"?m=user&a=editUserInfo\";
+                    </SCRIPT>");
+                }
                 var_dump($ret);
                 break;
 
