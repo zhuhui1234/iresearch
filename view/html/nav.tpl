@@ -17,13 +17,17 @@
                 <!-- 前置菜单 -->
                 <!-- BEGIN menu -->
                 <!-- IF isSubMenu=0  -->
-                <li id="{menuIntro}" class="nav_active">
+                <li id="{menuEName}" class="nav_active">
                     <!-- ELSE -->
-                <li id="{menuIntro}" class="">
+                <li id="{menuEName}" class="">
                     <!-- ENDIF -->
-                    <a href="#" target="_blank">
+                    <!-- IF versionType="4" -->
+                    <a href="{curl}" target="_blank">
+                    <!-- ELSE -->
+                        <a href="{curl}">
+                        <!-- ENDIF -->
                         <span>{menuName}</span>
-                        <i>{menuIntro}</i>
+                        <i>{menuEName}</i>
                     </a>
                 </li>
                 <!-- END BEGIN -->
@@ -63,21 +67,31 @@
                             <h5>{menuName}</h5>
                             <ul>
                                 <!-- BEGIN lowerTree -->
-                                <!-- IF ptype!=1 -->
-                                <li>
-                                    <a href="{curl}">
 
+                                <li>
+                                    <!-- IF ptype!=1 -->
+                                    <a href="{curl}">
+                                        <!-- ELSE -->
+                                        <a href="{curl}">
+                                        <!-- ENDIF -->
                                         <div class="proimg">
-                                            <img src="./public/img/navIcon_2.png" alt=""
-                                                 class="img-responsive center-block">
+                                            <!-- IF series="1" -->
+                                            <img src="./public/img/navIcon_1.png" alt="" class="img-responsive center-block">
+                                            <!-- ELSEIF series="2" -->
+                                             <img src="./public/img/navIcon_4.png" alt="" class="img-responsive center-block">
+                                            <!-- ELSEIF series="3" -->
+                                             <img src="./public/img/navIcon_2.png" alt="" class="img-responsive center-block">
+                                            <!-- ELSEIF series="4" -->
+                                            <img src="./public/img/navIcon_3.png" alt="" class="img-responsive center-block">
+                                            <!-- ENDIF -->
                                         </div>
                                         <div class="prolist">
-                                            <p>{menuIntro} <span>{menuVersion}</span></p>
-                                            <p>{menuName}</p>
+                                            <p>{menuName} </p>
+                                            <p>{menuEName}</p>
                                         </div>
                                     </a>
                                 </li>
-                                <!-- ENDIF -->
+
                                 <!-- END BEGIN -->
                             </ul>
                         </div>
