@@ -3,15 +3,15 @@
         <a class="menu" href="#"><i class="iconfont icon-share1"></i>睿见管理<span
                     class="fa fa-angle-down"></span></a>
         <ul>
-            <li id="userManage">
+            <!-- <li id="userManage">
                 <a href="manage.html">用户管理</a>
-            </li>
-            <li id="permission">
+            </li> -->
+            <!--<li id="permission">
                 <a href="permission.html">权限管理</a>
             </li>
             <li id="checkLogs">
                 <a href="#">操作日志</a>
-            </li>
+            </li> -->
         </ul>
     </li>
     <li id="sidebar_userInfo">
