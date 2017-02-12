@@ -181,6 +181,12 @@
 .navbar .nav-bg .dropdown-list > li .row .col-xs-2 ul li a:hover {
   color: #69c72b;
 }
+.navbar .nav-bg .dropdown-list > li .row .col-xs-2 ul li a.building {
+  opacity: .5;
+}
+.navbar .nav-bg .dropdown-list > li .row .col-xs-2 ul li a.building:hover {
+  color: #fff;
+}
 .navbar .nav-bg .dropdown-list > li .row .col-xs-2 ul li a .proimg {
   display: inline-block;
   width: 30px;
@@ -431,7 +437,7 @@
 }
 .product-content .product-content-body {
   height: 110px;
-  padding: 20px 40px;
+  padding: 20px;
   overflow: hidden;
   font-size: 13px;
   line-height: 22px;

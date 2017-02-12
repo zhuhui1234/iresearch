@@ -828,8 +828,17 @@ function fnDecrypt($sValue, $sSecretKey)
  * @param string $strURL
  * @return mixed
  */
-function fillMenu($menu,$strURL = '?m=irdata&a=classicSys')
+function fillMenu($menu,$strURL = '?m=irdata&a=classicSys',$irdStatus = 1)
 {
+    if (empty($irdStatus) && $irdStatus != 0) {
+        $irdStatus = 1;
+    }
+//    echo '---';
+//    pr($irdStatus);
+
+    if (empty($strURL)) {
+        $strURL='?m=irdata&a=classicSys';
+    }
     foreach ($menu as $itemKey => $item) {
         if (empty($item['lowerTree'])) {
             $menu[$itemKey]['isSubMenu'] = 1;
@@ -838,9 +847,20 @@ function fillMenu($menu,$strURL = '?m=irdata&a=classicSys')
             $menu[$itemKey]['subMenu'] = $item['lowerTree'];
             foreach ($item['lowerTree'] as $subMenuKey => $subMenuCon) {
                 foreach ($subMenuCon['lowerTree'] as $lowerKey => $lowerCon) {
-                    if (!empty($lowerCon['curl']) AND strpos($lowerCon['curl'], 'guid') AND !strpos($lowerCon['curl'],'iReport') ) {
+                    if ($lowerCon['versionType'] == 2 ) {
                         //is old system
                         $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['curl'] = $strURL . '&ppname='.$lowerCon['menuName'];
+                        $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['irdStatus'] = $irdStatus;
+                    }
+                    if (!empty($lowerCon['functionLabel'])) {
+                        foreach ($lowerCon['functionLabel'] as $lKey => $fl) {
+//                            $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['functionLabel2'] =[];
+                            $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['functionLabel2'][]=[
+                                'name' => [$fl][0]
+                            ];
+                        }
+                    } else {
+                        $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['functionLabel2']=null;
                     }
                 }
             }

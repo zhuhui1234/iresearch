@@ -131,6 +131,10 @@ class UserController extends Controller
         $userInfo = json_decode($this->model->getMyInfo(), true);
         $bindingUserInfo = json_decode($this->model->bindUserInfo(), true);
         $userInfo = $userInfo['data'];
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
 
         if ($userInfo['headImg'] != 'upload/head/') {
             $userInfo['headImg'] = IMG_URL . $userInfo['headImg'];
@@ -146,7 +150,10 @@ class UserController extends Controller
                 'uname' => $userInfo['uname'],
                 'position' => $userInfo['position'],
                 'wechat' => $bindingUserInfo['data']['weixin']['type'],
-                'weChatNickName' => $bindingUserInfo['data']['weixin']['name']
+                'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
+                'menu' => $menu,
+                'titleMenu' => $menu[1]['subMenu'],
+                'mainMenu' => $this->__mainMenu($menu[1]['subMenu'])
             ]
         );
     }
@@ -238,15 +245,6 @@ class UserController extends Controller
         );
 
         View::instance('user/userAccess.tpl')->show($data);
-    }
-
-
-    /**
-     * 个人信息
-     */
-    public function profile()
-    {
-
     }
 
     /**
@@ -487,6 +485,28 @@ class UserController extends Controller
         header('Content-type: application/json');
     }
 
-
-
+    /**
+     * main menu
+     * @param array $menuData
+     * @return array
+     */
+    private function __mainMenu(array $menuData)
+    {
+        foreach ($menuData as $menuDataKey => $menuDatum) {
+            $re = [];
+            if (count($menuDatum['lowerTree']) > 4) {
+                for ($i=0;$i<ceil(count($menuDatum['lowerTree']));$i++) {
+                    $v = array_slice($menuDatum['lowerTree'],$i*4, 4);
+                    if (!empty($v)) {
+                        $re[$i]['list'] = $v;
+                    }
+                }
+            }else{
+                $re[0]['list']=$menuDatum['lowerTree'];
+            }
+            $menuData[$menuDataKey]['reTree'] = $re;
+        }
+//        pr($menuData);
+        return $menuData;
+    }
 }

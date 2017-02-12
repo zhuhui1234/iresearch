@@ -57,8 +57,22 @@ class IndexController extends Controller
         $userModel = Model::instance('user');
         $menu = json_decode($userModel->showMenu(), true);
         $menu = $menu['data']['dataList'];
-        $menu = fillMenu($menu);
 
+
+        if (empty(trim($userInfo['productKey']))) {
+            //没有绑定
+            $data['irdStatus'] = 1;
+        } else {
+            //绑定
+            $data['irdStatus'] = 2;
+        }
+
+
+        $menu = fillMenu($menu,null,$data['irdStatus']) ;
+//
+//        pr($data['irdStatus']);
+//        pr($menu);
+//        exit();
         $data = array(
             "YH" => YH_LOGIN,
             "userIndustry" => $userIndustry,
@@ -74,13 +88,10 @@ class IndexController extends Controller
             'titleMenu' => $menu[1]['subMenu'],
             'mainMenu' => $this->__mainMenu($menu[1]['subMenu'])
         );
-        if (empty(trim($userInfo['productKey']))) {
-            $data['irdStatus'] = 1;
-        } else {
-            $data['irdStatus'] = 0;
-        }
 
 
+//        pr($data);
+//        exit();
         View::instance('index/home.tpl')->show($data);
     }
 
@@ -139,7 +150,10 @@ class IndexController extends Controller
             'userID' => $this->userInfo['userID'],
             'role' => $this->userInfo['permissions'],
             'title' => WEBSITE_TITLE,
-            'kolLink' => $this->kolLink()
+            'kolLink' => $this->kolLink(),
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => $this->__mainMenu($menu[1]['subMenu'])
         );
 
         View::instance('service/kol.tpl')->show($data);
@@ -150,11 +164,19 @@ class IndexController extends Controller
      */
     public function mutMedia()
     {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+
         $data = array(
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID'],
             'role' => $this->userInfo['permissions'],
-            'title' => WEBSITE_TITLE
+            'title' => WEBSITE_TITLE,
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => $this->__mainMenu($menu[1]['subMenu'])
         );
 
 

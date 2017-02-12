@@ -39,6 +39,7 @@ define(['helper', 'app/main', 'cropper', 'cropper-main', 'upload', 'app/user/lef
                 Helper.post('updateUserInfo', myInfo, function (ret) {
                     console.log(ret);
                     alert(ret.resMsg);
+                    location.reload();
                 }, function (errRet) {
                     alert("更新错误");
                 });

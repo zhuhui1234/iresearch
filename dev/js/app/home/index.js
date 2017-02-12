@@ -18,9 +18,10 @@ define(['helper', 'app/main'], function (Helper) {
             Helper.post('bindIRDA', {data: getData}, function (ret) {
                 if (ret.resCode == '000000') {
                     alert('绑定成功');
-                    $('#bindingClassicIRD')[0].removeAttribute('data-target');
-                    $('#bindingClassicIRD').html('已绑定');
+                    // $('#bindingClassicIRD')[0].removeAttribute('data-target');
+                    // $('#bindingClassicIRD').html('已绑定');
                     $("#myModal").hide();
+                    location.reload();
                 }else{
                     alert(ret.resMsg);
                 }
