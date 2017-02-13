@@ -35,7 +35,7 @@
 
 
 <!-- PAGE -->
-
+{irdStatus}
 <div class="container index-tab-content">
     <div class="tab-content">
         <!-- BEGIN mainMenu -->
@@ -93,19 +93,35 @@
                                                                 {menuIntro}
                                                             </p>
                                                             <p>
-                                                                <span><i class="fa fa-check-square-o"></i>自定义人群</span>
-                                                                <span><i class="fa fa-check-square-o"></i>媒介计划</span>
-                                                                <span><i class="fa fa-check-square-o"></i>用户画像</span>
-                                                                <span><i class="fa fa-check-square-o"></i>信息管理</span>
+                                                                <!-- IF functionLabel2!="" -->
+                                                                <!-- BEGIN functionLabel2 -->
+                                                                <span><i class="fa fa-check-square-o"></i>{name}</span>
+                                                                <!-- END BEGIN -->
+                                                                <!-- ENDIF -->
+
                                                             </p>
                                                         </div>
                                                         <!-- IF ptype="0" -->
-                                                        <div class="product-content-footer">
-                                                            <a href="{curl}">
                                                                 <!-- IF menuIntro="建设中..." -->
+                                                                <div class="product-content-footer">
+                                                                <a href="#">
                                                                 <i class="fa fa-arrow-circle-right"></i>建设中
                                                                 <!-- ELSE -->
-                                                                <i class="fa fa-arrow-circle-right"></i>申请试用
+                                                                <!-- IF versionType="2" -->
+                                                                <!-- IF irdStatus="1" -->
+                                                                    <div class="product-content-footer" data-toggle="modal" data-target="#myModal">
+                                                                    <a href="#" id="bindingClassicIRD" >
+                                                                <i class="fa fa-arrow-circle-right"></i>绑定经典版
+                                                                <!-- ELSE -->
+                                                                        <div class="product-content-footer">
+                                                                        <a href="?m=user&a=trialApply&ppname={menuName}&menuID={menuID}">
+                                                                        <i class="fa fa-arrow-circle-right"></i>申请试用
+                                                                <!-- ENDIF -->
+                                                                <!-- ELSE -->
+                                                                            <div class="product-content-footer">
+                                                                            <a href="?m=user&a=trialApply&ppname={menuName}&menuID={menuID}">
+                                                                     <i class="fa fa-arrow-circle-right"></i>申请试用
+                                                                <!-- ENDIF -->
                                                                 <!-- ENDIF -->
                                                             </a>
                                                         </div>
@@ -134,40 +150,6 @@
                     <!-- end PAGE -->
 
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content history">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span
-                                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                                    </button>
-                                    <h4 class="modal-title" id="myModalLabel">
-                                        <img src="./public/img/irdpop.png" alt="">
-                                    </h4>
-                                </div>
-                                <div class="modal-body">
-                                    <iframe style="display: none;" src="" name="target_submit"></iframe>
-                                    <form role="form" target="target_submit" id="bindingIRDA">
-                                        <p style="display: none" id="binding_irda_error"
-                                           class="text-center text-danger"><i class="fa fa-warning"></i> 绑定失败，请输入正确的账号密码
-                                        </p>
-                                        <div class="form-group">
-                                            <input id="irda_email" name="mail" type="text" class="form-control"
-                                                   placeholder="用户名">
-                                        </div>
-                                        <div class="form-group">
-                                            <input id="irda_pwd" type="password" name="pwd" class="form-control"
-                                                   placeholder="密码">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-block">确定</button>
-                                    </form>
-                                    <p>如有账号问题，请联系 400-000-000</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!-- INCLUDE ../foot.tpl -->
                     <!-- 开发环境 -->
                     <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>

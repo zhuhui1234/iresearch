@@ -84,6 +84,11 @@ class IndustryController extends Controller
      */
     public function showIndustryReport()
     {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['token'];
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
@@ -112,7 +117,10 @@ class IndustryController extends Controller
             "level" => $level,
             'token' => $this->userInfo['token'],
             'u_account' => $this->userInfo['u_account'],
-            'role' => $userInfo['permissions']
+            'role' => $userInfo['permissions'],
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => $this->__mainMenu($menu[1]['subMenu'])
         );
         if ((int)$userInfo['permissions'] > 0) {
             View::instance('service/showReport2.tpl')->show($data);
@@ -187,6 +195,31 @@ class IndustryController extends Controller
     {
         @@ob_clean();
         header('Content-type: application/json');
+    }
+
+    /**
+     * main menu
+     * @param array $menuData
+     * @return array
+     */
+    private function __mainMenu(array $menuData)
+    {
+        foreach ($menuData as $menuDataKey => $menuDatum) {
+            $re = [];
+            if (count($menuDatum['lowerTree']) > 4) {
+                for ($i=0;$i<ceil(count($menuDatum['lowerTree']));$i++) {
+                    $v = array_slice($menuDatum['lowerTree'],$i*4, 4);
+                    if (!empty($v)) {
+                        $re[$i]['list'] = $v;
+                    }
+                }
+            }else{
+                $re[0]['list']=$menuDatum['lowerTree'];
+            }
+            $menuData[$menuDataKey]['reTree'] = $re;
+        }
+//        pr($menuData);
+        return $menuData;
     }
 
 }

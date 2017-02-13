@@ -114,9 +114,39 @@ class UserController extends Controller
     /**
      * 更新注册信息
      */
-    public function trailApply()
+    public function trialApply()
     {
+        $data['token'] = $this->userInfo['token'];
+//        var_dump($this->loginStatus);
+        $data = $this->userDetail;
+        $data['loginStatus'] = $this->loginStatus;
+        $userInfo = json_decode($this->model->getMyInfo(), true);
+        $bindingUserInfo = json_decode($this->model->bindUserInfo(), true);
+        $userInfo = $userInfo['data'];
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
 
+        View::instance('user/trial.tpl')->show(
+            [
+                'username' => $userInfo['uname'],
+                'company' => $userInfo['company'],
+                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
+                'expireDate' => substr($this->userInfo['validity'], 0, 10),
+                'avatar' => $userInfo['headImg'],
+                'permissions' => $this->userInfo['permissions'],
+                'uname' => $userInfo['uname'],
+                'position' => $userInfo['position'],
+                'wechat' => $bindingUserInfo['data']['weixin']['type'],
+                'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
+                'menu' => $menu,
+                'titleMenu' => $menu[1]['subMenu'],
+                'mainMenu' => $this->__mainMenu($menu[1]['subMenu']),
+                'ppname' => $this->request()->get('ppname'),
+                'menuID' => $this->request()->get('menuID')
+            ]
+        );
     }
 
     /**
@@ -301,6 +331,9 @@ class UserController extends Controller
         echo $rs;
     }
 
+    /**
+     * binding wechat api
+     */
     public function bindingWxAPI()
     {
         $weChatObj = Session::instance()->get('wechatBinding');
@@ -320,12 +353,10 @@ class UserController extends Controller
         } else {
             echo json_encode([resCode => '00005', 'msg' => '扫描微信异常']);
         }
-
-
     }
 
     /**
-     *
+     * binding IRDA
      */
     public function bindingIRDA()
     {
@@ -340,6 +371,12 @@ class UserController extends Controller
     public function registerUserInfoAPI()
     {
 
+    }
+
+    public function trialApplyAPI()
+    {
+        $data = json_encode($this->request()->post('data'));
+        echo $this->model->trialApply($data);
     }
 
 

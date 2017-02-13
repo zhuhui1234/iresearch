@@ -71,9 +71,9 @@
                                 <li>
                                     <!-- IF ptype!="1" -->
                                     <!-- IF menuIntro="建设中..." -->
-                                    <a href="{curl}" class="building" data-toggle="tooltip" data-placement="top" title="建设中">
+                                    <a href="#" class="building" data-toggle="tooltip" data-placement="top" title="建设中">
                                     <!-- ELSE -->
-                                    <a href="{curl}" data-toggle="tooltip" data-placement="top" title="申请试用">
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="申请试用">
                                         <!-- ENDIF -->
                                         <!-- ELSE -->
                                         <!-- IF menuIntro="建设中..." -->

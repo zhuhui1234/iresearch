@@ -1,7 +1,7 @@
 define(['helper', 'app/main'], function (Helper) {
     $(function () {
-        $('.navbar').css('margin-bottom', 0);
-        $('footer').css('margin-top', 0);
+        // $('.navbar').css('margin-bottom', 0);
+        // $('footer').css('margin-top', 0);
         $('#iRView').addClass('active');
         Helper.nav();
 
