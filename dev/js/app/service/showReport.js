@@ -8,7 +8,7 @@
 define(['jquery', 'helper'], function ($, Helper) {
     $('.navbar').css('margin-bottom', 0);
     $('footer').css('margin-top', 0);
-    $('#nav_irv').addClass('active');
+    $('#iRView').addClass('active');
     Helper.nav();
     var a = $(document).height(), b = $("nav").height();
     $(".report-wrapper").css({height: a - b}), $(".report-menu ul li a").on("click", function (a) {
