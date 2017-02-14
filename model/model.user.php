@@ -188,11 +188,30 @@ class UserModel extends API
     public function showMenu()
     {
         $userInfo = Session::instance()->get('userInfo');
-        return $this->__showHomeMenu([
-            'TOKEN' => $userInfo['token'],
-            'companyID' => $userInfo['companyID'],
-            'userID' => $userInfo['userID']
-        ]);
+        $menu = Session::instance()->get('menu');
+        if (empty($menu) || !isset($menu['resCode']) ) {
+                $m = $this->__showHomeMenu([
+                    'TOKEN' => $userInfo['token'],
+                    'companyID' => $userInfo['companyID'],
+                    'userID' => $userInfo['userID']
+                ]);
+                Session::instance()->set('menu',$m);
+
+            return $m;
+        } else {
+            if ($menu['resCode'] != '000000') {
+                $m = $this->__showHomeMenu([
+                    'TOKEN' => $userInfo['token'],
+                    'companyID' => $userInfo['companyID'],
+                    'userID' => $userInfo['userID']
+                ]);
+                Session::instance()->set('menu',$m);
+                return $m;
+            } else {
+                return $menu;
+            }
+        }
+
     }
 
     /**

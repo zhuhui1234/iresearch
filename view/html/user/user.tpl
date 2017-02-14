@@ -223,7 +223,7 @@
                     </div>
                     <div class="col-sm-4 text-right">
                         <label class="control-label">
-                            <!-- IF wechat="" -->
+                            <!-- IF wechat="1" -->
                             <!-- ELSE -->
                             <a href="#" data-toggle="modal" data-target="#code">快速设置</a>
                             <!-- ENDIF -->

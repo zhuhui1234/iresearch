@@ -51,7 +51,7 @@
                         <div class="swiper-slide">
                             <div class="row">
                                 <!-- BEGIN list -->
-                                <div class="col-xs-6" data-swiper-parallax="-100">
+                                <div class="col-xs-6">
                                     <!-- IF menuIntro="建设中..." -->
                                     <div class="product-content">
                                         <!-- ELSE -->

@@ -53,12 +53,12 @@ class IndexController extends Controller
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['token'];
 
-        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+        //$userIndustry = Model::instance('Industry')->getUserIndustry($data);
         $userModel = Model::instance('user');
         $menu = json_decode($userModel->showMenu(), true);
+
         $menu = $menu['data']['dataList'];
-
-
+      
         if (empty(trim($userInfo['productKey']))) {
             //没有绑定
             $data['irdStatus'] = 1;
@@ -75,7 +75,7 @@ class IndexController extends Controller
 //        exit();
         $data = array(
             "YH" => YH_LOGIN,
-            "userIndustry" => $userIndustry,
+            //"userIndustry" => $userIndustry,
             'loginStatus' => $this->loginStatus,
             'userInfo' => $this->userInfo,
             'token' => $this->userInfo['token'],
@@ -103,8 +103,7 @@ class IndexController extends Controller
         $menu = json_decode($userModel->showMenu(), true);
         $menu = $menu['data']['dataList'];
         $menu = fillMenu($menu);
-        pr($this->__mainMenu($menu[1]['subMenu']));
-        exit();
+
         $data = array(
 //            "YH" => YH_LOGIN,
 //            "userIndustry" => $userIndustry,

@@ -27,7 +27,7 @@
 				<span class="tip">*必填</span>
 			</div>
 			<div class="input-group">
-				<span class="input-group-addon">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span>
+				<span class="input-group-addon">用户姓名</span>
 				<input id="username" type="text" id="name" class="form-control" placeholder="填写您的真实姓名" value="{username}">
 				<p class="text-danger"></p>
 				<span class="tip">*必填</span>
@@ -40,7 +40,7 @@
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon">手机号码</span>
-				<input id="mobile" type="text" id="mobile" class="form-control" placeholder="填写您的手机号码" value="{mobile}">
+				<input id="mobile" type="text" id="mobile" class="form-control" placeholder="填写您的手机号码" value="{mobile}" disabled>
 				<p class="text-danger"></p>
 				<span class="tip">*必填</span>
 			</div>
@@ -63,7 +63,7 @@
 		</div>
 		<p class="text-danger text-center"></p>
 		<button id="applyToTrial" type="submit" class="btn btn-block btn-primary btn-lg">提交申请</button>
-		<p class="text-center mtm text-muted">如有账号问题请拨打***********</p>
+
 	</div>
 </div>
 

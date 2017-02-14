@@ -4,7 +4,8 @@
 define(['app/main', 'swiper'], function () {
     $(function () {
         var swiper = function () {
-            new Swiper('.swiper-container', {
+            return new Swiper('.swiper-container', {
+                // initialSlide :pageNum,
                 pagination: '.swiper-pagination',
                 spaceBetween: 30,
                 paginationClickable: true,
@@ -15,13 +16,26 @@ define(['app/main', 'swiper'], function () {
                 }
             });
         }
-        swiper();
+
+        var sw = swiper();
 
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            // console.log(e);
             // e.target // newly activated tab
             // e.relatedTarget // previous active tab
-            console.log(e)
+            // console.log(sw[0].activeIndex);
             swiper();
+            sw.map(function(i,v){
+                // console.log(sw[v].slideTo(0));
+                if (sw[v].slideTo(0)) {
+                    sw[v].slideTo(0)
+                }else {
+                    sw[v].slideTo(0);
+
+                }
+                // sw[v].updatePagination();
+                // sw[v].slideTo(0);
+            })
         })
 
     });
