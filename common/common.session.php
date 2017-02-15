@@ -97,8 +97,11 @@ class Session
         
         $key = $this->prefix . $key;
         $_SESSION[$key] = $value;
+        if (is_array($value)) {
+            $value = 'Array: '. json_encode($value);
+        }
         write_to_log('set session key: '. $key, '_session');
-        write_to_log('set session value'. $value , '_session');
+        write_to_log('set session value: '. $value , '_session');
     }
 
     /**
