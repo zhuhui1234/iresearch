@@ -189,7 +189,8 @@ class UserModel extends API
     {
         $userInfo = Session::instance()->get('userInfo');
         $menu = Session::instance()->get('menu');
-        if (empty($menu) || !isset($menu['resCode']) ) {
+        $sMenu = json_decode($menu, true);
+        if (empty($menu) || !isset($sMenu['resCode']) ) {
                 $m = $this->__showHomeMenu([
                     'TOKEN' => $userInfo['token'],
                     'companyID' => $userInfo['companyID'],
@@ -199,7 +200,7 @@ class UserModel extends API
 
             return $m;
         } else {
-            if ($menu['resCode'] != '000000') {
+            if ($sMenu['resCode'] != '000000') {
                 $m = $this->__showHomeMenu([
                     'TOKEN' => $userInfo['token'],
                     'companyID' => $userInfo['companyID'],
