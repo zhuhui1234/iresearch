@@ -44,6 +44,7 @@ class UserController extends Controller
      */
     public function login()
     {
+        Session::instance()->destroy();
         $data = array(
             'loginStatus' => $this->loginStatus,
             'title' => WEBSITE_TITLE
