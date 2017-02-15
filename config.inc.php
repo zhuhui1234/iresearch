@@ -33,17 +33,19 @@ define('REDIS_PREFIX','_iclick_');
 //    define('REDIS_PWD','!QAZ@WSX');
 define('REDIS_PWD',FALSE);
 //站点配置
-//	define('WEBSITE','http://localhost');
-define('WEBSITE', $_SERVER['SERVER_ADDR']);
+define('WEBSITE','http://172.16.19.155');
+//define('WEBSITE', $_SERVER['SERVER_ADDR']);
 define('WEBSITE_URL', '');
 define('WEBSITE_SOURCE_URL', WEBSITE_URL . 'dev');
 define('WEBSITE_TITLE', '艾瑞数据平台');
 define('REGISTER_MAILADDR', 'irv@iresearch.com.cn');
 define('FORGOTPWD_MAILADDR', 'irv@iresearch.com.cn');
 //导出报表配置
-//define('API_URL', 'http://180.169.19.208/iview_deskapi/');
-define('API_URL', 'http://180.169.19.208/idata_deskapi/');
-define('IMG_URL', 'http://203.156.255.168/iview_deskapi/');
+//define('API_URL', 'http://180.169.19.208/iview_deskapi2/');
+//define('API_URL', 'http://180.169.19.208/idata_deskapi2/');
+define('API_URL', 'http://180.169.19.208/idata_deskapi3/');
+//define('IMG_URL', 'http://203.156.255.168/iview_deskapi/');
+define('IMG_URL', 'http://180.169.19.208/idata_deskapi3/');
 define('API_URL_REPORT', 'http://10.10.21.163/iReport/');
 define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
 define('KOL_API', 'http://kolweb.simplybrand.com/urlRedirect.ashx');

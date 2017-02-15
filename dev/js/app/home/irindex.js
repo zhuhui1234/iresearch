@@ -7,11 +7,11 @@ define(['helper', 'app/main'], function (Helper) {
 
         //render
         jQuery(function ($) {
-            var topBar = 100;
+            var topBar = 65;
             var innerHeight = window.innerHeight;
             console.log(innerHeight);
             var $frame = $('iframe:eq(0)');
-            $frame.css('height',innerHeight-topBar-50);
+            $frame.css('height',innerHeight-topBar);
             $frame.css('min-height',700-topBar);
             $('body').css('overflow-y','hidden');
             $(window).resize(function(){
