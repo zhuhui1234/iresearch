@@ -62,6 +62,8 @@ class Session
 
             if (isset($_SESSION[$key]))
             {
+                write_to_log('get session key: '.$key,'_session');
+                write_to_log('get session value: '.json_encode($_SESSION[$key]), '_session');
                 return $_SESSION[$key];
             }
             else
@@ -82,6 +84,7 @@ class Session
      */
     public function getAll()
     {
+        write_to_log('get session all: '. json_encode($_SESSION), '_session');
         return $_SESSION;
     }
 
