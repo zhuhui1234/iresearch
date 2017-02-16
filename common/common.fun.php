@@ -833,8 +833,9 @@ function fillMenu($menu,$strURL = '?m=irdata&a=classicSys',$irdStatus = 1)
     if (empty($irdStatus) && $irdStatus != 0) {
         $irdStatus = 1;
     }
-//    echo '---';
-//    pr($irdStatus);
+
+    $userInfo = Model::instance('user')->getMyInfo();
+    $userInfo = json_decode($userInfo, true);
 
     if (empty($strURL)) {
         $strURL='?m=irdata&a=classicSys';
@@ -852,6 +853,16 @@ function fillMenu($menu,$strURL = '?m=irdata&a=classicSys',$irdStatus = 1)
                         $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['curl'] = $strURL . '&ppname='.$lowerCon['menuName'];
                         $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['irdStatus'] = $irdStatus;
                     }
+                    //本公司试用
+//                    pr('-----') ;
+//                    pr('vp'.$lowerCon['versionType']);
+//                    pr('cp'. $userInfo['data']['company']);
+//                    var_dump($userInfo['data']['company'] != '艾瑞咨询' && $lowerCon['versionType'] == 5);
+//                    pr ('-----');
+                    if ($userInfo['data']['company'] != '艾瑞咨询' && $lowerCon['menuID'] == 11) {
+                        $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['ptype'] = 0;
+                    }
+
                     if (!empty($lowerCon['functionLabel'])) {
                         foreach ($lowerCon['functionLabel'] as $lKey => $fl) {
 //                            $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['functionLabel2'] =[];
