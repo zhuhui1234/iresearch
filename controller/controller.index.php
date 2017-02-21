@@ -59,7 +59,7 @@ class IndexController extends Controller
             'title' => WEBSITE_TITLE,
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => $this->__mainMenu($menu[1]['subMenu'])
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
         );
         View::instance('index/irIndex.tpl')->show($data);
     }
@@ -77,7 +77,7 @@ class IndexController extends Controller
         $menu = json_decode($userModel->showMenu(), true);
 
         $menu = $menu['data']['dataList'];
-      
+
         if (empty(trim($userInfo['productKey']))) {
             //没有绑定
             $data['irdStatus'] = 1;
@@ -87,7 +87,7 @@ class IndexController extends Controller
         }
 
 
-        $menu = fillMenu($menu,null,$data['irdStatus']) ;
+        $menu = fillMenu($menu, null, $data['irdStatus']);
 //
 //        pr($data['irdStatus']);
 //        pr($menu);
@@ -105,7 +105,7 @@ class IndexController extends Controller
             'company' => $this->userInfo['companyName'],
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => $this->__mainMenu($menu[1]['subMenu'])
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
         );
 
 
@@ -171,7 +171,7 @@ class IndexController extends Controller
             'kolLink' => $this->kolLink(),
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => $this->__mainMenu($menu[1]['subMenu'])
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
         );
 
         View::instance('service/kol.tpl')->show($data);
@@ -194,7 +194,7 @@ class IndexController extends Controller
             'title' => WEBSITE_TITLE,
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => $this->__mainMenu($menu[1]['subMenu'])
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
         );
 
 
@@ -254,21 +254,25 @@ class IndexController extends Controller
      */
     private function __mainMenu(array $menuData)
     {
-        foreach ($menuData as $menuDataKey => $menuDatum) {
-            $re = [];
-            if (count($menuDatum['lowerTree']) > 4) {
-                for ($i=0;$i<ceil(count($menuDatum['lowerTree']));$i++) {
-                    $v = array_slice($menuDatum['lowerTree'],$i*4, 4);
-                    if (!empty($v)) {
-                        $re[$i]['list'] = $v;
+        try{
+            foreach ($menuData as $menuDataKey => $menuDatum) {
+                $re = [];
+                if (count($menuDatum['lowerTree']) > 4) {
+                    for ($i = 0; $i < ceil(count($menuDatum['lowerTree'])); $i++) {
+                        $v = array_slice($menuDatum['lowerTree'], $i * 4, 4);
+                        if (!empty($v)) {
+                            $re[$i]['list'] = $v;
+                        }
                     }
+                } else {
+                    $re[0]['list'] = $menuDatum['lowerTree'];
                 }
-            }else{
-                $re[0]['list']=$menuDatum['lowerTree'];
+                $menuData[$menuDataKey]['reTree'] = $re;
             }
-            $menuData[$menuDataKey]['reTree'] = $re;
-        }
 //        pr($menuData);
-        return $menuData;
+            return $menuData;
+        } catch (Exception $e) {
+
+        }
     }
 }
