@@ -30,6 +30,16 @@ class ServiceController extends Controller
     }
 
     /**
+     * 跳转kol产品
+     */
+    public function toKol(){
+        $user="tableau";
+        $rkey = $user . $user . date('YmdH');
+        $key = strtoupper(md5($rkey, false));
+        $url =  "http://kolweb.simplybrand.com/urlRedirect.ashx?u={$user}&e={$user}&ukey={$key}";
+        header("Location: ".$url);
+    }
+    /**
      *　auth code img
      */
     public function authImg()
