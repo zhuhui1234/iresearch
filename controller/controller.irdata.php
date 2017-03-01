@@ -47,6 +47,15 @@ class IRDataController extends Controller
                 'menu' => fillMenu($this->menu),
                 'ppurl' => $this->__getCURL($ppname)
             ];
+            //以下代码是解决被禁止第三方cooke下iframe无法登陆
+            if(strpos($_SERVER["HTTP_USER_AGENT"],"Safari")) {
+                if ($this->request()->get('backType',0)=='0') {
+                    $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+                    $callBack = urlencode($backURL . '&backType=1');
+                    $jumpURL = $data['ppurl'] . '&irv_callback=' . $callBack;
+                    header("Location:".$jumpURL);
+                }
+            }
             if (DEBUG) {
 //                pr($this->userInfo);
 //                var_dump($this->irdUserInfo);

@@ -64,6 +64,32 @@ class IndexController extends Controller
         View::instance('index/irIndex.tpl')->show($data);
     }
 
+    public function oneInsight()
+    {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+
+        $data = array(
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+        );
+        $data['url'] = "http://180.76.182.158:9123/oneinsight-user/cas/authenticate?token=" . $data['token'] . "&pid=36";
+        if ($this->request()->get('backType', 0) == '0') {
+            $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+            $callBack = urlencode($backURL . '&backType=1&active_menu=iRCloud');
+            $jumpURL = $data['url'] . '&irv_callback=' . $callBack;
+            header("Location:" . $jumpURL);
+        }
+        View::instance('index/publicFrame.tpl')->show($data);
+    }
+
     /**
      * home page
      */
@@ -254,7 +280,7 @@ class IndexController extends Controller
      */
     private function __mainMenu(array $menuData)
     {
-        try{
+        try {
             foreach ($menuData as $menuDataKey => $menuDatum) {
                 $re = [];
                 if (count($menuDatum['lowerTree']) > 4) {
