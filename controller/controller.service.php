@@ -40,6 +40,18 @@ class ServiceController extends Controller
         header("Location: ".$url);
     }
     /**
+     * 跳转至产品iadt
+     */
+    public function toiAdT(){
+        $data['mail'] = "davidwei@iresearch.com.cn";
+        $data['pwd'] = "weiwei";
+        $data = json_encode($data);
+        $res = json_decode(Model::instance('user')->__getIResearchDataAccount($data),true);
+        $guid = $res['iRGuid'];
+        $url =  "http://vfc-iadt.iresearchdata.cn/ws_login.aspx?ProductSelection=ProductSelection&guid=".$guid;
+        header("Location: ".$url);
+    }
+    /**
      *　auth code img
      */
     public function authImg()

@@ -384,7 +384,7 @@ class UserModel extends API
      * @param $data
      * @return mixed|string
      */
-    private function __getIResearchDataAccount($data)
+    public function __getIResearchDataAccount($data)
     {
         $url = 'http://sys.itracker.cn/api/WebForm1.aspx';
         $encryptData = fnEncrypt($data, KEY);
