@@ -33,7 +33,7 @@ define('REDIS_PREFIX','_iclick_');
 //    define('REDIS_PWD','!QAZ@WSX');
 define('REDIS_PWD',FALSE);
 //站点配置
-define('WEBSITE','http://172.16.19.155');
+define('WEBSITE','http://10.10.21.163');
 //define('WEBSITE', $_SERVER['SERVER_ADDR']);
 define('WEBSITE_URL', '');
 define('WEBSITE_SOURCE_URL', WEBSITE_URL . 'dev');
@@ -127,6 +127,8 @@ if (!isLoginState()
                                         AND $_GET['a'] != 'wxLoginAPI'
                                             AND $_GET['a'] != 'sendSMS'
                                                 AND $_GET['a'] != 'BindingWeChat'
+                                                    AND $_GET['a'] != 'toKol'
+                                                        AND $_GET['a'] != 'toiAdT'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {
