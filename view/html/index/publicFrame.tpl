@@ -12,6 +12,11 @@
     <!-- 自定义 -->
     <title>{title}</title>
     <link href="./public/css/docs.min.css" rel="stylesheet">
+    <style>
+        {
+            overflow-y:hidden
+        }
+    </style>
 </head>
 <!-- INCLUDE ../nav.tpl -->
 
