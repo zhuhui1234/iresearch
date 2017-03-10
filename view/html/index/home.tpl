@@ -127,7 +127,9 @@
                                                         </div>
                                                         <!-- ELSE -->
                                                         <div class="product-content-footer">
-                                                            <a href="{curl}">
+                                                            <a href="{curl}"
+                                                                <!-- IF curl="?m=index&a=kolPage" --> target="_blank"<!-- ENDIF -->
+                                                            >
                                                                 <i class="fa fa-arrow-circle-right"></i>进入产品
                                                             </a>
                                                         </div>

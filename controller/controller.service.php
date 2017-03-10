@@ -36,7 +36,8 @@ class ServiceController extends Controller
         $user="tableau";
         $rkey = $user . $user . date('YmdH');
         $key = strtoupper(md5($rkey, false));
-        $url =  "http://vfc-kol.iresearchdata.cn:8010/urlRedirect.ashx?u={$user}&e={$user}&ukey={$key}";
+        $url =  "http://vfckol.iresearchdata.cn/urlRedirect.ashx?u={$user}&e={$user}&ukey={$key}";
+
         header("Location: ".$url);
     }
     /**

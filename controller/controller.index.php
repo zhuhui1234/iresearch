@@ -178,6 +178,9 @@ class IndexController extends Controller
     public function kolPage()
     {
 
+        /**
+         *
+        //在将艾瑞数据域名调整为 iresearchdata.cn前新窗口打开ikol
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
         $userModel = Model::instance('user');
@@ -201,6 +204,8 @@ class IndexController extends Controller
         );
 
         View::instance('service/kol.tpl')->show($data);
+         * */
+        header("Location:".$this->kolLink());
     }
 
     /**

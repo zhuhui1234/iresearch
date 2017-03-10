@@ -22,46 +22,38 @@
         </h4>
         <ul>
             <li class="open">
-                <a href="#" class="_showReport"
-                   cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B604"
-                   cfg_name="{cfg_name}">首页</a>
+                <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B604" cfg_name="{cfg_name}">首页</a>
             </li>
             <li class="open">
                 <a href="#">榜单排行<i class="fa fa-angle-right"></i></a>
                 <ul>
                     <li>
-                        <a href="#" class="_showReport"
-                           cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B614">
+                        <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B614">
                             视频媒体
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="_showReport"
-                           cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B613">
+                        <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B613">
                             频道
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="_showReport"
-                           cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B656">
+                        <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B656">
                             性别
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="_showReport"
-                           cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B657">
+                        <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B657">
                             年龄
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="_showReport"
-                           cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B659">
+                        <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B659">
                             设备
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="_showReport"
-                           cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B660">
+                        <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B660">
                             地区
                         </a>
                     </li>
@@ -71,26 +63,22 @@
                 <a href="#">媒体内容分析<i class="fa fa-angle-right"></i></a>
                 <ul>
                     <li>
-                        <a href="#" class="_showReport"
-                           cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B662">
+                        <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B662">
                             媒体内容分析
                         </a>
                     </li>
-                    <!--
                     <li>
-                        <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B663">
-                            媒体内容分析-日
+                        <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B700">
+                            媒体频道分析
                         </a>
                     </li>
-                    -->
                 </ul>
             </li>
             <li class="open">
                 <a href="#">视频人群分析<i class="fa fa-angle-right"></i></a>
                 <ul>
                     <li>
-                        <a href="#" class="_showReport"
-                           cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B665">
+                        <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B665">
                             视频人群分析
                         </a>
                     </li>
@@ -100,9 +88,7 @@
                 <a href="#">视频时段分析<i class="fa fa-angle-right"></i></a>
                 <ul>
                     <li>
-                        <a href="#" class="_showReport"
-                           cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B666"
-                           cfg_name="{cfg_name}" cfg_id="{cfg_id}">
+                        <a href="#" class="_showReport" cfg_url="http://irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B666" cfg_name="{cfg_name}" cfg_id="{cfg_id}">
                             视频时段分析
                         </a>
                     </li>
@@ -117,23 +103,21 @@
             </div>
             <div class="show-report">
                 <iframe id="frameReport" scrolling="no" width="100%" frameborder="0" default="{default.url}"></iframe>
-                <div>
-                </div>
-            </div>
+            <div>
         </div>
     </div>
-    <div class="full-screen">
-        <i class="fa fa-bars"></i>
-    </div>
-    <!-- 开发环境 -->
-    <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
-    <script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>
-    <script type="text/javascript">
-        require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
-        require([
-            'app/service/showReport',
-
-        ]);
-    </script>
-    </body>
+</div>
+<div class="full-screen">
+    <i class="fa fa-bars"></i>
+</div>
+<!-- 开发环境 -->
+<script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
+<script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>
+<script type="text/javascript">
+    require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
+    require([
+        'app/service/showReport'
+    ]);
+</script>
+</body>
 </html>
