@@ -40,17 +40,30 @@ class ServiceController extends Controller
 
         header("Location: ".$url);
     }
+    public function vfcLogin(){
+        $data = array();
+        View::instance('service/iadtLogin.tpl')->show($data);
+    }
     /**
      * 跳转至产品iadt
      */
     public function toiAdT(){
-        $data['mail'] = "davidwei@iresearch.com.cn";
-        $data['pwd'] = "weiwei";
+        //$data['mail'] = "davidwei@iresearch.com.cn";
+        //$data['pwd'] = "weiwei";
+        $data['mail'] = $this->request()->post('mail');
+        $data['pwd'] = $this->request()->post('pwd');
         $data = json_encode($data);
         $res = json_decode(Model::instance('user')->__getIResearchDataAccount($data),true);
-        $guid = $res['iRGuid'];
-        $url =  "http://vfc-iadt.iresearchdata.cn/ws_login.aspx?ProductSelection=ProductSelection&guid=".$guid;
-        header("Location: ".$url);
+        print_r($res);
+        if($res['iUserID']=='-1'){
+            echo "<script>alert('登录失败!');history.go(-1)</script>";
+
+        }
+        else {
+            $guid = $res['iRGuid'];
+            $url =  "http://vfc-iadt.iresearchdata.cn/ws_login.aspx?ProductSelection=ProductSelection&guid=".$guid;
+            header("Location: ".$url);
+        }
     }
     /**
      *　auth code img
