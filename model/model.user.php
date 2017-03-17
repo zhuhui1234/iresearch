@@ -298,6 +298,12 @@ class UserModel extends API
         if ($tempRet['resCode'] == '000000') {
             $userInfo['productKey'] = '1';
             Session::instance()->set('userInfo', $userInfo);
+            $m = $this->__showHomeMenu([
+                'TOKEN' => $userInfo['token'],
+                'companyID' => $userInfo['companyID'],
+                'userID' => $userInfo['userID']
+            ]);
+            Session::instance()->set('menu',$m);
             unset($tempRet);
         }
         return $ret;
