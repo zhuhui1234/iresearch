@@ -6,9 +6,9 @@ define(['helper', 'app/main'], function (Helper) {
         //render
         jQuery(function ($) {
             var topBar = 65;
-            var innerHeight = window.innerHeight;
-            console.log(innerHeight);
-            var $frame = $('iframe:eq(0)');
+            var innerHeight = $(document).height() ;
+            // console.log(innerHeight);
+            var $frame = $('#mut_iFrame');
             $frame.css('height',innerHeight-topBar);
             $frame.css('min-height',700-topBar);
             $('body').css('overflow-y','hidden');
