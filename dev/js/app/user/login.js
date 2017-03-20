@@ -79,7 +79,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                         }else if (ret.resCode == "1" ) {
                             $('.alert').eq(2).fadeIn().text('验证码失败');
                         }else if (ret.resCode == "000002") {
-                            $(".alert").eq(1).fadeIn().text('请不要重复发送验证码');
+                            $(".alert").eq(1).fadeIn().text(ret.resMsg);
                         }else {
                             alert(ret.resMsg);
                         }
