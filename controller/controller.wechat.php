@@ -55,7 +55,15 @@ class WeChatController extends Controller
 //                var_dump($ret);
 //                exit();
                 if ($ret) {
-                    header('Location: ?m=index');
+                    if ($ret !== null) {
+                        header('Location: ?m=index');
+                    } else {
+                        echo("<SCRIPT LANGUAGE=\"JavaScript\">
+                    alert(\"账户被冻结或异常\");
+                    window.location.href=\"?m=index\";
+                    </SCRIPT>");
+                    }
+
                 } else {
                     header("Location: ?m=user&a=BindingWeChat");
                 }
@@ -87,7 +95,7 @@ class WeChatController extends Controller
                     'wxOpenid' => $weChatObj['openid'],
                     'wxUnionid' => $weChatObj['unionid']
                 ];
-                pr($bindingData);
+//                pr($bindingData);
                 $ret = $this ->__bindingWeChatForUser($bindingData);
                 $j_ret = json_decode($ret, true);
                 if ($j_ret['resCode'] == "000000") {
