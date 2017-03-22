@@ -859,9 +859,9 @@ function fillMenu($menu,$strURL = '?m=irdata&a=classicSys',$irdStatus = 1)
 //                    pr('cp'. $userInfo['data']['company']);
 //                    var_dump($userInfo['data']['company'] != '艾瑞咨询' && $lowerCon['versionType'] == 5);
 //                    pr ('-----');
-                    if ($userInfo['data']['company'] != '艾瑞咨询' && $lowerCon['menuID'] == 11) {
-                        $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['ptype'] = 0;
-                    }
+//                    if ($userInfo['data']['company'] != '艾瑞咨询' && $lowerCon['menuID'] == 11) {
+//                        $menu[$itemKey]['subMenu'][$subMenuKey]['lowerTree'][$lowerKey]['ptype'] = 0;
+//                    }
 
                     if (!empty($lowerCon['functionLabel'])) {
                         foreach ($lowerCon['functionLabel'] as $lKey => $fl) {

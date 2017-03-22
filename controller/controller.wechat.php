@@ -9,10 +9,11 @@
 class WeChatController extends Controller
 {
 
-    private $model;
+    private $model,$wechatStatus;
 
-    public function __construct()
+    public function __construct($classname)
     {
+        parent::__construct($classname);
         $this->model = Model::instance('user');
     }
 
@@ -28,9 +29,9 @@ class WeChatController extends Controller
         $weChatUser = $wechatModel->getUserInfo($code);
         $userInfo = Session::instance()->get('userInfo');
 
-        write_to_log("get state: {$state}",'_wx');
-        write_to_log('wechatObj: '.json_encode($weChatObj),'_wx');
-        write_to_log('wechatUser: '.json_encode($weChatUser),'_wx');
+        write_to_log("get state: {$state}", '_wx');
+        write_to_log('wechatObj: ' . json_encode($weChatObj), '_wx');
+        write_to_log('wechatUser: ' . json_encode($weChatUser), '_wx');
         if (DEBUG) {
             pr('微信返回值:');
             var_dump($state);
@@ -40,7 +41,7 @@ class WeChatController extends Controller
             if (substr($state, 0, 10) == 'viewReport') {
                 $state_tmp = explode('_', $state);
                 $state = $state_tmp[0];
-                $cfg_id = $state_tmp[1];
+//                $cfg_id = $state_tmp[1];
             }
         }
 
@@ -54,14 +55,12 @@ class WeChatController extends Controller
                 ), $wechatModel->getUserInfo($code));
 //                var_dump($ret);
 //                exit();
+                write_to_log('ret: '. json_encode($ret), '_wx');
                 if ($ret) {
                     if ($ret !== null) {
                         header('Location: ?m=index');
                     } else {
-                        echo("<SCRIPT LANGUAGE=\"JavaScript\">
-                    alert(\"账户被冻结或异常\");
-                    window.location.href=\"?m=index\";
-                    </SCRIPT>");
+                        header('Location: ?m=user&a=login?recode=402');
                     }
 
                 } else {
@@ -96,14 +95,14 @@ class WeChatController extends Controller
                     'wxUnionid' => $weChatObj['unionid']
                 ];
 //                pr($bindingData);
-                $ret = $this ->__bindingWeChatForUser($bindingData);
+                $ret = $this->__bindingWeChatForUser($bindingData);
                 $j_ret = json_decode($ret, true);
                 if ($j_ret['resCode'] == "000000") {
                     echo("<SCRIPT LANGUAGE=\"JavaScript\">
                     alert(\"微信绑定成功\");
                     window.location.href=\"?m=user&a=editUserInfo\";
                     </SCRIPT>");
-                } else  {
+                } else {
                     echo("<SCRIPT LANGUAGE=\"JavaScript\">
                     alert(\"微信绑定失败\");
                     window.location.href=\"?m=user&a=editUserInfo\";
@@ -121,8 +120,9 @@ class WeChatController extends Controller
 
     /**
      * 自动登入
-     *
      * @param $data
+     * @param $weChatData
+     *
      * @return mixed
      */
     private function __weChatAutoLogin($data, $weChatData)
@@ -130,11 +130,23 @@ class WeChatController extends Controller
         return $this->model->WeChatAutoLogin($data, $weChatData);
     }
 
+    /**
+     * binding wechat
+     * @param $data
+     *
+     * @return mixed
+     */
     private function __bindingWeChat($data)
     {
         return $this->model->bindWeChat($data);
     }
 
+    /**
+     * binding wechat for user
+     * @param $data
+     *
+     * @return mixed
+     */
     private function __bindingWeChatForUser($data)
     {
         return $this->model->bindingWeChartUser($data);

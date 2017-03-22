@@ -99,6 +99,9 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             curvedLines: true,
         });
 
+        if (Helper.getQuery('recode') == '404') {
+            alert('账号被冻结')
+        }
 
     });
 
