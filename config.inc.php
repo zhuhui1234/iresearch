@@ -42,9 +42,9 @@ define('REGISTER_MAILADDR', 'irv@iresearch.com.cn');
 define('FORGOTPWD_MAILADDR', 'irv@iresearch.com.cn');
 //导出报表配置
 //define('API_URL', 'http://180.169.19.208/iview_deskapi/');
-define('API_URL', 'http://180.169.19.208/idata_deskapi3/');
+define('API_URL', 'http://42.159.231.97/idata_deskapi3/');
 //define('IMG_URL', 'http://203.156.255.168/iview_deskapi/');
-define('IMG_URL', 'http://180.169.19.208/idata_deskapi3/');
+define('IMG_URL', 'http://42.159.231.97/idata_deskapi3/');
 define('API_URL_REPORT', 'http://10.10.21.163/iReport/');
 define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
 //define('KOL_API', 'http://kolweb.simplybrand.com/urlRedirect.ashx');
@@ -116,7 +116,7 @@ if (!empty($v) && in_array($v, array('beta', 'test', 'final'))) {
 //登录处理
 if (!isLoginState()
     AND $_GET['a'] != 'login'
-           AND $_GET['a'] != 'registerUserInfoAPI'
+        AND $_GET['a'] != 'registerUserInfoAPI'
             AND $_GET['a'] != 'registerUserInfo'
                 AND $_GET['a'] != 'loginAPI'
                     AND $_GET['a'] != 'register'
@@ -129,6 +129,9 @@ if (!isLoginState()
                                                 AND $_GET['a'] != 'BindingWeChat'
                                                     AND $_GET['a'] != 'toKol'
                                                         AND $_GET['a'] != 'toiAdT'
+                                                            AND $_GET['a'] != 'vfcLogin'
+                                                                AND $_GET['a'] != 'toiAdT2'
+                                                                    AND $_GET['a'] != 'vfcLogin2'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {

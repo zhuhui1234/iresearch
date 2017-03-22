@@ -79,8 +79,7 @@
                                         <!-- IF menuIntro="建设中..." -->
                                         <a href="#" class="building" data-toggle="tooltip" data-placement="top" title="建设中">
                                         <!-- ELSE -->
-                                            <a href="{curl}"
-                                            <!-- IF curl="?m=index&a=kolPage" --> target="_blank"<!-- ENDIF -->
+                                            <a href="{curl}" 
                                             >
                                             <!-- ENDIF -->
                                         <!-- ENDIF -->

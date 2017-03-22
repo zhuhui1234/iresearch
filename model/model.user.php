@@ -406,6 +406,7 @@ class UserModel extends API
             echo 'Encrypt: ';
             var_dump($encryptData);
         }
+
         $ret = $this->_curlAPost($url, ['v' => $encryptData]);
         return $ret;
     }

@@ -85,6 +85,7 @@ class IndexController extends Controller
             $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
             $callBack = urlencode($backURL . '&backType=1&active_menu=iRCloud');
             $jumpURL = $data['url'] . '&irv_callback=' . $callBack;
+	    echo $jumpURL;exit();
             header("Location:" . $jumpURL);
         }
         View::instance('index/publicFrame.tpl')->show($data);
@@ -178,8 +179,6 @@ class IndexController extends Controller
     public function kolPage()
     {
 
-        /**
-         *
         //在将艾瑞数据域名调整为 iresearchdata.cn前新窗口打开ikol
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];
@@ -204,8 +203,8 @@ class IndexController extends Controller
         );
 
         View::instance('service/kol.tpl')->show($data);
-         * */
-        header("Location:".$this->kolLink());
+         
+        //header("Location:".$this->kolLink());
     }
 
     /**

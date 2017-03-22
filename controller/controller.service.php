@@ -54,7 +54,7 @@ class ServiceController extends Controller
         $data['pwd'] = $this->request()->post('pwd');
         $data = json_encode($data);
         $res = json_decode(Model::instance('user')->__getIResearchDataAccount($data),true);
-        print_r($res);
+
         if($res['iUserID']=='-1'){
             echo "<script>alert('登录失败!');history.go(-1)</script>";
 
@@ -62,6 +62,32 @@ class ServiceController extends Controller
         else {
             $guid = $res['iRGuid'];
             $url =  "http://vfc-iadt.iresearchdata.cn/ws_login.aspx?ProductSelection=ProductSelection&guid=".$guid;
+            header("Location: ".$url);
+        }
+    }
+    public function vfcLogin2(){
+        $data = array();
+        View::instance('service/madtLogin.tpl')->show($data);
+    }
+    /**
+     * 跳转至产品iadt
+     */
+    public function toiAdT2(){
+        //$data['mail'] = "davidwei@iresearch.com.cn";
+        //$data['pwd'] = "weiwei";
+        $data['mail'] = $this->request()->post('mail');
+        $data['pwd'] = $this->request()->post('pwd');
+        $data = json_encode($data);
+        $res = json_decode(Model::instance('user')->__getIResearchDataAccount($data),true);
+        print_r($res);
+        exit();
+        if($res['iUserID']=='-1'){
+            echo "<script>alert('登录失败!');history.go(-1)</script>";
+
+        }
+        else {
+            $guid = $res['iRGuid'];
+            $url =  "http://vfc-madt.iresearchdata.cn/ws_login.aspx?ProductSelection=ProductSelection&guid=".$guid;
             header("Location: ".$url);
         }
     }
