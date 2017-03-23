@@ -19,7 +19,10 @@ class UserController extends Controller
         parent::__construct($className);
         $this->model = Model::instance('user');
         $this->userInfo = Session::instance()->get('userInfo');
-        $this->userDetail = $this->model->getUserInfo(['token' => $this->userInfo['token'], 'userID' => $this->userInfo['userID']]);
+        $this->userDetail = $this->model->getUserInfo([
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
+        ]);
 
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
@@ -83,8 +86,7 @@ class UserController extends Controller
     public function BindingWeChat()
     {
         $weChatObj = Session::instance()->get('wechatBinding');
-//        var_dump($weChatObj);
-//        exit();
+
         if (!empty($weChatObj)) {
             $data = [
                 'WeChatAvatar' => $weChatObj['headimgurl'],
@@ -122,7 +124,7 @@ class UserController extends Controller
         $data = $this->userDetail;
         $data['loginStatus'] = $this->loginStatus;
         $userInfo = json_decode($this->model->getMyInfo(), true);
-        $bindingUserInfo = json_decode($this->model->bindUserInfo(), true);
+        $bindingUserInfo = json_decode($this->model->bindUserInfo($userInfo), true);
         $userInfo = $userInfo['data'];
         $userModel = Model::instance('user');
         $menu = json_decode($userModel->showMenu(), true);
@@ -158,7 +160,7 @@ class UserController extends Controller
         $data = $this->userDetail;
         $data['loginStatus'] = $this->loginStatus;
         $userInfo = json_decode($this->model->getMyInfo(), true);
-        $bindingUserInfo = json_decode($this->model->bindUserInfo(), true);
+        $bindingUserInfo = json_decode($this->model->bindUserInfo($userInfo), true);
         $userInfo = $userInfo['data'];
         $userModel = Model::instance('user');
         $menu = json_decode($userModel->showMenu(), true);
@@ -216,8 +218,7 @@ class UserController extends Controller
 
     public function test()
     {
-        $menu = json_decode($this->model->showMenu(), true);
-        pr(fillMenu($menu['data']['dataList']));
+
     }
 
     /**
@@ -255,7 +256,11 @@ class UserController extends Controller
     {
         $data['token'] = $this->userInfo['token'];
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);
-        $getUser = json_decode($this->model->getUserInfo(['token' => $this->userInfo['u_token'], 'u_account' => $this->request()->get('u_account')]), TRUE);
+        $getUser = json_decode($this->model->getUserInfo([
+            'token' => $this->userInfo['u_token'],
+            'u_account' => $this->request()->get('u_account')
+        ]), TRUE);
+
         $getUser = $getUser['data'];
 
         if (empty($getUser['u_head']) OR $getUser['u_head'] == 'head.png') {
@@ -336,8 +341,6 @@ class UserController extends Controller
     public function bindingWxAPI()
     {
         $weChatObj = Session::instance()->get('wechatBinding');
-//        var_dump($weChatObj);
-//        exit();
         if (!empty($weChatObj)) {
             $data = [
                 'loginMobile' => $this->request()->post('mobile'),
@@ -387,8 +390,12 @@ class UserController extends Controller
         $getVcodes = Session::instance()->get('vcodes');
         $getAll = $this->request()->requestAll();
         if ($getAll['vcode'] == $getVcodes) {
-            $ret = $this->__sendMail('请点击以下链接完成邮箱绑定：
-	     http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=registerUserInfo&', '用户注册确认邮件', 1, $getAll['registerMail'], REGISTER_MAILADDR);
+            $ret = $this->__sendMail(
+                '请点击以下链接完成邮箱绑定： http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=registerUserInfo&',
+                '用户注册确认邮件',
+                1,
+                $getAll['registerMail'],
+                REGISTER_MAILADDR);
             $this->__json();
             echo $ret;
         } else {
@@ -436,7 +443,6 @@ class UserController extends Controller
 
         if (!empty($headImg)) {
 //            $serviceModel = Model::instance('Service');
-//
 //            $imgUrl = $serviceModel->uploadImage($this->userInfo['u_token'], toBase64(UPLOAD_PATH . trim($getData['headImg'], 'uploads')), 'png');
 //            $imgData = json_decode($imgUrl, true);
             $updateUserInfo['headImg'] = toBase64(UPLOAD_PATH . trim($headImg, 'uploads'));
@@ -451,13 +457,7 @@ class UserController extends Controller
             if ($ret['resCode'] == '000000') {
                 $userinfo = json_decode($this->getUserInfo(), true);
                 @ob_clean();
-//                if (!empty($u_head)) {
                 $this->userInfo['u_head'] = $userinfo['data']['headImg'];
-//                }else{
-//                    echo 'no head';
-//                    $this->userInfo['u_head'] =
-//                }
-//
                 if (!empty($uname)) {
                     $this->userInfo['uname'] = $userinfo['data']['uname'];
                 }
@@ -484,11 +484,6 @@ class UserController extends Controller
         return $ret;
     }
 
-    public function forgotPasswordAPI()
-    {
-
-    }
-
     ######################################################################################
     ##################################                     ###############################
     #################################   PRIVATE METHODS   ################################
@@ -503,6 +498,7 @@ class UserController extends Controller
      * @param $mailType
      * @param $MailTo
      * @param $mailFrom
+     *
      * @return mixed
      */
     private function __sendMail($mailContent, $mailTitle, $mailType, $MailTo, $mailFrom)
@@ -522,7 +518,9 @@ class UserController extends Controller
 
     /**
      * main menu
+     *
      * @param array $menuData
+     *
      * @return array
      */
     private function __mainMenu(array $menuData)
@@ -530,14 +528,14 @@ class UserController extends Controller
         foreach ($menuData as $menuDataKey => $menuDatum) {
             $re = [];
             if (count($menuDatum['lowerTree']) > 4) {
-                for ($i=0;$i<ceil(count($menuDatum['lowerTree']));$i++) {
-                    $v = array_slice($menuDatum['lowerTree'],$i*4, 4);
+                for ($i = 0; $i < ceil(count($menuDatum['lowerTree'])); $i++) {
+                    $v = array_slice($menuDatum['lowerTree'], $i * 4, 4);
                     if (!empty($v)) {
                         $re[$i]['list'] = $v;
                     }
                 }
-            }else{
-                $re[0]['list']=$menuDatum['lowerTree'];
+            } else {
+                $re[0]['list'] = $menuDatum['lowerTree'];
             }
             $menuData[$menuDataKey]['reTree'] = $re;
         }
