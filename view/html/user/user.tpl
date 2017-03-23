@@ -38,10 +38,10 @@
                     </span>
                 </p>
                 <h4>{username}</h4>
-                <p class="user-time">
+                <!-- <p class="user-time">
                     <i class="iconfont icon-clock"></i>
                     <span>{expireDate}到期</span>
-                </p>
+                </p> -->
             </div>
             <!-- INCLUDE ./sidebar.tpl -->
         </div>
