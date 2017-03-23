@@ -14,15 +14,16 @@ class UserController extends Controller
 
     private $model, $userInfo, $loginStatus, $wechatStatus, $userDetail;
 
-    function __construct()
+    function __construct($className)
     {
+        parent::__construct($className);
         $this->model = Model::instance('user');
         $this->userInfo = Session::instance()->get('userInfo');
         $this->userDetail = $this->model->getUserInfo(['token' => $this->userInfo['token'], 'userID' => $this->userInfo['userID']]);
 
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
-            $this->userInfo['token'] = $this->userInfo['token'];
+//            $this->userInfo['token'] = $this->userInfo['token'];
             if (empty($this->userInfo['u_head'])) {
                 $this->userInfo['headImg'] = 'dev/img/user-head.png';
             } else {
@@ -118,7 +119,6 @@ class UserController extends Controller
     public function trialApply()
     {
         $data['token'] = $this->userInfo['token'];
-//        var_dump($this->loginStatus);
         $data = $this->userDetail;
         $data['loginStatus'] = $this->loginStatus;
         $userInfo = json_decode($this->model->getMyInfo(), true);
@@ -143,9 +143,8 @@ class UserController extends Controller
                 'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
                 'menu' => $menu,
                 'titleMenu' => $menu[1]['subMenu'],
-                'mainMenu' => $this->__mainMenu($menu[1]['subMenu']),
                 'ppname' => $this->request()->get('ppname'),
-                'menuID' => $this->request()->get('menuID')
+                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
             ]
         );
     }
@@ -156,7 +155,6 @@ class UserController extends Controller
     public function editUserInfo()
     {
         $data['token'] = $this->userInfo['token'];
-//        var_dump($this->loginStatus);
         $data = $this->userDetail;
         $data['loginStatus'] = $this->loginStatus;
         $userInfo = json_decode($this->model->getMyInfo(), true);
@@ -184,7 +182,7 @@ class UserController extends Controller
                 'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
                 'menu' => $menu,
                 'titleMenu' => $menu[1]['subMenu'],
-                'mainMenu' => $this->__mainMenu($menu[1]['subMenu'])
+                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
             ]
         );
     }
@@ -352,7 +350,7 @@ class UserController extends Controller
             $this->__json();
             echo $this->model->bindWeChat($data);
         } else {
-            echo json_encode([resCode => '00005', 'msg' => '扫描微信异常']);
+            echo json_encode(['resCode' => '00005', 'msg' => '扫描微信异常']);
         }
     }
 
@@ -418,7 +416,7 @@ class UserController extends Controller
 
     /**
      * update userinfo
-     * @return mixed
+     *
      */
     public function setUserInfoAPI()
     {
@@ -482,7 +480,6 @@ class UserController extends Controller
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
         ));
-//        return $ret;
         echo $ret;
         return $ret;
     }
