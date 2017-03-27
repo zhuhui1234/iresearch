@@ -26,6 +26,7 @@ class UserModel extends API
      * login
      *
      * @param $data
+     *
      * @return mixed
      */
     public function login($data)
@@ -55,7 +56,9 @@ class UserModel extends API
 
     /**
      * check wechat openid
+     *
      * @param $data
+     *
      * @return mixed
      */
     public function WeChatAutoLogin($data, $weChatData)
@@ -82,7 +85,9 @@ class UserModel extends API
 
     /**
      * bind WeChat
+     *
      * @param $data
+     *
      * @return mixed
      */
     public function bindWeChat($data)
@@ -110,7 +115,10 @@ class UserModel extends API
 
     /**
      * 绑定已注册用户
+     *
      * @param $data
+     *
+     * @return array $ret
      */
     public function bindingWeChartUser($data)
     {
@@ -123,6 +131,8 @@ class UserModel extends API
      * get user info list
      *
      * @param $data
+     *
+     * @return string
      */
     public function getUserInfoList($data)
     {
@@ -138,6 +148,7 @@ class UserModel extends API
      * 冰结接口
      *
      * @param $data
+     *
      * @return mixed
      */
     public function setState($data)
@@ -151,6 +162,7 @@ class UserModel extends API
      * 用户编辑
      *
      * @param $data
+     *
      * @return mixed
      */
     public function setUserInfo($data)
@@ -177,6 +189,7 @@ class UserModel extends API
      * 用户详情
      *
      * @param $data
+     *
      * @return mixed
      */
     public function getUserInfo($data)
@@ -200,13 +213,13 @@ class UserModel extends API
             $userInfo['companyID'] = '0';
         }
 
-        if (empty($menu) || !isset($sMenu['resCode']) ) {
-                $m = $this->__showHomeMenu([
-                    'TOKEN' => $userInfo['token'],
-                    'companyID' => $userInfo['companyID'],
-                    'userID' => $userInfo['userID']
-                ]);
-                Session::instance()->set('menu',$m);
+        if (empty($menu) || !isset($sMenu['resCode'])) {
+            $m = $this->__showHomeMenu([
+                'TOKEN' => $userInfo['token'],
+                'companyID' => $userInfo['companyID'],
+                'userID' => $userInfo['userID']
+            ]);
+            Session::instance()->set('menu', $m);
             return $m;
         } else {
             if ($sMenu['resCode'] != '000000') {
@@ -215,7 +228,7 @@ class UserModel extends API
                     'companyID' => $userInfo['companyID'],
                     'userID' => $userInfo['userID']
                 ]);
-                Session::instance()->set('menu',$m);
+                Session::instance()->set('menu', $m);
                 return $m;
             } else {
                 return $menu;
@@ -226,7 +239,9 @@ class UserModel extends API
 
     /**
      * user logs
+     *
      * @param array $data
+     *
      * @return mixed
      */
     public function userLogs(array $data)
@@ -240,6 +255,7 @@ class UserModel extends API
      * 退出登录
      *
      * @param $data
+     *
      * @return mixed
      */
     public function setCancellation($data)
@@ -253,6 +269,7 @@ class UserModel extends API
      * 重置密码
      *
      * @param $data
+     *
      * @return mixed
      */
     public function resetPassword($data)
@@ -290,7 +307,10 @@ class UserModel extends API
 
     /**
      * binding IRDA
+     *
      * @param $data
+     *
+     * @return mixed
      */
     public function bindingIRDAToUser($data)
     {
@@ -308,7 +328,7 @@ class UserModel extends API
                 'companyID' => $userInfo['companyID'],
                 'userID' => $userInfo['userID']
             ]);
-            Session::instance()->set('menu',$m);
+            Session::instance()->set('menu', $m);
             unset($tempRet);
         }
         return $ret;
@@ -316,7 +336,9 @@ class UserModel extends API
 
     /**
      * get IRDA
+     *
      * @param $data
+     *
      * @return mixed|string
      */
     public function getIResearchDataAccount($productKey)
@@ -336,7 +358,9 @@ class UserModel extends API
 
     /**
      * block user
+     *
      * @param array $data
+     *
      * @return mixed
      */
     public function freezeUser(array $data)
@@ -348,7 +372,9 @@ class UserModel extends API
 
     /**
      * unblock user
+     *
      * @param array $data
+     *
      * @return mixed
      */
     public function unblockUser(array $data)
@@ -360,7 +386,9 @@ class UserModel extends API
 
     /**
      * get binding user info
+     *
      * @param $userInfo
+     *
      * @return mixed
      */
     public function bindUserInfo($userInfo)
@@ -379,8 +407,8 @@ class UserModel extends API
 
     public function trialApply($data)
     {
-        write_to_log($data,'apply');
-        return json_encode(['reCode'=>"000000000"]);
+        write_to_log($data, 'apply');
+        return json_encode(['reCode' => "000000000"]);
     }
 
     ######################################################################################
@@ -392,7 +420,9 @@ class UserModel extends API
 
     /**
      * iReSearch Data Account
+     *
      * @param $data
+     *
      * @return mixed|string
      */
     public function __getIResearchDataAccount($data)
@@ -413,7 +443,9 @@ class UserModel extends API
 
     /**
      * binding product key
+     *
      * @param $data
+     *
      * @return mixed
      */
     private function __bindingProduct($data)
@@ -440,7 +472,9 @@ class UserModel extends API
 
     /**
      * show menu
+     *
      * @param $data
+     *
      * @return mixed
      */
     private function __showHomeMenu($data)
