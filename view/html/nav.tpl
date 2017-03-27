@@ -63,8 +63,11 @@
                 <li>
                     <div class="row">
                         <!-- BEGIN subMenu -->
+                        <!-- IF lowerTree -->
                         <div class="col-xs-2">
+
                             <h5>{menuName}</h5>
+
                             <ul>
                                 <!-- BEGIN lowerTree -->
 
@@ -104,7 +107,7 @@
                                 <!-- END BEGIN -->
                             </ul>
                         </div>
-
+                        <!-- ENDIF -->
                         <!-- END BEGIN -->
                     </div>
                 </li>

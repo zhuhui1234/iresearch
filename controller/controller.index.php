@@ -85,7 +85,8 @@ class IndexController extends Controller
             $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
             $callBack = urlencode($backURL . '&backType=1&active_menu=iRCloud');
             $jumpURL = $data['url'] . '&irv_callback=' . $callBack;
-	    echo $jumpURL;exit();
+            echo $jumpURL;
+            exit();
             header("Location:" . $jumpURL);
         }
         View::instance('index/publicFrame.tpl')->show($data);
@@ -113,12 +114,8 @@ class IndexController extends Controller
             $data['irdStatus'] = 2;
         }
 
-
         $menu = fillMenu($menu, null, $data['irdStatus']);
-//
-//        pr($data['irdStatus']);
-//        pr($menu);
-//        exit();
+
         $data = array(
             "YH" => YH_LOGIN,
             //"userIndustry" => $userIndustry,
@@ -135,8 +132,13 @@ class IndexController extends Controller
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
         );
 
+        foreach ($data['titleMenu'] as  $i => $v) {
+            if (!isset($v['lowerTree'])) {
+                unset($data['titleMenu'][$i]);
+            }
+        }
 
-//        pr($data);
+//        pr($data['titleMenu']);
 //        exit();
         View::instance('index/home.tpl')->show($data);
     }
@@ -203,7 +205,7 @@ class IndexController extends Controller
         );
 
         View::instance('service/kol.tpl')->show($data);
-         
+
         //header("Location:".$this->kolLink());
     }
 
@@ -253,7 +255,7 @@ class IndexController extends Controller
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => 'http://irv.iresearch.com.cn/iReport/?m=service&a=showReportMVT&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B663&token='.$this->userInfo['token']
+            'url' => 'http://irv.iresearch.com.cn/iReport/?m=service&a=showReportMVT&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B663&token=' . $this->userInfo['token']
         );
 
         View::instance('index/publicFrame.tpl')->show($data);
@@ -306,7 +308,9 @@ class IndexController extends Controller
 
     /**
      * main menu
+     *
      * @param array $menuData
+     *
      * @return array
      */
     private function __mainMenu(array $menuData)
