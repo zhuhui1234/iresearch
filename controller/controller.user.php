@@ -324,7 +324,7 @@ class UserController extends Controller
     public function loginAPI()
     {
         $data = array(
-            'Account' => $this->request()->post('mobile'),
+            'loginMobile' => $this->request()->post('mobile'),
             'vCode' => $this->request()->post('vCode'),
             'LoginKey' => $this->request()->post('verNum'),
             'LoginType' => 'mobile'
