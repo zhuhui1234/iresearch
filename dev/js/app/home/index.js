@@ -4,6 +4,8 @@ define(['helper', 'app/main'], function (Helper) {
         Helper.nav();
     });
 
+    $($('.product-title>h3')[1]).html('跨屏媒介效果评估(MUT媒介版)');
+
     $("#bindingIRDA").submit(function (_event) {
         // console.log(_event);
         $("#binding_irda_error").hide();

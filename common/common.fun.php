@@ -44,20 +44,20 @@ function l($txt = '{}')
 function madTest($str, $fileName = 'test')
 {
     if (DEBUG_LOG) {
-        $log_path = ROOT_PATH . 'log/' . date('Ymd') . '/test/';
-        if (is_array($str)) {
-            $log_str = json_encode($str);
-        } else {
-            $log_str = $str;
-        }
-
-        if (!is_dir($log_path)) {
-            mkdir($log_path);
-        }
-
-        $content = getIp() . ' [' . date('Y-m-d H:i:s') . '] ' . $log_str;
-
-        fun_write_file($log_path, $fileName, $content);
+//        $log_path = ROOT_PATH . 'log/' . date('Ymd') . '/test/';
+//        if (is_array($str)) {
+//            $log_str = json_encode($str);
+//        } else {
+//            $log_str = $str;
+//        }
+//
+//        if (!is_dir($log_path)) {
+//            mkdir($log_path,0777);
+//        }
+//
+//        $content = getIp() . ' [' . date('Y-m-d H:i:s') . '] ' . $log_str;
+//
+//        fun_write_file($log_path, $fileName, $content);
     }
 }
 
