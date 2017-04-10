@@ -206,34 +206,34 @@ class UserModel extends API
     public function showMenu()
     {
         $userInfo = Session::instance()->get('userInfo');
-        $menu = Session::instance()->get('menu');
-        $sMenu = json_decode($menu, true);
+//        $menu = Session::instance()->get('menu');
+//        $sMenu = json_decode($menu, true);
 
         if ($userInfo['companyID'] == null) {
             $userInfo['companyID'] = '0';
         }
 
-        if (empty($menu) || !isset($sMenu['resCode'])) {
+//        if (empty($menu) || !isset($sMenu['resCode'])) {
             $m = $this->__showHomeMenu([
                 'TOKEN' => $userInfo['token'],
                 'companyID' => $userInfo['companyID'],
                 'userID' => $userInfo['userID']
             ]);
-            Session::instance()->set('menu', $m);
+//            Session::instance()->set('menu', $m);
             return $m;
-        } else {
-            if ($sMenu['resCode'] != '000000') {
-                $m = $this->__showHomeMenu([
-                    'TOKEN' => $userInfo['token'],
-                    'companyID' => $userInfo['companyID'],
-                    'userID' => $userInfo['userID']
-                ]);
-                Session::instance()->set('menu', $m);
-                return $m;
-            } else {
-                return $menu;
-            }
-        }
+//        } else {
+//            if ($sMenu['resCode'] != '000000') {
+//                $m = $this->__showHomeMenu([
+//                    'TOKEN' => $userInfo['token'],
+//                    'companyID' => $userInfo['companyID'],
+//                    'userID' => $userInfo['userID']
+//                ]);
+//                Session::instance()->set('menu', $m);
+//                return $m;
+//            } else {
+//                return $menu;
+//            }
+//        }
 
     }
 
