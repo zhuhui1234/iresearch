@@ -37,7 +37,11 @@ class ServiceController extends Controller
         $rkey = $user . $user . date('YmdH');
         $key = strtoupper(md5($rkey, false));
         $url =  "http://vfckol.iresearchdata.cn/urlRedirect.ashx?u={$user}&e={$user}&ukey={$key}";
-
+	if($_GET['test']=='yes'){
+		echo "http://115.239.229.242:8010/urlRedirect.ashx?u={$user}&e={$user}&ukey={$key}";
+		echo "<br />";
+		echo $url;exit();
+	}
         header("Location: ".$url);
     }
     public function vfcLogin(){
@@ -79,8 +83,7 @@ class ServiceController extends Controller
         $data['pwd'] = $this->request()->post('pwd');
         $data = json_encode($data);
         $res = json_decode(Model::instance('user')->__getIResearchDataAccount($data),true);
-        print_r($res);
-        exit();
+
         if($res['iUserID']=='-1'){
             echo "<script>alert('登录失败!');history.go(-1)</script>";
 

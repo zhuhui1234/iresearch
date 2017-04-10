@@ -160,8 +160,8 @@ class UserController extends Controller
         $data = $this->userDetail;
         $data['loginStatus'] = $this->loginStatus;
         $userInfo = json_decode($this->model->getMyInfo(), true);
-        $bindingUserInfo = json_decode($this->model->bindUserInfo($userInfo), true);
         $userInfo = $userInfo['data'];
+        $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
         $userModel = Model::instance('user');
         $menu = json_decode($userModel->showMenu(), true);
         $menu = $menu['data']['dataList'];

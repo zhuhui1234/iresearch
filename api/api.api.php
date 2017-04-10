@@ -191,7 +191,7 @@ class Api extends Url{
 
         //LOG
         write_to_log('POST URL:'. $url, '_API');
-        write_to_log('POST VALUE' . $post, '_API');
+        write_to_log('POST VALUE: ' . $post, '_API');
         write_to_log('RETURN: '. $content, '_API');
         if (!empty($content['TOKEN'])) {
             $content['token'] = $content['TOKEN'];
