@@ -19,12 +19,13 @@ class UserController extends Controller
         parent::__construct($className);
         $this->model = Model::instance('user');
         $this->userInfo = Session::instance()->get('userInfo');
-        $this->userDetail = $this->model->getUserInfo([
-            'token' => $this->userInfo['token'],
-            'userID' => $this->userInfo['userID']
-        ]);
+
 
         if (!empty($this->userInfo)) {
+            $this->userDetail = $this->model->getUserInfo([
+                'token' => $this->userInfo['token'],
+                'userID' => $this->userInfo['userID']
+            ]);
             $this->loginStatus = FALSE;
 //            $this->userInfo['token'] = $this->userInfo['token'];
             if (empty($this->userInfo['u_head'])) {
@@ -54,6 +55,42 @@ class UserController extends Controller
             'title' => WEBSITE_TITLE
         );
         View::instance('user/login.tpl')->show($data);
+    }
+
+    /**
+     * jump jump jump, take me out..............
+     */
+    public function jump()
+    {
+        $pdt_id = $this->request()->get('pro');
+        if (empty($pdt_id)) {
+            http_response_code(500);
+            echo '参数错误';
+        } else {
+            if (!$this->loginStatus) {
+                //登入成功
+                $getPermission = json_decode($this->model->getPermission([
+                    'token' => $this->userInfo['token'],
+                    'pdt_id' => $pdt_id,
+                    'userID' => $this->userInfo['userID']
+                ]), true);
+//                var_dump($getPermission['data']['data']);
+                if ($getPermission['resCode'] == '20000') {
+                    header('Location: '.$getPermission['data']['data']['pdt_url']);
+                } else {
+                    if (empty($getPermission['data']['data'])) {
+                        http_response_code(404);
+                        echo '访问错误';
+                    } else {
+                        header('Location: ?m=user&a=trialApply&ppname=' . $getPermission['data']['data']['pdt_name'] . '&menuID=' . $pdt_id);
+                    }
+                }
+
+            } else {
+                //没有登入
+                View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
+            }
+        }
     }
 
     /**

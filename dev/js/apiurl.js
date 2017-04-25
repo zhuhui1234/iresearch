@@ -3,7 +3,9 @@
  */
 define({
     //user
-    wxLoginUri            : 'http%3a%2f%2firv.iresearch.com.cn%2fiResearchDataWeb%2f%3fm%3duser%26a%3dwxLoginAPI',
+    wxLoginUri            : 'http%3a%2f%2fwww.iresearchdata.cn%2fiResearchDataWeb%2f%3fm%3dwechat%26a%3dwxLoginAPI',
+    wxURI                 : 'http://www.iresearchdata.cn/iResearchDataWeb/?m=wechat&a=wxLoginAPI',
+    jump                  : '?m=user&a=jump&pro=',
     loginYongHongURI      : '?m=user&a=loginAPI',
     login                 : '?m=user&a=loginAPI',
     bingWx                : '?m=user&a=bindingWxAPI',

@@ -411,6 +411,11 @@ class UserModel extends API
         return json_encode(['reCode' => "000000000"]);
     }
 
+    public function getPermission($data)
+    {
+        return $this->__getPermissionInfo($data);
+    }
+
     ######################################################################################
     ##################################                     ###############################
     #################################   PRIVATE METHODS   ################################
@@ -482,5 +487,18 @@ class UserModel extends API
         $url = API_URL . '?m=Permissions&a=getHomeMenu';
         $ret = $this->_curlPost($url, $data, 'getHomeMenu');
         return $ret;
+    }
+
+    /**
+     * get permissions
+     *
+     * @param $data['token','pdt_id']
+     *
+     * @return mixed
+     */
+    private function __getPermissionInfo($data)
+    {
+        $url = API_URL . '?m=Permissions&a=checkPermission';
+        return $this->_curlPost($url, $data, 'checkPermission');
     }
 }

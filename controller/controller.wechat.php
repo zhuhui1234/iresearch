@@ -22,9 +22,12 @@ class WeChatController extends Controller
      */
     public function wxLoginAPI()
     {
+
         $wechatModel = Model::instance('wechat');
         $code = $this->request()->get('code');
         $state = $this->request()->get('state');
+        $pdtID = $this->request()->get('pdtid');
+        $jumpURI = '?m=user&a=jump&pro='.$pdtID;
         $weChatObj = $wechatModel->wxCheckLogin($code);
         $weChatUser = $wechatModel->getUserInfo($code);
         $userInfo = Session::instance()->get('userInfo');
@@ -58,7 +61,11 @@ class WeChatController extends Controller
                 write_to_log('ret: '. json_encode($ret), '_wx');
                 if ($ret) {
                     if ($ret !== null) {
-                        header('Location: ?m=index');
+                        if (empty($pdtID)) {
+                            header('Location: ?m=index');
+                        } else {
+                            header('Location: '. $jumpURI);
+                        }
                     } else {
                         header('Location: ?m=user&a=login?recode=402');
                     }

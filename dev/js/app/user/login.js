@@ -30,7 +30,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     if (checkLoginFormat()) {
                         time(id);
                         //send sms
-                        Helper.post("sendSms",{mobile:$("#mobile").val()},function(ret) {
+                        Helper.post("sendSms", {mobile: $("#mobile").val()}, function (ret) {
                             console.log(ret);
                             if (ret.resCode == "000002") {
                                 $(".alert").eq(1).fadeIn().text('验证错误');
@@ -65,22 +65,33 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             e.preventDefault();
             if (checkLoginFormat()) {
                 $(".alert").fadeOut();
+                var pdtID = Helper.getQuery('pro');
+
                 Helper.post('login', {
                     mobile: $("#mobile").val(),
                     verNum: $("#vernum").val(),
                     vCode: $("#vcode").val()
                 }, function (ret) {
                     console.log(ret.resCode);
-                    if (ret.resCode ==  "000000"){
-                        window.location.href = '?m=index&a=index';
-                    }else {
-                        if (ret.resCode ==  -1) {
+                    if (ret.resCode == "000000") {
+
+                        if (typeof pdtID == 'string') {
+                            if (pdtID.length > 0) {
+                                window.location.reload();
+                            } else {
+                                window.location.href = '?m=index&a=index';
+                            }
+                        } else {
+                            window.location.href = '?m=index&a=index';
+                        }
+                    } else {
+                        if (ret.resCode == -1) {
                             $('.alert').eq(1).fadeIn().text('手机验证码失败');
-                        }else if (ret.resCode == "1" ) {
+                        } else if (ret.resCode == "1") {
                             $('.alert').eq(2).fadeIn().text('验证码失败');
-                        }else if (ret.resCode == "000002") {
+                        } else if (ret.resCode == "000002") {
                             $(".alert").eq(1).fadeIn().text(ret.resMsg);
-                        }else {
+                        } else {
                             alert(ret.resMsg);
                         }
                     }
@@ -104,6 +115,12 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         }
 
     });
+    var pdtID = Helper.getQuery('pro');
+    console.log(pdtID);
+    if (pdtID == null) {
+        Helper.WeChatQRCode('wxLogin', 'wxLogin', 'https://ic.irs01.com/iResearchDataWeb/public/css/wechat.css');
+    } else {
+        Helper.WeChatQRCode('wxLogin', 'wxLogin', 'https://ic.irs01.com/iResearchDataWeb/public/css/wechat.css', pdtID);
+    }
 
-    Helper.WeChatQRCode('wxLogin', 'wxLogin','https://ic.irs01.com/iResearchDataWeb/public/css/wechat.css');
 });

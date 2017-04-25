@@ -118,7 +118,18 @@ define(["api", "WxLogin", "jquery"], function (api) {
              * @param state
              * @constructor
              */
-            this.WeChatQRCode = function (qrCodeID, state,cssFileUrl) {
+            this.WeChatQRCode = function (qrCodeID, state,cssFileUrl,pdtID) {
+
+                var wxURI = api.wxURI;
+                console.log(typeof pdtID);
+
+                if (typeof pdtID != 'undefined') {
+                    if (pdtID.length > 0) {
+                        wxURI = wxURI + '&pdtID=' + pdtID;
+                    }
+                }
+                wxURI = encodeURIComponent(wxURI);
+
                 if (cssFileUrl == null) {
                     cssFileUrl = '';
                 } else {
@@ -128,7 +139,8 @@ define(["api", "WxLogin", "jquery"], function (api) {
                     id: qrCodeID,
                     appid: "wxd96928ba062cffec",
                     scope: "snsapi_login",
-                    redirect_uri: "http%3a%2f%2fwww.iresearchdata.cn%2fiResearchDataWeb%2f%3fm%3dwechat%26a%3dwxLoginAPI",
+                    // redirect_uri: "http%3a%2f%2fwww.iresearchdata.cn%2fiResearchDataWeb%2f%3fm%3dwechat%26a%3dwxLoginAPI",
+                    redirect_uri: wxURI,
                     state: state,
                     style: "",
                     href: cssFileUrl
