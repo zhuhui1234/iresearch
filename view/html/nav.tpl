@@ -9,7 +9,7 @@
         <div class="nav_con">
             <ul class="nav navbar-nav">
                 <li id="nav_home">
-                    <a href="?m=index&a=index">
+                    <a href="http://data.iresearch.com.cn/Home.shtml">
                         <span>首页</span>
                         <i>Home</i>
                     </a>

@@ -135,6 +135,7 @@ define(["api", "WxLogin", "jquery"], function (api) {
                 } else {
                     cssFileUrl = encodeURIComponent(cssFileUrl);
                 }
+                console.log(wxURI);
                 var obj = new WxLogin({
                     id: qrCodeID,
                     appid: "wxd96928ba062cffec",

@@ -9,10 +9,11 @@ define(['helper', 'app/main'], function (Helper) {
             var pData = {
                 "company": $("#company").val(),
                 // "mobile" : $("#mobile").val(),
-                "menuID": $("#menuID").val(),
+                "menuID": Helper.getQuery('menuID'),
                 "position": $("#position").val(),
                 "username": $("#username").val()
             };
+            console.log(pData);
             console.log($.trim(pData.company).length <= 0);
             console.log($.trim(pData.position).length <= 0);
             console.log($.trim(pData.menuID).length <= 0);

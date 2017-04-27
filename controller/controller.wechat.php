@@ -26,7 +26,7 @@ class WeChatController extends Controller
         $wechatModel = Model::instance('wechat');
         $code = $this->request()->get('code');
         $state = $this->request()->get('state');
-        $pdtID = $this->request()->get('pdtid');
+        $pdtID = $this->request()->get('pdtID');
         $jumpURI = '?m=user&a=jump&pro='.$pdtID;
         $weChatObj = $wechatModel->wxCheckLogin($code);
         $weChatUser = $wechatModel->getUserInfo($code);
