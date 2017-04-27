@@ -5,6 +5,7 @@
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <!-- IE 兼容模式 -->
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <!-- 国产浏览器高速模式 -->
     <meta name="renderer" content="webkit">
     <!-- bootstrap核心样式 -->

@@ -1,6 +1,8 @@
 /*! requirejs config */
 requirejs.config({
     baseUrl: 'js',
+    // urlArgs: "bust=v2",
+    urlArgs: "bust=" + (new Date()).getTime(),
     paths: {
         'jquery': 'lib/jquery/v2.1.4/jquery.min',
         'slider': 'lib/bootstrap-slider/bootstrap-slider',
@@ -8,7 +10,7 @@ requirejs.config({
         'html5shiv': 'lib/bootstrap/v3.3.6/html5shiv.min',
         'respond': 'lib/bootstrap/v3.3.6/respond.min',
         'domReady': 'lib/domReady/domReady',
-        'step':'lib/step/step',
+        'step': 'lib/step/step',
         'boostrap-hover-dropdown': 'lib/bootstrap/v3.3.6/boostrap-hover-dropdown',
         'datatables.net': 'lib/datatable/v1.10.9/jquery.dataTables',
         'datatables.net-bs': 'lib/datatable/v1.10.9/dataTables.bootstrap',
@@ -32,23 +34,23 @@ requirejs.config({
         'switch': 'lib/switch/v3.0.2/bootstrap-switch.min',
         'upload': 'lib/upload/upload',
         'typeahead': 'lib/typeahead/typeahead.jquery',
-        'prettify':'lib/prettify/prettify',
+        'prettify': 'lib/prettify/prettify',
         'treeview': 'lib/treeview/bootstrap-treeview',
         'nprogress': 'lib/nprogress/nprogress',
-        'sticky':'lib/sticky/jquery.sticky',
+        'sticky': 'lib/sticky/jquery.sticky',
         'pjax': 'lib/pjax/jquery.pjax',
-        'validator':'lib/bootstrapValidator/bootstrapValidator',
+        'validator': 'lib/bootstrapValidator/bootstrapValidator',
         'handsontable': 'lib/handsontable/handsontable.full.min',
-        'radialIndicator':'lib/radialIndicator/radialIndicator',
+        'radialIndicator': 'lib/radialIndicator/radialIndicator',
         'wow': 'lib/wow/wow',
         'scrollbar': 'lib/jquery.slimscroll/jquery.slimscroll',
         'cropper': 'lib/cropper/cropper',
         'cropper-main': 'lib/cropper/main',
         'canvas': 'lib/canvas/jquery.particleground',
         // 'wxLogin':"empty:"
-        'WxLogin':'//res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
-        'api':'apiurl',
-        'helper':'lib/helper',
+        'WxLogin': '//res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
+        'api': 'apiurl',
+        'helper': 'lib/helper',
     },
     shim: {
         'jquery': {
@@ -59,7 +61,7 @@ requirejs.config({
             exports: '$'
         },
         'bootstrap': {
-            deps: ['jquery','html5shiv','respond','boostrap-hover-dropdown'],
+            deps: ['jquery', 'html5shiv', 'respond', 'boostrap-hover-dropdown'],
             exports: 'bootstrap'
         },
         'boostrap-hover-dropdown': {
@@ -99,17 +101,17 @@ requirejs.config({
             deps: ['jquery'],
             exports: '$'
         },
-        'select2-zh-CN':{
-            deps: ['jquery','select2'],
+        'select2-zh-CN': {
+            deps: ['jquery', 'select2'],
             exports: '$'
         },
         'swiper': {
-            exports:'swiper'
+            exports: 'swiper'
         },
         'prettify': {
-            exports:'prettify'
+            exports: 'prettify'
         },
-        'bootsnav':{
+        'bootsnav': {
             deps: ['jquery'],
             exports: '$'
         },
@@ -154,12 +156,12 @@ requirejs.config({
             exports: '$'
         },
         'cropper-main': {
-            deps: ['jquery','bootstrap'],
+            deps: ['jquery', 'bootstrap'],
             exports: '$'
         }
     },
     config: {
-        moment:{
+        moment: {
             noGlobal: true
         }
     }

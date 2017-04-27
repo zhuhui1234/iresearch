@@ -428,7 +428,7 @@ class UserController extends Controller
         $getAll = $this->request()->requestAll();
         if ($getAll['vcode'] == $getVcodes) {
             $ret = $this->__sendMail(
-                '请点击以下链接完成邮箱绑定： http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=registerUserInfo&',
+                '请点击以下链接完成邮箱绑定： http://www.iresearchdata.cn/iResearchDataWeb/?m=user&a=registerUserInfo&',
                 '用户注册确认邮件',
                 1,
                 $getAll['registerMail'],

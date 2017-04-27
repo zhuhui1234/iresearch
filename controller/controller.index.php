@@ -141,7 +141,7 @@ class IndexController extends Controller
 //        pr($data['titleMenu']);
 //        exit();
 //        View::instance('index/home.tpl')->show($data);
-        header('Location: http://data.iresearch.com.cn/iRView.shtml');
+        header('Location: http://data.iresearch.com.cn/Home.shtml');
     }
 
     public function indexTest()
@@ -256,7 +256,7 @@ class IndexController extends Controller
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => 'http://irv.iresearch.com.cn/iReport/?m=service&a=showReportMVT&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B663&token=' . $this->userInfo['token']
+            'url' => '//www.iresearchdata.cn/iReport/?m=service&a=showReportMVT&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B663&token=' . $this->userInfo['token']
         );
 
         View::instance('index/publicFrame.tpl')->show($data);

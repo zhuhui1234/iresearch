@@ -2,14 +2,14 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="//data.iresearch.com.cn/Home.shtml">
                 <img src="./public/img/irs-data-white.png" alt="">
             </a>
         </div>
         <div class="nav_con">
             <ul class="nav navbar-nav">
                 <li id="nav_home">
-                    <a href="http://data.iresearch.com.cn/Home.shtml">
+                    <a href="//data.iresearch.com.cn/Home.shtml">
                         <span>首页</span>
                         <i>Home</i>
                     </a>
