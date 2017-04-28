@@ -25,23 +25,6 @@ class IndexController extends Controller
      */
     public function home()
     {
-//        $userInfo = Session::instance()->get('userInfo');
-//        $data['token'] = $userInfo['token'];
-//        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
-//        $data = array(
-////            "YH" => YH_LOGIN,
-//            'loginStatus' => $this->loginStatus,
-//            'userInfo' => $this->userInfo,
-//            'token' => $this->userInfo['token'],
-////            'u_account' => $this->userInfo['u_account'],
-//            'title' => WEBSITE_TITLE,
-//        );
-//        if (empty(trim($userInfo['productKey']))) {
-//            $data['irdStatus'] = 1;
-//        } else {
-//            $data['irdStatus'] = 0;
-//        }
-//        View::instance('index/index.tpl')->show($data);
         $this->index();
     }
 
@@ -181,8 +164,6 @@ class IndexController extends Controller
      */
     public function kolPage()
     {
-
-
         //在将艾瑞数据域名调整为 iresearchdata.cn前新窗口打开ikol
         $userInfo = Session::instance()->get('userInfo');
         $data['token'] = $userInfo['u_token'];

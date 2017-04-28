@@ -85,7 +85,6 @@ class UserController extends Controller
                         header('Location: ?m=user&a=trialApply&ppname=' . $getPermission['data']['data']['pdt_name'] . '&menuID=' . $pdt_id);
                     }
                 }
-
             } else {
                 //没有登入
                 View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);

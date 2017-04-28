@@ -77,7 +77,17 @@ class ServiceModel extends API {
         );
         pr($img);
         $ret = $this->_curlPost($url,$img,'imgs');
-
         return $ret;
+    }
+
+    /**
+     * return product id
+     *
+     * @param $uri
+     */
+    public function checkProduct($uri)
+    {
+        $url = API_URL . '';
+
     }
 }
