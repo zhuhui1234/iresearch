@@ -123,8 +123,8 @@ class IndexController extends Controller
 
 //        pr($data['titleMenu']);
 //        exit();
-//        View::instance('index/home.tpl')->show($data);
-        header('Location: http://data.iresearch.com.cn/Home.shtml');
+        View::instance('index/home.tpl')->show($data);
+//        header('Location: http://data.iresearch.com.cn/Home.shtml');
     }
 
     public function indexTest()
