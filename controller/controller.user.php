@@ -76,7 +76,7 @@ class UserController extends Controller
                 ]), true);
 //                var_dump($getPermission['data']['data']);
                 if ($getPermission['resCode'] == '20000') {
-                    header('Location: '.$getPermission['data']['data']['pdt_url']);
+                    header('Location: ' . $getPermission['data']['data']['pdt_url']);
                 } else {
                     if (empty($getPermission['data']['data'])) {
                         http_response_code(404);
@@ -518,6 +518,44 @@ class UserController extends Controller
         ));
         echo $ret;
         return $ret;
+    }
+
+    public function showMenu()
+    {
+        $data['token'] = $this->userInfo['token'];
+        $data = $this->userDetail;
+        $data['loginStatus'] = $this->loginStatus;
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+        foreach ($menu as $i => $v) {
+            if (isset($v['subMenu'])) {
+                unset($menu[$i]['subMenu']);
+            }
+            $menu[$i]['curl'] = urlencode($menu[$i]['curl']);
+        }
+
+
+        $this->__json();
+        if (!empty($menu)) {
+            $state = '20000';
+        } else {
+            $state = '40000';
+        }
+        echo json_encode(['code' => $state, 'data' => $menu, 'userMenu' => [
+            'userInfo' => [
+                'name' => '用户信息',
+                'uri' => urlencode(IDATA_URL . '?m=user&a=editUserInfo')
+            ],
+            'logOut' => [
+                'name' => '登出',
+                'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
+            ],
+            'home' => ['name'=> '首页' , 'url' => urlencode('http://data.iresearch.com.cn/')]
+        ]]);
+
+
     }
 
     ######################################################################################
