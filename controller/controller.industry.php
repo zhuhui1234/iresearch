@@ -82,6 +82,7 @@ class IndustryController extends Controller
     /**
      * 展示小行业报告
      */
+    /**
     public function showIndustryReport()
     {
         $userModel = Model::instance('user');
@@ -131,7 +132,25 @@ class IndustryController extends Controller
             </SCRIPT>");
         }
     }
-
+    **/
+    public function showIndustryReport()
+    {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+        $data = array(
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+            'url' => '//irv.iresearch.com.cn/iReport/?m=service&a=showReport&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B616&token=' . $this->userInfo['token']
+        );
+        View::instance('index/publicFrame.tpl')->show($data);
+    }
     /**
      * 服务列表
      */

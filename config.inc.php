@@ -48,7 +48,8 @@ define('IMG_URL', 'http://42.159.231.97/idata_deskapi3/');
 define('API_URL_REPORT', 'http://10.10.21.163/iReport/');
 define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
 //define('KOL_API', 'http://kolweb.simplybrand.com/urlRedirect.ashx');
-define('KOL_API', 'http://vfckol.iresearchdata.cn/urlRedirect.ashx');
+//define('KOL_API', 'http://vfckol.iresearchdata.cn/urlRedirect.ashx');
+define('KOL_API', '//irv-ikol.iresearch.com.cn/urlRedirect.ashx');
 //永洪单点登陆地址
 define('YH_LOGIN', 'http://203.156.255.149/bi/Viewer?isSSO=true');
 define("__PAGENUM__", 10);
