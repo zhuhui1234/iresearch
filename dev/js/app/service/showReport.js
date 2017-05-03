@@ -9,7 +9,7 @@ define(['jquery', 'helper'], function ($, Helper) {
     $('.navbar').css('margin-bottom', 0);
     $('footer').css('margin-top', 0);
     $('#iRView').addClass('active');
-    Helper.nav();
+    // Helper.nav();
     var a = $(document).height(), b = $("nav").height();
     $(".report-wrapper").css({height: a - b}), $(".report-menu ul li a").on("click", function (a) {
         a.preventDefault(), $(this).parent().toggleClass("open"), $(this).parent().hasClass("open") ? $(this).siblings().stop().slideDown("fast") : $(this).siblings().stop().slideUp("fast")
