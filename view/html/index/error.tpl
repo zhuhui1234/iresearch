@@ -13,7 +13,7 @@
     <title>{title}</title>
     <link href="./public/css/docs.min.css" rel="stylesheet">
 </head>
-<!-- INCLUDE ../nav.tpl -->
+
 
 
 <div class="container">

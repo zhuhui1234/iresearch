@@ -75,7 +75,7 @@ class ServiceModel extends API {
             'filebase64' => $base64,
             'filetype' => $type
         );
-        pr($img);
+//        pr($img);
         $ret = $this->_curlPost($url,$img,'imgs');
         return $ret;
     }
@@ -85,9 +85,10 @@ class ServiceModel extends API {
      *
      * @param $uri
      */
-    public function checkProduct($uri)
+    public function recordLogs($data)
     {
-        $url = API_URL . '';
-
+        $url = API_URL . '?m=log&a=pushLog';
+        $ret = $this->_curlPost($url, $data,'pushLog');
+        return $ret;
     }
 }

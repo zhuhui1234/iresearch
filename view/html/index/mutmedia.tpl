@@ -13,7 +13,7 @@
     <title>{title}</title>
     <link href="./public/css/docs.min.css" rel="stylesheet">
 </head>
-<!-- INCLUDE ../nav.tpl -->
+
 
 
 <iframe id="mut_iFrame" style="width: 100%;" src="/MUTmedia/?m=index&a=intermediaryPlan&token={token}&guid={userID}" ></iframe>

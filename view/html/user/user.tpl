@@ -13,7 +13,7 @@
     <link href="./public/css/docs.min.css" rel="stylesheet">
 </head>
 <body>
-<!-- INCLUDE ../nav.tpl -->
+
 <div class="container">
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-home"></i> 个人中心首页</a></li>
@@ -267,6 +267,7 @@
         'app/home/index'
     ]);
 </script>
+<script src="//irv.iresearch.com.cn/iResearchDataWeb/dev/js/header.js"></script>
 <!-- 生产环境 -->
 <!--<script src="../public/js/lib/requirejs/requirejs.js"></script>-->
 <!--<script src="../public/js/config.js"></script>-->

@@ -14,7 +14,7 @@
 	<title>{title}</title>
 </head>
 <body>
-<!-- INCLUDE ../nav.tpl -->
+
 
 <div class="container">
 	<div class="trial_wrap">
@@ -78,6 +78,7 @@
         'app/home/trial'
     ]);
 </script>
+<script src="//irv.iresearch.com.cn/iResearchDataWeb/dev/js/header.js"></script>
 <!-- 生产环境 -->
 <!--<script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>-->
 <!--<script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>-->

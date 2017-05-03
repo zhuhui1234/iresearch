@@ -1,7 +1,7 @@
 define(['helper', 'app/main'], function (Helper) {
     $(function () {
-        $('#nav_home').addClass('active');
-        Helper.nav();
+        // $('#nav_home').addClass('active');
+        // Helper.nav();
     });
 
     $($('.product-title>h3')[1]).html('跨屏媒介效果评估(MUT媒介版)');

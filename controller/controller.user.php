@@ -74,7 +74,6 @@ class UserController extends Controller
                     'pdt_id' => $pdt_id,
                     'userID' => $this->userInfo['userID']
                 ]), true);
-//                var_dump($getPermission['data']['data']);
                 if ($getPermission['resCode'] == '20000') {
                     header('Location: ' . $getPermission['data']['data']['pdt_url']);
                 } else {
@@ -90,14 +89,6 @@ class UserController extends Controller
                 View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
             }
         }
-    }
-
-    /**
-     * user register page
-     */
-    public function register()
-    {
-
     }
 
     /**
@@ -536,7 +527,7 @@ class UserController extends Controller
             }
             $menu[$i]['curl'] = urlencode($menu[$i]['curl']);
         }
-        var_dump($role);
+        $this->__json();
         if ($role == 'member') {
             $state = '20000';
             $m = [
@@ -548,12 +539,12 @@ class UserController extends Controller
                     'name' => '登出',
                     'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
                 ],
-                'home' => ['name' => '首页', 'url' => urlencode('http://data.iresearch.com.cn/')]
+                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/')]
             ];
         } else {
             $state = '20002';
             $m = [
-                'home' => ['name' => '首页', 'url' => urlencode('http://data.iresearch.com.cn/')]
+                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/')]
             ];
         }
         echo $this->request()->get('callback') . '(' . json_encode(['code' => $state, 'data' => $menu, 'userMenu' => $m]) . ')';

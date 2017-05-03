@@ -25,7 +25,7 @@
         'app/home/intermediary'
     ]);
 </script>
-<script src="http://irv.iresearch.com.cn/iResearchDataWeb/dev/js/header.js"></script>
+<script src="//irv.iresearch.com.cn/iResearchDataWeb/dev/js/header.js"></script>
 
 <!-- 生产环境 -->
 <!--<script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>-->
