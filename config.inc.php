@@ -20,7 +20,7 @@ define('VIEW_PATH', ROOT_PATH . VIEW . DS);
 define('UPLOAD_PATH', ROOT_PATH . 'uploads' . DS);
 //微信配置
 define('W_APP_ID', 'wxd96928ba062cffec');
-define('W_SECRET', 'abbf51a741f7608394727debe1e51b43');
+define('W_SECRET', 'e1a9095ff1f80f847be962a3f6696dd6');
 define('WECHAT_API_URL', 'https://api.weixin.qq.com/sns/oauth2/access_token');
 define('WECHAT_API_REFRESH_URL', 'https://api.weixin.qq.com/sns/oauth2/refresh_token');
 define('WECHAT_API_USERINFO', 'https://api.weixin.qq.com/sns/userinfo');
@@ -36,15 +36,17 @@ define('REDIS_PWD',FALSE);
 //	define('WEBSITE','http://localhost');
 define('WEBSITE', $_SERVER['SERVER_ADDR']);
 define('WEBSITE_URL', '');
+define('IDATA_URL','http://irv.iresearch.com.cn/iResearchDataWeb/');
 define('WEBSITE_SOURCE_URL', WEBSITE_URL . 'dev');
 define('WEBSITE_TITLE', '艾瑞数据平台');
 define('REGISTER_MAILADDR', 'irv@iresearch.com.cn');
 define('FORGOTPWD_MAILADDR', 'irv@iresearch.com.cn');
 //导出报表配置
 //define('API_URL', 'http://180.169.19.208/iview_deskapi/');
-define('API_URL', 'http://42.159.231.97/idata_deskapi3/');
+define('API_URL', 'http://localhost/idata_deskapi/');
+//define('API_URL', 'http://42.159.231.97/idata_deskapi3/');
 //define('IMG_URL', 'http://203.156.255.168/iview_deskapi/');
-define('IMG_URL', 'http://42.159.231.97/idata_deskapi3/');
+define('IMG_URL', 'http://localhost/idata_deskapi/');
 define('API_URL_REPORT', 'http://10.10.21.163/iReport/');
 define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
 //define('KOL_API', 'http://kolweb.simplybrand.com/urlRedirect.ashx');
@@ -132,6 +134,7 @@ if (!isLoginState()
                                                             AND $_GET['a'] != 'vfcLogin'
                                                                 AND $_GET['a'] != 'toiAdT2'
                                                                     AND $_GET['a'] != 'vfcLogin2'
+                                                                        AND $_GET['a'] != 'jump'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {
