@@ -3,8 +3,8 @@
  */
 define({
     //user
-    wxLoginUri            : 'http%3a%2f%2fwww.iresearchdata.cn%2fiResearchDataWeb%2f%3fm%3dwechat%26a%3dwxLoginAPI',
-    wxURI                 : 'http://www.iresearchdata.cn/iResearchDataWeb/?m=wechat&a=wxLoginAPI',
+    wxLoginUri            : 'http%3a%2f%2firv.iresearch.com.cn%2fiResearchDataWeb%2f%3fm%3dwechat%26a%3dwxLoginAPI',
+    wxURI                 : 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=wechat&a=wxLoginAPI',
     jump                  : '?m=user&a=jump&pro=',
     loginYongHongURI      : '?m=user&a=loginAPI',
     login                 : '?m=user&a=loginAPI',

@@ -1,7 +1,7 @@
 /*! requirejs config */
 requirejs.config({
     baseUrl: 'js',
-    // urlArgs: "bust=v2",
+    // urlArgs: "bust=v2.1",
     urlArgs: "bust=" + (new Date()).getTime(),
     paths: {
         'jquery': 'lib/jquery/v2.1.4/jquery.min',

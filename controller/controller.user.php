@@ -427,7 +427,7 @@ class UserController extends Controller
         $getAll = $this->request()->requestAll();
         if ($getAll['vcode'] == $getVcodes) {
             $ret = $this->__sendMail(
-                '请点击以下链接完成邮箱绑定： http://www.iresearchdata.cn/iResearchDataWeb/?m=user&a=registerUserInfo&',
+                '请点击以下链接完成邮箱绑定： http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=registerUserInfo&',
                 '用户注册确认邮件',
                 1,
                 $getAll['registerMail'],
@@ -524,9 +524,10 @@ class UserController extends Controller
     {
         $data['token'] = $this->userInfo['token'];
         $data = $this->userDetail;
-        $data['loginStatus'] = $this->loginStatus;
+//        $data['loginStatus'] = $this->loginStatus;
         $userModel = Model::instance('user');
         $menu = json_decode($userModel->showMenu(), true);
+        $role = $menu['data']['role'];
         $menu = $menu['data']['dataList'];
         $menu = fillMenu($menu);
         foreach ($menu as $i => $v) {
@@ -535,25 +536,27 @@ class UserController extends Controller
             }
             $menu[$i]['curl'] = urlencode($menu[$i]['curl']);
         }
-
-
-        $this->__json();
-        if (!empty($menu)) {
+        var_dump($role);
+        if ($role == 'member') {
             $state = '20000';
+            $m = [
+                'userInfo' => [
+                    'name' => '用户信息',
+                    'uri' => urlencode(IDATA_URL . '?m=user&a=editUserInfo')
+                ],
+                'logOut' => [
+                    'name' => '登出',
+                    'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
+                ],
+                'home' => ['name' => '首页', 'url' => urlencode('http://data.iresearch.com.cn/')]
+            ];
         } else {
-            $state = '40000';
+            $state = '20002';
+            $m = [
+                'home' => ['name' => '首页', 'url' => urlencode('http://data.iresearch.com.cn/')]
+            ];
         }
-        echo json_encode(['code' => $state, 'data' => $menu, 'userMenu' => [
-            'userInfo' => [
-                'name' => '用户信息',
-                'uri' => urlencode(IDATA_URL . '?m=user&a=editUserInfo')
-            ],
-            'logOut' => [
-                'name' => '登出',
-                'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
-            ],
-            'home' => ['name'=> '首页' , 'url' => urlencode('http://data.iresearch.com.cn/')]
-        ]]);
+        echo $this->request()->get('callback') . '(' . json_encode(['code' => $state, 'data' => $menu, 'userMenu' => $m]) . ')';
 
 
     }

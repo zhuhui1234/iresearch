@@ -136,6 +136,7 @@ if (!isLoginState()
                                                                 AND $_GET['a'] != 'toiAdT2'
                                                                     AND $_GET['a'] != 'vfcLogin2'
                                                                         AND $_GET['a'] != 'jump'
+                                                                        AND $_GET['a'] != 'showMenu'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {
