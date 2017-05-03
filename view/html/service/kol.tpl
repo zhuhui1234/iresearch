@@ -13,11 +13,8 @@
     <title>{title}</title>
     <link href="./public/css/docs.min.css" rel="stylesheet">
 </head>
-<!-- INCLUDE ../nav.tpl -->
-
 
 <iframe id="mut_iFrame" style="width: 100%;" src="{kolLink}" ></iframe>
-
 
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
@@ -28,6 +25,8 @@
         'app/home/intermediary'
     ]);
 </script>
+<script src="http://irv.iresearch.com.cn/iResearchDataWeb/dev/js/header.js"></script>
+
 <!-- 生产环境 -->
 <!--<script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>-->
 <!--<script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>-->
