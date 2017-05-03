@@ -11,6 +11,7 @@
     <link href="./public/css/app.min.css" rel="stylesheet">
     <!-- 自定义 -->
     <link href="./public/css/docs.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="http://data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 

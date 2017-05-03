@@ -13,7 +13,7 @@ class IndexController extends Controller
     function __construct()
     {
         $this->userInfo = Session::instance()->get('userInfo');
-        $this->serviceModel = Model::instance('');
+        $this->serviceModel = Model::instance('service');
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
         } else {
@@ -207,11 +207,34 @@ class IndexController extends Controller
         );
 
         if ($this->__checkPermission($pdtID)) {
+
+            $logs = $this->serviceModel->recordLogs([
+                'user' => $this->userInfo['userID'],
+                'userID' => $this->userInfo['userID'],
+                'TOKEN' => $this->userInfo['token'],
+                'token' => $this->userInfo['token'],
+                'sub_id' => $pdtID,
+                'recordLogs' => 'KOL访问',
+                'status' => '20000',
+                'resouce' => 'iData',
+                'level' => '1',
+                'type' => '用户日志'
+            ]);
+
             View::instance('service/kol.tpl')->show($data);
         } else {
             View::instance('index/error.tpl')->show(['message' => '访问错误']);
+            $logs = $this->serviceModel->recordLogs([
+                'user' => $this->userInfo['userID'],
+                'sub_id' => $pdtID,
+                'recordLogs' => 'KOL访问',
+                'status' => '40000',
+                'resouce' => 'iData',
+                'level' => '1',
+                'type' => '用户日志'
+            ]);
         }
-
+        write_to_log(json_encode($logs,'_logs'));
 //        header("Location:".$this->kolLink());
     }
 

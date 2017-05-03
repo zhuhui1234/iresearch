@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="http://data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
+
     <meta charset="utf-8">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <!-- IE 兼容模式 -->

@@ -87,7 +87,7 @@ class ServiceModel extends API {
      */
     public function recordLogs($data)
     {
-        $url = API_URL . '?m=log&a=pushLog';
+        $url = API_URL . '?m=logs&a=pushLog';
         $ret = $this->_curlPost($url, $data,'pushLog');
         return $ret;
     }
