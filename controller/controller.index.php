@@ -25,6 +25,23 @@ class IndexController extends Controller
      */
     public function home()
     {
+//        $userInfo = Session::instance()->get('userInfo');
+//        $data['token'] = $userInfo['token'];
+//        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
+//        $data = array(
+////            "YH" => YH_LOGIN,
+//            'loginStatus' => $this->loginStatus,
+//            'userInfo' => $this->userInfo,
+//            'token' => $this->userInfo['token'],
+////            'u_account' => $this->userInfo['u_account'],
+//            'title' => WEBSITE_TITLE,
+//        );
+//        if (empty(trim($userInfo['productKey']))) {
+//            $data['irdStatus'] = 1;
+//        } else {
+//            $data['irdStatus'] = 0;
+//        }
+//        View::instance('index/index.tpl')->show($data);
         $this->index();
     }
 
@@ -123,8 +140,8 @@ class IndexController extends Controller
 
 //        pr($data['titleMenu']);
 //        exit();
-        View::instance('index/home.tpl')->show($data);
-//        header('Location: http://data.iresearch.com.cn/Home.shtml');
+//        View::instance('index/home.tpl')->show($data);
+        header('Location: http://data.iresearch.com.cn/Home.shtml');
     }
 
     public function indexTest()
@@ -237,19 +254,18 @@ class IndexController extends Controller
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => '//www.iresearchdata.cn/iReport/?m=service&a=showReportMVT&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B663&token=' . $this->userInfo['token']
+            'url' => YH_REPORT.'&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B663&token=' . $this->userInfo['token'].'&userID='.$this->userInfo['userID'].'&pdt_id=19'
         );
 
         View::instance('index/publicFrame.tpl')->show($data);
     }
 
-    public function demo()
+    public function iut()
     {
         $userModel = Model::instance('user');
         $menu = json_decode($userModel->showMenu(), true);
         $menu = $menu['data']['dataList'];
         $menu = fillMenu($menu);
-
         $data = array(
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID'],
@@ -257,9 +273,66 @@ class IndexController extends Controller
             'title' => WEBSITE_TITLE,
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+            'url' => YH_REPORT.'&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B900&token=' . $this->userInfo['token'].'&userID='.$this->userInfo['userID'].'&pdt_id=12'
         );
-        View::instance('index/reportDemo.tpl')->show($data);
+
+        View::instance('index/publicFrame.tpl')->show($data);
+    }
+    public function mvt()
+    {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+        $data = array(
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+            'url' => YH_REPORT.'&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B616&token=' . $this->userInfo['token'].'&userID='.$this->userInfo['userID'].'&pdt_id=18'
+        );
+
+        View::instance('index/publicFrame.tpl')->show($data);
+    }
+    public function mut()
+    {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+        $data = array(
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+            'url' => YH_REPORT.'&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B901&token=' . $this->userInfo['token'].'&userID='.$this->userInfo['userID'].'&pdt_id=37'
+        );
+        View::instance('index/publicFrame.tpl')->show($data);
+    }
+    public function demo()
+    {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+        $data = array(
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+            'url' => YH_REPORT.'&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B901&token=' . $this->userInfo['token'].'&userID='.$this->userInfo['userID'].'&pdt_id=37'
+        );
+        View::instance('index/publicFrame.tpl')->show($data);
     }
 
     public function kolLink()
