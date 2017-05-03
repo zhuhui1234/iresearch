@@ -268,8 +268,8 @@ class IndexController extends Controller
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
             'url' => YH_REPORT . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B663&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=19'
         );
-
-        View::instance('index/publicFrame.tpl')->show($data);
+        header("Location:".$data['url']);
+//        View::instance('index/publicFrame.tpl')->show($data);
     }
 
     /**
@@ -292,7 +292,8 @@ class IndexController extends Controller
             'url' => YH_REPORT . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B900&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=12'
         );
 
-        View::instance('index/publicFrame.tpl')->show($data);
+        header("Location:".$data['url']);
+//        View::instance('index/publicFrame.tpl')->show($data);
     }
 
     /**
@@ -314,8 +315,8 @@ class IndexController extends Controller
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
             'url' => YH_REPORT . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B616&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=18'
         );
-
-        View::instance('index/publicFrame.tpl')->show($data);
+        header("Location:".$data['url']);
+//        View::instance('index/publicFrame.tpl')->show($data);
     }
 
     /**
@@ -337,7 +338,8 @@ class IndexController extends Controller
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
             'url' => YH_REPORT . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B901&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=37'
         );
-        View::instance('index/publicFrame.tpl')->show($data);
+        header("Location:".$data['url']);
+//        View::instance('index/publicFrame.tpl')->show($data);
     }
 
     /**
