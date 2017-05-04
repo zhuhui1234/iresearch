@@ -213,12 +213,15 @@ class IndexController extends Controller
                 'userID' => $this->userInfo['userID'],
                 'TOKEN' => $this->userInfo['token'],
                 'token' => $this->userInfo['token'],
+                'companyID' => $this->userInfo['companyID'],
+                'action' => '访问产品',
                 'sub_id' => $pdtID,
                 'recordLogs' => 'KOL访问',
                 'status' => '20000',
-                'resouce' => 'iData',
+                'resource' => 'iData',
                 'level' => '1',
-                'type' => '用户日志'
+                'type' => '用户日志',
+                'log_ip' => getIp()
             ]);
 
             View::instance('service/kol.tpl')->show($data);
@@ -229,9 +232,11 @@ class IndexController extends Controller
                 'sub_id' => $pdtID,
                 'recordLogs' => 'KOL访问',
                 'status' => '40000',
-                'resouce' => 'iData',
+                'resource' => 'iData',
                 'level' => '1',
-                'type' => '用户日志'
+                'action' => '访问产品',
+                'type' => '用户日志',
+                'log_ip' => getIp()
             ]);
         }
         write_to_log(json_encode($logs,'_logs'));
