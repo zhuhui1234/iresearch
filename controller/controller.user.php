@@ -74,6 +74,7 @@ class UserController extends Controller
                     'pdt_id' => $pdt_id,
                     'userID' => $this->userInfo['userID']
                 ]), true);
+                //write_to_log(json_encode($getPermission),'_premission');
                 if ($getPermission['resCode'] == '20000') {
                     header('Location: ' . $getPermission['data']['data']['pdt_url']);
                 } else {
