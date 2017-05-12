@@ -11,8 +11,8 @@ define(['helper', 'app/main'], function (Helper) {
             var innerHeight = window.innerHeight;
             console.log(innerHeight);
             var $frame = $('iframe:eq(0)');
-            $frame.css('height',innerHeight-topBar);
-            $frame.css('min-height',725-topBar);
+            $frame.css('height','100%');
+            $frame.css('min-height',innerHeight);
             $('body').css('overflow-y','hidden');
             $(window).resize(function(){
                 $frame.css('height',window.innerHeight-topBar);
