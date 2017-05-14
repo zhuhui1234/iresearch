@@ -34,7 +34,7 @@
         </div>
     </div>
 </div>
-
+<!--
 <footer>
     <div class="container">
 
@@ -52,7 +52,9 @@
                     <i class="fa fa-weibo"></i>
                 </a>
             </p> -->
-            <p class="cpr">&copy;2017 iResearch 使用艾瑞数据前必读    艾瑞数据版权声明  沪ICP证030173号 </p>
+            <!-- <p class="cpr">&copy;2017 iResearch 使用艾瑞数据前必读    艾瑞数据版权声明  沪ICP证030173号 </p>
         </div>
     </div>
 </footer>
+
+-->

@@ -407,8 +407,11 @@ class UserModel extends API
 
     public function trialApply($data)
     {
-        write_to_log($data, 'apply');
-        return json_encode(['reCode' => "000000000"]);
+
+        $url = API_URL . '?m=permissions&a=applyPermission';
+        $ret = $this->_curlPost($url, $data,'applyPermission');
+        write_to_log(json_encode($data), '_apply');
+        return $ret;
     }
 
     public function getPermission($data)

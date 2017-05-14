@@ -180,7 +180,7 @@ class UserController extends Controller
     }
 
     /**
-     * editUserInfo
+     * edit User Info
      */
     public function editUserInfo()
     {
@@ -405,7 +405,12 @@ class UserController extends Controller
 
     public function trialApplyAPI()
     {
-        $data = json_encode($this->request()->post('data'));
+        $data = $this->request()->post('data');
+        $data['pdt_id'] = $data['menuID'];
+        $data['userID']=$data['u_id'] = $this->userInfo['userID'];
+        $data['companyID'] = $this->userInfo['companyID'];
+        $data['mobile'] = $this->userInfo['mobile'];
+        $data['token'] = $data['TOKEN'] = $this->userInfo['token'];
         echo $this->model->trialApply($data);
     }
 
@@ -514,8 +519,8 @@ class UserController extends Controller
 
     public function showMenu()
     {
-        $data['token'] = $this->userInfo['token'];
-        $data = $this->userDetail;
+//        $data['token'] = $this->userInfo['token'];
+//        $data = $this->userDetail;
 //        $data['loginStatus'] = $this->loginStatus;
         $userModel = Model::instance('user');
         $menu = json_decode($userModel->showMenu(), true);
