@@ -88,9 +88,9 @@ class IndexController extends Controller
                 unset($data['titleMenu'][$i]);
             }
         }
+        View::instance('index/home.tpl')->show($data);
 
-
-        header('Location: http://data.iresearch.com.cn/Home.shtml');
+//        header('Location: http://data.iresearch.com.cn/Home.shtml');
     }
 
     public function irIndex()

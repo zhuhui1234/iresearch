@@ -11,13 +11,16 @@ define(['helper', 'app/main'], function (Helper) {
                 // "mobile" : $("#mobile").val(),
                 "menuID": Helper.getQuery('menuID'),
                 "position": $("#position").val(),
-                "username": $("#username").val()
+                "username": $("#username").val(),
+                "region": $("#city").val(),
+                "city": $("#city option:selected").text()
             };
             console.log(pData);
-            console.log($.trim(pData.company).length <= 0);
-            console.log($.trim(pData.position).length <= 0);
-            console.log($.trim(pData.menuID).length <= 0);
-            if (($.trim(pData.username).length <= 0)|| ($.trim(pData.companyName).length <= 0) || ($.trim(pData.position).length <= 0) || ($.trim(pData.menuID).length <= 0)) {
+            console.log($.trim(pData.companyName).length <=0);
+            console.log($.trim(pData.position).length <=0);
+            console.log($.trim(pData.menuID).length <=0);
+            console.log($.trim(pData.region).length <=0);
+            if (($.trim(pData.username).length <= 0) || ($.trim(pData.companyName).length <= 0) || ($.trim(pData.position).length <= 0) || ($.trim(pData.menuID).length <= 0) || ($.trim(pData.region).length <= 0)) {
                 alert("必填项不能为空")
             } else {
                 Helper.post("trialApply", {data: pData}, function (ret) {

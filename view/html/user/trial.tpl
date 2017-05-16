@@ -45,6 +45,49 @@
 				<p class="text-danger"></p>
 				<span class="tip">*必填</span>
 			</div>
+			<div class="input-group">
+				<span class="input-group-addon">所在地区</span>
+				<select id="city" type="text" id="mobile" class="form-control" placeholder="所在地区" >
+					<option value="0" selected="selected">请选择地区(必填)</option>
+					<option value="1">北京</option>
+					<option value="2">上海</option>
+					<option value="1">天津</option>
+					<option value="3">重庆</option>
+					<option value="1">河北省</option>
+					<option value="1">山西省</option>
+					<option value="1">内蒙古自治区</option>
+					<option value="1">辽宁省</option>
+					<option value="1">吉林省</option>
+					<option value="1">黑龙江省</option>
+					<option value="2">江苏省</option>
+					<option value="2">浙江省</option>
+					<option value="2">安徽省</option>
+					<option value="3">福建省</option>
+					<option value="2">江西省</option>
+					<option value="1">山东省</option>
+					<option value="1">河南省</option>
+					<option value="2">湖北省</option>
+					<option value="2">湖南省</option>
+					<option value="3">广东省</option>
+					<option value="3">广西省</option>
+					<option value="2">海南省</option>
+					<option value="3">四川省</option>
+					<option value="3">贵州省</option>
+					<option value="3">云南省</option>
+					<option value="3">西藏自治区</option>
+					<option value="1">陕西省</option>
+					<option value="1">甘肃省</option>
+					<option value="1">青海省</option>
+					<option value="1">新疆维吾尔自治区</option>
+					<option value="1">宁夏回族自治区</option>
+					<option value="4">台湾省</option>
+					<option value="4">香港特别行政区</option>
+					<option value="4">澳门特别行政区</option>
+
+				</select>
+				<p class="text-danger"></p>
+
+			</div>
 		</form>
 		<div class="panel panel-default">
 			<div class="panel-heading">申请试用内容</div>
