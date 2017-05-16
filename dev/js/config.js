@@ -56,6 +56,10 @@ requirejs.config({
         'jquery': {
             exports: '$'
         },
+        'WXLogin':{
+            deps: ['jquery'],
+            exports: '$'
+        },
         'datatables.net': {
             deps: ['jquery'],
             exports: '$'
