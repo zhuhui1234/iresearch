@@ -788,7 +788,8 @@ function write_to_log($str, $pre = '')
 function jsonHead()
 {
     @@ob_clean();
-    header('Content-type: application/json');
+    header('Content-type: application/json;charset=utf-8');
+    header('Content-Encoding: utf-8');
 }
 
 //
