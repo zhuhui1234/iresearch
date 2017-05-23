@@ -368,10 +368,11 @@ class UserController extends Controller
      */
     public function mobileLoginAPI()
     {
+        $data = json_decode(file_get_contents('php://input'),true);
         $this->__json();
         echo $this->model->mobileLogin([
-            'loginMobile' => $this->request()->post('mobile'),
-            'LoginKey' => $this->request()->post('verNum'),
+            'loginMobile' => $data['mobile'],
+            'LoginKey' => $data['verNum'],
             'LoginType' => 'mobile'
         ]);
     }
@@ -600,7 +601,8 @@ class UserController extends Controller
     private function __json()
     {
         @@ob_clean();
-        header('Content-type: application/json');
+        header('Content-type: application/json;charset=utf-8');
+        header('Content-Encoding: utf-8');
     }
 
     /**

@@ -29,6 +29,13 @@ class ServiceController extends Controller
         echo $this->model->sendSMS($data);
     }
 
+    public function sendSMSForMobile()
+    {
+        $data = json_decode(file_get_contents('php://input'),true);
+        jsonHead();
+        echo $this->model->sendSMS(['Mobile'=> $data['mobile']]);
+    }
+
     /**
      * 跳转kol产品
      */

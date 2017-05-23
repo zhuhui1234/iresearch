@@ -138,6 +138,7 @@ if (!isLoginState()
     AND $_GET['a'] != 'jump'
     AND $_GET['a'] != 'showMenu'
     AND $_GET['a'] != 'mobileLoginAPI'
+    AND $_GET['a'] != 'sendSMSForMobile'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {
