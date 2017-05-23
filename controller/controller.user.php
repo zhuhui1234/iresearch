@@ -364,6 +364,19 @@ class UserController extends Controller
     }
 
     /**
+     * login api for mobile
+     */
+    public function mobileLoginAPI()
+    {
+        $this->__json();
+        echo $this->model->mobileLogin([
+            'loginMobile' => $this->request()->post('mobile'),
+            'LoginKey' => $this->request()->post('verNum'),
+            'LoginType' => 'mobile'
+        ]);
+    }
+
+    /**
      * binding wechat api
      */
     public function bindingWxAPI()
@@ -407,7 +420,7 @@ class UserController extends Controller
     {
         $data = $this->request()->post('data');
         $data['pdt_id'] = $data['menuID'];
-        $data['userID']=$data['u_id'] = $this->userInfo['userID'];
+        $data['userID'] = $data['u_id'] = $this->userInfo['userID'];
         $data['companyID'] = $this->userInfo['companyID'];
         $data['mobile'] = $this->userInfo['mobile'];
         $data['token'] = $data['TOKEN'] = $this->userInfo['token'];
