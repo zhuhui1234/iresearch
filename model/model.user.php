@@ -9,6 +9,7 @@
  * FileName:model.user.php
  * 描述:
  */
+
 class UserModel extends API
 {
     /**
@@ -54,8 +55,14 @@ class UserModel extends API
         }
     }
 
+    public function mobileLogin($data)
+    {
+        $url = API_URL . '?m=User&a=login';
+        return $this->_curlPost($url, $data, 'cs_login');
+    }
+
     /**
-     * check wechat openid
+     * check WeChat openid
      *
      * @param $data
      *

@@ -26,17 +26,17 @@ define('WECHAT_API_REFRESH_URL', 'https://api.weixin.qq.com/sns/oauth2/refresh_t
 define('WECHAT_API_USERINFO', 'https://api.weixin.qq.com/sns/userinfo');
 //REDIS SERVER
 define('REDIS_STATUS', TRUE);
-define('REDIS_SERVER','127.0.0.1');
-define('REDIS_SRV_PORT',6379);
+define('REDIS_SERVER', '127.0.0.1');
+define('REDIS_SRV_PORT', 6379);
 define('REDIS_TIME_OUT', 86400);
-define('REDIS_PREFIX','_iclick_');
+define('REDIS_PREFIX', '_iclick_');
 //    define('REDIS_PWD','!QAZ@WSX');
-define('REDIS_PWD',FALSE);
+define('REDIS_PWD', FALSE);
 //站点配置
 //	define('WEBSITE','http://localhost');
 define('WEBSITE', $_SERVER['SERVER_ADDR']);
 define('WEBSITE_URL', '');
-define('IDATA_URL','http://irv.iresearch.com.cn/iResearchDataWeb/');
+define('IDATA_URL', 'http://irv.iresearch.com.cn/iResearchDataWeb/');
 define('WEBSITE_SOURCE_URL', WEBSITE_URL . 'dev');
 define('WEBSITE_TITLE', '艾瑞数据平台');
 define('REGISTER_MAILADDR', 'irv@iresearch.com.cn');
@@ -119,24 +119,25 @@ if (!empty($v) && in_array($v, array('beta', 'test', 'final'))) {
 //登录处理
 if (!isLoginState()
     AND $_GET['a'] != 'login'
-        AND $_GET['a'] != 'registerUserInfoAPI'
-            AND $_GET['a'] != 'registerUserInfo'
-                AND $_GET['a'] != 'loginAPI'
-                    AND $_GET['a'] != 'register'
-                        AND $_GET['a'] != 'authImg'
-                            AND $_GET['a'] != 'sendMail'
-                                AND $_GET['a'] != 'registerSendMail'
-                                    AND $_GET['a'] != 'forgotPassword'
-                                        AND $_GET['a'] != 'wxLoginAPI'
-                                            AND $_GET['a'] != 'sendSMS'
-                                                AND $_GET['a'] != 'BindingWeChat'
-                                                    AND $_GET['a'] != 'toKol'
-                                                        AND $_GET['a'] != 'toiAdT'
-                                                            AND $_GET['a'] != 'vfcLogin'
-                                                                AND $_GET['a'] != 'toiAdT2'
-                                                                    AND $_GET['a'] != 'vfcLogin2'
-                                                                        AND $_GET['a'] != 'jump'
-                                                                        AND $_GET['a'] != 'showMenu'
+    AND $_GET['a'] != 'registerUserInfoAPI'
+    AND $_GET['a'] != 'registerUserInfo'
+    AND $_GET['a'] != 'loginAPI'
+    AND $_GET['a'] != 'register'
+    AND $_GET['a'] != 'authImg'
+    AND $_GET['a'] != 'sendMail'
+    AND $_GET['a'] != 'registerSendMail'
+    AND $_GET['a'] != 'forgotPassword'
+    AND $_GET['a'] != 'wxLoginAPI'
+    AND $_GET['a'] != 'sendSMS'
+    AND $_GET['a'] != 'BindingWeChat'
+    AND $_GET['a'] != 'toKol'
+    AND $_GET['a'] != 'toiAdT'
+    AND $_GET['a'] != 'vfcLogin'
+    AND $_GET['a'] != 'toiAdT2'
+    AND $_GET['a'] != 'vfcLogin2'
+    AND $_GET['a'] != 'jump'
+    AND $_GET['a'] != 'showMenu'
+    AND $_GET['a'] != 'mobileLoginAPI'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {
