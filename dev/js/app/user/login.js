@@ -118,9 +118,9 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
     var pdtID = Helper.getQuery('pro');
     console.log(pdtID);
     if (pdtID == null) {
-        Helper.WeChatQRCode('wxLogin', 'wxLogin', 'https://www.iresearchdata.cn/iResearchDataWeb/public/css/wechat.css');
+        Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
     } else {
-        Helper.WeChatQRCode('wxLogin', 'wxLogin', 'https://www.iresearchdata.cn/iResearchDataWeb/public/css/wechat.css', pdtID);
+        Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css', pdtID);
     }
 
 });
