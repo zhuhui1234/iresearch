@@ -424,6 +424,7 @@ class UserController extends Controller
         $data['userID'] = $data['u_id'] = $this->userInfo['userID'];
         $data['companyID'] = $this->userInfo['companyID'];
         $data['mobile'] = $this->userInfo['mobile'];
+        $data['mail'] = $data['mail'];
         $data['token'] = $data['TOKEN'] = $this->userInfo['token'];
         echo $this->model->trialApply($data);
     }

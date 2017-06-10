@@ -46,6 +46,12 @@
 				<span class="tip">*必填</span>
 			</div>
 			<div class="input-group">
+				<span class="input-group-addon">电子邮箱</span>
+				<input id="mail" type="text" id="mobile" class="form-control" placeholder="填写您的电子邮箱" value="{u_mail}" >
+				<p class="text-danger"></p>
+				<span class="tip">*必填</span>
+			</div>
+			<div class="input-group">
 				<span class="input-group-addon">所在地区</span>
 				<select id="city" type="text" id="mobile" class="form-control" placeholder="所在地区" >
 					<option value="0" selected="selected">请选择地区(必填)</option>
