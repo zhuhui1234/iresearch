@@ -54,6 +54,7 @@ class UserController extends Controller
             'loginStatus' => $this->loginStatus,
             'title' => WEBSITE_TITLE
         );
+
         View::instance('user/login.tpl')->show($data);
     }
 
@@ -256,6 +257,10 @@ class UserController extends Controller
     {
         $this->model->logOut();
         Session::instance()->destroy();
+        setcookie('yh_irv_url', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=login', time() + 2400, '/');
+        setcookie('PHPSESSID', '', time() - 3600, '/');
+        setcookie('JSESSIONID', '', time() - 3600, '/');
+        write_to_log('cookie:' . json_encode($_COOKIE), '_session');
         header("Location:?m=user&a=login");
     }
 
@@ -368,7 +373,7 @@ class UserController extends Controller
      */
     public function mobileLoginAPI()
     {
-        $data = json_decode(file_get_contents('php://input'),true);
+        $data = json_decode(file_get_contents('php://input'), true);
         $this->__json();
         echo $this->model->mobileLogin([
             'loginMobile' => $data['mobile'],
