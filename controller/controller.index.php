@@ -423,6 +423,17 @@ class IndexController extends Controller
         return $ret;
     }
 
+    public function xvt()
+    {
+
+        View::instance('xvt/vt.tpl')->show([]);
+    }
+
+    public function xut()
+    {
+
+    }
+
     /**
      * test function
      */
