@@ -167,12 +167,12 @@
                     <div class="change-btn">
                         <a class="btn btn-primary btn-lg" v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
                         <!-- IF token == 1 -->
-                        <a class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
+                        <a  v-if="product[tabIndex].isOldURL " class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
                         <!-- ELSE -->
                             <!-- IF irdStatus == 1 -->
-                            <button class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+                            <button  v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
                             <!-- ELSE -->
-                            <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                            <a  v-if="product[tabIndex].isOldURL "  class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
                             <!-- ENDIF -->
                         <!-- ENDIF -->
                     </div>
@@ -227,11 +227,10 @@
                     <!-- ELSE -->
                     <!-- IF irdStatus == 1 -->
 
-                    <button v-if="product[tabIndex].oldurl !== '' " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
-
+                    <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
                     <!-- ELSE -->
 
-                    <a v-if="product[tabIndex].oldurl !== '' " class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                    <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
 
                     <!-- ENDIF -->
                     <!-- ENDIF -->
@@ -292,6 +291,7 @@
         var product = [{
             logo: 'public/img/ivt.svg',
             icon: 'public/img/ivt@2x.png',
+            isOldURL: true,
             url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=1',
             oldurl: '?m=irdata&a=classicSys&ppname=PC端视频内容市场监测',
             info: 'iVideoTracke网络视频市场监测 ，是基于庞大的网民网络视频收视行为监测数据，记录了自2011年始，用户对视频内容的浏览行为记录。IVT提供国内主流视频媒体各视频类别、视频影片的收视情况及收视人群分布数据，真实反映中国互联网在线视频市场客观情况，帮助企业了解网民视频内容收视喜好，以指导片源购买、片源定向，证明视屏媒体价值，优化网络视频广告投放效果。',
@@ -321,8 +321,9 @@
             logo: 'public/img/mvt.svg',
             icon: 'public/img/mvt@2x.png',
             url:   'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=18',
+            isOldURL:false,
             oldUrl: '',
-            info: 'mVideoTracker移动端视频市场监测，基于运营商级别的用户观看移动网络视频内容的收视行为数据，监测主流视频内容提供商不同频道、类型和产地的收视情况，洞察视频内容在不同视频内容提供商的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好程度，监控视频内容在各时段的收视趋势，为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。',
+            info: 'mVideoTracker移动端视频市场监测，基于运营商级别的用户观看移动网络视频内容的收视行为数据，监测主流视频内容提供商不同频道、类型和产地的收视情况，洞察视频内容在不同  视频内容提供商的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好程度，监控视频内容在各时段的收视趋势，为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。',
             itemA: {
                 title: '视频内容提供商',
                 info: [
@@ -353,6 +354,7 @@
             icon: 'public/img/ovt@2x.png',
             url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=19',
             oldurl: '',
+            isOldURL: false,
             info: 'oVideoTracker OTT端视频市场监测基于运营商级别的用户观看OTT网络视频内容的收视行为数据，监测主流视频内容提供商不同频道、类型和产地的收视情况，洞察视频内容在不同视频内容提供商的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好程度，监控视频内容在各时段的收视趋势，为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。',
             itemA: {
                 title: '视频内容提供商',
