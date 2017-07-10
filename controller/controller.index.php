@@ -88,6 +88,7 @@ class IndexController extends Controller
                 unset($data['titleMenu'][$i]);
             }
         }
+//        pr($data);
         View::instance('index/home.tpl')->show($data);
 
 //        header('Location: http://data.iresearch.com.cn/Home.shtml');
@@ -158,7 +159,7 @@ class IndexController extends Controller
             'url' => 'http://ircdemo.iresearchdata.cn?token=' . $this->userInfo['token']
         );
 
-        header("Location:".$data['url']);
+        header("Location:" . $data['url']);
     }
 
     /**
@@ -260,7 +261,7 @@ class IndexController extends Controller
                 'log_ip' => getIp()
             ]);
         }
-        write_to_log(json_encode($logs,'_logs'));
+        write_to_log(json_encode($logs, '_logs'));
 //        header("Location:".$this->kolLink());
     }
 
@@ -317,7 +318,7 @@ class IndexController extends Controller
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
             'url' => YH_REPORT . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B663&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=19'
         );
-        header("Location:".$data['url']);
+        header("Location:" . $data['url']);
 //        View::instance('index/publicFrame.tpl')->show($data);
     }
 
@@ -341,7 +342,7 @@ class IndexController extends Controller
             'url' => YH_REPORT . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B900&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=12'
         );
 
-        header("Location:".$data['url']);
+        header("Location:" . $data['url']);
 //        View::instance('index/publicFrame.tpl')->show($data);
     }
 
@@ -364,7 +365,7 @@ class IndexController extends Controller
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
             'url' => YH_REPORT . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B616&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=18'
         );
-        header("Location:".$data['url']);
+        header("Location:" . $data['url']);
 //        View::instance('index/publicFrame.tpl')->show($data);
     }
 
@@ -387,7 +388,7 @@ class IndexController extends Controller
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
             'url' => YH_REPORT . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B901&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=37'
         );
-        header("Location:".$data['url']);
+        header("Location:" . $data['url']);
 //        View::instance('index/publicFrame.tpl')->show($data);
     }
 
@@ -426,12 +427,66 @@ class IndexController extends Controller
     public function xvt()
     {
 
-        View::instance('xvt/vt.tpl')->show([]);
+        $userInfo = Session::instance()->get('userInfo');
+        if (isset($userInfo['token'])) {
+            $data['token'] = $userInfo['token'];
+        } else {
+            $data['token'] = 1;
+        }
+
+
+        if (empty(trim($userInfo['productKey']))) {
+            //没有绑定
+            $data['irdStatus'] = 1;
+        } else {
+            //绑定
+            $data['irdStatus'] = 2;
+        }
+
+        View::instance('xvt/vt.tpl')->show($data);
     }
+
+    public function xvtSearch()
+    {
+        $data = [];
+        $userInfo = Session::instance()->get('userInfo');
+        if (empty(trim($userInfo['productKey']))) {
+            //没有绑定
+            $data['irdStatus'] = 1;
+        } else {
+            //绑定
+            $data['irdStatus'] = 2;
+        }
+        View::instance('xvt/search.tpl')->show($data);
+    }
+
 
     public function xut()
     {
+        $data= [];
+        $userInfo = Session::instance()->get('userInfo');
+        if (empty(trim($userInfo['productKey']))) {
+            //没有绑定
+            $data['irdStatus'] = 1;
+        } else {
+            //绑定
+            $data['irdStatus'] = 2;
+        }
+        View::instance('xvt/ut.tpl')->show($data);
+    }
 
+    public function ad()
+    {
+        $data= [];
+        $userInfo = Session::instance()->get('userInfo');
+        if (empty(trim($userInfo['productKey']))) {
+            //没有绑定
+            $data['irdStatus'] = 1;
+        } else {
+            //绑定
+            $data['irdStatus'] = 2;
+        }
+        View::instance('xvt/ad.tpl')->show($data);
     }
 
     /**
