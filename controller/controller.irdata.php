@@ -53,6 +53,8 @@ class IRDataController extends Controller
                     $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     $callBack = urlencode($backURL . '&backType=1');
                     $jumpURL = $data['ppurl'] . '&irv_callback=' . $callBack;
+//                    var_dump($data['ppurl']);
+//                    exit();
                     header("Location:".$jumpURL);
                 }
 //            }
