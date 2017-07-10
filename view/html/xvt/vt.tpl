@@ -169,7 +169,7 @@
                         <!-- IF token == 1 -->
                         <a  v-if="product[tabIndex].isOldURL " class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
                         <!-- ELSE -->
-                            <!-- IF irdStatus == 1 -->
+                            <!-- IF irdStatus=="1" -->
                             <button  v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
                             <!-- ELSE -->
                             <a  v-if="product[tabIndex].isOldURL "  class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
@@ -222,10 +222,10 @@
                 </div>
                 <div class="change-btn" >
                     <a class="btn btn-primary btn-lg" href="">开始使用[[ item.url ]]</a>
-                    <!-- IF token == 1 -->
+                    <!-- IF token==="1" -->
                     <a class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
                     <!-- ELSE -->
-                    <!-- IF irdStatus == 1 -->
+                    <!-- IF irdStatus=="1" -->
 
                     <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
                     <!-- ELSE -->
@@ -292,7 +292,7 @@
             logo: 'public/img/ivt.svg',
             icon: 'public/img/ivt@2x.png',
             isOldURL: true,
-            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=1',
+            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=17',
             oldurl: '?m=irdata&a=classicSys&ppname=PC端视频内容市场监测',
             info: 'iVideoTracke网络视频市场监测 ，是基于庞大的网民网络视频收视行为监测数据，记录了自2011年始，用户对视频内容的浏览行为记录。IVT提供国内主流视频媒体各视频类别、视频影片的收视情况及收视人群分布数据，真实反映中国互联网在线视频市场客观情况，帮助企业了解网民视频内容收视喜好，以指导片源购买、片源定向，证明视屏媒体价值，优化网络视频广告投放效果。',
             itemA: {

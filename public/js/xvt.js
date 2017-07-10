@@ -10,7 +10,15 @@ $(".binding").click(function () {
             "password": $("#ps").val()
         }
     };
-
+    var getQueryString = function (name) {
+        'use strict';
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]).toLowerCase();
+        }
+        return null;
+    };
 
     $.ajax({
         url: "?m=user&a=bindingIRDA",
@@ -26,6 +34,7 @@ $(".binding").click(function () {
                 location.reload();
             } else {
                 alert("绑定失败");
+                location.reload();
             }
 
 
@@ -36,6 +45,5 @@ $(".binding").click(function () {
 });
 
 $("#searchBtn").click(function(){
-    console.log('a');
     window.location.href='?m=index&a=xvtSearch&key='+$("#searchKey").val()
 });

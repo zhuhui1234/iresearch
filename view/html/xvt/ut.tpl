@@ -161,8 +161,20 @@
                     </div>
                 </div>
                 <div class="change-btn">
-                    <button class="btn btn-primary btn-lg">开始使用</button>
-                    <button class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+
+                    <a class="btn btn-primary btn-lg" href="">开始使用[[ item.url ]]</a>
+                    <!-- IF token=="1" -->
+                    <a class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
+                    <!-- ELSE -->
+                    <!-- IF irdStatus=="1" -->
+
+                    <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+                    <!-- ELSE -->
+
+                    <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+
+                    <!-- ENDIF -->
+                    <!-- ENDIF -->
                 </div>
             </div>
         </div>
@@ -204,8 +216,20 @@
                         </div>
                     </div>
                     <div class="change-btn">
-                        <button class="btn btn-primary btn-lg">开始使用</button>
-                        <button class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+
+                        <a class="btn btn-primary btn-lg" v-bind:href="[[[[ product[tabIndex].url ]]]]">开始使用</a>
+                        <!-- IF token=="1" -->
+                        <a class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
+                        <!-- ELSE -->
+                        <!-- IF irdStatus=="1" -->
+
+                        <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+                        <!-- ELSE -->
+
+                        <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+
+                        <!-- ENDIF -->
+                        <!-- ENDIF -->
                     </div>
                 </div>
             </div>
@@ -224,7 +248,7 @@
                         <img class="logo" src="public/img/logo@2x.png" alt="">
                         <img class="old" src="public/img/old@2x.png" alt="">
                     </div>
-                    <form class="form-horizontal">
+                    <div class="form-horizontal">
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">用户名</label>
                             <div class="col-sm-10">
@@ -238,10 +262,10 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-primary">绑定</button>
+                            <button class="btn btn-primary binding">绑定</button>
                         </div>
                         <p>如有账号问题，请联系 400-000-000</p>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -262,6 +286,9 @@
         var product = [{
             logo: 'public/img/iut.svg',
             icon: 'public/img/iut@2x.png',
+            isOldURL: true,
+            oldurl: '?m=irdata&a=classicSys&ppname=PC端用户行为监测',
+            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=12',
             info: 'iUserTracker网络用户行为监测，是基于庞大的网民样本行为监测所建立的数据库。该数据库自2006年开始，收集包括用户网络浏览的行为、软件使用行为等详细信息，凭借多年的互联网行业研究经验，通过被监测样本的用户属性标签及多个用户行为竞争分析指标，真实反映中国互联网整体及不同用户市场的客观情况。',
             itemA: {
                 title: '互联网公司',
@@ -288,6 +315,9 @@
         }, {
             logo: 'public/img/mut.svg',
             icon: 'public/img/mut@2x.png',
+            isOldURL: true,
+            oldurl: '?m=irdata&a=classicSys&ppname=移动端用户行为监测',
+            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=13',
             info: 'mUserTracker移动用户行为监测，基于大移动网民样本行为进行监测所建立的数据库，该数据库由2012年开始，收集包括用户通过移动设备，对App的使用行为、浏览网站的行为等相关情况。并通过对数据的大量分析建立了多个用户行为指标，真实反映中国移动互联网市场客观情况。并利用对被监测样本的用户属性进行标签设定，从而能够从多个维度对用户市场进行定义和细分。',
             itemA: {
                 title: '互联网公司',
@@ -313,6 +343,9 @@
         }, {
             logo: 'public/img/out.svg',
             icon: 'public/img/out@2x.png',
+            isOldURL: true,
+            oldurl: '?m=irdata&a=classicSys&ppname=OTT端视频内容市场监测',
+            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=14',
             info: 'oUserTracker智能电视用户行为监测产品，是基于智能电视网民样本行为监测所建立的数据库。该数据库由2017年开始，收集用户通过智能电视设备的App使用行为，并通过对数据的大量分析建立了多个用户行为指标，真实反映中国智能电视APP使用市场客观情况。并利用对被监测样本的用户属性进行标签设定，从而能够从多个维度对用户市场进行定义和细分。',
             itemA: {
                 title: '互联网公司',

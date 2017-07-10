@@ -443,6 +443,8 @@ class IndexController extends Controller
             $data['irdStatus'] = 2;
         }
 
+//        pr($data);
+//        exit();
         View::instance('xvt/vt.tpl')->show($data);
     }
 
@@ -450,6 +452,13 @@ class IndexController extends Controller
     {
         $data = [];
         $userInfo = Session::instance()->get('userInfo');
+
+        if (isset($userInfo['token'])) {
+            $data['token'] = $userInfo['token'];
+        } else {
+            $data['token'] = 1;
+        }
+
         if (empty(trim($userInfo['productKey']))) {
             //没有绑定
             $data['irdStatus'] = 1;
@@ -465,6 +474,14 @@ class IndexController extends Controller
     {
         $data= [];
         $userInfo = Session::instance()->get('userInfo');
+        $userInfo = Session::instance()->get('userInfo');
+
+        if (isset($userInfo['token'])) {
+            $data['token'] = $userInfo['token'];
+        } else {
+            $data['token'] = 1;
+        }
+
         if (empty(trim($userInfo['productKey']))) {
             //没有绑定
             $data['irdStatus'] = 1;
