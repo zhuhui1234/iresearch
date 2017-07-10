@@ -472,8 +472,7 @@ class IndexController extends Controller
 
     public function xut()
     {
-        $data= [];
-        $userInfo = Session::instance()->get('userInfo');
+        $data = [];
         $userInfo = Session::instance()->get('userInfo');
 
         if (isset($userInfo['token'])) {
@@ -494,8 +493,13 @@ class IndexController extends Controller
 
     public function ad()
     {
-        $data= [];
+        $data = [];
         $userInfo = Session::instance()->get('userInfo');
+        if (isset($userInfo['token'])) {
+            $data['token'] = $userInfo['token'];
+        } else {
+            $data['token'] = 1;
+        }
         if (empty(trim($userInfo['productKey']))) {
             //没有绑定
             $data['irdStatus'] = 1;
@@ -517,11 +521,103 @@ class IndexController extends Controller
 //        pr(Session::instance()->get('userInfo'));
     }
 
+    /**
+     *
+     */
+    public function xvtSearchAPI()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $model = Model::instance('service');
+        $data = file_get_contents('php://input');
+//        $getData = json_decode($data,true);
+        $ret = $model->xvtSearch($data);
+        $ret = json_decode($ret, true);
+        if (isset($userInfo['token'])) {
+            $token = $userInfo['token'];
+        }
+
+        if (isset($ret['data'])) {
+
+            foreach ($ret['data'] as $i => $v) {
+                if (!empty($token)) {
+                    $ret['data'][$i]['hasToken'] = true;
+//                    $ret['data'][$i]['mvtURL'] = 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B905&&token=' . $token . '&pdt_id=18&userID=' . $userInfo['userID'] . '&video=' . $v['tv_name'] . '&channel=' . $v['channel'];
+//                    $ret['data'][$i]['ovtURL'] = 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B909&token=' . $token . '&pdt_id=19&userID=' . $userInfo['userID'] . '&video=' . $v['tv_name'] . '&channel=' . $v['channel'];
+//                    $ret['data'][$i]['ivtURL'] = 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B911&token=' . $token . '&pdt_id=17&userID=' . $userInfo['userID'] . '&video=' . $v['tv_name'] . '&channel=' . $v['channel'];
+                    $ret['data'][$i]['mvtURL'] = $this->__getURL($v['tv_name'],$v['channel'],'mvt');
+                    $ret['data'][$i]['ovtURL'] = $this->__getURL($v['tv_name'],$v['channel'],'ovt');
+                    $ret['data'][$i]['ivtURL'] = $this->__getURL($v['tv_name'],$v['channel'],'ivt');
+                } else {
+                    $ret['data'][$i]['hasToken'] = false;
+                    $ret['data'][$i]['mvtURL'] = '';
+                    $ret['data'][$i]['ovtURL'] = '';
+                    $ret['data'][$i]['ivtURL'] = '';
+                }
+            }
+
+        }
+
+        echo json_encode($ret);
+    }
+
+
+
     ######################################################################################
     ##################################                     ###############################
     #################################   PRIVATE METHODS   ################################
     ################################                     #################################
     ######################################################################################
+
+    private function __getURL($tvName, $channel, $vtType)
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $check = function ($pdtID) {
+            $userModel = Model::instance('user');
+            $getPermission = json_decode($userModel->getPermission([
+                'token' => $this->userInfo['token'],
+                'pdt_id' => $pdtID,
+                'userID' => $this->userInfo['userID']
+            ]), true);
+            if ($getPermission['resCode'] == '20000') {
+                return 'ok';
+            } else {
+                $m = Model::instance('user');
+                $pro = $m->getProduct(['pdt_id'=> $pdtID]);
+                $pro = json_decode($pro, true);
+
+                return '?m=user&a=trialApply&ppname=' . $pro['data'][0]['pdt_name'] . '&menuID=' . $pdtID;
+            }
+        };
+
+        switch ($vtType) {
+            case 'mvt':
+                $mvt = $check(18);
+                if ($mvt == 'ok') {
+                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B905&&token=' . $userInfo['token'] . '&pdt_id=18&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
+                } else {
+                    return $mvt;
+                }
+                break;
+            case 'ovt':
+                $ovt = $check(19);
+                if ($ovt == 'ok') {
+                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B909&token=' . $userInfo['token'] . '&pdt_id=19&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
+                } else {
+                    return $ovt;
+                }
+                break;
+            case 'ivt':
+                $ivt = $check(17);
+                if ($ivt == 'ok') {
+                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B911&token=' . $userInfo['token'] . '&pdt_id=17&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
+                } else {
+                    return $ivt;
+                }
+                break;
+        }
+    }
+
+
 
     /**
      * main menu
