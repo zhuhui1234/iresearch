@@ -47,3 +47,9 @@ $(".binding").click(function () {
 $("#searchBtn").click(function(){
     window.location.href='?m=index&a=xvtSearch&key='+$("#searchKey").val()
 });
+
+$("#searchKey").keypress(function (event){
+    if (event.which == 13) {
+        window.location.href='?m=index&a=xvtSearch&key='+$("#searchKey").val()
+    }
+});

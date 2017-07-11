@@ -81,14 +81,24 @@ class ServiceModel extends API {
     }
 
     /**
-     * return product id
-     *
-     * @param $uri
+     * @param $data
+     * @return mixed
      */
     public function recordLogs($data)
     {
         $url = API_URL . '?m=logs&a=pushLog';
         $ret = $this->_curlPost($url, $data,'pushLog');
+        return $ret;
+    }
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function xvtSearch($data)
+    {
+        $url = 'http://localhost/xmpapi/public/api/xvt/search';
+        $ret = $this->_curlPost($url, json_decode($data,true), 'search');
         return $ret;
     }
 }

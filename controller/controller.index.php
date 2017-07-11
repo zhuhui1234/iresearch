@@ -609,7 +609,8 @@ class IndexController extends Controller
             case 'ivt':
                 $ivt = $check(17);
                 if ($ivt == 'ok') {
-                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B911&token=' . $userInfo['token'] . '&pdt_id=17&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
+//                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B911&token=' . $userInfo['token'] . '&pdt_id=17&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
+                      return '';
                 } else {
                     return $ivt;
                 }

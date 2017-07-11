@@ -311,6 +311,11 @@ class UserModel extends API
         return $rs;
     }
 
+    public function checkPermission($data)
+    {
+        $check = json_decode($this->_curlPost(API_URL . "?m=Permissions&a=checkPermission", $data), true);
+        return $check['resCode'] == 20000;
+    }
 
     /**
      * binding IRDA
@@ -425,6 +430,13 @@ class UserModel extends API
         return $this->__getPermissionInfo($data);
     }
 
+    public function getProduct($data)
+    {
+        $url = API_URL . '?m=permissions&a=getProduct';
+        $ret = $this->_curlPost($url, $data, 'getProduct');
+        return $ret;
+    }
+
     ######################################################################################
     ##################################                     ###############################
     #################################   PRIVATE METHODS   ################################
@@ -510,4 +522,5 @@ class UserModel extends API
         $url = API_URL . '?m=Permissions&a=checkPermission';
         return $this->_curlPost($url, $data, 'checkPermission');
     }
+
 }

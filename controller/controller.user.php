@@ -80,8 +80,15 @@ class UserController extends Controller
                     header('Location: ' . $getPermission['data']['data']['pdt_url']);
                 } else {
                     if (empty($getPermission['data']['data'])) {
-                        http_response_code(404);
-                        echo '访问错误';
+                        $pro = $this->model->getProduct(['pdt_id'=> $pdt_id]);
+                        $pro = json_decode($pro, true);
+                        if ($pro['resCode'] == '0000000') {
+                            header('Location: ?m=user&a=trialApply&ppname='.$pro['data'][0]['pdt_name'].'&menuID='.$pdt_id);
+                        }else{
+                            http_response_code(404);
+                            echo '访问错误';
+                        }
+
                     } else {
                         header('Location: ?m=user&a=trialApply&ppname=' . $getPermission['data']['data']['pdt_name'] . '&menuID=' . $pdt_id);
                     }
