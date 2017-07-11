@@ -88,25 +88,12 @@
                     <a href="//data.iresearch.com.cn/iRView.shtml" class="dropdown-toggle"><span>艾瑞睿见</span><em>iRView</em></a>
                     <div class="dropdown-menu-box">
                         <ul class="dropdown-menu">
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11"
-                                   target="_blank"><i class="icon icon-iRView-1"></i><em>xMediaPlanner</em><span>跨屏媒介效果评估</span></a>
-                            </li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=18"
-                                   target="_blank"><i class="icon icon-iRView-2"></i><em>mVideoTracker</em><span>移动视频内容市场监测</span></a>
-                            </li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=19"
-                                   target="_blank"><i class="icon icon-iRView-3"></i><em>oVideoTracker</em><span>OTT视频内容市场监测</span></a>
-                            </li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=31"
-                                   target="_blank"><i
-                                            class="icon icon-iRView-4"></i><em>iKOLTracker</em><span>意见领袖市场监测</span></a>
-                            </li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=12"
-                                   target="_blank"><i class="icon icon-iRView-5"></i><em>iUserTracker</em><span>PC端用户行为监测</span></a>
-                            </li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=37"
-                                   target="_blank"><i class="icon icon-iRView-6"></i><em>mUserTracker</em><span>移动端用户行为监测</span></a>
-                            </li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11" target="_blank"><i class="icon icon-iRView-1"></i><em>XMediaPlanner</em><span>跨屏媒介效果评估</span></a></li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut" target="_blank"><i class="icon icon-iRView-7"></i><em>UserTracker</em><span>用户行为监测</span></a></li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt" target="_blank"><i class="icon icon-video"></i><em>VideoTracker</em><span>视频内容市场监测</span></a></li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=ad" target="_blank"><i class="icon icon-iRView-8"></i><em>ADTracker</em><span>广告投放监测</span></a></li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=31" target="_blank"><i class="icon icon-iRView-4"></i><em>iKOLTracker</em><span>意见领袖市场监测</span></a></li>
+
 
                         </ul>
                     </div>
