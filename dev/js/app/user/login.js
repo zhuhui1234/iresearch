@@ -149,8 +149,9 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
     });
     var pdtID = Helper.getQuery('pro');
-    var u = new URL(window.location.href)
-    var ppName = u.searchParams.get('ppname');
+    var ppName = Helper.getQuery('ppname');
+    // var u = new URL(window.location.href)
+    // var ppName = u.searchParams.get('ppname');
     if (pdtID !== null) {
         Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css', pdtID);
     } else if (ppName !== null) {
