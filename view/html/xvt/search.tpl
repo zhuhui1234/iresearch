@@ -130,13 +130,13 @@
     </div>
     <div class="menu">
         <ul>
-            <li>
+            <!-- <li>
                 <Radio-group v-model="dateTypeVal" type="button" @on-change="changeDateType">
                     <Radio v-for="date in dateTypeItem" :label="date.value" :value="date.value" :key="date.value"
                            v-cloak>[[ date.label ]]
                     </Radio>
                 </Radio-group>
-            </li>
+            </li> -->
             <li>
                 <i-select v-model="dateVal" style="width:150px" @on-change="changeDate">
                     <i-option v-for="item in dateList" :value="item.data_value" :key="item.data_value"
