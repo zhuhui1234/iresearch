@@ -55,15 +55,15 @@
             <h2 class="hd-title-mobile">艾瑞数据</h2>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <div class="mobele-logo">
-                    <a href="Home.shtml"><img src="http://data.iresearch.com.cn/images/logo.png"></a>
+                    <a href="//data.iresearch.com.cn/Home.shtml"><img src="http://data.iresearch.com.cn/images/logo.png"></a>
                 </div>
                 <div class="btn-box">
                     <span class="loginReg"><a href="javascript:;"><i class="login"></i><em>登录</em></a><a href="javascript:;"><i class="reg"></i><em>注册</em></a></span>
                 </div>
                 <ul class="nav navbar-nav navbar-left">
-                    <li id="n_1"><a href="Home.shtml"><span>首页</span><em>Home</em></a></li>
+                    <li id="n_1"><a href="//data.iresearch.com.cn/Home.shtml"><span>首页</span><em>Home</em></a></li>
                     <li id="n_2" role="presentation" class="dropdown ">
-                        <a href="iRIndex.shtml" class="dropdown-toggle"><span>艾瑞指数</span><em>iRIndex</em></a>
+                        <a href="//data.iresearch.com.cn/iRView.shtml" class="dropdown-toggle"><span>艾瑞指数</span><em>iRIndex</em></a>
                         <div class="dropdown-menu-box">
                             <ul class="dropdown-menu">
                                 <li><a href="http://index.iresearch.com.cn/app"><i class="icon icon-app"></i><span>APP 指数</span><em>Mobile User Behavior Insight</em></a></li>
@@ -86,12 +86,12 @@
                             </ul>
                         </div>
                     </li>
-                    <li id="n_4"><a href="iRCloud.shtml"><span>艾瑞智云</span><em>iRCloud</em></a></li>
+                    <li id="n_4"><a href="//irv.iresearch.com.cn/iResearchDataWeb/iRCloud.shtmll"><span>艾瑞智云</span><em>iRCloud</em></a></li>
                     <li id="n_5" role="presentation" class="dropdown">
-                        <a href="About.shtml" class="dropdown-toggle"><span>关于我们</span><em>About Us</em></a>
+                        <a href="//irv.iresearch.com.cn/iResearchDataWeb/About.shtml" class="dropdown-toggle"><span>关于我们</span><em>About Us</em></a>
                         <div class="dropdown-menu-box">
                             <ul class="dropdown-menu">
-                                <li><a href="About.shtml"><span>联系我们</span><em>Contact Us</em></a></li>
+                                <li><a href="//irv.iresearch.com.cn/iResearchDataWeb/About.shtml"><span>联系我们</span><em>Contact Us</em></a></li>
                                 <li><a href="http://group.iresearch.com.cn/" target="_blank"><span>艾瑞集团</span><em>iResearch Group</em></a></li>
                             </ul>
                         </div>
@@ -162,7 +162,8 @@
                 </div>
                 <div class="change-btn">
 
-                    <a class="btn btn-primary btn-lg" href="">开始使用[[ item.url ]]</a>
+                    <a v-if="product[tabIndex].show" class="btn btn-primary btn-lg" href="">开始使用[[ item.url ]]</a>
+                    <a v-else="product[tabIndex].show" class="btn btn-primary btn-lg btn-warning" href="">敬请期待！！</a>
                     <!-- IF token=="1" -->
                     <a class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
                     <!-- ELSE -->
@@ -216,17 +217,18 @@
                         </div>
                     </div>
                     <div class="change-btn">
+                        <a v-if="product[tabIndex].show" class="btn btn-primary btn-lg" v-bind:href="[[[[ product[tabIndex].url ]]]]">开始使用</a>
+                        <a v-else="product[tabIndex].show" class="text-warning" href="">敬请期待！！</a>
 
-                        <a class="btn btn-primary btn-lg" v-bind:href="[[[[ product[tabIndex].url ]]]]">开始使用</a>
                         <!-- IF token=="1" -->
-                        <a class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
+                        <a v-if="product[tabIndex].show" class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
                         <!-- ELSE -->
                         <!-- IF irdStatus=="1" -->
 
-                        <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+                        <button v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
                         <!-- ELSE -->
 
-                        <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
 
                         <!-- ENDIF -->
                         <!-- ENDIF -->
@@ -287,7 +289,8 @@
             logo: 'public/img/iut.svg',
             icon: 'public/img/iut@2x.png',
             isOldURL: true,
-            oldurl: '?m=irdata&a=classicSys&ppname=PC端用户行为监测',
+            show:true,
+            oldurl: '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版',
             url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=12',
             info: 'iUserTracker网络用户行为监测，是基于庞大的网民样本行为监测所建立的数据库。该数据库自2006年开始，收集包括用户网络浏览的行为、软件使用行为等详细信息，凭借多年的互联网行业研究经验，通过被监测样本的用户属性标签及多个用户行为竞争分析指标，真实反映中国互联网整体及不同用户市场的客观情况。',
             itemA: {
@@ -316,7 +319,8 @@
             logo: 'public/img/mut.svg',
             icon: 'public/img/mut@2x.png',
             isOldURL: true,
-            oldurl: '?m=irdata&a=classicSys&ppname=移动端用户行为监测',
+            oldurl: '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版',
+            show:true,
             url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=13',
             info: 'mUserTracker移动用户行为监测，基于大移动网民样本行为进行监测所建立的数据库，该数据库由2012年开始，收集包括用户通过移动设备，对App的使用行为、浏览网站的行为等相关情况。并通过对数据的大量分析建立了多个用户行为指标，真实反映中国移动互联网市场客观情况。并利用对被监测样本的用户属性进行标签设定，从而能够从多个维度对用户市场进行定义和细分。',
             itemA: {
@@ -344,6 +348,7 @@
             logo: 'public/img/out.svg',
             icon: 'public/img/out@2x.png',
             isOldURL: true,
+            show:false,
             oldurl: '?m=irdata&a=classicSys&ppname=OTT端视频内容市场监测',
             url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=14',
             info: 'oUserTracker智能电视用户行为监测产品，是基于智能电视网民样本行为监测所建立的数据库。该数据库由2017年开始，收集用户通过智能电视设备的App使用行为，并通过对数据的大量分析建立了多个用户行为指标，真实反映中国智能电视APP使用市场客观情况。并利用对被监测样本的用户属性进行标签设定，从而能够从多个维度对用户市场进行定义和细分。',

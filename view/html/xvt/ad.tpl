@@ -55,15 +55,15 @@
             <h2 class="hd-title-mobile">艾瑞数据</h2>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <div class="mobele-logo">
-                    <a href="Home.shtml"><img src="http://data.iresearch.com.cn/images/logo.png"></a>
+                    <a href="//data.iresearch.com.cn/Home.shtml"><img src="http://data.iresearch.com.cn/images/logo.png"></a>
                 </div>
                 <div class="btn-box">
                     <span class="loginReg"><a href="javascript:;"><i class="login"></i><em>登录</em></a><a href="javascript:;"><i class="reg"></i><em>注册</em></a></span>
                 </div>
                 <ul class="nav navbar-nav navbar-left">
-                    <li id="n_1"><a href="Home.shtml"><span>首页</span><em>Home</em></a></li>
+                    <li id="n_1"><a href="//data.iresearch.com.cn/Home.shtml"><span>首页</span><em>Home</em></a></li>
                     <li id="n_2" role="presentation" class="dropdown ">
-                        <a href="iRIndex.shtml" class="dropdown-toggle"><span>艾瑞指数</span><em>iRIndex</em></a>
+                        <a href="//data.iresearch.com.cn/iRView.shtml" class="dropdown-toggle"><span>艾瑞指数</span><em>iRIndex</em></a>
                         <div class="dropdown-menu-box">
                             <ul class="dropdown-menu">
                                 <li><a href="http://index.iresearch.com.cn/app"><i class="icon icon-app"></i><span>APP 指数</span><em>Mobile User Behavior Insight</em></a></li>
@@ -73,7 +73,7 @@
                         </div>
                     </li>
                     <li id="n_3" role="presentation" class="dropdown">
-                        <a href="iRView.shtml" class="dropdown-toggle"><span>艾瑞睿见</span><em>iRView</em></a>
+                        <a href="//data.iresearch.com.cn/iRView.shtml" class="dropdown-toggle"><span>艾瑞睿见</span><em>iRView</em></a>
                         <div class="dropdown-menu-box">
                             <ul class="dropdown-menu">
                                 <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11" target="_blank"><i class="icon icon-iRView-1"></i><em>xMediaPlanner</em><span>跨屏媒介效果评估</span></a></li>
@@ -86,12 +86,12 @@
                             </ul>
                         </div>
                     </li>
-                    <li id="n_4"><a href="iRCloud.shtml"><span>艾瑞智云</span><em>iRCloud</em></a></li>
+                    <li id="n_4"><a href="//irv.iresearch.com.cn/iResearchDataWeb/iRCloud.shtmll"><span>艾瑞智云</span><em>iRCloud</em></a></li>
                     <li id="n_5" role="presentation" class="dropdown">
-                        <a href="About.shtml" class="dropdown-toggle"><span>关于我们</span><em>About Us</em></a>
+                        <a href="//irv.iresearch.com.cn/iResearchDataWeb/About.shtml" class="dropdown-toggle"><span>关于我们</span><em>About Us</em></a>
                         <div class="dropdown-menu-box">
                             <ul class="dropdown-menu">
-                                <li><a href="About.shtml"><span>联系我们</span><em>Contact Us</em></a></li>
+                                <li><a href="//irv.iresearch.com.cn/iResearchDataWeb/About.shtml"><span>联系我们</span><em>Contact Us</em></a></li>
                                 <li><a href="http://group.iresearch.com.cn/" target="_blank"><span>艾瑞集团</span><em>iResearch Group</em></a></li>
                             </ul>
                         </div>
@@ -158,8 +158,17 @@
                         </div>
                     </div>
                     <div class="change-btn">
-                        <button class="btn btn-primary btn-lg">开始使用</button>
-                        <button class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+                        <button class="btn btn-primary btn-lg">尽情期待！</button>
+                        <!-- IF token=="1" -->
+                        <a class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
+                        <!-- ELSE -->
+                        <!-- IF irdStatus=="1" -->
+                        <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+                        <!-- ELSE -->
+                        <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+
+                        <!-- ENDIF -->
+                        <!-- ENDIF -->
                     </div>
                 </div>
             </div>
@@ -206,8 +215,16 @@
                     </div>
                 </div>
                 <div class="change-btn">
-                    <button class="btn btn-primary btn-lg">开始使用</button>
-                    <button class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+                    <!-- IF token=="1" -->
+                    <a class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
+                    <!-- ELSE -->
+                    <!-- IF irdStatus=="1" -->
+                    <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+                    <!-- ELSE -->
+                    <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+
+                    <!-- ENDIF -->
+                    <!-- ENDIF -->
                 </div>
             </div>
         </div>
@@ -239,7 +256,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-primary">绑定</button>
+                            <button class="btn btn-primary binding">绑定</button>
                         </div>
                         <p>如有账号问题，请联系 400-000-000</p>
                     </form>
@@ -263,6 +280,9 @@
     <script>
         var product = [{
             icon: 'public/img/ivt@2x.png',
+            isOldURL: true,
+//            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=26',
+            oldurl: '?m=irdata&a=classicSys&ppname=PC端营销广告市场监测,
             info: 'AdTracker广告投放监测由艾瑞咨询自主研发，是通过爬虫技术在几百个网站上进行图片广告监测所建立的数据库。该数据库自2001年开始，统计及计算包含门户、垂直、视频、APP等媒体上品牌客户广告投放量及投放预估费用数据，真实反映中国互联网广告市场客观情况。',
             itemA: {
                 title: '互联网公司',

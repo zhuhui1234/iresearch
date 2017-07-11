@@ -55,13 +55,13 @@
             <h2 class="hd-title-mobile">艾瑞数据</h2>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <div class="mobele-logo">
-                    <a href="Home.shtml"><img src="http://data.iresearch.com.cn/images/logo.png"></a>
+                    <a href="//data.iresearch.com.cn/Home.shtml"><img src="http://data.iresearch.com.cn/images/logo.png"></a>
                 </div>
                 <div class="btn-box">
                     <span class="loginReg"><a href="javascript:;"><i class="login"></i><em>登录</em></a><a href="javascript:;"><i class="reg"></i><em>注册</em></a></span>
                 </div>
                 <ul class="nav navbar-nav navbar-left">
-                    <li id="n_1"><a href="Home.shtml"><span>首页</span><em>Home</em></a></li>
+                    <li id="n_1"><a href="//data.iresearch.com.cn/Home.shtml"><span>首页</span><em>Home</em></a></li>
                     <li id="n_2" role="presentation" class="dropdown ">
                         <a href="iRIndex.shtml" class="dropdown-toggle"><span>艾瑞指数</span><em>iRIndex</em></a>
                         <div class="dropdown-menu-box">
@@ -73,7 +73,7 @@
                         </div>
                     </li>
                     <li id="n_3" role="presentation" class="dropdown">
-                        <a href="iRView.shtml" class="dropdown-toggle"><span>艾瑞睿见</span><em>iRView</em></a>
+                        <a href="//data.iresearch.com.cn/iRView.shtml" class="dropdown-toggle"><span>艾瑞睿见</span><em>iRView</em></a>
                         <div class="dropdown-menu-box">
                             <ul class="dropdown-menu">
                                 <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11" target="_blank"><i class="icon icon-iRView-1"></i><em>xMediaPlanner</em><span>跨屏媒介效果评估</span></a></li>
@@ -86,12 +86,12 @@
                             </ul>
                         </div>
                     </li>
-                    <li id="n_4"><a href="iRCloud.shtml"><span>艾瑞智云</span><em>iRCloud</em></a></li>
+                    <li id="n_4"><a href="//irv.iresearch.com.cn/iResearchDataWeb/iRCloud.shtmll"><span>艾瑞智云</span><em>iRCloud</em></a></li>
                     <li id="n_5" role="presentation" class="dropdown">
-                        <a href="About.shtml" class="dropdown-toggle"><span>关于我们</span><em>About Us</em></a>
+                        <a href="//irv.iresearch.com.cn/iResearchDataWeb/About.shtml" class="dropdown-toggle"><span>关于我们</span><em>About Us</em></a>
                         <div class="dropdown-menu-box">
                             <ul class="dropdown-menu">
-                                <li><a href="About.shtml"><span>联系我们</span><em>Contact Us</em></a></li>
+                                <li><a href="//irv.iresearch.com.cn/iResearchDataWeb/About.shtml"><span>联系我们</span><em>Contact Us</em></a></li>
                                 <li><a href="http://group.iresearch.com.cn/" target="_blank"><span>艾瑞集团</span><em>iResearch Group</em></a></li>
                             </ul>
                         </div>
@@ -117,7 +117,7 @@
                             <input id="searchKey" type="text" class="form-control" placeholder="请输入视频内容查询">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button" id="searchBtn">
-                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    <span class="ivu-icon ivu-icon-search" aria-hidden="true"></span>
                             </button>
                             </span>
                         </div>
@@ -166,7 +166,7 @@
                     </div>
                     <div class="change-btn">
                         <a class="btn btn-primary btn-lg" v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
-                        <!-- IF token == 1 -->
+                        <!-- IF token == "1" -->
                         <a  v-if="product[tabIndex].isOldURL " class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
                         <!-- ELSE -->
                             <!-- IF irdStatus=="1" -->
@@ -222,7 +222,7 @@
                 </div>
                 <div class="change-btn" >
                     <a class="btn btn-primary btn-lg" href="">开始使用[[ item.url ]]</a>
-                    <!-- IF token==="1" -->
+                    <!-- IF token=="1" -->
                     <a class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
                     <!-- ELSE -->
                     <!-- IF irdStatus=="1" -->
@@ -287,6 +287,7 @@
     <script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
     <script src="public/js/header.js"></script>
     <script src="public/js/xvt.js"></script>
+    <link href="public/css/xvt/iview.css" rel="stylesheet">
     <script>
         var product = [{
             logo: 'public/img/ivt.svg',

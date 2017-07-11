@@ -68,9 +68,9 @@
                             href="javascript:;"><i class="reg"></i><em>注册</em></a></span>
             </div>
             <ul class="nav navbar-nav navbar-left">
-                <li id="n_1"><a href="Home.shtml"><span>首页</span><em>Home</em></a></li>
+                <li id="n_1"><a href="//data.iresearch.com.cn/Home.shtml"><span>首页</span><em>Home</em></a></li>
                 <li id="n_2" role="presentation" class="dropdown ">
-                    <a href="iRIndex.shtml" class="dropdown-toggle"><span>艾瑞指数</span><em>iRIndex</em></a>
+                    <a href="//data.iresearch.com.cn/Home.shtml" class="dropdown-toggle"><span>艾瑞指数</span><em>iRIndex</em></a>
                     <div class="dropdown-menu-box">
                         <ul class="dropdown-menu">
                             <li><a href="http://index.iresearch.com.cn/app"><i
@@ -85,7 +85,7 @@
                     </div>
                 </li>
                 <li id="n_3" role="presentation" class="dropdown">
-                    <a href="iRView.shtml" class="dropdown-toggle"><span>艾瑞睿见</span><em>iRView</em></a>
+                    <a href="//data.iresearch.com.cn/iRView.shtml" class="dropdown-toggle"><span>艾瑞睿见</span><em>iRView</em></a>
                     <div class="dropdown-menu-box">
                         <ul class="dropdown-menu">
                             <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11"
@@ -111,12 +111,12 @@
                         </ul>
                     </div>
                 </li>
-                <li id="n_4"><a href="iRCloud.shtml"><span>艾瑞智云</span><em>iRCloud</em></a></li>
+                <li id="n_4"><a href="//irv.iresearch.com.cn/iResearchDataWeb/iRCloud.shtml"><span>艾瑞智云</span><em>iRCloud</em></a></li>
                 <li id="n_5" role="presentation" class="dropdown">
-                    <a href="About.shtml" class="dropdown-toggle"><span>关于我们</span><em>About Us</em></a>
+                    <a href="//irv.iresearch.com.cn/iResearchDataWeb/About.shtml" class="dropdown-toggle"><span>关于我们</span><em>About Us</em></a>
                     <div class="dropdown-menu-box">
                         <ul class="dropdown-menu">
-                            <li><a href="About.shtml"><span>联系我们</span><em>Contact Us</em></a></li>
+                            <li><a href="//irv.iresearch.com.cn/iResearchDataWeb/About.shtml"><span>联系我们</span><em>Contact Us</em></a></li>
                             <li><a href="http://group.iresearch.com.cn/" target="_blank"><span>艾瑞集团</span><em>iResearch
                                         Group</em></a></li>
                         </ul>
@@ -194,7 +194,7 @@
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) {
-            return unescape(r[2]);
+            return unescape(encodeURIComponent(r[2]));
         }
         return null;
     };
@@ -203,7 +203,7 @@
         el: '#search',
         data: {
             loading: false,
-            searchVal: getQuery('key'),
+            searchVal: decodeURIComponent(getQuery('key')),
             dateTypeVal: 'month',
             dateTypeItem: [{
                 value: 'month',
@@ -266,7 +266,7 @@
                 align: 'left',
                 width: 400,
                 title: '视频内容',
-                key: 'tv_name'
+                key: 'tv_name',
             }, {
                 align: 'left',
                 width: 100,
@@ -281,17 +281,77 @@
                 align: 'right',
                 title: '移动端',
                 key: 'mvt',
-                sortable: true
+                sortable: true,
+                render: function (el, data) {
+                    if (data.row.hasToken) {
+                        return el('Button', {
+                            props: {
+                                type: 'text',
+                                size: 'small'
+                            },
+                            style: {
+                                marginRight: '5px'
+                            },
+                            on: {
+                                click: function () {
+                                    location.href = data.row.mvtURL;
+                                }
+                            }
+                        }, data.row.mvt)
+                    } else {
+                        return data.row.mvt;
+                    }
+                }
             }, {
                 align: 'right',
                 title: 'PC端',
                 key: 'ivt',
-                sortable: true
+                sortable: true,
+                render: function (el, data) {
+                    if (data.row.hasToken) {
+                        return el('Button', {
+                            props: {
+                                type: 'text',
+                                size: 'small'
+                            },
+                            style: {
+                                marginRight: '5px'
+                            },
+                            on: {
+                                click: function () {
+                                    location.href = data.row.ivtURL;
+                                }
+                            }
+                        }, data.row.ivt)
+                    } else {
+                        return data.row.ivt;
+                    }
+                }
             }, {
                 align: 'right',
                 title: 'OTT端',
                 key: 'ovt',
-                sortable: true
+                sortable: true,
+                render: function (el, data) {
+                    if (data.row.hasToken) {
+                        return el('Button', {
+                            props: {
+                                type: 'text',
+                                size: 'small'
+                            },
+                            style: {
+                                marginRight: '5px'
+                            },
+                            on: {
+                                click: function () {
+                                    location.href = data.row.ovtURL;
+                                }
+                            }
+                        }, data.row.ovt)
+                    } else {
+                        return data.row.ovt;
+                    }
+                }
             }],
             count: 0
         },
@@ -332,7 +392,8 @@
                 }
                 self.table = [];
                 $.ajax({
-                    url: '//localhost/xmpapi/public/api/xvt/search',
+//                    url: '//localhost/xmpapi/public/api/xvt/search',
+                    url: '//localhost/iData/?m=index&a=xvtSearchAPI',
                     type: 'POST',
                     data: JSON.stringify(params),
                     dataType: 'json',

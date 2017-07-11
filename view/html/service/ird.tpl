@@ -16,7 +16,7 @@
     <title>{title}</title>
     <link href="./public/css/docs.min.css" rel="stylesheet">
 </head>
-<!-- INCLUDE ../nav.tpl -->
+<!--  iINCLUDE ../nav.tpl = -->
 
 
 <iframe id="mut_iFrame" style="width: 100%;" src="{ppurl}" ></iframe>
@@ -26,6 +26,7 @@
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
 <script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>
+<script src="//irv.iresearch.com.cn/iResearchDataWeb/dev/js/header.js?bust=v3.1j"></script>
 <script type="text/javascript">
     require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
     require([
