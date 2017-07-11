@@ -118,16 +118,23 @@ define(["api", "WxLogin", "jquery"], function (api) {
              * @param state
              * @constructor
              */
-            this.WeChatQRCode = function (qrCodeID, state,cssFileUrl,pdtID) {
+            this.WeChatQRCode = function (qrCodeID, state,cssFileUrl,pdtID,ppName) {
 
                 var wxURI = api.wxURI;
                 console.log(typeof pdtID);
 
-                if (typeof pdtID != 'undefined') {
+                if (typeof pdtID !== 'undefined' && pdtID !== null) {
                     if (pdtID.length > 0) {
                         wxURI = wxURI + '&pdtID=' + pdtID;
                     }
                 }
+
+                if (typeof ppName !== "undefined" && ppName !== null) {
+                    if (ppName.length > 0) {
+                        wxURI = wxURI + '&ppname=' + ppName;
+                    }
+                }
+
                 wxURI = encodeURIComponent(wxURI);
 
                 if (cssFileUrl == null) {
@@ -135,7 +142,8 @@ define(["api", "WxLogin", "jquery"], function (api) {
                 } else {
                     cssFileUrl = encodeURIComponent(cssFileUrl);
                 }
-                console.log(wxURI);
+
+                // console.log(wxURI);
                 var obj = new WxLogin({
                     id: qrCodeID,
                     appid: "wxd96928ba062cffec",

@@ -32,9 +32,9 @@ class MysqlRoutRule implements IMysqlRoutRule
         $this->routArr = array(
             'M' => array(
                 '0' => array(
-                    'host' => '127.0.0.1',
+                    'host' => '120.24.63.4',
                     'user' => 'root',
-                    'pass' => 'weiwei',
+                    'pass' => 'Irs-51082699',
                     'db' => 'irv'
 
                 )

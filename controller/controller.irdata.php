@@ -29,25 +29,25 @@ class IRDataController extends Controller
 
     public function classicSys()
     {
+        if (!empty($this->userInfo['token'])) {
+            if (!empty($this->userInfo['productKey'])) {
+                $ppname = $this->request()->get('ppname');
 
-        if (!empty($this->userInfo['productKey'])) {
-            $ppname = $this->request()->get('ppname');
-//            pr($ppname);
-//            pr($this->__getCURL($ppname));
-//            exit();
-            $stat = true;
-            $data = [
-                'loginStatus' => $this->loginStatus,
-                'userInfo' => $this->userInfo,
-                'token' => $this->userInfo['token'],
+                $stat = true;
+                $data = [
+                    'loginStatus' => $this->loginStatus,
+                    'userInfo' => $this->userInfo,
+                    'token' => $this->userInfo['token'],
 //                'userID' => $this->userInfo['userID'],
 //                'role' => $this->userInfo['permissions'],
-                'title' => WEBSITE_TITLE,
-                'kolLink' => $this->kolLink(),
-                'menu' => fillMenu($this->menu),
-                'ppurl' => $this->__getCURL($ppname)
-            ];
-            //以下代码是解决被禁止第三方cooke下iframe无法登陆
+                    'title' => WEBSITE_TITLE,
+                    'kolLink' => $this->kolLink(),
+                    'menu' => fillMenu($this->menu),
+                    'ppurl' => $this->__getCURL($ppname)
+                ];
+
+
+                //以下代码是解决被禁止第三方cooke下iframe无法登陆
 //            if(strpos($_SERVER["HTTP_USER_AGENT"],"Safari")) {
                 if ($this->request()->get('backType',0)=='0') {
                     $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -58,10 +58,10 @@ class IRDataController extends Controller
                     header("Location:".$jumpURL);
                 }
 //            }
-            if (DEBUG) {
+//            if (DEBUG) {
 //                pr($this->userInfo);
 //                var_dump($this->irdUserInfo);
-            }
+//            }
 
 //            foreach ($this->irdUserInfo['pplist'] as $p) {
 //                if ($p['ppname'] == $ppname) {
@@ -69,24 +69,28 @@ class IRDataController extends Controller
 //                    $stat = true;
 //                }
 //            }
-//            pr($data);
-//            exit();
-            if ($stat) {
-                View::instance('service/ird.tpl')->show($data);
-            } else {
+
+                if ($stat) {
+
+                    View::instance('service/ird.tpl')->show($data);
+                } else {
 //                echo("<SCRIPT LANGUAGE=\"JavaScript\">
 //            alert(\"你并没有权限访问该模块功能\");
 //            top.location.href=\"?m=index\";
 //            </SCRIPT>");
 //                $this->errorPage('你并没有权限访问该模块功能');
-            }
-        } else {
+                }
+            } else {
 //            echo("<SCRIPT LANGUAGE=\"JavaScript\">
 //            alert(\"你并没有权限访问该模块功能\");
 //            top.location.href=\"?m=index\";
 //            </SCRIPT>");
 //            $this->errorPage('你并没有权限访问该模块功能');
+            }
+        }else{
+            View::instance('user/login.tpl')->show([]);
         }
+
 
     }
 

@@ -76,12 +76,11 @@
                         <a href="//data.iresearch.com.cn/iRView.shtml" class="dropdown-toggle"><span>艾瑞睿见</span><em>iRView</em></a>
                         <div class="dropdown-menu-box">
                             <ul class="dropdown-menu">
-                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11" target="_blank"><i class="icon icon-iRView-1"></i><em>xMediaPlanner</em><span>跨屏媒介效果评估</span></a></li>
-                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=18" target="_blank"><i class="icon icon-iRView-2"></i><em>mVideoTracker</em><span>移动视频内容市场监测</span></a></li>
-                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=19" target="_blank"><i class="icon icon-iRView-3"></i><em>oVideoTracker</em><span>OTT视频内容市场监测</span></a></li>
+                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11" target="_blank"><i class="icon icon-iRView-1"></i><em>XMediaPlanner</em><span>跨屏媒介效果评估</span></a></li>
+                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut" target="_blank"><i class="icon icon-iRView-7"></i><em>UserTracker</em><span>用户行为监测</span></a></li>
+                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt" target="_blank"><i class="icon icon-video"></i><em>VideoTracker</em><span>视频内容市场监测</span></a></li>
+                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=ad" target="_blank"><i class="icon icon-iRView-8"></i><em>ADTracker</em><span>广告投放监测</span></a></li>
                                 <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=31" target="_blank"><i class="icon icon-iRView-4"></i><em>iKOLTracker</em><span>意见领袖市场监测</span></a></li>
-                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=12" target="_blank"><i class="icon icon-iRView-5"></i><em>iUserTracker</em><span>PC端用户行为监测</span></a></li>
-                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=37" target="_blank"><i class="icon icon-iRView-6"></i><em>mUserTracker</em><span>移动端用户行为监测</span></a></li>
 
                             </ul>
                         </div>
@@ -160,7 +159,7 @@
                     <div class="change-btn">
                         <button class="btn btn-primary btn-lg">尽情期待！</button>
                         <!-- IF token=="1" -->
-                        <a class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
+                        <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
                         <!-- ELSE -->
                         <!-- IF irdStatus=="1" -->
                         <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
@@ -216,7 +215,7 @@
                 </div>
                 <div class="change-btn">
                     <!-- IF token=="1" -->
-                    <a class="btn btn-link" href="?m=user&a=login">切换旧版本</a>
+                    <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
                     <!-- ELSE -->
                     <!-- IF irdStatus=="1" -->
                     <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
@@ -282,7 +281,7 @@
             icon: 'public/img/ivt@2x.png',
             isOldURL: true,
 //            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=26',
-            oldurl: '?m=irdata&a=classicSys&ppname=PC端营销广告市场监测,
+            oldurl: '?m=irdata&a=classicSys&ppname=PC端营销广告市场监测',
             info: 'AdTracker广告投放监测由艾瑞咨询自主研发，是通过爬虫技术在几百个网站上进行图片广告监测所建立的数据库。该数据库自2001年开始，统计及计算包含门户、垂直、视频、APP等媒体上品牌客户广告投放量及投放预估费用数据，真实反映中国互联网广告市场客观情况。',
             itemA: {
                 title: '互联网公司',

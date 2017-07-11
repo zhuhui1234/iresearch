@@ -9,7 +9,7 @@
 class WeChatController extends Controller
 {
 
-    private $model,$wechatStatus;
+    private $model, $wechatStatus;
 
     public function __construct($classname)
     {
@@ -27,7 +27,9 @@ class WeChatController extends Controller
         $code = $this->request()->get('code');
         $state = $this->request()->get('state');
         $pdtID = $this->request()->get('pdtID');
-        $jumpURI = '?m=user&a=jump&pro='.$pdtID;
+        $ppName = urldecode($this->request()->get('ppname'));
+        $jumpURI = '?m=user&a=jump&pro=' . $pdtID;
+        $classicSysURI = '?m=irdata&a=classicSys&ppname=' . $ppName;
         $weChatObj = $wechatModel->wxCheckLogin($code);
         $weChatUser = $wechatModel->getUserInfo($code);
         $userInfo = Session::instance()->get('userInfo');
@@ -58,13 +60,15 @@ class WeChatController extends Controller
                 ), $wechatModel->getUserInfo($code));
 //                var_dump($ret);
 //                exit();
-                write_to_log('ret: '. json_encode($ret), '_wx');
+                write_to_log('ret: ' . json_encode($ret), '_wx');
                 if ($ret) {
                     if ($ret !== null) {
-                        if (empty($pdtID)) {
+                        if (!empty($pdtID)) {
+                            header('Location: ' . $jumpURI);
+                        } else if (!empty($ppName)){
+                            header('Location: '. $classicSysURI);
+                        }else{
                             header('Location: ?m=index');
-                        } else {
-                            header('Location: '. $jumpURI);
                         }
                     } else {
                         header('Location: ?m=user&a=login?recode=402');

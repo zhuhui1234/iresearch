@@ -66,6 +66,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             if (checkLoginFormat()) {
                 $(".alert").fadeOut();
                 var pdtID = Helper.getQuery('pro');
+                var u = new URL(window.location.href)
+                var ppName = u.searchParams.get('ppname');
 
                 Helper.post('login', {
                     mobile: $("#mobile").val(),
@@ -74,14 +76,45 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 }, function (ret) {
                     console.log(ret.resCode);
                     if (ret.resCode == "000000") {
+                        console.log(ppName);
+                        console.log(pdtID);
 
-                        if (typeof pdtID == 'string') {
-                            if (pdtID.length > 0) {
-                                window.location.reload();
-                            } else {
-                                window.location.href = '?m=index&a=index';
+                        // if (typeof pdtID == 'string') {
+                        //     if (pdtID.length > 0) {
+                        //         window.location.reload();
+                        //     } else {
+                        //         window.location.href = '?m=index&a=index';
+                        //     }
+                        // } else if (typeof ppName == 'string') {
+                        //     if (ppName.length > 0) {
+                        //         window.location.reload();
+                        //     } else {
+                        //         window.location.href = '?m=index&a=index';
+                        //     }
+                        // } else {
+                        //     window.location.href = '?m=index&a=index';
+                        // }
+
+                        if (typeof pdtID == 'string' || typeof ppName == 'string') {
+
+                            if (pdtID !== null) {
+                                if (pdtID.length > 0) {
+                                    window.location.reload();
+                                }else {
+                                    // console.log('no pdtID');
+                                    window.location.href = '?m=index&a=index';
+                                }
+                            } else if (ppName !== null) {
+                                if (ppName.length > 0) {
+                                    window.location.reload();
+                                } else {
+                                    window.location.href = '?m=index&a=index';
+                                    // console.log('no ppName');
+                                }
                             }
+
                         } else {
+                            // console.log('no all');
                             window.location.href = '?m=index&a=index';
                         }
                     } else {
@@ -116,11 +149,14 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
     });
     var pdtID = Helper.getQuery('pro');
-    console.log(pdtID);
-    if (pdtID == null) {
-        Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
-    } else {
+    var u = new URL(window.location.href)
+    var ppName = u.searchParams.get('ppname');
+    if (pdtID !== null) {
         Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css', pdtID);
+    } else if (ppName !== null) {
+        Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css', '', ppName);
+    } else {
+        Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
     }
 
 });
