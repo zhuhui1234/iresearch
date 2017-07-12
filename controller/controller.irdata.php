@@ -120,7 +120,6 @@ class IRDataController extends Controller
     private function __getCURL($keyName)
     {
         $metaData = $this->menu[1]['lowerTree'];
-//        pr($metaData);
         foreach ($metaData as $key => $value) {
 //            pr(len($value['lowerTree']));
 
