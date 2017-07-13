@@ -47,8 +47,8 @@
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon">电子邮箱</span>
-				<input id="mail" type="text" id="mobile" class="form-control" placeholder="填写您的电子邮箱" value="{u_mail}" >
-				<p class="text-danger"></p>
+				<input id="mail" type="text" id="mobile" class="form-control" placeholder="填写您的企业电子邮箱" value="{u_mail}" >
+				<p class="text-danger">请尽量填写企业邮箱</p>
 				<span class="tip">*必填</span>
 			</div>
 			<div class="input-group">
