@@ -139,6 +139,14 @@ if (!isLoginState()
     AND $_GET['a'] != 'showMenu'
     AND $_GET['a'] != 'mobileLoginAPI'
     AND $_GET['a'] != 'sendSMSForMobile'
+    AND $_GET['a'] != 'xvtSearch'
+    AND $_GET['a'] != 'xvt'
+    AND $_GET['a'] != 'xut'
+    AND $_GET['a'] != 'ad'
+    AND $_GET['a'] != 'xvtSearchAPI'
+    AND $_GET['a'] != 'classicSys'
+    AND $_GET['a'] != 'checkMail'
+
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {

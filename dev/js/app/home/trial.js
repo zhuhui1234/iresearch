@@ -28,7 +28,7 @@ define(['helper', 'app/main'], function (Helper) {
                 Helper.post("trialApply", {data: pData}, function (ret) {
                     console.log(ret);
                     if (ret.resCode == "20000") {
-                        alert("申请成功");
+                        alert("申请成功,如果您之前并不是艾瑞的正式企业客户，系统将会发送一份认证邮件，请完成邮箱认证后，系统才会正式提交试用申请！");
                         //window.location.href = "?m=index&a=index";
                     } else {
                         alert(ret.resMsg);

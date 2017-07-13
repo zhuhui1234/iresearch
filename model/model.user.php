@@ -13,8 +13,10 @@
 class UserModel extends API
 {
     /**
-     * @param $guid
      * 用户访问报告写入记录,用户只能访问一次,访问一次后回删除该条记录
+     *
+     * @param $guid
+     *
      */
     public function upUserSessionKey($guid)
     {
@@ -55,6 +57,12 @@ class UserModel extends API
         }
     }
 
+    /**
+     * mobile login
+     *
+     * @param $data
+     * @return mixed
+     */
     public function mobileLogin($data)
     {
         $url = API_URL . '?m=User&a=login';
@@ -311,6 +319,11 @@ class UserModel extends API
         return $rs;
     }
 
+    /**
+     * check permission
+     * @param $data
+     * @return bool
+     */
     public function checkPermission($data)
     {
         $check = json_decode($this->_curlPost(API_URL . "?m=Permissions&a=checkPermission", $data), true);
@@ -349,8 +362,7 @@ class UserModel extends API
     /**
      * get IRDA
      *
-     * @param $data
-     *
+     * @param $productKey
      * @return mixed|string
      */
     public function getIResearchDataAccount($productKey)
@@ -417,6 +429,12 @@ class UserModel extends API
         return $ret;
     }
 
+    /**
+     * trial apply
+     *
+     * @param $data
+     * @return mixed
+     */
     public function trialApply($data)
     {
         $url = API_URL . '?m=permissions&a=applyPermission';
@@ -425,6 +443,12 @@ class UserModel extends API
         return $ret;
     }
 
+    /**
+     * get permission
+     *
+     * @param $data
+     * @return mixed
+     */
     public function getPermission($data)
     {
         return $this->__getPermissionInfo($data);
@@ -435,6 +459,12 @@ class UserModel extends API
         $url = API_URL . '?m=permissions&a=getProduct';
         $ret = $this->_curlPost($url, $data, 'getProduct');
         return $ret;
+    }
+
+    public function checkMail($data)
+    {
+        $url = API_URL . '?m=permissions&a=checkMail';
+        return $this->_curlPost($url, $data, 'checkMail');
     }
 
     ######################################################################################

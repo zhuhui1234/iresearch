@@ -134,13 +134,33 @@ class IndexController extends Controller
             $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
             $callBack = urlencode($backURL . '&backType=1&active_menu=iRCloud');
             $jumpURL = $data['url'] . '&irv_callback=' . $callBack;
-            echo $jumpURL;
-            exit();
+//            echo $jumpURL;
+//            exit();
             header("Location:" . $jumpURL);
         }
         View::instance('index/publicFrame.tpl')->show($data);
     }
 
+    public function checkMail()
+    {
+        $data = [
+            'pi' => $this->request()->get('pi'),
+            'cd' => $this->request()->get('cd')
+        ];
+
+        $ret = Model::instance('user')->checkMail($data);
+        $ret = json_decode($ret,true);
+
+        echo("<SCRIPT LANGUAGE=\"JavaScript\">
+            alert(\"{$ret['resMsg']} \");
+            window.parent.frames.location.href=\"?m=index\";
+            </SCRIPT>");
+
+    }
+
+    /**
+     * ir cloud
+     */
     public function iCloud()
     {
         $userModel = Model::instance('user');
@@ -544,9 +564,9 @@ class IndexController extends Controller
 //                    $ret['data'][$i]['mvtURL'] = 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B905&&token=' . $token . '&pdt_id=18&userID=' . $userInfo['userID'] . '&video=' . $v['tv_name'] . '&channel=' . $v['channel'];
 //                    $ret['data'][$i]['ovtURL'] = 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B909&token=' . $token . '&pdt_id=19&userID=' . $userInfo['userID'] . '&video=' . $v['tv_name'] . '&channel=' . $v['channel'];
 //                    $ret['data'][$i]['ivtURL'] = 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B911&token=' . $token . '&pdt_id=17&userID=' . $userInfo['userID'] . '&video=' . $v['tv_name'] . '&channel=' . $v['channel'];
-                    $ret['data'][$i]['mvtURL'] = $this->__getURL($v['tv_name'],$v['channel'],'mvt');
-                    $ret['data'][$i]['ovtURL'] = $this->__getURL($v['tv_name'],$v['channel'],'ovt');
-                    $ret['data'][$i]['ivtURL'] = $this->__getURL($v['tv_name'],$v['channel'],'ivt');
+                    $ret['data'][$i]['mvtURL'] = $this->__getURL($v['tv_name'], $v['channel'], 'mvt');
+                    $ret['data'][$i]['ovtURL'] = $this->__getURL($v['tv_name'], $v['channel'], 'ovt');
+                    $ret['data'][$i]['ivtURL'] = $this->__getURL($v['tv_name'], $v['channel'], 'ivt');
                 } else {
                     $ret['data'][$i]['hasToken'] = false;
                     $ret['data'][$i]['mvtURL'] = '';
@@ -582,7 +602,7 @@ class IndexController extends Controller
                 return 'ok';
             } else {
                 $m = Model::instance('user');
-                $pro = $m->getProduct(['pdt_id'=> $pdtID]);
+                $pro = $m->getProduct(['pdt_id' => $pdtID]);
                 $pro = json_decode($pro, true);
 
                 return '?m=user&a=trialApply&ppname=' . $pro['data'][0]['pdt_name'] . '&menuID=' . $pdtID;
@@ -610,14 +630,13 @@ class IndexController extends Controller
                 $ivt = $check(17);
                 if ($ivt == 'ok') {
 //                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B911&token=' . $userInfo['token'] . '&pdt_id=17&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
-                      return '';
+                    return '';
                 } else {
                     return $ivt;
                 }
                 break;
         }
     }
-
 
 
     /**
