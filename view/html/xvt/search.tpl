@@ -8,8 +8,8 @@
     <meta name="description"
           content="艾瑞数据，是艾瑞互联网大数据服务平台，基于15年互联网的研究积累，致力于数据改变认知、提升企业效能，为客户提供基于情报+数据+服务的多元化大数据解决方案，服务涵盖市场竞争监测、消费者洞察、营销决策、企业精细化运营及数据共享等业务。">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <!-- <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no"> -->
     <script>
         (function (doc, win) {
             var docEl = doc.documentElement,
@@ -116,7 +116,7 @@
 <div class="clearfix"></div>
 <!--导航 end-->
 <div class="container" id="search">
-    <h5 class="bread"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> 返回视频内容首页</h5>
+    <h5 class="bread"><span class="ivu-icon ivu-icon-chevron-left" aria-hidden="true"></span> <a href="?m=index&a=xvt">返回视频内容首页</a></h5>
     <div class="search-content">
         <h3>视频内容搜索结果</h3>
         <div class="input-group input-group-lg">
