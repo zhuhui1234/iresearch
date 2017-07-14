@@ -175,9 +175,9 @@
         <div class="mobile">
             <div class="item vt" v-for="item in product" :key="item">
                 <!--<img :src="item.logo" width="200" />-->
-                <!--<h4>产品介绍</h4>-->
+                <h4>产品介绍</h4>
                 <p class="info">[[ item.info ]]</p>
-                <!--<h4>产品价值</h4>-->
+                <h4>产品价值</h4>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="inner">
@@ -313,7 +313,7 @@
                 tabIndex: 0
             },
             methods: {
-                changeTab(index) {
+                changeTab: function (index) {
                     this.tabIndex = index;
                 }
             }
