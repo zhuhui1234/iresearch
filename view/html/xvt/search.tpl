@@ -251,17 +251,18 @@
                 title: '序号'
             }, {
                 align: 'left',
-                width: 400,
+                width: 340,
                 title: '视频内容',
                 key: 'tv_name',
             }, {
                 align: 'left',
-                width: 100,
+                width: 90,
                 title: '频道',
                 key: 'channel'
             }, {
                 align: 'right',
                 title: '合计',
+                width: 140,
                 key: 'sum',
                 sortable: true
             }, {
