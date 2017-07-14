@@ -90,11 +90,22 @@
                        class="dropdown-toggle"><span>艾瑞睿见</span><em>iRView</em></a>
                     <div class="dropdown-menu-box">
                         <ul class="dropdown-menu">
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11" target="_blank"><i class="icon icon-iRView-1"></i><em>XMediaPlanner</em><span>跨屏媒介效果评估</span></a></li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut" target="_blank"><i class="icon icon-iRView-7"></i><em>UserTracker</em><span>用户行为监测</span></a></li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt" target="_blank"><i class="icon icon-video"></i><em>VideoTracker</em><span>视频内容市场监测</span></a></li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=ad" target="_blank"><i class="icon icon-iRView-8"></i><em>ADTracker</em><span>广告投放监测</span></a></li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=31" target="_blank"><i class="icon icon-iRView-4"></i><em>iKOLTracker</em><span>意见领袖市场监测</span></a></li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11"
+                                   target="_blank"><i class="icon icon-iRView-1"></i><em>XMediaPlanner</em><span>跨屏媒介效果评估</span></a>
+                            </li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut" target="_blank"><i
+                                            class="icon icon-iRView-7"></i><em>UserTracker</em><span>用户行为监测</span></a>
+                            </li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt" target="_blank"><i
+                                            class="icon icon-video"></i><em>VideoTracker</em><span>视频内容市场监测</span></a>
+                            </li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=ad" target="_blank"><i
+                                            class="icon icon-iRView-8"></i><em>ADTracker</em><span>广告投放监测</span></a>
+                            </li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=31"
+                                   target="_blank"><i
+                                            class="icon icon-iRView-4"></i><em>iKOLTracker</em><span>意见领袖市场监测</span></a>
+                            </li>
 
 
                         </ul>
@@ -184,10 +195,12 @@
                     </div>
                 </div>
                 <div class="change-btn">
-                    <a v-if="product[tabIndex].show" class="btn btn-primary btn-lg" v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
+                    <a v-if="product[tabIndex].show" class="btn btn-primary btn-lg"
+                       v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
 
                     <!-- IF token == "1" -->
-                    <a v-if="product[tabIndex].isOldURL " class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                    <a v-if="product[tabIndex].isOldURL " class="btn btn-link"
+                       v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
                     <!-- ELSE -->
                     <!-- IF irdStatus=="1" -->
                     <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal"
@@ -205,9 +218,9 @@
     <div class="mobile">
         <div class="item vt" v-for="item in product" :key="item">
             <img :src="item.logo" width="200"/>
-            <!--<h4>产品介绍</h4>-->
+            <h4>产品介绍</h4>
             <p class="info">[[ item.info ]]</p>
-            <!--<h4>产品价值</h4>-->
+            <h4>产品价值</h4>
             <div class="row">
                 <div class="col-md-4">
                     <div class="inner">
@@ -244,14 +257,13 @@
                 </div>
             </div>
             <div class="change-btn">
-                <a class="btn btn-primary btn-lg" href="">开始使用[[ item.url ]]</a>
+                <a class="btn btn-primary btn-lg" v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
                 <!-- IF token=="1" -->
-                <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]>切换旧版本</a>
+                <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
                 <!-- ELSE -->
-                <!-- IF irdStatus=="1" -->
+                <!-- IF irdStatus== "1" -->
 
-                <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal"
-                        data-target="#myModal">切换旧版本
+                <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本
                 </button>
                 <!-- ELSE -->
 
@@ -424,7 +436,7 @@
             tabIndex: 0
         },
         methods: {
-            changeTab(index) {
+            changeTab: function(index) {
                 this.tabIndex = index;
             }
         }
