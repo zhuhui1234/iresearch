@@ -11,7 +11,12 @@ body {
   color: #999;
   font-weight: normal;
 }
-
+.bread a{
+  color: #999;
+}
+.bread a:hover{
+  color: #69c72b;
+}
 .search-content {
   text-align: center;
   width: 50%;
@@ -142,7 +147,7 @@ body {
 }
 
 .table-content {
-  margin-top: 10px;
+  margin: 10px 0 30px;
   background: #fff;
   position: relative;
   padding-bottom: 30px;
