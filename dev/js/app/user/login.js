@@ -66,8 +66,9 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             if (checkLoginFormat()) {
                 $(".alert").fadeOut();
                 var pdtID = Helper.getQuery('pro');
-                var u = new URL(window.location.href)
-                var ppName = u.searchParams.get('ppname');
+                // var u = new URL(window.location.href)
+                // var ppName = u.searchParams.get('ppname');
+                var ppName = Helper.getQuery('ppname');
 
                 Helper.post('login', {
                     mobile: $("#mobile").val(),
