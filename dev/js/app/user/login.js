@@ -77,8 +77,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 }, function (ret) {
                     console.log(ret.resCode);
                     if (ret.resCode == "000000") {
-                        console.log(ppName);
-                        console.log(pdtID);
+                        // console.log(ppName);
+                        // console.log(pdtID);
 
                         // if (typeof pdtID == 'string') {
                         //     if (pdtID.length > 0) {

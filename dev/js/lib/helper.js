@@ -93,7 +93,7 @@ define(["api", "WxLogin", "jquery"], function (api) {
                 var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
                 var r = window.location.search.substr(1).match(reg);
                 if (r != null) {
-                    return unescape(r[2]).toLowerCase();
+                    return unescape(decodeURIComponent(r[2])).toLowerCase();
                 }
                 return null;
             };
