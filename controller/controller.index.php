@@ -181,7 +181,29 @@ class IndexController extends Controller
 
         header("Location:" . $data['url']);
     }
+    /**
+     * ir cloud
+     */
+    public function iECTracker()
+    {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
 
+        $data = array(
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+            'url' => 'http://ect.itracker.cn?token=' . $this->userInfo['token']
+        );
+        echo $data['url'];
+        //header("Location:" . $data['url']);
+    }
     /**
      * home page
      */
