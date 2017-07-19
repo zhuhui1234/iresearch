@@ -33,7 +33,7 @@ class IRDataController extends Controller
             if (!empty($this->userInfo['productKey'])) {
                 $ppname = $this->request()->get('ppname');
 
-                $stat = true;
+                $stat = false;
                 $data = [
                     'loginStatus' => $this->loginStatus,
                     'userInfo' => $this->userInfo,
@@ -63,29 +63,29 @@ class IRDataController extends Controller
 //                var_dump($this->irdUserInfo);
 //            }
 
-//            foreach ($this->irdUserInfo['pplist'] as $p) {
-//                if ($p['ppname'] == $ppname) {
-//                    $data['ppurl'] = $p['ppurl'] . '?guid=' . $this->irdUserInfo['iRGuid'];
-//                    $stat = true;
-//                }
-//            }
+            foreach ($this->irdUserInfo['pplist'] as $p) {
+                if ($p['ppname'] == $ppname) {
+                    $data['ppurl'] = $p['ppurl'] . '?guid=' . $this->irdUserInfo['iRGuid'];
+                    $stat = true;
+                }
+            }
 
                 if ($stat) {
 
                     View::instance('service/ird.tpl')->show($data);
                 } else {
-//                echo("<SCRIPT LANGUAGE=\"JavaScript\">
-//            alert(\"你并没有权限访问该模块功能\");
-//            top.location.href=\"?m=index\";
-//            </SCRIPT>");
-//                $this->errorPage('你并没有权限访问该模块功能');
+                echo("<SCRIPT LANGUAGE=\"JavaScript\">
+            alert(\"你并没有权限访问该模块功能\");
+            top.location.href=\"?m=index\";
+            </SCRIPT>");
+                $this->errorPage('你并没有权限访问该模块功能');
                 }
             } else {
-//            echo("<SCRIPT LANGUAGE=\"JavaScript\">
-//            alert(\"你并没有权限访问该模块功能\");
-//            top.location.href=\"?m=index\";
-//            </SCRIPT>");
-//            $this->errorPage('你并没有权限访问该模块功能');
+                echo("<SCRIPT LANGUAGE=\"JavaScript\">
+            alert(\"你并没有权限访问该模块功能\");
+            top.location.href=\"?m=index\";
+            </SCRIPT>");
+                $this->errorPage('你并没有权限访问该模块功能');
             }
         }else{
             View::instance('user/login.tpl')->show([]);
