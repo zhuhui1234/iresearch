@@ -641,7 +641,6 @@ class UserController extends Controller
             }
             $menuData[$menuDataKey]['reTree'] = $re;
         }
-//        pr($menuData);
         return $menuData;
     }
 }

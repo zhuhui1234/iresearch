@@ -463,8 +463,6 @@ class IndexController extends Controller
             $data['irdStatus'] = 2;
         }
 
-//        pr($data);
-//        exit();
         View::instance('xvt/vt.tpl')->show($data);
     }
 
