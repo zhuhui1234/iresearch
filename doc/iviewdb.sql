@@ -2,7 +2,8 @@
 SQLyog Ultimate v8.32 
 MySQL - 5.7.9 : Database - iviewdb
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -122,3 +123,8 @@ insert  into `ivw_view_report_token`(`user_ip`,`report_guid`,`token`,`time`) val
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+
+ALTER TABLE idatadb.idt_company ADD saler_id INT DEFAULT /*销售ID*/ NULL;
+ALTER TABLE idatadb.idt_company ADD saler_name VARCHAR(20) DEFAULT /*销售人员*/ NULL;
+ALTER TABLE idatadb.idt_company ADD saler_email VARCHAR(50) DEFAULT /*销售邮箱*/ NULL;
