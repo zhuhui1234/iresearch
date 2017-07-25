@@ -578,6 +578,14 @@ class IndexController extends Controller
         echo json_encode($ret);
     }
 
+    public function ircJump()
+    {
+        $getData = json_decode(urldecode(base64_decode($this->request()->get('v'))), true);
+
+        return $this->model->ircJump($getData);
+
+    }
+
 
 
     ######################################################################################
