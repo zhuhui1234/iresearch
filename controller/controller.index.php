@@ -199,10 +199,10 @@ class IndexController extends Controller
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => 'http://ect.itracker.cn?token=' . $this->userInfo['token']
+            'url' => 'http://ect.itracker.cn/nloginv2/?token=' . $this->userInfo['token']
         );
-        echo $data['url'];
-        //header("Location:" . $data['url']);
+//        echo $data['url'];
+        header("Location:" . $data['url']);
     }
     /**
      * home page

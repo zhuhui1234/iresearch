@@ -57,6 +57,27 @@ class UserModel extends API
         }
     }
 
+    public function ircJump($data)
+    {
+        if (!isset($data['pdt_id'])) {
+
+        }
+
+        if (!isset($data['irUserID'])) {
+
+        }
+
+        if (!isset($data['key'])) {
+
+        }
+
+        if (!isset($data['date'])) {
+
+        }
+
+        
+    }
+
     /**
      * mobile login
      *
@@ -71,8 +92,6 @@ class UserModel extends API
 
     /**
      * check WeChat openid
-     *
-     * @param $data
      *
      * @return mixed
      */
@@ -454,6 +473,12 @@ class UserModel extends API
         return $this->__getPermissionInfo($data);
     }
 
+    /**
+     * get product
+     *
+     * @param $data
+     * @return mixed
+     */
     public function getProduct($data)
     {
         $url = API_URL . '?m=permissions&a=getProduct';
@@ -461,6 +486,11 @@ class UserModel extends API
         return $ret;
     }
 
+    /**
+     * check mail
+     * @param $data
+     * @return mixed
+     */
     public function checkMail($data)
     {
         $url = API_URL . '?m=permissions&a=checkMail';
