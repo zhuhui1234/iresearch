@@ -314,8 +314,7 @@
             el: '#product',
             data: {
                 product: product,
-                tabIndex: 0,
-                show:true
+                tabIndex: 0
             },
             methods: {
                 changeTab: function (index) {

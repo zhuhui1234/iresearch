@@ -159,26 +159,29 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <h4>产品介绍</h4>
-                        <p>[[ product[tabIndex].info ]]</p>
+                        <p v-bind:style="{display:'none'}">加载中......</p>
+                        <p v-bind:style="{display:'block'}" style="display: none;" >[[ product[tabIndex].info ]]</p>
                     </div>
                     <div class="col-xs-12" style="margin-top: 20px;">
                         <h4>产品价值</h4>
                     </div>
                     <div class="col-xs-6">
-                        <h5><img src="public/img/net@2x.png" alt=""> [[ product[tabIndex].itemA.title ]]</h5>
-                        <p v-for="val in product[tabIndex].itemA.info">
+                        <p v-bind:style="{display:'none'}">加载中......</p>
+                        <h5 v-bind:style="{display:'block'}" style="display: none;"><img src="public/img/net@2x.png" alt=""> [[ product[tabIndex].itemA.title ]]</h5>
+                        <p v-bind:style="{display:'block'}" style="display: none;" v-for="val in product[tabIndex].itemA.info">
                             [[ val ]]
                         </p>
                     </div>
                     <div class="col-xs-6">
-                        <h5><img src="public/img/ad@2x.png" alt=""> [[ product[tabIndex].itemB.title ]]</h5>
-                        <p v-for="val in product[tabIndex].itemB.info">
+                        <h5 v-bind:style="{display:'block'}" style="display: none;"><img src="public/img/ad@2x.png" alt=""> [[ product[tabIndex].itemB.title ]]</h5>
+                        <p v-bind:style="{display:'block'}" style="display: none;" v-for="val in product[tabIndex].itemB.info">
                             [[ val ]]
                         </p>
                     </div>
                     <div class="col-xs-6">
-                        <h5><img src="public/img/copy@2x.png" alt=""> [[ product[tabIndex].itemC.title ]]</h5>
-                        <p v-for="val in product[tabIndex].itemC.info">
+                        <p v-bind:style="{display:'none'}">加载中......</p>
+                        <h5 v-bind:style="{display:'block'}" style="display: none;"><img src="public/img/copy@2x.png" alt=""> [[ product[tabIndex].itemC.title ]]</h5>
+                        <p v-bind:style="{display:'block'}" style="display: none;" v-for="val in product[tabIndex].itemC.info">
                             [[ val ]]
                         </p>
                     </div>
@@ -208,15 +211,17 @@
         <div class="item vt" v-for="item in product" :key="item">
             <img :src="item.logo" width="200"/>
             <h4>产品介绍</h4>
+            <p v-bind:style="{display:'none'}">加载中......</p>
             <p class="info">[[ item.info ]]</p>
             <h4>产品价值</h4>
             <div class="row">
                 <div class="col-md-4">
                     <div class="inner">
-                        <h5>
+                        <p v-bind:style="{display:'none'}">加载中......</p>
+                        <h5 v-bind:style="{display:'block'}" style="display: none;">
                             <img src="public/img/net@2x.png" alt=""> [[item.itemA.title]]
                         </h5>
-                        <p v-for="val in item.itemA.info">
+                        <p v-bind:style="{display:'block'}" style="display: none;" v-for="val in item.itemA.info">
                             <i></i>
                             <span>[[ val  ]]</span>
                         </p>
@@ -224,10 +229,11 @@
                 </div>
                 <div class="col-md-4">
                     <div class="inner">
-                        <h5>
+                        <p v-bind:style="{display:'none'}">加载中......</p>
+                        <h5 v-bind:style="{display:'block'}" style="display: none;">
                             <img src="public/img/ad@2x.png" alt=""> [[ item.itemB.title ]]
                         </h5>
-                        <p v-for="val in item.itemB.info">
+                        <p v-bind:style="{display:'block'}" style="display: none;" v-for="val in item.itemB.info">
                             <i></i>
                             <span>[[ val ]]</span>
                         </p>
@@ -235,10 +241,11 @@
                 </div>
                 <div class="col-md-4">
                     <div class="inner">
-                        <h5>
+                        <p v-bind:style="{display:'none'}">加载中......</p>
+                        <h5 v-bind:style="{display:'block'}" style="display: none;">
                             <img src="public/img/copy@2x.png" alt=""> [[ item.itemC.title ]]
                         </h5>
-                        <p v-for="val in item.itemC.info">
+                        <p v-bind:style="{display:'block'}" style="display: none;" v-for="val in item.itemC.info">
                             <i></i>
                             <span>[[ val ]]</span>
                         </p>
