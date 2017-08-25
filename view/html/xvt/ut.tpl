@@ -383,7 +383,7 @@
                 tabIndex: 0
             },
             methods: {
-                changeTab(index) {
+                changeTab: function(index) {
                     this.tabIndex = index;
                 }
             }
