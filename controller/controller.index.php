@@ -176,7 +176,7 @@ class IndexController extends Controller
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => 'http://ircdemo.iresearchdata.cn?token=' . $this->userInfo['token']
+            'url' => 'http://ircdemo.iresearchdata.cn/irbase/session/login/check/?token=' . $this->userInfo['token']
         );
 
         header("Location:" . $data['url']);
