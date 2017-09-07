@@ -54,6 +54,9 @@ define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
 define('KOL_API', '//irv-ikol.iresearch.com.cn/urlRedirect.ashx');
 //报表地址
 define('YH_REPORT', '//irv.iresearch.com.cn/iReport/?m=service&a=showReportIRV');
+//define('YH_REPORT', '//irv.iresearch.com.cn/iReport/?m=service&a=showReportIRV');
+define('YH_REPORT71', '//irv.iresearch.com.cn/iReport/?m=service&a=irv');
+define('YH_REPORT37', '//irv.iresearch.com.cn/iReport/?m=service&a=irvApp');
 define("__PAGENUM__", 10);
 //session 前缀
 define('SITE_PREFIX', 'idex');
@@ -146,7 +149,7 @@ if (!isLoginState()
     AND $_GET['a'] != 'xvtSearchAPI'
     AND $_GET['a'] != 'classicSys'
     AND $_GET['a'] != 'checkMail'
-
+    AND $_GET['a'] != 'ircJump'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {
