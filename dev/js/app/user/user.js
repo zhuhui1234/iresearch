@@ -47,7 +47,7 @@ define(['helper', 'app/main', 'cropper', 'cropper-main', 'upload', 'app/user/lef
         });
 
         //SCAN WECHAT
-        Helper.WeChatQRCode('bindingWeChat', 'bindingUser','https://ic.irs01.com/iResearchDataWeb/public/css/wechat.css');
+        Helper.WeChatQRCode('bindingWeChat', 'bindingUser','https://irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
 
     });
 
