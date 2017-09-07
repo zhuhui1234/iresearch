@@ -185,6 +185,31 @@ class IndexController extends Controller
     /**
      * ir cloud
      */
+    public function xAdt()
+    {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+
+        $data = array(
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+            'url' => 'http://irv.iresearch.com.cn/iadt/?language=zh-CN&token=' . $this->userInfo['token']
+        );
+
+        header("Location:" . $data['url']);
+    }
+
+
+    /**
+     * ir cloud
+     */
     public function iECTracker()
     {
         $userModel = Model::instance('user');
