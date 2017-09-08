@@ -475,7 +475,8 @@ class IndexController extends Controller
     {
         $guid = $this->request()->get('guid');
         $pdtID = $this->request()->get('pdtid');
-        $url = YH_REPORT37 . '&guid=' . $guid . '&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=' . $pdtID;
+        $taskID = $this->request()->get('taskid');
+        $url = YH_REPORT37 . '&guid=' . $guid . '&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=' . $pdtID.'&taskid='.$taskID;
         header("Location:" . $url);
     }
 
