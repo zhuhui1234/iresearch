@@ -48,7 +48,7 @@
         </div>
         <div class="user-right">
             <h5>积分日志信息</h5>
-            <div class="col-sm-12 ">剩余积分:</div>
+            <div class="col-sm-12 ">剩余积分: <span id="point_value"></span></div>
             <hr>
             <div class="col-sm-12">
                 <table class="table table-striped manage" id="point_log">

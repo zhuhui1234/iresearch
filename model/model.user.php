@@ -9,7 +9,6 @@
  * FileName:model.user.php
  * 描述:
  */
-
 class UserModel extends API
 {
     /**
@@ -75,7 +74,7 @@ class UserModel extends API
 
         }
 
-        
+
     }
 
     /**
@@ -248,13 +247,13 @@ class UserModel extends API
         }
 
 //        if (empty($menu) || !isset($sMenu['resCode'])) {
-            $m = $this->__showHomeMenu([
-                'TOKEN' => $userInfo['token'],
-                'companyID' => $userInfo['companyID'],
-                'userID' => $userInfo['userID']
-            ]);
+        $m = $this->__showHomeMenu([
+            'TOKEN' => $userInfo['token'],
+            'companyID' => $userInfo['companyID'],
+            'userID' => $userInfo['userID']
+        ]);
 //            Session::instance()->set('menu', $m);
-            return $m;
+        return $m;
 //        } else {
 //            if ($sMenu['resCode'] != '000000') {
 //                $m = $this->__showHomeMenu([
@@ -457,7 +456,7 @@ class UserModel extends API
     public function trialApply($data)
     {
         $url = API_URL . '?m=permissions&a=applyPermission';
-        $ret = $this->_curlPost($url, $data,'applyPermission');
+        $ret = $this->_curlPost($url, $data, 'applyPermission');
         write_to_log(json_encode($data), '_apply');
         return $ret;
     }
@@ -495,6 +494,29 @@ class UserModel extends API
     {
         $url = API_URL . '?m=permissions&a=checkMail';
         return $this->_curlPost($url, $data, 'checkMail');
+    }
+
+    /**
+     * point list
+     * @param $data
+     * @return mixed
+     */
+    public function pointList($data)
+    {
+        $url = API_URL . '?m=points&a=pointList';
+        return $this->_curlPost($url, $data, 'pointList');
+    }
+
+    /**
+     * get point
+     *
+     * @param $data
+     * @return mixed
+     */
+    public function getPoint($data)
+    {
+        $url = API_URL . '?m=points&a=getPoint';
+        return $this->_curlPost($url, $data, 'getPoint');
     }
 
     ######################################################################################
@@ -573,7 +595,7 @@ class UserModel extends API
     /**
      * get permissions
      *
-     * @param $data['token','pdt_id']
+     * @param $data ['token','pdt_id']
      *
      * @return mixed
      */

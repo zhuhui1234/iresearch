@@ -2,8 +2,8 @@
     <li class="open">
         <a class="menu" href="#"><i class="iconfont icon-share1"></i>睿见管理<span
                     class="fa fa-angle-down"></span></a>
-        <!-- <ul>
-            <li id="userManage">
+        <ul>
+            <!--<li id="userManage">
                 <a href="?a=user&m=userManger">用户管理</a>
             </li>
             <li id="permission">
@@ -11,8 +11,11 @@
             </li>
             <li id="checkLogs">
                 <a href="#">操作日志</a>
-            </li>
-        </ul> -->
+            </li> -->
+            <!-- <li id="pointLog">
+                <a href="?m=user&a=pointLog">积分查询</a>
+            </li>-->
+        </ul>
     </li>
     <li id="sidebar_userInfo">
         <a href="?m=user&a=editUserInfo"><i class="iconfont icon-shezhi"></i>账户设置</a>

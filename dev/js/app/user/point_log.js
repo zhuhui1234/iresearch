@@ -4,7 +4,7 @@
 
 define(['jquery', 'datatables.net', 'datatables.net-bs', 'select2'], function ($) {
     $(function () {
-        var table = $('#point_log').DataTable({
+        $('#point_log').DataTable({
             language: {
                 "sProcessing": "处理中...",
                 "sLengthMenu": "显示 _MENU_ 项结果",
@@ -41,8 +41,8 @@ define(['jquery', 'datatables.net', 'datatables.net-bs', 'select2'], function ($
                     "mRender": function (data, type, full) {
 
                         if (data !== null && data !== '') {
-                            console.log(data);
-                            console.log(data.indexOf('{'));
+                            // console.log(data);
+                            // console.log(data.indexOf('{'));
                             if (data.indexOf('}') >= 0) {
                                 var ret = JSON.parse(data);
                                 if (typeof(ret.Type !== 'undefined')) {
@@ -128,6 +128,11 @@ define(['jquery', 'datatables.net', 'datatables.net-bs', 'select2'], function ($
             //     'copy', 'excel', 'pdf'
             // ]
         });
+        $.get('?m=user&a=getPointAPI',
+            function (data) {
+                $("#point_value").text(data.data.getValue);
+            }
+        );
 
     });
 

@@ -17,6 +17,11 @@
 echo $_obj['title'];
 ?>
 </title>
+    <style>
+        #mobile{
+            height:24px;
+        }
+    </style>
 </head>
 <body class="login">
 <div id="particles" class="particles"></div>
@@ -34,14 +39,14 @@ echo $_obj['title'];
                 <div class="form-group">
                     <span>手机号码</span>
                     <div class="form-right">
-                        <input type="text" id="mobile" placeholder="请输入绑定的手机号码">
+                        <input style="height:24px;" type="text" id="mobile" placeholder="请输入绑定的手机号码">
                     </div>
                 </div>
                 <div class="alert alert-danger">手机号不存在</div>
                 <div class="form-group">
                     <span>手机验证码</span>
                     <div class="form-right">
-                        <input style="width: 60%;" id="vernum" type="text" placeholder="请输入手机验证码">
+                        <input style="width: 60%;height:24px;" id="vernum" type="text" placeholder="请输入手机验证码">
                         <a class="btn btn-warning" id="verification">获取验证码</a>
                     </div>
                 </div>
@@ -49,7 +54,7 @@ echo $_obj['title'];
                 <div class="form-group">
                     <span>验证码</span>
                     <div class="form-right">
-                        <input style="width: 60%;" id="vcode" type="text" placeholder="请输入验证码">
+                        <input style="width: 60%;height:24px;" id="vcode" type="text" placeholder="请输入验证码">
                         <div class="code-img">
                             <img src="?m=service&a=authImg" alt="">
                         </div>

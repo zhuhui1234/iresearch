@@ -80,11 +80,11 @@ class UserController extends Controller
                     header('Location: ' . $getPermission['data']['data']['pdt_url']);
                 } else {
                     if (empty($getPermission['data']['data'])) {
-                        $pro = $this->model->getProduct(['pdt_id'=> $pdt_id]);
+                        $pro = $this->model->getProduct(['pdt_id' => $pdt_id]);
                         $pro = json_decode($pro, true);
                         if ($pro['resCode'] == '0000000') {
-                            header('Location: ?m=user&a=trialApply&ppname='.$pro['data'][0]['pdt_name'].'&menuID='.$pdt_id);
-                        }else{
+                            header('Location: ?m=user&a=trialApply&ppname=' . $pro['data'][0]['pdt_name'] . '&menuID=' . $pdt_id);
+                        } else {
                             http_response_code(404);
                             echo '访问错误';
                         }
@@ -242,6 +242,41 @@ class UserController extends Controller
         View::instance('user/manager.tpl')->show($data);
     }
 
+    public function pointLog()
+    {
+
+        $data['token'] = $this->userInfo['token'];
+
+        $data = $this->userDetail;
+        $data['loginStatus'] = $this->loginStatus;
+        $userInfo = json_decode($this->model->getMyInfo(), true);
+        $userInfo = $userInfo['data'];
+        $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+
+        if ($userInfo['headImg'] != 'upload/head/') {
+            $userInfo['headImg'] = IMG_URL . $userInfo['headImg'];
+        }
+        View::instance('user/point_log.tpl')->show([
+            'username' => $userInfo['uname'],
+            'company' => $userInfo['company'],
+            'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
+            'expireDate' => substr($this->userInfo['validity'], 0, 10),
+            'avatar' => $userInfo['headImg'],
+            'permissions' => $this->userInfo['permissions'],
+            'uname' => $userInfo['uname'],
+            'position' => $userInfo['position'],
+            'wechat' => $bindingUserInfo['data']['weixin']['type'],
+            'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
+        ]);
+    }
+
     public function permissionManager()
     {
 
@@ -256,6 +291,7 @@ class UserController extends Controller
     {
 
     }
+
 
     /**
      * logout
@@ -328,6 +364,7 @@ class UserController extends Controller
     public function permissionAccess()
     {
         $userInfo = Session::instance()->get('userInfo');
+
         $data['token'] = $userInfo['token'];
         $userIndustry = Model::instance('Industry')->getUserIndustry($data);//用户的行业
         //大行业
@@ -387,6 +424,24 @@ class UserController extends Controller
             'LoginKey' => $data['verNum'],
             'LoginType' => 'mobile'
         ]);
+    }
+
+    /**
+     * point list API
+     */
+    public function pointListAPI()
+    {
+        $this->__json();
+        echo $this->model->pointList(['dev_id'=>$this->userInfo['dev_id']]);
+    }
+
+    /**
+     * get point API
+     */
+    public function getPointAPI()
+    {
+        $this->__json();
+        echo $this->model->getPoint(['dev_id' => $this->userInfo['dev_id']]);
     }
 
     /**
