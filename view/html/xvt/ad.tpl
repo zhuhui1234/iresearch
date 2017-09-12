@@ -284,9 +284,9 @@
         var product = [{
             icon: 'public/img/ivt@2x.png',
             isOldURL: true,
-//            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=26',
+//            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=42',
             oldurl: '?m=irdata&a=classicSys&ppname=PC端营销广告市场监测',
-            info: 'AdTracker广告投放监测由艾瑞咨询自主研发，是通过爬虫技术在几百个网站上进行图片广告监测所建立的数据库。该数据库自2001年开始，统计及计算包含门户、垂直、视频、APP等媒体上品牌客户广告投放量及投放预估费用数据，真实反映中国互联网广告市场客观情况。',
+            info: 'xAdTracker广告投放监测由艾瑞咨询自主研发，是通过爬虫技术在几百个网站上进行图片广告监测所建立的数据库。该数据库自2001年开始，统计及计算包含门户、垂直、视频、APP等媒体上品牌客户广告投放量及投放预估费用数据，真实反映中国互联网广告市场客观情况。',
             itemA: {
                 title: '互联网公司',
                 info: [
