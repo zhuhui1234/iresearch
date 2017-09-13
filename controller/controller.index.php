@@ -176,7 +176,31 @@ class IndexController extends Controller
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => 'http://ircdemo.iresearchdata.cn/irbase/session/login/check/?token=' . $this->userInfo['token']
+            'url' => 'http://ircdemo.iresearchdata.cn/irbase/check/?token=' . $this->userInfo['token']
+        );
+
+        header("Location:" . $data['url']);
+    }
+
+    /**
+     * ir cloud
+     */
+    public function iAppCheck()
+    {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+
+        $data = array(
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+            'url' => 'http://ircdemo.iresearchdata.cn/ircloud-app-check/check/?token=' . $this->userInfo['token']
         );
 
         header("Location:" . $data['url']);
@@ -477,6 +501,12 @@ class IndexController extends Controller
         $pdtID = $this->request()->get('pdtid');
         $taskID = $this->request()->get('taskid');
         $url = YH_REPORT37 . '&guid=' . $guid . '&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=' . $pdtID.'&taskid='.$taskID;
+        header("Location:" . $url);
+    }
+
+    public function nReport()
+    {
+        $url = YH_REPORT37 . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B913'  . '&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=37';
         header("Location:" . $url);
     }
 

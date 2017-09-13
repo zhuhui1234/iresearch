@@ -4,6 +4,7 @@
 
 define(['jquery', 'datatables.net', 'datatables.net-bs', 'select2'], function ($) {
     $(function () {
+        $("#pointLog").addClass("active");
         $('#point_log').DataTable({
             language: {
                 "sProcessing": "处理中...",
@@ -39,6 +40,40 @@ define(['jquery', 'datatables.net', 'datatables.net-bs', 'select2'], function ($
                 {
                     "data": "point_explain",
                     "mRender": function (data, type, full) {
+                        if (data !== null && data !== '') {
+                            // console.log(data);
+                            // console.log(data.indexOf('{'));
+                            if (data.indexOf('}') >= 0) {
+                                var ret = JSON.parse(data);
+                                if (typeof(ret.Type !== 'undefined')) {
+                                    ret.Type = parseInt(ret.Type);
+                                    switch (ret.Type) {
+                                        case 6:
+                                            var id = '';
+                                            if (typeof ret.pdt_name !== 'undefined') {
+                                               id= ret.pdt_name ;
+                                            }
+                                            if (typeof ret.pdt_id !== 'undefined') {
+                                                id = id + '-' + ret.ID ;
+                                            }
+                                            return id ;
+                                        default :
+                                            return full.point_id;
+                                            break;
+                                    }
+                                }
+                            } else {
+                                return full.point_id;
+                            }
+
+                        } else {
+                            return full.point_id;
+                        }
+                    }
+                },
+                {
+                    "data": "point_explain",
+                    "mRender": function (data, type, full) {
 
                         if (data !== null && data !== '') {
                             // console.log(data);
@@ -49,15 +84,20 @@ define(['jquery', 'datatables.net', 'datatables.net-bs', 'select2'], function ($
                                     ret.Type = parseInt(ret.Type);
                                     switch (ret.Type) {
                                         case 6:
-                                            return "定制报告ID:" + ret.ID + ", 定制报告名称: " + ret.Name;
-                                            break;
+                                            // if (typeof ret.pdt_name == 'undefined') {
+                                            //     ret.pdt_name = '';
+                                            // }
+                                            // if (typeof ret.pdt_id == 'undefined') {
+                                            //     ret.pdt_id = '';
+                                            // }
+                                            return "定制报告:" + ret.Name;
                                         default :
-                                            return ret.Name;
+                                            return null;
                                             break;
                                     }
                                 }
                             } else {
-                                return data;
+                                return null;
                             }
 
                         } else {
@@ -86,10 +126,10 @@ define(['jquery', 'datatables.net', 'datatables.net-bs', 'select2'], function ($
                                 return '撤销';
                                 break;
                             case "6":
-                                return '定制报告';
+                                return '生成报告';
                                 break;
                             case "7":
-                                return '撤销定制报告';
+                                return '撤销报告';
                                 break;
                             default :
                                 return data;
@@ -110,7 +150,16 @@ define(['jquery', 'datatables.net', 'datatables.net-bs', 'select2'], function ($
                     }
                 },
                 {
-                    "data": "balance"
+                    "data": "balance",
+                    "mRender": function (data, type, full) {
+                        if (parseInt(full.type) > 5) {
+                            return data - full.point_value;
+                        } else {
+                            return parseInt(data) + parseInt(full.point_value);
+                        }
+
+
+                    }
                 },
                 {
                     "data": "cdate"

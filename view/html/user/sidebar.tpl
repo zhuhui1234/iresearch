@@ -12,9 +12,9 @@
             <li id="checkLogs">
                 <a href="#">操作日志</a>
             </li> -->
-            <!-- <li id="pointLog">
+            <li id="pointLog">
                 <a href="?m=user&a=pointLog">积分查询</a>
-            </li>-->
+            </li>
         </ul>
     </li>
     <li id="sidebar_userInfo">

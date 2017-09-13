@@ -54,12 +54,13 @@
                 <table class="table table-striped manage" id="point_log">
                     <thead>
                     <tr>
-                        <th>内容</th>
+                        <th>ID</th>
+                        <th>定制报告</th>
                         <th>用户</th>
-                        <th>类型</th>
-                        <th>消费积分</th>
-                        <th>之前余额</th>
-                        <th>创建时间</th>
+                        <th>操作</th>
+                        <th>积分</th>
+                        <th>余额</th>
+                        <th>发生时间</th>
                     </tr>
                     </thead>
                 </table>

@@ -100,6 +100,8 @@ class UserController extends Controller
         }
     }
 
+//    public function
+
     /**
      * 预留注册成功页面
      */
