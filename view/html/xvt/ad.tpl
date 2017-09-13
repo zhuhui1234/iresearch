@@ -161,7 +161,7 @@
                         </div>
                     </div>
                     <div class="change-btn">
-                        <button class="btn btn-primary btn-lg">尽情期待！</button>
+                        <a class="btn btn-lg btn-primary " v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
                         <!-- IF token=="1" -->
                         <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
                         <!-- ELSE -->
@@ -284,7 +284,7 @@
         var product = [{
             icon: 'public/img/ivt@2x.png',
             isOldURL: true,
-//            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=42',
+            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=42',
             oldurl: '?m=irdata&a=classicSys&ppname=PC端营销广告市场监测',
             info: 'xAdTracker广告投放监测由艾瑞咨询自主研发，是通过爬虫技术在几百个网站上进行图片广告监测所建立的数据库。该数据库自2001年开始，统计及计算包含门户、垂直、视频、APP等媒体上品牌客户广告投放量及投放预估费用数据，真实反映中国互联网广告市场客观情况。',
             itemA: {
