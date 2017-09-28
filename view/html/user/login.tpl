@@ -2,11 +2,13 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="http://data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico"
+          mce_href="http://data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
 
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <!-- IE 兼容模式 -->
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=9;IE=EDGE">
     <!-- 国产浏览器高速模式 -->
     <meta name="renderer" content="webkit">
     <!-- bootstrap核心样式 -->
@@ -15,8 +17,8 @@
     <link href="./public/css/docs.min.css" rel="stylesheet">
     <title>{title}</title>
     <style>
-        #mobile{
-            height:24px;
+        #mobile {
+            height: 24px;
         }
     </style>
 </head>
