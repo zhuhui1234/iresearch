@@ -76,11 +76,11 @@
                         <a href="//data.iresearch.com.cn/iRView.shtml" class="dropdown-toggle"><span>艾瑞睿见</span><em>iRView</em></a>
                         <div class="dropdown-menu-box">
                             <ul class="dropdown-menu">
-                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11" target="_blank"><i class="icon icon-iRView-1"></i><em>xMediaPlanner</em><span>跨屏媒介效果评估</span></a></li>
-                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut" target="_blank"><i class="icon icon-iRView-7"></i><em>xUserTracker</em><span>用户行为监测</span></a></li>
-                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt" target="_blank"><i class="icon icon-video"></i><em>xVideoTracker</em><span>视频内容市场监测</span></a></li>
-                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=ad" target="_blank"><i class="icon icon-iRView-8"></i><em>xADTracker</em><span>广告投放监测</span></a></li>
-                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=31" target="_blank"><i class="icon icon-iRView-4"></i><em>iKOLTracker</em><span>意见领袖市场监测</span></a></li>
+                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11" target="_blank"><i class="icon icon-iRView-1"></i><em>MediaPlanner</em><span>跨屏媒介效果评估</span></a></li>
+                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut" target="_blank"><i class="icon icon-iRView-7"></i><em>UserTracker</em><span>用户行为监测</span></a></li>
+                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt" target="_blank"><i class="icon icon-video"></i><em>VideoTracker</em><span>视频内容市场监测</span></a></li>
+                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=ad" target="_blank"><i class="icon icon-iRView-8"></i><em>AdTracker</em><span>广告投放监测</span></a></li>
+                                <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=31" target="_blank"><i class="icon icon-iRView-4"></i><em>KOLTracker</em><span>意见领袖市场监测</span></a></li>
 
 
                             </ul>
