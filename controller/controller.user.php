@@ -305,6 +305,7 @@ class UserController extends Controller
         setcookie('yh_irv_url', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=login', time() + 2400, '/');
         setcookie('PHPSESSID', '', time() - 3600, '/');
         setcookie('JSESSIONID', '', time() - 3600, '/');
+        setcookie('kittyID', '', time() - 3600, '/');
         write_to_log('cookie:' . json_encode($_COOKIE), '_session');
         header("Location:?m=user&a=login");
     }

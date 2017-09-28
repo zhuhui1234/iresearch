@@ -200,7 +200,7 @@ class IndexController extends Controller
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => 'http://ircdemo.iresearchdata.cn/ircloud-app-check/check/?token=' . $this->userInfo['token']
+            'url' => 'http://ircdemo.iresearchdata.cn/ircloud-app-check/check?token=' . $this->userInfo['token']
         );
 
         header("Location:" . $data['url']);
@@ -224,7 +224,7 @@ class IndexController extends Controller
             'menu' => $menu,
             'titleMenu' => $menu[1]['subMenu'],
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => 'http://irv.iresearch.com.cn/iadt/?language=zh-CN&token=' . $this->userInfo['token']
+            'url' => 'http://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token']
         );
 
         header("Location:" . $data['url']);
@@ -500,13 +500,16 @@ class IndexController extends Controller
         $guid = $this->request()->get('guid');
         $pdtID = $this->request()->get('pdtid');
         $taskID = $this->request()->get('taskid');
-        $url = YH_REPORT37 . '&guid=' . $guid . '&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=' . $pdtID.'&taskid='.$taskID;
+        $showMenu = $this->request()->get('showMemu');
+        $url = YH_REPORT37 . '&guid=' . $guid . '&token=' . $this->userInfo['token'] . '&userID=' .
+            $this->userInfo['userID'] . '&pdt_id=' . $pdtID . '&taskid=' . $taskID . '&showMemu=' . $showMenu;
         header("Location:" . $url);
     }
 
     public function nReport()
     {
-        $url = YH_REPORT37 . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B913'  . '&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=37';
+        $url = YH_REPORT37 . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B913' . '&token=' . $this->userInfo['token'] .
+            '&userID=' . $this->userInfo['userID'] . '&pdt_id=37';
         header("Location:" . $url);
     }
 

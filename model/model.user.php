@@ -44,6 +44,7 @@ class UserModel extends API
             if ($rs['resCode'] == '000000') {
                 write_to_log('mobile login: ' . $ret, '_login');
                 Session::instance()->set('userInfo', $rs['data']);
+                setcookie('kittyID', $rs['data']['token']);
                 if (!empty($rs['data']['productKey'])) {
                     $this->getIResearchDataAccount($rs['data']['productKey']);
                 }
@@ -103,6 +104,7 @@ class UserModel extends API
         if ($rs['resCode'] == '000000') {
             write_to_log('wechat login: ' . $ret, '_login');
             Session::instance()->set('userInfo', $rs['data']);
+            setcookie('kittyID', $rs['data']['token']);
             return TRUE;
         } else {
             write_to_log('wechat error login: ' . $ret, '_login');
