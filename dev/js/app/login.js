@@ -45,13 +45,13 @@ define(['app/main','canvas'], function() {
         });
 
         //登录背景
-        $('#particles').particleground({
-            dotColor: '#e7ebee',
-            lineColor: '#e7ebee',
-            density: 20000,
-            proximity: 140,
-            parallaxMultiplier: 30,
-            curvedLines: true,
-        });
+        // $('#particles').particleground({
+        //     dotColor: '#e7ebee',
+        //     lineColor: '#e7ebee',
+        //     density: 20000,
+        //     proximity: 140,
+        //     parallaxMultiplier: 30,
+        //     curvedLines: true,
+        // });
     });
 });
