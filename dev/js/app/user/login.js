@@ -135,14 +135,14 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         });
 
         //登录背景
-        $('#particles').particleground({
-            dotColor: '#e7ebee',
-            lineColor: '#e7ebee',
-            density: 20000,
-            proximity: 140,
-            parallaxMultiplier: 30,
-            curvedLines: true,
-        });
+        // $('#particles').particleground({
+        //     dotColor: '#e7ebee',
+        //     lineColor: '#e7ebee',
+        //     density: 20000,
+        //     proximity: 140,
+        //     parallaxMultiplier: 30,
+        //     curvedLines: true,
+        // });
 
         if (Helper.getQuery('recode') == '404') {
             alert('账号被冻结')
