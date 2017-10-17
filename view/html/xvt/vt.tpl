@@ -90,11 +90,23 @@
                        class="dropdown-toggle"><span>艾瑞睿见</span><em>iRView</em></a>
                     <div class="dropdown-menu-box">
                         <ul class="dropdown-menu">
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11" target="_blank"><i class="icon icon-iRView-1"></i><em>MediaPlanner</em><span>跨屏媒介效果评估</span></a></li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut" target="_blank"><i class="icon icon-iRView-7"></i><em>UserTracker</em><span>用户行为监测</span></a></li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt" target="_blank"><i class="icon icon-video"></i><em>VideoTracker</em><span>视频内容市场监测</span></a></li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=ad" target="_blank"><i class="icon icon-iRView-8"></i><em>AdTracker</em><span>广告投放监测</span></a></li>
-                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=31" target="_blank"><i class="icon icon-iRView-4"></i><em>KOLTracker</em><span>意见领袖市场监测</span></a></li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11"
+                                   target="_blank"><i
+                                            class="icon icon-iRView-1"></i><em>MediaPlanner</em><span>跨屏媒介效果评估</span></a>
+                            </li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut" target="_blank"><i
+                                            class="icon icon-iRView-7"></i><em>UserTracker</em><span>用户行为监测</span></a>
+                            </li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt" target="_blank"><i
+                                            class="icon icon-video"></i><em>VideoTracker</em><span>视频内容市场监测</span></a>
+                            </li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=ad" target="_blank"><i
+                                            class="icon icon-iRView-8"></i><em>AdTracker</em><span>广告投放监测</span></a>
+                            </li>
+                            <li><a href="http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=31"
+                                   target="_blank"><i
+                                            class="icon icon-iRView-4"></i><em>KOLTracker</em><span>意见领袖市场监测</span></a>
+                            </li>
 
 
                         </ul>
@@ -127,11 +139,12 @@
                 <img src="public/img/background1@2x.png" alt="">
             </div>
             <div class="col-md-6">
-                <div class="search-content">
+                <div class="search-content" style="padding-top: 30px">
                     <h4>艾瑞视频内容市场监测</h4>
                     <p>帮助企业在激烈的市场竞争中脱颖而出</p>
-                    <p>证明视频媒体价值以及优化视频广告投放效果</p>
-                    <div class="input-group input-group-lg">
+                    <p>证明视频媒体价值以及优化视频广告投放效果。</p>
+                    <!--
+                         <div class="input-group input-group-lg" style="display: none;">
                         <input id="searchKey" type="text" class="form-control" placeholder="请输入视频内容查询">
                         <span class="input-group-btn">
                                 <button class="btn btn-default" type="button" id="searchBtn">
@@ -139,6 +152,7 @@
                             </button>
                             </span>
                     </div>
+                    -->
                 </div>
             </div>
         </div>
@@ -160,28 +174,37 @@
                     <div class="col-xs-12">
                         <h4>产品介绍</h4>
                         <p v-bind:style="{display:'none'}">加载中......</p>
-                        <p v-bind:style="{display:'block'}" style="display: none;" >[[ product[tabIndex].info ]]</p>
+                        <p v-bind:style="{display:'block'}" style="display: none;">[[ product[tabIndex].info ]]</p>
                     </div>
                     <div class="col-xs-12" style="margin-top: 20px;">
                         <h4>产品价值</h4>
                     </div>
                     <div class="col-xs-6">
                         <p v-bind:style="{display:'none'}">加载中......</p>
-                        <h5 v-bind:style="{display:'block'}" style="display: none;"><img src="public/img/net@2x.png" alt=""> [[ product[tabIndex].itemA.title ]]</h5>
-                        <p v-bind:style="{display:'block'}" style="display: none;" v-for="val in product[tabIndex].itemA.info">
+                        <h5 v-bind:style="{display:'block'}" style="display: none;"><img src="public/img/net@2x.png"
+                                                                                         alt=""> [[
+                            product[tabIndex].itemA.title ]]</h5>
+                        <p v-bind:style="{display:'block'}" style="display: none;"
+                           v-for="val in product[tabIndex].itemA.info">
                             [[ val ]]
                         </p>
                     </div>
                     <div class="col-xs-6">
-                        <h5 v-bind:style="{display:'block'}" style="display: none;"><img src="public/img/ad@2x.png" alt=""> [[ product[tabIndex].itemB.title ]]</h5>
-                        <p v-bind:style="{display:'block'}" style="display: none;" v-for="val in product[tabIndex].itemB.info">
+                        <h5 v-bind:style="{display:'block'}" style="display: none;"><img src="public/img/ad@2x.png"
+                                                                                         alt=""> [[
+                            product[tabIndex].itemB.title ]]</h5>
+                        <p v-bind:style="{display:'block'}" style="display: none;"
+                           v-for="val in product[tabIndex].itemB.info">
                             [[ val ]]
                         </p>
                     </div>
                     <div class="col-xs-6">
                         <p v-bind:style="{display:'none'}">加载中......</p>
-                        <h5 v-bind:style="{display:'block'}" style="display: none;"><img src="public/img/copy@2x.png" alt=""> [[ product[tabIndex].itemC.title ]]</h5>
-                        <p v-bind:style="{display:'block'}" style="display: none;" v-for="val in product[tabIndex].itemC.info">
+                        <h5 v-bind:style="{display:'block'}" style="display: none;"><img src="public/img/copy@2x.png"
+                                                                                         alt=""> [[
+                            product[tabIndex].itemC.title ]]</h5>
+                        <p v-bind:style="{display:'block'}" style="display: none;"
+                           v-for="val in product[tabIndex].itemC.info">
                             [[ val ]]
                         </p>
                     </div>
@@ -259,7 +282,8 @@
                 <!-- ELSE -->
                 <!-- IF irdStatus== "1" -->
 
-                <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本
+                <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal"
+                        data-target="#myModal">切换旧版本
                 </button>
                 <!-- ELSE -->
 
@@ -432,7 +456,7 @@
             tabIndex: 0
         },
         methods: {
-            changeTab: function(index) {
+            changeTab: function (index) {
                 this.tabIndex = index;
             }
         }
