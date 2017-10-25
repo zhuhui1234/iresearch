@@ -165,8 +165,8 @@
                 </div>
                 <div class="change-btn">
 
-                    <a v-if="product[tabIndex].show" class="btn btn-primary btn-lg" v-bind:href="[[[[ product[tabIndex].url ]]]]">开始使用</a>
-                    <a v-else="product[tabIndex].show" class="btn btn-primary btn-lg btn-warning" href="">敬请期待！！</a>
+                    <!--<a v-if="product[tabIndex].show" class="btn btn-primary btn-lg" v-bind:href="[[[[ product[tabIndex].url ]]]]">开始使用</a>
+                    <a v-else="product[tabIndex].show" class="btn btn-primary btn-lg btn-warning" href="">敬请期待！！</a> -->
                     <!-- IF token=="1" -->
                     <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
                     <!-- ELSE -->
@@ -224,8 +224,8 @@
                         </div>
                     </div>
                     <div class="change-btn">
-                        <a v-if="product[tabIndex].show" class="btn btn-primary btn-lg" v-bind:href="[[[[ product[tabIndex].url ]]]]">开始使用</a>
-                        <a v-else="product[tabIndex].show" class="text-warning" href="">敬请期待！！</a>
+                        <!-- <a v-if="product[tabIndex].show" class="btn btn-primary btn-lg" v-bind:href="[[[[ product[tabIndex].url ]]]]">开始使用</a>
+                        <a v-else="product[tabIndex].show" class="text-warning" href="">敬请期待！！</a>-->
 
                         <!-- IF token=="1" -->
                         <a v-if="product[tabIndex].show" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
