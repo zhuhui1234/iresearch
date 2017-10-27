@@ -20,7 +20,6 @@ class UserController extends Controller
         $this->model = Model::instance('user');
         $this->userInfo = Session::instance()->get('userInfo');
 
-
         if (!empty($this->userInfo)) {
             $this->userDetail = $this->model->getUserInfo([
                 'token' => $this->userInfo['token'],
@@ -54,8 +53,14 @@ class UserController extends Controller
             'loginStatus' => $this->loginStatus,
             'title' => WEBSITE_TITLE
         );
-
         View::instance('user/login.tpl')->show($data);
+    }
+
+    public function test()
+    {
+        $guid = $this->request()->get('guid');
+        var_dump(json_decode($this->model->getIRDataAccount($guid), true));
+
     }
 
     /**
@@ -64,10 +69,42 @@ class UserController extends Controller
     public function jump()
     {
         $pdt_id = $this->request()->get('pro');
+        $from = $this->request()->get('from');
+        $guid = $this->request()->get('guid');
+        $irdStatus = '1';
+
+        if (empty($from)) {
+            Session::instance()->set('from', 'ird');
+        }
+
+        if (empty($guid)) {
+            $guid = Session::instance()->get('irdGuid');
+        }
+
+        if ($from == 'ird' and !empty($guid)) {
+
+            $reIrdAccount = $this->model->getIRDataAccount($guid);
+            write_to_log($reIrdAccount, '_irdLogin');
+            $irdAccount = json_decode($reIrdAccount, true);
+            $irdAccount['iUserID'] = (int)$irdAccount['iUserID'];
+
+            if ($irdAccount['iUserID'] !== 0) {
+                write_to_log($reIrdAccount . '  success ', '_irdLogin');
+                Session::instance()->set('irdAccount', $irdAccount);
+                Session::instance()->set('irdGuid', $guid);
+                $irdStatus = '2';
+            } else {
+                $irdStatus = '3';
+                write_to_log($guid . '   fails', '_irdLogin');
+                echo 'guid 失效';
+            }
+        }
+
         if (empty($pdt_id)) {
             http_response_code(500);
             echo '参数错误';
         } else {
+
             if (!$this->loginStatus) {
                 //登入成功
                 $getPermission = json_decode($this->model->getPermission([
@@ -75,13 +112,23 @@ class UserController extends Controller
                     'pdt_id' => $pdt_id,
                     'userID' => $this->userInfo['userID']
                 ]), true);
-                //write_to_log(json_encode($getPermission),'_premission');
+                write_to_log(json_encode($getPermission),'_premission');
+
+//                if ($irdStatus) {
+//                    // ird login is ok
+//                    if ($this->model->__checkIRDPermission($irdAccount['pplist'], $pdt_id)) {
+//
+//                    }
+//                }
+
                 if ($getPermission['resCode'] == '20000') {
                     header('Location: ' . $getPermission['data']['data']['pdt_url']);
                 } else {
+
                     if (empty($getPermission['data']['data'])) {
                         $pro = $this->model->getProduct(['pdt_id' => $pdt_id]);
                         $pro = json_decode($pro, true);
+
                         if ($pro['resCode'] == '0000000') {
                             header('Location: ?m=user&a=trialApply&ppname=' . $pro['data'][0]['pdt_name'] . '&menuID=' . $pdt_id);
                         } else {
@@ -100,7 +147,6 @@ class UserController extends Controller
         }
     }
 
-//    public function
 
     /**
      * 预留注册成功页面
@@ -279,21 +325,6 @@ class UserController extends Controller
         ]);
     }
 
-    public function permissionManager()
-    {
-
-    }
-
-    public function userLog()
-    {
-
-    }
-
-    public function test()
-    {
-
-    }
-
 
     /**
      * logout
@@ -410,6 +441,14 @@ class UserController extends Controller
             'LoginType' => 'mobile'
         );
 
+        $ird_guid = Session::instance()->get('irdGuid');
+        $ird_account = Session::instance()->get('irdAccount');
+        // 判断是否来自IRD的用户
+        if (!empty($guid) and !empty($ird_account)) {
+            $data['ird_guid'] = $ird_guid;
+            $data['ird_user'] = $ird_account;
+        }
+
         $rs = $this->model->login($data);
         $this->__json();
         echo $rs;
@@ -435,7 +474,7 @@ class UserController extends Controller
     public function pointListAPI()
     {
         $this->__json();
-        echo $this->model->pointList(['dev_id'=>$this->userInfo['dev_id']]);
+        echo $this->model->pointList(['dev_id' => $this->userInfo['dev_id']]);
     }
 
     /**
@@ -479,13 +518,6 @@ class UserController extends Controller
         echo $this->model->bindingIRDAToUser($data);
     }
 
-    /**
-     * register user api
-     */
-    public function registerUserInfoAPI()
-    {
-
-    }
 
     public function trialApplyAPI()
     {
@@ -533,11 +565,6 @@ class UserController extends Controller
         echo $this->model->setState($data);
     }
 
-
-    public function getUserInfoList()
-    {
-
-    }
 
     /**
      * update userinfo
@@ -635,6 +662,10 @@ class UserController extends Controller
         } else {
             $state = '20002';
             $m = [
+                'logOut' => [
+                    'name' => '登出',
+                    'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
+                ],
                 'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/')]
             ];
         }

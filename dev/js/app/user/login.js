@@ -10,6 +10,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 }, value);
                 var id = $(this).attr('id');
                 var wait = value.wait;
+
                 //内部函数
                 function time(id) {
                     if (wait == 0) {
@@ -30,12 +31,19 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     if (checkLoginFormat()) {
                         time(id);
                         //send sms
-                        Helper.post("sendSms", {mobile: $("#mobile").val()}, function (ret) {
-                            console.log(ret);
-                            if (ret.resCode == "000002") {
-                                $(".alert").eq(1).fadeIn().text('验证错误');
-                            }
-                        });
+                        var mobile_number = $("#mobile").val();
+                        console.log(/^4[0]\d{8}$/.test(mobile_number));
+                        if (/^4[0]\d{9}$/.test(mobile_number)) {
+                            $(".alert").eq(1).fadeIn().text('无需验证，请使用固定验证码');
+
+                        } else {
+                            Helper.post("sendSms", {mobile: mobile_number}, function (ret) {
+                                console.log(ret);
+                                if (ret.resCode == "000002") {
+                                    $(".alert").eq(1).fadeIn().text('验证错误');
+                                }
+                            });
+                        }
                     }
                 })
             }
@@ -49,7 +57,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             $("#mobile").focus();
             return false;
         }
-        if (!(/^1[34578]\d{9}$/.test(phoneVal))) {
+        if (!(/^1[34578]\d{9}$/.test(phoneVal)) && !(/^4[0]\d{9}$/.test(phoneVal))) {
+
             $(".alert:first").fadeIn().text("手机号码有误，请重填！");
             return false;
         }
@@ -101,7 +110,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                             if (pdtID !== null) {
                                 if (pdtID.length > 0) {
                                     window.location.reload();
-                                }else {
+                                } else {
                                     // console.log('no pdtID');
                                     window.location.href = '?m=index&a=index';
                                 }

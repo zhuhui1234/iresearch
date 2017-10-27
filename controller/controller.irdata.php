@@ -16,13 +16,13 @@ class IRDataController extends Controller
         $this->userInfo = Session::instance()->get('userInfo');
         $this->menu = json_decode($this->userModel->showMenu(),true);
         $this->menu = $this->menu['data']['dataList'];
-//        if (!empty($this->userInfo['productKey'])) {
-//            if (time() > Session::instance()->get('irdTimeOut') || empty(Session::instance()->get('irdTimeOut'))) {
-//                $this->userModel->getIResearchDataAccount($this->userInfo['productKey']);
-//            }
-//
-//            $this->irdUserInfo = json_decode(Session::instance()->get('iResearchDataUserInfo'), true);
-//        }
+        if (!empty($this->userInfo['productKey'])) {
+            if (time() > Session::instance()->get('irdTimeOut') || empty(Session::instance()->get('irdTimeOut'))) {
+                $this->userModel->getIResearchDataAccount($this->userInfo['productKey']);
+            }
+
+            $this->irdUserInfo = json_decode(Session::instance()->get('iResearchDataUserInfo'), true);
+        }
 
 
     }

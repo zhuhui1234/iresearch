@@ -34,6 +34,13 @@ class UserModel extends API
     public function login($data)
     {
         $getVcode = Session::instance()->get('vcodes');
+        $ird_guid = Session::instance()->get('irdGuid');
+        $ird_account = Session::instance()->get('irdAccount');
+        // 判断是否来自IRD的用户
+        if (!empty($ird_guid) and !empty($ird_account)) {
+            $data['ird_guid'] = $ird_guid;
+            $data['ird_user'] = $ird_account;
+        }
         write_to_log($getVcode, '_session');
         if ($getVcode == $data['vCode']) {
             $url = API_URL . '?m=User&a=login';
@@ -57,26 +64,6 @@ class UserModel extends API
         }
     }
 
-    public function ircJump($data)
-    {
-        if (!isset($data['pdt_id'])) {
-
-        }
-
-        if (!isset($data['irUserID'])) {
-
-        }
-
-        if (!isset($data['key'])) {
-
-        }
-
-        if (!isset($data['date'])) {
-
-        }
-
-
-    }
 
     /**
      * mobile login
@@ -86,6 +73,15 @@ class UserModel extends API
      */
     public function mobileLogin($data)
     {
+        $ird_guid = Session::instance()->get('irdGuid');
+        $ird_account = Session::instance()->get('irdAccount');
+        write_to_log('ird: '. $ird_guid, '_session');
+        // 判断是否来自IRD的用户
+        if (!empty($ird_guid) and !empty($ird_account)) {
+            $data['ird_guid'] = $ird_guid;
+            $data['ird_user'] = $ird_account;
+        }
+
         $url = API_URL . '?m=User&a=login';
         return $this->_curlPost($url, $data, 'cs_login');
     }
@@ -97,8 +93,17 @@ class UserModel extends API
      */
     public function WeChatAutoLogin($data, $weChatData)
     {
+        $ird_guid = Session::instance()->get('irdGuid');
+        $ird_account = Session::instance()->get('irdAccount');
+        // 判断是否来自IRD的用户
+        if (!empty($guid) and !empty($ird_account)) {
+            $data['ird_guid'] = $ird_guid;
+            $data['ird_user'] = $ird_account;
+        }
+
         $url = API_URL . '?m=User&a=login';
         $data['LoginType'] = 'weixin';
+
         $ret = $this->_curlPost($url, $data, 'wxlogin');
         $rs = json_decode($ret, true);
         if ($rs['resCode'] == '000000') {
@@ -393,6 +398,12 @@ class UserModel extends API
         return $saveOldIResearchDataInfo;
     }
 
+    public function getIRDataAccount($guid)
+    {
+        $irdAccountInfo = $this->__getIResearchDataAccountNoLogin(json_encode(['guid' => $guid]));
+        return $irdAccountInfo;
+    }
+
     public function logOut()
     {
         $userInfo = Session::instance()->get('userInfo');
@@ -551,6 +562,23 @@ class UserModel extends API
         return $ret;
     }
 
+
+    public function __getIResearchDataAccountNoLogin($data)
+    {
+        $url = 'http://sys.itracker.cn/api/WebForm2.aspx';
+        $encryptData = fnEncrypt($data, KEY);
+
+        if (DEBUG) {
+            echo 'Resource:';
+            var_dump($data);
+            echo 'Encrypt: ';
+            var_dump($encryptData);
+        }
+
+        $ret = $this->_curlAPost($url, ['v' => $encryptData]);
+        return $ret;
+    }
+
     /**
      * binding product key
      *
@@ -606,5 +634,26 @@ class UserModel extends API
         $url = API_URL . '?m=Permissions&a=checkPermission';
         return $this->_curlPost($url, $data, 'checkPermission');
     }
+
+    /**
+     * check ird permission
+     *
+     * @param array $pplist
+     * @param $pdt_id
+     * @return bool
+     */
+    private function __checkIRDPermission(array $pplist, $pdt_id)
+    {
+        $stat = false;
+        // check ivt
+        foreach ($this->irdUserInfo['pplist'] as $p) {
+            if ($p['ppname'] == 'ivt' and ($pdt_id == 45 or $pdt_id == 18 or $pdt_id == 19)) {
+                $stat = true;
+            }
+        }
+
+        return $stat;
+    }
+
 
 }
