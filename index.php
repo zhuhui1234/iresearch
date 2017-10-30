@@ -5,4 +5,3 @@ $controller = $_request->get('m',$file_name);
 $action = $_request->get('a','index');
 //验证是否登录-11
 Controller::instance($controller)->{$action}();
-?>
