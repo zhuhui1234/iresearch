@@ -231,6 +231,17 @@ class IndexController extends Controller
     }
 
 
+    public function mst()
+    {
+
+        $data = array(
+            'url' => 'http://180.76.182.158:8080/mst/?token=' . $this->userInfo['token']
+        );
+
+        header("Location:" . $data['url']);
+    }
+
+
     /**
      * ir cloud
      */
