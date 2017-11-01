@@ -26,23 +26,6 @@ class IndexController extends Controller
      */
     public function home()
     {
-//        $userInfo = Session::instance()->get('userInfo');
-//        $data['token'] = $userInfo['token'];
-//        $userIndustry = Model::instance('Industry')->getUserIndustry($data);
-//        $data = array(
-////            "YH" => YH_LOGIN,
-//            'loginStatus' => $this->loginStatus,
-//            'userInfo' => $this->userInfo,
-//            'token' => $this->userInfo['token'],
-////            'u_account' => $this->userInfo['u_account'],
-//            'title' => WEBSITE_TITLE,
-//        );
-//        if (empty(trim($userInfo['productKey']))) {
-//            $data['irdStatus'] = 1;
-//        } else {
-//            $data['irdStatus'] = 0;
-//        }
-//        View::instance('index/index.tpl')->show($data);
         $this->index();
     }
 
@@ -163,23 +146,8 @@ class IndexController extends Controller
      */
     public function iCloud()
     {
-        $userModel = Model::instance('user');
-        $menu = json_decode($userModel->showMenu(), true);
-        $menu = $menu['data']['dataList'];
-        $menu = fillMenu($menu);
 
-        $data = array(
-            'token' => $this->userInfo['token'],
-            'userID' => $this->userInfo['userID'],
-            'role' => $this->userInfo['permissions'],
-            'title' => WEBSITE_TITLE,
-            'menu' => $menu,
-            'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => 'http://ircdemo.iresearchdata.cn/irbase/check/?token=' . $this->userInfo['token']
-        );
-
-        header("Location:" . $data['url']);
+        header("Location:" . 'http://ircdemo.iresearchdata.cn/irbase/check/?token=' . $this->userInfo['token']);
     }
 
     /**
@@ -187,23 +155,8 @@ class IndexController extends Controller
      */
     public function iAppCheck()
     {
-        $userModel = Model::instance('user');
-        $menu = json_decode($userModel->showMenu(), true);
-        $menu = $menu['data']['dataList'];
-        $menu = fillMenu($menu);
 
-        $data = array(
-            'token' => $this->userInfo['token'],
-            'userID' => $this->userInfo['userID'],
-            'role' => $this->userInfo['permissions'],
-            'title' => WEBSITE_TITLE,
-            'menu' => $menu,
-            'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => 'http://ircdemo.iresearchdata.cn/ircloud-app-check/check?token=' . $this->userInfo['token']
-        );
-
-        header("Location:" . $data['url']);
+        header("Location:" . 'http://ircdemo.iresearchdata.cn/ircloud-app-check/check?token=' . $this->userInfo['token']);
     }
 
     /**
@@ -211,23 +164,7 @@ class IndexController extends Controller
      */
     public function xAdt()
     {
-        $userModel = Model::instance('user');
-        $menu = json_decode($userModel->showMenu(), true);
-        $menu = $menu['data']['dataList'];
-        $menu = fillMenu($menu);
-
-        $data = array(
-            'token' => $this->userInfo['token'],
-            'userID' => $this->userInfo['userID'],
-            'role' => $this->userInfo['permissions'],
-            'title' => WEBSITE_TITLE,
-            'menu' => $menu,
-            'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => 'http://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token']
-        );
-
-        header("Location:" . $data['url']);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token']);
     }
 
 
@@ -247,23 +184,7 @@ class IndexController extends Controller
      */
     public function iECTracker()
     {
-        $userModel = Model::instance('user');
-        $menu = json_decode($userModel->showMenu(), true);
-        $menu = $menu['data']['dataList'];
-        $menu = fillMenu($menu);
-
-        $data = array(
-            'token' => $this->userInfo['token'],
-            'userID' => $this->userInfo['userID'],
-            'role' => $this->userInfo['permissions'],
-            'title' => WEBSITE_TITLE,
-            'menu' => $menu,
-            'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => 'http://ect.itracker.cn/nloginv2/?token=' . $this->userInfo['token']
-        );
-//        echo $data['url'];
-        header("Location:" . $data['url']);
+        header("Location:" . 'http://ect.itracker.cn/nloginv2/?token=' . $this->userInfo['token']);
     }
 
     /**
@@ -407,20 +328,12 @@ class IndexController extends Controller
 
     public function ottMonitorApp()
     {
-        $userModel = Model::instance('user');
-        $menu = json_decode($userModel->showMenu(), true);
-        $menu = $menu['data']['dataList'];
-        $menu = fillMenu($menu);
+
 
         $data = array(
-            'token' => $this->userInfo['token'],
-            'userID' => $this->userInfo['userID'],
-            'role' => $this->userInfo['permissions'],
-            'title' => WEBSITE_TITLE,
-            'menu' => $menu,
-            'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
-            'url' => YH_REPORT71 . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B908&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=19'
+
+            'url' => YH_REPORT71 . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B908&token=' . $this->userInfo['token'] .
+                '&userID=' . $this->userInfo['userID'] . '&pdt_id=19'
         );
         //'url' => YH_REPORT.'&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B663&token=' . $this->userInfo['token'].'&userID='.$this->userInfo['userID'].'&pdt_id=19'
         //'url' => YH_REPORT71.'&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B908&token=' . $this->userInfo['token'].'&userID='.$this->userInfo['userID'].'&pdt_id=19'
@@ -433,18 +346,9 @@ class IndexController extends Controller
      */
     public function iut()
     {
-        $userModel = Model::instance('user');
-        $menu = json_decode($userModel->showMenu(), true);
-        $menu = $menu['data']['dataList'];
-        $menu = fillMenu($menu);
+
         $data = array(
-            'token' => $this->userInfo['token'],
-            'userID' => $this->userInfo['userID'],
-            'role' => $this->userInfo['permissions'],
-            'title' => WEBSITE_TITLE,
-            'menu' => $menu,
-            'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+
             'url' => YH_REPORT71 . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B906&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=12'
         );
         //'url' => YH_REPORT . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B900&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=12'
@@ -458,18 +362,8 @@ class IndexController extends Controller
      */
     public function mvt()
     {
-        $userModel = Model::instance('user');
-        $menu = json_decode($userModel->showMenu(), true);
-        $menu = $menu['data']['dataList'];
-        $menu = fillMenu($menu);
+
         $data = array(
-            'token' => $this->userInfo['token'],
-            'userID' => $this->userInfo['userID'],
-            'role' => $this->userInfo['permissions'],
-            'title' => WEBSITE_TITLE,
-            'menu' => $menu,
-            'titleMenu' => $menu[1]['subMenu'],
-            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
             'url' => YH_REPORT71 . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B902&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=18'
         );
         //'url' => YH_REPORT.'&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B616&token=' . $this->userInfo['token'].'&userID='.$this->userInfo['userID'].'&pdt_id=18'
@@ -766,7 +660,8 @@ class IndexController extends Controller
             case 'mvt':
                 $mvt = $check(18);
                 if ($mvt == 'ok') {
-                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B905&&token=' . $userInfo['token'] . '&pdt_id=18&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
+                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B905&&token=' .
+                        $userInfo['token'] . '&pdt_id=18&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
                 } else {
                     return $mvt;
                 }
@@ -774,7 +669,8 @@ class IndexController extends Controller
             case 'ovt':
                 $ovt = $check(19);
                 if ($ovt == 'ok') {
-                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B909&token=' . $userInfo['token'] . '&pdt_id=19&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
+                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B909&token=' .
+                        $userInfo['token'] . '&pdt_id=19&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
                 } else {
                     return $ovt;
                 }

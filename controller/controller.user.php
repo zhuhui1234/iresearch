@@ -59,6 +59,7 @@ class UserController extends Controller
     public function test()
     {
         $guid = $this->request()->get('guid');
+        var_dump(Session::instance()->get('iResearchDataUserInfo'));
         var_dump(json_decode($this->model->getIRDataAccount($guid), true));
 
     }
