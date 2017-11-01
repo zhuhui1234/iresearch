@@ -28,7 +28,7 @@ class UserController extends Controller
             $this->loginStatus = FALSE;
 //            $this->userInfo['token'] = $this->userInfo['token'];
             if (empty($this->userInfo['u_head'])) {
-                $this->userInfo['headImg'] = 'dev/img/user-head.png';
+                $this->userInfo['headImg'] = null;
             } else {
                 $this->userInfo['headImg'] = IMG_URL . $this->userInfo['headImg'];
             }
@@ -618,6 +618,60 @@ class UserController extends Controller
     }
 
     /**
+     * setup my info
+     */
+    public function setMyInfo()
+    {
+        $updateUserInfo = [];
+        $getData = json_decode(file_get_contents('php://input'), true);
+
+        if (!empty($getData['uname'])) {
+            $uname = $getData['uname'];
+        }
+
+        if (!empty($getData['position'])) {
+            $position = $getData['position'];
+        }
+
+        if (!empty($getData['companyEmail'])) {
+            $companyEmail = $getData['companyEmail'];
+        }
+
+        if (!empty($getData['headImg'])) {
+            $headImg = $getData['headImg'];
+        }
+
+        if (!empty($headImg)) {
+//            $serviceModel = Model::instance('Service');
+//            $imgUrl = $serviceModel->uploadImage($this->userInfo['u_token'], toBase64(UPLOAD_PATH . trim($getData['headImg'], 'uploads')), 'png');
+//            $imgData = json_decode($imgUrl, true);
+            $updateUserInfo['headImg'] = toBase64(UPLOAD_PATH . trim($headImg, 'uploads'));
+        }
+
+        if (!empty($uname) || !empty($companyEmail) || !empty($position) || !empty($headImg)) {
+            $updateUserInfo['TOKEN'] = $this->userInfo['token'];
+            $updateUserInfo['userID'] = $this->userInfo['userID'];
+            $ret = json_decode($this->model->setUserInfo($updateUserInfo), true);
+
+
+            if ($ret['resCode'] == '000000') {
+                $userinfo = json_decode($this->getUserInfo(), true);
+                @ob_clean();
+                $this->userInfo['u_head'] = $userinfo['data']['headImg'];
+                if (!empty($uname)) {
+                    $this->userInfo['uname'] = $userinfo['data']['uname'];
+                }
+//
+                Session::instance()->set('userInfo', $this->userInfo);
+
+            } else {
+//                header("Location: ?m=user&a=fail");
+            }
+            echo json_encode($ret);
+        }
+    }
+
+    /**
      * 用户信息
      */
     public function getUserInfo()
@@ -683,9 +737,9 @@ class UserController extends Controller
     {
         $this->__json();
         if (empty($this->userInfo)) {
-            echo json_encode(['resCode' => -1,'resMsg' => '用户没有登入']);
-        }else{
-            echo json_encode(['data'=>$this->userInfo]);
+            echo json_encode(['resCode' => '000001', 'resMsg' => '用户没有登入']);
+        } else {
+            _SUCCESS('000000', 'ok', $this->userInfo);
         }
     }
 
