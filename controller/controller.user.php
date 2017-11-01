@@ -113,7 +113,7 @@ class UserController extends Controller
                     'pdt_id' => $pdt_id,
                     'userID' => $this->userInfo['userID']
                 ]), true);
-                write_to_log(json_encode($getPermission),'_premission');
+                write_to_log(json_encode($getPermission), '_premission');
 
 //                if ($irdStatus) {
 //                    // ird login is ok
@@ -672,7 +672,21 @@ class UserController extends Controller
         }
         echo $this->request()->get('callback') . '(' . json_encode(['code' => $state, 'data' => $menu, 'userMenu' => $m]) . ')';
 
+    }
 
+
+    /**
+     * get my info
+     *
+     */
+    public function getMyInfo()
+    {
+        $this->__json();
+        if (empty($this->userInfo)) {
+            echo json_encode(['resCode' => -1,'resMsg' => '用户没有登入']);
+        }else{
+            echo json_encode(['data'=>$this->userInfo]);
+        }
     }
 
     ######################################################################################
