@@ -823,6 +823,47 @@ function fnDecrypt($sValue, $sSecretKey)
     );
 }
 
+function _SUCCESS($resCode = '000000', $resMsg = '处理成功', $data = '')
+{
+    if (!DEBUG) {
+        @ob_clean();
+    }
+
+    $arr = array(
+        'resTime' => time() . '',
+        'resCode' => $resCode,
+        'resMsg' => $resMsg,
+        'data' => $data,
+    );
+
+    //写日志
+    $ret = json_encode($arr, JSON_UNESCAPED_UNICODE);
+    write_to_log(' RESPONSE SUCCESS ' . $ret, '_conapi');
+    header('Content-type: application/json;charset=utf-8');
+    header('Content-Encoding: utf-8');
+    echo $ret;
+    die;
+}
+
+//返回错误信息
+function _ERROR($resCode = '999999', $resMsg = '处理失败', $data = '')
+{
+    $arr = array(
+        'resTime' => time() . '',
+        'resCode' => $resCode,
+        'resMsg' => $resMsg,
+        'data' => empty($data) ? [] : $data
+    );
+    if (!DEBUG) {
+        @ob_clean();
+    }
+    //写日志
+    $ret = json_encode($arr, JSON_UNESCAPED_UNICODE);
+    write_to_log(' RESPONSE ERROR' . $ret, '_conapi');
+    echo $ret;
+    die;
+}
+
 /**
  * fill menu
  * @param $menu
