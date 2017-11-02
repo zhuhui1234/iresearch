@@ -23,10 +23,10 @@ class LicenceController extends Controller
             ]),trur);
             $this->userDetail = $this->userDetail['data'];
             if($this->userDetail['permissions'] != 2){
-                echo json_encode(['resCode' => '000001', 'resMsg' =>'权限不足'],JSON_UNESCAPED_UNICODE);
+                _ERROR('000001','权限不足');
             }
         } else {
-            echo json_encode(['resCode' => '000002', 'resMsg' =>'登陆过期'],JSON_UNESCAPED_UNICODE);
+            _ERROR('000002','登陆过期');
         }
     }
 
