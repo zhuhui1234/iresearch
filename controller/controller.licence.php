@@ -17,7 +17,7 @@ class LicenceController extends Controller
         $this->model = Model::instance('licence');
         $this->userInfo = Session::instance()->get('userInfo');
         if (!empty($this->userInfo)) {
-            $this->userDetail = json_decode($this->model->getUserInfo([
+            $this->userDetail = json_decode(Model::instance('user')->getUserInfo([
                 'token' => $this->userInfo['token'],
                 'userID' => $this->userInfo['userID']
             ]),trur);
