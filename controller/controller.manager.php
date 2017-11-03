@@ -39,8 +39,6 @@ class ManagerController extends Controller
             _ERROR('000001', '缺少验证码');
         }
 
-
-
         $this->__json();
         echo $this->model->addMyEmployee($data);
 
