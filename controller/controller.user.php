@@ -625,20 +625,24 @@ class UserController extends Controller
         $updateUserInfo = [];
         $getData = json_decode(file_get_contents('php://input'), true);
 
-        if (!empty($getData['uname'])) {
-            $uname = $getData['uname'];
-        }
+//        if (!empty($getData['uname'])) {
+//            $updateUserInfo['uname'] = $getData['uname'];
+//        }
 
         if (!empty($getData['position'])) {
-            $position = $getData['position'];
+            $updateUserInfo['position'] = $getData['position'];
         }
 
-        if (!empty($getData['u_mail'])) {
-            $u_mail = $getData['u_mail'];
-        }
+//        if (!empty($getData['companyEmail'])) {
+//            $updateUserInfo['u_mail'] = $getData['companyEmail'];
+//        }
 
         if (!empty($getData['headImg'])) {
             $headImg = $getData['headImg'];
+        }
+
+        if (!empty($getData['department'])) {
+            $updateUserInfo['department'] = $getData['department'];
         }
 
         if (!empty($headImg)) {
