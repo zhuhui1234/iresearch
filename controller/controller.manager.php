@@ -29,7 +29,8 @@ class ManagerController extends Controller
     {
         $data = json_decode(file_get_contents('php://input'), true);
         $data['cpy_id'] = $this->userInfo['companyID'];
-
+        $data['token'] = $this->userInfo['token'];
+        $data['userID'] = $this->userInfo['userID'];
         if (empty($data['mobile'])) {
             _ERROR('000001', '没有手机号');
         }
@@ -37,6 +38,8 @@ class ManagerController extends Controller
         if (empty($data['mobile_key'])) {
             _ERROR('000001', '缺少验证码');
         }
+
+
 
         $this->__json();
         echo $this->model->addMyEmployee($data);
