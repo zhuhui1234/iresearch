@@ -139,6 +139,9 @@ class ServiceController extends Controller
     public function cropAvatar()
     {
         $data = $this->request()->requestAll();
+
+        write_to_log(']]]'.json_encode($data),'_avatar');
+        write_to_log('>>'.json_encode($_FILES),'_avatar');
         $crop = new CropAvatar(
             isset($data['avatar_src']) ? $data['avatar_src'] : null,
             isset($data['avatar_data']) ? $data['avatar_data'] : null,
