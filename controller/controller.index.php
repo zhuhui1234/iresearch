@@ -453,6 +453,14 @@ class IndexController extends Controller
         header("Location:" . $url);
     }
 
+    public function bReport()
+    {
+        $guid = $this->request()->get('guid');
+        $url = YH_REPORT37 . '&guid=' . $guid . '&token=' . $this->userInfo['token'] .
+            '&userID=' . $this->userInfo['userID'] . '&pdt_id=13';
+        header("Location:" . $url);
+    }
+
     /**
      * demo
      */
