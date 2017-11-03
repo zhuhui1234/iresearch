@@ -47,8 +47,8 @@ class ManagerController extends Controller
     public function removeEmployee()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-	     $data['token'] = $this->userInfo['token'];
         $data['userID'] = $this->userInfo['userID'];
+        $data['token'] = $this->userInfo['token'];
         $this->__json();
         $data['lic_author_uid'] = $this->userInfo['userID'];
         echo $this->model->removeEmployee($data);
