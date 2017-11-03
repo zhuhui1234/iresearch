@@ -30,7 +30,7 @@ class UserController extends Controller
             if (empty($this->userInfo['u_head'])) {
                 $this->userInfo['headImg'] = null;
             } else {
-                $this->userInfo['headImg'] = IMG_URL . $this->userInfo['headImg'];
+                $this->userInfo['headImg'] = toBase64(IMG_URL . $this->userInfo['headImg']);
             }
         } else {
             $this->loginStatus = TRUE;
@@ -666,8 +666,11 @@ class UserController extends Controller
 
             } else {
 //                header("Location: ?m=user&a=fail");
+
             }
             echo json_encode($ret);
+        }else{
+
         }
     }
 
@@ -736,11 +739,37 @@ class UserController extends Controller
     public function getMyInfo()
     {
         $this->__json();
-        if (empty($this->userInfo)) {
-            echo json_encode(['resCode' => '000001', 'resMsg' => '用户没有登入']);
-        } else {
-            _SUCCESS('000000', 'ok', $this->userInfo);
+        $data['token'] = $this->userInfo['token'];
+        $data = $this->userDetail;
+        $data['loginStatus'] = $this->loginStatus;
+        $userInfo = json_decode($this->model->getMyInfo(), true);
+        $userInfo = $userInfo['data'];
+        $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
+
+        if ($userInfo['headImg'] != 'upload/head/') {
+            $userInfo['headImg'] = IMG_URL . $userInfo['headImg'];
         }
+
+        if (!empty($userInfo['mobile'])) {
+            _SUCCESS('000000', 'ok',
+                [
+                    'u_mail' => $userInfo['companyEmail'],
+                    'company' => $userInfo['company'],
+                    'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
+                    'expireDate' => substr($this->userInfo['validity'], 0, 10),
+                    'avatar' => $userInfo['headImg'],
+                    'permissions' => $userInfo['permissions'],
+                    'uname' => $userInfo['uname'],
+                    'position' => $userInfo['position'],
+                    'wechat' => $bindingUserInfo['data']['weixin']['type'],
+                    'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
+                ]
+            );
+        }else{
+            _ERROR('0000001', '获取信息失败');
+        }
+
+
     }
 
     ######################################################################################
