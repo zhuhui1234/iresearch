@@ -48,4 +48,10 @@ class ManagerModel extends API
         return $ret;
     }
 
+    public function getProductList($data)
+    {
+        $url = API_URL . '?m=user&a=getProductList';
+        $ret = $this->_curlPost($url, $data, 'getProductList');
+        return $ret;
+    }
 }
