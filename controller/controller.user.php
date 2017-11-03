@@ -633,8 +633,8 @@ class UserController extends Controller
             $position = $getData['position'];
         }
 
-        if (!empty($getData['companyEmail'])) {
-            $companyEmail = $getData['companyEmail'];
+        if (!empty($getData['u_mail'])) {
+            $u_mail = $getData['u_mail'];
         }
 
         if (!empty($getData['headImg'])) {
@@ -645,10 +645,10 @@ class UserController extends Controller
 //            $serviceModel = Model::instance('Service');
 //            $imgUrl = $serviceModel->uploadImage($this->userInfo['u_token'], toBase64(UPLOAD_PATH . trim($getData['headImg'], 'uploads')), 'png');
 //            $imgData = json_decode($imgUrl, true);
-            $updateUserInfo['headImg'] = toBase64(UPLOAD_PATH . trim($headImg, 'uploads'));
+            $updateUserInfo['headImg'] = $this->request()->post('headImg');;
         }
 
-        if (!empty($uname) || !empty($companyEmail) || !empty($position) || !empty($headImg)) {
+        if (!empty($uname) || !empty($u_mail) || !empty($position) || !empty($headImg)) {
             $updateUserInfo['TOKEN'] = $this->userInfo['token'];
             $updateUserInfo['userID'] = $this->userInfo['userID'];
             $ret = json_decode($this->model->setUserInfo($updateUserInfo), true);
@@ -668,9 +668,9 @@ class UserController extends Controller
 //                header("Location: ?m=user&a=fail");
 
             }
-            echo json_encode($ret);
+            _SUCCESS('000000', '已更新',$this->userInfo);
         }else{
-
+            _SUCCESS('0000000','没有更新的内容');
         }
     }
 
@@ -743,6 +743,7 @@ class UserController extends Controller
         $data = $this->userDetail;
         $data['loginStatus'] = $this->loginStatus;
         $userInfo = json_decode($this->model->getMyInfo(), true);
+
         $userInfo = $userInfo['data'];
         $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
 
@@ -757,6 +758,7 @@ class UserController extends Controller
                     'company' => $userInfo['company'],
                     'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
                     'expireDate' => substr($this->userInfo['validity'], 0, 10),
+                    'department' => $userInfo['department'],
                     'avatar' => $userInfo['headImg'],
                     'permissions' => $userInfo['permissions'],
                     'uname' => $userInfo['uname'],
