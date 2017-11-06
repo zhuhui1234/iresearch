@@ -14,6 +14,7 @@ class CropAvatar
     private $type;
     private $extension;
     private $msg;
+    private $origin_file;
 
     function __construct($src, $data, $file)
     {
@@ -56,6 +57,7 @@ class CropAvatar
 //                $src = 'img/' . date('YmdHis') . '.original' . $extension;
                 $src = UPLOAD_PATH . date('YmdHis') . '.original' . $extension;
 
+
                 if ($type == IMAGETYPE_GIF || $type == IMAGETYPE_JPEG || $type == IMAGETYPE_PNG) {
 
                     if (file_exists($src)) {
@@ -69,6 +71,36 @@ class CropAvatar
                         $this->type = $type;
                         $this->extension = $extension;
                         $this->setDst();
+
+                        //copy original
+                        switch ($this->type) {
+                            case IMAGETYPE_GIF:
+                                $src_img = imagecreatefromgif($src);
+                                break;
+
+                            case IMAGETYPE_JPEG:
+                                $src_img = imagecreatefromjpeg($src);
+                                break;
+
+                            case IMAGETYPE_PNG:
+                                $src_img = imagecreatefrompng($src);
+                                break;
+                        }
+                        $imgSize = getimagesize($src);
+                        $pw = $imgSize[0];
+                        $ph = $imgSize[1];
+                        $dstImage = imagecreatetruecolor($pw, $ph);
+                        imagecolorallocate($dstImage, 255, 255, 255, 255);
+                        imagecopyresampled($dstImage, $src_img, 0, 0, 0, 0, $pw, $ph, $pw, $ph);
+                        $pngFile = 'uploads/' . date('YmdHis') . '_org.png';
+                        if (!imagepng($dstImage, $pngFile)) {
+                            $this->msg = "Failed to save the origin PNG image file";
+                            $this->origin_file = null;
+                        } else {
+                            $this->origin_file = $pngFile;
+                        }
+                        imagedestroy($src_img);
+
                     } else {
                         $this->msg = 'Failed to save file';
                     }
@@ -85,7 +117,7 @@ class CropAvatar
 
     private function setDst()
     {
-        $this->dst = 'uploads/'. date('YmdHis') . '.png';
+        $this->dst = 'uploads/' . date('YmdHis') . '.png';
     }
 
     private function crop($src, $dst, $data)
@@ -217,7 +249,7 @@ class CropAvatar
 
     public function getResult()
     {
-        return !empty($this->data) ? $this->dst : $this->src;
+        return !empty($this->data) ? $this->dst : $this->origin_file;
     }
 
     public function getMsg()

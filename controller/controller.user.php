@@ -672,9 +672,9 @@ class UserController extends Controller
 //                header("Location: ?m=user&a=fail");
 
             }
-            _SUCCESS('000000', '已更新',$this->userInfo);
-        }else{
-            _SUCCESS('0000000','没有更新的内容');
+            _SUCCESS('000000', '已更新', $this->userInfo);
+        } else {
+            _SUCCESS('0000000', '没有更新的内容');
         }
     }
 
@@ -751,9 +751,9 @@ class UserController extends Controller
         $userInfo = $userInfo['data'];
         $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
 
-        if ($userInfo['headImg'] != 'upload/head/') {
-            $userInfo['headImg'] = IMG_URL . $userInfo['headImg'];
-        }
+//        if ($userInfo['headImg'] != 'upload/head/') {
+//            $userInfo['headImg'] = IMG_URL . $userInfo['headImg'];
+//        }
 
         if (!empty($userInfo['mobile'])) {
             _SUCCESS('000000', 'ok',
@@ -763,7 +763,8 @@ class UserController extends Controller
                     'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
                     'expireDate' => substr($this->userInfo['validity'], 0, 10),
                     'department' => $userInfo['department'],
-                    'avatar' => $userInfo['headImg'],
+                    'avatar' => API_URL . $userInfo['headImg'],
+                    'avatar_base64' => toBase64(API_URL . $userInfo['headImg']),
                     'permissions' => $userInfo['permissions'],
                     'uname' => $userInfo['uname'],
                     'position' => $userInfo['position'],
@@ -771,8 +772,40 @@ class UserController extends Controller
                     'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
                 ]
             );
-        }else{
+        } else {
             _ERROR('0000001', '获取信息失败');
+        }
+
+
+    }
+
+    public function upAvatar()
+    {
+        $data = $this->request()->requestAll();
+
+        write_to_log(']]]' . json_encode($data), '_avatar');
+        write_to_log('>>' . json_encode($_FILES), '_avatar');
+        $crop = new CropAvatar(
+            isset($data['avatar_src']) ? $data['avatar_src'] : null,
+            isset($data['avatar_data']) ? $data['avatar_data'] : null,
+            isset($_FILES['avatar_file']) ? $_FILES['avatar_file'] : null
+        );
+
+
+        if (empty($crop->getMsg())) {
+
+
+//            $this->__json();
+            $userInfo = [
+                'userID' => $this->userInfo['userID'],
+                'token' => $this->userInfo['token']
+            ];
+
+            $userInfo['headImg'] = toBase64(UPLOAD_PATH . trim($crop->getResult(), 'uploads'));
+
+            echo $this->model->setUserInfo($userInfo);
+        } else {
+            _ERROR('0000001', $crop->getMsg());
         }
 
 

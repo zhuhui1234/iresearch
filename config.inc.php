@@ -46,7 +46,8 @@ define('FORGOTPWD_MAILADDR', 'irv@iresearch.com.cn');
 define('API_URL', 'http://localhost/idata_deskapi/');
 //define('API_URL', 'http://42.159.231.97/idata_deskapi3/');
 //define('IMG_URL', 'http://203.156.255.168/iview_deskapi/');
-define('IMG_URL', 'http://localhost/idata_deskapi/');
+define('IMG_URL', 'http://localhost/idata_deskapi_new/');
+define('IMG_URL_LOAD', 'http://localhost/idata_deskapi_new/');
 define('API_URL_REPORT', 'http://10.10.21.163/iReport/');
 define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
 //define('KOL_API', 'http://kolweb.simplybrand.com/urlRedirect.ashx');
@@ -150,6 +151,7 @@ if (!isLoginState()
     AND $_GET['a'] != 'classicSys'
     AND $_GET['a'] != 'checkMail'
     AND $_GET['a'] != 'ircJump'
+    AND $_GET['a'] != 'test'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {
