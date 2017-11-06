@@ -751,9 +751,13 @@ class UserController extends Controller
         $userInfo = $userInfo['data'];
         $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
 
-//        if ($userInfo['headImg'] != 'upload/head/') {
-//            $userInfo['headImg'] = IMG_URL . $userInfo['headImg'];
-//        }
+        if ($userInfo['headImg'] == 'upload/head/') {
+            $userInfo['headImg'] = null;
+            $userInfo['headImg_base'] = null;
+        } else {
+            $userInfo['headImg'] = API_URL .  $userInfo['headImg'];
+            $userInfo['headImg_base'] = toBase64( $userInfo['headImg']);
+        }
 
         if (!empty($userInfo['mobile'])) {
             _SUCCESS('000000', 'ok',
@@ -763,8 +767,8 @@ class UserController extends Controller
                     'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
                     'expireDate' => substr($this->userInfo['validity'], 0, 10),
                     'department' => $userInfo['department'],
-                    'avatar' => API_URL . $userInfo['headImg'],
-                    'avatar_base64' => toBase64(API_URL . $userInfo['headImg']),
+                    'avatar' => $userInfo['headImg'],
+                    'avatar_base64' => $userInfo['headImg_base'],
                     'permissions' => $userInfo['permissions'],
                     'uname' => $userInfo['uname'],
                     'position' => $userInfo['position'],
