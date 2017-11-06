@@ -78,4 +78,13 @@ class LicenceController extends Controller
         $data['userID'] = $this->userInfo['userID'];
         echo $this->model->getPointLogByLicenceKey($data);
     }
+
+    public function getUserList()
+    {
+        $data = file_get_contents('php://input');
+        $data = json_decode($data, true);
+        $data['token'] =  $this->userInfo['token'];
+        $data['userID'] = $this->userInfo['userID'];
+        echo $this->model->getUserList($data);
+    }
 }

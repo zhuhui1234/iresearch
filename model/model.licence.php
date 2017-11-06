@@ -35,4 +35,11 @@ class LicenceModel extends API
         $ret = $this->_curlPost($url, $data, 'getPointLogByLicenceKey');
         return $ret;
     }
+
+    public function getUserList($data)
+    {
+        $url = API_URL . '?m=licence&a=getUserList';
+        $ret = $this->_curlPost($url, $data, 'getUserList');
+        return $ret;
+    }
 }
