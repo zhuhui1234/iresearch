@@ -39,7 +39,7 @@ class LicenceController extends Controller
         $data = json_decode($data, true);
         $data['token'] =  $this->userInfo['token'];
         $data['userID'] = $this->userInfo['userID'];
-        $data['companyFullNameID'] = $this->userInfo['compamyID'];
+        $data['companyFullNameID'] = $this->userInfo['companyID'];
         echo $this->model->getLicencesByCompanyFullNameID($data);
     }
 
@@ -77,5 +77,14 @@ class LicenceController extends Controller
         $data['token'] =  $this->userInfo['token'];
         $data['userID'] = $this->userInfo['userID'];
         echo $this->model->getPointLogByLicenceKey($data);
+    }
+
+    public function getUserList()
+    {
+        $data = file_get_contents('php://input');
+        $data = json_decode($data, true);
+        $data['token'] =  $this->userInfo['token'];
+        $data['userID'] = $this->userInfo['userID'];
+        echo $this->model->getUserList($data);
     }
 }

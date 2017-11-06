@@ -90,6 +90,15 @@ class ManagerController extends Controller
         echo json_encode($this->userInfo);
     }
 
+    public function getProductList()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $data['cpy_id'] = $this->userInfo['companyID'];
+        $data['token'] = $this->userInfo['token'];
+        $data['userID'] = $this->userInfo['userID'];
+        $this->__json();
+        echo $this->model->getProductList($data);
+    }
 
     ######################################################################################
     ##################################                     ###############################
@@ -123,6 +132,5 @@ class ManagerController extends Controller
         header('Content-type: application/json;charset=utf-8');
         header('Content-Encoding: utf-8');
     }
-
 
 }
