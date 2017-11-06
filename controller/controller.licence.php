@@ -39,7 +39,7 @@ class LicenceController extends Controller
         $data = json_decode($data, true);
         $data['token'] =  $this->userInfo['token'];
         $data['userID'] = $this->userInfo['userID'];
-        $data['companyFullNameID'] = $this->userInfo['compamyID'];
+        $data['companyFullNameID'] = $this->userInfo['companyID'];
         echo $this->model->getLicencesByCompanyFullNameID($data);
     }
 
