@@ -652,7 +652,7 @@ class UserController extends Controller
             $updateUserInfo['headImg'] = $this->request()->post('headImg');;
         }
 
-        if (!empty($uname) || !empty($u_mail) || !empty($position) || !empty($headImg)) {
+        if (!empty($getData['position']) || !empty($updateUserInfo['department']) || !empty($headImg)) {
             $updateUserInfo['TOKEN'] = $this->userInfo['token'];
             $updateUserInfo['userID'] = $this->userInfo['userID'];
             $ret = json_decode($this->model->setUserInfo($updateUserInfo), true);
@@ -799,7 +799,7 @@ class UserController extends Controller
         if (empty($crop->getMsg())) {
 
 
-//            $this->__json();
+            $this->__json();
             $userInfo = [
                 'userID' => $this->userInfo['userID'],
                 'token' => $this->userInfo['token']
