@@ -768,7 +768,7 @@ class UserController extends Controller
                     'expireDate' => substr($this->userInfo['validity'], 0, 10),
                     'department' => $userInfo['department'],
                     'avatar' => $userInfo['headImg'],
-                    'avatar_base64' => $userInfo['headImg_base'],
+                    'avatar_base64' => 'data:image/png;base64,'.$userInfo['headImg_base'],
                     'permissions' => $userInfo['permissions'],
                     'uname' => $userInfo['uname'],
                     'position' => $userInfo['position'],
