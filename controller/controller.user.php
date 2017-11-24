@@ -713,13 +713,14 @@ class UserController extends Controller
             $m = [
                 'userInfo' => [
                     'name' => '用户信息',
-                    'uri' => urlencode(IDATA_URL . '?m=user&a=editUserInfo')
+//                    'uri' => urlencode(IDATA_URL . '?m=user&a=editUserInfo')
+                    'uri' => urlencode('//irv.iresearch.com.cn/user-center/')
                 ],
                 'logOut' => [
                     'name' => '登出',
                     'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
                 ],
-                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/')]
+                'home' => ['name' => '首页', 'uri' => urlencode('//data.iresearch.com.cn/')]
             ];
         } else {
             $state = '20002';
@@ -755,8 +756,8 @@ class UserController extends Controller
             $userInfo['headImg'] = null;
             $userInfo['headImg_base'] = null;
         } else {
-            $userInfo['headImg'] = API_URL .  $userInfo['headImg'];
-            $userInfo['headImg_base'] = toBase64( $userInfo['headImg']);
+            $userInfo['headImg'] = API_URL . $userInfo['headImg'];
+            $userInfo['headImg_base'] = 'data:image/png;base64,' . toBase64($userInfo['headImg']);
         }
 
         if (!empty($userInfo['mobile'])) {
@@ -768,7 +769,7 @@ class UserController extends Controller
                     'expireDate' => substr($this->userInfo['validity'], 0, 10),
                     'department' => $userInfo['department'],
                     'avatar' => $userInfo['headImg'],
-                    'avatar_base64' => 'data:image/png;base64,'.$userInfo['headImg_base'],
+                    'avatar_base64' => $userInfo['headImg_base'],
                     'permissions' => $userInfo['permissions'],
                     'uname' => $userInfo['uname'],
                     'position' => $userInfo['position'],
