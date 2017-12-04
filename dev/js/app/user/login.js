@@ -67,9 +67,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
     //action
     $(function () {
+        window.localStorage.clear();
         $("#verification").getSms();
-
-
         $("#login_action").submit(function (e) {
             e.preventDefault();
             if (checkLoginFormat()) {
@@ -78,6 +77,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 // var u = new URL(window.location.href)
                 // var ppName = u.searchParams.get('ppname');
                 var ppName = Helper.getQuery('ppname');
+                var cb = Helper.getQuery('cb');
 
                 Helper.post('login', {
                     mobile: $("#mobile").val(),
@@ -104,8 +104,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                         // } else {
                         //     window.location.href = '?m=index&a=index';
                         // }
-
-                        if (typeof pdtID == 'string' || typeof ppName == 'string') {
+                        console.log(cb)
+                        if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
 
                             if (pdtID !== null) {
                                 if (pdtID.length > 0) {
@@ -121,11 +121,17 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                     window.location.href = '?m=index&a=index';
                                     // console.log('no ppName');
                                 }
+                            } else if (cb !== null){
+                                if (cb == 'usercenter') {
+                                    window.location.href = 'http://irv.iresearch.com.cn/user-center/check'
+                                }else{
+                                    console.log(cb);
+                                }
                             }
 
                         } else {
                             // console.log('no all');
-                            window.location.href = '?m=index&a=index';
+                            // window.location.href = '?m=index&a=index';
                         }
                     } else {
                         if (ret.resCode == -1) {
