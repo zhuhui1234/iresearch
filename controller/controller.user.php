@@ -99,12 +99,12 @@ class UserController extends Controller
                 write_to_log($guid . '   fails', '_irdLogin');
                 http_response_code(500);
                 echo '<script>
-   if (confirm("GUID失效,请重新登录iResearchData")) {    
-        window.location.href="about:blank";
-	window.close(); 
-    } else {    
-                window.close();    
-    }  </script>';
+                       if (confirm("GUID失效,请重新登录iResearchData")) {    
+                            window.location.href="about:blank";
+                            window.close(); 
+                        } else {    
+                                    window.close();    
+                        }  </script>';
 
             }
         }
@@ -129,9 +129,32 @@ class UserController extends Controller
 //
 //                    }
 //                }
+                if ($pdt_id == '1') {
+                    header('Location: http://data.iresearch.com.cn/iRView.shtml');
+                    exit();
+                }
 
                 if ($getPermission['resCode'] == '20000') {
-                    header('Location: ' . $getPermission['data']['data']['pdt_url']);
+                    if ($from == 'ird') {
+                        switch ($pdt_id) {
+                            case '42':
+                                header('Location: ' . ADT_URL);
+                                break;
+                            case '47':
+                                header('Location:' . VT_URL);
+                                break;
+                            case '48':
+                                header('Location: ' . UT_URL);
+                                break;
+                            default:
+                                header('Location: http://data.iresearch.com.cn/iRView.shtml');
+                                break;
+
+                        }
+                    } else {
+                        header('Location: ' . $getPermission['data']['data']['pdt_url']);
+                    }
+
                 } else {
 
                     if (empty($getPermission['data']['data'])) {
