@@ -131,7 +131,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
                         } else {
                             // console.log('no all');
-                            // window.location.href = '?m=index&a=index';
+                             window.location.href = '?m=index&a=index';
                         }
                     } else {
                         if (ret.resCode == -1) {

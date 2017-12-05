@@ -164,7 +164,7 @@ class IndexController extends Controller
      */
     public function xAdt()
     {
-        header("Location:" . 'http://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token']);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt2/?language=zh-CN&token=' . $this->userInfo['token']);
     }
 
 
