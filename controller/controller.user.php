@@ -97,7 +97,15 @@ class UserController extends Controller
             } else {
                 $irdStatus = '3';
                 write_to_log($guid . '   fails', '_irdLogin');
-                echo 'guid 失效';
+                http_response_code(500);
+                echo '<script>
+   if (confirm("GUID失效,请重新登录iResearchData")) {    
+        window.location.href="about:blank";
+	window.close(); 
+    } else {    
+                window.close();    
+    }  </script>';
+
             }
         }
 
