@@ -745,13 +745,13 @@ class UserController extends Controller
                 'userInfo' => [
                     'name' => '用户信息',
 //                    'uri' => urlencode(IDATA_URL . '?m=user&a=editUserInfo')
-                    'uri' => urlencode('//irv.iresearch.com.cn/user-center/')
+                    'uri' => urlencode('//irv.iresearch.com.cn/user-center/check')
                 ],
                 'logOut' => [
                     'name' => '登出',
                     'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
                 ],
-                'home' => ['name' => '首页', 'uri' => urlencode('//data.iresearch.com.cn/')]
+                'home' => ['name' => '首页', 'uri' => urlencode('//data.iresearch.com.cn/'), 'role'=>$role]
             ];
         } else {
             $state = '20002';
@@ -760,7 +760,7 @@ class UserController extends Controller
                     'name' => '登出',
                     'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
                 ],
-                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/')]
+                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/'),'role'=>$role]
             ];
         }
         echo $this->request()->get('callback') . '(' . json_encode(['code' => $state, 'data' => $menu, 'userMenu' => $m]) . ')';
