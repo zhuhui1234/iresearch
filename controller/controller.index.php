@@ -573,7 +573,9 @@ class IndexController extends Controller
         } else {
             //绑定
             $data['irdStatus'] = 2;
+            $data['adUrl'] = '?m=irdata&a=jumpadt';
         }
+
         View::instance('xvt/ad.tpl')->show($data);
     }
 
@@ -582,10 +584,7 @@ class IndexController extends Controller
      */
     public function test()
     {
-//        $Clear = json_encode(['mail' => 'wanghaiyan@iresearch.com.cn', 'pwd' => '123456']);
-//        $userModel = Model::instance('user');
-//        echo $userModel->getIResearchDataAccount($this->userInfo['productKey']);
-//        pr(Session::instance()->get('userInfo'));
+
     }
 
     /**
