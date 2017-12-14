@@ -367,6 +367,8 @@ class UserModel extends API
         $userInfo = Session::instance()->get('userInfo');
         $data = json_decode($data, true);
         $data['userID'] = $userInfo['userID'];
+        $data['userid'] = $userInfo['userID'];
+        $data['cpy_id'] = $userInfo['companyID'];
         $data['token'] = $userInfo['token'];
         $ret = $this->__bindingProduct($data);
         $tempRet = json_decode($ret, true);
