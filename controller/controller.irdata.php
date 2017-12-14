@@ -8,13 +8,14 @@
  */
 class IRDataController extends Controller
 {
-    private $userModel, $irdUserInfo, $userInfo, $menu;
+    private $userModel, $irdUserInfo, $userInfo, $menu, $guid;
 
     function __construct($classname)
     {
         $this->userModel = Model::instance('User');
         $this->userInfo = Session::instance()->get('userInfo');
-        $this->menu = json_decode($this->userModel->showMenu(),true);
+        $this->menu = json_decode($this->userModel->showMenu(), true);
+        $this->guid = $this->menu['data']['ird_guid'];
         $this->menu = $this->menu['data']['dataList'];
         if (!empty($this->userInfo['productKey'])) {
             if (time() > Session::instance()->get('irdTimeOut') || empty(Session::instance()->get('irdTimeOut'))) {
@@ -26,6 +27,12 @@ class IRDataController extends Controller
 
 
     }
+
+    public function jumpAdt()
+    {
+        header('Location: ' . 'http://madt.irs01.net/ProductSelection.aspx?guid=' . $this->guid);
+    }
+
 
     public function classicSys()
     {
@@ -49,7 +56,7 @@ class IRDataController extends Controller
 
                 //以下代码是解决被禁止第三方cooke下iframe无法登陆
 //            if(strpos($_SERVER["HTTP_USER_AGENT"],"Safari")) {
-                if ($this->request()->get('backType',0)=='0') {
+                if ($this->request()->get('backType', 0) == '0') {
                     $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     $callBack = urlencode($backURL . '&backType=1');
                     $jumpURL = $data['ppurl'] . '&irv_callback=' . $callBack;
@@ -57,7 +64,7 @@ class IRDataController extends Controller
 //                    exit();
 //                    var_dump($this->menu);
 //                    exit();
-                    header("Location:".$jumpURL);
+                    header("Location:" . $jumpURL);
                 }
 //            }
 //            if (DEBUG) {
@@ -65,22 +72,22 @@ class IRDataController extends Controller
 //                var_dump($this->irdUserInfo);
 //            }
 
-            foreach ($this->irdUserInfo['pplist'] as $p) {
-                if ($p['ppname'] == $ppname) {
-                    $data['ppurl'] = $p['ppurl'] . '?guid=' . $this->irdUserInfo['iRGuid'];
-                    $stat = true;
+                foreach ($this->irdUserInfo['pplist'] as $p) {
+                    if ($p['ppname'] == $ppname) {
+                        $data['ppurl'] = $p['ppurl'] . '?guid=' . $this->irdUserInfo['iRGuid'];
+                        $stat = true;
+                    }
                 }
-            }
 
                 if ($stat) {
 
                     View::instance('service/ird.tpl')->show($data);
                 } else {
-                echo("<SCRIPT LANGUAGE=\"JavaScript\">
+                    echo("<SCRIPT LANGUAGE=\"JavaScript\">
             alert(\"你并没有权限访问该模块功能\");
             top.location.href=\"?m=index\";
             </SCRIPT>");
-                $this->errorPage('你并没有权限访问该模块功能');
+                    $this->errorPage('你并没有权限访问该模块功能');
                 }
             } else {
                 echo("<SCRIPT LANGUAGE=\"JavaScript\">
@@ -89,7 +96,7 @@ class IRDataController extends Controller
             </SCRIPT>");
                 $this->errorPage('你并没有权限访问该模块功能');
             }
-        }else{
+        } else {
             View::instance('user/login.tpl')->show([]);
         }
 
@@ -127,9 +134,9 @@ class IRDataController extends Controller
 
             if (count($value['lowerTree']) > 0) {
                 foreach ($value['lowerTree'] as $lowerKey => $lowerCon) {
-                    var_dump($lowerCon);
+//                    var_dump($lowerCon);
 
-                    if ($keyName == $lowerCon['menuName'] AND !empty($lowerCon['curl'] )) {
+                    if ($keyName == $lowerCon['menuName'] AND !empty($lowerCon['curl'])) {
                         $url = $lowerCon['curl'];
                     }
                 }

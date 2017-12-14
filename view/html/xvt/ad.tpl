@@ -215,7 +215,7 @@
     </div>
     <div class="footer">
         <h3 class="tit"><span>联系我们　Contact Us</span></h3>
-        <div class="contact"><span class="ico ico1"></span>400-026-2099　　<span class="ico ico2"></span>ask@iresearch.com.cn</div>
+        <div class="contact"><span class="ico ico1"></span>400-026-2099　<span class="ico ico2"></span>ask@iresearch.com.cn</div>
         <div class="copy">
             2002 - 2017 Copyright© 艾瑞数据 <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000584"><img src="http://www.iresearch.com.cn/images/record_icon.png">沪公网安备 31010402000584号</a>
         </div>
@@ -231,7 +231,7 @@
             icon: 'public/img/ivt@2x.png',
             isOldURL: true,
             url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=42',
-            oldurl: '?m=irdata&a=classicSys&ppname=PC端营销广告市场监测',
+            oldurl: '{adUrl}',
             info: 'AdTracker广告投放监测由艾瑞咨询自主研发，是通过爬虫技术在几百个网站上进行图片广告监测所建立的数据库。该数据库自2001年开始，统计及计算包含门户、垂直、视频、APP等媒体上品牌客户广告投放量及投放预估费用数据，真实反映中国互联网广告市场客观情况。',
             itemA: {
                 title: '互联网公司',
