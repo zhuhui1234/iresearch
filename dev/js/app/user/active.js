@@ -124,22 +124,17 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         $('#setpBtn3').click(function() {
             console.log(cb)
             if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
-
                 if (pdtID !== null) {
                     if (pdtID.length > 0) {
-                        console.log(111);
-                        // window.location.reload();
+                        window.location.reload();
                     } else {
-                        // console.log('no pdtID');
                         window.location.href = '?m=index&a=index';
                     }
                 } else if (ppName !== null) {
                     if (ppName.length > 0) {
-                        console.log(222);
-                        // window.location.reload();
+                        window.location.reload();
                     } else {
                         window.location.href = '?m=index&a=index';
-                        // console.log('no ppName');
                     }
                 } else if (cb !== null){
                     if (cb == 'usercenter') {

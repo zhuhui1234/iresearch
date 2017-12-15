@@ -491,6 +491,7 @@ class UserController extends Controller
 
         $rs = $this->model->login($data);
         $this->__json();
+        var_dump($rs);
         echo $rs;
     }
 
