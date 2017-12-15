@@ -534,6 +534,12 @@ class UserModel extends API
         return $this->_curlPost($url, $data, 'getPoint');
     }
 
+    public function getIRVuserid($data)
+    {
+        $url = API_URL . '?m=user&a=getIRVuserid';
+        return $this->_curlPost($url, $data, 'getIRVuserid');
+    }
+
     ######################################################################################
     ##################################                     ###############################
     #################################   PRIVATE METHODS   ################################
