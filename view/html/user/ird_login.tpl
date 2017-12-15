@@ -43,20 +43,16 @@
             <div class="step-inner">
                 <p style="margin-bottom: 30px; text-indent: 28px">我们将帮助您完成绑定艾瑞数据新版，请确认以下经典版iRD账号信息，如果确认无误，请点击“下一步”。</p>
                 <div class="row" style="margin-bottom: 15px">
-                    <div class="col-xs-3">用户名：</div>
-                    <div class="col-xs-9">Hank</div>
+                    <div class="col-xs-3">用户姓名：</div>
+                    <div class="col-xs-9">{TrueName}</div>
                 </div>
                 <div class="row" style="margin-bottom: 15px">
-                    <div class="col-xs-3">用户名：</div>
-                    <div class="col-xs-9">Hank</div>
+                    <div class="col-xs-3">邮箱：</div>
+                    <div class="col-xs-9">{UserName}</div>
                 </div>
                 <div class="row" style="margin-bottom: 15px">
-                    <div class="col-xs-3">用户名：</div>
-                    <div class="col-xs-9">Hank</div>
-                </div>
-                <div class="row" style="margin-bottom: 30px">
-                    <div class="col-xs-3">用户名：</div>
-                    <div class="col-xs-9">Hank</div>
+                    <div class="col-xs-3">公司：</div>
+                    <div class="col-xs-9">{CompanyName}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -71,7 +67,7 @@
             <!-- <h4>绑定手机</h4> -->
             <div class="step-inner">
                 <p style="margin-bottom: 30px; text-indent: 28px">该手机号是将来用作登录艾瑞数据新版平台的账号，请妥善保存。如您已经开通过艾瑞数据下的艾瑞睿见或艾瑞智云产品的账号，请使用该手机账号进行绑定。我们将为您同步权限信息到新的产品平台上。</p>
-                <form>
+                <form id="login_action" method="POST">
                     <div class="form-group">
                         <span>手机号码</span>
                         <div class="form-right">
@@ -82,7 +78,7 @@
                     <div class="form-group">
                         <span>手机验证码</span>
                         <div class="form-right">
-                            <input type="text" placeholder="请输入手机验证码">
+                            <input type="text" id="vernum" placeholder="请输入手机验证码">
                             <a class="btn btn-warning" id="verification">获取验证码</a>
                         </div>
                     </div>
@@ -90,14 +86,14 @@
                     <div class="form-group">
                         <span>验证码</span>
                         <div class="form-right">
-                            <input type="text" placeholder="请输入验证码">
+                            <input type="text" id="vcode" placeholder="请输入验证码">
                             <div class="code-img">
-                                <img src="./public/img/iresearch.png" alt="">
+                                <img src="?m=service&a=authImg" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="alert alert-danger">验证码不正确</div>
-                    <button class="btn btn-primary btn-block" id="setpBtn2">确 定</button>
+                    <button class="btn btn-primary btn-block" id="setpBtn2" type="submit">确 定</button>
                 </form>
             </div>
         </div>

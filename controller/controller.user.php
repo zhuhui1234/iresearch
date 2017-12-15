@@ -58,9 +58,7 @@ class UserController extends Controller
 
     public function test()
     {
-        $guid = $this->request()->get('guid');
-        var_dump(Session::instance()->get('iResearchDataUserInfo'));
-        var_dump(json_decode($this->model->getIRDataAccount($guid), true));
+        View::instance('user/ird_login.tpl')->show(['UserName' => 123]);
 
     }
 
@@ -174,7 +172,17 @@ class UserController extends Controller
                 }
             } else {
                 //没有登入
-                View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
+                if($from == 'ird' and !empty($guid)){
+                    $uid = ['iUserID' => $irdAccount['iUserID']];
+                    $uid = $this->model->getIRVuserid($uid);
+                    if($uid['resCode'] == '000000'){
+                        View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
+                    }else{
+                        View::instance('user/ird_login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id,'TrueName' =>$irdAccount['TrueName'],'UserName' => $irdAccount['UserName'],'CompanyName' => $irdAccount['CompanyName']]);
+                    }
+                }else{
+                    View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
+                }
             }
         }
     }
