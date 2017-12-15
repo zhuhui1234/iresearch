@@ -74,7 +74,7 @@ class IndexController extends Controller
 //        pr($data);
         View::instance('index/home.tpl')->show($data);
 
-//        header('Location: http://data.iresearch.com.cn/Home.shtml');
+//        header('Location: http://data.iresearch.com.cn/iRView.shtml');
     }
 
     public function irIndex()
@@ -164,7 +164,7 @@ class IndexController extends Controller
      */
     public function xAdt()
     {
-        header("Location:" . 'http://irv.iresearch.com.cn/adt2/?language=zh-CN&token=' . $this->userInfo['token']);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token']);
     }
 
 
