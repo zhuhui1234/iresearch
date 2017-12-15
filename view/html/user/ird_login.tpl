@@ -93,7 +93,7 @@
                         </div>
                     </div>
                     <div class="alert alert-danger">验证码不正确</div>
-                    <button class="btn btn-primary btn-block" id="setpBtn2" type="submit">确 定</button>
+                    <button class="btn btn-primary btn-block"  type="submit">确 定</button>
                 </form>
             </div>
         </div>

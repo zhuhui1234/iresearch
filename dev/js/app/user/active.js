@@ -79,43 +79,13 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 .addClass('active')
         })
 
-
-        // $('#setpBtn2').click(function(e) {
-        //     var phoneVal = $('#mobile').val()
-        //     if (phoneVal.length <= 0) {
-        //         $('.alert:first')
-        //             .fadeIn()
-        //             .text('手机号码不能为空！')
-        //         $('#mobile').focus()
-        //         return false
-        //     } else if (!/^1[34578]\d{9}$/.test(phoneVal)) {
-        //         $('.alert:first')
-        //             .fadeIn()
-        //             .text('手机号码有误，请重填！')
-        //         return false
-        //     } else {
-        //         $('#step2').hide()
-        //         $('#step3').show()
-        //         $('.step-con')
-        //             .children('li')
-        //             .eq(1)
-        //             .removeClass('active')
-        //         $('.step-con')
-        //             .children('li')
-        //             .eq(2)
-        //             .addClass('active')
-        //         e.preventDefault()
-        //     }
-        // })
-
-        $("#setpBtn2").submit(function (e) {
+        $("#login_action").submit(function (e) {
             e.preventDefault();
             if (checkLoginFormat()) {
                 $(".alert").fadeOut();
                 pdtID = Helper.getQuery('pro');
                 ppName = Helper.getQuery('ppname');
                 cb = Helper.getQuery('cb');
-
                 Helper.post('login', {
                     mobile: $("#mobile").val(),
                     verNum: $("#vernum").val(),
@@ -149,20 +119,24 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 });
             }
         });
+
+
         $('#setpBtn3').click(function() {
             console.log(cb)
             if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
 
                 if (pdtID !== null) {
                     if (pdtID.length > 0) {
-                        window.location.reload();
+                        console.log(111);
+                        // window.location.reload();
                     } else {
                         // console.log('no pdtID');
                         window.location.href = '?m=index&a=index';
                     }
                 } else if (ppName !== null) {
                     if (ppName.length > 0) {
-                        window.location.reload();
+                        console.log(222);
+                        // window.location.reload();
                     } else {
                         window.location.href = '?m=index&a=index';
                         // console.log('no ppName');
