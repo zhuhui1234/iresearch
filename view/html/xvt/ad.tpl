@@ -109,12 +109,12 @@
                     <div class="change-btn">
                         <a class="btn btn-lg btn-primary " v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
                         <!-- IF token=="1" -->
-                        <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                        <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
                         <!-- ELSE -->
                         <!-- IF irdStatus=="1" -->
-                        <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+                        <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">登入旧版本</button>
                         <!-- ELSE -->
-                        <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                        <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
 
                         <!-- ENDIF -->
                         <!-- ENDIF -->
@@ -165,12 +165,12 @@
                 </div>
                 <div class="change-btn">
                     <!-- IF token=="1" -->
-                    <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                    <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
                     <!-- ELSE -->
                     <!-- IF irdStatus=="1" -->
-                    <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">切换旧版本</button>
+                    <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">登入旧版本</button>
                     <!-- ELSE -->
-                    <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                    <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
 
                     <!-- ENDIF -->
                     <!-- ENDIF -->
@@ -215,7 +215,7 @@
     </div>
     <div class="footer">
         <h3 class="tit"><span>联系我们　Contact Us</span></h3>
-        <div class="contact"><span class="ico ico1"></span>400-026-2099　<span class="ico ico2"></span>ask@iresearch.com.cn</div>
+        <div class="contact"><span class="ico ico1"></span>400-026-2099　　<span class="ico ico2"></span>ask@iresearch.com.cn</div>
         <div class="copy">
             2002 - 2017 Copyright© 艾瑞数据 <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000584"><img src="http://www.iresearch.com.cn/images/record_icon.png">沪公网安备 31010402000584号</a>
         </div>

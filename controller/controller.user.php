@@ -97,7 +97,7 @@ class UserController extends Controller
                 write_to_log($guid . '   fails', '_irdLogin');
                 http_response_code(500);
                 echo '<script>
-                       if (confirm("GUID失效,请重新登录iResearchData")) {    
+                       if (confirm("iRD登录超时，请重新登录iRD，用跳转链接尝试重新绑定账号。")) {    
                             window.location.href="about:blank";
                             window.close(); 
                         } else {    
