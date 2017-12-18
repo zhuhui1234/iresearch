@@ -499,7 +499,7 @@ class UserController extends Controller
 
         $rs = $this->model->login($data);
         $this->__json();
-//        var_dump($rs);
+        var_dump($rs);
         echo $rs;
     }
 
@@ -768,7 +768,7 @@ class UserController extends Controller
                     'name' => '登出',
                     'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
                 ],
-                'home' => ['name' => '首页', 'uri' => urlencode('//data.iresearch.com.cn/'), 'role' => $role]
+                'home' => ['name' => '首页', 'uri' => urlencode('//data.iresearch.com.cn/'), 'role'=>$role]
             ];
         } else {
             $state = '20002';
@@ -777,7 +777,7 @@ class UserController extends Controller
                     'name' => '登出',
                     'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
                 ],
-                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/'), 'role' => $role]
+                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/'),'role'=>$role]
             ];
         }
         echo $this->request()->get('callback') . '(' . json_encode(['code' => $state, 'data' => $menu, 'userMenu' => $m]) . ')';
