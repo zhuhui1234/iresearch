@@ -186,7 +186,6 @@ class IndexController extends Controller
     {
         header("Location:" . 'http://ect.itracker.cn/nloginv2/?token=' . $this->userInfo['token']);
     }
-
     /**
      * home page
      */
@@ -584,7 +583,7 @@ class IndexController extends Controller
      */
     public function test()
     {
-
+        var_dump(Session::instance()->get('userInfo'));
     }
 
     /**
