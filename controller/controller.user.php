@@ -136,13 +136,16 @@ class UserController extends Controller
                     if ($from == 'ird') {
                         switch ($pdt_id) {
                             case '42':
-                                header('Location: ' . ADT_URL);
+//                                header('Location: ' . ADT_URL);
+                                header('Location: http://data.iresearch.com.cn/iRView.shtml');
                                 break;
                             case '47':
-                                header('Location:' . VT_URL);
+//                                header('Location:' . VT_URL);
+                                header('Location: http://data.iresearch.com.cn/iRView.shtml');
                                 break;
                             case '48':
-                                header('Location: ' . UT_URL);
+//                                header('Location: ' . UT_URL);
+                                header('Location: http://data.iresearch.com.cn/iRView.shtml');
                                 break;
                             default:
                                 header('Location: http://data.iresearch.com.cn/iRView.shtml');
