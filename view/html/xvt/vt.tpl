@@ -135,15 +135,15 @@
 
                     <!-- IF token == "1" -->
                     <a v-if="product[tabIndex].isOldURL " class="btn btn-link"
-                       v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                       v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
                     <!-- ELSE -->
                     <!-- IF irdStatus=="1" -->
                     <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal"
-                            data-target="#myModal">切换旧版本
+                            data-target="#myModal">登入旧版本
                     </button>
                     <!-- ELSE -->
                     <a v-if="product[tabIndex].isOldURL " class="btn btn-link"
-                       v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                       v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
                     <!-- ENDIF -->
                     <!-- ENDIF -->
                 </div>
@@ -198,16 +198,16 @@
             <div class="change-btn">
                 <a class="btn btn-primary btn-lg" v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
                 <!-- IF token=="1" -->
-                <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
                 <!-- ELSE -->
                 <!-- IF irdStatus== "1" -->
 
                 <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal"
-                        data-target="#myModal">切换旧版本
+                        data-target="#myModal">登入旧版本
                 </button>
                 <!-- ELSE -->
 
-                <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">切换旧版本</a>
+                <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
 
                 <!-- ENDIF -->
                 <!-- ENDIF -->

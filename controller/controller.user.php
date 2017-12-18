@@ -97,7 +97,7 @@ class UserController extends Controller
                 write_to_log($guid . '   fails', '_irdLogin');
                 http_response_code(500);
                 echo '<script>
-                       if (confirm("GUID失效,请重新登录iResearchData")) {    
+                       if (confirm("iRD登录超时，请重新登录iRD，用跳转链接尝试重新绑定账号。")) {    
                             window.location.href="about:blank";
                             window.close(); 
                         } else {    
@@ -172,10 +172,9 @@ class UserController extends Controller
                 }
             } else {
                 //没有登入
-                if($from == 'ird' and !empty($guid)){
+                if ($from == 'ird' and !empty($guid)) {
                     $uid = ['iUserID' => $irdAccount['iUserID']];
                     $uid = json_decode($this->model->getIRVuserid($uid),true);
-                    var_dump($uid['resCode'] == '000000');exit;
                     if($uid['resCode'] == '000000'){
                         View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
                     } else {
@@ -186,7 +185,7 @@ class UserController extends Controller
                             'UserName' => $irdAccount['UserName'],
                             'CompanyName' => $irdAccount['CompanyName']]);
                     }
-                }else{
+                } else {
                     View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
                 }
             }

@@ -1,5 +1,5 @@
 define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
-    ;(function($) {
+    ;(function ($) {
         $.fn.extend({
             getSms: function (value) {
                 value = $.extend({
@@ -62,11 +62,11 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         return true;
     };
 
-    $(function() {
+    $(function () {
         $('#verification').getSms()
         $('#step2').hide()
         $('#step3').hide()
-        $('#setpBtn1').click(function() {
+        $('#setpBtn1').click(function () {
             $('#step1').hide()
             $('#step2').show()
             $('.step-con')
@@ -91,19 +91,25 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     verNum: $("#vernum").val(),
                     vCode: $("#vcode").val()
                 }, function (ret) {
-                    console.log(ret.resCode);
+                    console.log(typeof ret.data.bind_state);
                     if (ret.resCode == "000000") {
-                        $('#step2').hide()
-                        $('#step3').show()
-                        $('.step-con')
-                            .children('li')
-                            .eq(1)
-                            .removeClass('active')
-                        $('.step-con')
-                            .children('li')
-                            .eq(2)
-                            .addClass('active')
-                        e.preventDefault()
+                        if (typeof ret.data.bind_state != 'undefined'
+                            && ret.data.bind_state) {
+                            $('#step2').hide()
+                            $('#step3').show()
+                            $('.step-con')
+                                .children('li')
+                                .eq(1)
+                                .removeClass('active')
+                            $('.step-con')
+                                .children('li')
+                                .eq(2)
+                                .addClass('active')
+                            e.preventDefault()
+                        } else {
+                            alert('您使用的手机号已经绑定其它账号。')
+                            window.close()
+                        }
                     } else {
                         if (ret.resCode == -1) {
                             $('.alert').eq(1).fadeIn().text('手机验证码失败');
@@ -113,6 +119,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                             $(".alert").eq(1).fadeIn().text(ret.resMsg);
                         } else {
                             alert(ret.resMsg);
+                            window.close()
                         }
                     }
 
@@ -121,7 +128,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         });
 
 
-        $('#setpBtn3').click(function() {
+        $('#setpBtn3').click(function () {
             console.log(cb)
             if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
                 if (pdtID !== null) {
@@ -136,10 +143,10 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     } else {
                         window.location.href = '?m=index&a=index';
                     }
-                } else if (cb !== null){
+                } else if (cb !== null) {
                     if (cb == 'usercenter') {
                         window.location.href = 'http://irv.iresearch.com.cn/user-center/check'
-                    }else{
+                    } else {
                         console.log(cb);
                     }
                 }

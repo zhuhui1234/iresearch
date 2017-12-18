@@ -172,7 +172,7 @@ class IndexController extends Controller
     {
 
         $data = array(
-            'url' => 'http://113.200.91.82:8080/mst/?token=' . $this->userInfo['token']
+            'url' => 'http://113.200.91.81/web/login?token=' . $this->userInfo['token']
         );
 
         header("Location:" . $data['url']);
@@ -186,7 +186,6 @@ class IndexController extends Controller
     {
         header("Location:" . 'http://ect.itracker.cn/nloginv2/?token=' . $this->userInfo['token']);
     }
-
     /**
      * home page
      */
@@ -584,7 +583,7 @@ class IndexController extends Controller
      */
     public function test()
     {
-
+        var_dump(Session::instance()->get('userInfo'));
     }
 
     /**
