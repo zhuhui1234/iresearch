@@ -174,11 +174,17 @@ class UserController extends Controller
                 //没有登入
                 if($from == 'ird' and !empty($guid)){
                     $uid = ['iUserID' => $irdAccount['iUserID']];
-                    $uid = $this->model->getIRVuserid($uid);
+                    $uid = json_decode($this->model->getIRVuserid($uid),true);
+                    var_dump($uid['resCode'] == '000000');exit;
                     if($uid['resCode'] == '000000'){
                         View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
-                    }else{
-                        View::instance('user/ird_login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id,'TrueName' =>$irdAccount['TrueName'],'UserName' => $irdAccount['UserName'],'CompanyName' => $irdAccount['CompanyName']]);
+                    } else {
+                        View::instance('user/ird_login.tpl')->show([
+                            'loginStatus' => $this->loginStatus,
+                            'pdtID' => $pdt_id,
+                            'TrueName' => $irdAccount['TrueName'],
+                            'UserName' => $irdAccount['UserName'],
+                            'CompanyName' => $irdAccount['CompanyName']]);
                     }
                 }else{
                     View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
