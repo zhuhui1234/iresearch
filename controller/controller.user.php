@@ -172,15 +172,20 @@ class UserController extends Controller
                 }
             } else {
                 //没有登入
-                if($from == 'ird' and !empty($guid)){
+                if ($from == 'ird' and !empty($guid)) {
                     $uid = ['iUserID' => $irdAccount['iUserID']];
                     $uid = $this->model->getIRVuserid($uid);
-                    if($uid['resCode'] == '000000'){
+                    if ($uid['resCode'] == '000000') {
                         View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
-                    }else{
-                        View::instance('user/ird_login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id,'TrueName' =>$irdAccount['TrueName'],'UserName' => $irdAccount['UserName'],'CompanyName' => $irdAccount['CompanyName']]);
+                    } else {
+                        View::instance('user/ird_login.tpl')->show([
+                            'loginStatus' => $this->loginStatus,
+                            'pdtID' => $pdt_id,
+                            'TrueName' => $irdAccount['TrueName'],
+                            'UserName' => $irdAccount['UserName'],
+                            'CompanyName' => $irdAccount['CompanyName']]);
                     }
-                }else{
+                } else {
                     View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
                 }
             }
@@ -491,7 +496,7 @@ class UserController extends Controller
 
         $rs = $this->model->login($data);
         $this->__json();
-        var_dump($rs);
+//        var_dump($rs);
         echo $rs;
     }
 
@@ -760,7 +765,7 @@ class UserController extends Controller
                     'name' => '登出',
                     'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
                 ],
-                'home' => ['name' => '首页', 'uri' => urlencode('//data.iresearch.com.cn/'), 'role'=>$role]
+                'home' => ['name' => '首页', 'uri' => urlencode('//data.iresearch.com.cn/'), 'role' => $role]
             ];
         } else {
             $state = '20002';
@@ -769,7 +774,7 @@ class UserController extends Controller
                     'name' => '登出',
                     'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
                 ],
-                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/'),'role'=>$role]
+                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/'), 'role' => $role]
             ];
         }
         echo $this->request()->get('callback') . '(' . json_encode(['code' => $state, 'data' => $menu, 'userMenu' => $m]) . ')';
