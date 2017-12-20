@@ -91,7 +91,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     verNum: $("#vernum").val(),
                     vCode: $("#vcode").val()
                 }, function (ret) {
-                    console.log(typeof ret.data.bind_state);
+                    console.log(ret.data.wechat == null);
                     if (ret.resCode == "000000") {
                         if (typeof ret.data.bind_state != 'undefined'
                             && ret.data.bind_state) {
@@ -104,8 +104,15 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                             $('.step-con')
                                 .children('li')
                                 .eq(2)
-                                .addClass('active')
-                            e.preventDefault()
+                                .addClass('active');
+                            e.preventDefault();
+
+                            if (ret.data.wechat == null) {
+                                $(".scan_qrcode").show();
+                                Helper.WeChatQRCode("qrcode_wechat",
+                                    "bindingUserFromIRD",
+                                    "https://irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat_mini.css");
+                            }
                         } else {
                             alert('您使用的手机号已经绑定其它账号。')
                             window.close()
