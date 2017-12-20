@@ -288,37 +288,38 @@ class UserController extends Controller
      */
     public function editUserInfo()
     {
-        $data['token'] = $this->userInfo['token'];
-        $data = $this->userDetail;
-        $data['loginStatus'] = $this->loginStatus;
-        $userInfo = json_decode($this->model->getMyInfo(), true);
-        $userInfo = $userInfo['data'];
-        $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
-        $userModel = Model::instance('user');
-        $menu = json_decode($userModel->showMenu(), true);
-        $menu = $menu['data']['dataList'];
-        $menu = fillMenu($menu);
-
-        if ($userInfo['headImg'] != 'upload/head/') {
-            $userInfo['headImg'] = IMG_URL . $userInfo['headImg'];
-        }
-        View::instance('user/user.tpl')->show(
-            [
-                'username' => $userInfo['uname'],
-                'company' => $userInfo['company'],
-                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
-                'expireDate' => substr($this->userInfo['validity'], 0, 10),
-                'avatar' => $userInfo['headImg'],
-                'permissions' => $this->userInfo['permissions'],
-                'uname' => $userInfo['uname'],
-                'position' => $userInfo['position'],
-                'wechat' => $bindingUserInfo['data']['weixin']['type'],
-                'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
-                'menu' => $menu,
-                'titleMenu' => $menu[1]['subMenu'],
-                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
-            ]
-        );
+        header('Location: http://irv.iresearch.com.cn/user-center/check');
+//        $data['token'] = $this->userInfo['token'];
+//        $data = $this->userDetail;
+//        $data['loginStatus'] = $this->loginStatus;
+//        $userInfo = json_decode($this->model->getMyInfo(), true);
+//        $userInfo = $userInfo['data'];
+//        $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
+//        $userModel = Model::instance('user');
+//        $menu = json_decode($userModel->showMenu(), true);
+//        $menu = $menu['data']['dataList'];
+//        $menu = fillMenu($menu);
+//
+//        if ($userInfo['headImg'] != 'upload/head/') {
+//            $userInfo['headImg'] = IMG_URL . $userInfo['headImg'];
+//        }
+//        View::instance('user/user.tpl')->show(
+//            [
+//                'username' => $userInfo['uname'],
+//                'company' => $userInfo['company'],
+//                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
+//                'expireDate' => substr($this->userInfo['validity'], 0, 10),
+//                'avatar' => $userInfo['headImg'],
+//                'permissions' => $this->userInfo['permissions'],
+//                'uname' => $userInfo['uname'],
+//                'position' => $userInfo['position'],
+//                'wechat' => $bindingUserInfo['data']['weixin']['type'],
+//                'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
+//                'menu' => $menu,
+//                'titleMenu' => $menu[1]['subMenu'],
+//                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
+//            ]
+//        );
     }
 
     /**
@@ -499,7 +500,7 @@ class UserController extends Controller
 
         $rs = $this->model->login($data);
         $this->__json();
-        var_dump($rs);
+        //var_dump($rs);
         echo $rs;
     }
 
@@ -563,8 +564,10 @@ class UserController extends Controller
     public function bindingIRDA()
     {
         $data = json_encode($this->request()->post('data'));
-
+        $this->model->getMyInfo();
         echo $this->model->bindingIRDAToUser($data);
+
+
     }
 
 
