@@ -113,6 +113,25 @@ class UserController extends Controller
         } else {
 
             if (!$this->loginStatus) {
+                if ($from == 'ird' and !empty($guid)) {
+                    $uid = ['iUserID' => $irdAccount['iUserID']];
+                    $uid = json_decode($this->model->getIRVuserid($uid),true);
+                    if($uid['resCode'] != '000000'){
+                        $this->model->logOut();
+                        Session::instance()->destroy();
+                        write_to_log('destory_session:', '_session');
+                        Session::instance()->set('irdAccount', $irdAccount);
+                        Session::instance()->set('irdGuid', $guid);
+                        $irdStatus = '2';
+                        View::instance('user/ird_login.tpl')->show([
+                            'loginStatus' => $this->loginStatus,
+                            'pdtID' => $pdt_id,
+                            'TrueName' => $irdAccount['TrueName'],
+                            'UserName' => $irdAccount['UserName'],
+                            'CompanyName' => $irdAccount['CompanyName']]);
+                        return ;
+                    }
+                }
                 //登入成功
                 $getPermission = json_decode($this->model->getPermission([
                     'token' => $this->userInfo['token'],
@@ -178,6 +197,7 @@ class UserController extends Controller
                 if ($from == 'ird' and !empty($guid)) {
                     $uid = ['iUserID' => $irdAccount['iUserID']];
                     $uid = json_decode($this->model->getIRVuserid($uid),true);
+
                     if($uid['resCode'] == '000000'){
                         View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
                     } else {
