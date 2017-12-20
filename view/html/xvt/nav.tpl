@@ -15,7 +15,7 @@
                 <span class="loginReg"><a href="javascript:;"><i class="login"></i><em>登录</em></a><a href="javascript:;"><i class="reg"></i><em>注册</em></a></span>
             </div>
             <ul class="nav navbar-nav navbar-left">
-                <li id="n_1"><a href="Home.shtml"><span>首页</span><em>Home</em></a></li>
+                <li id="n_1"><a href="//data.iresearch.com.cn/Home.shtml"><span>首页</span><em>Home</em></a></li>
                 <li id="n_2" role="presentation" class="dropdown ">
                     <a href="//data.iresearch.com.cn/iRIndex.shtml" class="dropdown-toggle"><span>艾瑞指数</span><em>iRIndex</em></a>
                     <div class="dropdown-menu-box">
