@@ -17,8 +17,6 @@
     <link href="./public/css/docs.min.css" rel="stylesheet">
 </head>
 <!--  iINCLUDE ../nav.tpl = -->
-
-
 <iframe id="mut_iFrame" style="width: 100%;" src="{ppurl}" ></iframe>
 <!-- <iframe id="mut_iFrame" style="width: 100%;" src="http://h.home/ivt/jump/?guid=a5d61c0e-3ab3-497f-945e-4c96cadcd10f" ></iframe> -->
 

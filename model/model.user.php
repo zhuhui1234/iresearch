@@ -53,7 +53,7 @@ class UserModel extends API
                 Session::instance()->set('userInfo', $rs['data']);
                 setcookie('kittyID', $rs['data']['token']);
                 if (!empty($rs['data']['productKey'])) {
-                    $this->getIResearchDataAccount($rs['data']['productKey']);
+                    $this->getIResearchDataAccount($rs['data']['ird_user_id']);
                 }
             } else {
                 write_to_log('mobile error login: ' . $ret, '_login');
@@ -219,6 +219,13 @@ class UserModel extends API
     public function getMyInfo()
     {
         $userInfo = Session::instance()->get('userInfo');
+
+        if (DEBUG)
+        {
+            echo ' DEBUG: ';
+            echo($userInfo);
+            echo '----';
+        }
         return $this->getUserInfo([
             'userID' => $userInfo['userID'],
             'TOKEN' => $userInfo['token']
@@ -236,6 +243,7 @@ class UserModel extends API
     {
         $url = API_URL . '?m=User&a=getUserInfo';
         $ret = $this->_curlPost($url, $data, 'getUserInfo');
+
         return $ret;
     }
 
@@ -565,7 +573,8 @@ class UserModel extends API
             echo 'Encrypt: ';
             var_dump($encryptData);
         }
-
+        write_to_log('resouce: '.json_encode($data), '_ird_en');
+        write_to_log('encrypt: '.json_encode($encryptData), '_ird_en');
         $ret = $this->_curlAPost($url, ['v' => $encryptData]);
 
 
