@@ -113,14 +113,14 @@
                     <!--<a v-if="product[tabIndex].show" class="btn btn-primary btn-lg" v-bind:href="[[[[ product[tabIndex].url ]]]]">开始使用</a>
                     <a v-else="product[tabIndex].show" class="btn btn-primary btn-lg btn-warning" href="">敬请期待！！</a> -->
                     <!-- IF token=="1" -->
-                    <a class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
+                    <a class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">开始使用</a>
                     <!-- ELSE -->
                     <!-- IF irdStatus=="1" -->
 
-                    <button v-if="product[tabIndex].isOldURL " class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">登入旧版本</button>
+                    <button v-if="product[tabIndex].isOldURL " class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">开始使用</button>
                     <!-- ELSE -->
 
-                    <a v-if="product[tabIndex].isOldURL" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
+                    <a v-if="product[tabIndex].isOldURL" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">开始使用</a>
 
                     <!-- ENDIF -->
                     <!-- ENDIF -->
@@ -173,14 +173,14 @@
                         <a v-else="product[tabIndex].show" class="text-warning" href="">敬请期待！！</a>-->
 
                         <!-- IF token=="1" -->
-                        <a v-if="product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
+                        <a v-if="product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">开始使用</a>
                         <!-- ELSE -->
                         <!-- IF irdStatus=="1" -->
 
-                        <button v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">登入旧版本</button>
+                        <button v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">开始使用</button>
                         <!-- ELSE -->
 
-                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
+                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">开始使用</a>
 
                         <!-- ENDIF -->
                         <!-- ENDIF -->
