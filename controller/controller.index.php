@@ -186,6 +186,7 @@ class IndexController extends Controller
     {
         header("Location:" . 'http://ect.itracker.cn/nloginv2/?token=' . $this->userInfo['token']);
     }
+
     /**
      * home page
      */
@@ -417,6 +418,73 @@ class IndexController extends Controller
         //'url' => YH_REPORT71 . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B907&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=37'
         header("Location:" . $data['url']);
 //        View::instance('index/publicFrame.tpl')->show($data);
+    }
+
+    public function iutbeta()
+    {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+        $data = array(
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+            'url' => YH_REPORT71 . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B929&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=49&terminal=pc'
+        );
+
+        $info = array(
+            "token" => $this->userInfo['token'],
+            "TOKEN" => $this->userInfo['token'],
+            "pdt_id" => '49',
+            "userID" => $this->userInfo['userID'],
+            'terminal' => 'pc'
+        );
+
+        $getP = json_decode(Model::instance('user')->getPermission($info), true);
+
+        if ($getP['resCode'] == '20000') {
+            header("Location:" . $data['url']);
+        } else {
+            header('Location: ?m=user&a=trialApply&ppname=网络用户行为监测BETA版本&menuID=49');
+        }
+    }
+
+    public function mutbeta()
+    {
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+        $data = array(
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID'],
+            'role' => $this->userInfo['permissions'],
+            'title' => WEBSITE_TITLE,
+            'menu' => $menu,
+            'titleMenu' => $menu[1]['subMenu'],
+            'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+            'url' => YH_REPORT71 . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B930&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=49&terminal=mobile'
+        );
+        $info = array(
+            "token" => $this->userInfo['token'],
+            "TOKEN" => $this->userInfo['token'],
+            "pdt_id" => '49',
+            "userID" => $this->userInfo['userID'],
+            'terminal' => 'mobile'
+        );
+
+        $getP = json_decode(Model::instance('user')->getPermission($info), true);
+
+        if ($getP['resCode'] == '20000') {
+            header("Location:" . $data['url']);
+        } else {
+            header('Location: ?m=user&a=trialApply&ppname=网络用户行为监测BETA版本&menuID=49');
+        }
     }
 
     /**

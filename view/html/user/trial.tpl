@@ -19,7 +19,7 @@
 
 <div class="container">
 	<div class="trial_wrap">
-		<h4>艾瑞睿见 - 申请试用</h4>
+		<h4>艾瑞数据产品申请试用</h4>
 		<form role="form" method="post" action="#">
 			<div class="input-group">
 				<span class="input-group-addon">公司名称</span>

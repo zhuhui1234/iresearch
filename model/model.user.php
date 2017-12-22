@@ -363,6 +363,13 @@ class UserModel extends API
         return $check['resCode'] == 20000;
     }
 
+    public function checkPermissionSource($data)
+    {
+        $url = API_URL . '?m=Permissions&a=checkPermission';
+        $ret = $this->_curlPost($url, $data, 'checkPermission');
+        return $ret;
+    }
+
     /**
      * binding IRDA
      *

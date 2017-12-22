@@ -33,7 +33,7 @@ $(".binding").click(function () {
                 $("#myModal").modal('hide');
                 location.reload();
             } else {
-                alert("绑定失败");
+                alert(ret.resMsg);
                 location.reload();
             }
 

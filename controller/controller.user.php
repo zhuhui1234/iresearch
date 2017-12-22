@@ -58,7 +58,16 @@ class UserController extends Controller
 
     public function test()
     {
-        View::instance('user/ird_login.tpl')->show(['UserName' => 123]);
+        $pdt_id = $this->request()->get('pro');
+        $from = $this->request()->get('from');
+        $guid = $this->request()->get('guid');
+
+        if (empty($pdt_id)) {
+            http_response_code(500);
+            echo '参数错误';
+            exit();
+        }
+
 
     }
 
@@ -166,13 +175,36 @@ class UserController extends Controller
 //                                header('Location: ' . UT_URL);
                                 header('Location: http://data.iresearch.com.cn/iRView.shtml');
                                 break;
+
                             default:
                                 header('Location: http://data.iresearch.com.cn/iRView.shtml');
                                 break;
 
                         }
                     } else {
-                        header('Location: ' . $getPermission['data']['data']['pdt_url']);
+
+                        if ($pdt_id == '49') {
+                            $p = $this->request()->get('p');
+                            switch ($p) {
+                                case 'mut':
+
+
+
+                                    header('Location: ?m=index&a=mutbeta');
+                                    break;
+                                case 'iut':
+                                    header('Location: ?m=index&a=iutbeta');
+                                    break;
+
+                                default:
+                                    header('Location: ' . $getPermission['data']['data']['pdt_url']);
+                                    exit();
+                            }
+                        }else{
+                            header('Location: ' . $getPermission['data']['data']['pdt_url']);
+                            exit();
+                        }
+
                     }
 
                 } else {
@@ -584,9 +616,9 @@ class UserController extends Controller
     public function bindingIRDA()
     {
         $data = json_encode($this->request()->post('data'));
-        $this->model->getMyInfo();
+        
         echo $this->model->bindingIRDAToUser($data);
-
+	$this->model->getMyInfo();
 
     }
 

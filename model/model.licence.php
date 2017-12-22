@@ -42,4 +42,5 @@ class LicenceModel extends API
         $ret = $this->_curlPost($url, $data, 'getUserList');
         return $ret;
     }
+
 }
