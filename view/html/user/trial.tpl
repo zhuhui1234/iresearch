@@ -99,7 +99,7 @@
 			<div class="panel-heading">申请试用内容</div>
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-xs-4">
+					<div class="col-xs-12">
 						<div class="checkbox">
 							<label>
 								<input id="menuID" type="checkbox" data-toggle="checkbox" readonly="readonly" checked="true" value="{menuID}">
