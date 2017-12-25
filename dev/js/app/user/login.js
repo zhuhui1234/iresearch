@@ -121,17 +121,17 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                     window.location.href = '?m=index&a=index';
                                     // console.log('no ppName');
                                 }
-                            } else if (cb !== null){
+                            } else if (cb !== null) {
                                 if (cb == 'usercenter') {
                                     window.location.href = 'http://irv.iresearch.com.cn/user-center/check'
-                                }else{
+                                } else {
                                     console.log(cb);
                                 }
                             }
 
                         } else {
                             // console.log('no all');
-                             window.location.href = '?m=index&a=index';
+                            window.location.href = '?m=index&a=index';
                         }
                     } else {
                         if (ret.resCode == -1) {
@@ -166,12 +166,15 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
     });
     var pdtID = Helper.getQuery('pro');
     var ppName = Helper.getQuery('ppname');
+    var cb = Helper.getQuery('cb');
     // var u = new URL(window.location.href)
     // var ppName = u.searchParams.get('ppname');
     if (pdtID !== null) {
         Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css', pdtID);
     } else if (ppName !== null) {
         Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css', '', ppName);
+    } else if (cb !== null) {
+        Helper.WeChatQRCode('wxLogin', 'wxLoginUserCenter', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
     } else {
         Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
     }

@@ -152,7 +152,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     }
                 } else if (cb !== null) {
                     if (cb == 'usercenter') {
-                        window.location.href = 'http://irv.iresearch.com.cn/user-center/check'
+                        window.location.href = 'http://irv.iresearch.com.cn/user-center/check/'
                     } else {
                         console.log(cb);
                     }

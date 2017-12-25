@@ -80,6 +80,34 @@ class WeChatController extends Controller
 
                 break;
 
+            case 'wxLoginUserCenter':
+                $ret = $this->__weChatAutoLogin(array(
+                    'Account' => $weChatObj['openid'],
+                    'LoginKey' => $weChatObj['unionid'],
+                    'wxName' => $weChatUser['nickname'],
+                ), $wechatModel->getUserInfo($code));
+//                var_dump($ret);
+//                exit();
+                write_to_log('ret: ' . json_encode($ret), '_wx');
+                if ($ret) {
+                    if ($ret !== null) {
+                        if (!empty($pdtID)) {
+                            header('Location: ' . $jumpURI);
+                        } else if (!empty($ppName)) {
+                            header('Location: ' . $classicSysURI);
+                        } else {
+                            header('Location: http://irv.iresearch.com.cn/user-center/check/');
+                        }
+                    } else {
+                        header('Location: ?m=user&a=login?recode=402');
+                    }
+
+                } else {
+                    header("Location: ?m=user&a=BindingWeChat");
+                }
+
+                break;
+
             //binding weChat
             case 'binding':
                 $ret = $this->__bindingWeChat(array(
