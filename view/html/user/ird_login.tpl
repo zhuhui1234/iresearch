@@ -17,6 +17,7 @@
         var vie = parseFloat( uaMatch[ 1 ], 10 );
         if( vie && vie <= 8 ) {
             alert('由于使用的IE版本过低，请使用IE9,以及IE9以上浏览器访问！');
+            window.close();
         }
     </script>
 </head>

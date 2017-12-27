@@ -124,8 +124,8 @@ class UserController extends Controller
             if (!$this->loginStatus) {
                 if ($from == 'ird' and !empty($guid)) {
                     $uid = ['iUserID' => $irdAccount['iUserID']];
-                    $uid = json_decode($this->model->getIRVuserid($uid),true);
-                    if($uid['resCode'] != '000000'){
+                    $uid = json_decode($this->model->getIRVuserid($uid), true);
+                    if ($uid['resCode'] != '000000') {
                         $this->model->logOut();
                         Session::instance()->destroy();
                         write_to_log('destory_session:', '_session');
@@ -138,7 +138,7 @@ class UserController extends Controller
                             'TrueName' => $irdAccount['TrueName'],
                             'UserName' => $irdAccount['UserName'],
                             'CompanyName' => $irdAccount['CompanyName']]);
-                        return ;
+                        return;
                     }
                 }
                 //登入成功
@@ -189,7 +189,6 @@ class UserController extends Controller
                                 case 'mut':
 
 
-
                                     header('Location: ?m=index&a=mutbeta');
                                     break;
                                 case 'iut':
@@ -200,7 +199,7 @@ class UserController extends Controller
                                     header('Location: ' . $getPermission['data']['data']['pdt_url']);
                                     exit();
                             }
-                        }else{
+                        } else {
                             header('Location: ' . $getPermission['data']['data']['pdt_url']);
                             exit();
                         }
@@ -228,9 +227,9 @@ class UserController extends Controller
                 //没有登入
                 if ($from == 'ird' and !empty($guid)) {
                     $uid = ['iUserID' => $irdAccount['iUserID']];
-                    $uid = json_decode($this->model->getIRVuserid($uid),true);
+                    $uid = json_decode($this->model->getIRVuserid($uid), true);
 
-                    if($uid['resCode'] == '000000'){
+                    if ($uid['resCode'] == '000000') {
                         View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
                     } else {
                         View::instance('user/ird_login.tpl')->show([
@@ -616,9 +615,9 @@ class UserController extends Controller
     public function bindingIRDA()
     {
         $data = json_encode($this->request()->post('data'));
-        
+
         echo $this->model->bindingIRDAToUser($data);
-	$this->model->getMyInfo();
+        $this->model->getMyInfo();
 
     }
 
@@ -823,7 +822,7 @@ class UserController extends Controller
                     'name' => '登出',
                     'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
                 ],
-                'home' => ['name' => '首页', 'uri' => urlencode('//data.iresearch.com.cn/'), 'role'=>$role]
+                'home' => ['name' => '首页', 'uri' => urlencode('//data.iresearch.com.cn/'), 'role' => $role]
             ];
         } else {
             $state = '20002';
@@ -832,7 +831,7 @@ class UserController extends Controller
                     'name' => '登出',
                     'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
                 ],
-                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/'),'role'=>$role]
+                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/'), 'role' => $role]
             ];
         }
         echo $this->request()->get('callback') . '(' . json_encode(['code' => $state, 'data' => $menu, 'userMenu' => $m]) . ')';
@@ -898,21 +897,25 @@ class UserController extends Controller
             isset($data['avatar_data']) ? $data['avatar_data'] : null,
             isset($_FILES['avatar_file']) ? $_FILES['avatar_file'] : null
         );
+        $msg = $crop->getMsg();
+        write_to_log(empty($msg), '_avatar');
 
-
-        if (empty($crop->getMsg())) {
-
-
-            $this->__json();
+        if (empty($msg)) {
             $userInfo = [
                 'userID' => $this->userInfo['userID'],
                 'token' => $this->userInfo['token']
             ];
 
-            $userInfo['headImg'] = toBase64(UPLOAD_PATH . trim($crop->getResult(), 'uploads'));
+            write_to_log('upload: ' . UPLOAD_PATH . trim($crop->getResult(),'uploads/'), '_avatar');
 
+//            $userInfo['headImg'] = toBase64(UPLOAD_PATH . trim($crop->getResult(), 'uploads/'));
+            $userInfo['headImg'] = base64_encode(file_get_contents(UPLOAD_PATH . trim($crop->getResult(), 'uploads/')));
+            $this->__json();
+//            write_to_log($userInfo['headImg'], '_avatar');
             echo $this->model->setUserInfo($userInfo);
         } else {
+            write_to_log('error: ' . $msg, '_avatar');
+            write_to_log('error' . $crop->getMsg(), '_avatar');
             _ERROR('0000001', $crop->getMsg());
         }
 

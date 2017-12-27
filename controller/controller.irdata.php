@@ -18,9 +18,9 @@ class IRDataController extends Controller
         $this->guid = $this->menu['data']['ird_guid'];
         $this->menu = $this->menu['data']['dataList'];
         if (!empty($this->userInfo['ird_user_id'])) {
-            if (time() > Session::instance()->get('irdTimeOut') || empty(Session::instance()->get('irdTimeOut'))) {
+//            if (time() > Session::instance()->get('irdTimeOut') || empty(Session::instance()->get('irdTimeOut'))) {
                 $this->userModel->getIResearchDataAccount($this->userInfo['ird_user_id']);
-            }
+//            }
 
             $this->irdUserInfo = json_decode(Session::instance()->get('iResearchDataUserInfo'), true);
         }
@@ -35,6 +35,15 @@ class IRDataController extends Controller
 
     public function test()
     {
+
+
+        if (!empty($this->userInfo['ird_user_id'])) {
+//            if (time() > Session::instance()->get('irdTimeOut') || empty(Session::instance()->get('irdTimeOut'))) {
+            $this->userModel->getIResearchDataAccount($this->userInfo['ird_user_id']);
+//            }
+
+            $this->irdUserInfo = json_decode(Session::instance()->get('iResearchDataUserInfo'), true);
+        }
 
         if (!empty($this->userInfo['token'])) {
             if (!empty($this->userInfo['productKey'])) {
@@ -127,6 +136,15 @@ class IRDataController extends Controller
     {
 
         if (!empty($this->userInfo['token'])) {
+
+            if (!empty($this->userInfo['ird_user_id'])) {
+//            if (time() > Session::instance()->get('irdTimeOut') || empty(Session::instance()->get('irdTimeOut'))) {
+                $this->userModel->getIResearchDataAccount($this->userInfo['ird_user_id']);
+//            }
+
+                $this->irdUserInfo = json_decode(Session::instance()->get('iResearchDataUserInfo'), true);
+            }
+
             if (!empty($this->userInfo['productKey'])) {
                 $ppname = $this->request()->get('ppname');
 

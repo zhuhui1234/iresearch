@@ -164,6 +164,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         }
 
     });
+
+    console.log(Helper.userAgent);
     var pdtID = Helper.getQuery('pro');
     var ppName = Helper.getQuery('ppname');
     var cb = Helper.getQuery('cb');
