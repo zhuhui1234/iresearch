@@ -12,6 +12,13 @@
     <link href="./public/css/ird_app.css" rel="stylesheet">
     <!-- 自定义 -->
     <link href="./public/css/ird_docs.min.css" rel="stylesheet">
+    <script type="text/javascript">
+        var uaMatch = /msie ([\w.]+)/.exec( navigator.userAgent.toLowerCase() ) || [];
+        var vie = parseFloat( uaMatch[ 1 ], 10 );
+        if( vie && vie <= 8 ) {
+            alert('由于使用的IE版本过低，请使用IE9,以及IE9以上浏览器访问！');
+        }
+    </script>
 </head>
 
 <body class="login">
