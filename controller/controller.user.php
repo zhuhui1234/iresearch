@@ -132,6 +132,7 @@ class UserController extends Controller
                         Session::instance()->set('irdAccount', $irdAccount);
                         Session::instance()->set('irdGuid', $guid);
                         $irdStatus = '2';
+
                         View::instance('user/ird_login.tpl')->show([
                             'loginStatus' => $this->loginStatus,
                             'pdtID' => $pdt_id,
@@ -161,6 +162,18 @@ class UserController extends Controller
                 }
 
                 if ($getPermission['resCode'] == '20000') {
+
+                    $this->model->pushLog([
+                        'user' => $this->userInfo['userID'],
+                        'companyID' => $this->userInfo['companyID'],
+                        'status' => '20000',
+                        'type' => 'irv用户日志',
+                        'sub_id' => $pdt_id,
+                        'resource' => 'iData',
+                        'action' =>  '跳转产品',
+                        'level' => '0'
+                    ]);
+
                     if ($from == 'ird') {
                         switch ($pdt_id) {
                             case '42':
@@ -438,7 +451,20 @@ class UserController extends Controller
         setcookie('JSESSIONID', '', time() - 3600, '/');
         setcookie('kittyID', '', time() - 3600, '/');
         write_to_log('cookie:' . json_encode($_COOKIE), '_session');
-        header("Location:?m=user&a=login");
+        $pdtID = $this->request()->get('pdtID');
+
+        switch ($pdtID) {
+            case '38':
+                header("Location: http://data.iresearch.com.cn/iRCloud.shtml");
+                break;
+            case '0':
+                header('Location: http://data.iresearch.com.cn/iRView.shtml');
+                break;
+            default:
+                header('Location http://data.iresearch.com.cn/iRView.shtml');
+                break;
+        }
+
     }
 
     /**
@@ -803,6 +829,9 @@ class UserController extends Controller
         $role = $menu['data']['role'];
         $menu = $menu['data']['dataList'];
         $menu = fillMenu($menu);
+        $pdt_id = $this->request()->get('pdtid');
+
+
         foreach ($menu as $i => $v) {
             if (isset($v['subMenu'])) {
                 unset($menu[$i]['subMenu']);
@@ -820,7 +849,7 @@ class UserController extends Controller
                 ],
                 'logOut' => [
                     'name' => '登出',
-                    'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
+                    'uri' => urlencode(IDATA_URL . '?m=user&a=logOut&pdtID=' . $pdt_id)
                 ],
                 'home' => ['name' => '首页', 'uri' => urlencode('//data.iresearch.com.cn/'), 'role' => $role]
             ];
@@ -829,7 +858,7 @@ class UserController extends Controller
             $m = [
                 'logOut' => [
                     'name' => '登出',
-                    'uri' => urlencode(IDATA_URL . '?m=user&a=logOut')
+                    'uri' => urlencode(IDATA_URL . '?m=user&a=logOut&pdtID=' . $pdt_id)
                 ],
                 'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/'), 'role' => $role]
             ];
@@ -906,7 +935,7 @@ class UserController extends Controller
                 'token' => $this->userInfo['token']
             ];
 
-            write_to_log('upload: ' . UPLOAD_PATH . trim($crop->getResult(),'uploads/'), '_avatar');
+            write_to_log('upload: ' . UPLOAD_PATH . trim($crop->getResult(), 'uploads/'), '_avatar');
 
 //            $userInfo['headImg'] = toBase64(UPLOAD_PATH . trim($crop->getResult(), 'uploads/'));
             $userInfo['headImg'] = base64_encode(file_get_contents(UPLOAD_PATH . trim($crop->getResult(), 'uploads/')));

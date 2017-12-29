@@ -651,7 +651,7 @@ class IndexController extends Controller
      */
     public function test()
     {
-        var_dump(Session::instance()->get('userInfo'));
+        view::instance('user/test.tpl')->show([]);
     }
 
     /**

@@ -555,6 +555,12 @@ class UserModel extends API
         return $this->_curlPost($url, $data, 'getIRVuserid');
     }
 
+    public function pushLog($data)
+    {
+        $url = API_URL . '?m=logs&a=pushLog';
+        return $this->_curlPost($url, $data, 'pushLog');
+    }
+
     ######################################################################################
     ##################################                     ###############################
     #################################   PRIVATE METHODS   ################################
