@@ -184,7 +184,7 @@
 
                         <a v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">开始使用</a>
 
-                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show && product[tabIndex].showEnglish" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].eurl ]]">English Version</a>
+                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show && product[tabIndex].showEnglish" class="btn btn-link" v-bind:href="[[ product[tabIndex].eurl ]]">English Version</a>
 
 
                         <!-- ENDIF -->
