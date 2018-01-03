@@ -171,7 +171,7 @@ class IRDataController extends Controller
                     if ($this->request()->get('backType', 0) == '0') {
                         $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                         $callBack = urlencode($backURL . '&backType=1');
-                        $jumpURL = 'http://mut-en.chinacloudsites.cn/mut.html?guid='.$this->irdUserInfo['iRGuid'] . '&irv_callback='.$callBack;
+                        $jumpURL = 'http://mut-en.chinacloudsites.cn/mut.html?guid='.$this->irdUserInfo['iRGuid'];
                         header("Location:" . $jumpURL);
                         exit();
                     }
@@ -182,7 +182,7 @@ class IRDataController extends Controller
                 if ($this->request()->get('backType', 0) == '0') {
                     $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     $callBack = urlencode($backURL . '&backType=1');
-                    $jumpURL = $data['ppurl'] . '&irv_callback='.$callBack;
+                    $jumpURL = $data['ppurl'] . '&irv_callback=';
                     header("Location:" . $jumpURL);
                 }
 //            }
