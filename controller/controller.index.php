@@ -651,7 +651,7 @@ class IndexController extends Controller
      */
     public function test()
     {
-        view::instance('user/test.tpl')->show([]);
+        view::instance('xvt/404.tpl')->show([]);
     }
 
     /**

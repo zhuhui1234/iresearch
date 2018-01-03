@@ -450,7 +450,9 @@ class UserController extends Controller
         setcookie('PHPSESSID', '', time() - 3600, '/');
         setcookie('JSESSIONID', '', time() - 3600, '/');
         setcookie('kittyID', '', time() - 3600, '/');
+
         write_to_log('cookie:' . json_encode($_COOKIE), '_session');
+
         $pdtID = $this->request()->get('pdtID');
 
         switch ($pdtID) {
@@ -461,7 +463,7 @@ class UserController extends Controller
                 header('Location: http://data.iresearch.com.cn/iRView.shtml');
                 break;
             default:
-                header('Location http://data.iresearch.com.cn/iRView.shtml');
+                header('Location: http://data.iresearch.com.cn/iRView.shtml');
                 break;
         }
 
