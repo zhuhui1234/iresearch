@@ -170,7 +170,7 @@ class UserController extends Controller
                         'type' => 'irv用户日志',
                         'sub_id' => $pdt_id,
                         'resource' => 'iData',
-                        'action' =>  '跳转产品',
+                        'action' => '跳转产品',
                         'level' => '0'
                     ]);
 
@@ -821,27 +821,74 @@ class UserController extends Controller
         return $ret;
     }
 
+    /**
+     * show head menu jsonp
+     */
     public function showMenu()
     {
-//        $data['token'] = $this->userInfo['token'];
-//        $data = $this->userDetail;
-//        $data['loginStatus'] = $this->loginStatus;
-        $userModel = Model::instance('user');
-        $menu = json_decode($userModel->showMenu(), true);
-        $role = $menu['data']['role'];
-        $menu = $menu['data']['dataList'];
-        $menu = fillMenu($menu);
+
+        $menu = [
+                [
+                    'menuID' => 1,
+                    'menuName' => '艾瑞指数',
+                    'menuEName' => 'iRIndex',
+                    'menuIntro' => '艾瑞指数简介',
+                    'functionLabel' => null,
+                    'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FiRIndex.shtml',
+                    'versionType' => 1,
+                    'series' => 0,
+                    'menuVersion' => null,
+                    'pState' => 0,
+                    'pcState' => null,
+                    'isSubMenu' => 1,
+                ],                [
+                    'menuID' => 2,
+                    'menuName' => '艾瑞睿见',
+                    'menuEName' => 'iRView',
+                    'menuIntro' => '艾瑞睿见简介',
+                    'functionLabel' => null,
+                    'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FiRView.shtml',
+                    'versionType' => 1,
+                    'series' => 0,
+                    'menuVersion' => null,
+                    'pState' => 0,
+                    'pcState' => null,
+                    'isSubMenu' => 1,
+                ],                [
+                    'menuID' => 3,
+                    'menuName' => '艾瑞智云',
+                    'menuEName' => 'iRCloud',
+                    'menuIntro' => '艾瑞智云简介',
+                    'functionLabel' => null,
+                    'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FiRCloud.shtml',
+                    'versionType' => 1,
+                    'series' => 0,
+                    'menuVersion' => null,
+                    'pState' => 0,
+                    'pcState' => null,
+                    'isSubMenu' => 1,
+                ],                [
+                    'menuID' => 4,
+                    'menuName' => '关于我们',
+                    'menuEName' => 'AboutUs',
+                    'functionLabel' => null,
+                    'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FAbout.shtml',
+                    'versionType' => 0,
+                    'series' => 0,
+                    'menuVersion' => null,
+                    'pState' => 0,
+                    'pcState' => null,
+                    'isSubMenu' => 1,
+                ],
+
+
+        ];
+
         $pdt_id = $this->request()->get('pdtid');
 
-
-        foreach ($menu as $i => $v) {
-            if (isset($v['subMenu'])) {
-                unset($menu[$i]['subMenu']);
-            }
-            $menu[$i]['curl'] = urlencode($menu[$i]['curl']);
-        }
         $this->__json();
-        if ($role == 'member') {
+        if ($this->userInfo['permissions'] == 1) {
+            $role = 'member';
             $state = '20000';
             $m = [
                 'userInfo' => [
@@ -857,6 +904,7 @@ class UserController extends Controller
             ];
         } else {
             $state = '20002';
+            $role = 'guest';
             $m = [
                 'logOut' => [
                     'name' => '登出',
