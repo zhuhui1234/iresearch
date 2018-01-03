@@ -16,6 +16,7 @@ class Controller{
     }
 
     public function __call($fun,$arg){
+        http_response_code('404');
         echo '{"statusCode":"300","message":"对不起，您访问的控制器不存在！'.$this->curr_class.'::'.$fun.'"}';
         exit;
     }

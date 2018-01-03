@@ -174,6 +174,8 @@
 
                         <!-- IF token=="1" -->
                         <a v-if="product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">开始使用</a>
+                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show && product[tabIndex].showEnglish" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].eurl ]]">English Version</a>
+
                         <!-- ELSE -->
                         <!-- IF irdStatus=="1" -->
 
@@ -181,6 +183,9 @@
                         <!-- ELSE -->
 
                         <a v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">开始使用</a>
+
+                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show && product[tabIndex].showEnglish" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].eurl ]]">English Version</a>
+
 
                         <!-- ENDIF -->
                         <!-- ENDIF -->
@@ -243,8 +248,10 @@
             icon: 'public/img/iut@2x.png',
             isOldURL: true,
             show:true,
+            showEnglsh: false,
             oldurl: '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版',
             // url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=12',
+            eurl:'',
             url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=49&p=iut',
             info: 'iUserTracker网络用户行为监测，是基于庞大的网民样本行为监测所建立的数据库。该数据库自2006年开始，收集包括用户网络浏览的行为、软件使用行为等详细信息，凭借多年的互联网行业研究经验，通过被监测样本的用户属性标签及多个用户行为竞争分析指标，真实反映中国互联网整体及不同用户市场的客观情况。',
             itemA: {
@@ -273,6 +280,8 @@
             logo: 'public/img/mut.svg',
             icon: 'public/img/mut@2x.png',
             isOldURL: true,
+            showEnglish: true,
+            eurl:'?m=irdata&a=classicSys&ppname=mut-en',
             oldurl: '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版',
             show:true,
             // url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=37',
@@ -304,6 +313,8 @@
             icon: 'public/img/out@2x.png',
             isOldURL: true,
             show:false,
+            showEnglish:false,
+            eurl:'',
             oldurl: '?m=irdata&a=classicSys&ppname=OTT端视频内容市场监测',
             url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=14',
             info: 'oUserTracker智能电视用户行为监测产品，是基于智能电视网民样本行为监测所建立的数据库。该数据库由2017年开始，收集用户通过智能电视设备的App使用行为，并通过对数据的大量分析建立了多个用户行为指标，真实反映中国智能电视APP使用市场客观情况。并利用对被监测样本的用户属性进行标签设定，从而能够从多个维度对用户市场进行定义和细分。',

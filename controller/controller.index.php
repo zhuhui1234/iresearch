@@ -609,6 +609,14 @@ class IndexController extends Controller
         $data = [];
         $userInfo = Session::instance()->get('userInfo');
 
+//        pr($userInfo);
+
+        if (preg_match('/^400/', $userInfo['mobile'])) {
+            $data['authType'] = 1;
+        } else {
+            $data['authType'] = 2;
+        }
+
         if (isset($userInfo['token'])) {
             $data['token'] = $userInfo['token'];
         } else {

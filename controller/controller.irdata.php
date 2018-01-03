@@ -161,23 +161,32 @@ class IRDataController extends Controller
                     'ppurl' => $this->__getCURL($ppname)
                 ];
 
+//                if (DEBUG) {
+//                    pr($this->userInfo);
+//                    var_dump($this->irdUserInfo);
+//                    exit();
+//                }
+
+                if ($ppname == 'mut-en') {
+                    if ($this->request()->get('backType', 0) == '0') {
+                        $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+                        $callBack = urlencode($backURL . '&backType=1');
+                        $jumpURL = 'http://mut-en.chinacloudsites.cn/mut.html?guid='.$this->irdUserInfo['iRGuid'] . '&irv_callback='.$callBack;
+                        header("Location:" . $jumpURL);
+                        exit();
+                    }
+                }
+
                 //以下代码是解决被禁止第三方cooke下iframe无法登陆
 //            if(strpos($_SERVER["HTTP_USER_AGENT"],"Safari")) {
                 if ($this->request()->get('backType', 0) == '0') {
                     $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     $callBack = urlencode($backURL . '&backType=1');
-                    $jumpURL = $data['ppurl'] . '&irv_callback=';
-//                    var_dump($data['ppurl']);
-//                    exit();
-//                    var_dump($this->menu);
-//                    exit();
+                    $jumpURL = $data['ppurl'] . '&irv_callback='.$callBack;
                     header("Location:" . $jumpURL);
                 }
 //            }
-//            if (DEBUG) {
-//                pr($this->userInfo);
-//                var_dump($this->irdUserInfo);
-//            }
+
 
                 foreach ($this->irdUserInfo['pplist'] as $p) {
                     if ($p['ppname'] == $ppname) {
