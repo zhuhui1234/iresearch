@@ -887,7 +887,7 @@ class UserController extends Controller
         $pdt_id = $this->request()->get('pdtid');
 
         $this->__json();
-        if ($this->userInfo['permissions'] == 1) {
+        if ($this->userInfo['permissions'] != 0) {
             $role = 'member';
             $state = '20000';
             $m = [
