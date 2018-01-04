@@ -30,7 +30,21 @@ class IRDataController extends Controller
 
     public function jumpAdt()
     {
-        header('Location: ' . 'http://madt.irs01.net/ProductSelection.aspx?guid=' . $this->guid);
+        if (!empty($this->userInfo['token'])) {
+            if (!empty($this->guid)) {
+                header('Location: ' . 'http://madt.irs01.net/ProductSelection.aspx?guid=' . $this->guid);
+            }else{
+                echo("<SCRIPT LANGUAGE=\"JavaScript\">
+                        alert(\"你并没有权限访问该模块功能,或没有绑定老产品账号，请与客服联系！\");
+            //            top.location.href=\"?m=index\";
+                        </SCRIPT>");
+            }
+
+
+        }else{
+            View::instance('user/login.tpl')->show([]);
+        }
+
     }
 
     public function test()
@@ -75,12 +89,7 @@ class IRDataController extends Controller
                     $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     $callBack = urlencode($backURL . '&backType=1');
                     $jumpURL = $data['ppurl'] . '&irv_callback=' . $callBack;
-//                    var_dump($data['ppurl']);
-//                    exit();
 
-
-                    var_dump($jumpURL);
-                    exit();
                     header("Location:" . $jumpURL);
                 }
 //            }
@@ -176,7 +185,12 @@ class IRDataController extends Controller
                     }
                 }
 
-
+                if ($ppname == 'old-ad'){
+                    if ($this->request()->get('backType', 0) == '0') {
+                        header('Location: ' . 'http://madt.irs01.net/ProductSelection.aspx?guid=' . $this->guid);
+                        exit();
+                    }
+                }
 
 
                 //以下代码是解决被禁止第三方cooke下iframe无法登陆

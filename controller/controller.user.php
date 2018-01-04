@@ -200,8 +200,6 @@ class UserController extends Controller
                             $p = $this->request()->get('p');
                             switch ($p) {
                                 case 'mut':
-
-
                                     header('Location: ?m=index&a=mutbeta');
                                     break;
                                 case 'iut':

@@ -645,10 +645,12 @@ class IndexController extends Controller
         if (empty(trim($userInfo['productKey']))) {
             //没有绑定
             $data['irdStatus'] = 1;
+            $data['adUrl'] = '?m=irdata&a=classicSys&ppname=old-ad';
         } else {
             //绑定
             $data['irdStatus'] = 2;
-            $data['adUrl'] = '?m=irdata&a=jumpadt';
+//            $data['adUrl'] = '?m=irdata&a=jumpadt';
+            $data['adUrl'] = '?m=irdata&a=classicSys&ppname=old-ad';
         }
 
         View::instance('xvt/ad.tpl')->show($data);
