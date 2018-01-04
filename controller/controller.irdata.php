@@ -176,19 +176,14 @@ class IRDataController extends Controller
                     }
                 }
 
-                foreach ($this->irdUserInfo['pplist'] as $p) {
-                    if ($p['ppname'] == $ppname) {
-                        $data['ppurl'] = $p['ppurl'] . '?guid=' . $this->irdUserInfo['iRGuid'];
-                        $stat = true;
-                    }
-                }
+
 
 
                 //以下代码是解决被禁止第三方cooke下iframe无法登陆
 //            if(strpos($_SERVER["HTTP_USER_AGENT"],"Safari")) {
 
 
-                if ($stat) {
+                if (!empty($data['ppurl'])) {
                     if ($this->request()->get('backType', 0) == '0') {
                         $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                         $callBack = urlencode($backURL . '&backType=1');
@@ -204,6 +199,12 @@ class IRDataController extends Controller
                 }
 //            }
 
+                foreach ($this->irdUserInfo['pplist'] as $p) {
+                    if ($p['ppname'] == $ppname) {
+                        $data['ppurl'] = $p['ppurl'] . '?guid=' . $this->irdUserInfo['iRGuid'];
+                        $stat = true;
+                    }
+                }
 
                 if ($stat) {
                     View::instance('service/ird.tpl')->show($data);
