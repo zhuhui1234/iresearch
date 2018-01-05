@@ -41,7 +41,7 @@ define('WEBSITE_SOURCE_URL', WEBSITE_URL . 'dev');
 define('WEBSITE_TITLE', '艾瑞数据平台');
 define('REGISTER_MAILADDR', 'irv@iresearch.com.cn');
 define('FORGOTPWD_MAILADDR', 'irv@iresearch.com.cn');
-//导出报表配置
+//导出报表配
 //define('API_URL', 'http://180.169.19.208/iview_deskapi/');
 define('API_URL', 'http://localhost/idata_deskapi/');
 //define('API_URL', 'http://42.159.231.97/idata_deskapi3/');
@@ -54,7 +54,7 @@ define('EXPORT_PIC', 'http://180.169.19.166/graph_api/chart.php');
 //define('KOL_API', 'http://vfckol.iresearchdata.cn/urlRedirect.ashx');
 define('KOL_API', '//irv-ikol.iresearch.com.cn/urlRedirect.ashx');
 //报表地址
-define('YH_REPORT', '//irv.iresearch.com.cn/iReport/?m=service&a=showReportIRV');
+define('YH_REPORT', '//irv.iresearch.com.cn/iReportBeta/?m=service&a=showReportIRV');
 //define('YH_REPORT', '//irv.iresearch.com.cn/iReport/?m=service&a=showReportIRV');
 define('YH_REPORT71', '//irv.iresearch.com.cn/iReport/?m=service&a=irv');
 define('YH_REPORT37', '//irv.iresearch.com.cn/iReport/?m=service&a=irvApp');
@@ -78,6 +78,10 @@ define('DEBUG_LOG', TRUE);
 //define('DEBUG', true);
 define('START_TIME', microtime(true));
 define('NOW', date('Y-m-d H:i:s'));
+
+define('ADT_URL', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xadt');
+define('VT_URL', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt');
+define('UT_URL', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut');
 
 if (DEBUG) {
     ini_set('display_errors', 1);
