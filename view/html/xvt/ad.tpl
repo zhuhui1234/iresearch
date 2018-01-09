@@ -107,15 +107,15 @@
                         </div>
                     </div>
                     <div class="change-btn">
-                        <a class="btn btn-lg btn-primary " v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
                         <!-- IF token=="1" -->
-                        <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
+                        <a class="btn btn-lg btn-primary " v-bind:href="[[ product[tabIndex].url ]]">登入使用</a>
+                        <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
                         <!-- ELSE -->
+                        <a class="btn btn-lg btn-primary " v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
                         <!-- IF irdStatus=="1" -->
                         <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">登入旧版本</button>
                         <!-- ELSE -->
-                        <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
-
+                        <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">使用旧版本</a>
                         <!-- ENDIF -->
                         <!-- ENDIF -->
                     </div>
