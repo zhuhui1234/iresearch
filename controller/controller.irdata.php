@@ -175,6 +175,16 @@ class IRDataController extends Controller
 //                    exit();
 //                }
 
+                if ($ppname == 'iut-en') {
+                    if ($this->request()->get('backType', 0) == '0') {
+                        $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+                        $callBack = urlencode($backURL . '&backType=1');
+                        $jumpURL = 'http://iutmain.itracker.cn/NLogin_EN.aspx?guid=' . $this->irdUserInfo['iRGuid'];
+                        header("Location:" . $jumpURL);
+                        exit();
+                    }
+                }
+
                 if ($ppname == 'mut-en') {
                     if ($this->request()->get('backType', 0) == '0') {
                         $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
