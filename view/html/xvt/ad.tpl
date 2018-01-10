@@ -111,11 +111,19 @@
                         <a class="btn btn-lg btn-primary " v-bind:href="[[ product[tabIndex].url ]]">登入使用</a>
                         <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
                         <!-- ELSE -->
+                        <!-- IF apply=="2" -->
                         <a class="btn btn-lg btn-primary " v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
+                        <!-- ELSE -->
+                        <a class="btn btn-lg btn-primary " v-bind:href="[[ product[tabIndex].url ]]">申请试用</a>
+                        <!-- ENDIF -->
                         <!-- IF irdStatus=="1" -->
                         <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">登入旧版本</button>
                         <!-- ELSE -->
+                        <!-- IF apply=="2" -->
                         <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">使用旧版本</a>
+                        <!-- ELSE -->
+                        <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].tryurl ]]">申请旧版本</a>
+                        <!-- ENDIF -->
                         <!-- ENDIF -->
                         <!-- ENDIF -->
                     </div>
@@ -170,7 +178,7 @@
                     <!-- IF irdStatus=="1" -->
                     <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal" data-target="#myModal">登入旧版本</button>
                     <!-- ELSE -->
-                    <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a>
+                    <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].tryurl ]]">登入旧版本</a>
 
                     <!-- ENDIF -->
                     <!-- ENDIF -->
@@ -230,8 +238,9 @@
         var product = [{
             icon: 'public/img/ivt@2x.png',
             isOldURL: true,
-            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=42',
+            url: '?m=user&a=jump&pro=42',
             oldurl: '{adUrl}',
+            tryurl:'?m=user&a=trialApply&ppname=广告投放监测(旧版本)&menuID=42',
             info: 'AdTracker广告投放监测由艾瑞咨询自主研发，是通过爬虫技术在几百个网站上进行图片广告监测所建立的数据库。该数据库自2001年开始，统计及计算包含门户、垂直、视频、APP等媒体上品牌客户广告投放量及投放预估费用数据，真实反映中国互联网广告市场客观情况。',
             itemA: {
                 title: '互联网公司',
