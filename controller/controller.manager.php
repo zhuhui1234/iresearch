@@ -68,6 +68,8 @@ class ManagerController extends Controller
     {
         $data = json_decode(file_get_contents('php://input'), true);
         //@todo:check data
+        $data['toUserID'] = $data['userID'];
+        $data['userID'] = $this->userInfo['userID'];
         $data['token'] = $this->userInfo['token'];
         $this->__json();
         echo $this->model->updateMyEmployee($data);
