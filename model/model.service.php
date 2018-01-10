@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by 艾瑞咨询集团.
  * User: DavidWei
@@ -8,20 +9,22 @@
  * FileName:model.service.php
  * 描述:
  */
-class ServiceModel extends API {
+class ServiceModel extends API
+{
 
     /**
      * 生成随即字符串
      * @param $length
      * @return string
      */
-    function getRandChar($length){
+    function getRandChar($length)
+    {
         $str = null;
         $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
-        $max = strlen($strPol)-1;
+        $max = strlen($strPol) - 1;
 
-        for($i=0;$i<$length;$i++){
-            $str.=$strPol[rand(0,$max)];//rand($min,$max)生成介于min和max两个数之间的一个随机整数
+        for ($i = 0; $i < $length; $i++) {
+            $str .= $strPol[rand(0, $max)];//rand($min,$max)生成介于min和max两个数之间的一个随机整数
         }
         return $str;
     }
@@ -36,15 +39,15 @@ class ServiceModel extends API {
      * @param $mailFrom
      * @return mixed
      */
-    public function sendMail($mailContent, $mailTitle, $mailType, $MailTo, $mailFrom )
+    public function sendMail($mailContent, $mailTitle, $mailType, $MailTo, $mailFrom)
     {
         $url = API_URL . '?m=user&a=mailService';
         $ret = $this->_curlPost($url, array(
-            'mailcontent'   => $mailContent,
-            'mailtitle'     => $mailTitle,
-            'mailtype'      => $mailType,
-            'smtpemailto'    => $MailTo,
-            'smtpusermail'  => $mailFrom
+            'mailcontent' => $mailContent,
+            'mailtitle' => $mailTitle,
+            'mailtype' => $mailType,
+            'smtpemailto' => $MailTo,
+            'smtpusermail' => $mailFrom
         ), 'mailService');
 
         return $ret;
@@ -67,7 +70,7 @@ class ServiceModel extends API {
      * @param string $type
      * @return mixed
      */
-    public function uploadImage($token,$base64,$type='png')
+    public function uploadImage($token, $base64, $type = 'png')
     {
         $url = API_URL . '?m=upfile&a=imgs';
         $img = array(
@@ -76,18 +79,22 @@ class ServiceModel extends API {
             'filetype' => $type
         );
 //        pr($img);
-        $ret = $this->_curlPost($url,$img,'imgs');
+        $ret = $this->_curlPost($url, $img, 'imgs');
         return $ret;
     }
 
     /**
+     *
      * @param $data
      * @return mixed
      */
     public function recordLogs($data)
     {
+        if (empty($data['log_ip'])) {
+            $data['log_ip'] = getIp();
+        }
         $url = API_URL . '?m=logs&a=pushLog';
-        $ret = $this->_curlPost($url, $data,'pushLog');
+        $ret = $this->_curlPost($url, $data, 'pushLog');
         return $ret;
     }
 
@@ -98,7 +105,7 @@ class ServiceModel extends API {
     public function xvtSearch($data)
     {
         $url = 'http://localhost/xmpapi/public/api/xvt/search';
-        $ret = $this->_curlPost($url, json_decode($data,true), 'search');
+        $ret = $this->_curlPost($url, json_decode($data, true), 'search');
         return $ret;
     }
 }
