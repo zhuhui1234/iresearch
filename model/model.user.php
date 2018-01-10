@@ -75,7 +75,7 @@ class UserModel extends API
     {
         $ird_guid = Session::instance()->get('irdGuid');
         $ird_account = Session::instance()->get('irdAccount');
-        write_to_log('ird: '. $ird_guid, '_session');
+        write_to_log('ird: ' . $ird_guid, '_session');
         // 判断是否来自IRD的用户
         if (!empty($ird_guid) and !empty($ird_account)) {
             $data['ird_guid'] = $ird_guid;
@@ -220,8 +220,7 @@ class UserModel extends API
     {
         $userInfo = Session::instance()->get('userInfo');
 
-        if (DEBUG)
-        {
+        if (DEBUG) {
             echo ' DEBUG: ';
             echo($userInfo);
             echo '----';
@@ -557,6 +556,9 @@ class UserModel extends API
 
     public function pushLog($data)
     {
+        if (empty($data['log_ip'])) {
+            $data['log_ip'] = getIp();
+        }
         $url = API_URL . '?m=logs&a=pushLog';
         return $this->_curlPost($url, $data, 'pushLog');
     }
@@ -586,8 +588,8 @@ class UserModel extends API
             echo 'Encrypt: ';
             var_dump($encryptData);
         }
-        write_to_log('resouce: '.json_encode($data), '_ird_en');
-        write_to_log('encrypt: '.json_encode($encryptData), '_ird_en');
+        write_to_log('resouce: ' . json_encode($data), '_ird_en');
+        write_to_log('encrypt: ' . json_encode($encryptData), '_ird_en');
         $ret = $this->_curlAPost($url, ['v' => $encryptData]);
 
 
