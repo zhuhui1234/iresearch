@@ -174,7 +174,13 @@ class Api extends Url
         $userAgent = 'Mozilla/4.0+(compatible;+MSIE+6.0;+Windows+NT+5.1;+SV1)';
         $referer = $url;
         if (!is_array($data) || !$url) return '';
-        $data['userIP'] = getIp();
+
+        if (empty($data['log_ip'])) {
+            $data['userIP'] = $data['log_ip'] = getIp();
+        } else {
+            $data['userIP'] = getIp();
+        }
+
         if (!empty($data['token'])) {
             $data['TOKEN'] = $data['token'];
         }
