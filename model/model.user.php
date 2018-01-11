@@ -36,6 +36,9 @@ class UserModel extends API
         $getVcode = Session::instance()->get('vcodes');
         $ird_guid = Session::instance()->get('irdGuid');
         $ird_account = Session::instance()->get('irdAccount');
+        if (empty($data['log_ip'])) {
+            $data['log_ip'] = getIp();
+        }
         // 判断是否来自IRD的用户
         if (!empty($ird_guid) and !empty($ird_account)) {
             $data['ird_guid'] = $ird_guid;
