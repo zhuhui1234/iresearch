@@ -58,16 +58,8 @@ class UserController extends Controller
 
     public function test()
     {
-        $pdt_id = $this->request()->get('pro');
-        $from = $this->request()->get('from');
-        $guid = $this->request()->get('guid');
 
-        if (empty($pdt_id)) {
-            http_response_code(500);
-            echo '参数错误';
-            exit();
-        }
-
+        var_dump($this->userDetail);
 
     }
 
@@ -105,13 +97,7 @@ class UserController extends Controller
                 $irdStatus = '3';
                 write_to_log($guid . '   fails', '_irdLogin');
                 http_response_code(500);
-                echo '<script>
-                       if (confirm("iRD登录超时，请重新登录iRD，用跳转链接尝试重新绑定账号。")) {    
-                            window.location.href="about:blank";
-                            window.close(); 
-                        } else {    
-                                    window.close();    
-                        }  </script>';
+                header('Location: http://irv.iresearch.com.cn/iResearchDataWeb/m=user&a=login&expire=true');
 
             }
         }
@@ -171,7 +157,8 @@ class UserController extends Controller
                         'sub_id' => $pdt_id,
                         'resource' => 'iData',
                         'action' => '跳转产品',
-                        'level' => '0'
+                        'level' => '0',
+                        'log_ip' => getIp()
                     ]);
 
                     if ($from == 'ird') {

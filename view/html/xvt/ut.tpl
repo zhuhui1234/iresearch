@@ -172,25 +172,24 @@
                     <div class="change-btn">
 
                         <!--<a v-else="product[tabIndex].show" class="text-warning" href="">敬请期待！！</a>-->
-
                         <!-- IF token=="1" -->
-                        <a v-if="product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">开始使用</a>
-                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show && product[tabIndex].showEnglish" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].eurl ]]">English Version</a>
-
+                        <a v-if="product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">[[product[tabIndex].button]]</a>
+                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show && product[tabIndex].showEnglish" class="btn btn-link" v-bind:href="[[ product[tabIndex].eurl ]]">[[product[tabIndex].button_en]]</a>
+                        <a v-if="product[tabIndex].show" class="btn btn-link" v-bind:href="[[[[ product[tabIndex].url ]]]]">登录新版（Beta）</a>
                         <!-- ELSE -->
                         <!-- IF irdStatus=="1" -->
 
-                        <button v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">开始使用</button>
+                        <button v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">登入使用</button>
                         <!-- ELSE -->
 
-                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">开始使用</a>
-
-                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show && product[tabIndex].showEnglish" class="btn btn-link" v-bind:href="[[ product[tabIndex].eurl ]]">English Version</a>
+                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">[[product[tabIndex].button]]</a>
+                        <a v-if="product[tabIndex].isOldURL && product[tabIndex].show && product[tabIndex].showEnglish" class="btn btn-link" v-bind:href="[[ product[tabIndex].eurl ]]">[[product[tabIndex].button_en]]</a>
+                        <a v-if="product[tabIndex].show" class="btn btn-link" v-bind:href="[[[[ product[tabIndex].url ]]]]">[[product[tabIndex].button_beta]]</a>
 
 
                         <!-- ENDIF -->
                         <!-- ENDIF -->
-                        <a v-if="product[tabIndex].show" class="btn btn-link" v-bind:href="[[[[ product[tabIndex].url ]]]]">登录新版（Beta）</a>
+
                     </div>
                 </div>
             </div>
@@ -249,11 +248,14 @@
             icon: 'public/img/iut@2x.png',
             isOldURL: true,
             show:true,
+            button:'{apply_iut}',
+            button_beta:'{apply_beta_iut}',
+            button_en:'{apply_iut_en}',
             showEnglish: true,
-            oldurl: '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版',
+            oldurl: '{iut_oldurl}',
             // url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=12',
-            eurl:'?m=irdata&a=classicSys&ppname=iut-en',
-            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=49&p=iut',
+            eurl:'{iut_oldurl_en}',
+            url: '?m=user&a=jump&pro=49&p=iut',
             info: 'iUserTracker网络用户行为监测，是基于庞大的网民样本行为监测所建立的数据库。该数据库自2006年开始，收集包括用户网络浏览的行为、软件使用行为等详细信息，凭借多年的互联网行业研究经验，通过被监测样本的用户属性标签及多个用户行为竞争分析指标，真实反映中国互联网整体及不同用户市场的客观情况。',
             itemA: {
                 title: '互联网公司',
@@ -282,11 +284,14 @@
             icon: 'public/img/mut@2x.png',
             isOldURL: true,
             showEnglish: true,
-            eurl:'?m=irdata&a=classicSys&ppname=mut-en',
-            oldurl: '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版',
+            button:'{apply_mut}',
+            button_en:'{apply_mut_en}',
+            button_beta:'{apply_beta_mut}',
+            eurl:'{mut_oldurl_en}',
+            oldurl: '{mut_oldurl}',
             show:true,
             // url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=37',
-            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=49&p=mut',
+            url: '?m=user&a=jump&pro=49&p=mut',
             info: 'mUserTracker移动用户行为监测，基于大移动网民样本行为进行监测所建立的数据库，该数据库由2012年开始，收集包括用户通过移动设备，对App的使用行为、浏览网站的行为等相关情况。并通过对数据的大量分析建立了多个用户行为指标，真实反映中国移动互联网市场客观情况。并利用对被监测样本的用户属性进行标签设定，从而能够从多个维度对用户市场进行定义和细分。',
             itemA: {
                 title: '互联网公司',
@@ -315,6 +320,9 @@
             isOldURL: true,
             show:false,
             showEnglish:false,
+            button:'',
+            button_en:'',
+            button_beta:'',
             eurl:'',
             oldurl: '?m=irdata&a=classicSys&ppname=OTT端视频内容市场监测',
             url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=14',

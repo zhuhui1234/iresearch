@@ -8,7 +8,7 @@
  */
 class IRDataController extends Controller
 {
-    private $userModel, $irdUserInfo, $userInfo, $menu, $guid;
+    private $userModel, $irdUserInfo, $userInfo, $menu, $guid, $userDetail;
 
     function __construct($classname)
     {
@@ -25,6 +25,15 @@ class IRDataController extends Controller
             $this->irdUserInfo = json_decode(Session::instance()->get('iResearchDataUserInfo'), true);
         }
 
+
+        $this->userDetail = json_decode($this->userModel->getUserInfo([
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
+        ]), true);
+
+        if ($this->userDetail['resCode'] !== '000000') {
+            $this->userDetail = false;
+        }
 
     }
 
@@ -143,7 +152,7 @@ class IRDataController extends Controller
     public function classicSys()
     {
 
-        if (!empty($this->userInfo['token'])) {
+        if ($this->userDetail) {
 
             if (!empty($this->userInfo['ird_user_id'])) {
 //            if (time() > Session::instance()->get('irdTimeOut') || empty(Session::instance()->get('irdTimeOut'))) {
@@ -247,7 +256,7 @@ class IRDataController extends Controller
                 $this->errorPage('你并没有权限访问该模块功能');
             }
         } else {
-            View::instance('user/login.tpl')->show([]);
+            View::instance('user/login.tpl')->show(['msg' => '']);
         }
 
 

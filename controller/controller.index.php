@@ -8,16 +8,28 @@
 class IndexController extends Controller
 {
 
-    private $loginStatus, $userInfo, $serviceModel;
+    private $loginStatus, $userInfo, $serviceModel, $userDetail, $userModel;
 
     function __construct()
     {
         $this->userInfo = Session::instance()->get('userInfo');
         $this->serviceModel = Model::instance('service');
+        $this->userModel = Model::instance('user');
         if (!empty($this->userInfo)) {
             $this->loginStatus = FALSE;
+
+            $this->userDetail = json_decode($this->userModel->getUserInfo([
+                'token' => $this->userInfo['token'],
+                'userID' => $this->userInfo['userID']
+            ]), true);
+
+            if ($this->userDetail['resCode'] !== '000000') {
+                $this->loginStatus = true;
+                $this->userDetail = false;
+            }
         } else {
             $this->loginStatus = TRUE;
+            $this->userDetail = false;
         }
     }
 
@@ -564,12 +576,12 @@ class IndexController extends Controller
     {
 
         $userInfo = Session::instance()->get('userInfo');
-        if (isset($userInfo['token'])) {
-            $data['token'] = $userInfo['token'];
-        } else {
-            $data['token'] = 1;
-        }
-
+//        if (isset($userInfo['token'])) {
+//            $data['token'] = $userInfo['token'];
+//        } else {
+//            $data['token'] = 1;
+//        }
+        $data = [];
 
         if (empty(trim($userInfo['productKey']))) {
             //没有绑定
@@ -577,6 +589,77 @@ class IndexController extends Controller
         } else {
             //绑定
             $data['irdStatus'] = 2;
+        }
+
+        $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_ovt'] = $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '登入使用';
+        $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Sign In';
+        $data['ivt_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端视频内容市场监测';
+        $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en';
+        $data['mvt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版';
+        $data['mvt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en';
+        $data['ovt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版';
+        $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en';
+
+        if ($this->userDetail) {
+            $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_beta_ivt'] = $data['apply_ovt']= $data['apply_beta_mvt']= '申请使用';
+            $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Trial';
+
+
+            if (isset($userInfo['token'])) {
+                $data['token'] = $userInfo['token'];
+
+                $date = date('Y-m-d');
+
+                if (is_array($this->userDetail['data']['productList'])) {
+                    foreach ($this->userDetail['data']['productList'] as $datum) {
+
+                        if ($datum['pdt_id'] == 47) {
+                            if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
+                                $data['apply_ivt'] = '开始使用';
+                                $data['apply_ivt_en'] = 'English Version';
+
+                            }else {
+                                $data['apply_ivt'] = '申请试用';
+                                $data['apply_ivt_en'] = 'Trial';
+                                $data['ivt_oldurl'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测&menuID=47';
+                                $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测(英文)&menuID=48';
+                            }
+
+                            if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
+                                $data['apply_mvt'] = '开始使用';
+                                $data['apply_mvt_en'] = 'English Version';
+
+                            } else {
+                                $data['apply_mvt'] = '申请试用';
+                                $data['apply_mvt_en'] = 'Trial';
+                                $data['mvt_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=47';
+                                $data['mvt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=47';
+                            }
+
+                            if ($date >= $datum['ott_start_time']  and $date <= $datum['ott_due_time']) {
+                                $data['apply_ovt'] = '开始使用';
+                                $data['apply_ovt_en'] = 'English Version';
+
+                            } else {
+                                $data['apply_ovt'] = '申请试用';
+                                $data['apply_ovt_en'] = 'Trial';
+                                $data['ovt_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=48';
+                                $data['ovt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=48';
+                            }
+                        }
+
+
+                    }
+                }
+
+
+
+            } else {
+                $data['token'] = 1;
+            }
+
+        } else {
+            $data['token'] = 1;
         }
 
         View::instance('xvt/vt.tpl')->show($data);
@@ -617,11 +700,88 @@ class IndexController extends Controller
             $data['authType'] = 2;
         }
 
-        if (isset($userInfo['token'])) {
-            $data['token'] = $userInfo['token'];
+//        if (isset($userInfo['token'])) {
+//            $data['token'] = $userInfo['token'];
+//        } else {
+//            $data['token'] = 1;
+//        }
+        $data['apply_iut'] = $data['apply_mut'] = $data['apply_beta_iut'] = $data['apply_beta_mut'] = '登入使用';
+        $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Sign In';
+        $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版';
+        $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en';
+        $data['mut_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版';
+        $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en';
+
+        if ($this->userDetail) {
+            $data['apply_iut'] = $data['apply_mut'] = $data['apply_beta_iut'] = $data['apply_beta_mut']= '申请使用';
+            $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Trial';
+            if (isset($userInfo['token'])) {
+                $data['token'] = $userInfo['token'];
+
+                $date = date('Y-m-d');
+
+                if (is_array($this->userDetail['data']['productList'])) {
+                    foreach ($this->userDetail['data']['productList'] as $datum) {
+
+                        if ($datum['pdt_id'] == 48) {
+                            if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
+                                $data['apply_iut'] = '开始使用';
+                                $data['apply_iut_en'] = 'English Version';
+
+
+
+                            }else {
+                                $data['apply_iut'] = '申请试用';
+                                $data['apply_iut_en'] = 'Trial';
+                                $data['iut_oldurl'] = '?m=user&a=trialApply&ppname=网络视频市场监测&menuID=48';
+                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文)&menuID=48';
+                            }
+
+                            if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
+                                $data['apply_mut'] = '开始使用';
+                                $data['apply_mut_en'] = 'English Version';
+
+                            } else {
+                                $data['apply_mut'] = '申请试用';
+                                $data['apply_mut_en'] = 'Trial';
+                                $data['mut_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=48';
+                                $data['mut_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=48';
+                            }
+                        }
+
+                        if ($datum['pdt_id'] == 49) {
+
+                            if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
+                                $data['apply_beta_iut'] = '开始使用';
+                                $data['apply_beta_iut_en'] = 'English Version';
+                            }else{
+                                $data['apply_beta_iut'] = '申请试用';
+                                $data['apply_beta_iut_en'] = 'Trial';
+                            }
+
+                            if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
+                                $data['apply_beta_mut'] = '开始使用';
+                                $data['apply_beta_mut_en'] = 'English Version';
+                            }else{
+                                $data['apply_beta_mut'] = '申请试用';
+                                $data['apply_beta_mut_en'] = 'Trial';
+                            }
+                        }
+
+                    }
+                }
+
+
+
+            } else {
+                $data['token'] = 1;
+            }
+
         } else {
             $data['token'] = 1;
         }
+
+
 
         if (empty(trim($userInfo['productKey']))) {
             //没有绑定
@@ -630,6 +790,10 @@ class IndexController extends Controller
             //绑定
             $data['irdStatus'] = 2;
         }
+
+//        pr($data);
+//        pr($this->userDetail);
+//        exit();
         View::instance('xvt/ut.tpl')->show($data);
     }
 
@@ -637,11 +801,25 @@ class IndexController extends Controller
     {
         $data = [];
         $userInfo = Session::instance()->get('userInfo');
-        if (isset($userInfo['token'])) {
-            $data['token'] = $userInfo['token'];
+
+        if ($this->userDetail) {
+
+            if (isset($userInfo['token'])) {
+                $data['token'] = $userInfo['token'];
+                $data['apply'] = 1;
+
+                if ($this->__findPdt($this->userDetail['data']['productList'], 42)) {
+                    $data['apply'] = 2;
+                }
+
+            } else {
+                $data['token'] = 1;
+            }
+
         } else {
             $data['token'] = 1;
         }
+
         if (empty(trim($userInfo['productKey']))) {
             //没有绑定
             $data['irdStatus'] = 1;
@@ -661,7 +839,18 @@ class IndexController extends Controller
      */
     public function test()
     {
-        view::instance('xvt/404.tpl')->show([]);
+//        var_dump($this->userDetail);
+        if ($this->userDetail) {
+            foreach ($this->userDetail['data']['productList'] as $datum) {
+
+                if ($datum['pdt_id'] = 42) {
+
+                }
+
+            }
+        } else {
+            echo 'false';
+        }
     }
 
     /**
@@ -830,5 +1019,19 @@ class IndexController extends Controller
             }
         }
     }
+
+    private function __findPdt($product_list, $pdt_id)
+    {
+        if (is_array($product_list)) {
+            foreach ($product_list as $datum) {
+
+                return $datum['pdt_id'] == $pdt_id;
+
+            }
+        } else {
+            return false;
+        }
+    }
+
 
 }
