@@ -35,9 +35,9 @@ class ManagerController extends Controller
             _ERROR('000001', '没有手机号');
         }
 
-        if (empty($data['mobile_key'])) {
-            _ERROR('000001', '缺少验证码');
-        }
+//        if (empty($data['mobile_key'])) {
+//            _ERROR('000001', '缺少验证码');
+//        }
 
         $this->__json();
         echo $this->model->addMyEmployee($data);

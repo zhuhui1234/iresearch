@@ -116,14 +116,14 @@
                     <a class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">开始使用</a>
 
                     <!-- ELSE -->
-                    <!-- IF irdStatus=="1" -->
+                    <!--IF irdStatus=="1" -->
 
-                    <button v-if="product[tabIndex].isOldURL " class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">开始使用</button>
-                    <!-- ELSE -->
+                    <!-- <button v-if="product[tabIndex].isOldURL " class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">开始使用</button> -->
+                    <!--ELSE -->
 
                     <a v-if="product[tabIndex].isOldURL" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">开始使用</a>
 
-                    <!-- ENDIF -->
+                    <!--ENDIF -->
                     <!-- ENDIF -->
                 </div>
             </div>
@@ -177,17 +177,17 @@
                         <a v-if="product[tabIndex].isOldURL && product[tabIndex].show && product[tabIndex].showEnglish" class="btn btn-link" v-bind:href="[[ product[tabIndex].eurl ]]">[[product[tabIndex].button_en]]</a>
                         <a v-if="product[tabIndex].show" class="btn btn-link" v-bind:href="[[[[ product[tabIndex].url ]]]]">登录新版（Beta）</a>
                         <!-- ELSE -->
-                        <!-- IF irdStatus=="1" -->
+                        <!--IF irdStatus=="1" -->
 
-                        <button v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">登入使用</button>
-                        <!-- ELSE -->
+                        <!-- <button v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">登入使用</button>-->
+                        <!--ELSE -->
 
                         <a v-if="product[tabIndex].isOldURL && product[tabIndex].show" class="btn btn-lg btn-primary" v-bind:href="[[ product[tabIndex].oldurl ]]">[[product[tabIndex].button]]</a>
                         <a v-if="product[tabIndex].isOldURL && product[tabIndex].show && product[tabIndex].showEnglish" class="btn btn-link" v-bind:href="[[ product[tabIndex].eurl ]]">[[product[tabIndex].button_en]]</a>
                         <a v-if="product[tabIndex].show" class="btn btn-link" v-bind:href="[[[[ product[tabIndex].url ]]]]">[[product[tabIndex].button_beta]]</a>
 
 
-                        <!-- ENDIF -->
+                        <!--ENDIF -->
                         <!-- ENDIF -->
 
                     </div>

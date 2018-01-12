@@ -151,6 +151,8 @@ class IRDataController extends Controller
 
     public function classicSys()
     {
+        $ppname = $this->request()->get('ppname');
+        $pdtID = $this->request()->get('pro');
 
         if ($this->userDetail) {
 
@@ -163,7 +165,7 @@ class IRDataController extends Controller
             }
 
             if (!empty($this->userInfo['productKey'])) {
-                $ppname = $this->request()->get('ppname');
+
 
                 $stat = false;
                 $data = [
@@ -215,7 +217,6 @@ class IRDataController extends Controller
                 //以下代码是解决被禁止第三方cooke下iframe无法登陆
 //            if(strpos($_SERVER["HTTP_USER_AGENT"],"Safari")) {
 
-
                 if (!empty($data['ppurl'])) {
                     if ($this->request()->get('backType', 0) == '0') {
                         $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -225,10 +226,9 @@ class IRDataController extends Controller
                     }
                 } else{
                     echo("<SCRIPT LANGUAGE=\"JavaScript\">
-                    alert(\"你并没有权限访问该模块功能\");
+                    alert(\"你并没有权限访问该模块功能 ~\");
                     top.location.href=\"?m=index\";
                     </SCRIPT>");
-//                    $this->errorPage('你并没有权限访问该模块功能');
                 }
 //            }
 
@@ -243,17 +243,16 @@ class IRDataController extends Controller
                     View::instance('service/ird.tpl')->show($data);
                 } else {
                     echo("<SCRIPT LANGUAGE=\"JavaScript\">
-            alert(\"你并没有权限访问该模块功能\");
-            top.location.href=\"?m=index\";
-            </SCRIPT>");
-                    $this->errorPage('你并没有权限访问该模块功能');
+                    alert(\"你并没有权限访问该模块功能~\");
+                    top.location.href=\"?m=index\";
+                    </SCRIPT>");
                 }
             } else {
-                echo("<SCRIPT LANGUAGE=\"JavaScript\">
-            alert(\"你并没有权限访问该模块功能\");
-            top.location.href=\"?m=index\";
-            </SCRIPT>");
-                $this->errorPage('你并没有权限访问该模块功能');
+                echo("
+                 <SCRIPT LANGUAGE=\"JavaScript\">
+                alert(\"你并没有权限访问该模块功能!\");
+                top.location.href=\"?m=user&a=trialApply&ppname={$ppname}&menuID={$pdtID}\"
+                </SCRIPT>");
             }
         } else {
             View::instance('user/login.tpl')->show(['msg' => '']);
