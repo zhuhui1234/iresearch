@@ -831,6 +831,7 @@ class IndexController extends Controller
             $data['adUrl'] = '?m=irdata&a=classicSys&ppname=old-ad';
         }
 
+
         View::instance('xvt/ad.tpl')->show($data);
     }
 
@@ -1025,9 +1026,12 @@ class IndexController extends Controller
         if (is_array($product_list)) {
             foreach ($product_list as $datum) {
 
-                return $datum['pdt_id'] == $pdt_id;
-
+                if ($datum['pdt_id'] == $pdt_id){
+                    $ret = true;
+                };
             }
+
+            return $ret;
         } else {
             return false;
         }
