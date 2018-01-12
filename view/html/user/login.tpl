@@ -27,7 +27,6 @@
 <div class="login-wrap">
     <div class="login-header">
         <img src="./public/img/irs-data.png" class="img-responsive center-block" alt="">
-        adfasdf
     </div>
     <div class="row">
         <div class="col-xs-5">
