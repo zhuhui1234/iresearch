@@ -118,7 +118,7 @@ define(["helper", "jquery", "bootstrap", "validator"], function (helper, $) {
                         console.log(data);
 
                         if (data.resCode == "000000") {
-                            alert('注册成功! 请在首页登入使用!');
+                            alert('注册成功! 请在首页登录使用!');
                             window.location.href = '?m=index';
                         } else {
                             alert(data.resMsg)

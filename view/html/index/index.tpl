@@ -267,7 +267,7 @@
                             </div>
                             <div class="form-group">
                                 <label>请输入密码</label>
-                                <input type="password" class="form-control" name="loginPassword" placeholder="登入密码">
+                                <input type="password" class="form-control" name="loginPassword" placeholder="登录密码">
                             </div>
                             <p class="text-right"><a href="#">忘记密码？</a></p>
                             <button type="" class="btn btn-primary btn-block mbm">登录</button>

@@ -26,7 +26,7 @@ class LicenceController extends Controller
                 _ERROR('000001','权限不足');
             }
         } else {
-            _ERROR('000002','登陆过期');
+            _ERROR('000002','登录过期');
         }
     }
 

@@ -591,7 +591,8 @@ class IndexController extends Controller
             $data['irdStatus'] = 2;
         }
 
-        $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_ovt'] = $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '登入使用';
+        $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_ovt'] = '登录使用()';
+        $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '登录使用(老版本)';
         $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Sign In';
 
         $data['ivt_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端视频内容市场监测&pro=47';
@@ -602,7 +603,8 @@ class IndexController extends Controller
         $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=47';
 
         if ($this->userDetail) {
-            $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_beta_ivt'] = $data['apply_ovt']= $data['apply_beta_mvt']= '申请试用';
+            $data['apply_ivt'] = $data['apply_mvt'] =$data['apply_ovt']= '申请试用';
+            $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '申请试用(老版本)';
             $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Trial';
 
             $data['ovt_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=47';
@@ -623,12 +625,14 @@ class IndexController extends Controller
                         if ($datum['pdt_id'] == 47) {
                             if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
                                 $data['apply_ivt'] = '开始使用';
+                                $data['apply_beta_ivt'] = '开始使用(老版本)';
                                 $data['apply_ivt_en'] = 'English Version';
                                 $data['ivt_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端视频内容市场监测&pro=47';
                                 $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=47';
 
                             }else {
                                 $data['apply_ivt'] = '申请试用';
+                                $data['apply_beta_ivt'] = '申请试用(老版本)';
                                 $data['apply_ivt_en'] = 'Trial';
                                 $data['ivt_oldurl'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测&menuID=47';
                                 $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测(英文)&menuID=47';
@@ -723,7 +727,8 @@ class IndexController extends Controller
 //        } else {
 //            $data['token'] = 1;
 //        }
-        $data['apply_iut'] = $data['apply_mut'] = $data['apply_beta_iut'] = $data['apply_beta_mut'] = '登入使用';
+        $data['apply_iut'] = $data['apply_mut'] =  '登录使用';
+        $data['apply_beta_iut'] = $data['apply_beta_mut'] = '登录使用(BETA)';
         $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Sign In';
 
         $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48';
@@ -733,7 +738,8 @@ class IndexController extends Controller
 
         if ($this->userDetail) {
 
-            $data['apply_iut'] = $data['apply_mut'] = $data['apply_beta_iut'] = $data['apply_beta_mut']= '申请试用';
+            $data['apply_iut'] = $data['apply_mut'] ='申请试用';
+            $data['apply_beta_iut'] = $data['apply_beta_mut']= '申请试用(BETA)';
             $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Trial';
             $data['iut_oldurl'] = '?m=user&a=trialApply&ppname=网络视频市场监测&menuID=48';
             $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文)&menuID=48';
@@ -778,7 +784,7 @@ class IndexController extends Controller
                         if ($datum['pdt_id'] == 49) {
 
                             if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
-                                $data['apply_beta_iut'] = '开始使用';
+                                $data['apply_beta_iut'] = '开始使用(BETA)';
                                 $data['apply_beta_iut_en'] = 'English Version';
                             }else{
                                 $data['apply_beta_iut'] = '申请试用';
@@ -786,7 +792,7 @@ class IndexController extends Controller
                             }
 
                             if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
-                                $data['apply_beta_mut'] = '开始使用';
+                                $data['apply_beta_mut'] = '开始使用(BETA)';
                                 $data['apply_beta_mut_en'] = 'English Version';
                             }else{
                                 $data['apply_beta_mut'] = '申请试用';

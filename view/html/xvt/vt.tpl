@@ -143,7 +143,7 @@
                     </button>-->
                     <!--ELSE -->
                     <a v-if="product[tabIndex].isOldURL " class="btn btn-link"
-                       v-bind:href="[[ product[tabIndex].oldurl ]]">[[ product[tabIndex].button]]</a>
+                       v-bind:href="[[ product[tabIndex].oldurl ]]">[[ product[tabIndex].button_old]]</a>
                     <!--ENDIF -->
                     <!-- ENDIF -->
                 </div>
@@ -207,7 +207,7 @@
                 </button>
                 <!--ELSE -->
 
-                <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl]]">[[ product[tabIndex].button]]</a>
+                <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl]]">[[ product[tabIndex].button_old]]</a>
 
                 <!--ENDIF -->
                 <!-- ENDIF -->
@@ -278,6 +278,7 @@
         url: '?m=user&a=jump&pro=45',
         oldurl: '{ivt_oldurl}',
         button:'{apply_ivt}',
+        button_old:'{apply_beta_ivt}',
         info: 'iVideoTracker网络视频市场监测 ，是基于庞大的网民网络视频收视行为监测数据，记录了自2011年始，用户对视频内容的浏览行为记录。iVideoTracker提供国内主流视频媒体各视频类别、视频影片的收视情况及收视人群分布数据，真实反映中国互联网在线视频市场客观情况，帮助企业了解网民视频内容收视喜好，以指导片源购买、片源定向，证明视屏媒体价值，优化网络视频广告投放效果。',
         itemA: {
             title: '互联网公司',
@@ -309,6 +310,7 @@
         oldUrl: '',
         show: true,
         button:'{apply_mvt}',
+        button_old:'',
         info: 'mVideoTracker移动端视频市场监测，基于运营商级别的用户观看移动网络视频内容的收视行为数据，监测主流视频内容提供商不同频道、类型和产地的收视情况，洞察视频内容在不同  视频内容提供商的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好程度，监控视频内容在各时段的收视趋势，为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。',
         itemA: {
             title: '视频内容提供商',
@@ -343,6 +345,7 @@
         button:'{apply_ovt}',
         show: true,
         isOldURL: false,
+        button_old:'',
         info: 'oVideoTracker OTT端视频市场监测基于运营商级别的用户观看OTT网络视频内容的收视行为数据，监测主流视频内容提供商不同频道、类型和产地的收视情况，洞察视频内容在不同视频内容提供商的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好程度，监控视频内容在各时段的收视趋势，为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。',
         itemA: {
             title: '视频内容提供商',
