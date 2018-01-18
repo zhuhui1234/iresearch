@@ -68,6 +68,12 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
     //action
     $(function () {
         window.localStorage.clear();
+        var expired = Helper.getQuery('expired');
+
+        if (expired == '1') {
+            $("#timeout_msg").show();
+        }
+
         $("#verification").getSms();
         $("#login_action").submit(function (e) {
             e.preventDefault();

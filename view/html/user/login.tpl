@@ -28,6 +28,11 @@
     <div class="login-header">
         <img src="./public/img/irs-data.png" class="img-responsive center-block" alt="">
     </div>
+    <div class="row" id="timeout_msg" style="display: none">
+        <div class="col-xs-12">
+            <p class="text-center alert alert-danger" >您的登录已超时，或已在其他终端登录，请重新登录。</p>
+        </div>
+    </div>
     <div class="row">
         <div class="col-xs-5">
             <div id="wxLogin" class=""></div>
