@@ -97,7 +97,13 @@ class UserController extends Controller
                 $irdStatus = '3';
                 write_to_log($guid . '   fails', '_irdLogin');
                 http_response_code(500);
-                header('Location: http://irv.iresearch.com.cn/iResearchDataWeb/m=user&a=login&expire=true');
+                echo '<script> 
+                       if (confirm("iRD登录超时，请重新登录iRD，用跳转链接尝试重新绑定账号。")) {    
+                            window.location.href="about:blank";
+                            window.close(); 
+                        } else {    
+                                    window.close();    
+                        }  </script>';
 
             }
         }
@@ -431,7 +437,7 @@ class UserController extends Controller
     {
         $this->model->logOut();
         Session::instance()->destroy();
-        setcookie('yh_irv_url', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=login', time() + 2400, '/');
+        setcookie('yh_irv_url', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=login&expired=1', time() + 2400, '/');
         setcookie('PHPSESSID', '', time() - 3600, '/');
         setcookie('JSESSIONID', '', time() - 3600, '/');
         setcookie('kittyID', '', time() - 3600, '/');

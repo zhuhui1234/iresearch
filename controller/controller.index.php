@@ -591,7 +591,7 @@ class IndexController extends Controller
             $data['irdStatus'] = 2;
         }
 
-        $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_ovt'] = '登录使用()';
+        $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_ovt'] = '登录使用';
         $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '登录使用(老版本)';
         $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Sign In';
 

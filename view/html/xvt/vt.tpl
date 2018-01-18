@@ -135,7 +135,7 @@
 
                     <!-- IF token == "1" -->
                     <a v-if="product[tabIndex].isOldURL " class="btn btn-link"
-                       v-bind:href="[[ product[tabIndex].oldurl ]]">[[ product[tabIndex].button]]</a>
+                       v-bind:href="[[ product[tabIndex].oldurl ]]">[[ product[tabIndex].button_old]]</a>
                     <!-- ELSE -->
                     <!--IF irdStatus=="1" -->
                     <!-- <button v-if="product[tabIndex].isOldURL " class="btn btn-link" data-toggle="modal"
@@ -198,7 +198,7 @@
             <div class="change-btn">
                 <a class="btn btn-primary btn-lg" v-bind:href="[[ product[tabIndex].url ]]">[[ product[tabIndex].button ]]</a>
                 <!-- IF token=="1" -->
-                <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl]]">[[ product[tabIndex].button]]</a>
+                <a class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl]]">[[ product[tabIndex].button_old]]</a>
                 <!-- ELSE -->
                 <!--IF irdStatus== "1" -->
 
