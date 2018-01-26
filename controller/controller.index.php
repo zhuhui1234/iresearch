@@ -191,6 +191,16 @@ class IndexController extends Controller
     }
 
 
+    public function iCloudInApp()
+    {
+
+        $data = array(
+            'url' => 'http://ircdemo.iresearchdata.cn/ircloud-inapp/login?token=' . $this->userInfo['token']
+        );
+
+        header("Location:" . $data['url']);
+    }
+
     /**
      * ir cloud
      */
