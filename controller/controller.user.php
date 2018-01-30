@@ -450,6 +450,12 @@ class UserController extends Controller
             case '38':
                 header("Location: http://data.iresearch.com.cn/iRCloud.shtml");
                 break;
+            case '43':
+                header("Location: http://data.iresearch.com.cn/iRCloud.shtml");
+                break;
+            case '50':
+                header("Location: http://data.iresearch.com.cn/iRCloud.shtml");
+                break;
             case '0':
                 header('Location: http://data.iresearch.com.cn/iRView.shtml');
                 break;

@@ -159,7 +159,7 @@ class IndexController extends Controller
     public function iCloud()
     {
 
-        header("Location:" . 'http://ircdemo.iresearchdata.cn/irbase/check/?token=' . $this->userInfo['token']);
+        header("Location:" . 'http://ircloud.iresearchdata.cn/irbase/check/?token=' . $this->userInfo['token']);
     }
 
     /**
@@ -168,7 +168,7 @@ class IndexController extends Controller
     public function iAppCheck()
     {
 
-        header("Location:" . 'http://ircdemo.iresearchdata.cn/ircloud-app-check/check?token=' . $this->userInfo['token']);
+        header("Location:" . 'http://ircloud.iresearchdata.cn/ircloud-app-check/check?token=' . $this->userInfo['token']);
     }
 
     /**
@@ -195,7 +195,7 @@ class IndexController extends Controller
     {
 
         $data = array(
-            'url' => 'http://ircdemo.iresearchdata.cn/ircloud-inapp/login?token=' . $this->userInfo['token']
+            'url' => 'http://ircloud.iresearchdata.cn/ircloud-inapp/login?token=' . $this->userInfo['token']
         );
 
         header("Location:" . $data['url']);
@@ -606,11 +606,11 @@ class IndexController extends Controller
         $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Sign In';
 
         $data['ivt_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端视频内容市场监测&pro=47';
-        $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=47';
+        $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=52';
         $data['mvt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47';
-        $data['mvt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=47';
+        $data['mvt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
         $data['ovt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47';
-        $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=47';
+        $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ovt-en&pro=52';
 
         if ($this->userDetail) {
             $data['apply_ivt'] = $data['apply_mvt'] =$data['apply_ovt']= '申请试用';
@@ -618,11 +618,11 @@ class IndexController extends Controller
             $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Trial';
 
             $data['ovt_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=47';
-            $data['ovt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=47';
+            $data['ovt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=52';
             $data['ivt_oldurl'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测&menuID=47';
-            $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测(英文)&menuID=47';
+            $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测(英文)&menuID=52';
             $data['mvt_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=47';
-            $data['mvt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=47';
+            $data['mvt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=52';
 
             if (isset($userInfo['token'])) {
                 $data['token'] = $userInfo['token'];
@@ -636,42 +636,73 @@ class IndexController extends Controller
                             if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
                                 $data['apply_ivt'] = '开始使用';
                                 $data['apply_beta_ivt'] = '开始使用(老版本)';
-                                $data['apply_ivt_en'] = 'English Version';
+//                                $data['apply_ivt_en'] = 'English Version';
                                 $data['ivt_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端视频内容市场监测&pro=47';
-                                $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=47';
+//                                $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=52';
 
                             }else {
                                 $data['apply_ivt'] = '申请试用';
                                 $data['apply_beta_ivt'] = '申请试用(老版本)';
                                 $data['apply_ivt_en'] = 'Trial';
                                 $data['ivt_oldurl'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测&menuID=47';
-                                $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测(英文)&menuID=47';
+                                $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测(英文)&menuID=52';
                             }
 
                             if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
                                 $data['apply_mvt'] = '开始使用';
-                                $data['apply_mvt_en'] = 'English Version';
+//                                $data['apply_mvt_en'] = 'English Version';
                                 $data['mvt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47';
-                                $data['mvt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=47';
+//                                $data['mvt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
 
                             } else {
                                 $data['apply_mvt'] = '申请试用';
                                 $data['apply_mvt_en'] = 'Trial';
                                 $data['mvt_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=47';
-                                $data['mvt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=47';
+                                $data['mvt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=52';
                             }
 
                             if ($date >= $datum['ott_start_time']  and $date <= $datum['ott_due_time']) {
                                 $data['apply_ovt'] = '开始使用';
-                                $data['apply_ovt_en'] = 'English Version';
+//                                $data['apply_ovt_en'] = 'English Version';
                                 $data['ovt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47';
-                                $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=47';
+//                                $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
 
                             } else {
                                 $data['apply_ovt'] = '申请试用';
                                 $data['apply_ovt_en'] = 'Trial';
                                 $data['ovt_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=47';
-                                $data['ovt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=47';
+//                                $data['ovt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=52';
+                            }
+                        }
+
+                        //vt english
+                        if ($datum['pdt_id'] == 52) {
+                            if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
+                                $data['apply_ivt'] = '开始使用';
+                                $data['apply_ivt_en'] = 'English Version';
+                                $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=52';
+
+                            }else {
+                                $data['apply_ivt_en'] = 'Trial';
+                                $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测(英文)&menuID=52';
+                            }
+
+                            if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
+                                $data['apply_mvt_en'] = 'English Version';
+                                $data['mvt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
+
+                            } else {
+                                $data['apply_mvt_en'] = 'Trial';
+                                $data['mvt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=52';
+                            }
+
+                            if ($date >= $datum['ott_start_time']  and $date <= $datum['ott_due_time']) {
+                                $data['apply_ovt_en'] = 'English Version';
+                                $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
+
+                            } else {
+                                $data['apply_ovt_en'] = 'Trial';
+                                $data['ovt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=52';
                             }
                         }
 
@@ -724,7 +755,6 @@ class IndexController extends Controller
         $data = [];
         $userInfo = Session::instance()->get('userInfo');
 
-//        pr($userInfo);
 
         if (preg_match('/^400/', $userInfo['mobile'])) {
             $data['authType'] = 1;
@@ -742,9 +772,11 @@ class IndexController extends Controller
         $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Sign In';
 
         $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48';
-        $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pro=48';
+        $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pro=51';
         $data['mut_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=48';
-        $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=48';
+        $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
+
+
 
         if ($this->userDetail) {
 
@@ -752,9 +784,9 @@ class IndexController extends Controller
             $data['apply_beta_iut'] = $data['apply_beta_mut']= '申请试用(BETA)';
             $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Trial';
             $data['iut_oldurl'] = '?m=user&a=trialApply&ppname=网络视频市场监测&menuID=48';
-            $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文)&menuID=48';
+            $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文)&menuID=51';
             $data['mut_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=48';
-            $data['mut_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=48';
+            $data['mut_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=51';
 
             if (isset($userInfo['token'])) {
                 $data['token'] = $userInfo['token'];
@@ -763,31 +795,51 @@ class IndexController extends Controller
 
                 if (is_array($this->userDetail['data']['productList'])) {
                     foreach ($this->userDetail['data']['productList'] as $datum) {
-
+                        //echo ($datum['pdt_id'] );
                         if ($datum['pdt_id'] == 48) {
                             if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
                                 $data['apply_iut'] = '开始使用';
-                                $data['apply_iut_en'] = 'English Version';
+//                                $data['apply_iut_en'] = 'English Version';
                                 $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48';
-                                $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=48';
+//                                $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
 
                             }else {
                                 $data['apply_iut'] = '申请试用';
-                                $data['apply_iut_en'] = 'Trial';
+//                                $data['apply_iut_en'] = 'Trial';
                                 $data['iut_oldurl'] = '?m=user&a=trialApply&ppname=网络视频市场监测&menuID=48';
-                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文)&menuID=48';
+//                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文)&menuID=48';
                             }
 
                             if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
                                 $data['apply_mut'] = '开始使用';
-                                $data['apply_mut_en'] = 'English Version';
+//                                $data['apply_mut_en'] = 'English Version';
                                 $data['mut_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=48';
-                                $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=48';
+//                                $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
                             } else {
                                 $data['apply_mut'] = '申请试用';
-                                $data['apply_mut_en'] = 'Trial';
+//                                $data['apply_mut_en'] = 'Trial';
                                 $data['mut_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=48';
-                                $data['mut_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=48';
+//                                $data['mut_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=51';
+                            }
+                        }
+
+                        if ($datum['pdt_id'] == 51) {
+                            echo('a');
+                            if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
+                                $data['apply_iut_en'] = 'English Version';
+                                $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
+
+                            }else {
+                                $data['apply_iut_en'] = 'Trial';
+                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文)&menuID=48';
+                            }
+
+                            if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
+                                $data['apply_mut_en'] = 'English Version';
+                                $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
+                            } else {
+                                $data['apply_mut_en'] = 'Trial';
+                                $data['mut_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=51';
                             }
                         }
 

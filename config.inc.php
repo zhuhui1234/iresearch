@@ -161,11 +161,11 @@ if (!isLoginState()
     if ($_GET['a'] != '' && $_GET['m'] != '') {
         echo("<SCRIPT LANGUAGE=\"JavaScript\">
         alert(\"登录超时,请重新登录\");
-        window.location.href=\"?m=user&a=login\";
+        window.location.href=\"?m=user&a=login&expired=1\";
         </SCRIPT>");
     } else {
         echo("<SCRIPT LANGUAGE=\"JavaScript\">
-        window.location.href=\"?m=user&a=login\";
+        window.location.href=\"?m=user&a=login&expired=1\";
         </SCRIPT>");
     }
 

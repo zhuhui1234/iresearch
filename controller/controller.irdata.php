@@ -180,11 +180,11 @@ class IRDataController extends Controller
                     'ppurl' => $this->__getCURL($ppname)
                 ];
 
-//                if (DEBUG) {
-//                    pr($this->userInfo);
+                if (DEBUG) {
+                    pr($data);
 //                    var_dump($this->irdUserInfo);
-//                    exit();
-//                }
+                    exit();
+                }
 
                 if ($ppname == 'iut-en') {
                     if ($this->request()->get('backType', 0) == '0') {
