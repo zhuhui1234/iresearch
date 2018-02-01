@@ -144,7 +144,7 @@ class WeChatController extends Controller
                     echo("<SCRIPT LANGUAGE=\"JavaScript\">
                     alert(\"微信绑定成功\");
 //                    window.location.href=\"?m=user&a=editUserInfo\";
-                    window.location.href=\"m=user&a=editUserInfo\";
+                    window.location.href=\"?m=user&a=editUserInfo\";
                     </SCRIPT>");
                 } else {
                     echo("<SCRIPT LANGUAGE=\"JavaScript\">
