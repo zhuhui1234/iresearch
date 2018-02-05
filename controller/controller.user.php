@@ -547,6 +547,7 @@ class UserController extends Controller
         View::instance('user/permissionAccess.tpl')->show($data);
     }
 
+
     ######################################################################################
     ##################################                     ###############################
     #################################     API METHODS     ################################
@@ -825,58 +826,58 @@ class UserController extends Controller
     {
 
         $menu = [
-                [
-                    'menuID' => 1,
-                    'menuName' => '艾瑞指数',
-                    'menuEName' => 'iRIndex',
-                    'menuIntro' => '艾瑞指数简介',
-                    'functionLabel' => null,
-                    'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FiRIndex.shtml',
-                    'versionType' => 1,
-                    'series' => 0,
-                    'menuVersion' => null,
-                    'pState' => 0,
-                    'pcState' => null,
-                    'isSubMenu' => 1,
-                ],                [
-                    'menuID' => 2,
-                    'menuName' => '艾瑞睿见',
-                    'menuEName' => 'iRView',
-                    'menuIntro' => '艾瑞睿见简介',
-                    'functionLabel' => null,
-                    'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FiRView.shtml',
-                    'versionType' => 1,
-                    'series' => 0,
-                    'menuVersion' => null,
-                    'pState' => 0,
-                    'pcState' => null,
-                    'isSubMenu' => 1,
-                ],                [
-                    'menuID' => 3,
-                    'menuName' => '艾瑞智云',
-                    'menuEName' => 'iRCloud',
-                    'menuIntro' => '艾瑞智云简介',
-                    'functionLabel' => null,
-                    'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FiRCloud.shtml',
-                    'versionType' => 1,
-                    'series' => 0,
-                    'menuVersion' => null,
-                    'pState' => 0,
-                    'pcState' => null,
-                    'isSubMenu' => 1,
-                ],                [
-                    'menuID' => 4,
-                    'menuName' => '关于我们',
-                    'menuEName' => 'AboutUs',
-                    'functionLabel' => null,
-                    'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FAbout.shtml',
-                    'versionType' => 0,
-                    'series' => 0,
-                    'menuVersion' => null,
-                    'pState' => 0,
-                    'pcState' => null,
-                    'isSubMenu' => 1,
-                ],
+            [
+                'menuID' => 1,
+                'menuName' => '艾瑞指数',
+                'menuEName' => 'iRIndex',
+                'menuIntro' => '艾瑞指数简介',
+                'functionLabel' => null,
+                'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FiRIndex.shtml',
+                'versionType' => 1,
+                'series' => 0,
+                'menuVersion' => null,
+                'pState' => 0,
+                'pcState' => null,
+                'isSubMenu' => 1,
+            ], [
+                'menuID' => 2,
+                'menuName' => '艾瑞睿见',
+                'menuEName' => 'iRView',
+                'menuIntro' => '艾瑞睿见简介',
+                'functionLabel' => null,
+                'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FiRView.shtml',
+                'versionType' => 1,
+                'series' => 0,
+                'menuVersion' => null,
+                'pState' => 0,
+                'pcState' => null,
+                'isSubMenu' => 1,
+            ], [
+                'menuID' => 3,
+                'menuName' => '艾瑞智云',
+                'menuEName' => 'iRCloud',
+                'menuIntro' => '艾瑞智云简介',
+                'functionLabel' => null,
+                'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FiRCloud.shtml',
+                'versionType' => 1,
+                'series' => 0,
+                'menuVersion' => null,
+                'pState' => 0,
+                'pcState' => null,
+                'isSubMenu' => 1,
+            ], [
+                'menuID' => 4,
+                'menuName' => '关于我们',
+                'menuEName' => 'AboutUs',
+                'functionLabel' => null,
+                'curl' => 'http%3A%2F%2Fdata.iresearch.com.cn%2FAbout.shtml',
+                'versionType' => 0,
+                'series' => 0,
+                'menuVersion' => null,
+                'pState' => 0,
+                'pcState' => null,
+                'isSubMenu' => 1,
+            ],
 
 
         ];
@@ -995,7 +996,61 @@ class UserController extends Controller
             _ERROR('0000001', $crop->getMsg());
         }
 
+    }
 
+    /**
+     * message heads
+     */
+    public function msgHeads()
+    {
+        $this->__json();
+        if (!$this->loginStatus) {
+            $ret = json_decode($this->userDetail, true);
+            $ret = $ret['data']['productList'];
+            $pdt_list = [
+                [
+                    'pdtID' => null,
+                    'type' => 0,
+                    'tabName' => '艾瑞数据公告'
+                ]
+            ];
+            foreach ($ret as $pdt) {
+                array_push($pdt_list, [
+                    'pdtID' => $pdt['pdt_id'],
+                    'tabName' => $pdt['pdt_name'],
+                    'type' => 2
+                ]);
+            }
+            _SUCCESS('0000000', 'OK', $pdt_list);
+        } else {
+            _ERROR('0000001', '超时登入');
+
+        }
+
+    }
+
+    public function msgList()
+    {
+        $getData = json_decode(file_get_contents('php://input'), true);
+        $this->__json();
+
+        if (!$this->loginStatus) {
+            $serviceModel = Model::instance('service');
+        } else {
+
+        }
+    }
+
+    public function msgDetail()
+    {
+        $getData = json_decode(file_get_contents('php://input'), true);
+        $this->__json();
+
+        if (!$this->loginStatus) {
+            $serviceModel = Model::instance('service');
+        } else {
+
+        }
     }
 
     ######################################################################################
@@ -1026,9 +1081,11 @@ class UserController extends Controller
      */
     private function __json()
     {
-        @@ob_clean();
-        header('Content-type: application/json;charset=utf-8');
-        header('Content-Encoding: utf-8');
+        if (!DEBUG) {
+            @@ob_clean();
+            header('Content-type: application/json;charset=utf-8');
+            header('Content-Encoding: utf-8');
+        }
     }
 
     /**

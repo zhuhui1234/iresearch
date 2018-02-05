@@ -157,4 +157,19 @@ class ServiceController extends Controller
         echo json_encode($response);
     }
 
+    public function msgList($data)
+    {
+
+    }
+
+    public function countUnMsg($data)
+    {
+
+    }
+
+    public function readMsg($data)
+    {
+
+    }
+
 }
