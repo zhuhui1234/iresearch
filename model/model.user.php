@@ -674,6 +674,40 @@ class UserModel extends API
     }
 
     /**
+     * msg list
+     * @param $data
+     * @return mixed|string
+     */
+    public function msgList($data)
+    {
+        $url = API_URL . '?m=service&a=msgList';
+        return $this->_curlPost($url, $data, 'msgList');
+    }
+
+    /**
+     * countUnMsg
+     * @param $data
+     * @return mixed|string
+     */
+    public function countUnMsg($data)
+    {
+        $url = API_URL . '?m=service&a=countUnMsg';
+        return $this->_curlPost($url, $data, 'countUnMsg');
+    }
+
+    /**
+     * msg Detail
+     * @param $data
+     * @return mixed|string
+     */
+    public function msgDetail($data)
+    {
+        $url = API_URL . '?m=service&a=msgDetail';
+        return $this->_curlPost($url, $data, 'msgDetail');
+    }
+
+
+    /**
      * check ird permission
      *
      * @param array $pplist

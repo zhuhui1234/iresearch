@@ -1006,23 +1006,40 @@ class UserController extends Controller
         $this->__json();
         if (!$this->loginStatus) {
             $ret = json_decode($this->userDetail, true);
+            $type = $this->request()->get('type');
+            switch ($type) {
+                case 'm':
+                    $type_val = '3';
+                    break;
+                case 'k':
+                    $type_val = '5';
+                    break;
+                default:
+                    $type_val = '3';
+                    break;
+            }
             $ret = $ret['data']['productList'];
+
             $pdt_list = [
                 [
                     'pdtID' => null,
-                    'type' => 0,
+                    'type' => 1,
                     'tabName' => '艾瑞数据公告'
                 ]
             ];
+
             foreach ($ret as $pdt) {
                 array_push($pdt_list, [
                     'pdtID' => $pdt['pdt_id'],
                     'tabName' => $pdt['pdt_name'],
-                    'type' => 2
+                    'type' => $type_val
                 ]);
             }
+
             _SUCCESS('0000000', 'OK', $pdt_list);
+
         } else {
+
             _ERROR('0000001', '超时登入');
 
         }
@@ -1034,10 +1051,17 @@ class UserController extends Controller
         $getData = json_decode(file_get_contents('php://input'), true);
         $this->__json();
 
-        if (!$this->loginStatus) {
-            $serviceModel = Model::instance('service');
-        } else {
+        if (empty($getData) or empty($getData['type'])) {
+            _ERROR('0000001', '不能为空字段');
+        }
 
+
+        if (!$this->loginStatus) {
+            $getData['userID'] = $this->userInfo['userID'];
+            $ret = $this->model->msgList($getData);
+            echo $ret;
+        } else {
+            _ERROR('0000001', '超时登入');
         }
     }
 
@@ -1047,9 +1071,16 @@ class UserController extends Controller
         $this->__json();
 
         if (!$this->loginStatus) {
-            $serviceModel = Model::instance('service');
+            if (!empty($getData['msg_id'])) {
+                $getData['msgID'] = $getData['msg_id'];
+            }else{
+                _ERROR('0000001', '不能为空字段');
+            }
+            $getData['userID'] = $this->userInfo['userID'];
+            $ret = $this->model->msgDetail($getData);
+            echo $ret;
         } else {
-
+            _ERROR('0000001', '超时登入');
         }
     }
 
