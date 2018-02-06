@@ -1001,12 +1001,28 @@ class UserController extends Controller
     /**
      * message heads
      */
+
+    /*
+     * get msg list
+     *
+     *
+     * -type:
+     *  -1: all, without user msg
+     *  1: all, just public msg list
+     *  2: only user msg without public msg
+     *  3: product msg
+     *  4: product msg without user
+     *  5: knowledge base
+     *
+     *
+     */
     public function msgHeads()
     {
+        $getData = json_decode(file_get_contents('php://input'), true);
         $this->__json();
         if (!$this->loginStatus) {
             $ret = json_decode($this->userDetail, true);
-            $type = $this->request()->get('type');
+            $type = $getData['type'];
             switch ($type) {
                 case 'm':
                     $type_val = '3';
