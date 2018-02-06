@@ -1022,8 +1022,8 @@ class UserController extends Controller
 
             $pdt_list = [
                 [
-                    'pdtID' => null,
-                    'type' => 1,
+                    'pdtID' => '0',
+                    'type' => '1',
                     'tabName' => '艾瑞数据公告'
                 ]
             ];
@@ -1036,7 +1036,7 @@ class UserController extends Controller
                 ]);
             }
 
-            _SUCCESS('0000000', 'OK', $pdt_list);
+            _SUCCESS('000000', 'OK', $pdt_list);
 
         } else {
 
