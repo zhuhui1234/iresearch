@@ -889,6 +889,16 @@ class UserController extends Controller
             $role = 'member';
             $state = '20000';
             $m = [
+                'msg'=>[
+                    'name' => '系统公告',
+                    'uri' => urlencode('//irv/iresearch.com.cn/user-center/check?type=m'),
+                    'new'=>true
+                ],
+                'knowledge' => [
+                    'name' => '知识库',
+                    'uri' => urlencode('//irv/iresearch.com.cn/user-center/check?type=k'),
+                    'new' => true
+                ],
                 'userInfo' => [
                     'name' => '用户信息',
 //                    'uri' => urlencode(IDATA_URL . '?m=user&a=editUserInfo')
@@ -1026,23 +1036,32 @@ class UserController extends Controller
             switch ($type) {
                 case 'm':
                     $type_val = '3';
+                    $pdt_list = [
+                        [
+                            'pdtID' => '0',
+                            'type' => '-1',
+                            'tabName' => '艾瑞数据公告'
+                        ]
+                    ];
                     break;
                 case 'k':
-                    $type_val = '5';
+                    $type_val = '6';
+                    $pdt_list = [];
                     break;
                 default:
                     $type_val = '3';
+                    $pdt_list = [
+                        [
+                            'pdtID' => '0',
+                            'type' => '1',
+                            'tabName' => '艾瑞数据公告'
+                        ]
+                    ];
                     break;
             }
             $ret = $ret['data']['productList'];
 
-            $pdt_list = [
-                [
-                    'pdtID' => '0',
-                    'type' => '1',
-                    'tabName' => '艾瑞数据公告'
-                ]
-            ];
+
 
             foreach ($ret as $pdt) {
                 array_push($pdt_list, [
