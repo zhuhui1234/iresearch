@@ -841,6 +841,8 @@ function _SUCCESS($resCode = '000000', $resMsg = '处理成功', $data = '')
     write_to_log(' RESPONSE SUCCESS ' . $ret, '_conapi');
     header('Content-type: application/json;charset=utf-8');
     header('Content-Encoding: utf-8');
+
+
     echo $ret;
     die;
 }
