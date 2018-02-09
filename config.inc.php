@@ -28,8 +28,9 @@ define('WECHAT_API_USERINFO', 'https://api.weixin.qq.com/sns/userinfo');
 define('REDIS_STATUS', TRUE);
 define('REDIS_SERVER', '127.0.0.1');
 define('REDIS_SRV_PORT', 6379);
-define('REDIS_TIME_OUT', 86400);
-define('REDIS_PREFIX', '_iclick_');
+define('REDIS_TIME_OUT', 6300);
+define('REDIS_PREFIX', '_irv_');
+define('REDIS_DB', 2);
 //    define('REDIS_PWD','!QAZ@WSX');
 define('REDIS_PWD', FALSE);
 //站点配置
@@ -107,6 +108,7 @@ require_once(ROOT_PATH . COMMON . DS . COMMON . '.cookie.php');
 require_once(ROOT_PATH . COMMON . DS . COMMON . '.page.php');
 require_once(ROOT_PATH . COMMON . DS . COMMON . '.ajaxpage.php');
 require_once(ROOT_PATH . COMMON . DS . COMMON . '.cropavatar.php');
+require_once(ROOT_PATH . COMMON . DS . COMMON . '.cache.php');
 
 require_once(ROOT_PATH . API . DS . API . '.api.php');
 require_once(ROOT_PATH . API . DS . API . '.soap.php');
