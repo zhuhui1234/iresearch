@@ -9,12 +9,18 @@
 class CacheClass
 {
     public $redis;
+
     public function __construct()
     {
         $this->redis = new Redis();
         $this->redis->connect(REDIS_SERVER, REDIS_SRV_PORT);
         $this->redis->select(REDIS_DB);
         return $this->redis;
+    }
+
+    public function __destruct()
+    {
+        return $this->redis->close();
     }
 
 }
