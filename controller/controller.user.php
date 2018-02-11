@@ -42,6 +42,7 @@ class UserController extends Controller
             };
 
 
+
             $this->loginStatus = FALSE;
 //            $this->userInfo['token'] = $this->userInfo['token'];
             if (empty($this->userInfo['u_head'])) {
@@ -881,18 +882,23 @@ class UserController extends Controller
 
         $this->__json();
         if ($this->userInfo['permissions'] != 0) {
+
+            $k = (bool)((int)$this->__checkUnread('k'));
+            $m = (bool)((int)$this->__checkUnread('m'));
+
+
             $role = 'member';
             $state = '20000';
             $m = [
                 'msg' => [
                     'name' => '系统公告',
-                    'uri' => urlencode('//irv/iresearch.com.cn/user-center/check?type=m'),
-                    'new' => true
+                    'uri' => urlencode('//irv.iresearch.com.cn/user-center/check?type=m'),
+                    'new' => $m
                 ],
                 'knowledge' => [
                     'name' => '知识库',
-                    'uri' => urlencode('//irv/iresearch.com.cn/user-center/check?type=k'),
-                    'new' => true
+                    'uri' => urlencode('//irv.iresearch.com.cn/user-center/check?type=k'),
+                    'new' => $k
                 ],
                 'userInfo' => [
                     'name' => '用户信息',
@@ -1027,7 +1033,10 @@ class UserController extends Controller
     {
         $getData = json_decode(file_get_contents('php://input'), true);
 
-        $this->__json();
+        if(DEBUG) {
+            $this->__json();
+        }
+
         if (!$this->loginStatus) {
             $ret = json_decode($this->userDetail, true);
             $type = $getData['type'];
@@ -1042,10 +1051,13 @@ class UserController extends Controller
                             'tabName' => '艾瑞数据公告'
                         ]
                     ];
+                    $this->cache->hSet('m', $this->cache_key, false);
+
                     break;
                 case 'k':
                     $type_val = '6';
                     $pdt_list = [];
+                    $this->cache->hSet('k', $this->cache_key, false);
                     break;
                 default:
                     $type_val = '4';
@@ -1068,8 +1080,6 @@ class UserController extends Controller
                     'type' => $type_val
                 ]);
             }
-
-
 
             _SUCCESS('000000', 'OK', $pdt_list);
 
@@ -1178,5 +1188,26 @@ class UserController extends Controller
             $menuData[$menuDataKey]['reTree'] = $re;
         }
         return $menuData;
+    }
+
+    /**
+     *
+     * php: 1 is true and 0 is false
+     *
+     * true: unread
+     * false: readed
+     * @param $key
+     * @return bool|string
+     */
+    private function __checkUnread($key)
+    {
+        if ($this->cache->hExists($key, $this->cache_key)) {
+            //has set read status
+            return $this->cache->hGet($key,$this->cache_key);
+
+        }else{
+            //not set read status
+            return true;
+        }
     }
 }
