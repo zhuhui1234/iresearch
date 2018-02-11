@@ -14,7 +14,9 @@ class CacheClass
     {
         $this->redis = new Redis();
         $this->redis->connect(REDIS_SERVER, REDIS_SRV_PORT);
-        $this->redis->auth(REDIS_PWD);
+        if (REDIS_PWD) {
+            $this->redis->auth(REDIS_PWD);
+        }
         $this->redis->select(REDIS_DB);
         return $this->redis;
     }
