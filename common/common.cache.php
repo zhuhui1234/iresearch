@@ -14,13 +14,15 @@ class CacheClass
     {
         $this->redis = new Redis();
         $this->redis->connect(REDIS_SERVER, REDIS_SRV_PORT);
+        $this->redis->auth(REDIS_PWD);
         $this->redis->select(REDIS_DB);
         return $this->redis;
     }
 
     public function __destruct()
     {
-        return $this->redis->close();
+//        return $this->redis->close();
     }
+
 
 }

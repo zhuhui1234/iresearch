@@ -28,7 +28,7 @@ define('WECHAT_API_USERINFO', 'https://api.weixin.qq.com/sns/userinfo');
 define('REDIS_STATUS', TRUE);
 define('REDIS_SERVER', '127.0.0.1');
 define('REDIS_SRV_PORT', 6379);
-define('REDIS_TIME_OUT', 6300);
+define('REDIS_TIME_OUT', 1800);
 define('REDIS_PREFIX', '_irv_');
 define('REDIS_DB', 2);
 //    define('REDIS_PWD','!QAZ@WSX');

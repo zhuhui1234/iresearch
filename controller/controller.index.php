@@ -8,22 +8,39 @@
 class IndexController extends Controller
 {
 
-    private $loginStatus, $userInfo, $serviceModel, $userDetail, $userModel;
+    private $loginStatus, $userInfo, $serviceModel, $userDetail, $userModel, $cache_key;
 
     function __construct()
     {
         $this->userInfo = Session::instance()->get('userInfo');
         $this->serviceModel = Model::instance('service');
         $this->userModel = Model::instance('user');
+
+        $this->cache = new CacheClass();
+        $this->cache = $this->cache->redis;
+
         if (!empty($this->userInfo)) {
+
+            $this->cache_key = $this->userInfo['token'] . '_cache';
+
             $this->loginStatus = FALSE;
+            if ($this->cache->hExists($this->cache_key, 'userDetail')) {
+                $this->userDetail = json_decode($this->cache->hGet($this->cache_key, 'userDetail'),true);
+            } else {
+                $userDetail = $this->userModel->getUserInfo([
+                    'token' => $this->userInfo['token'],
+                    'userID' => $this->userInfo['userID']
+                ]);
+                $this->userDetail = json_decode($userDetail, true);
+                $this->cache->hSet($this->cache_key, 'userDetail', $userDetail);
+                $this->cache->expire($this->cache_key, REDIS_TIME_OUT);
+            }
 
-            $this->userDetail = json_decode($this->userModel->getUserInfo([
-                'token' => $this->userInfo['token'],
-                'userID' => $this->userInfo['userID']
-            ]), true);
+            if (DEBUG){
+                var_dump($this->userModel->checkToken());
+            }
 
-            if ($this->userDetail['resCode'] !== '000000') {
+            if (!$this->userModel->checkToken()) {
                 $this->loginStatus = true;
                 $this->userDetail = false;
             }
@@ -603,7 +620,7 @@ class IndexController extends Controller
 
         $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_ovt'] = '登录使用';
         $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '登录使用(老版本)';
-        $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Sign In';
+        $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en'] = 'Sign In';
 
         $data['ivt_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端视频内容市场监测&pro=47';
         $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=52';
@@ -613,9 +630,9 @@ class IndexController extends Controller
         $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ovt-en&pro=52';
 
         if ($this->userDetail) {
-            $data['apply_ivt'] = $data['apply_mvt'] =$data['apply_ovt']= '申请试用';
+            $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_ovt'] = '申请试用';
             $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '申请试用(老版本)';
-            $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Trial';
+            $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en'] = 'Trial';
 
             $data['ovt_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=47';
             $data['ovt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=52';
@@ -633,14 +650,14 @@ class IndexController extends Controller
                     foreach ($this->userDetail['data']['productList'] as $datum) {
 
                         if ($datum['pdt_id'] == 47) {
-                            if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
+                            if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
                                 $data['apply_ivt'] = '开始使用';
                                 $data['apply_beta_ivt'] = '开始使用(老版本)';
 //                                $data['apply_ivt_en'] = 'English Version';
                                 $data['ivt_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端视频内容市场监测&pro=47';
 //                                $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=52';
 
-                            }else {
+                            } else {
                                 $data['apply_ivt'] = '申请试用';
                                 $data['apply_beta_ivt'] = '申请试用(老版本)';
                                 $data['apply_ivt_en'] = 'Trial';
@@ -648,7 +665,7 @@ class IndexController extends Controller
                                 $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测(英文)&menuID=52';
                             }
 
-                            if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
+                            if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
                                 $data['apply_mvt'] = '开始使用';
 //                                $data['apply_mvt_en'] = 'English Version';
                                 $data['mvt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47';
@@ -661,7 +678,7 @@ class IndexController extends Controller
                                 $data['mvt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=52';
                             }
 
-                            if ($date >= $datum['ott_start_time']  and $date <= $datum['ott_due_time']) {
+                            if ($date >= $datum['ott_start_time'] and $date <= $datum['ott_due_time']) {
                                 $data['apply_ovt'] = '开始使用';
 //                                $data['apply_ovt_en'] = 'English Version';
                                 $data['ovt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47';
@@ -677,17 +694,17 @@ class IndexController extends Controller
 
                         //vt english
                         if ($datum['pdt_id'] == 52) {
-                            if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
+                            if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
                                 $data['apply_ivt'] = '开始使用';
                                 $data['apply_ivt_en'] = 'English Version';
                                 $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=52';
 
-                            }else {
+                            } else {
                                 $data['apply_ivt_en'] = 'Trial';
                                 $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=PC端视频内容市场监测(英文)&menuID=52';
                             }
 
-                            if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
+                            if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
                                 $data['apply_mvt_en'] = 'English Version';
                                 $data['mvt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
 
@@ -696,7 +713,7 @@ class IndexController extends Controller
                                 $data['mvt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=52';
                             }
 
-                            if ($date >= $datum['ott_start_time']  and $date <= $datum['ott_due_time']) {
+                            if ($date >= $datum['ott_start_time'] and $date <= $datum['ott_due_time']) {
                                 $data['apply_ovt_en'] = 'English Version';
                                 $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
 
@@ -709,7 +726,6 @@ class IndexController extends Controller
 
                     }
                 }
-
 
 
             } else {
@@ -767,9 +783,9 @@ class IndexController extends Controller
 //        } else {
 //            $data['token'] = 1;
 //        }
-        $data['apply_iut'] = $data['apply_mut'] =  '登录使用';
+        $data['apply_iut'] = $data['apply_mut'] = '登录使用';
         $data['apply_beta_iut'] = $data['apply_beta_mut'] = '登录使用(BETA)';
-        $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Sign In';
+        $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en'] = 'Sign In';
 
         $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48';
         $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pro=51';
@@ -777,12 +793,11 @@ class IndexController extends Controller
         $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
 
 
-
         if ($this->userDetail) {
 
-            $data['apply_iut'] = $data['apply_mut'] ='申请试用';
-            $data['apply_beta_iut'] = $data['apply_beta_mut']= '申请试用(BETA)';
-            $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Trial';
+            $data['apply_iut'] = $data['apply_mut'] = '申请试用';
+            $data['apply_beta_iut'] = $data['apply_beta_mut'] = '申请试用(BETA)';
+            $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en'] = 'Trial';
             $data['iut_oldurl'] = '?m=user&a=trialApply&ppname=网络视频市场监测&menuID=48';
             $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文)&menuID=51';
             $data['mut_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=48';
@@ -795,22 +810,22 @@ class IndexController extends Controller
 
                 if (is_array($this->userDetail['data']['productList'])) {
                     foreach ($this->userDetail['data']['productList'] as $datum) {
-                        //echo ($datum['pdt_id'] );
+
                         if ($datum['pdt_id'] == 48) {
-                            if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
+                            if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
                                 $data['apply_iut'] = '开始使用';
 //                                $data['apply_iut_en'] = 'English Version';
                                 $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48';
 //                                $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
 
-                            }else {
+                            } else {
                                 $data['apply_iut'] = '申请试用';
 //                                $data['apply_iut_en'] = 'Trial';
                                 $data['iut_oldurl'] = '?m=user&a=trialApply&ppname=网络视频市场监测&menuID=48';
 //                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文)&menuID=48';
                             }
 
-                            if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
+                            if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
                                 $data['apply_mut'] = '开始使用';
 //                                $data['apply_mut_en'] = 'English Version';
                                 $data['mut_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=48';
@@ -825,16 +840,16 @@ class IndexController extends Controller
 
                         if ($datum['pdt_id'] == 51) {
                             echo('a');
-                            if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
+                            if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
                                 $data['apply_iut_en'] = 'English Version';
                                 $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
 
-                            }else {
+                            } else {
                                 $data['apply_iut_en'] = 'Trial';
                                 $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文)&menuID=48';
                             }
 
-                            if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
+                            if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
                                 $data['apply_mut_en'] = 'English Version';
                                 $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
                             } else {
@@ -845,30 +860,29 @@ class IndexController extends Controller
 
                         if ($datum['pdt_id'] == 49) {
 
-                            if ($date >= $datum['pc_start_time']  and $date <= $datum['pc_due_time']) {
+                            if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
                                 $data['apply_beta_iut'] = '开始使用(BETA)';
                                 $data['apply_beta_iut_en'] = 'English Version';
-                            }else{
+                            } else {
                                 $data['apply_beta_iut'] = '申请试用';
                                 $data['apply_beta_iut_en'] = 'Trial';
                             }
 
-                            if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
+                            if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
                                 $data['apply_beta_mut'] = '开始使用(BETA)';
                                 $data['apply_beta_mut_en'] = 'English Version';
-                            }else{
+                            } else {
                                 $data['apply_beta_mut'] = '申请试用';
                                 $data['apply_beta_mut_en'] = 'Trial';
                             }
                         }
 
                     }
-                } else{
+                } else {
                     if (DEBUG) {
                         echo 'ahahaahahaha';
                     }
                 }
-
 
 
             } else {
@@ -880,11 +894,11 @@ class IndexController extends Controller
 
         } else {
             if (DEBUG) {
+                var_dump($this->userDetail);
                 echo 'ahahaahahaha2';
             }
             $data['token'] = 1;
         }
-
 
 
         if (empty(trim($userInfo['productKey']))) {
@@ -1133,7 +1147,7 @@ class IndexController extends Controller
         if (is_array($product_list)) {
             foreach ($product_list as $datum) {
 
-                if ($datum['pdt_id'] == $pdt_id){
+                if ($datum['pdt_id'] == $pdt_id) {
                     $ret = true;
                 };
             }

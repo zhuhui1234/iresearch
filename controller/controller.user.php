@@ -12,19 +12,36 @@
 class UserController extends Controller
 {
 
-    private $model, $userInfo, $loginStatus, $wechatStatus, $userDetail;
+    private $model, $userInfo, $loginStatus, $wechatStatus, $userDetail, $cache, $cache_key;
 
     function __construct($className)
     {
         parent::__construct($className);
+
+        $this->cache = new CacheClass();
+        $this->cache = $this->cache->redis;
+
         $this->model = Model::instance('user');
         $this->userInfo = Session::instance()->get('userInfo');
 
+
         if (!empty($this->userInfo)) {
-            $this->userDetail = $this->model->getUserInfo([
-                'token' => $this->userInfo['token'],
-                'userID' => $this->userInfo['userID']
-            ]);
+
+            //cache setup
+            $this->cache_key = $this->userInfo['token'] . '_cache';
+
+            if ($this->cache->hExists($this->cache_key, 'userDetail')) {
+                $this->userDetail = $this->cache->hGet($this->cache_key, 'userDetail');
+            } else {
+                $this->userDetail = $this->model->getUserInfo([
+                    'token' => $this->userInfo['token'],
+                    'userID' => $this->userInfo['userID']
+                ]);
+                $this->cache->hSet($this->cache_key, 'userDetail', $this->userDetail);
+                $this->cache->expire($this->cache_key, REDIS_TIME_OUT);
+            };
+
+
             $this->loginStatus = FALSE;
 //            $this->userInfo['token'] = $this->userInfo['token'];
             if (empty($this->userInfo['u_head'])) {
@@ -58,8 +75,8 @@ class UserController extends Controller
 
     public function test()
     {
-
-        var_dump($this->userDetail);
+        $this->__json();
+        echo $this->userDetail;
 
     }
 
@@ -234,7 +251,9 @@ class UserController extends Controller
                     $uid = json_decode($this->model->getIRVuserid($uid), true);
 
                     if ($uid['resCode'] == '000000') {
-                        View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
+                        View::instance('user/login.tpl')->show([
+                            'loginStatus' => $this->loginStatus,
+                            'pdtID' => $pdt_id]);
                     } else {
                         View::instance('user/ird_login.tpl')->show([
                             'loginStatus' => $this->loginStatus,
@@ -244,7 +263,9 @@ class UserController extends Controller
                             'CompanyName' => $irdAccount['CompanyName']]);
                     }
                 } else {
-                    View::instance('user/login.tpl')->show(['loginStatus' => $this->loginStatus, 'pdtID' => $pdt_id]);
+                    View::instance('user/login.tpl')->show([
+                        'loginStatus' => $this->loginStatus,
+                        'pdtID' => $pdt_id]);
                 }
             }
         }
@@ -310,7 +331,8 @@ class UserController extends Controller
         $data['token'] = $this->userInfo['token'];
         $data = $this->userDetail;
         $data['loginStatus'] = $this->loginStatus;
-        $userInfo = json_decode($this->model->getMyInfo(), true);
+//        $userInfo = json_decode($this->model->getMyInfo(), true);
+        $userInfo = json_decode($this->userDetail, true);
         $bindingUserInfo = json_decode($this->model->bindUserInfo($userInfo), true);
         $userInfo = $userInfo['data'];
         $userModel = Model::instance('user');
@@ -344,37 +366,6 @@ class UserController extends Controller
     public function editUserInfo()
     {
         header('Location: http://irv.iresearch.com.cn/user-center/check');
-//        $data['token'] = $this->userInfo['token'];
-//        $data = $this->userDetail;
-//        $data['loginStatus'] = $this->loginStatus;
-//        $userInfo = json_decode($this->model->getMyInfo(), true);
-//        $userInfo = $userInfo['data'];
-//        $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
-//        $userModel = Model::instance('user');
-//        $menu = json_decode($userModel->showMenu(), true);
-//        $menu = $menu['data']['dataList'];
-//        $menu = fillMenu($menu);
-//
-//        if ($userInfo['headImg'] != 'upload/head/') {
-//            $userInfo['headImg'] = IMG_URL . $userInfo['headImg'];
-//        }
-//        View::instance('user/user.tpl')->show(
-//            [
-//                'username' => $userInfo['uname'],
-//                'company' => $userInfo['company'],
-//                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
-//                'expireDate' => substr($this->userInfo['validity'], 0, 10),
-//                'avatar' => $userInfo['headImg'],
-//                'permissions' => $this->userInfo['permissions'],
-//                'uname' => $userInfo['uname'],
-//                'position' => $userInfo['position'],
-//                'wechat' => $bindingUserInfo['data']['weixin']['type'],
-//                'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
-//                'menu' => $menu,
-//                'titleMenu' => $menu[1]['subMenu'],
-//                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
-//            ]
-//        );
     }
 
     /**
@@ -401,7 +392,8 @@ class UserController extends Controller
 
         $data = $this->userDetail;
         $data['loginStatus'] = $this->loginStatus;
-        $userInfo = json_decode($this->model->getMyInfo(), true);
+//        $userInfo = json_decode($this->model->getMyInfo(), true);
+        $userInfo = json_decode($this->userDetail, true);
         $userInfo = $userInfo['data'];
         $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
         $userModel = Model::instance('user');
@@ -435,7 +427,11 @@ class UserController extends Controller
      */
     public function logOut()
     {
+        $cache_key = $this->userInfo['token']. '_cache';
+        $this->cache->hDel($cache_key);
+        $this->cache->del($cache_key);
         $this->model->logOut();
+
         Session::instance()->destroy();
         setcookie('yh_irv_url', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=login&expired=1', time() + 2400, '/');
         setcookie('PHPSESSID', '', time() - 3600, '/');
@@ -577,7 +573,6 @@ class UserController extends Controller
 
         $rs = $this->model->login($data);
         $this->__json();
-        //var_dump($rs);
         echo $rs;
     }
 
@@ -889,10 +884,10 @@ class UserController extends Controller
             $role = 'member';
             $state = '20000';
             $m = [
-                'msg'=>[
+                'msg' => [
                     'name' => '系统公告',
                     'uri' => urlencode('//irv/iresearch.com.cn/user-center/check?type=m'),
-                    'new'=>true
+                    'new' => true
                 ],
                 'knowledge' => [
                     'name' => '知识库',
@@ -936,7 +931,9 @@ class UserController extends Controller
         $data['token'] = $this->userInfo['token'];
         $data = $this->userDetail;
         $data['loginStatus'] = $this->loginStatus;
-        $userInfo = json_decode($this->model->getMyInfo(), true);
+
+
+        $userInfo = json_decode($this->userDetail, true);
 
         $userInfo = $userInfo['data'];
         $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
@@ -1029,13 +1026,15 @@ class UserController extends Controller
     public function msgHeads()
     {
         $getData = json_decode(file_get_contents('php://input'), true);
+
         $this->__json();
         if (!$this->loginStatus) {
             $ret = json_decode($this->userDetail, true);
             $type = $getData['type'];
+
             switch ($type) {
                 case 'm':
-                    $type_val = '3';
+                    $type_val = '4';
                     $pdt_list = [
                         [
                             'pdtID' => '0',
@@ -1049,7 +1048,7 @@ class UserController extends Controller
                     $pdt_list = [];
                     break;
                 default:
-                    $type_val = '3';
+                    $type_val = '4';
                     $pdt_list = [
                         [
                             'pdtID' => '0',
@@ -1059,17 +1058,18 @@ class UserController extends Controller
                     ];
                     break;
             }
+
             $ret = $ret['data']['productList'];
-
-
 
             foreach ($ret as $pdt) {
                 array_push($pdt_list, [
                     'pdtID' => $pdt['pdt_id'],
-                    'tabName' => $pdt['pdt_name'],
+                    'tabName' => $pdt['pdt_ename'],
                     'type' => $type_val
                 ]);
             }
+
+
 
             _SUCCESS('000000', 'OK', $pdt_list);
 
@@ -1108,7 +1108,7 @@ class UserController extends Controller
         if (!$this->loginStatus) {
             if (!empty($getData['msg_id'])) {
                 $getData['msgID'] = $getData['msg_id'];
-            }else{
+            } else {
                 _ERROR('0000001', '不能为空字段');
             }
             $getData['userID'] = $this->userInfo['userID'];

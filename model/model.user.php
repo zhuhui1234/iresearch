@@ -256,34 +256,17 @@ class UserModel extends API
     public function showMenu()
     {
         $userInfo = Session::instance()->get('userInfo');
-//        $menu = Session::instance()->get('menu');
-//        $sMenu = json_decode($menu, true);
 
         if ($userInfo['companyID'] == null) {
             $userInfo['companyID'] = '0';
         }
 
-//        if (empty($menu) || !isset($sMenu['resCode'])) {
         $m = $this->__showHomeMenu([
             'TOKEN' => $userInfo['token'],
             'companyID' => $userInfo['companyID'],
             'userID' => $userInfo['userID']
         ]);
-//            Session::instance()->set('menu', $m);
         return $m;
-//        } else {
-//            if ($sMenu['resCode'] != '000000') {
-//                $m = $this->__showHomeMenu([
-//                    'TOKEN' => $userInfo['token'],
-//                    'companyID' => $userInfo['companyID'],
-//                    'userID' => $userInfo['userID']
-//                ]);
-//                Session::instance()->set('menu', $m);
-//                return $m;
-//            } else {
-//                return $menu;
-//            }
-//        }
 
     }
 
@@ -341,10 +324,14 @@ class UserModel extends API
         if (empty($data['token']) && empty($data['userID'])) {
             $rs = false;
         } else {
-            $userInfoArr = json_decode($this->getUserInfo($data), TRUE);
+            $userInfoArr = json_decode($this->__checkToken([
+                'token' => $data['token'],
+                'userID' => $data['userID']]), TRUE);
             $rs = true;
             if ($userInfoArr['resCode'] != '000000' || $userInfo == null) {
 //            Session::instance()->destroy();
+                $cache = new CacheClass();
+                $cache->redis->hdel($data['token'] . '_cache');
                 $rs = false;
 //            $rs = true;
             }
@@ -727,5 +714,10 @@ class UserModel extends API
         return $stat;
     }
 
+    private function __checkToken($data)
+    {
+        $url = API_URL . '?m=user&a=checkToken';
+        return $this->_curlPost($url, $data, 'checkToken');
+    }
 
 }
