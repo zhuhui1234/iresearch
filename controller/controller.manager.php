@@ -100,6 +100,40 @@ class ManagerController extends Controller
         echo $this->model->getProductList($data);
     }
 
+
+    public function allotUser()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        if (empty($data)) {
+            _ERROR('000001', '数据不能为空');
+        }
+
+        if (empty($data['userID']) or empty($data['point_value'])) {
+            _ERROR('000001', '缺少参数');
+        }
+        $data['cpy_id'] = $this->userInfo['companyID'];
+        $data['token'] = $this->userInfo['token'];
+        $data['author'] = $this->userInfo['userID'];
+        echo $this->model->allotUser($data);
+    }
+
+    public function putBackPointToCompany()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        if (empty($data)) {
+            _ERROR('000001', '数据不能为空');
+        }
+
+        if (empty($data['userID']) or empty($data['point_value'])) {
+            _ERROR('000001', '缺少参数');
+        }
+
+        $data['cpy_id'] = $this->userInfo['companyID'];
+        $data['token'] = $this->userInfo['token'];
+        $data['author'] = $this->userInfo['userID'];
+        echo $this->model->putBackPointToCompany($data);
+    }
+
     ######################################################################################
     ##################################                     ###############################
     #################################   PRIVATE METHODS   ################################
