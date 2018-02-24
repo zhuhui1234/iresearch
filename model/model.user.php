@@ -234,6 +234,25 @@ class UserModel extends API
         ]);
     }
 
+    public function getUserPoint()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $data = ['u_id' => $userInfo['userID']];
+        $url = API_URL . '?m=points&a=getPoint';
+        $ret = $this->_curlPost($url, $data, 'getPoint');
+        return $ret;
+    }
+
+    public function getUserPointList()
+    {
+        $userInfo = Session::instance()->get('userInfo');
+        $data=['u_id'=> $userInfo['userID']];
+        $url = API_URL . '';
+        $ret = $this->_curlPost($url, $data, 'getPointListUser');
+        return $ret;
+    }
+
+
     /**
      * 用户详情
      *

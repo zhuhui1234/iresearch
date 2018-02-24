@@ -42,7 +42,6 @@ class UserController extends Controller
             };
 
 
-
             $this->loginStatus = FALSE;
 //            $this->userInfo['token'] = $this->userInfo['token'];
             if (empty($this->userInfo['u_head'])) {
@@ -428,7 +427,7 @@ class UserController extends Controller
      */
     public function logOut()
     {
-        $cache_key = $this->userInfo['token']. '_cache';
+        $cache_key = $this->userInfo['token'] . '_cache';
         $this->cache->hDel($cache_key);
         $this->cache->del($cache_key);
         $this->model->logOut();
@@ -1033,7 +1032,7 @@ class UserController extends Controller
     {
         $getData = json_decode(file_get_contents('php://input'), true);
 
-        if(DEBUG) {
+        if (DEBUG) {
             $this->__json();
         }
 
@@ -1129,6 +1128,15 @@ class UserController extends Controller
         }
     }
 
+    public function getUserPoint()
+    {
+        echo $this->model->getUserPoint();
+    }
+
+    public function getUserPointList()
+    {
+        echo $this->model->getUserPointList();
+    }
     ######################################################################################
     ##################################                     ###############################
     #################################   PRIVATE METHODS   ################################
@@ -1203,9 +1211,9 @@ class UserController extends Controller
     {
         if ($this->cache->hExists($key, $this->cache_key)) {
             //has set read status
-            return $this->cache->hGet($key,$this->cache_key);
+            return $this->cache->hGet($key, $this->cache_key);
 
-        }else{
+        } else {
             //not set read status
             return true;
         }
