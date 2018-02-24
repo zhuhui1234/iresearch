@@ -68,4 +68,11 @@ class ManagerModel extends API
         $ret = $this->_curlPost($url, $data, 'allotUser');
         return $ret;
     }
+
+    public function pointListCompany($data)
+    {
+        $url = API_URL . '?m=points&a=getPointListCompany';
+        $ret = $this->_curlPost($url, $data, 'getPointListCompany');
+        return $ret;
+    }
 }
