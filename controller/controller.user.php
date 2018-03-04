@@ -883,7 +883,9 @@ class UserController extends Controller
         if ($this->userInfo['permissions'] != 0) {
 
             $k = (bool)((int)$this->__checkUnread('k'));
-            $m = (bool)((int)$this->__checkUnread('m'));
+//            $k = false;
+//            $m = (bool)((int)$this->__checkUnread('m'));
+            $m = false;
 
 
             $role = 'member';
