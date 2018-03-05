@@ -243,10 +243,10 @@ class UserModel extends API
         return $ret;
     }
 
-    public function getUserPointList()
+    public function getUserPointList($u_id)
     {
-        $userInfo = Session::instance()->get('userInfo');
-        $data=['u_id'=> $userInfo['userID']];
+//        $userInfo = Session::instance()->get('userInfo');
+        $data=['u_id'=> $u_id];
         $url = API_URL . '?m=point&a=getPointListUser';
         $ret = $this->_curlPost($url, $data, 'getPointListUser');
         return $ret;
