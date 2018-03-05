@@ -76,10 +76,10 @@ class ManagerModel extends API
         return $ret;
     }
 
-    public function computePointForCompany($cpy_id)
+    public function computePointForCompany($data)
     {
-        $url = API_URL . '?m=points&a=computePointForCompany';
-        $ret = $this->_curlPost($url, ['cpy_id' => $cpy_id], 'computePointForCompany');
+        $url = API_URL . '?m=points&a=getCompanyPoint';
+        $ret = $this->_curlPost($url, $data, 'getCompanyPoint');
         return $ret;
     }
 }
