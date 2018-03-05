@@ -157,6 +157,14 @@ class ManagerController extends Controller
 
     }
 
+    public function computePointForCompany()
+    {
+        if (empty($this->userInfo['commpanyID'])) {
+            _ERROR('000001','缺少参数');
+        }
+        echo $this->model->computePointForCompany($this->userInfo['companyID']);
+    }
+
     ######################################################################################
     ##################################                     ###############################
     #################################   PRIVATE METHODS   ################################
