@@ -241,10 +241,12 @@ class UserModel extends API
         return $ret;
     }
 
-    public function getUserPointList($u_id)
+    public function getUserPointList($getData)
     {
-        $data=[
-            'u_id'=> $u_id,
+        $data = [
+            'pageNo' => $getData['pageNo'],
+            'pageSize' => $getData['pageSize'],
+            'u_id'=> $getData['userID'],
             'TOKEN' => Session::instance()->get('userInfo')['token'],
             'userID'=> Session::instance()->get('userInfo')['userID']
         ];

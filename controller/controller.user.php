@@ -1146,11 +1146,11 @@ class UserController extends Controller
 
     public function getUserPointList()
     {
-        $getData = json_decode(file_get_contents('php://input'), true);
-        if(empty($getData) or empty($getData['userID'])) {
+        $data = json_decode(file_get_contents('php://input'), true);
+        if(empty($data) or empty($data['userID'])) {
             _ERROR('0000001', '缺少参数');
         }
-        echo $this->model->getUserPointList($getData['userID']);
+        echo $this->model->getUserPointList($data);
     }
     ######################################################################################
     ##################################                     ###############################

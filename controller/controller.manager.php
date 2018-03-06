@@ -145,9 +145,6 @@ class ManagerController extends Controller
     public function pointListCompany()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        if (empty($data)) {
-            _ERROR('000001', '数据不能为空');
-        }
 
         $data['cpy_id'] = $this->userInfo['companyID'];
         $data['token'] = $this->userInfo['token'];
