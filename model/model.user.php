@@ -234,20 +234,23 @@ class UserModel extends API
         ]);
     }
 
-    public function getUserPoint()
+    public function getUserPoint($data)
     {
-        $userInfo = Session::instance()->get('userInfo');
-        $data = ['u_id' => $userInfo['userID']];
         $url = API_URL . '?m=points&a=getPoint';
         $ret = $this->_curlPost($url, $data, 'getPoint');
         return $ret;
     }
 
-    public function getUserPointList($u_id,$token)
+    public function getUserPointList($getData)
     {
-//        $userInfo = Session::instance()->get('userInfo');
-        $data=['u_id'=> $u_id,'TOKEN'=>$token,'userID'=>Session::instance()->get('userInfo')['userID']];
-        $url = API_URL . '?m=point&a=getPointListUser';
+        $data = [
+            'pageNo' => $getData['pageNo'],
+            'pageSize' => $getData['pageSize'],
+            'u_id'=> $getData['userID'],
+            'TOKEN' => Session::instance()->get('userInfo')['token'],
+            'userID'=> Session::instance()->get('userInfo')['userID']
+        ];
+        $url = API_URL . '?m=points&a=getPointListUser';
         $ret = $this->_curlPost($url, $data, 'getPointListUser');
         return $ret;
     }

@@ -145,9 +145,6 @@ class ManagerController extends Controller
     public function pointListCompany()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        if (empty($data)) {
-            _ERROR('000001', '数据不能为空');
-        }
 
         $data['cpy_id'] = $this->userInfo['companyID'];
         $data['token'] = $this->userInfo['token'];
@@ -159,10 +156,12 @@ class ManagerController extends Controller
 
     public function computePointForCompany()
     {
-        if (empty($this->userInfo['commpanyID'])) {
+        if (empty($this->userInfo['companyID'])) {
             _ERROR('000001','缺少参数');
         }
-        echo $this->model->computePointForCompany($this->userInfo['companyID']);
+        $data['cpy_id'] = $this->userInfo['companyID'];
+        $data['TOKEN'] = $this->userInfo['token'];
+        echo $this->model->computePointForCompany($data);
     }
 
     ######################################################################################
