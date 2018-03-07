@@ -113,6 +113,7 @@
                         <!-- ELSE -->
                         <!-- IF apply=="2" -->
                         <a class="btn btn-lg btn-primary " v-bind:href="[[ product[tabIndex].url ]]">开始使用</a>
+
                         <!-- ELSE -->
                         <a class="btn btn-lg btn-primary " v-bind:href="[[ product[tabIndex].url ]]">申请试用</a>
                         <!-- ENDIF -->
@@ -126,6 +127,11 @@
                         <!-- ENDIF -->
                         <!-- ENDIF -->
                         <!-- ENDIF -->
+
+                        <!-- IF innerTest=="1" -->
+                        <a class="btn btn-link" href="?m=user&a=jump&pro=54">申请旧版本</a>
+                        <!-- ENDIF -->
+
                     </div>
                 </div>
             </div>

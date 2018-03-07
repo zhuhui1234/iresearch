@@ -196,6 +196,10 @@ class IndexController extends Controller
         header("Location:" . 'http://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token']);
     }
 
+    public function testAdt()
+    {
+        header("Location:" . 'http://irv.iresearch.com.cn/adt2/?language=zh-CN&token=' . $this->userInfo['token']);
+    }
 
     public function mst()
     {
@@ -931,7 +935,15 @@ class IndexController extends Controller
 
                 if ($this->__findPdt($this->userDetail['data']['productList'], 42)) {
                     $data['apply'] = 2;
+
                 }
+
+
+                if ($this->__findPdt($this->userDetail['data']['productList'], 54)) {
+                    $data['innerTest'] = 1;
+
+                }
+
 
             } else {
                 $data['token'] = 1;
@@ -955,6 +967,7 @@ class IndexController extends Controller
 
         View::instance('xvt/ad.tpl')->show($data);
     }
+
 
     /**
      * test function
