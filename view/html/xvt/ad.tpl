@@ -129,7 +129,7 @@
                         <!-- ENDIF -->
 
                         <!-- IF innerTest=="1" -->
-                        <a class="btn btn-link" href="?m=user&a=jump&pro=54">申请旧版本</a>
+                        <a class="btn btn-link" href="?m=user&a=jump&pro=54">内测版</a>
                         <!-- ENDIF -->
 
                     </div>
