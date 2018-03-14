@@ -25,7 +25,7 @@ class IndexController extends Controller
 
             $this->loginStatus = FALSE;
             if ($this->cache->hExists($this->cache_key, 'userDetail')) {
-                $this->userDetail = json_decode($this->cache->hGet($this->cache_key, 'userDetail'),true);
+                $this->userDetail = json_decode($this->cache->hGet($this->cache_key, 'userDetail'), true);
             } else {
                 $userDetail = $this->userModel->getUserInfo([
                     'token' => $this->userInfo['token'],
@@ -36,7 +36,7 @@ class IndexController extends Controller
                 $this->cache->expire($this->cache_key, REDIS_TIME_OUT);
             }
 
-            if (DEBUG){
+            if (DEBUG) {
                 var_dump($this->userModel->checkToken());
             }
 
@@ -539,8 +539,24 @@ class IndexController extends Controller
         $pdtID = $this->request()->get('pdtid');
         $taskID = $this->request()->get('taskid');
         $showMenu = $this->request()->get('showMemu');
+        $groupId = $this->request()->get('groupid');
+
+
         $url = YH_REPORT37 . '&guid=' . $guid . '&token=' . $this->userInfo['token'] . '&userID=' .
-            $this->userInfo['userID'] . '&pdt_id=' . $pdtID . '&taskid=' . $taskID . '&showMemu=' . $showMenu;
+            $this->userInfo['userID'] . '&pdt_id=' . $pdtID;
+
+        if (!empty($taskID)) {
+            $url = $url . '&taskid=' . $taskID;
+        }
+
+        if (!empty($showMenu)) {
+            $url = $url . '&showMemu=' . $showMenu;
+        }
+
+        if (!empty($groupId)) {
+            $url = $url . '&groupid=' . $groupId;
+        }
+
         header("Location:" . $url);
     }
 
