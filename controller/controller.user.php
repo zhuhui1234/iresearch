@@ -437,6 +437,16 @@ class UserController extends Controller
         setcookie('PHPSESSID', '', time() - 3600, '/');
         setcookie('JSESSIONID', '', time() - 3600, '/');
         setcookie('kittyID', '', time() - 3600, '/');
+        // unset cookies
+        if (isset($_SERVER['HTTP_COOKIE'])) {
+            $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+            foreach($cookies as $cookie) {
+                $parts = explode('=', $cookie);
+                $name = trim($parts[0]);
+                setcookie($name, '', time()-1000);
+                setcookie($name, '', time()-1000, '/');
+            }
+        }
 
         write_to_log('cookie:' . json_encode($_COOKIE), '_session');
 
