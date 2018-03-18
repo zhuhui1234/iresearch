@@ -25,8 +25,14 @@ class ServiceController extends Controller
     public function sendSMS()
     {
         $data = ['Mobile' => $this->request()->post('mobile')];
-        jsonHead();
-        echo $this->model->sendSMS($data);
+        $vcode = $this->request()->post('vCode');
+        $getVcode = Session::instance()->get('vcodes');
+        //需要先输入验证码再发送短信，短信之后，在通过下一步验证
+        if($vcode == $getVcode) {
+            echo $this->model->sendSMS($data);
+        } else {
+            echo _ERROR('001','图形验证码不正确');
+        }
     }
 
     public function sendSMSForMobile()

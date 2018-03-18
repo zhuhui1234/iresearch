@@ -584,6 +584,8 @@ class UserController extends Controller
         $rs = $this->model->login($data);
         $this->__json();
         echo $rs;
+        //删除vCode的值
+        Session::instance()->del('vCode');
     }
 
     /**
