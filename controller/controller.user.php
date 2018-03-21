@@ -205,7 +205,10 @@ class UserController extends Controller
 
                         }
                     } else {
-
+                        if (DEBUG) {
+                            var_dump($pdt_id);
+                            exit();
+                        }
                         if ($pdt_id == '49') {
                             $p = $this->request()->get('p');
                             switch ($p) {
@@ -234,6 +237,21 @@ class UserController extends Controller
                         $pro = json_decode($pro, true);
 
                         if ($pro['resCode'] == '0000000') {
+
+                            if ($pdt_id == '49') {
+                                $p = $this->request()->get('p');
+                                switch ($p) {
+                                    case 'mut':
+                                        $pro['data'][0]['pdt_name'] = '移动用户行为监测(BETA)';
+                                        break;
+                                    case 'iut':
+                                        $pro['data'][0]['pdt_name'] = '用户行为监测(BETA)';
+                                        break;
+
+
+                                }
+                            }
+
                             header('Location: ?m=user&a=trialApply&ppname=' . $pro['data'][0]['pdt_name'] . '&menuID=' . $pdt_id);
                         } else {
                             http_response_code(404);
@@ -241,6 +259,20 @@ class UserController extends Controller
                         }
 
                     } else {
+                        if ($pdt_id == '49') {
+                            $p = $this->request()->get('p');
+                            switch ($p) {
+                                case 'mut':
+                                    $getPermission['data']['data']['pdt_name'] = '移动用户行为监测(BETA)';
+                                    break;
+                                case 'iut':
+                                    $getPermission['data']['data']['pdt_name'] = '用户行为监测(BETA)';
+                                    break;
+
+
+                            }
+                        }
+
                         header('Location: ?m=user&a=trialApply&ppname=' . $getPermission['data']['data']['pdt_name'] . '&menuID=' . $pdt_id);
                     }
                 }
@@ -339,6 +371,14 @@ class UserController extends Controller
         $menu = json_decode($userModel->showMenu(), true);
         $menu = $menu['data']['dataList'];
         $menu = fillMenu($menu);
+        $region = json_decode($userModel->regionList([
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
+        ]),true);
+        $industry = json_decode($userModel->industryList([
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
+        ]),true);
 
         View::instance('user/trial.tpl')->show(
             [
@@ -355,7 +395,9 @@ class UserController extends Controller
                 'menu' => $menu,
                 'titleMenu' => $menu[1]['subMenu'],
                 'ppname' => $this->request()->get('ppname'),
-                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
+                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+                'regionList' => $region['data'],
+                'industrylist' => $industry['data']
             ]
         );
     }
@@ -440,11 +482,11 @@ class UserController extends Controller
         // unset cookies
         if (isset($_SERVER['HTTP_COOKIE'])) {
             $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
-            foreach($cookies as $cookie) {
+            foreach ($cookies as $cookie) {
                 $parts = explode('=', $cookie);
                 $name = trim($parts[0]);
-                setcookie($name, '', time()-1000);
-                setcookie($name, '', time()-1000, '/');
+                setcookie($name, '', time() - 1000);
+                setcookie($name, '', time() - 1000, '/');
             }
         }
 
@@ -1145,13 +1187,13 @@ class UserController extends Controller
     public function getUserPoint()
     {
         $getData = json_decode(file_get_contents('php://input'), true);
-        if(empty($getData) or empty($getData['userID'])) {
+        if (empty($getData) or empty($getData['userID'])) {
             _ERROR('0000001', '缺少参数');
         }
-        $data=[
-            'u_id'=> $getData['userID'],
+        $data = [
+            'u_id' => $getData['userID'],
             'TOKEN' => $this->userInfo['token'],
-            'userID'=> $this->userInfo['userID'],
+            'userID' => $this->userInfo['userID'],
         ];
         echo $this->model->getUserPoint($data);
     }
@@ -1159,7 +1201,7 @@ class UserController extends Controller
     public function getUserPointList()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        if(empty($data) or empty($data['userID'])) {
+        if (empty($data) or empty($data['userID'])) {
             _ERROR('0000001', '缺少参数');
         }
         echo $this->model->getUserPointList($data);
