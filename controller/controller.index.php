@@ -819,7 +819,7 @@ class IndexController extends Controller
             $data['apply_beta_iut'] = $data['apply_beta_mut'] = '申请试用(BETA)';
             $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en'] = 'Trial';
             $data['iut_oldurl'] = '?m=user&a=trialApply&ppname=网络视频市场监测&menuID=48';
-            $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文)&menuID=51';
+            $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=用户网络行为监测(英文)&menuID=51';
             $data['mut_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=48';
             $data['mut_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文)&menuID=51';
 
