@@ -339,6 +339,14 @@ class UserController extends Controller
         $menu = json_decode($userModel->showMenu(), true);
         $menu = $menu['data']['dataList'];
         $menu = fillMenu($menu);
+        $region = json_decode($userModel->regionList([
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
+        ]),true);
+        $industry = json_decode($userModel->industryList([
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
+        ]),true);
 
         View::instance('user/trial.tpl')->show(
             [
@@ -355,7 +363,9 @@ class UserController extends Controller
                 'menu' => $menu,
                 'titleMenu' => $menu[1]['subMenu'],
                 'ppname' => $this->request()->get('ppname'),
-                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
+                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+                'regionList' => $region['data'],
+                'industrylist' => $industry['data']
             ]
         );
     }

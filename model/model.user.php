@@ -575,6 +575,18 @@ class UserModel extends API
         return $this->_curlPost($url, $data, 'pushLog');
     }
 
+    public function regionList($data)
+    {
+        $url = API_URL . '?m=user&a=regionList';
+        return $this->_curlPost($url, $data, 'regionList');
+    }
+
+    public function industryList($data)
+    {
+        $url = API_URL . '?m=user&a=industryList';
+        return $this->_curlPost($url, $data, 'industryList');
+    }
+
 
     ######################################################################################
     ##################################                     ###############################
