@@ -14,7 +14,10 @@ define(['helper', 'app/main'], function (Helper) {
                 "username": $("#username").val(),
                 "region": $("#city").val(),
                 "city": $("#city option:selected").text(),
-                "mail":$("#mail").val()
+                "area": $("#industry option:selected").text(),
+                "industry": $("#industry").val(),
+                "mail":$("#mail").val(),
+                "remark":Helper.getQuery('ppname')
             };
             console.log(pData);
             if (($.trim(pData.username).length <= 0) ||
@@ -22,7 +25,7 @@ define(['helper', 'app/main'], function (Helper) {
                 ($.trim(pData.position).length <= 0) ||
                 ($.trim(pData.menuID).length <= 0) ||
                 ($.trim(pData.mail).length <= 0) ||
-                ($.trim(pData.region).length <= 0 && pData.region == '0')) {
+                ($.trim(pData.region).length <= 0 && pData.region == '0') || pData.industry == '0') {
                 alert("必填项不能为空")
             } else {
                 Helper.post("trialApply", {data: pData}, function (ret) {
