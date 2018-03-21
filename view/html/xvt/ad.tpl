@@ -231,7 +231,7 @@
         <h3 class="tit"><span>联系我们　Contact Us</span></h3>
         <div class="contact"><span class="ico ico1"></span>400-026-2099　　<span class="ico ico2"></span>ask@iresearch.com.cn</div>
         <div class="copy">
-            2002 - 2017 Copyright© 艾瑞数据 <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000584"><img src="http://www.iresearch.com.cn/images/record_icon.png">沪公网安备 31010402000584号</a>
+            2002 - <script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script> Copyright&copy; 艾瑞数据 <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000584"><img src="http://www.iresearch.com.cn/images/record_icon.png">沪公网安备 31010402000584号</a>
         </div>
     </div>
     <script src="http://data.iresearch.com.cn/js/jquery.min.js"></script>
