@@ -868,7 +868,7 @@ class IndexController extends Controller
 
                             }else {
                                 $data['apply_iut_en'] = 'Trial';
-                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=用户行为监测(英文版)&menuID=48';
+                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络用户行为监测(英文版)&menuID=48';
                             }
 
                             if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
