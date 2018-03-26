@@ -207,7 +207,7 @@
                 </button>
                 <!--ELSE -->
 
-                <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl]]">[[ product[tabIndex].button_old]]</a>
+                <!-- <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl]]">[[ product[tabIndex].button_old]]</a>
 
                 <!--ENDIF -->
                 <!-- ENDIF -->

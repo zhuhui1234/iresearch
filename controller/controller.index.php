@@ -639,8 +639,8 @@ class IndexController extends Controller
         }
 
         $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_ovt'] = '登录使用';
-        $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '登录使用(老版本)';
-        $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Sign In';
+//        $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '登录使用(老版本)';
+//        $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Sign In';
 
         $data['ivt_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端视频内容市场监测&pro=47';
         $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=52';
@@ -651,7 +651,7 @@ class IndexController extends Controller
 
         if ($this->userDetail) {
             $data['apply_ivt'] = $data['apply_mvt'] =$data['apply_ovt']= '申请试用';
-            $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '申请试用(老版本)';
+//            $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '申请试用(老版本)';
             $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en']= 'Trial';
 
             $data['ovt_oldurl'] = '?m=user&a=trialApply&ppname=移动视频市场监测&menuID=47';
@@ -679,8 +679,8 @@ class IndexController extends Controller
 
                             }else {
                                 $data['apply_ivt'] = '申请试用';
-                                $data['apply_beta_ivt'] = '申请试用(老版本)';
-                                $data['apply_ivt_en'] = 'Trial';
+//                                $data['apply_beta_ivt'] = '申请试用(老版本)';
+//                                $data['apply_ivt_en'] = 'Trial';
                                 $data['ivt_oldurl'] = '?m=user&a=trialApply&ppname=视频内容市场监测&menuID=47';
                                 $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=视频内容市场监测(英文版)&menuID=52';
                             }
@@ -693,7 +693,7 @@ class IndexController extends Controller
 
                             } else {
                                 $data['apply_mvt'] = '申请试用';
-                                $data['apply_mvt_en'] = 'Trial';
+//                                $data['apply_mvt_en'] = 'Trial';
                                 $data['mvt_oldurl'] = '?m=user&a=trialApply&ppname=移动视频市场监测&menuID=47';
                                 $data['mvt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动视频市场监测(英文版)&menuID=52';
                             }
@@ -706,7 +706,7 @@ class IndexController extends Controller
 
                             } else {
                                 $data['apply_ovt'] = '申请试用';
-                                $data['apply_ovt_en'] = 'Trial';
+//                                $data['apply_ovt_en'] = 'Trial';
                                 $data['ovt_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=47';
 //                                $data['ovt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文版)&menuID=52';
                             }
@@ -720,7 +720,7 @@ class IndexController extends Controller
                                 $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=52';
 
                             }else {
-                                $data['apply_ivt_en'] = 'Trial';
+//                                $data['apply_ivt_en'] = 'Trial';
                                 $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=视频内容市场监测(英文版)&menuID=52';
                             }
 
@@ -729,7 +729,7 @@ class IndexController extends Controller
                                 $data['mvt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
 
                             } else {
-                                $data['apply_mvt_en'] = 'Trial';
+//                                $data['apply_mvt_en'] = 'Trial';
                                 $data['mvt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动视频市场监测(英文版)&menuID=52';
                             }
 
@@ -738,7 +738,7 @@ class IndexController extends Controller
                                 $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
 
                             } else {
-                                $data['apply_ovt_en'] = 'Trial';
+//                                $data['apply_ovt_en'] = 'Trial';
                                 $data['ovt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动视频市场监测(英文版)&menuID=52';
                             }
                         }
@@ -805,8 +805,8 @@ class IndexController extends Controller
 //            $data['token'] = 1;
 //        }
         $data['apply_iut'] = $data['apply_mut'] =  '登录使用';
-        $data['apply_beta_iut'] = $data['apply_beta_mut'] = '登录使用(BETA)';
-        $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Sign In';
+//        $data['apply_beta_iut'] = $data['apply_beta_mut'] = '登录使用(BETA)';
+//        $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Sign In';
 
         $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48';
         $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pro=51';
@@ -818,8 +818,8 @@ class IndexController extends Controller
         if ($this->userDetail) {
 
             $data['apply_iut'] = $data['apply_mut'] ='申请试用';
-            $data['apply_beta_iut'] = $data['apply_beta_mut']= '申请试用(BETA)';
-            $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Trial';
+//            $data['apply_beta_iut'] = $data['apply_beta_mut']= '申请试用(BETA)';
+//            $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Trial';
             $data['iut_oldurl'] = '?m=user&a=trialApply&ppname=网络用户行为监测&menuID=48';
             $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=用户行为监测(英文版)&menuID=51';
             $data['mut_oldurl'] = '?m=user&a=trialApply&ppname=移动用户行为监测&menuID=48';
@@ -867,15 +867,15 @@ class IndexController extends Controller
                                 $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
 
                             }else {
-                                $data['apply_iut_en'] = 'Trial';
-                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络用户行为监测(英文版)&menuID=48';
+//                                $data['apply_iut_en'] = 'Trial';
+                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=用户行为监测(英文版)&menuID=48';
                             }
 
                             if ($date >= $datum['mobile_start_time']  and $date <= $datum['mobile_due_time']) {
                                 $data['apply_mut_en'] = 'English Version';
                                 $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
                             } else {
-                                $data['apply_mut_en'] = 'Trial';
+//                                $data['apply_mut_en'] = 'Trial';
                                 $data['mut_oldurl_en'] = '?m=user&a=trialApply&ppname=移动用户行为监测(英文版)&menuID=51';
                             }
                         }
@@ -887,7 +887,7 @@ class IndexController extends Controller
                                 $data['apply_beta_iut_en'] = 'English Version';
                             } else {
                                 $data['apply_beta_iut'] = '申请试用';
-                                $data['apply_beta_iut_en'] = 'Trial';
+//                                $data['apply_beta_iut_en'] = 'Trial';
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
@@ -895,7 +895,7 @@ class IndexController extends Controller
                                 $data['apply_beta_mut_en'] = 'English Version';
                             } else {
                                 $data['apply_beta_mut'] = '申请试用';
-                                $data['apply_beta_mut_en'] = 'Trial';
+//                                $data['apply_beta_mut_en'] = 'Trial';
                             }
                         }
 
