@@ -3,6 +3,7 @@ date_default_timezone_set("PRC");
 session_set_cookie_params(0);
 //基础路径配置
 define('DS', DIRECTORY_SEPARATOR);
+define('USERCENTER_VERSION', 1.0);
 define('ROOT_PATH', dirname(__FILE__) . DS);
 define('MODEL', 'model');
 define('CONTROLLER', 'controller');
@@ -42,6 +43,7 @@ define('WEBSITE_SOURCE_URL', WEBSITE_URL . 'dev');
 define('WEBSITE_TITLE', '艾瑞数据平台');
 define('REGISTER_MAILADDR', 'irv@iresearch.com.cn');
 define('FORGOTPWD_MAILADDR', 'irv@iresearch.com.cn');
+define('AUTOLOAD_COMPOSER', ROOT_PATH . 'vendor' . DS . 'autoload.php');
 //导出报表配
 //define('API_URL', 'http://180.169.19.208/iview_deskapi/');
 define('API_URL', 'http://localhost/idata_deskapi/');
@@ -117,7 +119,7 @@ require_once(ROOT_PATH . LIB . DS . LIB . '.model.php');
 require_once(ROOT_PATH . LIB . DS . LIB . '.agentmodel.php');
 require_once(ROOT_PATH . LIB . DS . LIB . '.controller.php');
 require_once(ROOT_PATH . LIB . DS . LIB . '.view.php');
-
+require_once(AUTOLOAD_COMPOSER);
 $_request = Request::instance();
 
 $v = $_request->get('v');
@@ -158,6 +160,7 @@ if (!isLoginState()
     AND $_GET['a'] != 'checkMail'
     AND $_GET['a'] != 'ircJump'
     AND $_GET['a'] != 'test'
+    AND $_GET['a'] != 'sendNationSMS'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {
@@ -172,4 +175,3 @@ if (!isLoginState()
     }
 
 }
-

@@ -374,11 +374,11 @@ class UserController extends Controller
         $region = json_decode($userModel->regionList([
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
-        ]),true);
+        ]), true);
         $industry = json_decode($userModel->industryList([
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
-        ]),true);
+        ]), true);
 
         View::instance('user/trial.tpl')->show(
             [
@@ -407,7 +407,7 @@ class UserController extends Controller
      */
     public function editUserInfo()
     {
-        header('Location: http://irv.iresearch.com.cn/user-center/check');
+        header('Location: http://irv.iresearch.com.cn/user-center/check?' . USERCENTER_VERSION);
     }
 
     /**
@@ -958,7 +958,7 @@ class UserController extends Controller
                 'userInfo' => [
                     'name' => '用户信息',
 //                    'uri' => urlencode(IDATA_URL . '?m=user&a=editUserInfo')
-                    'uri' => urlencode('//irv.iresearch.com.cn/user-center/check')
+                    'uri' => urlencode('//irv.iresearch.com.cn/user-center/check?' . USERCENTER_VERSION)
                 ],
                 'logOut' => [
                     'name' => '登出',

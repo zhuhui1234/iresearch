@@ -99,7 +99,7 @@ class WeChatController extends Controller
                         } else if (!empty($ppName)) {
                             header('Location: ' . $classicSysURI);
                         } else {
-                            header('Location: http://irv.iresearch.com.cn/user-center/check/');
+                            header('Location: http://irv.iresearch.com.cn/user-center/check/?'.USERCENTER_VERSION);
                         }
                     } else {
                         header('Location: ?m=user&a=login?recode=402');
