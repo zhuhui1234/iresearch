@@ -48,9 +48,9 @@ requirejs.config({
         'cropper-main': 'lib/cropper/main',
         'canvas': 'lib/canvas/jquery.particleground',
         // 'wxLogin':"empty:"
+        'helper': 'lib/helper',
         'WxLogin': '//res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
         'api': 'apiurl',
-        'helper': 'lib/helper',
     },
     shim: {
         'jquery': {

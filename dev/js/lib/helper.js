@@ -3,7 +3,7 @@
  * Created by robinwong51 on 9/14/16.
  */
 define(["api", "WxLogin", "jquery"], function (api) {
-        "use strict";
+        // "use strict";
         function Helper() {
             /**
              * get
@@ -169,16 +169,18 @@ define(["api", "WxLogin", "jquery"], function (api) {
                 }
 
                 // console.log(wxURI);
-                var obj = new WxLogin({
-                    id: qrCodeID,
-                    appid: "wxd96928ba062cffec",
-                    scope: "snsapi_login",
-                    // redirect_uri: "http%3a%2f%2fwww.iresearchdata.cn%2fiResearchDataWeb%2f%3fm%3dwechat%26a%3dwxLoginAPI",
-                    redirect_uri: wxURI,
-                    state: state,
-                    style: "",
-                    href: cssFileUrl
-                });
+                try {
+                    var obj = new WxLogin({
+                        id: qrCodeID,
+                        appid: "wxd96928ba062cffec",
+                        scope: "snsapi_login",
+                        // redirect_uri: "http%3a%2f%2fwww.iresearchdata.cn%2fiResearchDataWeb%2f%3fm%3dwechat%26a%3dwxLoginAPI",
+                        redirect_uri: wxURI,
+                        state: state,
+                        style: "",
+                        href: cssFileUrl
+                    });
+                }
 
                 $('.title').remove();
             };

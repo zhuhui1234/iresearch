@@ -4,15 +4,19 @@
  * Author DavidWei <davidwei@iresearch.com.cn>
  * Create 16-08-10 14:34
  */
+
+use \libphonenumber\PhoneNumberUtil as pnu;
+
 class ServiceController extends Controller
 {
 
-    private $model,$userInfo, $loginStatus;
+    private $model, $userInfo, $loginStatus;
 
     public function __construct()
     {
-        $this->model =Model::instance('service');
+        $this->model = Model::instance('service');
     }
+
     public function upUserSessionKey()
     {
         $yu = $this->request()->requestAll("guid");
@@ -28,85 +32,111 @@ class ServiceController extends Controller
         $vcode = $this->request()->post('vCode');
         $getVcode = Session::instance()->get('vcodes');
         //需要先输入验证码再发送短信，短信之后，在通过下一步验证
-        if($vcode == $getVcode) {
+        if ($vcode == $getVcode) {
             echo $this->model->sendSMS($data);
         } else {
-            echo _ERROR('001','图形验证码不正确');
+            echo _ERROR('001', '图形验证码不正确');
         }
     }
 
     public function sendSMSForMobile()
     {
-        $data = json_decode(file_get_contents('php://input'),true);
+        $data = json_decode(file_get_contents('php://input'), true);
         jsonHead();
-        echo $this->model->sendSMS(['Mobile'=> $data['mobile']]);
+        echo $this->model->sendSMS(['Mobile' => $data['mobile']]);
+    }
+
+    public function sendNationSMS()
+    {
+
+//        $swissNumberStr = "086 13818397695";
+//        $phoneUtil = pnu::getInstance();
+//        try {
+//            $swissNumberProto = $phoneUtil->parse($swissNumberStr, "CN");
+//            $t = $phoneUtil->isValidNumber($swissNumberProto);
+//            var_dump($t);
+//        } catch (\libphonenumber\NumberParseException $e) {
+//            var_dump($e);
+//        }
+
+        $mobile = $this->request()->post('mobile');
+
     }
 
     /**
      * 跳转kol产品
      */
-    public function toKol(){
-        $user="tableau";
+    public function toKol()
+    {
+        $user = "tableau";
         $rkey = $user . $user . date('YmdH');
         $key = strtoupper(md5($rkey, false));
-        $url =  "http://vfckol.iresearchdata.cn/urlRedirect.ashx?u={$user}&e={$user}&ukey={$key}";
-	if($_GET['test']=='yes'){
-		echo "http://115.239.229.242:8010/urlRedirect.ashx?u={$user}&e={$user}&ukey={$key}";
-		echo "<br />";
-		echo $url;exit();
-	}
-        header("Location: ".$url);
+        $url = "http://vfckol.iresearchdata.cn/urlRedirect.ashx?u={$user}&e={$user}&ukey={$key}";
+        if ($_GET['test'] == 'yes') {
+            echo "http://115.239.229.242:8010/urlRedirect.ashx?u={$user}&e={$user}&ukey={$key}";
+            echo "<br />";
+            echo $url;
+            exit();
+        }
+        header("Location: " . $url);
     }
-    public function vfcLogin(){
+
+    public function vfcLogin()
+    {
         $data = array();
         View::instance('service/iadtLogin.tpl')->show($data);
     }
+
     /**
      * 跳转至产品iadt
      */
-    public function toiAdT(){
+    public function toiAdT()
+    {
         //$data['mail'] = "davidwei@iresearch.com.cn";
         //$data['pwd'] = "weiwei";
         $data['mail'] = $this->request()->post('mail');
         $data['pwd'] = $this->request()->post('pwd');
         $data = json_encode($data);
-        $res = json_decode(Model::instance('user')->__getIResearchDataAccount($data),true);
+        $res = json_decode(Model::instance('user')->__getIResearchDataAccount($data), true);
 
-        if($res['iUserID']=='-1'){
+        if ($res['iUserID'] == '-1') {
             echo "<script>alert('登录失败!');history.go(-1)</script>";
 
-        }
-        else {
+        } else {
             $guid = $res['iRGuid'];
-            $url =  "http://vfc-iadt.iresearchdata.cn/ws_login.aspx?ProductSelection=ProductSelection&guid=".$guid;
-            header("Location: ".$url);
+            $url = "http://vfc-iadt.iresearchdata.cn/ws_login.aspx?ProductSelection=ProductSelection&guid=" . $guid;
+            header("Location: " . $url);
         }
     }
-    public function vfcLogin2(){
+
+    public function vfcLogin2()
+    {
         $data = array();
         View::instance('service/madtLogin.tpl')->show($data);
     }
+
     /**
      * 跳转至产品iadt
      */
-    public function toiAdT2(){
+    public function toiAdT2()
+    {
         //$data['mail'] = "davidwei@iresearch.com.cn";
         //$data['pwd'] = "weiwei";
         $data['mail'] = $this->request()->post('mail');
         $data['pwd'] = $this->request()->post('pwd');
         $data = json_encode($data);
-        $res = json_decode(Model::instance('user')->__getIResearchDataAccount($data),true);
+        $res = json_decode(Model::instance('user')->__getIResearchDataAccount($data), true);
 
-        if($res['iUserID']=='-1'){
+        if ($res['iUserID'] == '-1') {
             echo "<script>alert('登录失败!');history.go(-1)</script>";
 
-        }
-        else {
+        } else {
             $guid = $res['iRGuid'];
-            $url =  "http://vfc-madt.iresearchdata.cn/ws_login.aspx?ProductSelection=ProductSelection&guid=".$guid;
-            header("Location: ".$url);
+            $url = "http://vfc-madt.iresearchdata.cn/ws_login.aspx?ProductSelection=ProductSelection&guid=" . $guid;
+            header("Location: " . $url);
         }
     }
+
     /**
      *　auth code img
      */
@@ -116,7 +146,7 @@ class ServiceController extends Controller
         $im = imagecreate(100, 40);
         $back = ImageColorAllocate($im, 245, 245, 245);
         imagefill($im, 0, 1, $back); //背景
-        srand((double) microtime() * 1000000);
+        srand((double)microtime() * 1000000);
         //生成4位数字
         $co = 4;
         for ($i = 0; $i < $co; $i++) {
@@ -134,9 +164,9 @@ class ServiceController extends Controller
         Header("Content-type: image/PNG");
         ImagePNG($im);
         ImageDestroy($im);
-        Session::instance()->set('vcodes',$vcodes);
-        write_to_log('check vcodes: '.Session::instance()->get('vcodes'),'_session');
-        write_to_log('set Session vcodes: '. $vcodes,'_session');
+        Session::instance()->set('vcodes', $vcodes);
+        write_to_log('check vcodes: ' . Session::instance()->get('vcodes'), '_session');
+        write_to_log('set Session vcodes: ' . $vcodes, '_session');
     }
 
     /**
@@ -146,17 +176,17 @@ class ServiceController extends Controller
     {
         $data = $this->request()->requestAll();
 
-        write_to_log(']]]'.json_encode($data),'_avatar');
-        write_to_log('>>'.json_encode($_FILES),'_avatar');
+        write_to_log(']]]' . json_encode($data), '_avatar');
+        write_to_log('>>' . json_encode($_FILES), '_avatar');
         $crop = new CropAvatar(
             isset($data['avatar_src']) ? $data['avatar_src'] : null,
             isset($data['avatar_data']) ? $data['avatar_data'] : null,
             isset($_FILES['avatar_file']) ? $_FILES['avatar_file'] : null
         );
         $response = array(
-            'state'  => 200,
-            'message' => $crop -> getMsg(),
-            'result' => $crop -> getResult()
+            'state' => 200,
+            'message' => $crop->getMsg(),
+            'result' => $crop->getResult()
         );
 
         @@ob_clean();
