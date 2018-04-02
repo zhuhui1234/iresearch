@@ -222,6 +222,16 @@ class IndexController extends Controller
         header("Location:" . $data['url']);
     }
 
+    public function iCloudOneMedia()
+    {
+
+        $data = array(
+            'url' => 'http://ircloud.iresearchdata.cn/one-media/login?token=' . $this->userInfo['token']
+        );
+
+        header("Location:" . $data['url']);
+    }
+
     /**
      * ir cloud
      */
