@@ -49,9 +49,11 @@ requirejs.config({
         'canvas': 'lib/canvas/jquery.particleground',
         // 'wxLogin':"empty:"
         'helper': 'lib/helper',
-        'WxLogin': '//res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
+        // 'WxLogin': '//res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
+        'WxLogin': '//irv.iresearch.com.cn/js/wxLogin',
         'api': 'apiurl',
     },
+    waitSeconds: 15,
     shim: {
         'jquery': {
             exports: '$'
@@ -170,5 +172,11 @@ requirejs.config({
         }
     }
 });
+
+requirejs.onError = function(err) {
+    if (err.requireType === 'timeout') {
+        alert("error: "+err);
+    }
+};
 
 require(['app/main']);
