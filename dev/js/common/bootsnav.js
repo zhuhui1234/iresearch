@@ -1,7 +1,7 @@
 define(['jquery'], function($) {
     console.log('Module nav loaded.');
     (function ($) {
-        "use strict";
+        // "use strict";
 
         var bootsnav = {
             initialize: function() {

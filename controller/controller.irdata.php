@@ -216,7 +216,9 @@ class IRDataController extends Controller
 
                 //以下代码是解决被禁止第三方cooke下iframe无法登陆
 //            if(strpos($_SERVER["HTTP_USER_AGENT"],"Safari")) {
-
+                if(DEBUG) {
+                    var_dump($data);
+                }
                 if (!empty($data['ppurl'])) {
                     if ($this->request()->get('backType', 0) == '0') {
                         $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];

@@ -48,10 +48,12 @@ requirejs.config({
         'cropper-main': 'lib/cropper/main',
         'canvas': 'lib/canvas/jquery.particleground',
         // 'wxLogin':"empty:"
-        'WxLogin': '//res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
-        'api': 'apiurl',
         'helper': 'lib/helper',
+        // 'WxLogin': '//res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin',
+        'WxLogin': '//irv.iresearch.com.cn/js/wxLogin',
+        'api': 'apiurl',
     },
+    waitSeconds: 15,
     shim: {
         'jquery': {
             exports: '$'
@@ -170,5 +172,11 @@ requirejs.config({
         }
     }
 });
+
+requirejs.onError = function(err) {
+    if (err.requireType === 'timeout') {
+        alert("error: "+err);
+    }
+};
 
 require(['app/main']);

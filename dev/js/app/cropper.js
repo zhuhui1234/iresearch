@@ -1,5 +1,5 @@
 define(['jquery','bootstrap','upload','cropper'], function($) {
-    'use strict';
+    // 'use strict';
     $('#avatarInput').filestyle({
         input : false,
         buttonText: '上传文件',
