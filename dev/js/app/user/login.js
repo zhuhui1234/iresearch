@@ -70,7 +70,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         window.localStorage.clear();
         var expired = Helper.getQuery('expired');
 
-        if (expired == '1') {
+        if (expired == '1' || $('#expired').length > 0) {
             $("#timeout_msg").show();
         }
 

@@ -70,6 +70,9 @@
         </div>
     </div>
 </div>
+<!-- IF expired=="1" -->
+<div style="display: none" id="expired"></div>
+<!-- ENDIF -->
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
 <script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>

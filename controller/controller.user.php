@@ -232,48 +232,55 @@ class UserController extends Controller
 
                 } else {
 
-                    if (empty($getPermission['data']['data'])) {
-                        $pro = $this->model->getProduct(['pdt_id' => $pdt_id]);
-                        $pro = json_decode($pro, true);
+                    if (($getPermission['resCode'] == '40004')) {
+                        View::instance('user/login.tpl')->show([
+                            'loginStatus' => $this->loginStatus,
+                            'expired' => 1,
+                            'pdtID' => $pdt_id]);
+                    } else {
+                        if (empty($getPermission['data']['data'])) {
+                            $pro = $this->model->getProduct(['pdt_id' => $pdt_id]);
+                            $pro = json_decode($pro, true);
 
-                        if ($pro['resCode'] == '0000000') {
+                            if ($pro['resCode'] == '0000000') {
 
+                                if ($pdt_id == '49') {
+                                    $p = $this->request()->get('p');
+                                    switch ($p) {
+                                        case 'mut':
+                                            $pro['data'][0]['pdt_name'] = '移动用户行为监测(BETA)';
+                                            break;
+                                        case 'iut':
+                                            $pro['data'][0]['pdt_name'] = '用户行为监测(BETA)';
+                                            break;
+
+
+                                    }
+                                }
+
+                                header('Location: ?m=user&a=trialApply&ppname=' . $pro['data'][0]['pdt_name'] . '&menuID=' . $pdt_id);
+                            } else {
+                                http_response_code(404);
+                                echo '访问错误';
+                            }
+
+                        } else {
                             if ($pdt_id == '49') {
                                 $p = $this->request()->get('p');
                                 switch ($p) {
                                     case 'mut':
-                                        $pro['data'][0]['pdt_name'] = '移动用户行为监测(BETA)';
+                                        $getPermission['data']['data']['pdt_name'] = '移动用户行为监测(BETA)';
                                         break;
                                     case 'iut':
-                                        $pro['data'][0]['pdt_name'] = '用户行为监测(BETA)';
+                                        $getPermission['data']['data']['pdt_name'] = '用户行为监测(BETA)';
                                         break;
 
 
                                 }
                             }
 
-                            header('Location: ?m=user&a=trialApply&ppname=' . $pro['data'][0]['pdt_name'] . '&menuID=' . $pdt_id);
-                        } else {
-                            http_response_code(404);
-                            echo '访问错误';
+                            header('Location: ?m=user&a=trialApply&ppname=' . $getPermission['data']['data']['pdt_name'] . '&menuID=' . $pdt_id);
                         }
-
-                    } else {
-                        if ($pdt_id == '49') {
-                            $p = $this->request()->get('p');
-                            switch ($p) {
-                                case 'mut':
-                                    $getPermission['data']['data']['pdt_name'] = '移动用户行为监测(BETA)';
-                                    break;
-                                case 'iut':
-                                    $getPermission['data']['data']['pdt_name'] = '用户行为监测(BETA)';
-                                    break;
-
-
-                            }
-                        }
-
-                        header('Location: ?m=user&a=trialApply&ppname=' . $getPermission['data']['data']['pdt_name'] . '&menuID=' . $pdt_id);
                     }
                 }
             } else {
@@ -285,8 +292,10 @@ class UserController extends Controller
                     if ($uid['resCode'] == '000000') {
                         View::instance('user/login.tpl')->show([
                             'loginStatus' => $this->loginStatus,
+
                             'pdtID' => $pdt_id]);
                     } else {
+
                         View::instance('user/ird_login.tpl')->show([
                             'loginStatus' => $this->loginStatus,
                             'pdtID' => $pdt_id,
@@ -295,6 +304,7 @@ class UserController extends Controller
                             'CompanyName' => $irdAccount['CompanyName']]);
                     }
                 } else {
+
                     View::instance('user/login.tpl')->show([
                         'loginStatus' => $this->loginStatus,
                         'pdtID' => $pdt_id]);
