@@ -180,7 +180,7 @@ class IndexController extends Controller
     }
 
     /**
-     * ir cloud
+     * ir cloudchinacloudsites
      */
     public function iAppCheck()
     {
@@ -194,6 +194,11 @@ class IndexController extends Controller
     public function xAdt()
     {
         header("Location:" . 'http://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token']);
+    }
+
+    public function xUserTracker()
+    {
+        header("Location:". 'http://irv.iresearch.com.cn/ut/login?language=zh&token='.$this->userInfo['token']);
     }
 
     public function testAdt()

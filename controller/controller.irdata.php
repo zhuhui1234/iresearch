@@ -200,7 +200,7 @@ class IRDataController extends Controller
                     if ($this->request()->get('backType', 0) == '0') {
                         $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                         $callBack = urlencode($backURL . '&backType=1');
-                        $jumpURL = 'http://mut-en.chinacloudsites.cn/mut.html?guid=' . $this->irdUserInfo['iRGuid'];
+                        $jumpURL = 'http://mut-en.itracker.cn/mut.html?guid=' . $this->irdUserInfo['iRGuid'];
                         header("Location:" . $jumpURL);
                         exit();
                     }
