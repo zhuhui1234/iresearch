@@ -874,7 +874,6 @@ class IndexController extends Controller
                         }
 
                         if ($datum['pdt_id'] == 51) {
-                            echo('a');
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
                                 $data['apply_iut_en'] = 'English Version';
                                 $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
