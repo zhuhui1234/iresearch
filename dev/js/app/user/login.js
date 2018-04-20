@@ -53,13 +53,13 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
     var checkLoginFormat = function () {
         var phoneVal = $("#mobile").val();
         if (phoneVal.length <= 0) {
-            $(".alert:first").fadeIn().text("手机号码不能为空！");
+
+            $(".alert").eq(1).fadeIn().text("手机号码不能为空！");
             $("#mobile").focus();
             return false;
         }
         if (!(/^1[34578]\d{9}$/.test(phoneVal)) && !(/^4[0]\d{9}$/.test(phoneVal))) {
-
-            $(".alert:first").fadeIn().text("手机号码有误，请重填！");
+            $(".alert").eq(1).fadeIn().text("手机号码有误，请重填！");
             return false;
         }
         return true;
@@ -70,7 +70,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         window.localStorage.clear();
         var expired = Helper.getQuery('expired');
 
-        if (expired == '1') {
+        if (expired == '1' || $('#expired').length > 0) {
             $("#timeout_msg").show();
         }
 
