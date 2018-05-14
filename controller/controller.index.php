@@ -201,21 +201,15 @@ class IndexController extends Controller
         header("Location:". 'http://irv.iresearch.com.cn/ut/login?language=zh&token='.$this->userInfo['token']);
     }
 
+    public function mst()
+    {
+        header("Location:". 'http://113.200.91.62:8080/mst/irviews/validToken?token='.$this->userInfo['token']);
+    }
+
     public function testAdt()
     {
         header("Location:" . 'http://irv.iresearch.com.cn/adt2/?language=zh-CN&token=' . $this->userInfo['token']);
     }
-
-    public function mst()
-    {
-
-        $data = array(
-            'url' => 'http://113.200.91.81/web/login?token=' . $this->userInfo['token']
-        );
-
-        header("Location:" . $data['url']);
-    }
-
 
     public function iCloudInApp()
     {
