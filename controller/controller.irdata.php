@@ -42,7 +42,7 @@ class IRDataController extends Controller
         if (!empty($this->userInfo['token'])) {
             if (!empty($this->guid)) {
                 header('Location: ' . 'http://madt.irs01.net/ProductSelection.aspx?guid=' . $this->guid);
-            }else{
+            } else {
                 echo("<SCRIPT LANGUAGE=\"JavaScript\">
                         alert(\"你并没有权限访问该模块功能,或没有绑定老产品账号，请与客服联系！\");
             //            top.location.href=\"?m=index\";
@@ -50,8 +50,8 @@ class IRDataController extends Controller
             }
 
 
-        }else{
-            View::instance('user/login.tpl')->show([]);
+        } else {
+            View::instance('user/login.tpl')->show(['mobile' => 1]);
         }
 
     }
@@ -153,7 +153,7 @@ class IRDataController extends Controller
     {
         $ppname = $this->request()->get('ppname');
         $pdtID = $this->request()->get('pro');
-
+        $mobile = "1";
         if ($this->userDetail) {
 
             if (!empty($this->userInfo['ird_user_id'])) {
@@ -206,7 +206,7 @@ class IRDataController extends Controller
                     }
                 }
 
-                if ($ppname == 'old-ad'){
+                if ($ppname == 'old-ad') {
                     if ($this->request()->get('backType', 0) == '0') {
                         header('Location: ' . 'http://madt.irs01.net/ProductSelection.aspx?guid=' . $this->guid);
                         exit();
@@ -216,7 +216,7 @@ class IRDataController extends Controller
 
                 //以下代码是解决被禁止第三方cooke下iframe无法登陆
 //            if(strpos($_SERVER["HTTP_USER_AGENT"],"Safari")) {
-                if(DEBUG) {
+                if (DEBUG) {
                     var_dump($data);
                 }
                 if (!empty($data['ppurl'])) {
@@ -226,7 +226,7 @@ class IRDataController extends Controller
                         $jumpURL = $data['ppurl'] . '&irv_callback=';
                         header("Location:" . $jumpURL);
                     }
-                } else{
+                } else {
                     echo("<SCRIPT LANGUAGE=\"JavaScript\">
                     alert(\"你并没有权限访问该模块功能 ~\");
                     top.location.href=\"?m=index\";
@@ -257,7 +257,7 @@ class IRDataController extends Controller
                 </SCRIPT>");
             }
         } else {
-            View::instance('user/login.tpl')->show(['msg' => '']);
+            View::instance('user/login.tpl')->show(['msg' => '', 'mobile' => $mobile]);
         }
 
 
