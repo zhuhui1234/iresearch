@@ -33,7 +33,7 @@
             <p class="text-center alert alert-danger" >您的登录已超时，或已在其他终端登录，请重新登录。</p>
         </div>
     </div>
-    <!-- IF mobile!="1" -->
+    <!-- IF mobile!=="1" -->
     <div class="row" id="timeout_msg" >
         <div class="col-xs-12">
             <p class="text-center alert alert-warning" >您已升级完毕，请使用 {mobile} 手机直接登录艾瑞睿见。</p>
