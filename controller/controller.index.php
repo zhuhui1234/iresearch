@@ -180,7 +180,7 @@ class IndexController extends Controller
     }
 
     /**
-     * ir cloudchinacloudsites
+     * ir cloud
      */
     public function iAppCheck()
     {
@@ -203,7 +203,7 @@ class IndexController extends Controller
 
     public function mst()
     {
-        header("Location:". 'http://113.200.91.62:8080/mst/irviews/validToken?token='.$this->userInfo['token']);
+        header("Location:". 'http://113.200.91.62/web/downloadTrend?token='.$this->userInfo['token']);
     }
 
     public function testAdt()
