@@ -46,23 +46,6 @@ class ServiceController extends Controller
         echo $this->model->sendSMS(['Mobile' => $data['mobile']]);
     }
 
-    public function sendNationSMS()
-    {
-
-//        $swissNumberStr = "086 13818397695";
-//        $phoneUtil = pnu::getInstance();
-//        try {
-//            $swissNumberProto = $phoneUtil->parse($swissNumberStr, "CN");
-//            $t = $phoneUtil->isValidNumber($swissNumberProto);
-//            var_dump($t);
-//        } catch (\libphonenumber\NumberParseException $e) {
-//            var_dump($e);
-//        }
-
-        $mobile = $this->request()->post('mobile');
-
-    }
-
     /**
      * 跳转kol产品
      */

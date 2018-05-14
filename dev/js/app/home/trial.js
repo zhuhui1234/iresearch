@@ -31,8 +31,8 @@ define(['helper', 'app/main'], function (Helper) {
                 Helper.post("trialApply", {data: pData}, function (ret) {
                     console.log(ret);
                     if (ret.resCode == "20000") {
-                        alert("申请成功,我们的销售人员会在24小时之内联系您！");
-                        //window.location.href = "?m=index&a=index";
+                        alert("申请成功,我们的销售人员会在两个工作日之内联系您！");
+                        window.location.href = "?m=index&a=index";
                     } else {
                         alert(ret.resMsg);
                     }

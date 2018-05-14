@@ -68,6 +68,7 @@ class UserController extends Controller
         Session::instance()->destroy();
         $data = array(
             'loginStatus' => $this->loginStatus,
+            'mobile' => "1",
             'title' => WEBSITE_TITLE
         );
         View::instance('user/login.tpl')->show($data);
@@ -90,6 +91,8 @@ class UserController extends Controller
         $guid = $this->request()->get('guid');
         $irdStatus = '1';
 
+        $mobile = "1";
+
         if (empty($from)) {
             Session::instance()->set('from', 'ird');
         }
@@ -107,9 +110,16 @@ class UserController extends Controller
 
             if ($irdAccount['iUserID'] !== 0) {
                 write_to_log($reIrdAccount . '  success ', '_irdLogin');
+                $userInfo = json_decode($this->model->getUserInfoByIRD(['iUserID' => $irdAccount['iUserID']]), true);
+
                 Session::instance()->set('irdAccount', $irdAccount);
                 Session::instance()->set('irdGuid', $guid);
+                if (!empty($userInfo['data']['u_mobile'])) {
+                    $mobile = substr_replace($userInfo['data']['u_mobile'], '****', 3, 4);
+                }
+
                 $irdStatus = '2';
+
             } else {
                 $irdStatus = '3';
                 write_to_log($guid . '   fails', '_irdLogin');
@@ -119,7 +129,7 @@ class UserController extends Controller
                             window.location.href="about:blank";
                             window.close(); 
                         } else {    
-                                    window.close();    
+                            window.close();    
                         }  </script>';
 
             }
@@ -284,6 +294,7 @@ class UserController extends Controller
                     }
                 }
             } else {
+
                 //没有登入
                 if ($from == 'ird' and !empty($guid)) {
                     $uid = ['iUserID' => $irdAccount['iUserID']];
@@ -292,13 +303,16 @@ class UserController extends Controller
                     if ($uid['resCode'] == '000000') {
                         View::instance('user/login.tpl')->show([
                             'loginStatus' => $this->loginStatus,
-
+                            'irdStatus' => $irdStatus,
+                            'mobile' => $mobile,
                             'pdtID' => $pdt_id]);
                     } else {
 
                         View::instance('user/ird_login.tpl')->show([
                             'loginStatus' => $this->loginStatus,
                             'pdtID' => $pdt_id,
+                            'mobile' => $mobile,
+                            'irdStatus' => $irdStatus,
                             'TrueName' => $irdAccount['TrueName'],
                             'UserName' => $irdAccount['UserName'],
                             'CompanyName' => $irdAccount['CompanyName']]);
@@ -307,6 +321,8 @@ class UserController extends Controller
 
                     View::instance('user/login.tpl')->show([
                         'loginStatus' => $this->loginStatus,
+                        'mobile' => $mobile,
+                        'irdStatus' => $irdStatus,
                         'pdtID' => $pdt_id]);
                 }
             }

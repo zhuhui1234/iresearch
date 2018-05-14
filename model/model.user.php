@@ -246,9 +246,9 @@ class UserModel extends API
         $data = [
             'pageNo' => $getData['pageNo'],
             'pageSize' => $getData['pageSize'],
-            'u_id'=> $getData['userID'],
+            'u_id' => $getData['userID'],
             'TOKEN' => Session::instance()->get('userInfo')['token'],
-            'userID'=> Session::instance()->get('userInfo')['userID']
+            'userID' => Session::instance()->get('userInfo')['userID']
         ];
         $url = API_URL . '?m=points&a=getPointListUser';
         $ret = $this->_curlPost($url, $data, 'getPointListUser');
@@ -585,6 +585,12 @@ class UserModel extends API
     {
         $url = API_URL . '?m=user&a=industryList';
         return $this->_curlPost($url, $data, 'industryList');
+    }
+
+    public function getUserInfoByIRD($data)
+    {
+        $url = API_URL . '?m=user&a=getUserInfoByIRD';
+        return $this->_curlPost($url, $data, 'getUserInfoByIRD');
     }
 
 
