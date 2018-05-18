@@ -139,7 +139,9 @@ class UserController extends Controller
             http_response_code(500);
             echo '参数错误';
         } else {
-
+            if (DEBUG) {
+                var_dump($mobile);
+            }
             if (!$this->loginStatus) {
                 if ($from == 'ird' and !empty($guid)) {
                     $uid = ['iUserID' => $irdAccount['iUserID']];
@@ -157,6 +159,7 @@ class UserController extends Controller
                             'pdtID' => $pdt_id,
                             'TrueName' => $irdAccount['TrueName'],
                             'UserName' => $irdAccount['UserName'],
+                            'mobile' => $mobile,
                             'CompanyName' => $irdAccount['CompanyName']]);
                         return;
                     }
