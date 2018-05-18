@@ -272,6 +272,18 @@ class UserModel extends API
     }
 
     /**
+     * @param $data
+     * @return mixed
+     */
+    public function userProductInfo($data)
+    {
+        $url = API_URL . '?m=User&a=userProductInfo';
+        $ret = $this->_curlPost($url, $data, 'userProductInfo');
+
+        return $ret;
+    }
+
+    /**
      * show home menu
      * @return mixed
      */
