@@ -249,6 +249,7 @@ class UserController extends Controller
                         View::instance('user/login.tpl')->show([
                             'loginStatus' => $this->loginStatus,
                             'expired' => 1,
+                            'mobile' => $mobile,
                             'pdtID' => $pdt_id]);
                     } else {
                         if (empty($getPermission['data']['data'])) {
