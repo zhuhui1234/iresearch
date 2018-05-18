@@ -139,7 +139,9 @@ class UserController extends Controller
             http_response_code(500);
             echo '参数错误';
         } else {
-
+            if (DEBUG) {
+                var_dump($mobile);
+            }
             if (!$this->loginStatus) {
                 if ($from == 'ird' and !empty($guid)) {
                     $uid = ['iUserID' => $irdAccount['iUserID']];
@@ -157,6 +159,7 @@ class UserController extends Controller
                             'pdtID' => $pdt_id,
                             'TrueName' => $irdAccount['TrueName'],
                             'UserName' => $irdAccount['UserName'],
+                            'mobile' => $mobile,
                             'CompanyName' => $irdAccount['CompanyName']]);
                         return;
                     }
@@ -246,6 +249,7 @@ class UserController extends Controller
                         View::instance('user/login.tpl')->show([
                             'loginStatus' => $this->loginStatus,
                             'expired' => 1,
+                            'mobile' => $mobile,
                             'pdtID' => $pdt_id]);
                     } else {
                         if (empty($getPermission['data']['data'])) {
