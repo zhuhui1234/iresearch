@@ -38,6 +38,7 @@
                             <li><a href="//irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=ad" target="_blank"><i class="icon icon-iRView-8"></i><em>AdTracker</em><span>跨屏广告投放监测</span></a></li>
                             <li><a href="//irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=11" target="_blank"><i class="icon icon-iRView-1"></i><em>MediaPlanner</em><span>跨屏媒介效果评估</span></a></li>
                             <!-- <li><a href="//irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=31" target="_blank"><i class="icon icon-iRView-4"></i><em>KOLTracker</em><span>意见领袖市场监测</span></a></li> -->
+                            <li><a href="//irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=46" target="_blank"><i class="icon icon-iRView-4"></i><em>StoreTracker</em><span>移动渠道市场监测</span></a></li>
                             <li><a href="//irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=41" target="_blank"><i class="icon icon-iRView-9"></i><em>ECTracker</em><span>网络购物市场监测</span></a></li>
 
                         </ul>
