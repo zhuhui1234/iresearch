@@ -1024,8 +1024,11 @@ class UserController extends Controller
         $data['loginStatus'] = $this->loginStatus;
 
 
-        $userInfo = json_decode($this->userDetail, true);
-
+        $userInfo = $this->model->getUserInfo([
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
+        ]);
+        $userInfo = json_decode($userInfo,true);
         $userInfo = $userInfo['data'];
         $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
 
