@@ -1236,6 +1236,18 @@ class UserController extends Controller
         }
         echo $this->model->getUserPointList($data);
     }
+
+    public function userProductInfo()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $data = [
+            'u_id' => $data['userID'],
+            'cpy_id' => $this->userInfo['companyID'],
+            'TOKEN' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
+        ];
+        echo $this->model->userProductInfo($data);
+    }
     ######################################################################################
     ##################################                     ###############################
     #################################   PRIVATE METHODS   ################################

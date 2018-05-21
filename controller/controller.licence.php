@@ -52,6 +52,7 @@ class LicenceController extends Controller
         $data = json_decode($data, true);
         $data['token'] =  $this->userInfo['token'];
         $data['userID'] = $this->userInfo['userID'];
+        $data['cpy_id'] = $this->userInfo['companyID'];
         echo $this->model->editLicencesByUserID($data);
     }
 
