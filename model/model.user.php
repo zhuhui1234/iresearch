@@ -33,6 +33,49 @@ class UserModel extends API
      */
     public function login($data)
     {
+//        $getVcode = Session::instance()->get('vcodes');
+        $ird_guid = Session::instance()->get('irdGuid');
+        $ird_account = Session::instance()->get('irdAccount');
+        if (empty($data['log_ip'])) {
+            $data['log_ip'] = getIp();
+        }
+        // 判断是否来自IRD的用户
+        if (!empty($ird_guid) and !empty($ird_account)) {
+            $data['ird_guid'] = $ird_guid;
+            $data['ird_user'] = $ird_account;
+        }
+//        write_to_log($getVcode, '_session');
+//        if ($getVcode == $data['vCode']) {
+            $url = API_URL . '?m=User&a=login';
+            write_to_log('login url :' . $url, '_login');
+            write_to_log('post data: ' . json_encode($data), '_login');
+            $ret = $this->_curlPost($url, $data, 'cs_login');
+            $rs = json_decode($ret, true);
+            if ($rs['resCode'] == '000000') {
+                write_to_log('mobile login: ' . $ret, '_login');
+                Session::instance()->set('userInfo', $rs['data']);
+                setcookie('kittyID', $rs['data']['token']);
+                if (!empty($rs['data']['productKey'])) {
+                    $this->getIResearchDataAccount($rs['data']['ird_user_id']);
+                }
+            } else {
+                write_to_log('mobile error login: ' . $ret, '_login');
+            }
+            return $ret;
+//        } else {
+//            return json_encode(['resCode' => -1, 'resMsg' => '输入的图形验证码错误']);
+//        }
+    }
+
+    /**
+     * irdBind
+     *
+     * @param $data
+     *
+     * @return mixed
+     */
+    public function irdBind($data)
+    {
         $getVcode = Session::instance()->get('vcodes');
         $ird_guid = Session::instance()->get('irdGuid');
         $ird_account = Session::instance()->get('irdAccount');
@@ -66,7 +109,6 @@ class UserModel extends API
             return json_encode(['resCode' => -1, 'resMsg' => '输入的图形验证码错误']);
         }
     }
-
 
     /**
      * mobile login

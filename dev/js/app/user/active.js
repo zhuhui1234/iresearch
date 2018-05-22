@@ -34,7 +34,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                             $(".alert").eq(1).fadeIn().text('无需验证，请使用固定验证码');
 
                         } else {
-                            Helper.post("sendSms", {mobile: mobile_number}, function (ret) {
+                            Helper.post("irdSendSms", {mobile: mobile_number}, function (ret) {
                                 console.log(ret);
                                 if (ret.resCode == "000002") {
                                     $(".alert").eq(1).fadeIn().text('验证错误');
@@ -86,7 +86,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 pdtID = Helper.getQuery('pro');
                 ppName = Helper.getQuery('ppname');
                 cb = Helper.getQuery('cb');
-                Helper.post('login', {
+                Helper.post('irdBind', {
                     mobile: $("#mobile").val(),
                     verNum: $("#vernum").val(),
                     vCode: $("#vcode").val()
@@ -152,7 +152,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     }
                 } else if (cb !== null) {
                     if (cb == 'usercenter') {
-                        window.location.href = 'http://irv.iresearch.com.cn/user-center/check/'
+                        window.location.href = 'http://irv.iresearch.com.cn/user-center-dev/check/'
                     } else {
                         console.log(cb);
                     }

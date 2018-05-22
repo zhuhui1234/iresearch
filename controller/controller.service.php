@@ -39,6 +39,16 @@ class ServiceController extends Controller
         }
     }
 
+    /**
+     * ird send sms
+     */
+    public function irdSendSms()
+    {
+        $data = ['Mobile' => $this->request()->post('mobile')];
+        jsonHead();
+        echo $this->model->sendSMS($data);
+    }
+
     public function sendSMSForMobile()
     {
         $data = json_decode(file_get_contents('php://input'), true);

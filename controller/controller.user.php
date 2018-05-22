@@ -661,6 +661,33 @@ class UserController extends Controller
     }
 
     /**
+     * ird bind api
+     */
+    public function irdBindAPI()
+    {
+        $data = array(
+            'loginMobile' => $this->request()->post('mobile'),
+            'vCode' => $this->request()->post('vCode'),
+            'LoginKey' => $this->request()->post('verNum'),
+            'LoginType' => 'mobile'
+        );
+
+        $ird_guid = Session::instance()->get('irdGuid');
+        $ird_account = Session::instance()->get('irdAccount');
+        // 判断是否来自IRD的用户
+        if (!empty($guid) and !empty($ird_account)) {
+            $data['ird_guid'] = $ird_guid;
+            $data['ird_user'] = $ird_account;
+        }
+
+        $rs = $this->model->irdBind($data);
+        $this->__json();
+        echo $rs;
+        //删除vCode的值
+        Session::instance()->del('vCode');
+    }
+
+    /**
      * login api for mobile
      */
     public function mobileLoginAPI()
