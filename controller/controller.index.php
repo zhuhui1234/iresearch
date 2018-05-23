@@ -239,6 +239,11 @@ class IndexController extends Controller
         header("Location:" . 'http://ect.itracker.cn/nloginv2/?token=' . $this->userInfo['token']);
     }
 
+    public function test_adt()
+    {
+        header('Location:http://irv.iresearch.com.cn/adt_test/?language=zh-CN&token='. $this->userInfo['token']);
+    }
+
     /**
      * home page
      */
