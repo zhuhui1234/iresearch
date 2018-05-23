@@ -8,10 +8,12 @@
  */
 class IRDataController extends Controller
 {
-    private $userModel, $irdUserInfo, $userInfo, $menu, $guid, $userDetail;
+    private $userModel, $irdUserInfo, $userInfo, $menu, $guid, $userDetail, $cache;
 
     function __construct($classname)
     {
+        $this->cache = new CacheClass();
+        $this->cache = $this->cache->redis;
         $this->userModel = Model::instance('User');
         $this->userInfo = Session::instance()->get('userInfo');
         $this->menu = json_decode($this->userModel->showMenu(), true);
@@ -153,6 +155,31 @@ class IRDataController extends Controller
     {
         $ppname = $this->request()->get('ppname');
         $pdtID = $this->request()->get('pro');
+        $expired = $this->request()->get('expired');
+
+        if ($expired == 1) {
+            $cache_key = $this->userInfo['token'] . '_cache';
+            $this->cache->hDel($cache_key);
+            $this->cache->del($cache_key);
+            Model::instance('user')->logOut();
+
+            Session::instance()->destroy();
+            setcookie('yh_irv_url', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=login&expired=1', time() + 2400, '/');
+            setcookie('PHPSESSID', '', time() - 3600, '/');
+            setcookie('JSESSIONID', '', time() - 3600, '/');
+            setcookie('kittyID', '', time() - 3600, '/');
+            // unset cookies
+            if (isset($_SERVER['HTTP_COOKIE'])) {
+                $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+                foreach ($cookies as $cookie) {
+                    $parts = explode('=', $cookie);
+                    $name = trim($parts[0]);
+                    setcookie($name, '', time() - 1000);
+                    setcookie($name, '', time() - 1000, '/');
+                }
+            }
+        }
+
         $mobile = "1";
         if ($this->userDetail) {
 
