@@ -1085,7 +1085,7 @@ class UserController extends Controller
                 ]
             );
         } else {
-            _ERROR('0000001', '获取信息失败');
+            _ERROR('000001', '获取信息失败');
         }
 
 
@@ -1121,7 +1121,7 @@ class UserController extends Controller
         } else {
             write_to_log('error: ' . $msg, '_avatar');
             write_to_log('error' . $crop->getMsg(), '_avatar');
-            _ERROR('0000001', $crop->getMsg());
+            _ERROR('000001', $crop->getMsg());
         }
 
     }
@@ -1200,7 +1200,7 @@ class UserController extends Controller
 
         } else {
 
-            _ERROR('0000001', '超时登入');
+            _ERROR('000001', '超时登入');
 
         }
 
@@ -1212,7 +1212,7 @@ class UserController extends Controller
         $this->__json();
 
         if (empty($getData) or empty($getData['type'])) {
-            _ERROR('0000001', '不能为空字段');
+            _ERROR('000001', '不能为空字段');
         }
 
 
@@ -1221,7 +1221,7 @@ class UserController extends Controller
             $ret = $this->model->msgList($getData);
             echo $ret;
         } else {
-            _ERROR('0000001', '超时登入');
+            _ERROR('000001', '超时登入');
         }
     }
 
@@ -1234,13 +1234,13 @@ class UserController extends Controller
             if (!empty($getData['msg_id'])) {
                 $getData['msgID'] = $getData['msg_id'];
             } else {
-                _ERROR('0000001', '不能为空字段');
+                _ERROR('000001', '不能为空字段');
             }
             $getData['userID'] = $this->userInfo['userID'];
             $ret = $this->model->msgDetail($getData);
             echo $ret;
         } else {
-            _ERROR('0000001', '超时登入');
+            _ERROR('000001', '超时登入');
         }
     }
 
@@ -1248,7 +1248,7 @@ class UserController extends Controller
     {
         $getData = json_decode(file_get_contents('php://input'), true);
         if (empty($getData) or empty($getData['userID'])) {
-            _ERROR('0000001', '缺少参数');
+            _ERROR('000001', '缺少参数');
         }
         $data = [
             'u_id' => $getData['userID'],
@@ -1262,7 +1262,7 @@ class UserController extends Controller
     {
         $data = json_decode(file_get_contents('php://input'), true);
         if (empty($data) or empty($data['userID'])) {
-            _ERROR('0000001', '缺少参数');
+            _ERROR('000001', '缺少参数');
         }
         echo $this->model->getUserPointList($data);
     }
