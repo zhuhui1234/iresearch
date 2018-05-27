@@ -244,6 +244,12 @@ class IndexController extends Controller
         header('Location:http://irv.iresearch.com.cn/adt_test/?language=zh-CN&token='. $this->userInfo['token']);
     }
 
+
+    public function test_ut()
+    {
+        header('Location:http://irv.iresearch.com.cn/test_ut/?language=zh-CN&token='. $this->userInfo['token']);
+    }
+
     /**
      * home page
      */
