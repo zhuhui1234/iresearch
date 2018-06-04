@@ -58,6 +58,17 @@ class UserModel extends API
                 if (!empty($rs['data']['productKey'])) {
                     $this->getIResearchDataAccount($rs['data']['ird_user_id']);
                 }
+
+                $this->pushLog([
+                    'user' => $rs['data']['userID'],
+                    'companyID' => $rs['data']['companyID'],
+                    'status' => '20000',
+                    'type' => 'irv用户日志',
+                    'resource' => 'iData',
+                    'action' => '睿见登入',
+                    'content' => '手机',
+                    'level' => '0',
+                ]);
             } else {
                 write_to_log('mobile error login: ' . $ret, '_login');
             }
@@ -155,6 +166,19 @@ class UserModel extends API
             write_to_log('wechat login: ' . $ret, '_login');
             Session::instance()->set('userInfo', $rs['data']);
             setcookie('kittyID', $rs['data']['token']);
+
+            $this->pushLog([
+                'user' => $rs['data']['userID'],
+                'companyID' => $rs['data']['companyID'],
+                'status' => '20000',
+                'type' => 'irv用户日志',
+                'resource' => 'iData',
+                'action' => '睿见登入',
+                'content' => '微信',
+                'level' => '0',
+            ]);
+
+
             return TRUE;
         } else {
             write_to_log('wechat error login: ' . $ret, '_login');
