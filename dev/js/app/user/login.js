@@ -2,6 +2,9 @@
  * user login js
  */
 define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
+    $('#g_code').click(function () {
+        $(this).attr('src', '?m=service&a=authImg&' + Math.random());
+    });
     (function ($) {
         $.fn.extend({
             getSms: function (value) {
@@ -147,10 +150,11 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                             window.location.href = '?m=index&a=index';
                         }
                     } else {
+                        $("#g_code").attr('src', '?m=service&a=authImg&' + Math.random());
                         if (ret.resCode == -1) {
-                            $('.alert').eq(1).fadeIn().text('手机验证码失败');
+                            $('.alert').eq(1).fadeIn().text('图形验证码失败');
                         } else if (ret.resCode == "1") {
-                            $('.alert').eq(2).fadeIn().text('验证码失败');
+                            $('.alert').eq(2).fadeIn().text('手机验证码失败');
                         } else if (ret.resCode == "000002") {
                             $(".alert").eq(1).fadeIn().text(ret.resMsg);
                         } else {
