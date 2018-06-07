@@ -1,5 +1,6 @@
 define([
     'jquery',//jquery框架
+    'intl-tel',
     'bootstrap',//bootstrap主框架
     //'common/bootsnav',//主导航
     //'common/lazyload.init',//图片懒加载

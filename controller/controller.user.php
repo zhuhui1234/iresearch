@@ -74,6 +74,18 @@ class UserController extends Controller
         View::instance('user/login.tpl')->show($data);
     }
 
+    public function b_login()
+    {
+//        Session::instance()->destroy();
+        $data = array(
+            'loginStatus' => $this->loginStatus,
+            'mobile' => "1",
+            'title' => WEBSITE_TITLE
+        );
+
+        View::instance('user/b_login.tpl')->show($data);
+    }
+
     public function test()
     {
         $this->__json();
@@ -657,8 +669,34 @@ class UserController extends Controller
         $this->__json();
         echo $rs;
         //删除vCode的值
+        //Session::instance()->del('vCode');
+    }
+
+    public function safeLoginAPI()
+    {
+        $data = array(
+            'loginMobile' => $this->request()->post('mobile'),
+            'vCode' => $this->request()->post('vCode'),
+            'LoginKey' => $this->request()->post('verNum'),
+            'LoginType' => $this->request()->post('login_type'),
+            'loginMail' => $this->request()->post('mail')
+        );
+
+        $ird_guid = Session::instance()->get('irdGuid');
+        $ird_account = Session::instance()->get('irdAccount');
+        // 判断是否来自IRD的用户
+        if (!empty($guid) and !empty($ird_account)) {
+            $data['ird_guid'] = $ird_guid;
+            $data['ird_user'] = $ird_account;
+        }
+
+        $rs = $this->model->b_login($data);
+        $this->__json();
+        echo $rs;
+        //删除vCode的值
         Session::instance()->del('vCode');
     }
+
 
     /**
      * ird bind api

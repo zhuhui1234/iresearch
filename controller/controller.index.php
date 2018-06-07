@@ -170,6 +170,7 @@ class IndexController extends Controller
 
     }
 
+
     /**
      * ir cloud
      */
@@ -198,12 +199,12 @@ class IndexController extends Controller
 
     public function xUserTracker()
     {
-        header("Location:". 'http://irv.iresearch.com.cn/ut/login?language=zh&token='.$this->userInfo['token']);
+        header("Location:" . 'http://irv.iresearch.com.cn/ut/login?language=zh&token=' . $this->userInfo['token']);
     }
 
     public function mst()
     {
-        header("Location:". 'http://113.200.91.62/web/downloadTrend?token='.$this->userInfo['token']);
+        header("Location:" . 'http://st.iresearchdata.cn/web/login?token=' . $this->userInfo['token']);
     }
 
     public function testAdt()
@@ -241,13 +242,13 @@ class IndexController extends Controller
 
     public function test_adt()
     {
-        header('Location:http://irv.iresearch.com.cn/adt_test/?language=zh-CN&token='. $this->userInfo['token']);
+        header('Location:http://irv.iresearch.com.cn/adt_test/?language=zh-CN&token=' . $this->userInfo['token']);
     }
 
 
     public function test_ut()
     {
-        header('Location:http://irv.iresearch.com.cn/test_ut/?language=zh-CN&token='. $this->userInfo['token']);
+        header('Location:http://irv.iresearch.com.cn/test_ut/?language=zh-CN&token=' . $this->userInfo['token']);
     }
 
     /**
@@ -1059,6 +1060,15 @@ class IndexController extends Controller
 
     }
 
+    /**
+     * clear redis all
+     *
+     */
+    public function doooooooom()
+    {
+        $v = $this->cache->flushAll();
+        var_dump($v);
+    }
 
 
     ######################################################################################

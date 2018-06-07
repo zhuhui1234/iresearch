@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <span>手机验证码</span>
                     <div class="form-right">
-                        <input style="width: 60%;height:24px;" id="vernum" type="text" placeholder="请输入手机验证码">
+                        <input style="width: 60%;height:24px;" id="vernum" type="text" placeholder="请输入手机验证码" autocomplete="off">
                         <a class="btn btn-warning" id="verification">获取验证码</a>
                     </div>
                 </div>
@@ -65,9 +65,9 @@
                 <div class="form-group">
                     <span>验证码</span>
                     <div class="form-right">
-                        <input style="width: 60%;height:24px;" id="vcode" type="text" placeholder="请输入验证码">
-                        <div class="code-img">
-                            <img src="?m=service&a=authImg" alt="">
+                        <input style="width: 60%;height:24px;" id="vcode" type="text" placeholder="请输入验证码" autocomplete="off">
+                        <div class="code-img" style="cursor: pointer">
+                            <img id="g_code" src="?m=service&a=authImg" alt="">
                         </div>
                     </div>
                 </div>

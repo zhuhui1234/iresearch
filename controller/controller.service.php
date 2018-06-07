@@ -5,7 +5,8 @@
  * Create 16-08-10 14:34
  */
 
-use \libphonenumber\PhoneNumberUtil as pnu;
+use Gregwar\Captcha\CaptchaBuilder;
+use Gregwar\Captcha\PhraseBuilder;
 
 class ServiceController extends Controller
 {
@@ -29,14 +30,52 @@ class ServiceController extends Controller
     public function sendSMS()
     {
         $data = ['Mobile' => $this->request()->post('mobile')];
+        jsonHead();
+        echo $this->model->sendSMS($data);
+    }
+
+    /**
+     * send verify code for irv  by yun pian text service
+     */
+    public function sendCode()
+    {
+
+        $data = [
+            'Mobile' => $this->request()->post('mobile'),
+            'LoginType' => $this->request()->post('login_type'),
+            'Mail' => $this->request()->post('email'),
+            'CountryCode' => $this->request()->post('country_code')
+        ];
+
         $vcode = $this->request()->post('vCode');
         $getVcode = Session::instance()->get('vcodes');
-        //需要先输入验证码再发送短信，短信之后，在通过下一步验证
-        if ($vcode == $getVcode) {
-            echo $this->model->sendSMS($data);
-        } else {
-            echo _ERROR('001', '图形验证码不正确');
+        if (empty($vcode)) {
+            _ERROR('000001', '验证码不能为空');
         }
+
+        switch ($data['LoginType']) {
+            case 'mobile':
+                if (empty($data['Mobile'])) {
+                    _ERROR('000001', '手机号不能为空');
+                }
+                break;
+            case 'mail':
+                if (empty($data['Mail'])) {
+                    _ERROR('000001', '邮箱不能为空');
+                }
+                break;
+            default:
+                _ERROR('0000001', '没有获取到登入方式数据');
+                break;
+        }
+
+        if ($vcode == $getVcode) {
+            jsonHead();
+            echo $this->model->sendCode($data);
+        } else {
+            _ERROR('000001', '图形验证码不正确');
+        }
+
     }
 
     /**
@@ -186,5 +225,29 @@ class ServiceController extends Controller
         echo json_encode($response);
     }
 
+    public function charCode()
+    {
+
+        $img = $this->request()->requestAll();
+
+        if (empty($img['weight'])) {
+            $img['weight'] = 4;
+        }
+
+        if (empty($img['width'])) {
+            $img['width'] = 100;
+        }
+
+        if (empty($img['height'])) {
+            $img['height'] = 34;
+        }
+        header('Content-type: image/jpeg');
+        $builder = new CaptchaBuilder((int)$img['weight']);
+        Session::instance()->set('vcodes', $builder->getPhrase());
+        $builder->setBackgroundColor(255, 255, 255);
+        $builder->build($img['width'], $img['height']);
+        $builder->output();
+
+    }
 
 }

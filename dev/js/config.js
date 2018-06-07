@@ -6,6 +6,7 @@ requirejs.config({
     paths: {
         'jquery': 'lib/jquery/v2.1.4/jquery.min',
         'slider': 'lib/bootstrap-slider/bootstrap-slider',
+        'intl-tel': 'lib/intl-tel/js/intlTelInput',
         'bootstrap': 'lib/bootstrap/v3.3.6/bootstrap.min',
         'html5shiv': 'lib/bootstrap/v3.3.6/html5shiv.min',
         'respond': 'lib/bootstrap/v3.3.6/respond.min',
@@ -58,7 +59,11 @@ requirejs.config({
         'jquery': {
             exports: '$'
         },
-        'WXLogin':{
+        'intl-tel': {
+            deps: ['jquery'],
+            exports: '$'
+        },
+        'WXLogin': {
             deps: ['jquery'],
             exports: '$'
         },
@@ -173,9 +178,9 @@ requirejs.config({
     }
 });
 
-requirejs.onError = function(err) {
+requirejs.onError = function (err) {
     if (err.requireType === 'timeout') {
-        alert("error: "+err);
+        alert("error: " + err);
     }
 };
 

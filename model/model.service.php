@@ -63,6 +63,14 @@ class ServiceModel extends API
         return $ret;
     }
 
+
+    public function sendCode($data)
+    {
+        $url = API_URL . '?m=User&a=setVerKey';
+        $ret = $this->_curlPost($url, $data, 'setVerKey');
+        return $ret;
+    }
+
     /**
      * 上传图片
      *

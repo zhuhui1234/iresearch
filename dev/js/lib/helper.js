@@ -123,6 +123,15 @@ define(["api", "WxLogin", "jquery"], function (api) {
                 return null;
             };
 
+            this.tel = function(){
+                $("#tel").intlTelInput({
+                    formatOnDisplay: false,
+                    preferredCountries: ["cn", "hk"],
+                    initialCountry: "cn",
+                    utilsScript: "./dev/js/lib/intl-tel/js/utils.js"
+                });
+            };
+
             /**
              * get resource uri
              * @param name

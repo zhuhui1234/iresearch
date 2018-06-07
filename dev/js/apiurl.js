@@ -8,10 +8,12 @@ define({
     jump                  : '?m=user&a=jump&pro=',
     loginYongHongURI      : '?m=user&a=loginAPI',
     login                 : '?m=user&a=loginAPI',
+    b_login               : '?m=user&a=safeLoginAPI',
     irdBind               : '?m=user&a=irdBindAPI',
     bingWx                : '?m=user&a=bindingWxAPI',
     bindIRDA              : '?m=user&a=bindingIRDA',
     sendSms               : '?m=service&a=sendSMS',
+    sendCode              : '?m=service&a=sendCode',
     irdSendSms            : '?m=service&a=irdSendSms',
     regMail               : '?m=user&a=registerAPI',
     regUserInfo           : '?m=user&a=registerUserInfoAPI',
@@ -28,5 +30,5 @@ define({
     getAuditList          : '?m=industry&a=getAuditList',
     upAudit               : '?m=industry&a=upAudit',
     setAudit              : '?m=industry&a=setAudit',
-    getAuditInfo          : '?m=industry&a=getAuditInfo'
+    getAuditInfo          : '?m=industry&a=getAuditInfo',
 });

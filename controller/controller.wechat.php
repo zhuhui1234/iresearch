@@ -39,10 +39,7 @@ class WeChatController extends Controller
         write_to_log('wechatUser: ' . json_encode($weChatUser), '_wx');
         if (DEBUG) {
             pr('微信返回值:');
-//            var_dump($state);
-//            var_dump($weChatObj);
-//            var_dump($wechatModel->getUserInfo($code));
-//            var_dump($userInfo);
+
             if (substr($state, 0, 10) == 'viewReport') {
                 $state_tmp = explode('_', $state);
                 $state = $state_tmp[0];
@@ -58,8 +55,7 @@ class WeChatController extends Controller
                     'LoginKey' => $weChatObj['unionid'],
                     'wxName' => $weChatUser['nickname'],
                 ), $wechatModel->getUserInfo($code));
-//                var_dump($ret);
-//                exit();
+
                 write_to_log('ret: ' . json_encode($ret), '_wx');
                 if ($ret) {
                     if ($ret !== null) {
