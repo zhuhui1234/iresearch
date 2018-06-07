@@ -8,7 +8,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
     $("#tel").intlTelInput({
         formatOnDisplay: false,
-        preferredCountries: ["cn", "hk", "mo", "tw", "us", "gb", "fr", "de", "au", "kr", "jp", "ca", "in", "nz", "nl", "no"],
+        preferredCountries: ["cn", "hk", "mo", "tw", "us", "gb", "fr", "de", "au", "kr", "jp", "ca", "in", "nz", "sg"],
         initialCountry: "cn",
         utilsScript: "./dev/js/lib/intl-tel/js/utils.js"
     });
@@ -66,25 +66,30 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
 
     var login_check = function (cb) {
-        $('.spinner').css('display', "none");
+
+        $('#spinner').css('display', "none");
         $('.input-item .now:first').focus();
         $('.now').keydown(function (e) {
-            if (e.keyCode !== 8) {
+            if (e.keyCode >= 48 && e.keyCode <= 57) {
                 $(this).attr("type", "text");
             }
+
+            return e.keyCode === 8 || (e.keyCode >= 48 && e.keyCode <= 57)
         });
         $('.now').keyup(function (e) {
-            if (e.keyCode === 8 && $(this).index() !== 0 && !($(this).attr('value'))) {
-                $(this).prev().focus();
-            } else if (e.keyCode !== 8) {
-                $(this).attr("type", "text");
-                $(this).val(e.key);
-            }
-            $(this).attr('value', $(this).val());
             $(this).attr("type", "number");
-            if ($(this).index() < 6 && $(this).val() !== '') {
-                $(this).next('input').focus();
+            if (e.keyCode === 8 && $(this).index() !== 0 && !($(this).attr('fvalue'))) {
+                $(this).prev().focus();
+            } else if (e.keyCode >= 48 && e.keyCode <= 57) {
+                //$(this).attr("type", "text");
+                $(this).val(String.fromCharCode(e.keyCode));
             }
+            $(this).attr('fvalue', $(this).val());
+            //$(this).attr("type", "number");
+            if (e.keyCode >= 48 && e.keyCode <= 57)
+                if ($(this).index() < 6 && $(this).val() !== '') {
+                    $(this).next('input').focus();
+                }
             if ($(this).val() !== '' && $(this).next().val() !== '' && $(this).prev().val() !== '' && $(this).siblings()
                 .val() !== '') {
                 var Arr = [];
@@ -93,13 +98,15 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     Arr.push(value.eq(i).val())
                 }
                 $('#result').html(Arr.join(','));
-                $('.spinner').css('display', 'block')
+                $('#spinner').css('display', 'block')
 
                 if (typeof cb == 'function') {
                     cb();
                 }
             }
         });
+
+
     };
 
     var login_type = function () {

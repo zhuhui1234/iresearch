@@ -1,146 +1,132 @@
 html,
 body {
     height: 100%;
-    font-family: PingFang SC, Microsoft YaHei, Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, \\5FAE\8F6F\96C5\9ED1, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    margin: 0;
-    padding: 0;
+    font-family: PingFang SC,Microsoft YaHei,Helvetica Neue,Helvetica,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;margin: 0;padding: 0;
 }
-
-body button {
+body button{
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
+.intl-tel-input {
+    margin-top: 10px !important;
+}
 .form-control::-moz-placeholder {
-    color: #C4C4C4;
+    color: #C4C4C4 ;
     font-size: 14px;
     opacity: 1
 }
-
 .form-control:-ms-input-placeholder {
     color: #C4C4C4;
     font-size: 14px;
 }
-
 .form-control::-webkit-input-placeholder {
     color: #C4C4C4;
     font-size: 14px;
 }
-
 .login-bg {
     background: -webkit-linear-gradient(left, #B4EC51, #74CA51);
+    background: -o-linear-gradient(left,#A2E556,#6ECC30 );
+    background: -moz-linear-gradient(left,#A2E556,#6ECC30 );
+    background: linear-gradient(left,#A2E556,#6ECC30 );
 }
-
 .bg {
-    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/bg.png") no-repeat;
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/bg.png")no-repeat;
     width: 100%;
     height: 100%;
     background-size: 100% 100%;
 }
-
 .main {
     position: relative;
     width: 60%;
     margin: 0 auto
 }
-
 .jumbotron {
     background: none;
 }
-
-.jumbotron p {
+.jumbotron p{
     font-size: 0;
 }
-
 .bodys {
     background: -webkit-linear-gradient(left, #B4EC51, #74CA51);
-}
+    background: -o-linear-gradient(right, #B4EC51, #74CA51); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right,#B4EC51, #74CA51); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right,#B4EC51, #74CA51); /* 标准的语法 */
+    /*background: -webkit-gradient(to right,#B4EC51, #74CA51);*/
+    background: -ms-linear-gradient(to right,#B4EC51, #74CA51);
 
+}
 .four .titles h5 {
     font-size: 12px;
 }
-
 .four #row1 img {
     width: 130px;
     height: auto;
 }
-
 .four #row2 {
     background: #ffffff;
     margin-top: 20px;
     margin-bottom: 20px;
+    border-radius: 7px;
 }
-
 .four .form-group {
     margin-top: 20px;
 }
-
 .four .form-group label {
     text-align: center;
     padding-top: 6px;
     font-weight: normal;
 }
-
 .four .col-md-7 {
     border-right: 2px solid #eeeeee;
     padding: 20px;
 }
-
 .four .tips {
     font-size: 14px;
     color: red;
     text-align: center;
     display: none;
 }
-
 .four span {
     color: red;
     width: 9px;
     height: 14px;
 }
-
 .four .Verification {
     height: 34px;
     line-height: 34px;
 }
-
 .four .control-label {
     font-size: 14px;
     color: #515354;
     letter-spacing: 0;
 }
-
 .four .has-error .form-control {
     border-color: red;
 }
-
 .four .btn-success {
     background: #69C72B;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.19);
     border-radius: 5px;
-    outline: none;
+    outline:none;
     border: none;
     height: 40px;
     letter-spacing: 2.35px;
     padding: 0 28px;
     font-size: 14px;
 }
-
 .btn .btn-success {
     background: #69C72B;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.19);
     border-radius: 5px;
-    outline: none;
+    outline:none;
     border: none;
     margin-top: 70px;
 }
-
 .four #identifying {
     border-radius: 5px;
     text-align: center;
     color: white
 }
-
 .tits {
     font-size: 14px;
     margin-top: 20px;
@@ -148,7 +134,6 @@ body button {
     color: #666;
     text-indent: 28px;
 }
-
 .four .bot img {
     text-align: center;
     margin-right: auto;
@@ -157,103 +142,86 @@ body button {
     height: auto;
     display: block;
 }
-
 .four .form-control {
     height: 40px;
     background: #FFFFFF;
     border: 1px solid #EEEEEE;
-    box-shadow: 0 1px 3px 0 rgba(241, 241, 241, 0.50);
+    box-shadow: 0 1px 3px 0 rgba(241,241,241,0.50);
     border-radius: 5px;
 }
-
 .four .form-control:focus {
     border: 1px solid #69C72B !important;
     border-radius: 5px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10);
 }
-
 .three h5 {
     font-size: 12px;
 }
-
 .three #row1 img {
     height: auto;
     width: 150px;
 }
-
-.three .titles {
+.three .titles{
     text-align: center;
 }
-
-.three .titles h4 {
+.three .titles h4{
     font-size: 24px;
     color: #494A4B;
     letter-spacing: 1.23px;
     line-height: 24px;
     margin-top: 94px;
 }
-
-.three .titles h5 {
+.three .titles h5{
     font-size: 16px;
     color: #515354;
     letter-spacing: 1px;
     text-align: center;
     line-height: 30px;
 }
-
-.three #row2 {
+.three #row2{
     background: #ffffff;
     margin-top: 20px;
     margin-bottom: 20px;
+    border-radius: 7px;
 }
-
 .three .form-group {
     margin-top: 20px;
 }
-
 .three .form-group label {
     text-align: center;
     padding-top: 6px;
 }
-
 .three .form-group input {
     border: 1px #eeeeee solid;
     border-radius: 5px;
 }
-
 .three .col-md-7 {
     border-right: 2px solid #eeeeee;
 }
-
 .three .tips {
     font-size: 14px;
     color: red;
     text-align: center;
     display: none;
 }
-
 .three .spans {
     color: #FF4949;
     width: 9px;
     height: 14px;
 }
-
 .three .Verification {
     height: 34px;
     line-height: 34px;
 }
-
 .three #identifying {
     border-radius: 5px;
     text-align: center;
     color: white
 }
-
 .three .control-label {
     color: #888888;
     letter-spacing: 0;
 }
-
 .three .bot img {
     text-align: center;
     margin-right: auto;
@@ -261,47 +229,31 @@ body button {
     width: 150px;
     height: auto;
 }
-
 .three .has-error .control-label {
     color: red;
 }
-
 .three .has-error .form-control {
     border-color: red;
 }
-
 .three .form-group input:focus {
     border: 1px solid #69C72B;
     border-radius: 5px;
     box-shadow: 0 1px 3px 0 rgba(241, 241, 241, 0.50);
 }
-
-#row2{
-    border-radius: 7px;
+#test{
+    /*display: none;*/
 }
-
-#test {
-    display: none;
-}
-
-#test .col-md-7 {
+#test .col-md-7{
     padding-bottom: 60px;
     padding-top: 40px;
 }
-
-#code_img{
-    cursor: pointer;
-}
-
 #test h5 {
     font-size: 16px;
     color: #515354;
     letter-spacing: 0.8px;
     text-align: center;
     margin-top: 50px;
-
 }
-
 .tab-p a {
     font-size: 20px;
     color: #666666;
@@ -312,25 +264,25 @@ body button {
     text-decoration: none;
     margin-bottom: 15px;
 }
-
-.tab-p {
-    font-size: 20px;
+.tab-p{
+    font-size: 22px;
     color: #666666;
     letter-spacing: 1.03px;
     line-height: 24px;
 }
-
-#tab-p {
+.tit a{
+    text-decoration: none;
     color: #666666;
     letter-spacing: 1.03px;
     margin-left: 50px;
     margin-top: 70px;
     display: inline-block;
 }
-
-#tab-p img {
-    width: 11px;
-    height: 20px;
+.tit a:hover{
+    text-decoration: none;
+    color: #69c72b;
+}
+#spaner{
     margin-right: 15px;
 }
 
@@ -338,10 +290,9 @@ body button {
     text-align: center;
     margin-top: 60px;
 }
-
 #test .now {
     background: #FFFFFF;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
     border-radius: 3px;
     width: 50px;
     height: 50px;
@@ -350,17 +301,15 @@ body button {
     font-size: 20px;
     margin-right: 2%;
 }
-
 .spinner {
     font-size: 30px;
     width: 1em;
     height: 1em;
     line-height: 30px;
-    margin: 30px auto 50px auto;
+    margin: 30px  auto 50px auto;
     border-radius: 50%;
     box-shadow: inset 0 0 0 .1em rgba(58, 168, 237, .2);
 }
-
 .spinner i {
     position: absolute;
     clip: rect(0, 1em, 1em, .5em);
@@ -368,7 +317,6 @@ body button {
     height: 1em;
     animation: spinner-circle-clipper 1s ease-in-out infinite;
 }
-
 @keyframes spinner-circle-clipper {
     0% {
         transform: rotate(0deg);
@@ -377,7 +325,6 @@ body button {
         transform: rotate(180deg);
     }
 }
-
 .spinner i:after {
     position: absolute;
     clip: rect(0, 1em, 1em, .5em);
@@ -388,7 +335,6 @@ body button {
     border-radius: 50%;
     box-shadow: inset 0 0 0 .1em #74CA51;
 }
-
 @keyframes spinner-circle {
     0% {
         transform: rotate(-180deg);
@@ -397,114 +343,90 @@ body button {
         transform: rotate(180deg);
     }
 }
-
 #test #tip {
     color: red;
 }
-
 #jumbotron .col-md-5 {
     border-left: 2px solid #eeeeee;
     overflow: hidden;
     padding-top: 60px;
 }
-
 #test .now:focus {
     border: 1px #B4EC51 solid;
     outline: none;
 }
-
 input[type='number'] {
     -moz-appearance: textfield;
 }
-
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
 .login #row1 img {
     width: 150px;
     height: auto;
 }
-
 .login #row2 {
     background: #ffffff;
     margin-top: 40px;
     margin-bottom: 20px;
+    border-radius: 7px;
 }
-
-#login {
+#login{
     /*display: none;*/
     padding: 60px;
 }
-
 .login #inputs {
     margin-top: 40px;
     border-bottom: 1px solid #eeeeee;
 }
-
 .login .two {
     margin-top: 40px;
     border-bottom: 1px solid #eeeeee;
 }
-
 .login .input-group .form-control,
 .input-group-addon {
     display: table-cell;
 }
-
 .login .form-control:focus {
     border: none;
 }
-
 .login .actives {
     color: #69C72B !important;
     border-bottom: 3px solid #69C72B !important;
 }
-
 .login .dropdown-menu {
     min-width: 80%;
 }
-
-.login .input-group {
+.login .input-group{
     height: 50px;
 }
-
 .login .input-group-addon {
     padding: 0;
     border: none;
     background: none;
 }
-
-.intl-tel-input {
-    margin-top: 10px !important;
-}
-
 .login .form-control {
-    margin-top: 12px;
+    margin-top: 8px;
     border: none;
     outline: none;
     box-shadow: none;
     z-index: 0 !important;
 }
-
-.pull-right {
+.pull-right{
     margin-top: 40px;
 }
-
 .login .user {
-    background: url(//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/user.png) no-repeat center;
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/user.png")no-repeat center;
     background-size: 19px 24px;
     padding: 0 10px 15px 30px !important;
 }
-
 .login .key {
-    background: url(//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/password.png) no-repeat center;
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/password.png")no-repeat center;
     background-size: 13px 24px;
     padding: 0 10px 15px 30px !important;
 }
-
 .login #code {
     width: 100px;
     height: 34px;
@@ -512,12 +434,10 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 5px;
     overflow: hidden;
 }
-
 .login #code img {
     width: 100px;
     height: 34px;
 }
-
 .login #emailcode {
     width: 100px;
     height: 34px;
@@ -526,43 +446,36 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 5px;
     overflow: hidden;
 }
-
 .login #emailcode img {
     width: 100px;
     height: auto;
 }
-
 .login .ipt {
     margin-top: 10px;
     border: 0;
     outline: none !important;
     box-shadow: none !important;
 }
-
 .login .btn-success {
     background: #69C72B;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.19);
     border-radius: 5px;
     border: none;
 }
-
 .login #code .img {
     width: 100px;
     height: 34px;
 }
-
-.footer {
+.footer{
     margin-top: 45px;
 }
-
-.footer h5 {
+.footer h5{
     font-size: 14px;
     color: #FFFFFF;
     letter-spacing: 2px;
     text-align: center;
     line-height: 22px;
 }
-
 .loading {
     background: #69c72b;
     color: #FFFFFF;
@@ -570,21 +483,17 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 5px;
     cursor: pointer;
     border: none;
-    outline: none;
-
+    outline:none;
 }
-
 .loading:hover {
     color: #FFFFFF;
     background: #69bd2b;
     text-decoration: none;
 }
-
-.loading span {
+.loading span{
     display: inline-block;
     vertical-align: middle;
 }
-
 .loading .circular {
     vertical-align: middle;
     display: inline-block;
@@ -592,23 +501,15 @@ input[type=number]::-webkit-outer-spin-button {
     width: 24px;
     animation: loading-rotate 2s linear infinite;
 }
-
 .loading .circular .path {
     animation: loading-dash 1.5s ease-in-out infinite;
-    stroke-dasharray: 90, 150;
+    stroke-dasharray: 90,150;
     stroke-dashoffset: 0;
     stroke-width: 2;
     stroke: #fff;
     stroke-linecap: round;
 }
-
-#tipone {
-    color: red;
-    margin-top: 30px;
-    text-align: center;
-    padding: 0
-}
-
+#tipone{color: red; margin-top: 30px; text-align: center;padding: 0}
 @keyframes spinner {
     0% {
         transform: rotate(0deg);
@@ -617,8 +518,7 @@ input[type=number]::-webkit-outer-spin-button {
         transform: rotate(180deg);
     }
 }
-
-@-webkit-keyframes spinner {
+@-webkit-keyframes  spinner {
     0% {
         transform: rotate(0deg);
     }
@@ -626,13 +526,11 @@ input[type=number]::-webkit-outer-spin-button {
         transform: rotate(180deg);
     }
 }
-
 @keyframes loading-rotate {
     100% {
         transform: rotate(360deg);
     }
 }
-
 @keyframes loading-dash {
     0% {
         stroke-dasharray: 1, 200;

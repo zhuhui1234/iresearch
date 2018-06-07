@@ -36,13 +36,13 @@
                             <div class="tab-pane active" id="phone">
                                 <div class="input-group" id="inputs" >
                                     <span class="input-group-addon user" ></span>
-                                    <input type="text" class="form-control ipt" id="tel" placeholder="请输入手机号" autocomplete="off"/>
+                                    <input type="tel" class="form-control ipt" id="tel" placeholder="请输入手机号" autocomplete="tel"/>
                                 </div>
                             </div>
                             <div class="tab-pane " id="email">
                                 <div class="input-group" id="inputs" >
                                     <span class="input-group-addon user" ></span>
-                                    <input type="text" class="form-control ipt" id="Emails" placeholder="请输入邮箱" autocomplete="off"/>
+                                    <input type="email" class="form-control ipt" id="Emails" placeholder="请输入邮箱" autocomplete="email"/>
                                 </div>
                             </div>
                             <div class="input-group two" >
@@ -62,17 +62,20 @@
                     </div>
 
                 </div>
-                <div class="col-md-7" id="test">
+                <div class="col-md-7" id="test" style="display: none">
                     <div class="row">
-                        <h4 id="tab-p"><a href=""><img src="./public/img/b_login/left.png"></a> 手机或邮箱验证</h4>
+                        <div class="tit">
+                            <a href=""><h4 id="tab-p"><span id="spaner">&lt;</span> 手机或邮箱验证</h4></a>
+                        </div>
+
                         <h5>请输入6位手机或邮箱验证码</h5>
                         <div class="input-item">
-                            <input type="text" name="code" value="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
-                            <input type="text" name="code" value="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
-                            <input type="text" name="code" value="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
-                            <input type="text" name="code" value="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
-                            <input type="text" name="code" value="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
-                            <input type="text" name="code" value="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
                         </div>
                         <div id="spinner_icon" style="height: 40px;margin-top: 20px;">
                             <div class="row">
