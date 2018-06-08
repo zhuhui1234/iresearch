@@ -107,6 +107,7 @@
                         </div>
                     </div>
                     <div class="change-btn">
+
                         <!-- IF token=="1" -->
                         <a class="btn btn-lg btn-primary " v-bind:href="[[ product[tabIndex].url ]]">登入使用</a>
                         <!-- <a v-if="product[tabIndex].isOldURL" class="btn btn-link" v-bind:href="[[ product[tabIndex].oldurl ]]">登入旧版本</a> -->
