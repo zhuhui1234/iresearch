@@ -2,6 +2,18 @@
  * user login js
  */
 define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
+
+    var resource = Helper.getQuery('resource');
+    console.log(resource);
+
+    if (resource == 'overseas') {
+        $('#mobile_login').hide();
+        $('#mail_login').addClass('actives');
+        $("#phone").hide();
+        $("#phone").removeClass('active');
+        $("#email").addClass('active');
+    }
+
     $("#code_img").click(function () {
         $(this).attr('src', '?m=service&a=charCode&' + Math.random());
     });

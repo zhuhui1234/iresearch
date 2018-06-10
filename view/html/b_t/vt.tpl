@@ -110,7 +110,8 @@
                         <div class="col-md-4 col-sm-6 col-xs-12  text-new" >
                             <div class="new" id="new-one" onclick="window.location.href='?m=user&a=jump&pro=45'">{apply_ivt}<img src="./public/img/b_t/vtringt.png"></div>
                         </div>
-                        <div class="col-md-8 col-sm-6 col-xs-12  old" ><a href="">登录使用（老版）</a></div>
+
+                        <div class="col-md-8 col-sm-6 col-xs-12  old" ><a href="ivt_oldurl">{apply_beta_ivt}</a></div>
                     </div>
                 </div>
                 <div class="col-md-4 leftimg">
@@ -168,7 +169,7 @@
                         <div class="row">
                             <div class="value-left" >
                                 <div class="col-md-4 col-sm-6 col-xs-12   text-new" >
-                                    <div class="new" id="new-two" onclick="window.location.href='?m=user&a=jump&pro=45'" style="margin-top: 40px">{apply_ivt}<img src="./public/img/b_t/vtringt.png"></div>
+                                    <div class="new" id="new-two" onclick="window.location.href='?m=user&a=jump&pro=18'" style="margin-top: 40px">{apply_mvt}<img src="./public/img/b_t/vtringt.png"></div>
                                 </div>
                             </div>
                         </div>
@@ -227,7 +228,7 @@
                     </div>
                     <div class="row" style="margin-top: 50px;">
                         <div class="col-md-4 col-sm-6 col-xs-12 text-new" >
-                            <div class="new" id="new-three" onclick="window.location.href='?m=user&a=jump&pro=45'">{apply_ivt}<img src="./public/img/b_t/vtringt.png"></div>
+                            <div class="new" id="new-three" onclick="window.location.href='?m=user&a=jump&pro=19'">{apply_ovt}<img src="./public/img/b_t/vtringt.png"></div>
                         </div>
                     </div>
                 </div>

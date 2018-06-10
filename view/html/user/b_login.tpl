@@ -28,8 +28,8 @@
                     <div id="form" method="POST">
                         <div class="row">
                             <p class="text-center tab-p">
-                                <a class="tab actives" href="#phone" data-toggle="tab">手机登录</a>
-                                <a class="tab" href="#email" data-toggle="tab">邮箱登录</a>
+                                <a id="mobile_login" class="tab actives" href="#phone" data-toggle="tab">手机登录</a>
+                                <a id="mail_login" class="tab" href="#email" data-toggle="tab">邮箱登录</a>
                             </p>
                         </div>
                         <div id="myTabContent" class="tab-content" >
