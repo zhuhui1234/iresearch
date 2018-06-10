@@ -119,10 +119,21 @@
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 50px;">
+                        <!-- IF token=="1" -->
                         <div class="col-md-4 col-sm-6 col-xs-12  text-login" >
                             <div class="login" id="login" onclick="window.location.href='{iut_oldurl}'">{apply_iut}<img src="./public/img/b_t/utright.png"></div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12 code" ><a href="">Sign In 登录使用（老版）</a> </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 code" ><a href="?m=user&a=jump&pro=49&p=iut">登录新版（Beta）</a> </div>
+                        <!-- ELSE -->
+                        <!--IF irdStatus=="1" -->
+                        <!--ELSE -->
+                        <div class="col-md-4 col-sm-6 col-xs-12  text-login" >
+                            <div class="login" id="login" onclick="window.location.href='{iut_oldurl}'">{apply_iut}<img src="./public/img/b_t/utright.png"></div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="?m=user&a=jump&pro=49&p=iut">{apply_beta_iut}</a>  </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="{iut_oldurl_en}">{apply_iut_en}</a> </div>
+                        <!--ENDIF -->
+                        <!-- ENDIF -->
                     </div>
                 </div>
                 <div class="col-md-4 leftimg">
@@ -174,9 +185,21 @@
                             </div>
                         </div>
                         <div class="row" style="margin-bottom: 50px;">
-                            <div class="col-md-6 col-sm-6 col-xs-12 text-login"  >
-                                <div class="login" id="login-one" onclick="window.location.href='{iut_oldurl}'">{apply_iut}<img src="./public/img/b_t/utright.png"></div>
+                            <!-- IF token=="1" -->
+                            <div class="col-md-4 col-sm-6 col-xs-12 text-login"  >
+                                <div class="login" id="login-one" onclick="window.location.href='{mut_oldurl}'">{apply_mut}<img src="./public/img/b_t/utright.png"></div>
                             </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 code" ><a href="?m=user&a=jump&pro=37">登录新版（Beta）</a>  </div>
+                            <!-- ELSE -->
+                            <!--IF irdStatus=="1" -->
+                            <!--ELSE -->
+                            <div class="col-md-4 col-sm-6 col-xs-12 text-login"  >
+                                <div class="login" id="login-one" onclick="window.location.href='{mut_oldurl}'">{apply_mut}<img src="./public/img/b_t/utright.png"></div>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="?m=user&a=jump&pro=37">{apply_beta_mut}</a>  </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="{mut_oldurl_en}">{apply_mut_en}</a></div>
+                            <!--ENDIF -->
+                            <!-- ENDIF -->
                         </div>
                     </div>
                 </div>
@@ -223,11 +246,11 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="row" style="margin-bottom: 50px;">
+                    <!-- <div class="row" style="margin-bottom: 50px;">
                         <div class="col-md-6 col-sm-6 col-xs-12 text-login"  >
                             <div class="login" id="login-two" onclick="window.location.href='{iut_oldurl}'">{apply_iut}<img src="./public/img/b_t/utright.png"></div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-4 leftimg">
                     <div class="col-sm-12 introduceringt1"><img src="./public/img/b_t/utbg1.png"></div>
