@@ -2,16 +2,26 @@
  * user login js
  */
 define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
-
+    $('.tab-p a').click(function () {
+        $(this).addClass('actives').siblings().removeClass('actives');
+    });
     var resource = Helper.getQuery('resource');
-    console.log(resource);
 
     if (resource == 'overseas') {
-        $('#mobile_login').hide();
-        $('#mail_login').addClass('actives');
-        $("#phone").hide();
-        $("#phone").removeClass('active');
-        $("#email").addClass('active');
+        $("#mail_login").fadeIn();
+        $("#email").fadeIn();
+        $("#input_v").fadeIn()
+        $("#mail_login").addClass('actives');
+
+    } else {
+        $('#input_v').fadeIn();
+        $("#email").removeClass('active');
+        $("#mail_login").removeClass('actives');
+        $('#email').fadeOut();
+
+        $('#phone').addClass('active');
+        $('#mobile_login').addClass('actives');
+
     }
 
     $("#code_img").click(function () {
@@ -25,10 +35,6 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         utilsScript: "./dev/js/lib/intl-tel/js/utils.js"
     });
 
-
-    $('.tab-p a').click(function () {
-        $(this).addClass('actives').siblings().removeClass('actives');
-    });
 
     var checkFormat = function (lt) {
         var Emails = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;

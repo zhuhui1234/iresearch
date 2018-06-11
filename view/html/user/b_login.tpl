@@ -24,35 +24,44 @@
         <div class="jumbotron login" id="jumbotron">
             <div class="row" id="row1"><img src="./public/img/b_login/logo.png"></div>
             <form class="row" id="row2">
-                <div class="col-md-7" id="login" >
+                <div class="col-md-7" id="login">
                     <div id="form" method="POST">
                         <div class="row">
                             <p class="text-center tab-p">
-                                <a id="mobile_login" class="tab actives" href="#phone" data-toggle="tab">手机登录</a>
-                                <a id="mail_login" class="tab" href="#email" data-toggle="tab">邮箱登录</a>
+                                <a id="mail_login" class="tab actives" href="#email" data-toggle="tab"
+                                   style="display: none;">邮箱登录</a>
+                                <a id="mobile_login" class="tab" href="#phone" data-toggle="tab">手机登录</a>
+
                             </p>
                         </div>
-                        <div id="myTabContent" class="tab-content" >
-                            <div class="tab-pane active" id="phone">
-                                <div class="input-group" id="inputs" >
-                                    <span class="input-group-addon user" ></span>
-                                    <input type="tel" class="form-control ipt" id="tel" placeholder="请输入手机号" autocomplete="tel"/>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane active" id="email" style="display: none;">
+                                <div class="input-group" id="inputs">
+                                    <span class="input-group-addon user"></span>
+                                    <input type="email" class="form-control ipt" id="Emails" placeholder="请输入邮箱"
+                                           autocomplete="email"/>
                                 </div>
                             </div>
-                            <div class="tab-pane " id="email">
-                                <div class="input-group" id="inputs" >
-                                    <span class="input-group-addon user" ></span>
-                                    <input type="email" class="form-control ipt" id="Emails" placeholder="请输入邮箱" autocomplete="email"/>
+                            <div class="tab-pane" id="phone">
+                                <div class="input-group" id="inputs">
+                                    <span class="input-group-addon user"></span>
+                                    <input type="tel" class="form-control ipt" id="tel" placeholder="请输入手机号"
+                                           autocomplete="tel"/>
                                 </div>
                             </div>
-                            <div class="input-group two" >
+
+                            <div class="input-group two" id="input_v" style="display: none;">
                                 <span class="input-group-addon key"></span>
-                                <input id="vernum" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" autocomplete="off"  placeholder="请输入验证码">
-                                <span class="input-group-addon" id="code"><img id="code_img" src="?m=service&a=charCode"></span>
+                                <input id="vernum" type="text" class="form-control"
+                                       aria-label="Amount (to the nearest dollar)" autocomplete="off"
+                                       placeholder="请输入验证码">
+                                <span class="input-group-addon" id="code"><img id="code_img"
+                                                                               src="?m=service&a=charCode"></span>
                             </div>
-                            <div class="pull-right" >
-                                <button  type="button" class="loading"  id="send_code" >
-                                    <svg viewBox="25 25 50 50" class="circular" style="display: none"><circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
+                            <div class="pull-right">
+                                <button type="button" class="loading" id="send_code">
+                                    <svg viewBox="25 25 50 50" class="circular" style="display: none">
+                                        <circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
                                     </svg>
                                     <span id="sent">发送验证码</span>
                                 </button>
@@ -70,12 +79,18 @@
 
                         <h5>请输入6位手机或邮箱验证码</h5>
                         <div class="input-item">
-                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
-                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
-                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
-                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
-                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
-                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1" autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                                   autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                                   autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                                   autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                                   autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                                   autocomplete="off"/>
+                            <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                                   autocomplete="off"/>
                         </div>
                         <div id="spinner_icon" style="height: 40px;margin-top: 20px;">
                             <div class="row">
@@ -90,11 +105,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5" >
-                    <div class="box" >
+                <div class="col-md-5">
+                    <div class="box">
                         <div class="row">
                             <div class="col-xs-12 text-center">
-                                <div  class="wxlogin" id="wxLogin" style="text-align: center">
+                                <div class="wxlogin" id="wxLogin" style="text-align: center">
                                 </div>
                             </div>
                         </div>
@@ -102,8 +117,8 @@
                 </div>
             </form>
             <div class="footer">
-                <h5 class="text-center" >提示：如果你没有艾瑞数据账号，可以用手机号、企业邮箱直接注册或微信扫码注册；</h5>
-                <h5 class="text-center" >如果您已经是艾瑞数据用户可以尝试用手机号或者微信扫码直接登录。</h5>
+                <h5 class="text-center">提示：如果你没有艾瑞数据账号，可以用手机号、企业邮箱直接注册或微信扫码注册；</h5>
+                <h5 class="text-center">如果您已经是艾瑞数据用户可以尝试用手机号或者微信扫码直接登录。</h5>
             </div>
         </div>
     </div>
