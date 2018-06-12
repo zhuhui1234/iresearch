@@ -7,9 +7,6 @@ body {
 body button{
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-.intl-tel-input {
-    margin-top: 10px !important;
-}
 .form-control::-moz-placeholder {
     color: #C4C4C4 ;
     font-size: 14px;
@@ -240,8 +237,8 @@ body button{
     border-radius: 5px;
     box-shadow: 0 1px 3px 0 rgba(241, 241, 241, 0.50);
 }
-#test{
-    /*display: none;*/
+.intl-tel-input {
+    margin-top: 10px !important;
 }
 #test .col-md-7{
     padding-bottom: 60px;
@@ -255,7 +252,7 @@ body button{
     margin-top: 50px;
 }
 .tab-p a {
-    font-size: 20px;
+    font-size: 18px;
     color: #666666;
     letter-spacing: 1.03px;
     line-height: 24px;
@@ -265,27 +262,37 @@ body button{
     margin-bottom: 15px;
 }
 .tab-p{
-    font-size: 22px;
     color: #666666;
     letter-spacing: 1.03px;
-    line-height: 24px;
-}
-.tit a{
-    text-decoration: none;
-    color: #666666;
-    letter-spacing: 1.03px;
-    margin-left: 50px;
-    margin-top: 70px;
-    display: inline-block;
-}
-.tit a:hover{
-    text-decoration: none;
-    color: #69c72b;
-}
-#spaner{
-    margin-right: 15px;
+    line-height: 30px;
 }
 
+.tit{
+    margin-top: 70px;
+    margin-left: 50px;
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/leftone.png") no-repeat;
+    background-position:left center;
+    background-size: 20px 20px;
+}
+.return{
+    color: #666666;
+    letter-spacing: 1.03px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    padding-left: 35px;
+}
+.return:hover{
+    color: #69c72b!important;
+}
+.tit:hover{
+    color: #69c72b!important;
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/lefttwo.png") no-repeat;
+    background-position:left center;
+    background-size: 20px 20px;
+    text-decoration: none;
+}
 #test .input-item {
     text-align: center;
     margin-top: 60px;
@@ -374,7 +381,6 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 7px;
 }
 #login{
-    /*display: none;*/
     padding: 60px;
 }
 .login #inputs {
@@ -416,6 +422,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .pull-right{
     margin-top: 40px;
+    width: 200px;
+}
+#h{
+    width: 200px;
+    line-height: 20px;
 }
 .login .user {
     background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/user.png")no-repeat center;
@@ -484,6 +495,8 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: pointer;
     border: none;
     outline:none;
+    margin-left: -10px;
+    margin-right: 15px;
 }
 .loading:hover {
     color: #FFFFFF;
@@ -497,8 +510,8 @@ input[type=number]::-webkit-outer-spin-button {
 .loading .circular {
     vertical-align: middle;
     display: inline-block;
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 20px;
     animation: loading-rotate 2s linear infinite;
 }
 .loading .circular .path {
@@ -509,7 +522,7 @@ input[type=number]::-webkit-outer-spin-button {
     stroke: #fff;
     stroke-linecap: round;
 }
-#tipone{color: red; margin-top: 30px; text-align: center;padding: 0}
+#tipone{color: red; margin-top: 120px; text-align: center;padding: 0}
 @keyframes spinner {
     0% {
         transform: rotate(0deg);
