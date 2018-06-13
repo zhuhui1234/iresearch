@@ -31,7 +31,7 @@
         <!--广告指数-->
         <div class="container-fluid" >
             <div class="row">
-                <div class="col-md-2 text-left move">
+                <div class="col-md-2 col-sm-4 text-left move">
                     <div class="nav-left">
                         <a href="//index.iresearch.com.cn/ad">
                             网络广告指数<img src="./public/img/b_t/vtdd.png">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-4" id="title">
                     <h3>跨屏内容市场监测</h3>
-                    <div  style="color: white;text-indent: 28px;opacity: 0.8;" >通过爬虫技术在几百个网站上进行图片广告监测所建立的数据库。该数据库自2001年开始，统计及计算包含门户、垂直、视频、APP等媒体上品牌客户广告投放量及投放预估费用数据，反映中国互联网广告市场客观情况。</div>
+                    <div  style="color: white;text-indent: 28px;opacity: 0.9;letter-spacing:1.03px;line-height: 24px" >通过爬虫技术在几百个网站上进行图片广告监测所建立的数据库。该数据库自2001年开始，统计及计算包含门户、垂直、视频、APP等媒体上品牌客户广告投放量及投放预估费用数据，反映中国互联网广告市场客观情况。</div>
                 </div>
                 <div class="col-md-6 nav-center" >
                     <img src="./public/img/b_t/adbg.png">
@@ -49,13 +49,13 @@
             <div class="content">
                 <div class="row" id="adnavs">
                     <div class="col-xs-3 line">
-                        <a href=""><dl class="line-h">
+                        <a href="?m=user&a=jump&pro=42"><dl class="line-h">
                                 <dt class="text-center"><img src="./public/img/b_t/mobile.png"></dt>
                                 <dd class="text-center">移动终端服务</dd>
                             </dl></a>
                     </div>
                     <div class="col-xs-3 line">
-                        <a href=""><dl class="line-h">
+                        <a href="?m=user&a=jump&pro=42"><dl class="line-h">
                                 <dt class="text-center"><img src="./public/img/b_t/PC.png"></dt>
                                 <dd class="text-center">PC终端服务</dd>
                             </dl></a>
@@ -67,7 +67,7 @@
                             </dl></a>
                     </div>
                     <div class="col-xs-3 ">
-                        <a href=""><dl class="line-h">
+                        <a href="?m=user&a=jump&pro=42"><dl class="line-h">
                                 <dt class="text-center"><img src="./public/img/b_t/aaa.png"></dt>
                                 <dd class="text-center">跨屏服务</dd>
                             </dl></a>
@@ -132,7 +132,7 @@
                                         <!-- ENDIF -->
                                         <!-- ENDIF -->
 
-                                        <img src="./public/img/b_t/vtringt.png"></div>
+                                       </div>
                                 </div>
                             </div>
                             <div class="col-md-8 col-sm-6 col-xs-12  old" ><a href="{adUrl}">

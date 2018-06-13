@@ -32,11 +32,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 text-left move">
-                    <div class="nav-left"><a href="">网络影视指数<img src="./public/img/b_t/vtdd.png"></a></div>
+                    <div class="nav-left"><a href="">网络影视指数<img src="./public/img/b_t/log.png"></a></div>
                 </div>
                 <div class="col-md-5" id="title">
                     <h3 style="text-align: center">网络视频内容市场监测</h3>
-                    <div  style="color: white;text-indent: 28px;opacity: 0.8;" > 基于PC、移动、OTT终端庞大网民样本连续性行为监测数据，监测主流视频内容提供商不同频道、类型和产地的收视情况，洞察视频内容在不同 视频内容提供商的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好程度，监控视频内容在各时段的收视趋势，为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。</div>
+                    <div  style="color: white;text-indent: 28px;opacity: 0.9;letter-spacing:1.03px;line-height: 24px"> 基于PC、移动、OTT终端庞大网民样本连续性行为监测数据，监测主流视频内容提供商不同频道、类型和产地的收视情况，洞察视频内容在不同 视频内容提供商的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好程度，监控视频内容在各时段的收视趋势，为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。</div>
                 </div>
                 <div class="col-md-5 nav-center" >
                     <img src="./public/img/b_t/backgroundvt.png">
@@ -108,7 +108,7 @@
                     </div>
                     <div class="row" style="margin-top: 20px">
                         <div class="col-md-4 col-sm-6 col-xs-12  text-new" >
-                            <div class="new" id="new-one" onclick="window.location.href='?m=user&a=jump&pro=45'">{apply_ivt}<img src="./public/img/b_t/vtringt.png"></div>
+                            <div class="new" id="new-one" onclick="window.location.href='?m=user&a=jump&pro=45'">{apply_ivt}</div>
                         </div>
 
                         <div class="col-md-8 col-sm-6 col-xs-12  old" ><a href="ivt_oldurl">{apply_beta_ivt}</a></div>
@@ -169,7 +169,7 @@
                         <div class="row">
                             <div class="value-left" >
                                 <div class="col-md-4 col-sm-6 col-xs-12   text-new" >
-                                    <div class="new" id="new-two" onclick="window.location.href='?m=user&a=jump&pro=18'" style="margin-top: 40px">{apply_mvt}<img src="./public/img/b_t/vtringt.png"></div>
+                                    <div class="new" id="new-two" onclick="window.location.href='?m=user&a=jump&pro=18'" style="margin-top: 40px">{apply_mvt}</div>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +228,7 @@
                     </div>
                     <div class="row" style="margin-top: 50px;">
                         <div class="col-md-4 col-sm-6 col-xs-12 text-new" >
-                            <div class="new" id="new-three" onclick="window.location.href='?m=user&a=jump&pro=19'">{apply_ovt}<img src="./public/img/b_t/vtringt.png"></div>
+                            <div class="new" id="new-three" onclick="window.location.href='?m=user&a=jump&pro=19'">{apply_ovt}</div>
                         </div>
                     </div>
                 </div>

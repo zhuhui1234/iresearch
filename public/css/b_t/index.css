@@ -40,13 +40,14 @@ body h5{
     border-radius: 100px;
     margin: 0 auto;
     text-decoration: none;
+    padding: 0 15px;
+    width:180px;
 }
-/*.nav-left:hover{*/
-/*opacity: 1!important;*/
-/*}*/
+
 .nav-left a{
     color: white;
     text-decoration: none;
+    margin-left: -15px;
 }
 .text-left{
     margin-top: 30px;
@@ -56,13 +57,12 @@ body h5{
     font-size: 14px;
     line-height: 36px;
     text-align: center;
-    opacity: 0.6;
 }
 .text-left:hover{
     opacity:1;
 }
 .text-left img{
-    width: 30px;
+    width: 24px;
     height: auto;
     left: 19px;
     position:relative;
@@ -132,7 +132,7 @@ body h5{
 .new img{
     width: auto;
     height: 28px;
-    padding-left: 40px;
+    padding-left: 25px;
     margin-bottom: 4px;
 }
 .login{
@@ -152,7 +152,6 @@ body h5{
     cursor:pointer;
 }
 .login:hover{
-    cursor: pointer;
     color: #FFFFFF;
     background: -webkit-linear-gradient(left,#40E6FA 0%, #40E6FA 0%, #2DD5F6 0%, #1EC8F3 97% );
     background: -o-linear-gradient(left,#40E6FA 0%, #40E6FA 0%, #2DD5F6 0%, #1EC8F3 97% );
@@ -161,6 +160,7 @@ body h5{
     box-shadow: 0 1px 5px 0 rgba(67,185,215,0.80);
 }
 .new{
+
     border: 1px #69c72b solid;
     background: #FFFFFF;
     border-radius: 100px;
@@ -172,10 +172,11 @@ body h5{
     margin-bottom: 50px;
     width: 200px
 }
-#new,#new-one,#new-two,#new-three{
+#new,#new-one,#new-two,#new-three,#login,#login-one,#login-two{
     width: 200px;
     height: 40px;
-    cursor:pointer
+    cursor:pointer;
+    text-align: center;
 }
 .new:hover{
     color: #ffffff;
@@ -361,11 +362,17 @@ body h5{
 }
 .main-left img{
     height: auto;
-    width: 28px;
+    width: 24px;
     line-height: 38px;
-    margin-left: 15px;
+    /*margin-left: 18px;*/
     position: relative;
     left:0;
+}
+.main-left .img1{
+    margin-left: 20px;
+}
+.main-left .img2{
+    margin-left: 18px;
 }
 .main-right img{
     width:100%;
@@ -450,12 +457,18 @@ a:hover{
     padding-left: 6px;
 }
 .move-a{
-    width: 100%;
+    width: 200px;
     height: 100%;
     display: block;
 }
+.span1{
+    padding-left: 20px;
+}
+.span2{
+    margin-left: -15px;
+}
 .move2{
-    padding-left: 0;
+    padding-left: 0px;
     padding-right: 0;
 }
 .move3{

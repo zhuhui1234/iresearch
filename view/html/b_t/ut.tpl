@@ -35,17 +35,17 @@
                         <div class="main-left">
                             <div class="row">
                                 <div class="col-sm-6 move2">
-                                    <a href="javascript:;" class="move-a "> <span>移动APP指数</span><img src="./public/img/b_t/vtdd.png" class="img1"><span class="spanline" style="width:1px;float: right;">|</span></a>
+                                    <a href="javascript:;" class="move-a "> <span class="span1">移动APP指数</span><img src="./public/img/b_t/vtdd.png" class="img1"><span class="spanline" style="width:1px;float: right;">|</span></a>
                                 </div>
                                 <div class="col-sm-6 move3">
-                                    <a href="javascript:;" class="move-a "><span>PC Web指数</span><img src="./public/img/b_t/vtdd.png" class="img2"></a>
+                                    <a href="javascript:;" class="move-a "><span class="span1">PC Web指数</span><img src="./public/img/b_t/vtdd.png" class="img2"></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <h3 class="text-center" style="color: white;margin-top: 55px">网络用户行为监测</h3>
-                        <div style="color: white;text-indent: 28px;opacity: 0.8;" >基于PC、移动、OTT终端庞大网民样本连续性行为监测数据，实现多源跨屏网民互联网应用行为研究数据库，反映中国互联网整体及不同用户市场的客观情况。</div>
+                        <div style="color: white;text-indent: 28px;opacity: 0.9;letter-spacing:1.03px;line-height: 24px" >基于PC、移动、OTT终端庞大网民样本连续性行为监测数据，实现多源跨屏网民互联网应用行为研究数据库，反映中国互联网整体及不同用户市场的客观情况。</div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -55,23 +55,23 @@
             <div class="content">
                 <div class="row" style=" margin-bottom: 20px;">
                     <div class="col-xs-4 line">
-                        <a href=""><dl class="line-h">
+                        <a href="{mut_oldurl}"><dl class="line-h">
                                 <dt class="text-center"><img src="./public/img/b_t/mobile.png"></dt>
                                 <dd class="text-center">移动终端服务</dd>
                             </dl></a>
                     </div>
                     <div class="col-xs-4 line">
-                        <a href=""><dl class="line-h">
+                        <a href="?m=user&a=jump&pro=49&p=iut"><dl class="line-h">
                                 <dt class="text-center"><img src="./public/img/b_t/PC.png"></dt>
                                 <dd class="text-center">PC终端服务</dd>
                             </dl></a>
                     </div>
-                    <div class="col-xs-4 ">
+                    <!-- <div class="col-xs-4 ">
                         <a><dl class="line-h">
                                 <dt class="text-center"><img src="./public/img/b_t/OTT.png"></dt>
                                 <dd class="text-center">OTT终端服务</dd>
                             </dl></a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -121,14 +121,14 @@
                     <div class="row" style="margin-bottom: 50px;">
                         <!-- IF token=="1" -->
                         <div class="col-md-4 col-sm-6 col-xs-12  text-login" >
-                            <div class="login" id="login" onclick="window.location.href='{iut_oldurl}'">{apply_iut}<img src="./public/img/b_t/utright.png"></div>
+                            <div class="login" id="login" onclick="window.location.href='{iut_oldurl}'">{apply_iut}</div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 code" ><a href="?m=user&a=jump&pro=49&p=iut">登录新版（Beta）</a> </div>
                         <!-- ELSE -->
                         <!--IF irdStatus=="1" -->
                         <!--ELSE -->
                         <div class="col-md-4 col-sm-6 col-xs-12  text-login" >
-                            <div class="login" id="login" onclick="window.location.href='{iut_oldurl}'">{apply_iut}<img src="./public/img/b_t/utright.png"></div>
+                            <div class="login" id="login" onclick="window.location.href='{iut_oldurl}'">{apply_iut}</div>
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="?m=user&a=jump&pro=49&p=iut">{apply_beta_iut}</a>  </div>
                         <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="{iut_oldurl_en}">{apply_iut_en}</a> </div>
@@ -187,14 +187,14 @@
                         <div class="row" style="margin-bottom: 50px;">
                             <!-- IF token=="1" -->
                             <div class="col-md-4 col-sm-6 col-xs-12 text-login"  >
-                                <div class="login" id="login-one" onclick="window.location.href='{mut_oldurl}'">{apply_mut}<img src="./public/img/b_t/utright.png"></div>
+                                <div class="login" id="login-one" onclick="window.location.href='{mut_oldurl}'">{apply_mut}</div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 code" ><a href="?m=user&a=jump&pro=37">登录新版（Beta）</a>  </div>
                             <!-- ELSE -->
                             <!--IF irdStatus=="1" -->
                             <!--ELSE -->
                             <div class="col-md-4 col-sm-6 col-xs-12 text-login"  >
-                                <div class="login" id="login-one" onclick="window.location.href='{mut_oldurl}'">{apply_mut}<img src="./public/img/b_t/utright.png"></div>
+                                <div class="login" id="login-one" onclick="window.location.href='{mut_oldurl}'">{apply_mut}</div>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="?m=user&a=jump&pro=37">{apply_beta_mut}</a>  </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="{mut_oldurl_en}">{apply_mut_en}</a></div>
