@@ -17,7 +17,7 @@ define(['helper', 'app/main'], function (Helper) {
                 "area": $("#industry option:selected").text(),
                 "industry": $("#industry").val(),
                 "mail":$("#mail").val(),
-                "remark":Helper.getQuery('ppname')
+                "remark":$("#ppname").text(),
             };
             console.log(pData);
             if (($.trim(pData.username).length <= 0) ||
