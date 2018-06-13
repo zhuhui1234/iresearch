@@ -80,7 +80,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="checkbox">
-							<label>
+							<label id="ppname">
 								<input id="menuID" type="checkbox" data-toggle="checkbox" readonly="readonly" checked="true" value="{menuID}" disabled>
 								{ppname}
 							</label>
