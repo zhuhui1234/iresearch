@@ -31,7 +31,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="col-lg-8 col-md-12 col-sm-12 ">
+                    <div class="col-md-8 mains">
                         <div class="main-left">
                             <div class="row">
                                 <div class="col-sm-6 move2">
@@ -54,13 +54,13 @@
             </div>
             <div class="content">
                 <div class="row" style=" margin-bottom: 20px;">
-                    <div class="col-xs-4 line">
+                    <div class="col-xs-6 line">
                         <a href="{mut_oldurl}"><dl class="line-h">
                                 <dt class="text-center"><img src="./public/img/b_t/mobile.png"></dt>
                                 <dd class="text-center">移动终端服务</dd>
                             </dl></a>
                     </div>
-                    <div class="col-xs-4 line">
+                    <div class="col-xs-6">
                         <a href="?m=user&a=jump&pro=49&p=iut"><dl class="line-h">
                                 <dt class="text-center"><img src="./public/img/b_t/PC.png"></dt>
                                 <dd class="text-center">PC终端服务</dd>

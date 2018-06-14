@@ -8,24 +8,24 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
     var resource = Helper.getQuery('resource');
 
     if (resource == 'overseas') {
-        $("#email").fadeIn();
-        $("#mobile_login").fadeIn();
-        $("#mail_login").fadeIn();
-        $("#input_v").fadeIn()
+        $("#email").show();
+        $("#mobile_login").show();
+        $("#mail_login").show();
+        $("#input_v").show()
         $("#mail_login").addClass('actives');
-        $("#warning_overseas").fadeIn();
-        $("#warning_mobile").fadeOut();
+        $("#warning_overseas").show();
+        $("#warning_mobile").hide();
 
     } else {
-        $("#mobile_login").fadeIn();
-        $('#input_v').fadeIn();
+        $("#mobile_login").show();
+        $('#input_v').show();
         $("#email").removeClass('active');
         $("#mail_login").removeClass('actives');
         $('#email').hide();
         $('#phone').addClass('active');
         $('#mobile_login').addClass('actives');
-        $("#warning_overseas").fadeOut();
-        $("#warning_mobile").fadeIn();
+        $("#warning_overseas").hide();
+        $("#warning_mobile").show();
     }
 
     $("#send_code").fadeIn();
@@ -63,7 +63,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             case 'mail':
                 var ret = Emails.test($('#Emails').val());
                 if (!ret) {
-                    $('#code_img').attr('src', '?m=servic&a=charCode&' + Math.random());
+                    $('#code_img').attr('src', '?m=service&a=charCode&' + Math.random());
                     $('#tipone').fadeIn().text('邮箱为空或不符合格式规范');
                     return false;
 

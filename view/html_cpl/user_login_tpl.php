@@ -31,6 +31,25 @@ echo $_obj['title'];
     <div class="login-header">
         <img src="./public/img/irs-data.png" class="img-responsive center-block" alt="">
     </div>
+    <div class="row" id="timeout_msg" style="display: none">
+        <div class="col-xs-12">
+            <p class="text-center alert alert-danger" >您的登录已超时，或已在其他终端登录，请重新登录。</p>
+        </div>
+    </div>
+    <?php
+if ($_obj['mobile'] !== "1"){
+?>
+    <div class="row" id="timeout_msg2" >
+        <div class="col-xs-12">
+            <p class="text-center alert alert-warning" >您已升级完毕，请使用 <?php
+echo $_obj['mobile'];
+?>
+ 手机直接登录艾瑞睿见。</p>
+        </div>
+    </div>
+    <?php
+}
+?>
     <div class="row">
         <div class="col-xs-5">
             <div id="wxLogin" class=""></div>
@@ -48,7 +67,7 @@ echo $_obj['title'];
                 <div class="form-group">
                     <span>手机验证码</span>
                     <div class="form-right">
-                        <input style="width: 60%;height:24px;" id="vernum" type="text" placeholder="请输入手机验证码">
+                        <input style="width: 60%;height:24px;" id="vernum" type="text" placeholder="请输入手机验证码" autocomplete="off">
                         <a class="btn btn-warning" id="verification">获取验证码</a>
                     </div>
                 </div>
@@ -56,9 +75,9 @@ echo $_obj['title'];
                 <div class="form-group">
                     <span>验证码</span>
                     <div class="form-right">
-                        <input style="width: 60%;height:24px;" id="vcode" type="text" placeholder="请输入验证码">
-                        <div class="code-img">
-                            <img src="?m=service&a=authImg" alt="">
+                        <input style="width: 60%;height:24px;" id="vcode" type="text" placeholder="请输入验证码" autocomplete="off">
+                        <div class="code-img" style="cursor: pointer">
+                            <img id="g_code" src="?m=service&a=authImg" alt="">
                         </div>
                     </div>
                 </div>
@@ -68,6 +87,13 @@ echo $_obj['title'];
         </div>
     </div>
 </div>
+<?php
+if ($_obj['expired'] == "1"){
+?>
+<div style="display: none" id="expired"></div>
+<?php
+}
+?>
 <!-- 开发环境 -->
 <script src="<?php
 echo $_obj['WEBSITE_SOURCE_URL'];
