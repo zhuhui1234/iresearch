@@ -7,9 +7,21 @@ body {
 }
 
 .impowerBox .qrcode {
-    width: 220px;
+    width: 170px!important;
 }
-
+@media (min-width: 1400px) {
+    .impowerBox .qrcode{
+        width: 220px;
+    }
+}
+iframe{
+    height: 280px;
+}
+@media (min-width: 1400px) {
+    iframe{
+       height: 400px;
+    }
+}
 .impowerBox .title {
     display: none;
 }

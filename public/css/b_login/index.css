@@ -1,129 +1,152 @@
-html,
+html {
+    height: 100%;
+}
+
 body {
     height: 100%;
-    font-family: PingFang SC,Microsoft YaHei,Helvetica Neue,Helvetica,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
-    -webkit-font-smoothing: antialiased;margin: 0;padding: 0;
+    padding: 0;
+    margin: 0;
+    font-family: PingFang SC, Microsoft YaHei, Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, \\5FAE\8F6F\96C5\9ED1, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
-body button{
+
+.main-background {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 100;
+    background: -webkit-linear-gradient(-56deg, #1FC7F2 0%, #5ACA7E 46%, #5BCA7C 60%, #78CC43 100%);
+    background: -o-linear-gradient(-56deg, #1FC7F2 0%, #5ACA7E 46%, #5BCA7C 60%, #78CC43 100%);
+    background: -moz-linear-gradient(-56deg, #1FC7F2 0%, #5ACA7E 46%, #5BCA7C 60%, #78CC43 100%);
+    background: linear-gradient(-56deg, #1FC7F2 0%, #5ACA7E 46%, #5BCA7C 60%, #78CC43 100%);
+}
+
+body button {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
 .form-control::-moz-placeholder {
-    color: #C4C4C4 ;
+    color: #C4C4C4;
     font-size: 14px;
     opacity: 1
 }
+
 .form-control:-ms-input-placeholder {
     color: #C4C4C4;
     font-size: 14px;
 }
+
 .form-control::-webkit-input-placeholder {
     color: #C4C4C4;
     font-size: 14px;
 }
-.login-bg {
-    background: -webkit-linear-gradient(left, #B4EC51, #74CA51);
-    background: -o-linear-gradient(left,#A2E556,#6ECC30 );
-    background: -moz-linear-gradient(left,#A2E556,#6ECC30 );
-    background: linear-gradient(left,#A2E556,#6ECC30 );
-}
-.bg {
-    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/bg.png")no-repeat;
-    width: 100%;
-    height: 100%;
-    background-size: 100% 100%;
-}
+
 .main {
+    background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/bg_one.png");
+    background-repeat: no-repeat;
     position: relative;
-    width: 60%;
-    margin: 0 auto
+    z-index: 200;
+    background-size: 100% auto;
 }
+
 .jumbotron {
     background: none;
+    width: 60%;
+    margin: 0 auto;
 }
-.jumbotron p{
+
+.jumbotron p {
     font-size: 0;
 }
-.bodys {
-    background: -webkit-linear-gradient(left, #B4EC51, #74CA51);
-    background: -o-linear-gradient(right, #B4EC51, #74CA51); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right,#B4EC51, #74CA51); /* Firefox 3.6 - 15 */
-    background: linear-gradient(to right,#B4EC51, #74CA51); /* 标准的语法 */
-    /*background: -webkit-gradient(to right,#B4EC51, #74CA51);*/
-    background: -ms-linear-gradient(to right,#B4EC51, #74CA51);
 
-}
 .four .titles h5 {
     font-size: 12px;
 }
+
 .four #row1 img {
-    width: 130px;
+    width: 120px;
     height: auto;
 }
+
 .four #row2 {
     background: #ffffff;
     margin-top: 20px;
     margin-bottom: 20px;
     border-radius: 7px;
 }
+
 .four .form-group {
-    margin-top: 20px;
+    margin-top: 12px;
 }
+
 .four .form-group label {
     text-align: center;
     padding-top: 6px;
     font-weight: normal;
 }
-.four .col-md-7 {
-    border-right: 2px solid #eeeeee;
+
+.four .col-md-5 {
+    border-left: 2px solid #eeeeee;
     padding: 20px;
 }
+
 .four .tips {
     font-size: 14px;
     color: red;
     text-align: center;
     display: none;
 }
+
 .four span {
     color: red;
     width: 9px;
     height: 14px;
 }
+
 .four .Verification {
     height: 34px;
     line-height: 34px;
 }
+
 .four .control-label {
     font-size: 14px;
     color: #515354;
     letter-spacing: 0;
 }
+
 .four .has-error .form-control {
     border-color: red;
 }
+
 .four .btn-success {
     background: #69C72B;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
-    outline:none;
+    outline: none;
     border: none;
     height: 40px;
     letter-spacing: 2.35px;
     padding: 0 28px;
     font-size: 14px;
 }
+
 .btn .btn-success {
     background: #69C72B;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
-    outline:none;
+    outline: none;
     border: none;
     margin-top: 70px;
 }
+
 .four #identifying {
     border-radius: 5px;
     text-align: center;
     color: white
 }
+
 .tits {
     font-size: 14px;
     margin-top: 20px;
@@ -131,6 +154,7 @@ body button{
     color: #666;
     text-indent: 28px;
 }
+
 .four .bot img {
     text-align: center;
     margin-right: auto;
@@ -139,86 +163,116 @@ body button{
     height: auto;
     display: block;
 }
+
 .four .form-control {
-    height: 40px;
+    height: 30px;
     background: #FFFFFF;
     border: 1px solid #EEEEEE;
-    box-shadow: 0 1px 3px 0 rgba(241,241,241,0.50);
+    box-shadow: 0 1px 3px 0 rgba(241, 241, 241, 0.50);
     border-radius: 5px;
 }
+
 .four .form-control:focus {
     border: 1px solid #69C72B !important;
     border-radius: 5px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10);
 }
+
 .three h5 {
     font-size: 12px;
 }
+
 .three #row1 img {
     height: auto;
     width: 150px;
 }
-.three .titles{
+
+.title-one {
     text-align: center;
 }
-.three .titles h4{
+
+.title-one h4 {
     font-size: 24px;
     color: #494A4B;
     letter-spacing: 1.23px;
     line-height: 24px;
-    margin-top: 94px;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
-.three .titles h5{
+
+.title-one h5 {
     font-size: 16px;
     color: #515354;
     letter-spacing: 1px;
     text-align: center;
     line-height: 30px;
 }
-.three #row2{
+
+.title-one img {
+    width: 220px;
+    height: auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.three .col-md-5 {
+    padding: 40px;
+}
+
+.three #row2 {
     background: #ffffff;
     margin-top: 20px;
     margin-bottom: 20px;
     border-radius: 7px;
 }
+
 .three .form-group {
     margin-top: 20px;
 }
+
 .three .form-group label {
     text-align: center;
     padding-top: 6px;
 }
+
 .three .form-group input {
     border: 1px #eeeeee solid;
     border-radius: 5px;
 }
+
 .three .col-md-7 {
     border-right: 2px solid #eeeeee;
 }
+
 .three .tips {
     font-size: 14px;
     color: red;
     text-align: center;
     display: none;
 }
+
 .three .spans {
     color: #FF4949;
     width: 9px;
     height: 14px;
 }
+
 .three .Verification {
     height: 34px;
     line-height: 34px;
 }
+
 .three #identifying {
     border-radius: 5px;
     text-align: center;
     color: white
 }
+
 .three .control-label {
     color: #888888;
     letter-spacing: 0;
 }
+
 .three .bot img {
     text-align: center;
     margin-right: auto;
@@ -226,31 +280,38 @@ body button{
     width: 150px;
     height: auto;
 }
+
 .three .has-error .control-label {
     color: red;
 }
+
 .three .has-error .form-control {
     border-color: red;
 }
+
 .three .form-group input:focus {
     border: 1px solid #69C72B;
     border-radius: 5px;
     box-shadow: 0 1px 3px 0 rgba(241, 241, 241, 0.50);
 }
+
 .intl-tel-input {
     margin-top: 10px !important;
 }
-#test .col-md-7{
+
+#test .col-md-7 {
     padding-bottom: 60px;
     padding-top: 40px;
 }
+
 #test h5 {
     font-size: 16px;
     color: #515354;
     letter-spacing: 0.8px;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 25px;
 }
+
 .tab-p a {
     font-size: 18px;
     color: #666666;
@@ -261,20 +322,22 @@ body button{
     text-decoration: none;
     margin-bottom: 15px;
 }
-.tab-p{
+
+.tab-p {
     color: #666666;
     letter-spacing: 1.03px;
     line-height: 30px;
 }
 
-.tit{
-    margin-top: 70px;
+.tit {
+    margin-top: 30px;
     margin-left: 50px;
     background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/leftone.png") no-repeat;
-    background-position:left center;
+    background-position: left center;
     background-size: 20px 20px;
 }
-.return{
+
+.return {
     color: #666666;
     letter-spacing: 1.03px;
     line-height: 40px;
@@ -283,23 +346,27 @@ body button{
     display: inline-block;
     padding-left: 35px;
 }
-.return:hover{
-    color: #69c72b!important;
+
+.return:hover {
+    color: #69c72b !important;
 }
-.tit:hover{
-    color: #69c72b!important;
+
+.tit:hover {
+    color: #69c72b !important;
     background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/lefttwo.png") no-repeat;
-    background-position:left center;
+    background-position: left center;
     background-size: 20px 20px;
     text-decoration: none;
 }
+
 #test .input-item {
     text-align: center;
-    margin-top: 60px;
+    margin-top: 40px;
 }
+
 #test .now {
     background: #FFFFFF;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
     border-radius: 3px;
     width: 50px;
     height: 50px;
@@ -308,15 +375,17 @@ body button{
     font-size: 20px;
     margin-right: 2%;
 }
+
 .spinner {
     font-size: 30px;
     width: 1em;
     height: 1em;
     line-height: 30px;
-    margin: 30px  auto 50px auto;
+    margin: 30px auto 50px auto;
     border-radius: 50%;
     box-shadow: inset 0 0 0 .1em rgba(58, 168, 237, .2);
 }
+
 .spinner i {
     position: absolute;
     clip: rect(0, 1em, 1em, .5em);
@@ -324,6 +393,7 @@ body button{
     height: 1em;
     animation: spinner-circle-clipper 1s ease-in-out infinite;
 }
+
 @keyframes spinner-circle-clipper {
     0% {
         transform: rotate(0deg);
@@ -332,6 +402,7 @@ body button{
         transform: rotate(180deg);
     }
 }
+
 .spinner i:after {
     position: absolute;
     clip: rect(0, 1em, 1em, .5em);
@@ -342,6 +413,7 @@ body button{
     border-radius: 50%;
     box-shadow: inset 0 0 0 .1em #74CA51;
 }
+
 @keyframes spinner-circle {
     0% {
         transform: rotate(-180deg);
@@ -350,69 +422,87 @@ body button{
         transform: rotate(180deg);
     }
 }
+
 #test #tip {
     color: red;
 }
-#jumbotron .col-md-5 {
-    border-left: 2px solid #eeeeee;
+
+#jumbotron .col-md-7 {
+    border-right: 2px solid #eeeeee;
     overflow: hidden;
-    padding-top: 60px;
+    /*padding-top: 30px;*/
 }
+
 #test .now:focus {
     border: 1px #B4EC51 solid;
     outline: none;
 }
+
 input[type='number'] {
     -moz-appearance: textfield;
 }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 .login #row1 img {
     width: 150px;
     height: auto;
 }
+
 .login #row2 {
     background: #ffffff;
     margin-top: 40px;
     margin-bottom: 20px;
     border-radius: 7px;
+    /*min-height: 350px;*/
 }
-#login{
-    padding: 60px;
+
+#login {
+    padding: 40px 60px;
 }
+
 .login #inputs {
-    margin-top: 40px;
+    margin-top: 20px;
     border-bottom: 1px solid #eeeeee;
 }
+
 .login .two {
-    margin-top: 40px;
+    margin-top: 30px;
     border-bottom: 1px solid #eeeeee;
 }
+
 .login .input-group .form-control,
 .input-group-addon {
     display: table-cell;
 }
+
 .login .form-control:focus {
     border: none;
 }
+
 .login .actives {
     color: #69C72B !important;
     border-bottom: 3px solid #69C72B !important;
 }
+
 .login .dropdown-menu {
     min-width: 80%;
 }
-.login .input-group{
+
+.login .input-group {
     height: 50px;
 }
+
 .login .input-group-addon {
     padding: 0;
     border: none;
     background: none;
 }
+
 .login .form-control {
     margin-top: 8px;
     border: none;
@@ -420,24 +510,31 @@ input[type=number]::-webkit-outer-spin-button {
     box-shadow: none;
     z-index: 0 !important;
 }
-.pull-right{
+
+.pull-right {
     margin-top: 40px;
-    width: 200px;
+    width: 160px;
+
 }
-#send_code{
-    width: 200px;
+
+#h {
+    width: 160px;
     line-height: 20px;
+    float: right;
 }
+
 .login .user {
-    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/user.png")no-repeat center;
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/user.png") no-repeat center;
     background-size: 19px 24px;
     padding: 0 10px 15px 30px !important;
 }
+
 .login .key {
-    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/password.png")no-repeat center;
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/password.png") no-repeat center;
     background-size: 13px 24px;
     padding: 0 10px 15px 30px !important;
 }
+
 .login #code {
     width: 100px;
     height: 34px;
@@ -445,10 +542,12 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 5px;
     overflow: hidden;
 }
+
 .login #code img {
     width: 100px;
     height: 34px;
 }
+
 .login #emailcode {
     width: 100px;
     height: 34px;
@@ -457,36 +556,49 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 5px;
     overflow: hidden;
 }
+
 .login #emailcode img {
     width: 100px;
     height: auto;
 }
+
 .login .ipt {
     margin-top: 10px;
     border: 0;
     outline: none !important;
     box-shadow: none !important;
 }
+
 .login .btn-success {
     background: #69C72B;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
     border: none;
 }
+
 .login #code .img {
     width: 100px;
     height: 34px;
 }
-.footer{
-    margin-top: 45px;
+
+#wxLogin {
+    text-align: center;
+    height: 285px;
+    overflow: hidden;
 }
-.footer h5{
+
+.footer {
+    margin-top: 30px;
+}
+
+.footer h5 {
     font-size: 14px;
     color: #FFFFFF;
     letter-spacing: 2px;
     text-align: center;
     line-height: 22px;
 }
+
 .loading {
     background: #69c72b;
     color: #FFFFFF;
@@ -494,19 +606,22 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 5px;
     cursor: pointer;
     border: none;
-    outline:none;
+    outline: none;
     margin-left: -10px;
     margin-right: 15px;
 }
+
 .loading:hover {
     color: #FFFFFF;
     background: #69bd2b;
     text-decoration: none;
 }
-.loading span{
+
+.loading span {
     display: inline-block;
     vertical-align: middle;
 }
+
 .loading .circular {
     vertical-align: middle;
     display: inline-block;
@@ -514,15 +629,23 @@ input[type=number]::-webkit-outer-spin-button {
     width: 20px;
     animation: loading-rotate 2s linear infinite;
 }
+
 .loading .circular .path {
     animation: loading-dash 1.5s ease-in-out infinite;
-    stroke-dasharray: 90,150;
+    stroke-dasharray: 90, 150;
     stroke-dashoffset: 0;
     stroke-width: 2;
     stroke: #fff;
     stroke-linecap: round;
 }
-#tipone{color: red; margin-top: 120px; text-align: center;padding: 0}
+
+#tipone {
+    color: red;
+    margin-top: 40px;
+    text-align: center;
+    padding: 0
+}
+
 @keyframes spinner {
     0% {
         transform: rotate(0deg);
@@ -531,7 +654,8 @@ input[type=number]::-webkit-outer-spin-button {
         transform: rotate(180deg);
     }
 }
-@-webkit-keyframes  spinner {
+
+@-webkit-keyframes spinner {
     0% {
         transform: rotate(0deg);
     }
@@ -539,11 +663,13 @@ input[type=number]::-webkit-outer-spin-button {
         transform: rotate(180deg);
     }
 }
+
 @keyframes loading-rotate {
     100% {
         transform: rotate(360deg);
     }
 }
+
 @keyframes loading-dash {
     0% {
         stroke-dasharray: 1, 200;
@@ -556,5 +682,71 @@ input[type=number]::-webkit-outer-spin-button {
     100% {
         stroke-dasharray: 90, 150;
         stroke-dashoffset: -120px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .jumbotron {
+        margin: 0 auto;
+        padding-top: 100px;
+    }
+
+    #login {
+        padding: 60px;
+    }
+
+    .tit {
+        margin-top: 70px;
+    }
+
+    #test h5 {
+        margin-top: 50px;
+    }
+
+    #test .input-item {
+        margin-top: 60px;
+    }
+
+    .title-one h4 {
+        margin-top: 94px;
+        margin-bottom: 48px;
+    }
+
+    .title-one img {
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    .three .col-md-5 {
+        margin-top: 60px;
+    }
+
+    .four .form-group {
+        margin-top: 20px;
+    }
+
+    .four #row1 img {
+        width: 150px;
+    }
+
+    .four .form-control {
+        height: 40px;
+    }
+
+    #submit {
+        height: 40px;
+        margin-bottom: 30px;
+    }
+
+    #jumbotron .col-md-5 {
+        padding-top: 60px;
+    }
+
+    .login .box {
+        margin-top: 20px;
+    }
+
+    .four .form-group:nth-child(1) {
+        margin-top: 50px;
     }
 }

@@ -18,8 +18,8 @@
     <script src="./dev/js/lib/intl-tel/js/utils.js"></script>
     <link rel="stylesheet" href="./dev/js/lib/intl-tel/css/intlTelInput.css ">
 </head>
-<body class="login-bg">
-<div class="bg">
+<body>
+<div class="main-background"></div>
     <div class="main">
         <div class="jumbotron login" id="jumbotron">
             <div class="row" id="row1"><img src="./public/img/b_login/logo.png"></div>
@@ -31,12 +31,12 @@
 
                                 <a id="mail_login" class="tab actives" href="#email" data-toggle="tab"
                                    style="display: none;">邮箱登录</a>
-                                <a id="mobile_login" class="tab" href="#phone" data-toggle="tab" style="display: none">手机登录</a>
+                                <a id="mobile_login" class="tab" href="#phone" data-toggle="tab" style="display: none;">手机登录</a>
 
                             </p>
                         </div>
                         <div id="myTabContent" class="tab-content">
-                            <div class="tab-pane active" id="email" style="display: none;">
+                            <div class="tab-pane active" id="email" style="visibility: hidden;;">
                                 <div class="input-group" id="inputs">
                                     <span class="input-group-addon user"></span>
                                     <input type="email" class="form-control ipt" id="Emails" placeholder="请输入邮箱 ..."
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
 
-                            <div class="input-group two" id="input_v" style="display: none;">
+                            <div class="input-group two" id="input_v" style="visibility: hidden;;">
                                 <span class="input-group-addon key"></span>
                                 <input id="vernum" type="text" class="form-control"
                                        aria-label="Amount (to the nearest dollar)" autocomplete="off"
@@ -111,7 +111,7 @@
                     <div class="box">
                         <div class="row">
                             <div class="col-xs-12 text-center">
-                                <div class="wxlogin" id="wxLogin" style="text-align: center">
+                                <div class="wxlogin" id="wxLogin"  >
                                 </div>
                             </div>
                         </div>
@@ -123,6 +123,7 @@
                 <h5 class="text-center" id="warning_mobile" style="display: none;">提示：如果您已经是艾瑞数据用户可以尝试用手机号或者微信扫码直接登录。</h5>
             </div>
         </div>
+      <div style="clear: both;"></div>
     </div>
     <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
     <script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>

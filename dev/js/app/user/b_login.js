@@ -2,45 +2,6 @@
  * user login js
  */
 define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
-    $('.tab-p a').click(function () {
-        $(this).addClass('actives').siblings().removeClass('actives');
-    });
-    var resource = Helper.getQuery('resource');
-
-    if (resource == 'overseas') {
-        $("#email").show();
-        $("#mobile_login").show();
-        $("#mail_login").show();
-        $("#input_v").show()
-        $("#mail_login").addClass('actives');
-        $("#warning_overseas").show();
-        $("#warning_mobile").hide();
-
-    } else {
-        $("#mobile_login").show();
-        $('#input_v').show();
-        $("#email").removeClass('active');
-        $("#mail_login").removeClass('actives');
-        $('#email').hide();
-        $('#phone').addClass('active');
-        $('#mobile_login').addClass('actives');
-        $("#warning_overseas").hide();
-        $("#warning_mobile").show();
-    }
-
-    $("#send_code").fadeIn();
-
-    $("#code_img").click(function () {
-        $(this).attr('src', '?m=service&a=charCode&' + Math.random());
-    });
-
-    $("#tel").intlTelInput({
-        formatOnDisplay: false,
-        preferredCountries: ["cn", "hk", "tw", "us", "jp"],
-        onlyCountries: ["cn", "hk", "mo", "tw", "us", "gb", "fr", "de", "au", "kr", "jp", "sg"],
-        initialCountry: "cn",
-        utilsScript: "./dev/js/lib/intl-tel/js/utils.js"
-    });
 
 
     var checkFormat = function (lt) {
@@ -150,6 +111,49 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
     //action
     $(function () {
+
+        $('.tab-p a').click(function () {
+            $(this).addClass('actives').siblings().removeClass('actives');
+        });
+        var resource = Helper.getQuery('resource');
+
+        if (resource == 'overseas') {
+            $("#email").css( {visibility: "visible"});
+            $("#mobile_login").fadeIn();
+            $("#mail_login").fadeIn();
+            $("#input_v").css( {visibility: "visible"})
+            $("#mail_login").addClass('actives');
+            $("#warning_overseas").show();
+            $("#warning_mobile").hide();
+
+        } else {
+            $("#mobile_login").fadeIn();
+            $('#input_v').css( {visibility: "visible"});
+            $("#email").removeClass('active');
+            $("#mail_login").removeClass('actives');
+            $('#email').css( {visibility: "hidden"});
+            $('#phone').addClass('active');
+            $('#mobile_login').addClass('actives');
+            $("#warning_overseas").hide();
+            $("#warning_mobile").show();
+        }
+
+        $("#send_code").fadeIn();
+
+        $("#code_img").click(function () {
+            $(this).attr('src', '?m=service&a=charCode&' + Math.random());
+        });
+
+        $("#tel").intlTelInput({
+            formatOnDisplay: false,
+            preferredCountries: ["cn", "hk", "tw", "us", "jp"],
+            onlyCountries: ["cn", "hk", "mo", "tw", "us", "gb", "fr", "de", "au", "kr", "jp", "sg"],
+            initialCountry: "cn",
+            utilsScript: "./dev/js/lib/intl-tel/js/utils.js"
+        });
+
+
+
         $('#tipone').fadeOut();
         window.localStorage.clear();
 
