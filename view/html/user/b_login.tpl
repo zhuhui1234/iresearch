@@ -107,7 +107,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5" id="wechat">
                     <div class="box">
                         <div class="row">
                             <div class="col-xs-12 text-center">
