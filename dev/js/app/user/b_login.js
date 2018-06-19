@@ -127,6 +127,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             $("#warning_mobile").hide();
 
         } else {
+
+            $("#mobile_login").attr("style", "border:none!important");
             $("#mobile_login").fadeIn();
             $('#input_v').css( {visibility: "visible"});
             $("#email").removeClass('active');
