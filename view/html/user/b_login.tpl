@@ -99,7 +99,7 @@
                                 <div class="col-md-12">
                                     <div id="tip" class="text-center"></div>
                                 </div>
-                                <div class="col-md-12" style="margin-bottom: 30px">
+                                <div class="col-md-12" style="margin-bottom: 30px;height: 30px">
                                     <!--loading加载-->
                                     <div class="spinner test-center" id="spinner" style="margin: 0 auto;"><i></i></div>
                                 </div>

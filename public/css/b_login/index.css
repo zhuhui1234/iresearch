@@ -38,17 +38,17 @@ body button{
 }
 
 .main {
-    /*background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/bg_one.png");*/
-    background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/bg_two.png");
+    background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/background-img.png");
+    /*background-image: url("../img/background-img.png");*/
     background-repeat: no-repeat;
     position: relative;
     z-index: 200;
     background-size: 100% auto;
 }
- .jumbotron {
+.jumbotron {
     background: none;
-     width: 60%;
-     margin: 0 auto;
+    width: 60%;
+    margin: 0 auto;
 }
 .jumbotron p{
     font-size: 0;
@@ -112,20 +112,20 @@ body button{
     padding: 0 28px;
     font-size: 14px;
 }
- .btn .btn-success {
+.btn .btn-success {
     background: #69C72B;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.19);
     border-radius: 5px;
     outline:none;
-     border: none;
-     margin-top: 70px;
+    border: none;
+    margin-top: 70px;
 }
 .four #identifying {
     border-radius: 5px;
     text-align: center;
     color: white
 }
- .tits {
+.tits {
     font-size: 14px;
     margin-top: 20px;
     line-height: 24px;
@@ -165,15 +165,15 @@ body button{
 .title-one{
     text-align: center;
 }
-  .title-one h4{
+.title-one h4{
     font-size: 24px;
     color: #494A4B;
     letter-spacing: 1.23px;
     line-height: 24px;
     margin-top: 40px;
-      margin-bottom: 20px;
+    margin-bottom: 20px;
 }
- .title-one h5{
+.title-one h5{
     font-size: 16px;
     color: #515354;
     letter-spacing: 1px;
@@ -181,18 +181,18 @@ body button{
     line-height: 30px;
 }
 
- .title-one img{
-     width: 220px;
-     height: auto;
-     text-align: center;
-     margin-bottom: 20px;
- }
- .three .col-md-5{
-     padding: 40px;
- }
+.title-one img{
+    width: 220px;
+    height: auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.three .col-md-5{
+    padding: 40px;
+}
 .three #row2{
     background: #ffffff;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
     border-radius: 7px;
 }
@@ -266,24 +266,24 @@ body button{
     text-align: center;
     margin-top: 25px;
 }
- .tab-p a {
-     font-size: 18px;
-     color: #666666;
-     letter-spacing: 1.03px;
-     line-height: 24px;
+.tab-p a {
+    font-size: 18px;
+    color: #666666;
+    letter-spacing: 1.03px;
+    line-height: 24px;
     border-bottom: 3px solid #ECECEC;;
     padding: 0 12px 8px 12px;
     text-decoration: none;
-     margin-bottom: 15px;
+    margin-bottom: 15px;
 }
- .tab-p{
+.tab-p{
     color: #666666;
     letter-spacing: 1.03px;
     line-height: 30px;
 }
 
 .tit{
-    margin-top: 30px;
+    margin-top: 40px;
     margin-left: 50px;
     background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/leftone.png") no-repeat;
     background-position:left center;
@@ -310,7 +310,8 @@ body button{
 }
 #test .input-item {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 #test .now {
     background: #FFFFFF;
@@ -323,7 +324,7 @@ body button{
     font-size: 20px;
     margin-right: 2%;
 }
- .spinner {
+.spinner {
     font-size: 30px;
     width: 1em;
     height: 1em;
@@ -332,7 +333,7 @@ body button{
     border-radius: 50%;
     box-shadow: inset 0 0 0 .1em rgba(58, 168, 237, .2);
 }
- .spinner i {
+.spinner i {
     position: absolute;
     clip: rect(0, 1em, 1em, .5em);
     width: 1em;
@@ -347,7 +348,7 @@ body button{
         transform: rotate(180deg);
     }
 }
- .spinner i:after {
+.spinner i:after {
     position: absolute;
     clip: rect(0, 1em, 1em, .5em);
     width: 1em;
@@ -368,10 +369,10 @@ body button{
 #test #tip {
     color: red;
 }
- #jumbotron .col-md-7 {
+#jumbotron .col-md-7 {
     border-right: 2px solid #eeeeee;
-     overflow: hidden;
-     /*padding-top: 30px;*/
+    overflow: hidden;
+    /*padding-top: 30px;*/
 }
 #test .now:focus {
     border: 1px #B4EC51 solid;
@@ -422,7 +423,7 @@ input[type=number]::-webkit-outer-spin-button {
     min-width: 80%;
 }
 .login .input-group{
-      height: 50px;
+    height: 50px;
 }
 .login .input-group-addon {
     padding: 0;
@@ -640,10 +641,13 @@ input[type=number]::-webkit-outer-spin-button {
         margin-top: 20px;
     }
     .four .form-group:nth-child(1){
-    margin-top: 50px;
+        margin-top: 50px;
     }
     .wechat{
         padding-top: 0;
+    }
+    .login #row2{
+        margin-top: 60px;
     }
 
 }
