@@ -18,7 +18,7 @@ define(['helper', 'app/main'], function (Helper) {
             console.log(pData);
             if (($.trim(pData.username).length <= 0) ||
                 ($.trim(pData.companyName).length <= 0) ||
-                ($.trim(pData.position).length <= 0) ||
+                // ($.trim(pData.position).length <= 0) ||
                 ($.trim(pData.menuID).length <= 0) ||
                 ($.trim(pData.mail).length <= 0) ||
                 ($.trim(pData.region).length <= 0 && pData.region == '0') || pData.industry == '0') {
@@ -37,5 +37,9 @@ define(['helper', 'app/main'], function (Helper) {
 
 
         });
+    });
+
+    $('#charCode').click(function () {
+        $(this).attr('src', '?m=service&a=charCode&' + Math.random());
     });
 });
