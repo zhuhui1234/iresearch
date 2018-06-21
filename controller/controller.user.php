@@ -444,6 +444,57 @@ class UserController extends Controller
         );
     }
 
+
+    /**
+     * 更新注册信息
+     */
+    public function b_trialApply()
+    {
+        $data['token'] = $this->userInfo['token'];
+        $data = $this->userDetail;
+        $data['loginStatus'] = $this->loginStatus;
+//        $userInfo = json_decode($this->model->getMyInfo(), true);
+        $userInfo = json_decode($this->userDetail, true);
+        $bindingUserInfo = json_decode($this->model->bindUserInfo($userInfo), true);
+        $userInfo = $userInfo['data'];
+        $userModel = Model::instance('user');
+        $menu = json_decode($userModel->showMenu(), true);
+        $menu = $menu['data']['dataList'];
+        $menu = fillMenu($menu);
+        $region = json_decode($userModel->regionList([
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
+        ]), true);
+        $industry = json_decode($userModel->industryList([
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
+        ]), true);
+
+        View::instance('b_apply/apply.tpl')->show(
+            [
+                'username' => $userInfo['uname'],
+                'company' => $userInfo['company'],
+                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
+                'expireDate' => substr($this->userInfo['validity'], 0, 10),
+                'avatar' => $userInfo['headImg'],
+                'permissions' => $this->userInfo['permissions'],
+                'uname' => $userInfo['uname'],
+                'position' => $userInfo['position'],
+                'wechat' => $bindingUserInfo['data']['weixin']['type'],
+                'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
+                'menu' => $menu,
+                'titleMenu' => $menu[1]['subMenu'],
+                'ppname' => $this->request()->get('ppname'),
+                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+                'regionList' => $region['data'],
+                'industrylist' => $industry['data']
+            ]
+        );
+    }
+
+
+
+
     /**
      * edit User Info
      */
