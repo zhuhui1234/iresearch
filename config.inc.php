@@ -46,7 +46,7 @@ define('FORGOTPWD_MAILADDR', 'irv@iresearch.com.cn');
 define('AUTOLOAD_COMPOSER', ROOT_PATH . 'vendor' . DS . 'autoload.php');
 //导出报表配
 //define('API_URL', 'http://180.169.19.208/iview_deskapi/');
-define('API_URL', 'http://localhost/idata_deskapi/');
+define('API_URL', 'http://127.0.0.1/idata_deskapi/');
 //define('API_URL', 'http://42.159.231.97/idata_deskapi3/');
 //define('IMG_URL', 'http://203.156.255.168/iview_deskapi/');
 define('IMG_URL', 'http://localhost/idata_deskapi_new/');
@@ -155,12 +155,20 @@ if (!isLoginState()
     AND $_GET['a'] != 'xvt'
     AND $_GET['a'] != 'xut'
     AND $_GET['a'] != 'ad'
+    AND $_GET['a'] != 'vt'
+    AND $_GET['a'] != 'ut'
+    AND $_GET['a'] != 'adt'
     AND $_GET['a'] != 'xvtSearchAPI'
     AND $_GET['a'] != 'classicSys'
     AND $_GET['a'] != 'checkMail'
     AND $_GET['a'] != 'ircJump'
     AND $_GET['a'] != 'test'
     AND $_GET['a'] != 'sendNationSMS'
+    AND $_GET['a'] != 'safeLoginAPI'
+    AND $_GET['a'] != 'b_login'
+    AND $_GET['a'] != 'doooooooom'
+    AND $_GET['a'] != 'charCode'
+    AND $_GET['a'] != 'b_trialApply'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {
