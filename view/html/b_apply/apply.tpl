@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group clearfix">
                         <label class="col-sm-3 control-label newt">行业
-                            <span></span>
+                            <span class="spans">*</span>
                         </label>
                         <div class="col-sm-9 text-left">
                             <select class="form-control" id="industry">
@@ -89,7 +89,7 @@
                     </div>
                     <div class="form-group clearfix">
                         <label class="col-sm-3 control-label newt" id="adr">地区
-                            <span></span>
+                            <span class="spans">*</span>
                         </label>
                         <div class="col-sm-9">
                             <select class="form-control" id="city">
@@ -120,9 +120,9 @@
             </div>
             <div class="col-md-5 wxright" style="padding: 60px;">
                 <div class="row" id="bot">
-                    <img src="./public/img/b_login/GroupPC.png" style="text-align: center">
+                    <img src="{productLogoUrl}" style="text-align: center">
                     <div class=" tits">
-                        iUserTracker网络用户行为监测，是基于庞大的网民样本行为监测所建立的数据库。该数据库自2006年开始，收集包括用户网络浏览的行为、软件使用行为等详细信息，凭借多年的互联网行业研究经验，通过被监测样本的用户属性标签及多个用户行为竞争分析指标，真实反映中国互联网整体及不同用户市场的客观情况。
+                        {productIntroduce}
                     </div>
                 </div>
             </div>
