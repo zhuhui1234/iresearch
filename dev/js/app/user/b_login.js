@@ -162,16 +162,16 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         // $("#verification").getSms();
         $("#send_code").click(function (e) {
 
-            var countryCode = $("#tel").intlTelInput("getSelectedCountryData").dialCode;
+            var countryCode = $("#tel").intlTelInput("getSelectedCountryData").iso2.toUpperCase();
 
             var find_mob = function () {
-                var country_code = $("#tel").intlTelInput("getSelectedCountryData").dialCode
-                if (country_code == 86) {
-                    return $('#tel').val();
-                } else {
-                    country_code = country_code;
-                    return '+' + country_code + $('#tel').val()
-                }
+                // var country_code = $("#tel").intlTelInput("getSelectedCountryData").dialCode
+                // if (country_code == 86) {
+                //     return $('#tel').val();
+                // } else {
+                //     country_code = country_code;
+                    return $('#tel').val()
+                // }
             }
 
             if (checkFormat(login_type()) && checkCaptcha()) {

@@ -33,20 +33,10 @@
 </head>
 
 <body>
-    <div class="Topbar">
-        <div class="container">
-            <div class="links"><a href="http://group.iresearch.com.cn/" target="_blank">艾瑞集团</a>|<a href="http://www.iresearch.com.cn/" target="_blank">艾瑞咨询</a>|
-                <a href="http://data.iresearch.com.cn/" target="_blank">艾瑞数据</a>|<a href="http://capital.iresearch.com.cn/"
-                    target="_blank">艾瑞资本</a> |
-                <a href="http://www.iresearch.cn/" target="_blank">艾瑞网</a>|<a href="http://events.iresearch.cn/" target="_blank">艾瑞活动</a>|
-                <a href="http://www.iresearchchina.com/" target="_blank">English</a>
-            </div>
-        </div>
-    </div>
-
-    <!--导航-->
-    <!-- INCLUDE nav.tpl -->
-    <!--导航 end-->
+<script>
+    var IRS_pageId = 'iRView'; // 艾瑞睿见
+</script>
+<script src="http://data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
     <div class="search vt">
         <div class="container">
             <div class="row">
@@ -228,13 +218,7 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <h3 class="tit"><span>联系我们　Contact Us</span></h3>
-        <div class="contact"><span class="ico ico1"></span>400-026-2099　　<span class="ico ico2"></span>ask@iresearch.com.cn</div>
-        <div class="copy">
-            2002 - <script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script> Copyright&copy; 艾瑞数据 <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000584"><img src="http://www.iresearch.com.cn/images/record_icon.png">沪公网安备 31010402000584号</a>
-        </div>
-    </div>
+<script src="http://data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
     <script src="http://data.iresearch.com.cn/js/jquery.min.js"></script>
     <script src="http://data.iresearch.com.cn/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
