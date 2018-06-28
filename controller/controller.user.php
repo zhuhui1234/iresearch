@@ -469,7 +469,11 @@ class UserController extends Controller
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
         ]), true);
-
+        $productInfo = json_decode($userModel->productInfo([
+            'pdt_id' => $this->request()->get('menuID'),
+            'token' => $this->userInfo['token'],
+            'userID' => $this->userInfo['userID']
+        ]), true);
         View::instance('b_apply/apply.tpl')->show(
             [
                 'username' => $userInfo['uname'],
@@ -487,7 +491,9 @@ class UserController extends Controller
                 'ppname' => $this->request()->get('ppname'),
                 'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
                 'regionList' => $region['data'],
-                'industrylist' => $industry['data']
+                'industrylist' => $industry['data'],
+                'productIntroduce' => $productInfo['data'][0]['pdt_intro'],
+                'productLogoUrl' => $productInfo['data'][0]['pdt_logo_url'],
             ]
         );
     }
@@ -845,14 +851,19 @@ class UserController extends Controller
 
     public function trialApplyAPI()
     {
+        $getVcode = Session::instance()->get('vcodes');
         $data = $this->request()->post('data');
-        $data['pdt_id'] = $data['menuID'];
-        $data['userID'] = $data['u_id'] = $this->userInfo['userID'];
-        $data['companyID'] = $this->userInfo['companyID'];
-        $data['mobile'] = $this->userInfo['mobile'];
-        $data['mail'] = $data['mail'];
-        $data['token'] = $data['TOKEN'] = $this->userInfo['token'];
-        echo $this->model->trialApply($data);
+        if ($getVcode == $data['vCode']) {
+            $data['pdt_id'] = $data['menuID'];
+            $data['userID'] = $data['u_id'] = $this->userInfo['userID'];
+            $data['companyID'] = $this->userInfo['companyID'];
+            $data['mobile'] = $this->userInfo['mobile'];
+            $data['mail'] = $data['mail'];
+            $data['token'] = $data['TOKEN'] = $this->userInfo['token'];
+            echo $this->model->trialApply($data);
+        }else{
+            echo json_encode(['resCode' => -1, 'resMsg' => '输入的图形验证码错误']);
+        }
     }
 
 

@@ -674,6 +674,12 @@ class UserModel extends API
         return $this->_curlPost($url, $data, 'getUserInfoByIRD');
     }
 
+    public function productInfo($data)
+    {
+        $url = API_URL . '?m=user&a=productInfo';
+        return $this->_curlPost($url, $data, 'productInfo');
+    }
+
 
     ######################################################################################
     ##################################                     ###############################
