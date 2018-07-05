@@ -186,7 +186,7 @@ class IndexController extends Controller
     public function iAppCheck()
     {
 
-        header("Location:" . 'http://ircloud.iresearchdata.cn/ircloud-app-check/check?token=' . $this->userInfo['token']);
+        header("Location:" . 'http://ircloud.iresearchdata.cn/ircloud-app/login?token=' . $this->userInfo['token']);
     }
 
     /**
