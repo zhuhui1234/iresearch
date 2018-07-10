@@ -1232,21 +1232,22 @@ class IndexController extends Controller
                             }
                         }
 
-                        if ($datum['pdt_id'] == 49) {
+
+                        if ($datum['pdt_id'] == 56) {
 
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_beta_iut'] = '开始使用(BETA)';
+                                $data['apply_beta_iut'] = '开始使用新版(BETA)';
                                 $data['apply_beta_iut_en'] = 'English Version';
                             } else {
-                                $data['apply_beta_iut'] = '申请试用';
+//                                $data['apply_beta_iut'] = '申请试用';
 //                                $data['apply_beta_iut_en'] = 'Trial';
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_beta_mut'] = '开始使用(BETA)';
+                                $data['apply_beta_mut'] = '开始使用新版(BETA)';
                                 $data['apply_beta_mut_en'] = 'English Version';
                             } else {
-                                $data['apply_beta_mut'] = '申请试用';
+//                                $data['apply_beta_mut'] = '';
 //                                $data['apply_beta_mut_en'] = 'Trial';
                             }
                         }
