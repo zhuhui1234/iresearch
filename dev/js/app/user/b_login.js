@@ -170,7 +170,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 //     return $('#tel').val();
                 // } else {
                 //     country_code = country_code;
-                    return $('#tel').val()
+                    return String(parseInt($('#tel').val()))
                 // }
             }
 
