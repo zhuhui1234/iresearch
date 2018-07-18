@@ -186,7 +186,7 @@ class IndexController extends Controller
     public function iAppCheck()
     {
 
-        header("Location:" . 'http://ircloud.iresearchdata.cn/ircloud-app/login?token=' . $this->userInfo['token']);
+        header("Location:" . 'http://ircloud.iresearchdata.cn/ircloud-app/login?token=' . $this->userInfo['token'] . $this->request()->get('redirect'));
     }
 
     /**
@@ -194,42 +194,66 @@ class IndexController extends Controller
      */
     public function xAdt()
     {
-        header("Location:" . 'http://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token']);
+        if (!empty($this->request()->get('redirect'))) {
+            $redirect = '&redirect=' . $this->request()->get('redirect');
+        } else {
+            $redirect = '';
+        }
+
+        header("Location:" . 'http://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function xUserTracker()
     {
-        header("Location:" . 'http://irv.iresearch.com.cn/ut/login?language=zh&token=' . $this->userInfo['token']);
+        if (!empty($this->request()->get('redirect'))) {
+            $redirect = '&redirect=' . $this->request()->get('redirect');
+        } else {
+            $redirect = '';
+        }
+        header("Location:" . 'http://irv.iresearch.com.cn/ut/login?language=zh&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function mst()
     {
-        header("Location:" . 'http://st.iresearchdata.cn/web/login?token=' . $this->userInfo['token']);
+        if (!empty($this->request()->get('redirect'))) {
+            $redirect = '&redirect=' . $this->request()->get('redirect');
+        } else {
+            $redirect = '';
+        }
+        header("Location:" . 'http://st.iresearchdata.cn/web/login?token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function testAdt()
     {
+        if (!empty($this->request()->get('redirect'))) {
+            $redirect = '&redirect=' . $this->request()->get('redirect');
+        } else {
+            $redirect = '';
+        }
         header("Location:" . 'http://irv.iresearch.com.cn/adt2/?language=zh-CN&token=' . $this->userInfo['token']);
     }
 
     public function iCloudInApp()
     {
-
-        $data = array(
-            'url' => 'http://ircloud.iresearchdata.cn/ircloud-inapp/login?token=' . $this->userInfo['token']
-        );
+        if (!empty($this->request()->get('redirect'))) {
+            $redirect = '&redirect=' . $this->request()->get('redirect');
+        } else {
+            $redirect = '';
+        }
+        $data = array('url' => 'http://ircloud.iresearchdata.cn/ircloud-inapp/login?token=' . $this->userInfo['token'] . $redirect);
 
         header("Location:" . $data['url']);
     }
 
     public function iCloudOneMedia()
     {
+        if (!empty($this->request()->get('redirect'))) {
+            $redirect = '&redirect=' . $this->request()->get('redirect');
+        } else {
+            $redirect = '';
+        }
 
-        $data = array(
-            'url' => 'http://ircloud.iresearchdata.cn/one-media/login?token=' . $this->userInfo['token']
-        );
-
-        header("Location:" . $data['url']);
+        header("Location:" . 'http://ircloud.iresearchdata.cn/one-media/login?token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**
@@ -237,18 +261,34 @@ class IndexController extends Controller
      */
     public function iECTracker()
     {
-        header("Location:" . 'http://ect.itracker.cn/nloginv2/?token=' . $this->userInfo['token']);
+        if (!empty($this->request()->get('redirect'))) {
+            $redirect = '&redirect=' . $this->request()->get('redirect');
+        } else {
+            $redirect = '';
+        }
+
+        header("Location:" . 'http://ect.itracker.cn/nloginv2/?token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function test_adt()
     {
-        header('Location:http://irv.iresearch.com.cn/adt_test/?language=zh-CN&token=' . $this->userInfo['token']);
+        if (!empty($this->request()->get('redirect'))) {
+            $redirect = '&redirect=' . $this->request()->get('redirect');
+        } else {
+            $redirect = '';
+        }
+        header('Location:http://irv.iresearch.com.cn/adt_test/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
 
     public function test_ut()
     {
-        header('Location:http://irv.iresearch.com.cn/test_ut/?language=zh-CN&token=' . $this->userInfo['token']);
+        if (!empty($this->request()->get('redirect'))) {
+            $redirect = '&redirect=' . $this->request()->get('redirect');
+        } else {
+            $redirect = '';
+        }
+        header('Location:http://irv.iresearch.com.cn/test_ut/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**

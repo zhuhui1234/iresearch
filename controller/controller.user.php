@@ -101,6 +101,12 @@ class UserController extends Controller
         $pdt_id = $this->request()->get('pro');
         $from = $this->request()->get('from');
         $guid = $this->request()->get('guid');
+        if (!empty($this->request()->get('redirect'))) {
+            $redirect = '&redirect=' . $this->request()->get('redirect');
+        } else {
+            $redirect = '';
+        }
+
         $irdStatus = '1';
 
         $mobile = "1";
@@ -245,11 +251,11 @@ class UserController extends Controller
                                     break;
 
                                 default:
-                                    header('Location: ' . $getPermission['data']['data']['pdt_url']);
+                                    header('Location: ' . $getPermission['data']['data']['pdt_url'] . $redirect);
                                     exit();
                             }
                         } else {
-                            header('Location: ' . $getPermission['data']['data']['pdt_url']);
+                            header('Location: ' . $getPermission['data']['data']['pdt_url'] . $redirect);
                             exit();
                         }
 
@@ -497,8 +503,6 @@ class UserController extends Controller
             ]
         );
     }
-
-
 
 
     /**
@@ -861,7 +865,7 @@ class UserController extends Controller
             $data['mail'] = $data['mail'];
             $data['token'] = $data['TOKEN'] = $this->userInfo['token'];
             echo $this->model->trialApply($data);
-        }else{
+        } else {
             echo json_encode(['resCode' => -1, 'resMsg' => '输入的图形验证码错误']);
         }
     }
@@ -1155,7 +1159,7 @@ class UserController extends Controller
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
         ]);
-        $userInfo = json_decode($userInfo,true);
+        $userInfo = json_decode($userInfo, true);
         $userInfo = $userInfo['data'];
         $bindingUserInfo = json_decode($this->model->bindUserInfo($this->userInfo), true);
 
