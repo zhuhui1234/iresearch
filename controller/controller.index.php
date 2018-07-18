@@ -213,6 +213,11 @@ class IndexController extends Controller
         header("Location:" . 'http://irv.iresearch.com.cn/ut/login?language=zh&token=' . $this->userInfo['token'] . $redirect);
     }
 
+    public function testUserTracker()
+    {
+        header("Location:" . 'http://irv.iresearch.com.cn/ut_test/login?language=zh&token=' . $this->userInfo['token']);
+    }
+
     public function mst()
     {
         if (!empty($this->request()->get('redirect'))) {
