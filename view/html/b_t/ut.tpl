@@ -35,10 +35,10 @@
                         <div class="main-left">
                             <div class="row">
                                 <div class="col-sm-6 move2">
-                                    <a href="javascript:;" class="move-a "> <span class="span1">移动APP指数</span><img src="./public/img/b_t/vtdd.png" class="img1"><span class="spanline" style="width:1px;float: right;">|</span></a>
+                                    <a href="//index.iresearch.com.cn/app" class="move-a "> <span class="span1">移动APP指数</span><img src="./public/img/b_t/vtdd.png" class="img1"><span class="spanline" style="width:1px;float: right;">|</span></a>
                                 </div>
                                 <div class="col-sm-6 move3">
-                                    <a href="javascript:;" class="move-a "><span class="span1">PC Web指数</span><img src="./public/img/b_t/vtdd.png" class="img2"></a>
+                                    <a href="//index.iresearch.com.cn/pc" class="move-a "><span class="span1">PC Web指数</span><img src="./public/img/b_t/vtdd.png" class="img2"></a>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                             </dl></a>
                     </div>
                     <div class="col-xs-6">
-                        <a href="?m=user&a=jump&pro=49&p=iut"><dl class="line-h">
+                        <a href="{iut_oldurl}"><dl class="line-h">
                                 <dt class="text-center"><img src="./public/img/b_t/PC.png"></dt>
                                 <dd class="text-center">PC终端服务</dd>
                             </dl></a>
