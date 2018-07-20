@@ -111,7 +111,7 @@
                             <div class="new" id="new-one" onclick="window.location.href='?m=user&a=jump&pro=45'">{apply_ivt}</div>
                         </div>
 
-                        <div class="col-md-8 col-sm-6 col-xs-12  old" ><a href="ivt_oldurl">{apply_beta_ivt}</a></div>
+                        <div class="col-md-8 col-sm-6 col-xs-12  old" ><a href="{ivt_oldurl}">{apply_beta_ivt}</a></div>
                     </div>
                 </div>
                 <div class="col-md-4 leftimg">

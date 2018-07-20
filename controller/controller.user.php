@@ -71,7 +71,7 @@ class UserController extends Controller
             'mobile' => "1",
             'title' => WEBSITE_TITLE
         );
-        View::instance('user/login.tpl')->show($data);
+        View::instance('user/b_login.tpl')->show($data);
     }
 
     public function b_login()
@@ -264,7 +264,7 @@ class UserController extends Controller
                 } else {
 
                     if (($getPermission['resCode'] == '40004')) {
-                        View::instance('user/login.tpl')->show([
+                        View::instance('user/b_login.tpl')->show([
                             'loginStatus' => $this->loginStatus,
                             'expired' => 1,
                             'mobile' => $mobile,
@@ -323,7 +323,7 @@ class UserController extends Controller
                     $uid = json_decode($this->model->getIRVuserid($uid), true);
 
                     if ($uid['resCode'] == '000000') {
-                        View::instance('user/login.tpl')->show([
+                        View::instance('user/b_login.tpl')->show([
                             'loginStatus' => $this->loginStatus,
                             'irdStatus' => $irdStatus,
                             'mobile' => $mobile,
@@ -341,7 +341,7 @@ class UserController extends Controller
                     }
                 } else {
 
-                    View::instance('user/login.tpl')->show([
+                    View::instance('user/b_login.tpl')->show([
                         'loginStatus' => $this->loginStatus,
                         'mobile' => $mobile,
                         'irdStatus' => $irdStatus,
@@ -406,7 +406,7 @@ class UserController extends Controller
     /**
      * 更新注册信息
      */
-    public function trialApply()
+    public function b_trialApply()
     {
         $data['token'] = $this->userInfo['token'];
         $data = $this->userDetail;
@@ -454,7 +454,7 @@ class UserController extends Controller
     /**
      * 更新注册信息
      */
-    public function b_trialApply()
+    public function trialApply()
     {
         $data['token'] = $this->userInfo['token'];
         $data = $this->userDetail;
