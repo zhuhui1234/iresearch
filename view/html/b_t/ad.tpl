@@ -61,7 +61,7 @@
                             </dl></a>
                     </div>
                     <div class="col-xs-3 line">
-                        <a href=""><dl class="line-h">
+                        <a href="?m=user&a=jump&pro=42"><dl class="line-h">
                                 <dt class="text-center"><img src="./public/img/b_t/OTT.png"></dt>
                                 <dd class="text-center">OTT终端服务</dd>
                             </dl></a>

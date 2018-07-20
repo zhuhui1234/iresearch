@@ -32,7 +32,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 text-left move">
-                    <div class="nav-left"><a href="">网络影视指数<img src="./public/img/b_t/log.png"></a></div>
+                    <div class="nav-left"><a href="//index.iresearch.com.cn/Video/">网络影视指数<img src="./public/img/b_t/log.png"></a></div>
                 </div>
                 <div class="col-md-5" id="title">
                     <h3 style="text-align: center">网络视频内容市场监测</h3>
@@ -44,19 +44,19 @@
             </div>
             <div class="row" id="navs">
                 <div class="col-xs-4  line">
-                    <a href=""><dl class="line-h">
+                    <a href="?m=user&a=jump&pro=18"><dl class="line-h">
                             <dt class="text-center"><img src="./public/img/b_t/mobile.png"></dt>
                             <dd class="text-center">移动终端服务</dd>
                         </dl></a>
                 </div>
                 <div class="col-xs-4 line">
-                    <a href=""><dl class="line-h">
+                    <a href="?m=user&a=jump&pro=45"><dl class="line-h">
                             <dt class="text-center"><img src="./public/img/b_t/PC.png"></dt>
                             <dd class="text-center">PC终端服务</dd>
                         </dl></a>
                 </div>
                 <div class="col-xs-4 ">
-                    <a href=""><dl class="line-h">
+                    <a href="?m=user&a=jump&pro=19"><dl class="line-h">
                             <dt class="text-center"><img src="./public/img/b_t/OTT.png"></dt>
                             <dd class="text-center">OTT终端服务</dd>
                         </dl></a>
