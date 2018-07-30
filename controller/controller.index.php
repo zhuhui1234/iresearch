@@ -235,7 +235,7 @@ class IndexController extends Controller
         } else {
             $redirect = '';
         }
-        header("Location:" . 'http://irv.iresearch.com.cn/adt2/?language=zh-CN&token=' . $this->userInfo['token']);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt2/login?language=zh-CN&token=' . $this->userInfo['token']);
     }
 
     public function iCloudInApp()
