@@ -56,6 +56,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         $('#spinner').css('display', "none");
         $('.input-item .now:first').focus();
         $('.now').keydown(function (e) {
+            e = window.event || evt; //解决兼容问题
             if (e.keyCode >= 48 && e.keyCode <= 57) {
                 $(this).attr("type", "text");
             }
@@ -118,10 +119,10 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         var resource = Helper.getQuery('resource');
 
         if (resource == 'overseas') {
-            $("#email").css( {visibility: "visible"});
+            $("#email").css({visibility: "visible"});
             $("#mobile_login").fadeIn();
             $("#mail_login").fadeIn();
-            $("#input_v").css( {visibility: "visible"})
+            $("#input_v").css({visibility: "visible"})
             $("#mail_login").addClass('actives');
             $("#warning_overseas").show();
             $("#warning_mobile").hide();
@@ -130,10 +131,10 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
             $("#mobile_login").attr("style", "border:none!important");
             $("#mobile_login").fadeIn();
-            $('#input_v').css( {visibility: "visible"});
+            $('#input_v').css({visibility: "visible"});
             $("#email").removeClass('active');
             $("#mail_login").removeClass('actives');
-            $('#email').css( {visibility: "hidden"});
+            $('#email').css({visibility: "hidden"});
             $('#phone').addClass('active');
             $('#mobile_login').addClass('actives');
             $("#warning_overseas").hide();
@@ -155,7 +156,6 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         });
 
 
-
         $('#tipone').fadeOut();
         window.localStorage.clear();
 
@@ -170,7 +170,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 //     return $('#tel').val();
                 // } else {
                 //     country_code = country_code;
-                    return String(parseInt($('#tel').val()))
+                return String(parseInt($('#tel').val()))
                 // }
             }
 
