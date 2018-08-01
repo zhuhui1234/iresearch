@@ -181,6 +181,15 @@ class IndexController extends Controller
     }
 
     /**
+     * adt_test
+     */
+    public function adt_test()
+    {
+
+        header("Location:" . 'http://irv.iresearch.com.cn/adt-test/login?language=zh-CN&token=' . $this->userInfo['token']);
+    }
+
+    /**
      * ir cloud
      */
     public function iAppCheck()
@@ -1446,8 +1455,10 @@ class IndexController extends Controller
      */
     public function doooooooom()
     {
-        $v = $this->cache->flushAll();
-        var_dump($v);
+        $this->cache->select(1);
+        $v = $this->cache->flushDB();
+        $this->cache->select(4);
+        $v = $this->cache->flushDB();
     }
 
 
