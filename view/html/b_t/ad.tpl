@@ -142,13 +142,99 @@
                                     开始使用（老版）
                                     <!-- ENDIF -->
                                     <!-- ENDIF -->
-                                </a></div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 leftimg">
                     <div class="col-sm-12 introduceringt3"><img src="./public/img/b_t/vtbg3.png"></div>
                     <div class="col-sm-12 introduceringt2" ><img src="./public/img/b_t/adPC.png" ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="value">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9 col-md-push-3">
+                    <div class="value-right">
+                        <div class="row">
+                            <div class="col-sm-12 title">
+                                <h5>产品简介</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 titleone">
+                                mVideoTracker移动端视频市场监测，基于运营商级别的用户观看移动网络视频内容的收视行为数据，监测主流视频内容提供商不同频道、类型和产地的收视情况，洞察视频内容在不同 视频内容提供商的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好程度，监控视频内容在各时段的收视趋势，为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 title">
+                                <h5>产品价值</h5>
+                            </div>
+                        </div>
+                        <div class="row worth">
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <ul class="list-group">
+                                    <li class="list-group-item">视频内容提供商</li>
+                                    <li class="list-group-item"><span class="dot"></span>洞察 : 竞争媒体不同类型移动端视频内容收视情况，为视频内容提供商购买版权、内容制作提供决策依据。</li>
+                                    <li class="list-group-item"><span class="dot"></span>监测 : 单部视频在不同竞争媒体的收视差异和趋势变化，为视频内容提供商证明广告营销价值。</li>
+                                    <li class="list-group-item"><span class="dot"></span>发掘 : 竞争媒体的内容收视热点变化，为视频内容提供商调整视频内容推荐策略提供量化依据。</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <ul class="list-group">
+                                    <li class="list-group-item">视频内容制作商</li>
+                                    <li class="list-group-item"><span class="dot"></span>统计 : 视频内容在主流播放渠道的总体收视趋势，为内容制作商证明内容收视品质。</li>
+                                    <li class="list-group-item"><span class="dot"></span>支持：不同属性用户的收视喜好偏向调整制作内容类型，为内容制作商生产内容提供数据支持。</li>
+                                    <li class="list-group-item"><span class="dot"></span>对比 : 不同类型移动端视频内容在各媒体的收视差异，为内容制作商选择内容播放渠道提供决策依据。</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <ul class="list-group">
+                                    <li class="list-group-item">广告公司及广告主</li>
+                                    <li class="list-group-item"><span class="dot"></span>分析：移动端视频内容的人群属性、终端和地区偏向程度，精准投放视频广告，提升广告投放效果。</li>
+                                    <li class="list-group-item"><span class="dot"></span>挖掘：聚焦目标用户的内容收视偏好，为移动端视频广告投放质量提供数据依据。</li>
+                                    <li class="list-group-item"><span class="dot"></span>监控：移动端视频内容不同时段的收视情况和峰谷变化，调整广告投放定向时段，优化广告投放策略。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="value-left" >
+                                <div class="col-md-4 col-sm-6 col-xs-12  ">
+                                    <div class="text-new">
+                                        <div class="new" id="new" onclick="window.location.href='?m=user&a=jump&pro=42'">
+                                            <!-- IF token=="1" -->
+                                            登入使用
+                                            <!-- ELSE -->
+                                            <!-- IF apply=="2" -->
+                                            开始使用
+                                            <!-- ELSE -->
+                                            申请试用
+                                            <!-- ENDIF -->
+                                            <!-- ENDIF -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-6 col-xs-12  old" ><a href="{adUrl}">
+                                        <!-- IF token=="1" -->
+                                        <!-- ELSE -->
+                                        <!-- IF apply=="2" -->
+                                        开始使用（老版）
+                                        <!-- ENDIF -->
+                                        <!-- ENDIF -->
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-md-pull-9 leftimg">
+                    <div class="col-sm-12 introduceringt3"><img src="./public/img/b_t/ad_two.png"></div>
+                    <div class="col-sm-12 introduceringt2" ><img src="./public/img/b_t/ad_mobile.png" ></div>
                 </div>
             </div>
         </div>
