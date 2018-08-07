@@ -181,6 +181,14 @@ class IndexController extends Controller
     }
 
     /**
+     * 智云新媒体DEMO
+     */
+    public function oneMediaDemo()
+    {
+        header('http://demo.ircloud.iresearchdata.cn/one-media?token='. $this->userInfo['token'] );
+    }
+
+    /**
      * adt_test
      */
     public function adt_test()
