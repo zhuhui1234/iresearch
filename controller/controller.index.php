@@ -185,7 +185,12 @@ class IndexController extends Controller
      */
     public function oneMediaDemo()
     {
-        header('http://demo.ircloud.iresearchdata.cn/one-media?token='. $this->userInfo['token'] );
+        header('Location: http://demo.ircloud.iresearchdata.cn/one-media/login?token='. $this->userInfo['token'] );
+    }
+
+    public function iadt_feedad()
+    {
+        header('Location: http://irv.iresearch.com.cn/adt_informationFlow/login?language=zh-CN&token='. $this->userInfo['token']);
     }
 
     /**
