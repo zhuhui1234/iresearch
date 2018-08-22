@@ -161,125 +161,129 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
         // $("#verification").getSms();
         $("#send_code").click(function (e) {
+            var regExp = /[A-Za-z]+/;
+            if(!regExp.test($('#tel').val())){
+                var countryCode = $("#tel").intlTelInput("getSelectedCountryData").iso2.toUpperCase();
 
-            var countryCode = $("#tel").intlTelInput("getSelectedCountryData").iso2.toUpperCase();
+                var find_mob = function () {
+                    // var country_code = $("#tel").intlTelInput("getSelectedCountryData").dialCode
+                    // if (country_code == 86) {
+                    //     return $('#tel').val();
+                    // } else {
+                    //     country_code = country_code;
+                    return String(parseInt($('#tel').val()))
+                    // }
+                }
 
-            var find_mob = function () {
-                // var country_code = $("#tel").intlTelInput("getSelectedCountryData").dialCode
-                // if (country_code == 86) {
-                //     return $('#tel').val();
-                // } else {
-                //     country_code = country_code;
-                return String(parseInt($('#tel').val()))
-                // }
-            }
+                if (checkFormat(login_type()) && checkCaptcha()) {
 
-            if (checkFormat(login_type()) && checkCaptcha()) {
+                    var da = {
+                        vCode: $("#vernum").val(),
+                        login_type: login_type(),
+                        mobile: find_mob(),
+                        email: $('#Emails').val(),
+                        country_code: countryCode
+                    };
 
-                var da = {
-                    vCode: $("#vernum").val(),
-                    login_type: login_type(),
-                    mobile: find_mob(),
-                    email: $('#Emails').val(),
-                    country_code: countryCode
-                };
+                    $('.circular').show();
+                    $("#sent").text("发送中 ...");
+                    $("#send_code").prop('disabled', true);
 
-                $('.circular').show();
-                $("#sent").text("发送中 ...");
-                $("#send_code").prop('disabled', true);
+                    Helper.post("sendCode", da, function (ret) {
+                        console.log(ret);
+                        if (ret.resCode == "000000") {
+                            var pdtID = Helper.getQuery('pro');
+                            var ppName = Helper.getQuery('ppname');
+                            var cb = Helper.getQuery('cb');
 
-                Helper.post("sendCode", da, function (ret) {
-                    console.log(ret);
-                    if (ret.resCode == "000000") {
-                        var pdtID = Helper.getQuery('pro');
-                        var ppName = Helper.getQuery('ppname');
-                        var cb = Helper.getQuery('cb');
+                            $("#login").fadeOut();
+                            $('#test').fadeIn();
+                            login_check(function () {
+                                var code = null;
+                                $('.now').each(function (i, n) {
+                                    if (code !== null) {
+                                        code = code + $(n).val();
+                                    } else {
+                                        code = $(n).val();
+                                    }
+                                });
 
-                        $("#login").fadeOut();
-                        $('#test').fadeIn();
-                        login_check(function () {
-                            var code = null;
-                            $('.now').each(function (i, n) {
-                                if (code !== null) {
-                                    code = code + $(n).val();
+                                console.log(code);
+                                var login_data = {
+                                    mobile: da.mobile,
+                                    mail: $('#Emails').val(),
+                                    verNum: code,
+                                    vCode: da.vCode,
+                                    login_type: da.login_type
+                                }
+                                console.log(login_data);
+                                if (String(code).length == 6) {
+                                    Helper.post('b_login', login_data, function (ret) {
+                                        if (ret.resCode == "000000") {
+                                            if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
+
+                                                if (pdtID !== null) {
+                                                    if (pdtID.length > 0) {
+                                                        window.location.reload();
+                                                    } else {
+                                                        // console.log('no pdtID');
+                                                        window.location.href = '?m=index&a=index';
+                                                    }
+                                                } else if (ppName !== null) {
+                                                    if (ppName.length > 0) {
+                                                        window.location.reload();
+                                                    } else {
+                                                        window.location.href = '?m=index&a=index';
+                                                        // console.log('no ppName');
+                                                    }
+                                                } else if (cb !== null) {
+                                                    switch (cb) {
+                                                        case 'usercenter':
+                                                            window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
+                                                            break;
+                                                        case 'k':
+                                                            window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
+                                                            break;
+                                                        case 'm':
+                                                            window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
+                                                            break;
+                                                    }
+
+                                                }
+
+                                            } else {
+                                                // console.log('no all');
+                                                window.location.href = '?m=index&a=index';
+                                            }
+                                        } else {
+                                            $('.spinner').fadeOut();
+                                            $('.now').val(null);
+                                            $('.input-item .now:first').focus();
+                                            $('#tip').fadeIn().text(ret.resMsg);
+
+                                        }
+
+                                    })
                                 } else {
-                                    code = $(n).val();
+                                    $("#tipone").fadeIn().text('验证码字数错误');
                                 }
                             });
 
-                            console.log(code);
-                            var login_data = {
-                                mobile: da.mobile,
-                                mail: $('#Emails').val(),
-                                verNum: code,
-                                vCode: da.vCode,
-                                login_type: da.login_type
-                            }
-                            console.log(login_data);
-                            if (String(code).length == 6) {
-                                Helper.post('b_login', login_data, function (ret) {
-                                    if (ret.resCode == "000000") {
-                                        if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
-
-                                            if (pdtID !== null) {
-                                                if (pdtID.length > 0) {
-                                                    window.location.reload();
-                                                } else {
-                                                    // console.log('no pdtID');
-                                                    window.location.href = '?m=index&a=index';
-                                                }
-                                            } else if (ppName !== null) {
-                                                if (ppName.length > 0) {
-                                                    window.location.reload();
-                                                } else {
-                                                    window.location.href = '?m=index&a=index';
-                                                    // console.log('no ppName');
-                                                }
-                                            } else if (cb !== null) {
-                                                switch (cb) {
-                                                    case 'usercenter':
-                                                        window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
-                                                        break;
-                                                    case 'k':
-                                                        window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
-                                                        break;
-                                                    case 'm':
-                                                        window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
-                                                        break;
-                                                }
-
-                                            }
-
-                                        } else {
-                                            // console.log('no all');
-                                            window.location.href = '?m=index&a=index';
-                                        }
-                                    } else {
-                                        $('.spinner').fadeOut();
-                                        $('.now').val(null);
-                                        $('.input-item .now:first').focus();
-                                        $('#tip').fadeIn().text(ret.resMsg);
-
-                                    }
-
-                                })
-                            } else {
-                                $("#tipone").fadeIn().text('验证码字数错误');
-                            }
-                        });
-
-                    } else {
-                        // $("#loading_send_code").fadeOut();
-                        $("#sent").text("发送验证码");
-                        $('.circular').hide();
-                        $("#send_code").prop('disabled', false);
-                        $("#tipone").fadeIn().text(ret.resMsg);
-                    }
-                });
+                        } else {
+                            // $("#loading_send_code").fadeOut();
+                            $("#sent").text("发送验证码");
+                            $('.circular').hide();
+                            $("#send_code").prop('disabled', false);
+                            $("#tipone").fadeIn().text(ret.resMsg);
+                        }
+                    });
 
 
+                } else {
+                    da = null;
+                }
             } else {
-                da = null;
+                $('#tipone').fadeIn().text('手机为空或不正确');
             }
 
 
