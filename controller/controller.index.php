@@ -185,12 +185,17 @@ class IndexController extends Controller
      */
     public function oneMediaDemo()
     {
-        header('Location: http://demo.ircloud.iresearchdata.cn/one-media/login?token='. $this->userInfo['token'] );
+        header('Location: http://demo.ircloud.iresearchdata.cn/one-media/login?token=' . $this->userInfo['token']);
     }
 
     public function iadt_feedad()
     {
-        header('Location: http://irv.iresearch.com.cn/adt_informationFlow/login?language=zh-CN&token='. $this->userInfo['token']);
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
+        } else {
+            $redirect = '';
+        }
+        header('Location: http://irv.iresearch.com.cn/adt-streaming/login?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**
@@ -198,8 +203,13 @@ class IndexController extends Controller
      */
     public function adt_test()
     {
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
+        } else {
+            $redirect = '';
+        }
 
-        header("Location:" . 'http://irv.iresearch.com.cn/adt-test/login?language=zh-CN&token=' . $this->userInfo['token']);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt-test/login?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**
@@ -207,8 +217,13 @@ class IndexController extends Controller
      */
     public function iAppCheck()
     {
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
+        } else {
+            $redirect = '';
+        }
 
-        header("Location:" . 'http://ircloud.iresearchdata.cn/ircloud-app/login?token=' . $this->userInfo['token'] . $this->request()->get('redirect'));
+        header("Location:" . 'http://ircloud.iresearchdata.cn/ircloud-app/login?token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**
@@ -216,19 +231,19 @@ class IndexController extends Controller
      */
     public function xAdt()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
 
-        header("Location:" . 'http://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt/login?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function xUserTracker()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -237,13 +252,18 @@ class IndexController extends Controller
 
     public function testUserTracker()
     {
-        header("Location:" . 'http://irv.iresearch.com.cn/ut_test/login?language=zh&token=' . $this->userInfo['token']);
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
+        } else {
+            $redirect = '';
+        }
+        header("Location:" . 'http://irv.iresearch.com.cn/ut_test/login?language=zh&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function mst()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -252,18 +272,18 @@ class IndexController extends Controller
 
     public function testAdt()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
-        header("Location:" . 'http://irv.iresearch.com.cn/adt2/login?language=zh-CN&token=' . $this->userInfo['token']);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt2/login?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function iCloudInApp()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -274,8 +294,8 @@ class IndexController extends Controller
 
     public function iCloudOneMedia()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -288,8 +308,8 @@ class IndexController extends Controller
      */
     public function iECTracker()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -299,8 +319,8 @@ class IndexController extends Controller
 
     public function test_adt()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -310,8 +330,8 @@ class IndexController extends Controller
 
     public function test_ut()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -1412,7 +1432,8 @@ class IndexController extends Controller
      */
     public function test()
     {
-        echo Session::instance()->get('userInfo')['token'];
+
+        var_dump(urlencode($this->request()->requestAll()['redirect']));
     }
 
     /**
