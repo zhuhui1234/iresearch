@@ -101,8 +101,8 @@ class UserController extends Controller
         $pdt_id = $this->request()->get('pro');
         $from = $this->request()->get('from');
         $guid = $this->request()->get('guid');
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
