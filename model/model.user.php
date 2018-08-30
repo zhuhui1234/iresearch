@@ -798,6 +798,23 @@ class UserModel extends API
         return $this->_curlPost($url, $data, 'msgList');
     }
 
+    public function checkUserProPer($data)
+    {
+        $url = API_URL . '?m=permissions&a=checkUserProPer';
+        return $this->_curlPost($url, $data, 'checkUserProPer');
+    }
+
+    /**
+     * get product
+     * @param $data
+     * @return mixed
+     */
+    public function getProList($data)
+    {
+        $url = API_URL . '?m=service&a=msgHeads';
+        return $this->_curlPost($url, $data, 'msgHeads');
+    }
+
     /**
      * countUnMsg
      * @param $data

@@ -270,6 +270,26 @@ class UserController extends Controller
                             'mobile' => $mobile,
                             'pdtID' => $pdt_id]);
                     } else {
+
+                        /*
+                         * 如果是信息流，则判断ADT是否有MOBILE权限，如果有则过。
+                         */
+                        if ($pdt_id == 60) {
+                            $rq = [
+                                'u_id' => $this->userInfo['userID']
+                            ];
+                            $p42 = json_decode($this->model->getProList($rq), true);
+
+                            if (in_array('madt', $p42['data'])) {
+                                header('Location: ' . $getPermission['data']['data']['pdt_url'] . $redirect);
+                                exit();
+                            }else{
+                                header('Location: ?m=user&a=trialApply&ppname=' . $getPermission['data']['data']['pdt_name'] . '&menuID=' . $pdt_id);
+                                exit();
+                            }
+
+                        }
+
                         if (empty($getPermission['data']['data'])) {
                             $pro = $this->model->getProduct(['pdt_id' => $pdt_id]);
                             $pro = json_decode($pro, true);
@@ -285,8 +305,6 @@ class UserController extends Controller
                                         case 'iut':
                                             $pro['data'][0]['pdt_name'] = '用户行为监测(BETA)';
                                             break;
-
-
                                     }
                                 }
 
