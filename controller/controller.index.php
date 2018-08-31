@@ -1165,25 +1165,42 @@ class IndexController extends Controller
         View::instance('b_t/ut.tpl')->show($data);
     }
 
+    /**
+     * adt page
+     */
     public function adt()
     {
         $data = [];
         $userInfo = Session::instance()->get('userInfo');
+//        var_dump($this->userDetail['data']['productList']);
+//        exit();
+
 
         if ($this->userDetail) {
 
             if (isset($userInfo['token'])) {
                 $data['token'] = $userInfo['token'];
                 $data['apply'] = 1;
-
-                if ($this->__findPdt($this->userDetail['data']['productList'], 42)) {
+                $pdt42Detail = $this->__findPdtDetail($this->userDetail['data']['productList'], 42);
+//
+                if ($pdt42Detail) {
                     $data['apply'] = 2;
-
                 }
 
                 if ($this->__findPdt($this->userDetail['data']['productList'], 54)) {
                     $data['innerTest'] = 1;
                 }
+
+                if ($this->__findPdt($this->userDetail['data']['productList'], 60)) {
+                    $data['adtI'] = 3;
+                }else{
+                    if ($pdt42Detail) {
+                        if (date('Y-m-d h:i:s')<= $pdt42Detail['mobile_due_time']) {
+                            $data['adtI'] = 3;
+                        }
+                    }
+                }
+
             } else {
                 $data['token'] = 1;
             }
@@ -1622,6 +1639,28 @@ class IndexController extends Controller
                 if ($datum['pdt_id'] == $pdt_id) {
                     $ret = true;
                 };
+            }
+
+            return $ret;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * find product detail for user
+     *
+     * @param $product_list
+     * @param $pdt_id
+     * @return bool|mixed
+     */
+    private function __findPdtDetail($product_list, $pdt_id)
+    {
+        if (is_array($product_list)) {
+            foreach ($product_list as $datum) {
+                if ($datum['pdt_id'] == $pdt_id) {
+                    $ret = $datum;
+                }
             }
 
             return $ret;

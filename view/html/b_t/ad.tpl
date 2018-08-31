@@ -88,7 +88,8 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12 titleone">
-                                AdTracker广告投放监测由艾瑞咨询自主研发，是通过爬虫技术在几百个网站上进行图片广告监测所建立的数据库。该数据库自2001年开始，统计及计算包含门户、垂直、视频、APP等媒体上品牌客户广告投放量及投放预估费用数据，真实反映中国互联网广告市场客观情况。</div>
+                                AdTracker标准版为艾瑞自主研发的网络广告投放监测系统，包含PC、Mobile、OTT三端网络广告监测数据。AdTracker产品自2001年开始通过爬虫、API及人工监测的方法监测主流500+网站、APP的品牌广告，为互联网营销市场提供竞品广告投放量及投放费用参考，真实反应中国网络广告市场客观情况。
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 title">
@@ -118,6 +119,8 @@
                                 </ul>
                             </div>
                         </div>
+
+
                         <div class="row" style="margin-top: 50px;">
                             <div class="col-md-4 col-sm-6 col-xs-12  ">
                                 <div class="text-new">
@@ -168,7 +171,8 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12 titleone">
-                                mVideoTracker移动端视频市场监测，基于运营商级别的用户观看移动网络视频内容的收视行为数据，监测主流视频内容提供商不同频道、类型和产地的收视情况，洞察视频内容在不同 视频内容提供商的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好程度，监控视频内容在各时段的收视趋势，为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。</div>
+                                AdTracker 信息流专业版为艾瑞自主研发的信息流广告监测系统，通过爬虫对市场上主流信息流APP广告进行抓取及分拣，月覆盖30000+广告主。AdTracker 信息流专业版为互联网营销市场提供竞品信息流广告投放量及投放费用参考，真实反应中国信息流广告市场客观情况。
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 title">
@@ -178,38 +182,32 @@
                         <div class="row worth">
                             <div class="col-md-4 col-sm-12 col-xs-12">
                                 <ul class="list-group">
-                                    <li class="list-group-item">视频内容提供商</li>
-                                    <li class="list-group-item"><span class="dot"></span>洞察 : 竞争媒体不同类型移动端视频内容收视情况，为视频内容提供商购买版权、内容制作提供决策依据。</li>
-                                    <li class="list-group-item"><span class="dot"></span>监测 : 单部视频在不同竞争媒体的收视差异和趋势变化，为视频内容提供商证明广告营销价值。</li>
-                                    <li class="list-group-item"><span class="dot"></span>发掘 : 竞争媒体的内容收视热点变化，为视频内容提供商调整视频内容推荐策略提供量化依据。</li>
+                                    <li class="list-group-item">互联网公司</li>
+                                    <li class="list-group-item"><span class="dot"></span>帮助互联网公司即时掌握竞争媒体信息流广告最新客户投放情报，指导自身媒体的地区及行业销售策略。</li>
                                 </ul>
                             </div>
                             <div class="col-md-4 col-sm-12 col-xs-12">
                                 <ul class="list-group">
-                                    <li class="list-group-item">视频内容制作商</li>
-                                    <li class="list-group-item"><span class="dot"></span>统计 : 视频内容在主流播放渠道的总体收视趋势，为内容制作商证明内容收视品质。</li>
-                                    <li class="list-group-item"><span class="dot"></span>支持：不同属性用户的收视喜好偏向调整制作内容类型，为内容制作商生产内容提供数据支持。</li>
-                                    <li class="list-group-item"><span class="dot"></span>对比 : 不同类型移动端视频内容在各媒体的收视差异，为内容制作商选择内容播放渠道提供决策依据。</li>
+                                    <li class="list-group-item">投资者及分析师</li>
+                                    <li class="list-group-item"><span class="dot"></span>帮助投资者及分析师在互联网公司财报发布前了解其营销广告收入动态，为投资决策提供有效支持。</li>
                                 </ul>
                             </div>
                             <div class="col-md-4 col-sm-12 col-xs-12">
                                 <ul class="list-group">
                                     <li class="list-group-item">广告公司及广告主</li>
-                                    <li class="list-group-item"><span class="dot"></span>分析：移动端视频内容的人群属性、终端和地区偏向程度，精准投放视频广告，提升广告投放效果。</li>
-                                    <li class="list-group-item"><span class="dot"></span>挖掘：聚焦目标用户的内容收视偏好，为移动端视频广告投放质量提供数据依据。</li>
-                                    <li class="list-group-item"><span class="dot"></span>监控：移动端视频内容不同时段的收视情况和峰谷变化，调整广告投放定向时段，优化广告投放策略。</li>
+                                    <li class="list-group-item"><span class="dot"></span>帮助广告公司及广告主了解不同行业信息流广告发展现状，制定不同品牌的信息流营销预算，参考竞品投放策略，优化信息流媒体投放方案。</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="row">
                             <div class="value-left" >
-                                <div class="col-md-4 col-sm-6 col-xs-12  ">
+                                <div class="col-md-4 col-sm-6 col-xs-12   text-new" >
                                     <div class="text-new">
-                                        <div class="new" id="new" onclick="window.location.href='?m=user&a=jump&pro=42'">
+                                        <div class="new" id="new" onclick="window.location.href='?m=user&a=jump&pro=60'">
                                             <!-- IF token=="1" -->
                                             登入使用
                                             <!-- ELSE -->
-                                            <!-- IF apply=="2" -->
+                                            <!-- IF adtI=="3" -->
                                             开始使用
                                             <!-- ELSE -->
                                             申请试用
@@ -218,15 +216,6 @@
 
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-8 col-sm-6 col-xs-12  old" ><a href="{adUrl}">
-                                        <!-- IF token=="1" -->
-                                        <!-- ELSE -->
-                                        <!-- IF apply=="2" -->
-                                        开始使用（老版）
-                                        <!-- ENDIF -->
-                                        <!-- ENDIF -->
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -239,6 +228,7 @@
             </div>
         </div>
     </div>
+
 </div>
 <script src="http://data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
 <script src="./dev/js/move.js"></script>
