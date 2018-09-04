@@ -160,6 +160,31 @@ class UserController extends Controller
             if (DEBUG) {
                 var_dump($mobile);
             }
+
+            $userInfo = json_decode($this->model->getUserInfo([
+                'token' => $this->userInfo['token'],
+                'userID' => $this->userInfo['userID']
+            ]), true);
+
+            if (!empty($userInfo)) {
+
+                $d = [
+                    'loginStatus' => $this->loginStatus,
+                    'mobile' => $mobile,
+                    'irdStatus' => $irdStatus,
+                    'pdtID' => $pdt_id,
+
+                ];
+
+                if (!$this->loginStatus)
+                    $d['expire'] = 1;
+
+                if ($userInfo['resCode'] != 000000) {
+                    View::instance('user/b_login.tpl')->show($d);
+                    exit();
+                }
+            }
+
             if (!$this->loginStatus) {
                 if ($from == 'ird' and !empty($guid)) {
                     $uid = ['iUserID' => $irdAccount['iUserID']];
@@ -283,7 +308,7 @@ class UserController extends Controller
                             if (in_array('madt', $p42['data'])) {
                                 header('Location: ' . $getPermission['data']['data']['pdt_url'] . $redirect);
                                 exit();
-                            }else{
+                            } else {
                                 header('Location: ?m=user&a=trialApply&ppname=' . $getPermission['data']['data']['pdt_name'] . '&menuID=' . $pdt_id);
                                 exit();
                             }

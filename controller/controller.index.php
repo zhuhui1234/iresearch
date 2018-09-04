@@ -1168,7 +1168,7 @@ class IndexController extends Controller
     /**
      * adt page
      */
-    public function adt()
+    public function ad()
     {
         $data = [];
         $userInfo = Session::instance()->get('userInfo');
@@ -1397,7 +1397,7 @@ class IndexController extends Controller
         View::instance('xvt/ut.tpl')->show($data);
     }
 
-    public function ad()
+    public function adt()
     {
         $data = [];
         $userInfo = Session::instance()->get('userInfo');
