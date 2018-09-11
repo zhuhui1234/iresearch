@@ -239,7 +239,7 @@
             oldurl: '{iut_oldurl}',
             // url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=12',
             eurl:'{iut_oldurl_en}',
-            url: '?m=user&a=jump&pro=56&p=iut',
+            url: '?m=user&a=jump&pro=48&p=iut',
             info: 'iUserTracker网络用户行为监测，是基于庞大的网民样本行为监测所建立的数据库。该数据库自2006年开始，收集包括用户网络浏览的行为、软件使用行为等详细信息，凭借多年的互联网行业研究经验，通过被监测样本的用户属性标签及多个用户行为竞争分析指标，真实反映中国互联网整体及不同用户市场的客观情况。',
             itemA: {
                 title: '互联网公司',
@@ -275,7 +275,7 @@
             oldurl: '{mut_oldurl}',
             show:true,
             // url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=37',
-            url: '?m=user&a=jump&pro=56&p=mut',
+            url: '?m=user&a=jump&pro=48&p=mut',
             info: 'mUserTracker移动用户行为监测，基于大移动网民样本行为进行监测所建立的数据库，该数据库由2012年开始，收集包括用户通过移动设备，对App的使用行为、浏览网站的行为等相关情况。并通过对数据的大量分析建立了多个用户行为指标，真实反映中国移动互联网市场客观情况。并利用对被监测样本的用户属性进行标签设定，从而能够从多个维度对用户市场进行定义和细分。',
             itemA: {
                 title: '互联网公司',

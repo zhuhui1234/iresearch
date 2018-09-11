@@ -1337,7 +1337,7 @@ class IndexController extends Controller
                         }
 
 
-                        if ($datum['pdt_id'] == 56) {
+                        if ($datum['pdt_id'] == 48) {
 
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
                                 $data['apply_beta_iut'] = '开始使用新版(BETA)';
