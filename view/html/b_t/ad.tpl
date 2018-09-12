@@ -16,65 +16,72 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <link href="http://data.iresearch.com.cn/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./public/css/b_t/index.css?123" rel="stylesheet">
+    <link href="./public/css/b_t/index.css?1231" rel="stylesheet">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="http://data.iresearch.com.cn/js/jquery.min.js?"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="http://data.iresearch.com.cn/js/bootstrap.min.js"></script>
+    <script src="//data.iresearch.com.cn/js/bootstrap.min.js"></script>
 </head>
 <body>
 <script>
     var IRS_pageId = 'iRView'; // 艾瑞睿见
 </script>
-<script src="http://data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
+<script src="//data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
 <div id="app">
     <div class="nav">
         <!--广告指数-->
         <div class="container">
             <div class="row">
-                <div class="col-md-2 col-sm-4 text-left move">
-                    <div class="nav-left">
-                        <a href="//index.iresearch.com.cn/ad">网络广告指数<img src="./public/img/b_t/vtdd.png">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7" id="title">
-                    <h3>AdTracker 第三方竞品广告投放监测</h3>
-                    <div  style="color: #ffffff;letter-spacing:1.03px;line-height: 24px; text-indent:28px;">
+                <div class="col-md-6" id="title">
+                    <div class="h3">AdTracker 第三方竞品广告投放监测</div>
+                    <div class="ad-text">
                         AdTracker标准版为艾瑞自主研发的网络广告投放监测系统，包含PC、Mobile、OTT三端网络广告监测数据。AdTracker产品自2001年开始通过爬虫、API及人工监测的方法监测主流500+网站、APP的品牌广告，为互联网营销市场提供竞品广告投放量及投放费用参考，真实反应中国网络广告市场客观情况。
                     </div>
                 </div>
-                <div class="col-md-5 nav-center">
+                <div class="col-md-6 nav-center">
                     <img src="./public/img/b_t/adbg.png">
                 </div>
             </div>
-            <div class="row" id="adnavs">
-
-                <div class="col-xs-6">
-                    <a href="?m=user&a=jump&pro=42">
-                        <dl class="line-hh">
-                            <div class="ad-dt" style="width: 160px;margin-right: 140px;float: right">
-                                <dt class="text-center"><img src="./public/img/b_t/mobile.png"></dt>
-                                <dd class="text-center">Adtracker</dd>
-                                <dd class="text-centers">标准版</dd>
+            <div class="content">
+                <div class="row" id="adnavs">
+                    <div class="col-xs-4">
+                        <a href="?m=user&a=jump&pro=42">
+                            <div class="ad-box">
+                                <span><img src="./public/img/b_t/mobile.png" style="margin-left: 30px"></span>
+                                <span class="span">
+                                标准版<br/>AdTracker
+                            </span>
                             </div>
-                        </dl>
-                    </a>
-                </div>
-                <div class="col-xs-6">
-                    <a href="?m=user&a=jump&pro=60">
-                        <dl class="line-hh">
-                            <div class="ad-dt" style="width: 160px;margin-left: 140px;float: left">
-                                <dt class="text-center"><img src="./public/img/b_t/flow.png"></dt>
-                                <dd class="text-center">Adtracker</dd>
-                                <dd class="text-centers">信息流专用版</dd>
+                        </a>
+                        <!--<dl class="line-hh">-->
+                        <!--<div class="ad-dt" style="width: 160px;">-->
+                        <!--<dt class="text-center"><img src="../img/mobile.png"></dt>-->
+                        <!--<dd class="text-center">Adtracker</dd>-->
+                        <!--<dd class="text-centers">标准版</dd>-->
+                        <!--</div>-->
+                        <!--</dl>-->
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="?m=user&a=jump&pro=60">
+                            <div class="ad-box">
+                                <span><img src="./public/img/b_t/flow.png" style="margin-left: 20px"></span>
+                                <span class="span">
+                                信息流专用版<br/>AdTracker
+                            </span>
                             </div>
-                        </dl>
-                    </a>
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="//index.iresearch.com.cn/ad">
+                            <div class="ad-box">
+                                <span><img src="./public/img/b_t/index.png" style="margin-left: 15px"></span>
+                                <span class="span">
+                                网络广告指数<br/>Online Ad Index
+                            </span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -109,7 +116,8 @@
                         <div class="col-md-4 col-sm-12 col-xs-12">
                             <ul class="list-group">
                                 <li class="list-group-item">广告公司及广告主</li>
-                                <li class="list-group-item"><span class="dot"></span>帮助广告公司及广告主了解不同行业网络广告发展现状，制定合理的营销预算，参考竞品投放策略，优化三端网络媒体投放方案。</li>
+                                <li class="list-group-item"><span class="dot"></span>帮助广告公司及广告主了解不同行业网络广告发展现状，制定合理的营销预算，参考竞品投放策略，优化三端网络媒体投放方案。
+                                </li>
                             </ul>
                         </div>
                     </div>
