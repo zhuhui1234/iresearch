@@ -185,12 +185,17 @@ class IndexController extends Controller
      */
     public function oneMediaDemo()
     {
-        header('Location: http://demo.ircloud.iresearchdata.cn/one-media/login?token='. $this->userInfo['token'] );
+        header('Location: http://demo.ircloud.iresearchdata.cn/one-media/login?token=' . $this->userInfo['token']);
     }
 
     public function iadt_feedad()
     {
-        header('Location: https://irv.iresearch.com.cn/adt_informationFlow/login?language=zh-CN&token='. $this->userInfo['token']);
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
+        } else {
+            $redirect = '';
+        }
+        header('Location: http://irv.iresearch.com.cn/adt-streaming/login?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**
@@ -198,8 +203,13 @@ class IndexController extends Controller
      */
     public function adt_test()
     {
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
+        } else {
+            $redirect = '';
+        }
 
-        header("Location:" . 'https://irv.iresearch.com.cn/adt-test/login?language=zh-CN&token=' . $this->userInfo['token']);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt-test/login?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**
@@ -207,8 +217,13 @@ class IndexController extends Controller
      */
     public function iAppCheck()
     {
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
+        } else {
+            $redirect = '';
+        }
 
-        header("Location:" . 'http://ircloud.iresearchdata.cn/ircloud-app/login?token=' . $this->userInfo['token'] . $this->request()->get('redirect'));
+        header("Location:" . 'http://ircloud.iresearchdata.cn/ircloud-app/login?token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**
@@ -216,34 +231,39 @@ class IndexController extends Controller
      */
     public function xAdt()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
 
-        header("Location:" . 'https://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt/login?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function xUserTracker()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
-        header("Location:" . 'https://irv.iresearch.com.cn/ut/login?language=zh&token=' . $this->userInfo['token'] . $redirect);
+        header("Location:" . 'http://irv.iresearch.com.cn/ut/login?language=zh&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function testUserTracker()
     {
-        header("Location:" . 'https://irv.iresearch.com.cn/ut_test/login?language=zh&token=' . $this->userInfo['token']);
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
+        } else {
+            $redirect = '';
+        }
+        header("Location:" . 'http://irv.iresearch.com.cn/ut_test/login?language=zh&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function mst()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -252,18 +272,18 @@ class IndexController extends Controller
 
     public function testAdt()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
-        header("Location:" . 'https://irv.iresearch.com.cn/adt2/login?language=zh-CN&token=' . $this->userInfo['token']);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt2/login?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function iCloudInApp()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -274,8 +294,8 @@ class IndexController extends Controller
 
     public function iCloudOneMedia()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -288,8 +308,8 @@ class IndexController extends Controller
      */
     public function iECTracker()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -299,23 +319,23 @@ class IndexController extends Controller
 
     public function test_adt()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
-        header('Location:https://irv.iresearch.com.cn/adt_test/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
+        header('Location:http://irv.iresearch.com.cn/adt_test/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
 
     public function test_ut()
     {
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
-        header('Location:https://irv.iresearch.com.cn/test_ut/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
+        header('Location:http://irv.iresearch.com.cn/test_ut/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**
@@ -1145,25 +1165,42 @@ class IndexController extends Controller
         View::instance('b_t/ut.tpl')->show($data);
     }
 
-    public function adt()
+    /**
+     * adt page
+     */
+    public function ad()
     {
         $data = [];
         $userInfo = Session::instance()->get('userInfo');
+//        var_dump($this->userDetail['data']['productList']);
+//        exit();
+
 
         if ($this->userDetail) {
 
             if (isset($userInfo['token'])) {
                 $data['token'] = $userInfo['token'];
                 $data['apply'] = 1;
-
-                if ($this->__findPdt($this->userDetail['data']['productList'], 42)) {
+                $pdt42Detail = $this->__findPdtDetail($this->userDetail['data']['productList'], 42);
+//
+                if ($pdt42Detail) {
                     $data['apply'] = 2;
-
                 }
 
                 if ($this->__findPdt($this->userDetail['data']['productList'], 54)) {
                     $data['innerTest'] = 1;
                 }
+
+                if ($this->__findPdt($this->userDetail['data']['productList'], 60)) {
+                    $data['adtI'] = 3;
+                }else{
+                    if ($pdt42Detail) {
+                        if (date('Y-m-d h:i:s')<= $pdt42Detail['mobile_due_time']) {
+                            $data['adtI'] = 3;
+                        }
+                    }
+                }
+
             } else {
                 $data['token'] = 1;
             }
@@ -1300,7 +1337,7 @@ class IndexController extends Controller
                         }
 
 
-                        if ($datum['pdt_id'] == 56) {
+                        if ($datum['pdt_id'] == 48) {
 
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
                                 $data['apply_beta_iut'] = '开始使用新版(BETA)';
@@ -1360,7 +1397,7 @@ class IndexController extends Controller
         View::instance('xvt/ut.tpl')->show($data);
     }
 
-    public function ad()
+    public function adt()
     {
         $data = [];
         $userInfo = Session::instance()->get('userInfo');
@@ -1412,7 +1449,8 @@ class IndexController extends Controller
      */
     public function test()
     {
-        echo Session::instance()->get('userInfo')['token'];
+
+        var_dump(urlencode($this->request()->requestAll()['redirect']));
     }
 
     /**
@@ -1506,7 +1544,7 @@ class IndexController extends Controller
             case 'mvt':
                 $mvt = $check(18);
                 if ($mvt == 'ok') {
-                    return 'https://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B905&&token=' .
+                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B905&&token=' .
                         $userInfo['token'] . '&pdt_id=18&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
                 } else {
                     return $mvt;
@@ -1515,7 +1553,7 @@ class IndexController extends Controller
             case 'ovt':
                 $ovt = $check(19);
                 if ($ovt == 'ok') {
-                    return 'https://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B909&token=' .
+                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B909&token=' .
                         $userInfo['token'] . '&pdt_id=19&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
                 } else {
                     return $ovt;
@@ -1524,7 +1562,7 @@ class IndexController extends Controller
             case 'ivt':
                 $ivt = $check(17);
                 if ($ivt == 'ok') {
-//                    return 'https://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B911&token=' . $userInfo['token'] . '&pdt_id=17&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
+//                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B911&token=' . $userInfo['token'] . '&pdt_id=17&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
                     return '';
                 } else {
                     return $ivt;
@@ -1601,6 +1639,28 @@ class IndexController extends Controller
                 if ($datum['pdt_id'] == $pdt_id) {
                     $ret = true;
                 };
+            }
+
+            return $ret;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * find product detail for user
+     *
+     * @param $product_list
+     * @param $pdt_id
+     * @return bool|mixed
+     */
+    private function __findPdtDetail($product_list, $pdt_id)
+    {
+        if (is_array($product_list)) {
+            foreach ($product_list as $datum) {
+                if ($datum['pdt_id'] == $pdt_id) {
+                    $ret = $datum;
+                }
             }
 
             return $ret;

@@ -101,8 +101,8 @@ class UserController extends Controller
         $pdt_id = $this->request()->get('pro');
         $from = $this->request()->get('from');
         $guid = $this->request()->get('guid');
-        if (!empty($this->request()->get('redirect'))) {
-            $redirect = '&redirect=' . $this->request()->get('redirect');
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
             $redirect = '';
         }
@@ -160,6 +160,31 @@ class UserController extends Controller
             if (DEBUG) {
                 var_dump($mobile);
             }
+
+            $userInfo = json_decode($this->model->getUserInfo([
+                'token' => $this->userInfo['token'],
+                'userID' => $this->userInfo['userID']
+            ]), true);
+
+            if (!empty($userInfo)) {
+
+                $d = [
+                    'loginStatus' => $this->loginStatus,
+                    'mobile' => $mobile,
+                    'irdStatus' => $irdStatus,
+                    'pdtID' => $pdt_id,
+
+                ];
+
+                if (!$this->loginStatus)
+                    $d['expire'] = 1;
+
+                if ($userInfo['resCode'] != 000000) {
+                    View::instance('user/b_login.tpl')->show($d);
+                    exit();
+                }
+            }
+
             if (!$this->loginStatus) {
                 if ($from == 'ird' and !empty($guid)) {
                     $uid = ['iUserID' => $irdAccount['iUserID']];
@@ -270,6 +295,26 @@ class UserController extends Controller
                             'mobile' => $mobile,
                             'pdtID' => $pdt_id]);
                     } else {
+
+                        /*
+                         * 如果是信息流，则判断ADT是否有MOBILE权限，如果有则过。
+                         */
+                        if ($pdt_id == 60) {
+                            $rq = [
+                                'u_id' => $this->userInfo['userID']
+                            ];
+                            $p42 = json_decode($this->model->getProList($rq), true);
+
+                            if (in_array('madt', $p42['data'])) {
+                                header('Location: ' . $getPermission['data']['data']['pdt_url'] . $redirect);
+                                exit();
+                            } else {
+                                header('Location: ?m=user&a=trialApply&ppname=' . $getPermission['data']['data']['pdt_name'] . '&menuID=' . $pdt_id);
+                                exit();
+                            }
+
+                        }
+
                         if (empty($getPermission['data']['data'])) {
                             $pro = $this->model->getProduct(['pdt_id' => $pdt_id]);
                             $pro = json_decode($pro, true);
@@ -285,8 +330,6 @@ class UserController extends Controller
                                         case 'iut':
                                             $pro['data'][0]['pdt_name'] = '用户行为监测(BETA)';
                                             break;
-
-
                                     }
                                 }
 

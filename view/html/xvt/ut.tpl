@@ -25,7 +25,7 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
-    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="//data.iresearch.com.cn/images/favicon.ico"
+    <link rel="shortcut icon" href="http://data.iresearch.com.cn/images/favicon.ico" mce_href="http://data.iresearch.com.cn/images/favicon.ico"
         type="image/x-icon">
     <link rel="stylesheet" href="//data.iresearch.com.cn/css/bootstrap.min.css" />
     <link rel="stylesheet" href="public/css/xvt/header.css?2342" />
@@ -36,7 +36,7 @@
 <script>
     var IRS_pageId = 'iRView'; // 艾瑞睿见
 </script>
-<script src="//data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
+<script src="http://data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
     <div class="search ut">
         <div class="container">
             <div class="row">
@@ -220,11 +220,10 @@
             </div>
         </div>
     </div>
-    <script src="//data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
-    <script src="//data.iresearch.com.cn/js/jquery.min.js"></script>
-    <script src="//data.iresearch.com.cn/js/bootstrap.min.js"></script>
+    <script src="http://data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
+    <script src="http://data.iresearch.com.cn/js/jquery.min.js"></script>
+    <script src="http://data.iresearch.com.cn/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
-    <script src="public/js/header.js"></script>
     <script src="public/js/xvt.js"></script>
     <script>
         var product = [{
@@ -237,9 +236,9 @@
             button_en:'{apply_iut_en}',
             showEnglish: true,
             oldurl: '{iut_oldurl}',
-            // url: '//irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=12',
+            // url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=12',
             eurl:'{iut_oldurl_en}',
-            url: '?m=user&a=jump&pro=56&p=iut',
+            url: '?m=user&a=jump&pro=48&p=iut',
             info: 'iUserTracker网络用户行为监测，是基于庞大的网民样本行为监测所建立的数据库。该数据库自2006年开始，收集包括用户网络浏览的行为、软件使用行为等详细信息，凭借多年的互联网行业研究经验，通过被监测样本的用户属性标签及多个用户行为竞争分析指标，真实反映中国互联网整体及不同用户市场的客观情况。',
             itemA: {
                 title: '互联网公司',
@@ -274,8 +273,8 @@
             eurl:'{mut_oldurl_en}',
             oldurl: '{mut_oldurl}',
             show:true,
-            // url: '//irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=37',
-            url: '?m=user&a=jump&pro=56&p=mut',
+            // url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=37',
+            url: '?m=user&a=jump&pro=48&p=mut',
             info: 'mUserTracker移动用户行为监测，基于大移动网民样本行为进行监测所建立的数据库，该数据库由2012年开始，收集包括用户通过移动设备，对App的使用行为、浏览网站的行为等相关情况。并通过对数据的大量分析建立了多个用户行为指标，真实反映中国移动互联网市场客观情况。并利用对被监测样本的用户属性进行标签设定，从而能够从多个维度对用户市场进行定义和细分。',
             itemA: {
                 title: '互联网公司',
@@ -309,7 +308,7 @@
             button_beta:'',
             eurl:'',
             oldurl: '?m=irdata&a=classicSys&ppname=OTT端视频内容市场监测',
-            url: '//irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=14',
+            url: 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=14',
             info: 'oUserTracker智能电视用户行为监测产品，是基于智能电视网民样本行为监测所建立的数据库。该数据库由2017年开始，收集用户通过智能电视设备的App使用行为，并通过对数据的大量分析建立了多个用户行为指标，真实反映中国智能电视APP使用市场客观情况。并利用对被监测样本的用户属性进行标签设定，从而能够从多个维度对用户市场进行定义和细分。',
             itemA: {
                 title: '互联网公司',

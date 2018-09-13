@@ -168,6 +168,8 @@ class IRDataController extends Controller
             setcookie('PHPSESSID', '', time() - 3600, '/');
             setcookie('JSESSIONID', '', time() - 3600, '/');
             setcookie('kittyID', '', time() - 3600, '/');
+
+
             // unset cookies
             if (isset($_SERVER['HTTP_COOKIE'])) {
                 $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
@@ -247,6 +249,19 @@ class IRDataController extends Controller
                     var_dump($data);
                 }
                 if (!empty($data['ppurl'])) {
+                    $userModel = Model::instance('user');
+
+                    $userModel->pushLog([
+                        'user' => $this->userInfo['userID'],
+                        'companyID' => $this->userInfo['companyID'],
+                        'status' => '20000',
+                        'type' => 'irv用户日志',
+                        'sub_id' => $pdtID,
+                        'resource' => 'iData',
+                        'action' => '跳转产品',
+                        'level' => '0',
+                        'log_ip' => getIp()
+                    ]);
                     if ($this->request()->get('backType', 0) == '0') {
                         $backURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                         $callBack = urlencode($backURL . '&backType=1');
