@@ -247,7 +247,6 @@
 <script src="http://data.iresearch.com.cn/js/jquery.min.js"></script>
 <script src="http://data.iresearch.com.cn/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
-<script src="public/js/header.js"></script>
 <script src="public/js/xvt.js"></script>
 <link href="public/css/xvt/iview.css" rel="stylesheet">
 <script>
