@@ -190,7 +190,7 @@ class IndexController extends Controller
 
     public function iadt_feedad()
     {
-        header('Location: http://irv.iresearch.com.cn/adt_informationFlow/login?language=zh-CN&token='. $this->userInfo['token']);
+        header('Location: https://irv.iresearch.com.cn/adt_informationFlow/login?language=zh-CN&token='. $this->userInfo['token']);
     }
 
     /**
@@ -199,7 +199,7 @@ class IndexController extends Controller
     public function adt_test()
     {
 
-        header("Location:" . 'http://irv.iresearch.com.cn/adt-test/login?language=zh-CN&token=' . $this->userInfo['token']);
+        header("Location:" . 'https://irv.iresearch.com.cn/adt-test/login?language=zh-CN&token=' . $this->userInfo['token']);
     }
 
     /**
@@ -222,7 +222,7 @@ class IndexController extends Controller
             $redirect = '';
         }
 
-        header("Location:" . 'http://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
+        header("Location:" . 'https://irv.iresearch.com.cn/adt/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function xUserTracker()
@@ -232,12 +232,12 @@ class IndexController extends Controller
         } else {
             $redirect = '';
         }
-        header("Location:" . 'http://irv.iresearch.com.cn/ut/login?language=zh&token=' . $this->userInfo['token'] . $redirect);
+        header("Location:" . 'https://irv.iresearch.com.cn/ut/login?language=zh&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function testUserTracker()
     {
-        header("Location:" . 'http://irv.iresearch.com.cn/ut_test/login?language=zh&token=' . $this->userInfo['token']);
+        header("Location:" . 'https://irv.iresearch.com.cn/ut_test/login?language=zh&token=' . $this->userInfo['token']);
     }
 
     public function mst()
@@ -257,7 +257,7 @@ class IndexController extends Controller
         } else {
             $redirect = '';
         }
-        header("Location:" . 'http://irv.iresearch.com.cn/adt2/login?language=zh-CN&token=' . $this->userInfo['token']);
+        header("Location:" . 'https://irv.iresearch.com.cn/adt2/login?language=zh-CN&token=' . $this->userInfo['token']);
     }
 
     public function iCloudInApp()
@@ -304,7 +304,7 @@ class IndexController extends Controller
         } else {
             $redirect = '';
         }
-        header('Location:http://irv.iresearch.com.cn/adt_test/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
+        header('Location:https://irv.iresearch.com.cn/adt_test/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
 
@@ -315,7 +315,7 @@ class IndexController extends Controller
         } else {
             $redirect = '';
         }
-        header('Location:http://irv.iresearch.com.cn/test_ut/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
+        header('Location:https://irv.iresearch.com.cn/test_ut/?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**
@@ -1506,7 +1506,7 @@ class IndexController extends Controller
             case 'mvt':
                 $mvt = $check(18);
                 if ($mvt == 'ok') {
-                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B905&&token=' .
+                    return 'https://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B905&&token=' .
                         $userInfo['token'] . '&pdt_id=18&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
                 } else {
                     return $mvt;
@@ -1515,7 +1515,7 @@ class IndexController extends Controller
             case 'ovt':
                 $ovt = $check(19);
                 if ($ovt == 'ok') {
-                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B909&token=' .
+                    return 'https://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B909&token=' .
                         $userInfo['token'] . '&pdt_id=19&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
                 } else {
                     return $ovt;
@@ -1524,7 +1524,7 @@ class IndexController extends Controller
             case 'ivt':
                 $ivt = $check(17);
                 if ($ivt == 'ok') {
-//                    return 'http://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B911&token=' . $userInfo['token'] . '&pdt_id=17&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
+//                    return 'https://irv.iresearch.com.cn/iReport/?m=service&a=irv&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B911&token=' . $userInfo['token'] . '&pdt_id=17&userID=' . $userInfo['userID'] . '&video=' . $tvName . '&channel=' . $channel;
                     return '';
                 } else {
                     return $ivt;

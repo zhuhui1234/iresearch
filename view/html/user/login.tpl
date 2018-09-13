@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico"
-          mce_href="http://data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
+          mce_href="//data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
 
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <!-- IE 兼容模式 -->

@@ -2,7 +2,7 @@
 <html>
 <head>
     <script src="{WEBSITE_SOURCE_URL}/js/lib/jquery/v2.1.4/jquery.min.js"></script>
-    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="http://data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="//data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
 
     <title></title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->

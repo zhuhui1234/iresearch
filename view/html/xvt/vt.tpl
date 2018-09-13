@@ -27,10 +27,10 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
-    <link rel="shortcut icon" href="http://data.iresearch.com.cn/images/favicon.ico"
-          mce_href="http://data.iresearch.com.cn/images/favicon.ico"
+    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico"
+          mce_href="//data.iresearch.com.cn/images/favicon.ico"
           type="image/x-icon">
-    <link rel="stylesheet" href="http://data.iresearch.com.cn/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//data.iresearch.com.cn/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="public/css/xvt/header.css?2342"/>
     <link rel="stylesheet" href="public/css/xvt/index.css"/>
 </head>
@@ -41,7 +41,7 @@
 <script>
     var IRS_pageId = 'iRView'; // 艾瑞睿见
 </script>
-<script src="http://data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
+<script src="//data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
 <div class="search vt">
     <div class="container">
         <div class="row">
@@ -243,9 +243,9 @@
     </div>
 </div>
 <table border="tin"></table>
-<script src="http://data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
-<script src="http://data.iresearch.com.cn/js/jquery.min.js"></script>
-<script src="http://data.iresearch.com.cn/js/bootstrap.min.js"></script>
+<script src="//data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
+<script src="//data.iresearch.com.cn/js/jquery.min.js"></script>
+<script src="//data.iresearch.com.cn/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
 <script src="public/js/header.js"></script>
 <script src="public/js/xvt.js"></script>

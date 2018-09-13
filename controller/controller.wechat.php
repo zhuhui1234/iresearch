@@ -95,7 +95,7 @@ class WeChatController extends Controller
                         } else if (!empty($ppName)) {
                             header('Location: ' . $classicSysURI);
                         } else {
-                            header('Location: http://irv.iresearch.com.cn/user-center/check/?'.USERCENTER_VERSION);
+                            header('Location: https://irv.iresearch.com.cn/user-center/check/?'.USERCENTER_VERSION);
                         }
                     } else {
                         header('Location: ?m=user&a=login?recode=402');
@@ -124,7 +124,7 @@ class WeChatController extends Controller
                         } else if (!empty($ppName)) {
                             header('Location: ' . $classicSysURI);
                         } else {
-                            header('Location: http://irv.iresearch.com.cn/user-center/check?type=k');
+                            header('Location: https://irv.iresearch.com.cn/user-center/check?type=k');
                         }
                     } else {
                         header('Location: ?m=user&a=login?recode=402');
@@ -154,7 +154,7 @@ class WeChatController extends Controller
                         } else if (!empty($ppName)) {
                             header('Location: ' . $classicSysURI);
                         } else {
-                            header('Location: http://irv.iresearch.com.cn/user-center/check?type=m');
+                            header('Location: https://irv.iresearch.com.cn/user-center/check?type=m');
                         }
                     } else {
                         header('Location: ?m=user&a=login?recode=402');

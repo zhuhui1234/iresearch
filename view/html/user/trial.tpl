@@ -12,7 +12,7 @@
 	<!-- 自定义 -->
 	<link href="./public/css/docs.min.css" rel="stylesheet">
 	<title>{title}</title>
-<link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="http://data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="//data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
