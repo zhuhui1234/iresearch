@@ -1,0 +1,43 @@
+body {
+    font-family: PingFangSC-Light, HanHei SC, Helvetica Neue, Helvetica, STHeitiSC-Light, Arial, Microsoft YaHei, sans-serif;
+}
+.impowerBox{
+    text-align:center !important;
+    postion:absolute;
+}
+
+.impowerBox .qrcode {
+    width: 170px!important;
+}
+@media (min-width: 1400px) {
+    .impowerBox .qrcode{
+        width: 220px;
+    }
+}
+iframe{
+    height: 290px;
+    width:100%;
+}
+@media (min-width: 1400px) {
+    iframe{
+       height: 290px;
+    }
+}
+.impowerBox .title {
+    display: none;
+}
+
+.impowerBox .info {
+    width: 170px;
+}
+
+.status_icon {
+    /*display: none;*/
+}
+#wx_default_tip {
+    margin-bottom: 20px;
+}
+
+.impowerBox .status {
+    text-align: center;
+}
