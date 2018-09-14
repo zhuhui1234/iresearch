@@ -50,7 +50,7 @@
                     <div class="dropdown-menu-box">
                         <ul class="dropdown-menu">
                             <li><a href="//data.iresearch.com.cn/About.shtml"><span>联系我们</span><em>Contact Us</em></a></li>
-                            <li><a href="http://group.iresearch.com.cn/" target="_blank"><span>艾瑞集团</span><em>iResearch Group</em></a></li>
+                            <li><a href="//group.iresearch.com.cn/" target="_blank"><span>艾瑞集团</span><em>iResearch Group</em></a></li>
                         </ul>
                     </div>
                 </li>

@@ -16,7 +16,7 @@
 <!-- INCLUDE ../nav.tpl -->
 
 
-<iframe id="mut_iFrame" style="width: 100%;" src="http://index.iresearch.com.cn/app?ad=sh" ></iframe>
+<iframe id="mut_iFrame" style="width: 100%;" src="//index.iresearch.com.cn/app?ad=sh" ></iframe>
 
 <!-- 开发环境 -->
 <script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>

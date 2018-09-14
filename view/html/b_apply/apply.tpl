@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>登录页面</title>
-    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="http://data.iresearch.com.cn/images/favicon.ico"
+    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="//data.iresearch.com.cn/images/favicon.ico"
           type="image/x-icon">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <!-- IE 兼容模式 -->
@@ -14,7 +14,7 @@
     <meta name="renderer" content="webkit">
     <!-- bootstrap核心样式 -->
     <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link href="http://data.iresearch.com.cn/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//data.iresearch.com.cn/css/bootstrap.min.css" rel="stylesheet">
     <link href="./public/css/b_login/index.css" rel="stylesheet">
 
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->

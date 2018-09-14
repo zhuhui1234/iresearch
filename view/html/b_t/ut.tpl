@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>UT</title>
     <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico"
-          mce_href="http://data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
+          mce_href="//data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <!-- IE 兼容模式 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
@@ -14,18 +14,18 @@
     <meta name="renderer" content="webkit">
     <!-- bootstrap核心样式 -->
     <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link href="http://data.iresearch.com.cn/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//data.iresearch.com.cn/css/bootstrap.min.css" rel="stylesheet">
     <link href="./public/css/b_t/index.css" rel="stylesheet">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="http://data.iresearch.com.cn/js/jquery.min.js"></script>
+    <script src="//data.iresearch.com.cn/js/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="http://data.iresearch.com.cn/js/bootstrap.min.js"></script>
+    <script src="//data.iresearch.com.cn/js/bootstrap.min.js"></script>
 </head>
 <body>
 <script>
     var IRS_pageId = 'iRView'; // 艾瑞睿见
 </script>
-<script src="http://data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
+<script src="//data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
 <div id="app">
     <div class="main">
         <div class="container-fluid">
@@ -260,7 +260,7 @@
         </div>
     </div>
 </div>
-<script src="http://data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
+<script src="//data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
 <script src="./dev/js/move.js"></script>
 </body>
 </html>

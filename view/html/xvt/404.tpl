@@ -27,10 +27,10 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
-    <link rel="shortcut icon" href="http://data.iresearch.com.cn/images/favicon.ico"
-          mce_href="http://data.iresearch.com.cn/images/favicon.ico"
+    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico"
+          mce_href="//data.iresearch.com.cn/images/favicon.ico"
           type="image/x-icon">
-    <link rel="stylesheet" href="http://data.iresearch.com.cn/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//data.iresearch.com.cn/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="public/css/xvt/header.css?2342"/>
     <link rel="stylesheet" href="public/css/xvt/index.css"/>
 </head>
@@ -38,13 +38,13 @@
 <body>
 <div class="Topbar">
     <div class="container">
-        <div class="links"><a href="http://group.iresearch.com.cn/" target="_blank">艾瑞集团</a>|<a
-                    href="http://www.iresearch.com.cn/" target="_blank">艾瑞咨询</a>|
-            <a href="http://data.iresearch.com.cn/" target="_blank">艾瑞数据</a>|<a href="http://capital.iresearch.com.cn/"
+        <div class="links"><a href="//group.iresearch.com.cn/" target="_blank">艾瑞集团</a>|<a
+                    href="//www.iresearch.com.cn/" target="_blank">艾瑞咨询</a>|
+            <a href="//data.iresearch.com.cn/" target="_blank">艾瑞数据</a>|<a href="//capital.iresearch.com.cn/"
                                                                                 target="_blank">艾瑞资本</a> |
-            <a href="http://www.iresearch.cn/" target="_blank">艾瑞网</a>|<a href="http://events.iresearch.cn/"
+            <a href="//www.iresearch.cn/" target="_blank">艾瑞网</a>|<a href="//events.iresearch.cn/"
                                                                           target="_blank">艾瑞活动</a>|
-            <a href="http://www.iresearchchina.com/" target="_blank">English</a>
+            <a href="//www.iresearchchina.com/" target="_blank">English</a>
         </div>
     </div>
 </div>
@@ -65,12 +65,12 @@
     </div>
     <div class="copy">
         2002 - 2017 Copyright© 艾瑞数据 <a target="_blank"
-                                       href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000584"><img
-                    src="http://www.iresearch.com.cn/images/record_icon.png">沪公网安备 31010402000584号</a>
+                                       href="//www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000584"><img
+                    src="//www.iresearch.com.cn/images/record_icon.png">沪公网安备 31010402000584号</a>
     </div>
 </div>
-<script src="http://data.iresearch.com.cn/js/jquery.min.js"></script>
-<script src="http://data.iresearch.com.cn/js/bootstrap.min.js"></script>
+<script src="//data.iresearch.com.cn/js/jquery.min.js"></script>
+<script src="//data.iresearch.com.cn/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
 <script src="public/js/xvt.js"></script>
 <link href="public/css/xvt/iview.css" rel="stylesheet">

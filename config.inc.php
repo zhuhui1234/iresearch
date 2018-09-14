@@ -38,7 +38,7 @@ define('REDIS_PWD', FALSE);
 //	define('WEBSITE','http://localhost');
 define('WEBSITE', $_SERVER['SERVER_ADDR']);
 define('WEBSITE_URL', '');
-define('IDATA_URL', 'http://irv.iresearch.com.cn/iResearchDataWeb/');
+define('IDATA_URL', '//irv.iresearch.com.cn/iResearchDataWeb/');
 define('WEBSITE_SOURCE_URL', WEBSITE_URL . 'dev');
 define('WEBSITE_TITLE', '艾瑞数据平台');
 define('REGISTER_MAILADDR', 'irv@iresearch.com.cn');
@@ -82,9 +82,9 @@ define('DEBUG_LOG', TRUE);
 define('START_TIME', microtime(true));
 define('NOW', date('Y-m-d H:i:s'));
 
-define('ADT_URL', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xadt');
-define('VT_URL', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt');
-define('UT_URL', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut');
+define('ADT_URL', '//irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xadt');
+define('VT_URL', '//irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt');
+define('UT_URL', '//irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut');
 
 if (DEBUG) {
     ini_set('display_errors', 1);

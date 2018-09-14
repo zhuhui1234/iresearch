@@ -222,7 +222,7 @@ class UserController extends Controller
 //                    }
 //                }
                 if ($pdt_id == '1') {
-                    header('Location: http://data.iresearch.com.cn/iRView.shtml');
+                    header('Location: https://data.iresearch.com.cn/iRView.shtml');
                     exit();
                 }
 
@@ -244,19 +244,19 @@ class UserController extends Controller
                         switch ($pdt_id) {
                             case '42':
 //                                header('Location: ' . ADT_URL);
-                                header('Location: http://data.iresearch.com.cn/iRView.shtml');
+                                header('Location: https://data.iresearch.com.cn/iRView.shtml');
                                 break;
                             case '47':
 //                                header('Location:' . VT_URL);
-                                header('Location: http://data.iresearch.com.cn/iRView.shtml');
+                                header('Location: https://data.iresearch.com.cn/iRView.shtml');
                                 break;
                             case '48':
 //                                header('Location: ' . UT_URL);
-                                header('Location: http://data.iresearch.com.cn/iRView.shtml');
+                                header('Location: https://data.iresearch.com.cn/iRView.shtml');
                                 break;
 
                             default:
-                                header('Location: http://data.iresearch.com.cn/iRView.shtml');
+                                header('Location: https://data.iresearch.com.cn/iRView.shtml');
                                 break;
 
                         }
@@ -553,7 +553,7 @@ class UserController extends Controller
      */
     public function editUserInfo()
     {
-        header('Location: http://irv.iresearch.com.cn/user-center/check?' . USERCENTER_VERSION);
+        header('Location: https://irv.iresearch.com.cn/user-center/check?' . USERCENTER_VERSION);
     }
 
     /**
@@ -621,7 +621,7 @@ class UserController extends Controller
         $this->model->logOut();
 
         Session::instance()->destroy();
-        setcookie('yh_irv_url', 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=login&expired=1', time() + 2400, '/');
+        setcookie('yh_irv_url', 'https://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=login&expired=1', time() + 2400, '/');
         setcookie('PHPSESSID', '', time() - 3600, '/');
         setcookie('JSESSIONID', '', time() - 3600, '/');
         setcookie('kittyID', '', time() - 3600, '/');
@@ -642,19 +642,19 @@ class UserController extends Controller
 
         switch ($pdtID) {
             case '38':
-                header("Location: http://data.iresearch.com.cn/iRCloud.shtml");
+                header("Location: https://data.iresearch.com.cn/iRCloud.shtml");
                 break;
             case '43':
-                header("Location: http://data.iresearch.com.cn/iRCloud.shtml");
+                header("Location: https://data.iresearch.com.cn/iRCloud.shtml");
                 break;
             case '50':
-                header("Location: http://data.iresearch.com.cn/iRCloud.shtml");
+                header("Location: https://data.iresearch.com.cn/iRCloud.shtml");
                 break;
             case '0':
-                header('Location: http://data.iresearch.com.cn/iRView.shtml');
+                header('Location: https://data.iresearch.com.cn/iRView.shtml');
                 break;
             default:
-                header('Location: http://data.iresearch.com.cn/iRView.shtml');
+                header('Location: https://data.iresearch.com.cn/iRView.shtml');
                 break;
         }
 
@@ -923,7 +923,7 @@ class UserController extends Controller
         $getAll = $this->request()->requestAll();
         if ($getAll['vcode'] == $getVcodes) {
             $ret = $this->__sendMail(
-                '请点击以下链接完成邮箱绑定： http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=registerUserInfo&',
+                '请点击以下链接完成邮箱绑定： https://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=registerUserInfo&',
                 '用户注册确认邮件',
                 1,
                 $getAll['registerMail'],
@@ -1178,7 +1178,7 @@ class UserController extends Controller
                     'name' => '登出',
                     'uri' => urlencode(IDATA_URL . '?m=user&a=logOut&pdtID=' . $pdt_id)
                 ],
-                'home' => ['name' => '首页', 'uri' => urlencode('http://data.iresearch.com.cn/'), 'role' => $role]
+                'home' => ['name' => '首页', 'uri' => urlencode('https://data.iresearch.com.cn/'), 'role' => $role]
             ];
         }
         echo $this->request()->get('callback') . '(' . json_encode(['code' => $state, 'data' => $menu, 'userMenu' => $m]) . ')';

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="http://data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico" mce_href="//data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
 
     <meta charset="utf-8">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
@@ -18,7 +18,7 @@
 </head>
 <!--  iINCLUDE ../nav.tpl = -->
 <iframe id="mut_iFrame" style="width: 100%;" src="{ppurl}" ></iframe>
-<!-- <iframe id="mut_iFrame" style="width: 100%;" src="http://h.home/ivt/jump/?guid=a5d61c0e-3ab3-497f-945e-4c96cadcd10f" ></iframe> -->
+<!-- <iframe id="mut_iFrame" style="width: 100%;" src="//h.home/ivt/jump/?guid=a5d61c0e-3ab3-497f-945e-4c96cadcd10f" ></iframe> -->
 
 
 <!-- 开发环境 -->
