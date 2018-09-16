@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AdTracke 艾瑞咨询</title>
+    <title>AdTracker 艾瑞咨询</title>
     <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico"
           mce_href="//data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
