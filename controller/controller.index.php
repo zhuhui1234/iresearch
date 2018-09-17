@@ -1046,7 +1046,7 @@ class IndexController extends Controller
 
         if ($this->userDetail) {
 
-            $data['apply_iut'] = $data['apply_mut'] = '申请试用';
+            $data['apply_iut'] = $data['apply_mut'] = '申请试用(IUT)';
             $data['iut_oldurl'] = '?m=user&a=trialApply&ppname=网络用户行为监测&menuID=48';
             $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=用户行为监测(英文版)&menuID=51';
             $data['mut_oldurl'] = '?m=user&a=trialApply&ppname=移动用户行为监测&menuID=48';
@@ -1061,25 +1061,25 @@ class IndexController extends Controller
                     foreach ($this->userDetail['data']['productList'] as $datum) {
                         if ($datum['pdt_id'] == 48) {
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_iut'] = '开始使用';
+                                $data['apply_iut'] = '使用IUT';
 //                                $data['apply_iut_en'] = 'English Version';
                                 $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48';
 //                                $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
 
                             } else {
-                                $data['apply_iut'] = '申请试用';
+                                $data['apply_iut'] = '申请试用(IUT)';
 //                                $data['apply_iut_en'] = 'Trial';
                                 $data['iut_oldurl'] = '?m=user&a=trialApply&ppname=网络用户行为监测&menuID=48';
 //                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文版)&menuID=48';
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_mut'] = '开始使用';
+                                $data['apply_mut'] = '使用MUT';
 //                                $data['apply_mut_en'] = 'English Version';
                                 $data['mut_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=48';
 //                                $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
                             } else {
-                                $data['apply_mut'] = '申请试用';
+                                $data['apply_mut'] = '申请试用(MUT)';
 //                                $data['apply_mut_en'] = 'Trial';
                                 $data['mut_oldurl'] = '?m=user&a=trialApply&ppname=移动用户行为监测&menuID=48';
 //                                $data['mut_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文版)&menuID=51';
@@ -1088,19 +1088,19 @@ class IndexController extends Controller
 
                         if ($datum['pdt_id'] == 51) {
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_iut_en'] = 'English Version';
+                                $data['apply_iut_en'] = '使用IUT(EN)';
                                 $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
 
                             } else {
-//                                $data['apply_iut_en'] = 'Trial';
+                                $data['apply_iut_en'] = 'Trial(IUT)';
                                 $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=用户行为监测(英文版)&menuID=48';
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_mut_en'] = 'English Version';
+                                $data['apply_mut_en'] = '使用MUT(EN)';
                                 $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
                             } else {
-//                                $data['apply_mut_en'] = 'Trial';
+                                $data['apply_mut_en'] = 'Trial(MUT)';
                                 $data['mut_oldurl_en'] = '?m=user&a=trialApply&ppname=移动用户行为监测(英文版)&menuID=51';
                             }
                         }
@@ -1109,7 +1109,7 @@ class IndexController extends Controller
                         if ($datum['pdt_id'] == 48) {
 
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_beta_iut'] = '开始使用新版(BETA)';
+                                $data['apply_beta_iut'] = '使用新版(BETA)';
                                 $data['apply_beta_iut_en'] = 'English Version';
                             } else {
                                 $data['apply_beta_iut'] = '申请试用';
@@ -1117,7 +1117,7 @@ class IndexController extends Controller
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_beta_mut'] = '开始使用新版(BETA)';
+                                $data['apply_beta_mut'] = '使用新版(BETA)';
                                 $data['apply_beta_mut_en'] = 'English Version';
                             } else {
 //                                $data['apply_beta_mut'] = '';

@@ -247,6 +247,12 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                                         case 'm':
                                                             window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
                                                             break;
+                                                        case 'ut':
+                                                            window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=ut';
+                                                            break;
+                                                        case 'vt':
+                                                            window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=vt';
+                                                            break;
                                                     }
 
                                                 }
