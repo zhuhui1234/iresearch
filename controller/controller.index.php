@@ -1059,7 +1059,6 @@ class IndexController extends Controller
 
                 if (is_array($this->userDetail['data']['productList'])) {
                     foreach ($this->userDetail['data']['productList'] as $datum) {
-
                         if ($datum['pdt_id'] == 48) {
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
                                 $data['apply_iut'] = '开始使用';
@@ -1106,21 +1105,22 @@ class IndexController extends Controller
                             }
                         }
 
-                        if ($datum['pdt_id'] == 49) {
+
+                        if ($datum['pdt_id'] == 48) {
 
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_beta_iut'] = '开始使用(BETA)';
+                                $data['apply_beta_iut'] = '开始使用新版(BETA)';
                                 $data['apply_beta_iut_en'] = 'English Version';
                             } else {
                                 $data['apply_beta_iut'] = '申请试用';
-//                                $data['apply_beta_iut_en'] = 'Trial';
+                                $data['apply_beta_iut_en'] = 'Trial';
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_beta_mut'] = '开始使用(BETA)';
+                                $data['apply_beta_mut'] = '开始使用新版(BETA)';
                                 $data['apply_beta_mut_en'] = 'English Version';
                             } else {
-                                $data['apply_beta_mut'] = '申请试用';
+//                                $data['apply_beta_mut'] = '';
 //                                $data['apply_beta_mut_en'] = 'Trial';
                             }
                         }
@@ -1142,7 +1142,6 @@ class IndexController extends Controller
         } else {
             if (DEBUG) {
                 var_dump($this->userDetail);
-                echo 'ahahaahahaha2';
             }
             $data['token'] = 1;
         }

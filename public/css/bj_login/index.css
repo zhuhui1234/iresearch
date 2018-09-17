@@ -20,7 +20,7 @@ body {
 .main-image{
     height: 100%;
     z-index: 300;
-	background:url(//localhost/iResearchDataWeb/public//img/bj_login/bg2x.png) no-repeat  center;
+	background:url(//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bg2x.png) no-repeat  center;
     position: relative;
     background-size: 100% 100%;
     width: 100%;
@@ -187,7 +187,7 @@ body button{
 .main_left_body_line_icon{
     width: 16px;
     height: 22px;
-    background-image: url("//localhost/iResearchDataWeb/public//img/bj_login/iphone.png");
+    background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/iphone.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     float: left;
@@ -197,7 +197,7 @@ body button{
 .main_left_body_line_icon2Pc{
     width: 63px;
     height: 25px;
-    background-image: url("//localhost/iResearchDataWeb/public//img/bj_login/icon.jpg");
+    background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/icon.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     float: left;
@@ -215,7 +215,7 @@ body button{
 .main_left_body_line_icon3{
     width: 22px;
     height: 22px;
-    background-image: url("//localhost/iResearchDataWeb/public//img/bj_login/code.png");
+    background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/code.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     float: left;
@@ -503,7 +503,7 @@ color: rgb(0, 0, 0);
         bottom: 0;
         right: 0;
     }
-    .main-image{background:url(//localhost/iResearchDataWeb/public//img/bj_login/bgpic.png) no-repeat;background-size: cover;}
+    .main-image{background:url(//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.png) no-repeat;background-size: cover;}
     #main_right_tohiden{ display: none;}
     .row_img{ margin: 0 auto; display: block;width: 217px;height:104px;}
     .bgBack_opa{display: none;}
@@ -672,7 +672,7 @@ color: rgb(0, 0, 0);
 
  @media (min-width: 450px) and (max-width: 750px) {
      .alert{display: block;}
-     .main-image{background:url(//localhost/iResearchDataWeb/public//img/bj_login/bgpic.png) no-repeat;background-size: cover;}
+     .main-image{background:url(//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.png) no-repeat;background-size: cover;}
 	 #main_right_tohiden{ display: none;}
 	 .row_img{ margin: 0 auto; display: block;width: 217px;height:104px;}
 	 .bgBack_opa{display: none;}
@@ -807,7 +807,7 @@ color: rgb(0, 0, 0);
 
 @media (min-width: 750px) and (max-width: 1024px) {
     .alert{display: block;}
-    .main-image{background:url(//localhost/iResearchDataWeb/public//img/bj_login/bgpic.png) no-repeat;background-size: cover;}
+    .main-image{background:url(//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.png) no-repeat;background-size: cover;}
 	#main_right_tohiden{ display: none;}
 	.row_img{ margin: 0 auto; display: block;width: 217px;height:104px;}
 	.bgBack_opa{display: none;}

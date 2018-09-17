@@ -74,6 +74,7 @@ class UserController extends Controller
         View::instance('user/b_login.tpl')->show($data);
     }
 
+
     public function b_login()
     {
 //        Session::instance()->destroy();
@@ -83,7 +84,7 @@ class UserController extends Controller
             'title' => WEBSITE_TITLE
         );
 
-        View::instance('user/b_login.tpl')->show($data);
+        View::instance('user/bj_login.tpl')->show($data);
     }
 
     public function test()

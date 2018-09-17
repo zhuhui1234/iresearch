@@ -7,7 +7,8 @@
           mce_href="//data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <!-- IE 兼容模式 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="X-UA-Compatible" content="IE=9;IE=EDGE">
     <!-- 国产浏览器高速模式 -->
@@ -20,247 +21,173 @@
     <script src="//data.iresearch.com.cn/js/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//data.iresearch.com.cn/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 </head>
 <body>
 <script>
     var IRS_pageId = 'iRView'; // 艾瑞睿见
 </script>
 <script src="//data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
-<div id="app">
-    <div class="main">
-        <div class="container-fluid">
+<div id="app" :class="productName">
+    <div class="header">
+        <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="col-md-8 mains">
-                        <div class="main-left">
-                            <div class="row">
-                                <div class="col-sm-6 move2">
-                                    <a href="//index.iresearch.com.cn/app" class="move-a "> <span class="span1">移动APP指数</span><img src="./public/img/b_t/vtdd.png" class="img1"><span class="spanline" style="width:1px;float: right;">|</span></a>
-                                </div>
-                                <div class="col-sm-6 move3">
-                                    <a href="//index.iresearch.com.cn/pc" class="move-a "><span class="span1">PC Web指数</span><img src="./public/img/b_t/vtdd.png" class="img2"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <h3 class="text-center" style="color: white;margin-top: 55px">网络用户行为监测</h3>
-                        <div style="color: white;text-indent: 28px;opacity: 0.9;letter-spacing:1.03px;line-height: 24px" >基于PC、移动、OTT终端庞大网民样本连续性行为监测数据，实现多源跨屏网民互联网应用行为研究数据库，反映中国互联网整体及不同用户市场的客观情况。</div>
-                    </div>
+                <div class="col-md-6 col-md-push-6">
+                    <img class="img" :src="productHeader.img">
                 </div>
-                <div class="col-md-6">
-                    <div class="main-right"><img src="./public/img/b_t/UT.png"></div>
+                <div class="col-md-6 col-md-pull-6" id="title">
+                    <div class="title">[[productHeader.title ]]</div>
+                    <div class="desc">
+                        [[productHeader.desc ]]
+                    </div>
                 </div>
             </div>
             <div class="content">
-                <div class="row" style=" margin-bottom: 20px;">
-                    <div class="col-xs-6 line">
-                        <a href="{mut_oldurl}"><dl class="line-h">
-                                <dt class="text-center"><img src="./public/img/b_t/mobile.png"></dt>
-                                <dd class="text-center">移动终端服务</dd>
-                            </dl></a>
-                    </div>
-                    <div class="col-xs-6">
-                        <a href="{iut_oldurl}"><dl class="line-h">
-                                <dt class="text-center"><img src="./public/img/b_t/PC.png"></dt>
-                                <dd class="text-center">PC终端服务</dd>
-                            </dl></a>
-                    </div>
-                    <!-- <div class="col-xs-4 ">
-                        <a><dl class="line-h">
-                                <dt class="text-center"><img src="./public/img/b_t/OTT.png"></dt>
-                                <dd class="text-center">OTT终端服务</dd>
-                            </dl></a>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="introduce">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-8 ">
-                    <div class="row">
-                        <div class="col-sm-12 title-one">
-                            <h5>产品简介</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 titleone">
-                            iUserTracker网络用户行为监测，是基于庞大的网民样本行为监测所建立的数据库。该数据库自2006年开始，收集包括用户网络浏览的行为、软件使用行为等详细信息，凭借多年的互联网行业研究经验，通过被监测样本的用户属性标签及多个用户行为竞争分析指标，真实反映中国互联网整体及不同用户市场的客观情况。</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 title-one">
-                            <h5>产品价值</h5>
-                        </div>
-                    </div>
-                    <div class="row worth">
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <ul class="list-group">
-                                <li class="list-group-item">互联网公司</li>
-                                <li class="list-group-item"><span class="dots"></span>帮助：掌握市场第一手资料。</li>
-                                <li class="list-group-item"><span class="dots"></span>洞察：竞争媒体运营及市场变化。</li>
-                                <li class="list-group-item"><span class="dots"></span>挖掘：用户网络访问习惯改善用户体验。</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <ul class="list-group">
-                                <li class="list-group-item">证明营销活动的效果</li>
-                                <li class="list-group-item"><span class="dots"></span>评估：帮助电信及运营商了解用户上网行为，评估不同运营商的互联网流量经营差异。</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <ul class="list-group">
-                                <li class="list-group-item seed">广告公司及广告主</li>
-                                <li class="list-group-item seed"><span class="dots"></span>帮助：了解媒体目标用户的网络使用习惯。</li>
-                                <li class="list-group-item seed"><span class="dots"></span>定制：媒介资源和营销策略。</li>
-                                <li class="list-group-item seed"><span class="dots"></span>提升：媒介投放策略。</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 50px;">
-                        <!-- IF token=="1" -->
-                        <div class="col-md-4 col-sm-6 col-xs-12  text-login" >
-                            <div class="login" id="login" onclick="window.location.href='{iut_oldurl}'">{apply_iut}</div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12 code" ><a href="?m=user&a=jump&pro=49&p=iut">登录新版（Beta）</a> </div>
-                        <!-- ELSE -->
-                        <!--IF irdStatus=="1" -->
-                        <!--ELSE -->
-                        <div class="col-md-4 col-sm-6 col-xs-12  text-login" >
-                            <div class="login" id="login" onclick="window.location.href='{iut_oldurl}'">{apply_iut}</div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="?m=user&a=jump&pro=49&p=iut">{apply_beta_iut}</a>  </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="{iut_oldurl_en}">{apply_iut_en}</a> </div>
-                        <!--ENDIF -->
-                        <!-- ENDIF -->
-                    </div>
-                </div>
-                <div class="col-md-4 leftimg">
-                    <div class="col-sm-12 introduceringt1"><img src="./public/img/b_t/utbg3.png"></div>
-                    <div class="col-sm-12 introduceringt2" ><img src="./public/img/b_t/utPC.png" ></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="value">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-9 col-md-push-3">
-                    <div class="value-right">
-                        <div class="row">
-                            <div class="col-sm-12 title-one">
-                                <h5>产品简介</h5>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 titleone">
-                                mUserTracker移动用户行为监测，基于大移动网民样本行为进行监测所建立的数据库，该数据库由2012年开始，收集包括用户通过移动设备，对App的使用行为、浏览网站的行为等相关情况。并通过对数据的大量分析建立了多个用户行为指标，真实反映中国移动互联网市场客观情况。并利用对被监测样本的用户属性进行标签设定，从而能够从多个维度对用户市场进行定义和细分。</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 title-one">
-                                <h5>产品价值</h5>
-                            </div>
-                        </div>
-                        <div class="row worth">
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <ul class="list-group">
-                                    <li class="list-group-item">互联网公司</li>
-                                    <li class="list-group-item"><span class="dots"></span>帮助：广告公司及广告主了解智能终端用户的网络行为特征。</li>
-                                    <li class="list-group-item"><span class="dots"></span>洞察：移动端进行营销推广时，为选择最佳投放方案提供数据支持。</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <ul class="list-group">
-                                    <li class="list-group-item">电信及运营商</li>
-                                    <li class="list-group-item"><span class="dots"></span>评估：帮助电信及运营商了解用户上网行为，评估不同运营商的互联网流量经营差异。</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <ul class="list-group">
-                                    <li class="list-group-item seed">移动互联网企业及开发者</li>
-                                    <li class="list-group-item seed"><span class="dots"></span>帮助：移动互联网企业及开发者分析自身的产品在整个大行业或细分行业中所处的地位。</li>
-                                    <li class="list-group-item seed"><span class="dots"></span>提升：了解自身的产品用户群体特征以及市场竞争差异。</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom: 50px;">
-                            <!-- IF token=="1" -->
-                            <div class="col-md-4 col-sm-6 col-xs-12 text-login"  >
-                                <div class="login" id="login-one" onclick="window.location.href='{mut_oldurl}'">{apply_mut}</div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12 code" ><a href="?m=user&a=jump&pro=37">登录新版（Beta）</a>  </div>
-                            <!-- ELSE -->
-                            <!--IF irdStatus=="1" -->
-                            <!--ELSE -->
-                            <div class="col-md-4 col-sm-6 col-xs-12 text-login"  >
-                                <div class="login" id="login-one" onclick="window.location.href='{mut_oldurl}'">{apply_mut}</div>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="?m=user&a=jump&pro=37">{apply_beta_mut}</a>  </div>
-                            <div class="col-md-3 col-sm-3 col-xs-12 code" ><a href="{mut_oldurl_en}">{apply_mut_en}</a></div>
-                            <!--ENDIF -->
-                            <!-- ENDIF -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-md-pull-9 leftimg">
-                    <div class="meadaut">
-                        <div class="col-sm-12 introduceringt3" ><img src="./public/img/b_t/utbg2.png"></div>
-                        <div class="col-sm-12 introduceringt2" style="text-align: center"><img src="./public/img/b_t/utMobile.png" ></div>
+                <div class="row" id="adnavs">
+                    <div class="col-md-4" v-for="item in productHeader.productList" :key="item.name">
+                        <a :href="item.link" class="ad-box">
+                            <span class="icon"><img :src="item.icon"></span>
+                            <span class="span">
+                  [[item.title ]]<br />[[item.name ]]
+                </span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="product">
-        <div class="container-fluid">
+    <div class="introduce" :class="index%2 === 0 ? '' : 'gray'" v-for="(item, index) in productInfo" :key="index">
+        <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-sm-12 title-one">
-                            <h5>产品简介</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 titleone">
-                            oUserTracker智能电视用户行为监测产品，是基于智能电视网民样本行为监测所建立的数据库。该数据库由2017年开始，收集用户通过智能电视设备的App使用行为，并通过对数据的大量分析建立了多个用户行为指标，真实反映中国智能电视APP使用市场客观情况。并利用对被监测样本的用户属性进行标签设定，从而能够从多个维度对用户市场进行定义和细分。</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 title-one">
-                            <h5>产品价值</h5>
-                        </div>
-                    </div>
-                    <div class="row worth">
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <ul class="list-group">
-                                <li class="list-group-item">互联网公司</li>
-                                <li class="list-group-item"><span class="dots"></span>帮助：广告公司及广告主了解智能电视终端APP用户的网络行为特征。</li>
-                                <li class="list-group-item"><span class="dots"></span>洞察：智能电视终端APP进行营销推广时，为选择最佳投放方案提供数据支持。</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <ul class="list-group">
-                                <li class="list-group-item">智能电视APP企业及开发者</li>
-                                <li class="list-group-item"><span class="dots"></span>帮助：智能电视APP企业及开发者分析自身的产品在整个大行业或细分行业中所处的地位。</li>
-                                <li class="list-group-item"><span class="dots"></span>提升：了解自身的产品用户群体特征以及市场竞争差异。</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- <div class="row" style="margin-bottom: 50px;">
-                        <div class="col-md-6 col-sm-6 col-xs-12 text-login"  >
-                            <div class="login" id="login-two" onclick="window.location.href='{iut_oldurl}'">{apply_iut}<img src="./public/img/b_t/utright.png"></div>
-                        </div>
-                    </div> -->
+                <div class="col-md-3">
+                    <div class="col-sm-12"><img class="img" :src="item.img"></div>
+                    <div class="col-sm-12"><img class="logo" :src="item.logo"></div>
                 </div>
-                <div class="col-md-4 leftimg">
-                    <div class="col-sm-12 introduceringt1"><img src="./public/img/b_t/utbg1.png"></div>
-                    <div class="col-sm-12 introduceringt2" ><img src="./public/img/b_t/utOTT.png" ></div>
+                <div class="col-md-9" v-for="sub in item.item" :key="sub.title">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h5 class="title" :class="productName">[[sub.title ]]</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 col-xs-12" v-for="list in sub.list" :key="list.title">
+                            <ul class="list-group">
+                                <li class="list-group-item">[[list.title ]]</li>
+                                <li class="list-group-item">
+                                    <span class="dot" :class="productName"></span>
+                                    [[list.desc ]]
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                            <a class="link" :href="item.jumpList.base.link">
+                                [[item.jumpList.base.title ]]
+                            </a>
+                        </div>
+                        <div class="col-md-2 col-xs-12" v-for="(links, index) in item.jumpList.old" :key="index">
+                            <a class="old-link" :href="links.link">[[links.title ]]</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src="//data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
-<script src="./dev/js/move.js"></script>
+<script src="http://data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
+<script></script>
+<script>
+    <!-- IF token=="1" -->
+
+    var iut_beta_url = "?m=user&a=jump&pro=48&p=iut";
+    var iut_beta = "登录新版（Beta"
+
+    <!-- ELSE -->
+    <!--IF irdStatus=="1" -->
+    <!--ELSE -->
+
+    var iut_beta_url = "/?m=user&a=jump&pro=48&p=iut";
+
+    <!--ENDIF -->
+    <!-- ENDIF -->
+
+
+
+    var app = new Vue({
+        el: '#app',
+        delimiters: ["[[", "]]"],
+        data: {
+            productName: 'ut',
+            productHeader: {
+                title: 'UserTracker 第三方网民网络行为监测',
+                desc: 'UserTracker为艾瑞自主研发的网民网络行为监测系统，包含PC、Mobile 两端网民网络行为监测数据。 UserTracker产品自2007年开始，基于亿级PC及移动样本行为数据采集，获取中国网民网站浏览、软件使用、APP打开等行为数据，并通过海量数据分析建立了多个用户行为指标，真实反映中国PC及移动互联网市场客观情况。',
+                img: './public/img/b_t/UT.png',
+                productList: [{
+                    title: '标准版',
+                    name: 'UserTracker',
+                    icon: './public/img/b_t/standard.png',
+                    link: '//index.iresearch.com.cn/'
+                },
+                    {
+                        title: '移动APP指数',
+                        name: 'Mobile App Index',
+                        icon: './public/img/b_t/move.png',
+                        link: '//index.iresearch.com.cn/app'
+                    },
+                    {
+                        title: 'PC Web指数',
+                        name: 'PC Web Index',
+                        icon: './public/img/b_t/PC.png',
+                        link: '//index.iresearch.com.cn/pc'
+                    }
+                ]
+            },
+            productInfo: [{
+                img: './public/img/b_t/utbg2.png',
+                logo: './public/img/b_t/UserTracker@3x.png',
+                item: [{
+                    title: '产品价值',
+                    list: [{
+                        title: '互联网公司',
+                        desc: '帮助互联网公司掌握自身与竞品网站、APP流量变化，及时了解行业格局变化，优化自身产品运营。'
+                    },
+                        {
+                            title: '投资者及分析师',
+                            desc: '帮助投资者及分析师在财报发布前及时了解网站及APP流量变化，为投资决策提供有效支持。'
+                        },
+                        {
+                            title: '广告公司及广告主',
+                            desc: '帮助广告公司及广告主了解不同细分领域网站及APP格局变化，不同品牌目标人群网站及APP访问习惯差异，优化网络媒体投放方案。'
+                        }
+                    ]
+                }],
+                jumpList: {
+                    base: {
+                        title: '登录使用',
+                        link: 'httt://www.test.com'
+                    },
+                    old: [{
+                        title: '版本1',
+                        link: 'httt://www.test.com'
+                    },
+                        {
+                            title: '版本2',
+                            link: 'httt://www.test.com'
+                        },
+                        {
+                            title: '版本3',
+                            link: 'httt://www.test.com'
+                        },
+                        {
+                            title: '版本4',
+                            link: 'httt://www.test.com'
+                        }
+                    ]
+                }
+            }]
+        }
+    })
+</script>
 </body>
 </html>
