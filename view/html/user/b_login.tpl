@@ -51,7 +51,7 @@
                                 </div>
                             </div>
 
-                            <div class="input-group two" id="input_v" style="visibility: hidden;;">
+                            <div class="input-group two" id="input_v" style="visibility: hidden;">
                                 <span class="input-group-addon key"></span>
                                 <input id="vernum" type="text" class="form-control"
                                        aria-label="Amount (to the nearest dollar)" autocomplete="off"
