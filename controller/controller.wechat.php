@@ -79,6 +79,53 @@ class WeChatController extends Controller
 
                 break;
 
+            case 'goToUt':
+                $ret = $this->__weChatAutoLogin(array(
+                    'Account' => $weChatObj['openid'],
+                    'LoginKey' => $weChatObj['unionid'],
+                    'wxName' => $weChatUser['nickname'],
+                ), $wechatModel->getUserInfo($code));
+
+                write_to_log('ret: ' . json_encode($ret), '_wx');
+                if ($ret) {
+                    if ($ret !== null) {
+                        write_to_log('ppname: '. $ppName, '_debug');
+                        write_to_log('pdtid: '. $pdtID, '_debug');
+                        header('Location: ?m=index&a=ut');
+
+                    } else {
+                        header('Location: ?m=user&a=login?recode=402');
+                    }
+
+                } else {
+                    header("Location: ?m=user&a=BindingWeChat");
+                }
+
+                break;
+
+            case 'goToVT':
+                $ret = $this->__weChatAutoLogin(array(
+                    'Account' => $weChatObj['openid'],
+                    'LoginKey' => $weChatObj['unionid'],
+                    'wxName' => $weChatUser['nickname'],
+                ), $wechatModel->getUserInfo($code));
+
+                write_to_log('ret: ' . json_encode($ret), '_wx');
+                if ($ret) {
+                    if ($ret !== null) {
+                        write_to_log('ppname: '. $ppName, '_debug');
+                        write_to_log('pdtid: '. $pdtID, '_debug');
+                        header('Location: ?m=index&a=vt');
+                    } else {
+                        header('Location: ?m=user&a=login?recode=402');
+                    }
+
+                } else {
+                    header("Location: ?m=user&a=BindingWeChat");
+                }
+
+                break;
+
             case 'wxLoginUserCenter':
                 $ret = $this->__weChatAutoLogin(array(
                     'Account' => $weChatObj['openid'],

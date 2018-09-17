@@ -99,17 +99,20 @@
 <script></script>
 <script>
     <!-- IF token=="1" -->
-
-    var iut_beta_url = "?m=user&a=jump&pro=48&p=iut";
-    var iut_beta = "登录新版（Beta"
+    var ut_beta_url = "?m=user&a=login&cb=ut";
+    var ut_beta = "登录新版（Beta）";
+    var apply_iut = "";
+    var apply_iut_en = "";
+    var apply_mut = "";
+    var apply_mut_en = "";
 
     <!-- ELSE -->
-    <!--IF irdStatus=="1" -->
-    <!--ELSE -->
-
-    var iut_beta_url = "/?m=user&a=jump&pro=48&p=iut";
-
-    <!--ENDIF -->
+    var ut_beta_url = "?m=user&a=jump&pro=48";
+    var ut_beta = '{apply_beta_iut}';
+    var apply_iut = '{apply_iut}';
+    var apply_iut_en = '{apply_iut_en}';
+    var apply_mut = '{apply_mut}';
+    var apply_mut_en = '{apply_mut_en}';
     <!-- ENDIF -->
 
 
@@ -123,12 +126,13 @@
                 title: 'UserTracker 第三方网民网络行为监测',
                 desc: 'UserTracker为艾瑞自主研发的网民网络行为监测系统，包含PC、Mobile 两端网民网络行为监测数据。 UserTracker产品自2007年开始，基于亿级PC及移动样本行为数据采集，获取中国网民网站浏览、软件使用、APP打开等行为数据，并通过海量数据分析建立了多个用户行为指标，真实反映中国PC及移动互联网市场客观情况。',
                 img: './public/img/b_t/UT.png',
-                productList: [{
+                productList: [
+                    {
                     title: '标准版',
                     name: 'UserTracker',
                     icon: './public/img/b_t/standard.png',
-                    link: '//index.iresearch.com.cn/'
-                },
+                    link: '?m=user&a=jump&pro=48'
+                    },
                     {
                         title: '移动APP指数',
                         name: 'Mobile App Index',
@@ -164,24 +168,25 @@
                 }],
                 jumpList: {
                     base: {
-                        title: '登录使用',
-                        link: 'httt://www.test.com'
+                        title: ut_beta,
+                        link: ut_beta_url
                     },
-                    old: [{
-                        title: '版本1',
-                        link: 'httt://www.test.com'
-                    },
+                    old: [
                         {
-                            title: '版本2',
-                            link: 'httt://www.test.com'
+                            title: apply_iut,
+                            link: '{iut_oldurl}'
                         },
                         {
-                            title: '版本3',
-                            link: 'httt://www.test.com'
+                            title: apply_iut_en,
+                            link: '{iut_oldurl_en}'
                         },
                         {
-                            title: '版本4',
-                            link: 'httt://www.test.com'
+                            title: apply_mut,
+                            link: '{mut_oldurl}'
+                        },
+                        {
+                            title: apply_mut_en,
+                            link: '{mut_oldurl_en}'
                         }
                     ]
                 }

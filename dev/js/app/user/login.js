@@ -141,6 +141,12 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                     case 'm':
                                         window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
                                         break;
+                                    case 'ut':
+                                        window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=ut';
+                                        break;
+                                    case 'vt':
+                                        window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=vt';
+                                        break;
                                 }
 
                             }
@@ -204,6 +210,12 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 break;
             case 'm':
                 Helper.WeChatQRCode('wxLogin', 'wxLoginMsg', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
+                break;
+            case 'ut':
+                Helper.WeChatQRCode('wxLogin', 'goToUt', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css');
+                break;
+            case 'vt':
+                Helper.WeChatQRCode('wxLogin', 'goToVT', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css');
                 break;
             default:
                 Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
