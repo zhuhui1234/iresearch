@@ -169,6 +169,7 @@ if (!isLoginState()
     AND $_GET['a'] != 'doooooooom'
     AND $_GET['a'] != 'charCode'
     AND $_GET['a'] != 'b_trialApply'
+    AND $_GET['a'] != 'bj_login'
 ) {
 
     if ($_GET['a'] != '' && $_GET['m'] != '') {
