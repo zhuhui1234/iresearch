@@ -84,6 +84,18 @@ class UserController extends Controller
             'title' => WEBSITE_TITLE
         );
 
+        View::instance('user/b_login.tpl')->show($data);
+    }
+
+    public function bj_login()
+    {
+//        Session::instance()->destroy();
+        $data = array(
+            'loginStatus' => $this->loginStatus,
+            'mobile' => "1",
+            'title' => WEBSITE_TITLE
+        );
+
         View::instance('user/bj_login.tpl')->show($data);
     }
 
