@@ -80,7 +80,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3 col-xs-12">
+                        <div class="col-md-3 col-xs-12" id="VT">
                             <a class="link" :href="item.jumpList.base.link">
                                 [[ item.jumpList.base.title ]]
                             </a>
@@ -98,20 +98,21 @@
 <script></script>
 <script>
     <!-- IF token=="1" -->
-    var ut_beta_url = "?m=user&a=jump&pro=48&p=ut";
-    var ut_beta = "登录新版（Beta）";
-    var apply_iut = "";
-    var apply_iut_en = "";
-    var apply_mut = "";
-    var apply_mut_en = "";
+    var vt_beta_url = "?m=user&a=login&cb=vt";
+    var vt_beta = "登录使用";
+    var apply_ivt = "";
+    var apply_beta_ivt = "";
+    var apply_mvt = "";
+    var apply_ovt = "";
 
     <!-- ELSE -->
-    var ut_beta_url = "?m=user&a=jump&pro=48";
-    var ut_beta = '{apply_beta_iut}';
-    var apply_iut = '{apply_iut}';
-    var apply_iut_en = '{apply_iut_en}';
-    var apply_mut = '{apply_mut}';
-    var apply_mut_en = '{apply_mut_en}';
+    $("#VT").css('display','none');
+    var vt_beta = "";
+    var vt_beta_url = "?m=user&a=jump&pro=47";
+    var apply_ivt = '{apply_ivt}';
+    var apply_beta_ivt = '{apply_beta_ivt}';
+    var apply_mvt = '{apply_mvt}';
+    var apply_ovt = '{apply_ovt}';
     <!-- ENDIF -->
 
     var app = new Vue({
@@ -122,22 +123,22 @@
             productHeader: {
                 title: 'VideoTracker 第三方视频内容监测',
                 desc: '艾瑞睿见VT系列产品包括移动端、OTT端和PC端视频内容监测产品，完成对家庭跨屏视频内容受众收视行为的全景监测。提供主流视频平台不同频道、类型和产地的视频收视情况，洞察视频内容在不同平台的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好，监控视频内容在各时段的收视趋势。为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。',
-                img: '../img/backgroundvt.png',
+                img: './public/img/b_t/backgroundvt.png',
                 productList: [{
                     title: '标准版',
                     name: 'VideoTracker',
-                    icon: '../img/criterion.png'
+                    icon: './public/img/b_t/criterion.png'
                 },
                     {
                         title: '网络影视指数',
                         name: 'Online Video Index',
-                        icon: '../img/OTT.png'
+                        icon: './public/img/b_t/OTT.png'
                     }
                 ]
             },
             productInfo: [{
-                img: '../img/vtbg3.png',
-                logo: '../img/vtPC.png',
+                img: './public/img/b_t/vtbg3.png',
+                logo: './public/img/b_t/vtPC.png',
                 item: [{
                     title: '产品价值',
                     list: [{
@@ -156,13 +157,27 @@
                 }],
                 jumpList: {
                     base: {
-                        title: '登录使用',
-                        link: 'httt://www.test.com'
+                        title: vt_beta,
+                        link: vt_beta_url
                     },
-                    old: [{
-                        title: '版本1',
-                        link: 'httt://www.test.com'
-                    }]
+                    old: [
+                        {
+                            title: apply_ivt,
+                            link: '?m=user&a=jump&pro=45'
+                        },
+                        {
+                            title: apply_beta_ivt,
+                            link: '{ivt_oldurl}'
+                        },
+                        {
+                            title: apply_mvt,
+                            link: '?m=user&a=jump&pro=18'
+                        },
+                        {
+                            title: apply_ovt,
+                            link: '?m=user&a=jump&pro=19'
+                        }
+                    ]
                 }
             }]
         }

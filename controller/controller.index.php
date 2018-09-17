@@ -906,7 +906,7 @@ class IndexController extends Controller
         $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ovt-en&pro=52';
 
         if ($this->userDetail) {
-            $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_ovt'] = '申请试用';
+            $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_ovt'] = '申请试用(IVT)';
 //            $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '申请试用(老版本)';
             $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en'] = 'Trial';
 
@@ -927,41 +927,41 @@ class IndexController extends Controller
 
                         if ($datum['pdt_id'] == 47) {
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_ivt'] = '开始使用';
-                                $data['apply_beta_ivt'] = '开始使用(老版本)';
+                                $data['apply_ivt'] = '使用IVT';
+                                $data['apply_beta_ivt'] = '使用IVT老版';
 //                                $data['apply_ivt_en'] = 'English Version';
                                 $data['ivt_oldurl'] = '?m=irdata&a=classicSys&ppname=网络视频内容市场监测_老版&pro=47';
 //                                $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=52';
 
                             } else {
-                                $data['apply_ivt'] = '申请试用';
-//                                $data['apply_beta_ivt'] = '申请试用(老版本)';
+                                $data['apply_ivt'] = '申请试用(MVT)';
+                                $data['apply_beta_ivt'] = '申请试用(IVT老版)';
 //                                $data['apply_ivt_en'] = 'Trial';
                                 $data['ivt_oldurl'] = '?m=user&a=trialApply&ppname=视频内容市场监测&menuID=47';
                                 $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=视频内容市场监测(英文版)&menuID=52';
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_mvt'] = '开始使用';
+                                $data['apply_mvt'] = '使用MVT';
 //                                $data['apply_mvt_en'] = 'English Version';
                                 $data['mvt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47';
 //                                $data['mvt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
 
                             } else {
-                                $data['apply_mvt'] = '申请试用';
+                                $data['apply_mvt'] = '申请试用(MVT)';
 //                                $data['apply_mvt_en'] = 'Trial';
                                 $data['mvt_oldurl'] = '?m=user&a=trialApply&ppname=移动视频市场监测&menuID=47';
                                 $data['mvt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动视频市场监测(英文版)&menuID=52';
                             }
 
                             if ($date >= $datum['ott_start_time'] and $date <= $datum['ott_due_time']) {
-                                $data['apply_ovt'] = '开始使用';
+                                $data['apply_ovt'] = '使用OVT';
 //                                $data['apply_ovt_en'] = 'English Version';
                                 $data['ovt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47';
 //                                $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
 
                             } else {
-                                $data['apply_ovt'] = '申请试用';
+                                $data['apply_ovt'] = '申请试用(OVT)';
 //                                $data['apply_ovt_en'] = 'Trial';
                                 $data['ovt_oldurl'] = '?m=user&a=trialApply&ppname=移动端视频市场监测&menuID=47';
 //                                $data['ovt_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文版)&menuID=52';
