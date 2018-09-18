@@ -110,7 +110,15 @@
         <div style="clear: both;"></div>
     </div>
 </div>
-<script src="./js/login_table.js"></script>
+<script src="{WEBSITE_SOURCE_URL}/js/lib/requirejs/requirejs.js"></script>
+<script src="{WEBSITE_SOURCE_URL}/js/config.js"></script>
+<script type="text/javascript">
+    require.config({baseUrl: '{WEBSITE_SOURCE_URL}/js'});
+    require([
+        'app/home/trail_bj'
+    ]);
+</script>
+<script src="//irv.iresearch.com.cn/iResearchDataWeb/dev/js/header.js"></script>
 </body>
 
 </html>
