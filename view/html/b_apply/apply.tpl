@@ -122,7 +122,6 @@
         'app/home/trail_bj'
     ]);
 </script>
-<script src="//irv.iresearch.com.cn/iResearchDataWeb/dev/js/header.js"></script>
 </body>
 
 </html>

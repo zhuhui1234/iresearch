@@ -34,6 +34,7 @@ define(['helper', 'app/main'], function (Helper) {
                 "industry": $("#industry").val(),
                 "mail":$("#mail").val(),
                 "remark":$("#ppname").text(),
+                "vCode": $("#code").val()
             };
             console.log(pData);
             if (($.trim(pData.username).length <= 0) ||
