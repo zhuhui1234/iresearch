@@ -30,37 +30,41 @@
                     <div class="main_left_line_box">
                         <div class="main_left_line">
                             <div class="main_left_line_title">姓名<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="填写您的姓名" autocomplete="off" id="name" type="text"/>
+                            <input class="main_left_line_input" placeholder="填写您的姓名" autocomplete="off" id="name" type="text"/ value="{username}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">手机号<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="填写您的手机号" autocomplete="off" id="phone" type="text"/>
+                            <input class="main_left_line_input" placeholder="填写您的手机号" autocomplete="off" id="phone" type="text"/ value="{mobile}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">邮箱<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="填写您的邮箱地址" autocomplete="off" id="mail" type="text"/>
+                            <input class="main_left_line_input" placeholder="填写您的邮箱地址" autocomplete="off" id="mail" type="text"/  value="{u_mail}">
+                        </div>
+                        <div class="main_left_line">
+                            <div class="main_left_line_title">公司<span class="main_left_line_title_re">*</span></div>
+                            <input class="main_left_line_input" placeholder="填写您所在的公司" autocomplete="off" id="company" type="text"/ value="{company}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">职位<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="填写您所在的公司" autocomplete="off" id="job" type="text"/>
+                            <input class="main_left_line_input" placeholder="请输入职位" autocomplete="off" id="job" type="text"/ value="{position}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">行业<span class="main_left_line_title_re">*</span></div>
                             <select class="main_left_line_input main_left_line_select" autocomplete="off" id="industry">
-                                <option></option>
-                                <option>报纸</option>
-                                <option>电视台</option>
-                                <option>杂志</option>
+                                <option value="0" selected="selected">请选择行业(必填)</option>
+                                <!-- BEGIN industrylist -->
+                                <option value='{id}'>{title}</option>
+                                <!-- END industrylist -->
                             </select>
                             <img class="main_left_line_select_icon" src="./public/img/bj_login/jt.png"/>
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">地区<span class="main_left_line_title_re">*</span></div>
                             <select class="main_left_line_input main_left_line_select" autocomplete="off" id="city">
-                                <option></option>
-                                <option>北京市</option>
-                                <option>上海市</option>
-                                <option>天津市</option>
+                                <option value="0" selected="selected">请选择地区(必填)</option>
+                                <!-- BEGIN regionList -->
+                                <option value='{id}'>{title}</option>
+                                <!-- END regionList -->
                             </select>
                             <img class="main_left_line_select_icon" src="./public/img/bj_login/jt.png"/>
                         </div>
@@ -68,18 +72,18 @@
                             <div class="main_left_line_title">验证码</div>
                             <div class="main_left_line_input_yzm">
                                 <input class="main_left_line_input yzmInput" autocomplete="off" placeholder="请输入验证码" id="code" type="text"/>
-                                <img class="yzmInput_img" src="img/yzm.jpg"/>
+                                <img id="charCode" class="yzmInput_img" src="?m=service&a=charCode"/>
                             </div>
                         </div>
-                        <div class="main_left_button">提交申请</div>
+                        <div class="main_left_button" id="applyToTrial">提交申请</div>
                     </div>
                 </form>
             </div>
 
             <div class="main_right">
-                <img src="./public/img/bj_login/right_logo.png" class="main_right_img"/>
+                <img src="{productLogoUrl}" class="main_right_img"/>
                 <div class="main_right_txt">
-                    UserTracker为艾瑞自主研发的网民网络行为监测系统。包含Mobile、PC两端网民网络行为监测数据。自2007年开始，基于亿级PC及移动样本行为数据采集，获取中国网民网站浏览、软件使用、APP打开等行为数据，并通过海量数据分析建立了多个用户行为指标，真实反映PC及移动互联网市场客观情况
+                    {productIntroduce}
                 </div>
                 <div class="main_right_shebei">
                     <div class="main_right_shebei_tab" style="">
