@@ -1263,7 +1263,7 @@ class IndexController extends Controller
 //        }
         $data['apply_iut'] = $data['apply_mut'] = '登录使用';
 //        $data['apply_beta_iut'] = $data['apply_beta_mut'] = '登录使用(BETA)';
-//        $data['apply_iut_en'] = $data['apply_mut_en'] = $data['apply_beta_iut_en'] = $data['apply_beta_mut_en']= 'Sign In';
+        $data['apply_iut_en'] = $data['apply_mut_en'] = 'Sign In';
 
         $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48';
         $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pro=51';
