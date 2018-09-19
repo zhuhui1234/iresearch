@@ -117,11 +117,14 @@
 
     <!-- IF token=="1" -->
     var bt_title_feedad = "登入使用";
+    var feedad_url = '?m=user&a=jump&pro=60';
     <!-- ELSE -->
     <!-- IF adtI=="3" -->
     var bt_title_feedad = "开始使用";
+    var feedad_url = '?m=user&a=jump&pro=60';
     <!-- ELSE -->
     var bt_title_feedad = "申请试用";
+    var feedad_url = '?m=user&a=b_trialApply&menuID=42';
     <!-- ENDIF -->
     <!-- ENDIF -->
 
@@ -208,7 +211,7 @@
                     jumpList: {
                         base: {
                             title: bt_title_feedad,
-                            link: '?m=user&a=jump&pro=60'
+                            link: feedad_url
                         }
                     }
                 }]

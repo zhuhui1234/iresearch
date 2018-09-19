@@ -43,7 +43,7 @@ body button{
 }
 
 .row_img{
-    width: 129px;
+    width: 135px;
     height: 62px;
 }
 
@@ -74,6 +74,9 @@ body button{
 }
 #row2{
     margin: 30px 0 0 0;
+    min-height: 512px;
+    background: #ffffff;
+    border-radius: 10px;
 }
 
 .bgBack_opa{
@@ -230,7 +233,7 @@ body button{
 }
 
 .main_right_img{
-    width:144px;
+    width:148px;
     height:auto;
     margin:0 auto;
     display: block;

@@ -1,7 +1,13 @@
+html{
+    height: 100%;
+}
 body{
     font-family: "Helvetica Neue","Helvetica,Arial","Microsoft Yahei","PingFang SC","sans-serif";
     -webkit-font-smoothing: antialiased;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 a{
     text-decoration: none;
@@ -144,7 +150,7 @@ a:focus, a:hover {
 .ad .introduce a {
     color: #69c72b;
 }
-.ad {
+.ad .header {
     background: #65AF45;
 }
 .ad .introduce .dot {
@@ -173,7 +179,7 @@ a:focus, a:hover {
     text-align: center;
     display: block;
 }
-.ut{
+.ut .header {
     background:#3dc0f0;
 }
 .ut .introduce .dot {
@@ -202,7 +208,7 @@ a:focus, a:hover {
     text-align: center;
     display: block;
 }
-.vt{
+.vt .header {
     background:#8EC63F;
 }
 .vt .introduce .dot {
@@ -272,3 +278,11 @@ a:focus, a:hover {
         margin: 10px 0 0 0;
     }
 }
+
+#app {
+    flex: 1 0 auto;
+}
+#IRS-header,
+#IRS-foot{
+    flex: 0 0 auto;
+}Z
