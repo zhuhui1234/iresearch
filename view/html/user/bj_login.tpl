@@ -49,7 +49,7 @@
                                 <ul>
                                     <li id="yx" style="display: none;"><a>邮箱登录</a></li>
                                     <li id="phone" style="display: none;"><a >手机登录</a></li>
-                                    <li class="sideline"></li>
+                                    <li class="sideline" style="display: none;"></li>
                                 </ul>
                             </div>
                         </div>
@@ -129,10 +129,10 @@
                     </div>
                 </div>
             </div>
-
-            <div class="bgBack_opa"></div>
-            <div class="bgBack_opa2"></div>
         </div>
+        <div class="bgBack_opa"></div>
+        <div class="bgBack_opa2"></div>
+
         <div style="clear: both;"></div>
         <div class="footer">
             提示：如果您已经是艾瑞数据用户可以尝试用手机号或者微信扫码直接登录。
