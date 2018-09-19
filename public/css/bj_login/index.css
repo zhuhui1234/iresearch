@@ -28,6 +28,7 @@ body {
     position: relative;
     background-size: 100% 100%;
     width: 100%;
+    min-height: 661px;
 }
 
 body button {
@@ -242,8 +243,8 @@ body button {
 .main_left_body_line_icon3 {
     width: 22px;
     height: 22px;
-    /*background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/code.png");*/
-    background-image: url("../img/code.png");
+    background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/code.png");
+    /*background-image: url("../img/code.png");*/
     background-repeat: no-repeat;
     background-size: 100% 100%;
     float: left;
@@ -523,6 +524,7 @@ body button {
 }
 
 #test {
+    min-height: 416px;
     overflow: hidden;
     width: 55%;
     padding: 37px 0px;

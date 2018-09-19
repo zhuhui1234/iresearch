@@ -20,10 +20,11 @@ body {
 .main-image{
     height: 100%;
     z-index: 300;
-	background:url(//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bg2x.png) no-repeat  center;
+	background:url(//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bg2x.jpg) no-repeat  center;
     position: relative;
     background-size: 100% 100%;
     width: 100%;
+    min-height: 661px;
 }
 body button{
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -103,7 +104,7 @@ body button{
 }
 
 .main_left{
-    height: 512px;
+    height:512px;
     padding: 10px 0 26px 0;
     width: 60%;
     float: left;
@@ -230,10 +231,11 @@ body button{
 }
 
 .main_right_img{
-    width:144px;
+    width:148px;
     height:auto;
     margin:0 auto;
     display: block;
+    width:148px;
 }
 
 .main_right_txt{
