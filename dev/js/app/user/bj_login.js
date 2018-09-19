@@ -17,6 +17,9 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         $(".find_nav_list li").eq(0).addClass("find_nav_cur").siblings().removeClass("find_nav_cur");
     });
     var nav_w = $(".find_nav_list li").first().width();
+
+    var flb_w = $(".find_nav_left").width();
+    var fl_w = $(".find_nav_list").width();
     $(".sideline").width(nav_w);
     $(".find_nav_list li").on('click', function () {
         var id = $(this).attr('id');
@@ -77,14 +80,13 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
     }
 
 
-
     $('.tab-p a').click(function () {
         $(this).addClass('actives').siblings().removeClass('actives');
     });
 
 
     $(document).ready(function () {
-        $('#spinner').css('display',"none");
+        $('#spinner').css('display', "none");
 
     });
 
@@ -204,14 +206,15 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         var resource = Helper.getQuery('resource');
 
         if (resource == 'overseas') {
+            $(".sideline").fadeIn();
             // $("#yx").hidden();
             $("#phone").show();
             $("#yx").show();
             // $("#phone").fadeIn();
             // $("#yx").fadeIn();
             $("#yxLine").css({display: "block"});
-            $("#phoneLine").css({display:"none"});
-            // $("#yx").addClass('find_nav_cur');
+            $("#phoneLine").css({display: "none"});
+            $("#yx").addClass('find_nav_cur');
             // $("#warning_overseas").show();
             // $("#warning_mobile").hide();
 
@@ -221,13 +224,20 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             // $("#phone").attr("style", "border:none!important");
             $("#phoneLine").show();
             $("#phone").show();
+            $('#yx').removeClass('find_nav_cur');
             $("#yx").hide();
+            $('#phone').addClass('find_nav_cur');
+
+            $(".sideline").animate({
+                left: $('#phone').position().left
+            }, 300);
+
+            $(".sideline").fadeIn();
 
             // $('#input_v').css({visibility: "visible"});
             // $("#email").removeClass('find_nav_cur');
             // $("#mail_login").removeClass('find_nav_cur');
             // $('#email').css({visibility: "hidden"});
-            // $('#phone').addClass('find_nav_cur');
             // $('#mobile_login').addClass('find_nav_cur');
             // $("#warning_overseas").hide();
             // $("#warning_mobile").show();

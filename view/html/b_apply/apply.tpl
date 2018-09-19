@@ -51,7 +51,7 @@
                         <div class="main_left_line">
                             <div class="main_left_line_title">行业<span class="main_left_line_title_re">*</span></div>
                             <select class="main_left_line_input main_left_line_select" autocomplete="off" id="industry">
-                                <option value="0" selected="selected">请选择行业(必填)</option>
+                                <option value="0" selected="selected">请选择行业(必填)&#x200E</option>
                                 <!-- BEGIN industrylist -->
                                 <option value='{id}'>{title}</option>
                                 <!-- END industrylist -->
@@ -61,7 +61,7 @@
                         <div class="main_left_line">
                             <div class="main_left_line_title">地区<span class="main_left_line_title_re">*</span></div>
                             <select class="main_left_line_input main_left_line_select" autocomplete="off" id="city">
-                                <option value="0" selected="selected">请选择地区(必填)</option>
+                                <option value="0" selected="selected">请选择地区(必填)&#x200E</option>
                                 <!-- BEGIN regionList -->
                                 <option value='{id}'>{title}</option>
                                 <!-- END regionList -->
