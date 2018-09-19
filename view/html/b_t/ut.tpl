@@ -100,7 +100,7 @@
 <script>
     <!-- IF token=="1" -->
     var ut_beta_url = "?m=user&a=login&cb=ut";
-    var ut_beta = "登录新版（Beta）";
+    var ut_beta = "登录使用";
     var apply_iut = "";
     var apply_iut_en = "";
     var apply_mut = "";
