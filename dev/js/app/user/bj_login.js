@@ -111,8 +111,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
     //
     // }
 
-    // $(document).ready(function () {
-    //     $('#spinner').css('display',"none");
+    $(document).ready(function () {
+        $('#spinner').css('display',"none");
     //     $('.input-item .now:first').focus();
     //     $('.now').keydown(function (e) {
     //         e = window.event || evt;//兼容所有浏览器
@@ -149,7 +149,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
     //             $('#spinner').css('display','block')
     //         }
     //     });
-    // });
+    });
 
 
     var checkFormat = function (lt) {

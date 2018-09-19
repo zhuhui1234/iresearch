@@ -12,8 +12,9 @@ define(['helper', 'app/main'], function (Helper) {
                 "city": $("#city option:selected").text(),
                 "area": $("#industry option:selected").text(),
                 "industry": $("#industry").val(),
-                "mail":$("#mail").val(),
-                "remark":$("#ppname").text(),
+                "mail": $("#mail").val(),
+                "remark": $("#ppname").text(),
+                "vCode": $("#code").val()
             };
             console.log(pData);
             if (($.trim(pData.username).length <= 0) ||

@@ -23,8 +23,8 @@ body {
 .main-image {
     height: 100%;
     z-index: 300;
-    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bg2x.png") no-repeat center;
-    /*background:url(../img/bg2x.png) no-repeat  center;*/
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bg2x.jpg") no-repeat center;
+    /*background:url(../img/bg2x.jpg) no-repeat  center;*/
     position: relative;
     background-size: 100% 100%;
     width: 100%;
@@ -112,7 +112,7 @@ body button {
     width: 55%;
     float: left;
     box-sizing: border-box;
-    border-right: 1px solid #FAFAFA;
+    border-right: 1px solid #eeeeee;
     background-color: #fff;
     border-radius: 10px 0 0 10px;
 }
@@ -242,8 +242,8 @@ body button {
 .main_left_body_line_icon3 {
     width: 22px;
     height: 22px;
-    background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/code.png");
-    /*background-image: url("../img/code.png");*/
+    /*background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/code.png");*/
+    background-image: url("../img/code.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     float: left;
@@ -260,20 +260,23 @@ body button {
 
 .tel,
 .yxInput {
-    height: 49px;
+    height: 24px;
     font-size: 16px;
     color: #333;
     float: left;
     display: block;
     margin-left: 7px;
-    line-height: 49px;
+    line-height: 24px;
     outline: none;
     border: 0;
+    margin-top: 12px;
 }
-
+.intl-tel-input{
+    margin-top: 12px;
+}
 .main_left_body_line_input {
     width: 130px;
-    height: 49px;
+    height: 24px;
     font-size: 16px;
     color: #333;
     float: left;
@@ -282,6 +285,7 @@ body button {
     line-height: 49px;
     outline: none;
     border: 0;
+    margin-top: 12px;
 }
 
 .main_left_body_line_input::-webkit-input-placeholder,
@@ -308,11 +312,12 @@ body button {
 .main_right {
     width: 45%;
     border-radius: 0px 10px 10px 0px;
-    box-shadow: -1px 0px 0px 0px rgba(0, 0, 0, 0.1);
+    /*box-shadow: -1px 0px 0px 0px rgba(0, 0, 0, 0.1);*/
     background-color: #fff;
     float: right;
     padding-bottom: 62px;
     padding-top: 59px;
+    min-height: 416px;
 }
 
 .main_right_ewm {
@@ -346,6 +351,7 @@ body button {
 
 #yxInput {
     margin-left: 15px;
+    margin-top: 12px;
 }
 
 .main_left_button {
@@ -429,7 +435,7 @@ body button {
     display: none;
 }
 
-.spinner {
+.spinner_bak {
     font-size: 30px;
     width: 1em;
     height: 1em;
@@ -439,7 +445,7 @@ body button {
     box-shadow: inset 0 0 0 .1em rgba(58, 168, 237, .2);
 }
 
-.spinner i {
+.spinner_bak i {
     position: absolute;
     clip: rect(0, 1em, 1em, .5em);
     width: 1em;
@@ -492,7 +498,7 @@ body button {
     }
 }
 
-.spinner i:after {
+.spinner_bak i:after {
     position: absolute;
     clip: rect(0, 1em, 1em, .5em);
     width: 1em;
@@ -589,8 +595,8 @@ select:-webkit-autofill {
         right: 0;
     }
     .main-image {
-        background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.png") no-repeat;
-        /*background: url(../img/bgpic.png) no-repeat;*/
+        background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.jpg") no-repeat;
+        /*background: url(../img/bgpic.jpg) no-repeat;*/
         background-size: cover;
     }
     #main_right_tohiden {
@@ -694,23 +700,27 @@ select:-webkit-autofill {
     .yxInput {
         width: 80%;
     }
-    .tel,
-    main_left_body_line_input {
+
+    .tel{
+        width:188px;
+    }
+    .main_left_body_line_input {
         width: 60%;
     }
     .main_left_body_line_input,
     .tel,
     .yxInput {
-        height: 49px;
+        height: 24px;
         font-size: 14px;
         color: #333;
         float: left;
         display: block;
         margin-left: 13px;
-        line-height: 49px;
+        line-height: 24px;
         outline: none;
         border: 0;
         background: none;
+        margin-top: 12px;
     }
     .main_left_body_line_input::-webkit-input-placeholder,
     .tel::-webkit-input-placeholder,
@@ -729,6 +739,7 @@ select:-webkit-autofill {
     #yxInput {
         margin-left: 16.5px;
     }
+
     .main_left_body_line_yzm {
         width: 78px;
         height: 26.5px;
@@ -757,6 +768,7 @@ select:-webkit-autofill {
     .tit a h4 {
         font-size: 15px;
         padding: 0;
+        margin-left: 40px;
     }
     #test h5 {
         font-size: 15px;
@@ -786,8 +798,8 @@ select:-webkit-autofill {
         display: block;
     }
     .main-image {
-        background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.png") no-repeat;
-        /*background: url(../img/bgpic.png) no-repeat;*/
+        background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.jpg") no-repeat;
+        /*background: url(../img/bgpic.jpg) no-repeat;*/
         background-size: cover;
     }
     #main_right_tohiden {
@@ -944,8 +956,8 @@ select:-webkit-autofill {
         display: block;
     }
     .main-image {
-        background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.png") no-repeat;
-        /*background: url(../img/bgpic.png) no-repeat;*/
+        background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.jpg") no-repeat;
+        /*background: url(../img/bgpic.jpg) no-repeat;*/
         background-size: cover;
     }
     #main_right_tohiden {
@@ -1017,16 +1029,17 @@ select:-webkit-autofill {
     .main_left_body_line_input,
     .tel,
     .yxInput {
-        height: 49px;
+        height: 24px;
         font-size: 28px;
         color: #333;
         float: left;
         display: block;
         margin-left: 7px;
-        line-height: 49px;
+        line-height: 24px;
         outline: none;
         border: 0;
         background: none;
+        margin-top: 12px;
     }
     .main_left_body_line_input::-webkit-input-placeholder,
     .tel::-webkit-input-placeholder,
@@ -1109,7 +1122,7 @@ select:-webkit-autofill {
     }
     .main_left_body_line_input {
         width: 130px;
-        height: 49px;
+        height: 24px;
         font-size: 14px;
         color: #333;
         float: left;
@@ -1138,4 +1151,60 @@ select:-webkit-autofill {
         padding: 0;
         font-size: 13px
     }
+}
+#code_img{
+    cursor: pointer
+}
+.loading_app .circular {
+    vertical-align: middle;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    animation: loading-rotate 2s linear infinite;
+}
+.loading_app .circular .path {
+    animation: loading-dash 1.5s ease-in-out infinite;
+    stroke-dasharray: 90,150;
+    stroke-dashoffset: 0;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-linecap: round;
+}
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+@-webkit-keyframes  spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+@keyframes loading-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes loading-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -40px;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -120px;
+    }
+}
+.intl-tel-input.allow-dropdown .flag-container:hover .selected-flag{
+    background: #ffffff !important;
 }
