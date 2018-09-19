@@ -26,7 +26,7 @@
 <script>
     var IRS_pageId = 'iRView'; // 艾瑞睿见
 </script>
-<script src="http://data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
+<script src="//data.iresearch.com.cn/js/IRS_index_head_html.js"></script>
 <div id="app" :class="productName">
     <div class="header">
         <div class="container">
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <div class="introduce" :class="index%2 === 0 ? '' : 'gray'" v-for="(item, index) in productInfo" :key="index">
+    <div class="vtuv introduce" :class="index%2 === 0 ? '' : 'gray'" v-for="(item, index) in productInfo" :key="index">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">

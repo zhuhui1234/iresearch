@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="introduce" :class="index%2 === 0 ? '' : 'gray'" v-for="(item, index) in productInfo" :key="index">
+    <div class="vtuv introduce" :class="index%2 === 0 ? '' : 'gray'" v-for="(item, index) in productInfo" :key="index">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
