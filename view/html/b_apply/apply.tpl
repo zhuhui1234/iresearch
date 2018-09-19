@@ -30,7 +30,7 @@
                     <div class="main_left_line_box">
                         <div class="main_left_line">
                             <div class="main_left_line_title">姓名<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="填写您的姓名" autocomplete="off" id="name" type="text"/ value="{username}">
+                            <input class="main_left_line_input" placeholder="请输入名字" autocomplete="off" id="name" type="text"/ value="{username}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">手机号<span class="main_left_line_title_re">*</span></div>
@@ -38,11 +38,11 @@
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">邮箱<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="填写您的邮箱地址" autocomplete="off" id="mail" type="text"/  value="{u_mail}">
+                            <input class="main_left_line_input" placeholder="请输入邮箱" autocomplete="off" id="mail" type="text"/  value="{u_mail}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">公司<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="填写您所在的公司" autocomplete="off" id="company" type="text"/ value="{company}">
+                            <input class="main_left_line_input" placeholder="请输入公司" autocomplete="off" id="company" type="text"/ value="{company}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">职位<span class="main_left_line_title_re">*</span></div>
