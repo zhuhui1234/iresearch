@@ -61,7 +61,7 @@
                                    autocomplete="off"
                             />
                         </div>
-                        <div class="main_left_body_line" id="phoneLine" >
+                        <div class="main_left_body_line" id="phoneLine">
                             <div class="main_left_body_line_icon"></div>
 
                             <input type="text" class="tel" id="tel" placeholder="请输入手机号..."
