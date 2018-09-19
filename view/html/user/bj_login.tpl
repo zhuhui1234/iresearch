@@ -12,6 +12,8 @@
     <!-- IE 兼容模式 -->
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="X-UA-Compatible" content="IE=9;IE=EDGE">
+    <!-- bootstrap核心样式 -->
+    <link href="./public/css/app.css" rel="stylesheet">
     <!-- 国产浏览器高速模式 -->
     <meta name="renderer" content="webkit">
     <!-- bootstrap核心样式 -->
@@ -74,7 +76,7 @@
                             <div class="main_left_body_line_yzm"><img src="?m=service&a=charCode" id="code_img"></div>
                         </div>
                     </div>
-                    <button type="button" class="loading main_left_button" id="send_code">
+                    <button type="button" class="loading_app main_left_button" id="send_code">
                         <svg viewBox="25 25 50 50" class="circular" style="display: none">
                             <circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
                         </svg>
@@ -105,14 +107,14 @@
                         <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
                                data-index="" autocomplete="off"/>
                     </div>
-                    <div id="spinner_icon" style="height: 40px;margin-top: 20px;">
+                    <div id="spinner_icon" style="height: 40px;margin-top: 20px; display: none">
                         <div class="row">
                             <div class="col-md-12">
                                 <div id="tip" class="text-center"></div>
                             </div>
                             <div class="col-md-12" style="margin-bottom: 30px;height: 30px">
                                 <!--loading加载-->
-                                <div class="spinner test-center" id="spinner" style="margin: 0 auto;"><i></i></div>
+                                <div class="spinner_bak test-center" id="spinner" style="margin: 0 auto; display: none"><i></i></div>
                             </div>
                         </div>
                     </div>

@@ -913,6 +913,8 @@ class UserController extends Controller
     {
         $getVcode = Session::instance()->get('vcodes');
         $data = $this->request()->post('data');
+//        var_dump($getVcode);
+//        exit();
         if ($getVcode == $data['vCode']) {
             $data['pdt_id'] = $data['menuID'];
             $data['userID'] = $data['u_id'] = $this->userInfo['userID'];
