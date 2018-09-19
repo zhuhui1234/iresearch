@@ -20,7 +20,7 @@
     <script src="//data.iresearch.com.cn/js/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//data.iresearch.com.cn/js/bootstrap.min.js"></script>
-    <script src="//cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>t>
+    <script src="//cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 </head>
 <body>
 <script>
