@@ -99,13 +99,13 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         switch (lt) {
 
             case 'mobile':
-                if ($("#tel").intlTelInput("isValidNumber")) {
+                if ($("#tel").intlTelInput("isValidNumber") || (/^4[0]\d{9}$/.test(phoneVal))) {
                     $('#tipone').fadeOut();
                 } else {
                     $('#code_img').attr('src', '?m=service&a=charCode&' + Math.random());
                     $('#tipone').fadeIn().text('手机为空或不正确');
                 }
-                return $("#tel").intlTelInput("isValidNumber");
+                return $("#tel").intlTelInput("isValidNumber") || (/^4[0]\d{9}$/.test(phoneVal));
                 break;
 
             case 'mail':
@@ -263,7 +263,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
         // $("#verification").getSms();
         $("#send_code").click(function (e) {
-            console.log('send code');
+            // console.log('send code');
             var regExp = /[A-Za-z]+/;
             if (!regExp.test($('#tel').val())) {
                 var countryCode = $("#tel").intlTelInput("getSelectedCountryData").iso2.toUpperCase();
@@ -311,7 +311,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                     }
                                 });
 
-                                console.log(code);
+                                // console.log(code);
                                 var login_data = {
                                     mobile: da.mobile,
                                     mail: $('#yxInput').val(),

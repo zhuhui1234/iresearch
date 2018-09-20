@@ -19,7 +19,7 @@
     <!-- bootstrap核心样式 -->
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="http://data.iresearch.com.cn/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./public/css/bj_login/index.css" rel="stylesheet">
+    <link href="./public/css/bj_login/index.css?2342" rel="stylesheet">
     <link href="./public/css/bj_login/wechat.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="mobileSelect.js-master/css/mobileSelect.css"> -->
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -129,10 +129,9 @@
                     </div>
                 </div>
             </div>
+            <div class="bgBack_opa"></div>
+            <div class="bgBack_opa2"></div>
         </div>
-        <div class="bgBack_opa"></div>
-        <div class="bgBack_opa2"></div>
-
         <div style="clear: both;"></div>
         <div class="footer">
             提示：如果您已经是艾瑞数据用户可以尝试用手机号或者微信扫码直接登录。
