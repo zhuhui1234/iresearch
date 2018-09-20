@@ -47,7 +47,7 @@
                         <a :href="item.link" class="ad-box" v-on:click="jumpDialog(item)">
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
-                              [[ item.title ]]<br />[[ item.name ]]
+                                [[ item.title ]]<br />[[ item.name ]]
                             </span>
                         </a>
                     </div>
