@@ -44,18 +44,18 @@
             <div class="content">
                 <div class="row" id="adnavs">
                     <div class="col-md-6" v-for="item in productHeader.productList" :key="item.name">
-                        <a href="#" class="ad-box">
+                        <a :href="item.link" class="ad-box" v-on:click="jumpDialog(item)">
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
-                  [[ item.title ]]<br />[[ item.name ]]
-                </span>
+                                [[ item.title ]]<br />[[ item.name ]]
+                            </span>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="vtuv introduce" :class="index%2 === 0 ? '' : 'gray'" v-for="(item, index) in productInfo" :key="index">
+    <div class="introduce" :class="index%2 === 0 ? '' : 'gray'" v-for="(item, index) in productInfo" :key="index">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -81,7 +81,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-xs-12" id="VT">
-                            <a class="link" :href="item.jumpList.base.link">
+                            <a class="link" :href="item.jumpList.base.link" v-on:click="jumpDialog(item.jumpList.base)">
                                 [[ item.jumpList.base.title ]]
                             </a>
                         </div>
@@ -93,12 +93,26 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm custom-dialog" :class="productName" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">提示</h4>
+                </div>
+                <div class="modal-body">
+                    上线准备中
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="http://data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
 <script></script>
 <script>
     <!-- IF token=="1" -->
     var vt_beta_url = "?m=user&a=login&cb=vt";
+    var status = 1;
     var vt_beta = "登录使用";
     var apply_ivt = "";
     var apply_beta_ivt = "";
@@ -107,12 +121,15 @@
 
     <!-- ELSE -->
     var vt_beta = "标准版";
-    var vt_beta_url = "?m=user&a=jump&pro=47";
+    var status = 0;
+    var vt_beta_url = "#";
     var apply_ivt = '{apply_ivt}';
     var apply_beta_ivt = '{apply_beta_ivt}';
     var apply_mvt = '{apply_mvt}';
     var apply_ovt = '{apply_ovt}';
     <!-- ENDIF -->
+    console.log(status);
+    console.log(typeof status);
 
     var app = new Vue({
         el: '#app',
@@ -126,12 +143,15 @@
                 productList: [{
                     title: '标准版',
                     name: 'VideoTracker',
-                    icon: './public/img/b_t/criterion.png'
+                    icon: './public/img/b_t/criterion.png',
+                    status: 0
                 },
                     {
                         title: '网络影视指数',
                         name: 'Online Video Index',
-                        icon: './public/img/b_t/OTT.png'
+                        icon: './public/img/b_t/OTT.png',
+                        link: '//index.iresearch.com.cn/Video',
+                        status: 1
                     }
                 ]
             },
@@ -157,7 +177,8 @@
                 jumpList: {
                     base: {
                         title: vt_beta,
-                        link: vt_beta_url
+                        link: vt_beta_url,
+                        status: status
                     },
                     old: [
                         {
@@ -179,6 +200,14 @@
                     ]
                 }
             }]
+        },
+        methods: {
+            jumpDialog: function (item) {
+                console.log(typeof item.status);
+                if (item.status == 0) {
+                    $('#myModal').modal('show')
+                }
+            }
         }
     })
 </script>

@@ -48,8 +48,8 @@
                         <a class="ad-box" :href="item.link">
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
-                  [[ item.title ]]<br />[[ item.name ]]
-                </span>
+                                [[ item.title ]]<br />[[ item.name ]]
+                            </span>
                         </a>
                     </div>
                 </div>

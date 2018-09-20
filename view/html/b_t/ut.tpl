@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UserTracker<</title>
+    <title>UserTracker</title>
     <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico"
           mce_href="//data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
@@ -48,15 +48,15 @@
                         <a :href="item.link" class="ad-box">
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
-                  [[item.title ]]<br />[[item.name ]]
-                </span>
+                                [[item.title ]]<br />[[item.name ]]
+                            </span>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="vtuv introduce" :class="index%2 === 0 ? '' : 'gray'" v-for="(item, index) in productInfo" :key="index">
+    <div class="introduce" :class="index%2 === 0 ? '' : 'gray'" v-for="(item, index) in productInfo" :key="index">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
