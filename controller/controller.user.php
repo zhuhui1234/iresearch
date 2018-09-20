@@ -484,7 +484,7 @@ class UserController extends Controller
             'userID' => $this->userInfo['userID']
         ]), true);
 
-        View::instance('user/trial.tpl')->show(
+        View::instance('b_apply/apply.tpl')->show(
             [
                 'username' => $userInfo['uname'],
                 'company' => $userInfo['company'],
@@ -519,12 +519,12 @@ class UserController extends Controller
         $data['loginStatus'] = $this->loginStatus;
 //        $userInfo = json_decode($this->model->getMyInfo(), true);
         $userInfo = json_decode($this->userDetail, true);
-        $bindingUserInfo = json_decode($this->model->bindUserInfo($userInfo), true);
+//        $bindingUserInfo = json_decode($this->model->bindUserInfo($userInfo), true);
         $userInfo = $userInfo['data'];
         $userModel = Model::instance('user');
-        $menu = json_decode($userModel->showMenu(), true);
-        $menu = $menu['data']['dataList'];
-        $menu = fillMenu($menu);
+//        $menu = json_decode($userModel->showMenu(), true);
+//        $menu = $menu['data']['dataList'];
+//        $menu = fillMenu($menu);
         $region = json_decode($userModel->regionList([
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
@@ -538,6 +538,39 @@ class UserController extends Controller
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
         ]), true);
+
+        /*
+         * 显示三端图标
+         */
+        switch ($this->request()->get('menuID')) {
+            case 11:
+                //只有mobile
+                $pc = $ott = 'none';
+                $mobile = 'block';
+                break;
+
+            case 41:
+            case 46:
+            default:
+                //没三端
+                $pc = $mobile = $ott = 'none';
+
+                break;
+
+            case 42:
+            case 47:
+                //三端
+                $pc = $mobile = $ott = 'block';
+
+                break;
+            case 48:
+                //no ott
+                $ott = 'none';
+                $pc = $mobile = 'block';
+                break;
+
+        }
+
         View::instance('b_apply/apply.tpl')->show(
             [
                 'username' => $userInfo['uname'],
@@ -545,21 +578,24 @@ class UserController extends Controller
 //                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
                 'mobile' => $userInfo['mobile'],
                 'expireDate' => substr($this->userInfo['validity'], 0, 10),
-                'avatar' => $userInfo['headImg'],
-                'permissions' => $this->userInfo['permissions'],
+//                'avatar' => $userInfo['headImg'],
+//                'permissions' => $this->userInfo['permissions'],
                 'uname' => $userInfo['uname'],
-		        'u_mail' => $userInfo['companyEmail'],
+                'u_mail' => $userInfo['companyEmail'],
                 'position' => $userInfo['position'],
-                'wechat' => $bindingUserInfo['data']['weixin']['type'],
-                'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
-                'menu' => $menu,
-                'titleMenu' => $menu[1]['subMenu'],
-                'ppname' => $this->request()->get('ppname'),
-                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
+//                'wechat' => $bindingUserInfo['data']['weixin']['type'],
+//                'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
+//                'menu' => $menu,
+//                'titleMenu' => $menu[1]['subMenu'],
+//                'ppname' => $this->request()->get('ppname'),
+//                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
                 'regionList' => $region['data'],
                 'industrylist' => $industry['data'],
                 'productIntroduce' => $productInfo['data'][0]['pdt_intro'],
                 'productLogoUrl' => $productInfo['data'][0]['pdt_logo_url'],
+                'pc' => $pc,
+                'mobile' => $mobile,
+                'ott' => $ott
             ]
         );
     }

@@ -86,18 +86,23 @@
                     {productIntroduce}
                 </div>
                 <div class="main_right_shebei">
-                    <div class="main_right_shebei_tab" style="">
+                    
+                    
+
+                    <div class="main_right_shebei_tab" style="display: {mobile};">
                         <img  class="main_right_shebei_tab_img" src="./public/img/bj_login/Group 45 Copy@3x.png"/>
                         <div class="main_right_shebei_tab_txt">移动终端</div>
                     </div>
-                    <div class="main_right_shebei_tab">
+                    <div class="main_right_shebei_tab" style="display: {pc};">
                         <img  class="main_right_shebei_tab_img" src="./public/img/bj_login/Group 100 Copy@3x.png"/>
                         <div class="main_right_shebei_tab_txt">PC终端</div>
                     </div>
-                    <div class="main_right_shebei_tab">
+                    <div class="main_right_shebei_tab" style="display: {ott};">
                         <img  class="main_right_shebei_tab_img" src="./public/img/bj_login/Group 4 Copy 2@3x.png"/>
                         <div class="main_right_shebei_tab_txt">OTT终端</div>
                     </div>
+
+
                 </div>
                 <div class="main_right_ewm">
                     <div class="main_right_ewm_left">
