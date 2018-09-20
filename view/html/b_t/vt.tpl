@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UserTracker 第三方网民网络行为监测</title>
+    <title>VideoTracker</title>
     <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico"
           mce_href="//data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
@@ -74,7 +74,7 @@
                                 <li class="list-group-item">[[ list.title ]]</li>
                                 <li class="list-group-item">
                                     <span class="dot" :class="productName"></span>
-                                    [[ list.desc ]]
+                                    <span class="info">[[ list.desc ]]</span>
                                 </li>
                             </ul>
                         </div>
@@ -106,8 +106,7 @@
     var apply_ovt = "";
 
     <!-- ELSE -->
-    $("#VT").css('display','none');
-    var vt_beta = "";
+    var vt_beta = "标准版";
     var vt_beta_url = "?m=user&a=jump&pro=47";
     var apply_ivt = '{apply_ivt}';
     var apply_beta_ivt = '{apply_beta_ivt}';

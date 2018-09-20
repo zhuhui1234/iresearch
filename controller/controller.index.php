@@ -927,22 +927,22 @@ class IndexController extends Controller
 
                         if ($datum['pdt_id'] == 47) {
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_ivt'] = '使用IVT';
-                                $data['apply_beta_ivt'] = '使用IVT老版';
+                                $data['apply_ivt'] = 'IVT(BETA)';
+                                $data['apply_beta_ivt'] = 'IVT经典版';
 //                                $data['apply_ivt_en'] = 'English Version';
                                 $data['ivt_oldurl'] = '?m=irdata&a=classicSys&ppname=网络视频内容市场监测_老版&pro=47';
 //                                $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=52';
 
                             } else {
                                 $data['apply_ivt'] = '申请试用(MVT)';
-                                $data['apply_beta_ivt'] = '申请试用(IVT老版)';
+                                $data['apply_beta_ivt'] = '申请试用(IVT经典版)';
 //                                $data['apply_ivt_en'] = 'Trial';
                                 $data['ivt_oldurl'] = '?m=user&a=trialApply&ppname=视频内容市场监测&menuID=47';
                                 $data['ivt_oldurl_en'] = '?m=user&a=trialApply&ppname=视频内容市场监测(英文版)&menuID=52';
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_mvt'] = '使用MVT';
+                                $data['apply_mvt'] = 'MVT(BETA)';
 //                                $data['apply_mvt_en'] = 'English Version';
                                 $data['mvt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47';
 //                                $data['mvt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
@@ -955,7 +955,7 @@ class IndexController extends Controller
                             }
 
                             if ($date >= $datum['ott_start_time'] and $date <= $datum['ott_due_time']) {
-                                $data['apply_ovt'] = '使用OVT';
+                                $data['apply_ovt'] = 'OVT(BETA)';
 //                                $data['apply_ovt_en'] = 'English Version';
                                 $data['ovt_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47';
 //                                $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mvt-en&pro=52';
@@ -971,7 +971,6 @@ class IndexController extends Controller
                         //vt english
                         if ($datum['pdt_id'] == 52) {
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_ivt'] = '开始使用';
                                 $data['apply_ivt_en'] = 'English Version';
                                 $data['ivt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ivt-en&pro=52';
 
@@ -1061,7 +1060,7 @@ class IndexController extends Controller
                     foreach ($this->userDetail['data']['productList'] as $datum) {
                         if ($datum['pdt_id'] == 48) {
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_iut'] = '使用IUT';
+                                $data['apply_iut'] = 'IUT经典版';
 //                                $data['apply_iut_en'] = 'English Version';
                                 $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48';
 //                                $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
@@ -1074,7 +1073,7 @@ class IndexController extends Controller
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_mut'] = '使用MUT';
+                                $data['apply_mut'] = 'MUT经典版';
 //                                $data['apply_mut_en'] = 'English Version';
                                 $data['mut_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=48';
 //                                $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
@@ -1088,7 +1087,7 @@ class IndexController extends Controller
 
                         if ($datum['pdt_id'] == 51) {
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_iut_en'] = '使用IUT(EN)';
+                                $data['apply_iut_en'] = 'IUT Classic(EN)';
                                 $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
 
                             } else {
@@ -1097,7 +1096,7 @@ class IndexController extends Controller
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_mut_en'] = '使用MUT(EN)';
+                                $data['apply_mut_en'] = 'MUT Classic(EN)';
                                 $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
                             } else {
                                 $data['apply_mut_en'] = 'Trial(MUT)';
@@ -1109,7 +1108,7 @@ class IndexController extends Controller
                         if ($datum['pdt_id'] == 48) {
 
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_beta_iut'] = '使用新版(BETA)';
+                                $data['apply_beta_iut'] = '标准版';
                                 $data['apply_beta_iut_en'] = 'English Version';
                             } else {
                                 $data['apply_beta_iut'] = '申请试用';
@@ -1117,7 +1116,7 @@ class IndexController extends Controller
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_beta_mut'] = '使用新版(BETA)';
+                                $data['apply_beta_mut'] = '标准版';
                                 $data['apply_beta_mut_en'] = 'English Version';
                             } else {
 //                                $data['apply_beta_mut'] = '';

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AdTracker 艾瑞咨询</title>
+    <title>AdTracker</title>
     <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico"
           mce_href="//data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
@@ -75,7 +75,7 @@
                                 <li class="list-group-item">[[ list.title ]]</li>
                                 <li class="list-group-item">
                                     <span class="dot" :class="productName"></span>
-                                    [[ list.desc ]]
+                                    <span class="info">[[ list.desc ]]</span>
                                 </li>
                             </ul>
                         </div>
@@ -107,8 +107,8 @@
     var old_bt_title = "";
     <!-- ELSE -->
     <!-- IF apply=="2" -->
-    var bt_title = "开始使用";
-    var old_bt_title = "开始使用旧版";
+    var bt_title = "标准版";
+    var old_bt_title = "AD经典版";
     <!-- ELSE -->
     var bt_title = "申请试用";
     var old_bt_title = "";
@@ -120,7 +120,7 @@
     var feedad_url = '?m=user&a=jump&pro=60';
     <!-- ELSE -->
     <!-- IF adtI=="3" -->
-    var bt_title_feedad = "开始使用";
+    var bt_title_feedad = "信息流专用版";
     var feedad_url = '?m=user&a=jump&pro=60';
     <!-- ELSE -->
     var bt_title_feedad = "申请试用";
