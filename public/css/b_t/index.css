@@ -281,3 +281,35 @@ a:focus, a:hover {
     flex: 0 0 auto;
     -ms-flex: 0 0 auto;
 }
+.custom-dialog {
+    margin-top: 100px;
+}
+.custom-dialog .modal-content {
+    border-radius: 4px;
+    overflow: hidden;
+    border: none;
+}
+.custom-dialog .modal-header {
+    padding: 7px 10px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+}
+.custom-dialog.ut .modal-header {
+    background: #3dc0f0;
+}
+.custom-dialog.ad .modal-header {
+    background: #69c72b;
+}
+.custom-dialog.vt .modal-header{
+    background: #8EC63F;
+}
+.custom-dialog .modal-header .close {
+    color: #fff;
+    opacity: 1;
+    font-weight: normal;
+    line-height: 1.2;
+}
+.custom-dialog .modal-body {
+    text-align: center;
+}
