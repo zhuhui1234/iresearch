@@ -23,7 +23,7 @@ body {
 .main-image {
     height: 100%;
     z-index: 300;
-    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bg2x.jpg") no-repeat center;
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/@1x.jpg") no-repeat center;
     /*background: url(../img/bg2x.jpg) no-repeat center;*/
     position: relative;
     background-size: 100% 100%;

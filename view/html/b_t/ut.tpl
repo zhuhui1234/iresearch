@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UserTracker 第三方网民网络行为监测<</title>
+    <title>UserTracker<</title>
     <link rel="shortcut icon" href="//data.iresearch.com.cn/images/favicon.ico"
           mce_href="//data.iresearch.com.cn/images/favicon.ico" type="image/x-icon">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
@@ -75,7 +75,7 @@
                                 <li class="list-group-item">[[list.title ]]</li>
                                 <li class="list-group-item">
                                     <span class="dot" :class="productName"></span>
-                                    [[list.desc ]]
+                                    <span class="info">[[ list.desc ]]</span>
                                 </li>
                             </ul>
                         </div>

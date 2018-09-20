@@ -488,7 +488,8 @@ class UserController extends Controller
             [
                 'username' => $userInfo['uname'],
                 'company' => $userInfo['company'],
-                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
+//                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
+                'mobile' => $userInfo['mobile'],
                 'u_mail' => $userInfo['companyEmail'],
                 'expireDate' => substr($this->userInfo['validity'], 0, 10),
                 'avatar' => $userInfo['headImg'],
@@ -541,7 +542,8 @@ class UserController extends Controller
             [
                 'username' => $userInfo['uname'],
                 'company' => $userInfo['company'],
-                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
+//                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
+                'mobile' => $userInfo['mobile'],
                 'expireDate' => substr($this->userInfo['validity'], 0, 10),
                 'avatar' => $userInfo['headImg'],
                 'permissions' => $this->userInfo['permissions'],

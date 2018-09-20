@@ -1,7 +1,15 @@
+html{
+    height: 100%;
+}
 body{
     font-family: "Helvetica Neue","Helvetica,Arial","Microsoft Yahei","PingFang SC","sans-serif";
     -webkit-font-smoothing: antialiased;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    display: -ms-flex;
+    -ms-flex-direction: column;
+    height: 100%;
 }
 a{
     text-decoration: none;
@@ -42,7 +50,10 @@ a:focus, a:hover {
     border-radius:5px;
     border:1px solid rgba(255,255,255,0.7);
     transition: all .3s ease-in;
-    display: block;
+    display: flex;
+    display: -ms-flex;
+    align-items: center;
+    -ms-align-items: center;
 }
 .ad-box:hover{
     cursor: pointer;
@@ -52,21 +63,21 @@ a:focus, a:hover {
 .ad-box img{
     height: 20px;
     width: auto;
-    margin-bottom: 25px;
-    padding-right: 20px;
-    border-right: 1px solid #FFFFFF;
+    vertical-align: top;
 }
 .ad-box .icon {
-    margin-left: 20px;
+    text-align: center;
+    width: 60px;
+    border-right: 1px solid #FFFFFF;
 }
 .ad-box .span {
-    display: inline-block;
+    flex: 1;
+    -ms-flex: 1;
+    text-align: center;
     color: #FFFFFF;
     font-size: 13px;
-    line-height: 23px;
-    padding-top: 5px;
+    line-height: 20px;
     text-align: center;
-    padding-left: 10px;
 }
 /* item */
 .introduce{
@@ -123,7 +134,10 @@ a:focus, a:hover {
     color: #999999;
     background: none;
     margin-bottom: 8px;
-    margin-left: 6px;
+    display: flex;
+    display: -ms-flexbox;
+    align-items: top;
+    -ms-ime-align: top;
 }
 .introduce ul li:first-child{
     font-size: 14px;
@@ -133,103 +147,88 @@ a:focus, a:hover {
     margin-left: 0;
 }
 .introduce .dot{
-    display:inline-block;
     width:4px;
     height:4px;
     border-radius:50%;
-    margin-bottom: 4px;
+    margin-top: 7px;
     margin-right: 4px;
-    margin-left: -6px;
+}
+.introduce .info {
+    flex: 1;
+    -ms-flex: 1;
+}
+.introduce .link {
+    font-size: 16px;
+    line-height: 38px;
+    border-radius: 100px;
+    padding: 0 25px;
+}
+.introduce .link {
+    transition: all .2s linear;
+}
+.introduce .link:hover{
+    color: #FFFFFF;
+}
+.introduce a {
+    line-height: 38px;
+    font-size: 14px;
+    text-align: center;
+    margin: 10px 0;
+    display: block;
 }
 .ad .introduce a {
     color: #69c72b;
 }
-.ad {
+.ad .header {
     background: #65AF45;
 }
 .ad .introduce .dot {
     background: #69c72b;
 }
 .ad .introduce .link {
-    font-size: 16px;
-    line-height: 38px;
-    border-radius: 100px;
-    padding: 0 25px;
-    width: 200px;
-}
-.ad .introduce .link {
     color: #69c72b;
     border: 1px solid #69c72b;
-    transition: all .2s linear;
 }
 .ad .introduce .link:hover{
-    color: #FFFFFF;
+    color: #fff;
     background: #69c72b;
 }
 .ad .introduce a {
     color: #69c72b;
-    line-height: 38px;
-    font-size: 14px;
-    text-align: center;
-    display: block;
 }
-.ut{
+.ut .header{
     background:#3dc0f0;
 }
 .ut .introduce .dot {
     background: #3dc0f0;
 }
 .ut .introduce .link {
-    font-size: 16px;
-    line-height: 38px;
-    border-radius: 100px;
-    padding: 0 25px;
-    width: 200px;
-}
-.ut .introduce .link {
     color: #3dc0f0;
     border: 1px solid #3dc0f0;
-    transition: all .2s linear;
 }
 .ut .introduce .link:hover{
-    color: #FFFFFF;
+    color: #fff;
     background: #3dc0f0;
 }
 .ut .introduce a {
     color: #3dc0f0;
-    line-height: 38px;
-    font-size: 14px;
-    text-align: center;
-    display: block;
 }
-.vt{
+.vt .header{
     background:#8EC63F;
 }
 .vt .introduce .dot {
     background: #8EC63F;
 }
 .vt .introduce .link {
-    font-size: 16px;
-    line-height: 38px;
-    border-radius: 100px;
-    padding: 0 25px;
-    width: 200px;
-}
-.vt .introduce .link {
     color: #8EC63F;
     border: 1px solid #8EC63F;
-    transition: all .2s linear;
 }
 .vt .introduce .link:hover{
-    color: #FFFFFF;
+    color: #fff;
     background: #8EC63F;
 }
 .vt .introduce a {
     color: #8EC63F;
-    line-height: 38px;
-    font-size: 14px;
-    text-align: center;
-    display: block;
 }
 @media (max-width: 768px) {
     .header .title{
@@ -261,9 +260,9 @@ a:focus, a:hover {
     .introduce .title::before {
         display: none;
     }
-    .introduce ul li:first-child {
+    /* .introduce ul li:first-child {
         text-align: center;
-    }
+    } */
     .introduce .link {
         margin: 20px auto 0 auto;
         display: block;
@@ -273,3 +272,12 @@ a:focus, a:hover {
     }
 }
 
+#app {
+    flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+}
+#IRS-header,
+#IRS-foot{
+    flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+}
