@@ -7,18 +7,24 @@ define(['helper', 'app/main'], function (Helper) {
         $(".main-image").css({
             height: height
         });
-        $(".main").css({
-            height: height
-        });
-        if (width >= 1099) {
-            var bodyH = (height - 634) / 2
-            $("#jumbotron").css({"height": height + "px", "padding-top": bodyH + "px", "padding-bottom": bodyH + "px"});
-        }
+        if(width >= 1099){
+            $("#industry").select2({
+                width: "80%",
+                minimumResultsForSearch: -1,
+                placeholder:'请选择行业(必选)'
+            });//启动select2
+            $("#city").select2({
+                width: "80%",
+                minimumResultsForSearch: -1,
+                placeholder:'请选择行业(必选)'
+            });//启动select2
+        };
 
     }
 
 
     $(function () {
+
         $(".main_left_line_input").click(function () {
             $(".main_left_line_input").css('border-color', '#EEEEEE');
             $(this).css('border-color', '#69C72B');
@@ -28,7 +34,8 @@ define(['helper', 'app/main'], function (Helper) {
 
         window.onresize = function () {
             resizeBackground();
-        }
+        };
+
         $("#applyToTrial").click(function () {
             var pData = {
                 "companyName": $("#company").val(),
@@ -51,8 +58,9 @@ define(['helper', 'app/main'], function (Helper) {
                 ($.trim(pData.menuID).length <= 0) ||
                 ($.trim(pData.mail).length <= 0) ||
                 ($.trim(pData.region).length <= 0 && pData.region == '0') || pData.industry == '0') {
-                alert("必填项不能为空")
+                $('.alert').css('display','block');
             } else {
+                $('.alert').css('display','none');
                 Helper.post("trialApply", {data: pData}, function (ret) {
                     console.log(ret);
                     if (ret.resCode == "20000") {

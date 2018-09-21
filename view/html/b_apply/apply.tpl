@@ -16,11 +16,22 @@
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="http://data.iresearch.com.cn/js/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <link rel="stylesheet" type="text/css" href="./public/css/b_apply/public.css">
+
+    <!-- 引入select样式和js文件 -->
+    <link rel="stylesheet" type="text/css" href="./public/css/b_apply/mobileSelect.css">
+    <script src="{WEBSITE_SOURCE_URL}/js/app/mobileSelect.min.js" type="text/javascript"></script>
+    <script src="{WEBSITE_SOURCE_URL}/js/app/select2.min.js" type="text/javascript"></script>
+    <link href="./public/css/b_apply/select2.min.css" rel="stylesheet">
 </head>
 
 <body>
 <div class="main-image"></div>
 <div class="main">
+    <div class="alert" style="display: none">
+        <img class="alert_img" src="./public/img/bj_login/csicon.png" />
+        <div class="alert_txt">必填项不能为空</div>
+    </div>
     <div class="row jumbotron login" id="jumbotron">
         <!-- +row-->
         <div class="row" style="margin:0;" id="row1"><img class="row_img" src="./public/img/bj_login/logo1.png"></div>
@@ -50,22 +61,50 @@
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">行业<span class="main_left_line_title_re">*</span></div>
+                            <!--pc的select-->
                             <select class="main_left_line_input main_left_line_select" autocomplete="off" id="industry">
                                 <option value="0" selected="selected">请选择行业(必填)&#x200E</option>
                                 <!-- BEGIN industrylist -->
                                 <option value='{id}'>{title}</option>
                                 <!-- END industrylist -->
                             </select>
+                            <!--以下mobileSelect-->
+                            <div class="selectMM" id="triggerM1"></div>
+                            <script>
+                                var weekdayArr1 = {mobile_industry};
+                                var mobileSelect1 = new MobileSelect({
+                                    trigger: '#triggerM1',
+                                    title: '单项选择',
+                                    wheels: [{
+                                        data: weekdayArr1
+                                    }],
+                                    position: [0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                                });
+                            </script>
                             <img class="main_left_line_select_icon" src="./public/img/bj_login/jt.png"/>
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">地区<span class="main_left_line_title_re">*</span></div>
+                            <!--pc的select-->
                             <select class="main_left_line_input main_left_line_select" autocomplete="off" id="city">
                                 <option value="0" selected="selected">请选择地区(必填)&#x200E</option>
                                 <!-- BEGIN regionList -->
                                 <option value='{id}'>{title}</option>
                                 <!-- END regionList -->
                             </select>
+                            <!--以下mobileSelect-->
+                            <div class="selectMM" id="triggerM2"></div>
+                            <script>
+                                var weekdayArr2 = {mobile_region};
+                                var mobileSelect2 = new MobileSelect({
+                                    trigger: '#triggerM2',
+                                    title: '单项选择',
+                                    wheels: [{
+                                        data: weekdayArr2
+                                    }],
+                                    position: [0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                                });
+                            </script>
                             <img class="main_left_line_select_icon" src="./public/img/bj_login/jt.png"/>
                         </div>
                         <div class="main_left_line">
@@ -98,7 +137,7 @@
                         <div class="main_right_shebei_tab_txt">PC终端</div>
                     </div>
                     <div class="main_right_shebei_tab" style="display: {ott};">
-                        <img  class="main_right_shebei_tab_img" src="./public/img/bj_login/Group 4 Copy 2@3x.png"/>
+                        <img  class="main_right_shebei_tab_img" src="./public/img/bj_login/Group 4 Copy 2@3x.png" style="margin-left: 18px;"/>
                         <div class="main_right_shebei_tab_txt">OTT终端</div>
                     </div>
 
