@@ -62,7 +62,7 @@
                         <div class="main_left_line">
                             <div class="main_left_line_title">行业<span class="main_left_line_title_re">*</span></div>
                             <!--pc的select-->
-                            <select class="main_left_line_input main_left_line_select" autocomplete="off" id="industry">
+                            <select class="main_left_line_input main_left_line_select selectPc" autocomplete="off" id="industry">
                                 <option value="0" selected="selected">请选择行业(必填)&#x200E</option>
                                 <!-- BEGIN industrylist -->
                                 <option value='{id}'>{title}</option>
@@ -86,7 +86,7 @@
                         <div class="main_left_line">
                             <div class="main_left_line_title">地区<span class="main_left_line_title_re">*</span></div>
                             <!--pc的select-->
-                            <select class="main_left_line_input main_left_line_select" autocomplete="off" id="city">
+                            <select class="main_left_line_input main_left_line_select selectPc" autocomplete="off" id="city">
                                 <option value="0" selected="selected">请选择地区(必填)&#x200E</option>
                                 <!-- BEGIN regionList -->
                                 <option value='{id}'>{title}</option>
@@ -98,7 +98,6 @@
                                 var weekdayArr2 = {mobile_region};
                                 var mobileSelect2 = new MobileSelect({
                                     trigger: '#triggerM2',
-                                    title: '单项选择',
                                     wheels: [{
                                         data: weekdayArr2
                                     }],

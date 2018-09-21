@@ -497,6 +497,7 @@ class UserController extends Controller
             ];
         }
         $mobile_industry = json_encode($mobile_industry,JSON_UNESCAPED_UNICODE);
+        var_dump($userInfo['mobile']);exit;
         View::instance('b_apply/apply.tpl')->show(
             [
                 'username' => $userInfo['uname'],
@@ -558,12 +559,12 @@ class UserController extends Controller
          * 显示三端图标
          */
         switch ($this->request()->get('menuID')) {
+//            case 11:
+//                //只有mobile
+//                $pc = $ott = 'none';
+//                $mobile = 'block';
+//                break;
             case 11:
-                //只有mobile
-                $pc = $ott = 'none';
-                $mobile = 'block';
-                break;
-
             case 41:
             case 46:
             default:
