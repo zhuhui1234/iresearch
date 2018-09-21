@@ -10,6 +10,13 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+.select2-container{
+    width: 63px;
+    top: 11px;
+    position: relative;
+    float: left;
+}
+
 .main-background {
     position: fixed;
     left: 0;
@@ -23,12 +30,11 @@ body {
 .main-image {
     height: 100%;
     z-index: 300;
-    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/@1x.jpg") no-repeat center;
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bg2x.jpg") no-repeat center;
     /*background: url(../img/bg2x.jpg) no-repeat center;*/
     position: relative;
     background-size: 100% 100%;
     width: 100%;
-    min-height: 661px;
 }
 
 body button {
@@ -57,13 +63,29 @@ body button {
     position: absolute;
     z-index: 400;
     height: 100%;
+    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex;
     /* min-width:1200px; */
 }
 
 .jumbotron {
     background: none;
-    width: 52.0833333333%;
+    width: 1000px;
     margin: 0 auto;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex;
+    justify-content: center;
+    -ms-justify-content: center;
+    align-items: flex-start;
+    -ms-align-items: flex-start;
 }
 
 .four #row1 img {
@@ -80,9 +102,11 @@ body button {
 
 #row2 {
     margin: 30px 0 0 0;
-    min-height: 416px;
+    height: 416px;
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    width:1000px;
 }
 
 .bgBack_opa {
@@ -119,7 +143,7 @@ body button {
     border-right: 1px solid #eeeeee;
     background-color: #fff;
     border-radius: 10px 0 0 10px;
-    min-height: 416px;
+    height: 416px;
 }
 
 /*.aa_click{*/
@@ -222,6 +246,7 @@ body button {
     background-size: 100% 100%;
     float: left;
     margin-top: 14px;
+    margin-right: 12.5px;
 }
 
 .main_left_body_line_icon2Pc {
@@ -260,7 +285,7 @@ body button {
 }
 
 .yxInput {
-    width: 240px;
+    width: 237px;
 }
 
 .tel,
@@ -324,7 +349,7 @@ body button {
     float: right;
     padding-bottom: 62px;
     padding-top: 59px;
-    min-height: 416px;
+    height: 416px;
 }
 
 .main_right_ewm {
@@ -357,7 +382,7 @@ body button {
 }
 
 #yxInput {
-    margin-left: 15px;
+    margin-left: 0;
     margin-top: 12px;
 }
 
@@ -388,7 +413,8 @@ body button {
     color: rgba(102, 102, 102, 1);
     text-align: center;
     position: relative;
-    top: -14px;
+    top: 44px;
+    width: 100%;
 }
 
 #tipone {
@@ -438,7 +464,7 @@ body button {
     margin-right: 2%;
 }
 
-#trigger1 {
+#triggerM {
     display: none;
 }
 
@@ -539,7 +565,7 @@ body button {
     border-right: 1px solid #E8E8E8;
     background-color: #fff;
     border-radius: 10px 0 0 10px;
-    min-height: 416px;
+    height: 416px;
 }
 
 #test .now:focus {
@@ -602,9 +628,12 @@ select:-webkit-autofill {
         bottom: 0;
         right: 0;
     }
+    .main{
+        display: block;
+    }
     .main-image {
-        background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.jpg") no-repeat;
-        /*background: url(../img/bgpic.jpg) no-repeat;*/
+        /*background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.jpg") no-repeat;*/
+        background: url(../img/bgpic.jpg) no-repeat;
         background-size: cover;
     }
     #main_right_tohiden {
@@ -625,11 +654,11 @@ select:-webkit-autofill {
     .footer {
         display: none;
     }
-    #triggerPc {
-        display: none;
+    #triggerM {
+        display: block;
     }
     #trigger1 {
-        display: block;
+        display: none;
     }
     .alert_img {
         width: 15px;
@@ -648,11 +677,14 @@ select:-webkit-autofill {
         background: none;
         margin: 0 auto;
         padding-top: 60px;
-        width: 76.47058823529412%
+        width: 76.47058823529412%;
+        display: block;
     }
     #row2 {
         margin-top: 35px;
         background: none;
+        box-shadow: none;
+        width: auto;
     }
     .main_left {
         width: 100%;
@@ -695,6 +727,7 @@ select:-webkit-autofill {
         width: 14.5px;
         height: 20px;
         margin-top: 15px;
+        margin-right: 0;
     }
     .main_left_body_line_icon2 {
         background: #ffffff;
@@ -805,9 +838,12 @@ select:-webkit-autofill {
     .alert {
         display: block;
     }
+    .main{
+        display: block;
+    }
     .main-image {
-        background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.jpg") no-repeat;
-        /*background: url(../img/bgpic.jpg) no-repeat;*/
+        /*background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.jpg") no-repeat;*/
+        background: url(../img/bgpic.jpg) no-repeat;
         background-size: cover;
     }
     #main_right_tohiden {
@@ -828,14 +864,18 @@ select:-webkit-autofill {
     .footer {
         display: none;
     }
-    #triggerPc {
-        display: none;
+    #triggerM {
+        display: block;
     }
     #trigger1 {
-        display: block;
+        display: none;
     }
     #row2 {
         margin-top: 110px;
+        margin-top: 35px;
+        background: none;
+        box-shadow: none;
+        width: auto;
     }
     .main_left_body_line_icon {
         width: 29px;
@@ -872,6 +912,7 @@ select:-webkit-autofill {
         background: none;
         width: 80%;
         margin: 0 auto;
+        display: block;
     }
     .main_left_body {
         margin-top: 20px;
@@ -959,13 +1000,13 @@ select:-webkit-autofill {
     }
 }
 
-@media (min-width: 750px) and (max-width: 1024px) {
+@media (min-width: 750px) and (max-width: 1099px) {
     .alert {
         display: block;
     }
     .main-image {
-        background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.jpg") no-repeat;
-        /*background: url(../img/bgpic.jpg) no-repeat;*/
+        /*background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.jpg") no-repeat;*/
+        background: url(../img/bgpic.jpg) no-repeat;
         background-size: cover;
     }
     #main_right_tohiden {
@@ -986,21 +1027,24 @@ select:-webkit-autofill {
     .footer {
         display: none;
     }
-    #triggerPc {
-        display: none;
+    #triggerM {
+        display: block;
     }
     #trigger1 {
-        display: block;
+        display: none;
     }
     #row2 {
         margin-top: 110px;
-        background: none;
+        background: none;;
+        box-shadow: none;
+        width: auto;
     }
     .jumbotron {
         background: none;
         width: 80%;
         margin: 0 auto;
         padding-top: 91px;
+        display: block;
     }
     #pagenavi1 ul li a {
         width: 156px;
@@ -1095,9 +1139,6 @@ select:-webkit-autofill {
         border: 0;
         outline: none;
     }
-    #triggerPc {
-        display: none;
-    }
     #test {
         padding: 45px;
         width: 100%;
@@ -1123,14 +1164,14 @@ select:-webkit-autofill {
     }
 }
 
-@media (min-width: 1024px) and (max-width: 1300px) {
+@media (min-width: 1099px) and (max-width: 1300px) {
     .jumbotron {
         background: none;
-        width: 70%;
+        width: 80%;
         margin: 0 auto;
     }
     .main_left_body_line_input {
-        width: 290px;
+        width: 200px;
         height: 36px;
         font-size: 14px;
         color: #333;
@@ -1161,7 +1202,8 @@ select:-webkit-autofill {
         font-size: 13px
     }
 }
-#code_img{
+
+#code_img {
     cursor: pointer
 }
 
