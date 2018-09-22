@@ -95,25 +95,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 }, function (ret) {
                     console.log(ret.resCode);
                     if (ret.resCode == "000000") {
-                        // console.log(ppName);
-                        // console.log(pdtID);
 
-                        // if (typeof pdtID == 'string') {
-                        //     if (pdtID.length > 0) {
-                        //         window.location.reload();
-                        //     } else {
-                        //         window.location.href = '?m=index&a=index';
-                        //     }
-                        // } else if (typeof ppName == 'string') {
-                        //     if (ppName.length > 0) {
-                        //         window.location.reload();
-                        //     } else {
-                        //         window.location.href = '?m=index&a=index';
-                        //     }
-                        // } else {
-                        //     window.location.href = '?m=index&a=index';
-                        // }
-                        // console.log(cb)
                         if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
 
                             if (pdtID !== null) {
