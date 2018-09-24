@@ -479,11 +479,25 @@ class UserController extends Controller
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
         ]), true);
+        foreach($region['data'] as $re){
+            $mobile_region[] = [
+                'id' => $re['id'],
+                'value' =>$re['title']
+            ];
+        }
+        $mobile_region = json_encode($mobile_region,JSON_UNESCAPED_UNICODE);
         $industry = json_decode($userModel->industryList([
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
         ]), true);
-
+        foreach($industry['data'] as $in){
+            $mobile_industry[] = [
+                'id' => $in['id'],
+                'value' =>$in['title']
+            ];
+        }
+        $mobile_industry = json_encode($mobile_industry,JSON_UNESCAPED_UNICODE);
+        var_dump($userInfo['mobile']);exit;
         View::instance('b_apply/apply.tpl')->show(
             [
                 'username' => $userInfo['uname'],
@@ -503,7 +517,9 @@ class UserController extends Controller
                 'ppname' => $this->request()->get('ppname'),
                 'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
                 'regionList' => $region['data'],
-                'industrylist' => $industry['data']
+                'industrylist' => $industry['data'],
+                'mobile_region' => $mobile_region,
+                'mobile_industry' => $mobile_industry
             ]
         );
     }
@@ -543,12 +559,12 @@ class UserController extends Controller
          * 显示三端图标
          */
         switch ($this->request()->get('menuID')) {
+//            case 11:
+//                //只有mobile
+//                $pc = $ott = 'none';
+//                $mobile = 'block';
+//                break;
             case 11:
-                //只有mobile
-                $pc = $ott = 'none';
-                $mobile = 'block';
-                break;
-
             case 41:
             case 46:
             default:

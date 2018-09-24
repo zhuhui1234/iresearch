@@ -84,6 +84,9 @@ a:focus, a:hover {
     background:#ffffff ;
     padding: 50px 0;
 }
+.introduce a {
+    transition: all .2s linear;
+}
 .introduce.gray {
     background: #fafafa;
 }
@@ -196,6 +199,9 @@ a:focus, a:hover {
 .ad .introduce a {
     color: #69c72b;
 }
+.ad .introduce a:hover {
+    color: #489912;
+}
 .ut .header{
     background:#3dc0f0;
 }
@@ -213,6 +219,9 @@ a:focus, a:hover {
 .ut .introduce a {
     color: #3dc0f0;
 }
+.ut .introduce a:hover {
+    color: #0c7da7;
+}
 .vt .header{
     background:#8EC63F;
 }
@@ -229,6 +238,9 @@ a:focus, a:hover {
 }
 .vt .introduce a {
     color: #8EC63F;
+}
+.vt .introduce a:hover {
+    color: rgb(102, 148, 37);
 }
 @media (max-width: 768px) {
     .header .title{
