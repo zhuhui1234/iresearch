@@ -9,6 +9,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         $("#timeout_msg").show();
     }
 
+    var eightIn = false;
 
     $(".find_nav_list li").each(function () {
         $(".sideline").css({
@@ -99,13 +100,17 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         switch (lt) {
 
             case 'mobile':
-                if ($("#tel").intlTelInput("isValidNumber") || (/^4[0]\d{9}$/.test(phoneVal))) {
+                if ((/^4[0]\d{9}$/.test($('#tel').val()))) {
+                    eightIn = true;
+                }
+                if ($("#tel").intlTelInput("isValidNumber") || (/^4[0]\d{9}$/.test($('#tel').val()))) {
+
                     $('#tipone').fadeOut();
                 } else {
                     $('#code_img').attr('src', '?m=service&a=charCode&' + Math.random());
                     $('#tipone').fadeIn().text('手机为空或不正确');
                 }
-                return $("#tel").intlTelInput("isValidNumber") || (/^4[0]\d{9}$/.test(phoneVal));
+                return $("#tel").intlTelInput("isValidNumber") || (/^4[0]\d{9}$/.test($('#tel').val()));
                 break;
 
             case 'mail':
@@ -139,10 +144,26 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
 
     var login_check = function (cb) {
+        console.log(eightIn);
+
+        if (eightIn) {
+            //8位
+            var inputNum = 7;
+            var findTag = '.expnum';
+            var checkNum = 8;
+            $("#login_tips").html("请输入8位手机或邮件验证码");
+        } else {
+            //6位
+            var inputNum = 7;
+            var findTag = '.eightNow'
+            var checkNum = 6;
+        }
+
+        console.log(findTag);
 
         $('#spinner').css('display', "none");
-        $('.input-item .now:first').focus();
-        $('.now').keydown(function (e) {
+        $('.input-item ' + findTag + ':first').focus();
+        $(findTag).keydown(function (e) {
             e = window.event || evt; //解决兼容问题
             if (e.keyCode >= 48 && e.keyCode <= 57) {
                 $(this).attr("type", "text");
@@ -150,7 +171,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
             return e.keyCode === 8 || (e.keyCode >= 48 && e.keyCode <= 57)
         });
-        $('.now').keyup(function (e) {
+        $(findTag).keyup(function (e) {
             $(this).attr("type", "number");
             if (e.keyCode === 8 && $(this).index() !== 0 && !($(this).attr('fvalue'))) {
                 $(this).prev().focus();
@@ -160,14 +181,32 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             }
             $(this).attr('fvalue', $(this).val());
             //$(this).attr("type", "number");
-            if (e.keyCode >= 48 && e.keyCode <= 57)
-                if ($(this).index() < 6 && $(this).val() !== '') {
-                    $(this).next('input').focus();
+            // if (e.keyCode >= 48 && e.keyCode <= 57)
+
+            if ($(this).index() < inputNum && $(this).val() !== '') {
+                $(this).next('input').focus();
+            }
+
+            console.log($(this).val());
+            console.log($(this).next().val());
+            console.log($(this).prev().val());
+            console.log($(this).siblings().val());
+
+            var vcode = '';
+            console.log(vcode.length);
+            $(findTag).each(function (i, n) {
+                if (vcode !== null) {
+                    vcode = vcode + $(n).val();
+                } else {
+                    vcode = $(n).val();
                 }
-            if ($(this).val() !== '' && $(this).next().val() !== '' && $(this).prev().val() !== '' && $(this).siblings()
-                .val() !== '') {
+            });
+
+            // if ($(this).val() !== '' && $(this).next().val() !== '' && $(this).prev().val() !== '' && $(this).siblings()
+            //     .val() !== '') {
+            if (vcode.length == checkNum) {
                 var Arr = [];
-                var value = $('.input-item').find('.now');
+                var value = $('.input-item').find(findTag);
                 for (var i = 0; i < value.length; i++) {
                     Arr.push(value.eq(i).val())
                 }
@@ -175,6 +214,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 $('#spinner').css('display', 'block')
 
                 if (typeof cb == 'function') {
+                    console.log('start call back');
                     cb();
                 }
             }
@@ -263,6 +303,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
         // $("#verification").getSms();
         $("#send_code").click(function (e) {
+
+
             // console.log('send code');
             var regExp = /[A-Za-z]+/;
             if (!regExp.test($('#tel').val())) {
@@ -291,6 +333,12 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     $('.circular').show();
                     $("#sent").text("发送中 ...");
                     $("#send_code").prop('disabled', true);
+                    console.log(eightIn);
+                    if (eightIn) {
+                        $('.expnum').show();
+                    } else {
+                        $('.hid').hide();
+                    }
 
                     Helper.post("sendCode", da, function (ret) {
                         console.log(ret);
@@ -303,7 +351,12 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                             $('#test').fadeIn();
                             login_check(function () {
                                 var code = null;
-                                $('.now').each(function (i, n) {
+                                if (eightIn) {
+                                    var findTag = '.expnum';
+                                } else {
+                                    var findTag = '.eightNow'
+                                }
+                                $(findTag).each(function (i, n) {
                                     if (code !== null) {
                                         code = code + $(n).val();
                                     } else {
@@ -320,56 +373,168 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                     login_type: da.login_type
                                 }
                                 console.log(login_data);
-                                if (String(code).length == 6) {
-                                    Helper.post('b_login', login_data, function (ret) {
-                                        if (ret.resCode == "000000") {
-                                            if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
+                                console.log(eightIn)
+                                console.log(String(code).length);
 
-                                                if (pdtID !== null) {
-                                                    if (pdtID.length > 0) {
-                                                        window.location.reload();
-                                                    } else {
-                                                        // console.log('no pdtID');
-                                                        window.location.href = '?m=index&a=index';
-                                                    }
-                                                } else if (ppName !== null) {
-                                                    if (ppName.length > 0) {
-                                                        window.location.reload();
-                                                    } else {
-                                                        window.location.href = '?m=index&a=index';
-                                                        // console.log('no ppName');
-                                                    }
-                                                } else if (cb !== null) {
-                                                    switch (cb) {
-                                                        case 'usercenter':
-                                                            window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
-                                                            break;
-                                                        case 'k':
-                                                            window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
-                                                            break;
-                                                        case 'm':
-                                                            window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
-                                                            break;
+
+                                if (eightIn) {
+                                    if (String(code).length == 8) {
+
+                                        Helper.post('b_login', login_data, function (ret) {
+                                            if (ret.resCode == "000000") {
+                                                if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
+
+                                                    if (pdtID !== null) {
+                                                        if (pdtID.length > 0) {
+                                                            window.location.reload();
+                                                        } else {
+                                                            // console.log('no pdtID');
+                                                            window.location.href = '?m=index&a=index';
+                                                        }
+                                                    } else if (ppName !== null) {
+                                                        if (ppName.length > 0) {
+                                                            window.location.reload();
+                                                        } else {
+                                                            window.location.href = '?m=index&a=index';
+                                                            // console.log('no ppName');
+                                                        }
+                                                    } else if (cb !== null) {
+                                                        switch (cb) {
+                                                            case 'usercenter':
+                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
+                                                                break;
+                                                            case 'k':
+                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
+                                                                break;
+                                                            case 'm':
+                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
+                                                                break;
+                                                        }
+
                                                     }
 
+                                                } else {
+                                                    // console.log('no all');
+                                                    window.location.href = '?m=index&a=index';
                                                 }
-
                                             } else {
-                                                // console.log('no all');
-                                                window.location.href = '?m=index&a=index';
+                                                $('.spinner').fadeOut();
+                                                $(findTag).val(null);
+                                                $('.input-item ' + findTag + ':first').focus();
+                                                $('#tip').fadeIn().text(ret.resMsg);
+
                                             }
-                                        } else {
-                                            $('.spinner').fadeOut();
-                                            $('.now').val(null);
-                                            $('.input-item .now:first').focus();
-                                            $('#tip').fadeIn().text(ret.resMsg);
 
-                                        }
-
-                                    })
+                                        })
+                                    } else {
+                                        $("#tipone").fadeIn().text('验证码字数错误');
+                                    }
                                 } else {
-                                    $("#tipone").fadeIn().text('验证码字数错误');
+
+                                    if (String(code).length == 6) {
+                                        Helper.post('b_login', login_data, function (ret) {
+                                            if (ret.resCode == "000000") {
+                                                if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
+
+                                                    if (pdtID !== null) {
+                                                        if (pdtID.length > 0) {
+                                                            window.location.reload();
+                                                        } else {
+                                                            // console.log('no pdtID');
+                                                            window.location.href = '?m=index&a=index';
+                                                        }
+                                                    } else if (ppName !== null) {
+                                                        if (ppName.length > 0) {
+                                                            window.location.reload();
+                                                        } else {
+                                                            window.location.href = '?m=index&a=index';
+                                                            // console.log('no ppName');
+                                                        }
+                                                    } else if (cb !== null) {
+                                                        switch (cb) {
+                                                            case 'usercenter':
+                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
+                                                                break;
+                                                            case 'k':
+                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
+                                                                break;
+                                                            case 'm':
+                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
+                                                                break;
+                                                        }
+
+                                                    }
+
+                                                } else {
+                                                    // console.log('no all');
+                                                    window.location.href = '?m=index&a=index';
+                                                }
+                                            } else {
+                                                $('.spinner').fadeOut();
+                                                $(findTag).val(null);
+                                                $('.input-item ' + findTag + ':first').focus();
+                                                $('#tip').fadeIn().text(ret.resMsg);
+
+                                            }
+
+                                        })
+                                    } else {
+                                        $("#tipone").fadeIn().text('验证码字数错误');
+                                    }
+
                                 }
+
+
+                                // if (String(code).length == 6 || String(code).length == 8) {
+                                //     Helper.post('b_login', login_data, function (ret) {
+                                //         if (ret.resCode == "000000") {
+                                //             if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
+                                //
+                                //                 if (pdtID !== null) {
+                                //                     if (pdtID.length > 0) {
+                                //                         window.location.reload();
+                                //                     } else {
+                                //                         // console.log('no pdtID');
+                                //                         window.location.href = '?m=index&a=index';
+                                //                     }
+                                //                 } else if (ppName !== null) {
+                                //                     if (ppName.length > 0) {
+                                //                         window.location.reload();
+                                //                     } else {
+                                //                         window.location.href = '?m=index&a=index';
+                                //                         // console.log('no ppName');
+                                //                     }
+                                //                 } else if (cb !== null) {
+                                //                     switch (cb) {
+                                //                         case 'usercenter':
+                                //                             window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
+                                //                             break;
+                                //                         case 'k':
+                                //                             window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
+                                //                             break;
+                                //                         case 'm':
+                                //                             window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
+                                //                             break;
+                                //                     }
+                                //
+                                //                 }
+                                //
+                                //             } else {
+                                //                 // console.log('no all');
+                                //                 window.location.href = '?m=index&a=index';
+                                //             }
+                                //         } else {
+                                //             $('.spinner').fadeOut();
+                                //             $(findTag).val(null);
+                                //             $('.input-item ' + findTag + ':first').focus();
+                                //             $('#tip').fadeIn().text(ret.resMsg);
+                                //
+                                //         }
+                                //
+                                //     })
+                                // } else {
+                                //     $("#tipone").fadeIn().text('验证码字数错误');
+                                // }
                             });
 
                         } else {

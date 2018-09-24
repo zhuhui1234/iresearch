@@ -92,22 +92,26 @@
                             <h4 class="return"><span id="spaner"></span>返回登录页</h4>
                         </a>
                     </div>
-                    <h5>请输入6位手机或邮件验证码</h5>
+                    <h5 id="login_tips">请输入6位手机或邮件验证码</h5>
                     <div class="input-item">
-                        <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                        <input type="number" name="code" fvalue="" class="now expnum hid" min="0" max="9" maxlength="1"
+                               data-index="" autocomplete="off" style="display: none"/>
+                        <input type="number" name="code" fvalue="" class="now expnum hid" min="0" max="9" maxlength="1"
+                               data-index="" autocomplete="off" style="display: none"/>
+                        <input type="number" name="code" fvalue="" class="now expnum eightNow" min="0" max="9" maxlength="1"
                                data-index="" autocomplete="off"/>
-                        <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                        <input type="number" name="code" fvalue="" class="now expnum eightNow" min="0" max="9" maxlength="1"
                                data-index="" autocomplete="off"/>
-                        <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                        <input type="number" name="code" fvalue="" class="now expnum eightNow" min="0" max="9" maxlength="1"
                                data-index="" autocomplete="off"/>
-                        <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                        <input type="number" name="code" fvalue="" class="now expnum eightNow" min="0" max="9" maxlength="1"
                                data-index="" autocomplete="off"/>
-                        <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                        <input type="number" name="code" fvalue="" class="now expnum eightNow" min="0" max="9" maxlength="1"
                                data-index="" autocomplete="off"/>
-                        <input type="number" name="code" fvalue="" class="now" min="0" max="9" maxlength="1"
+                        <input type="number" name="code" fvalue="" class="now expnum eightNow" min="0" max="9" maxlength="1"
                                data-index="" autocomplete="off"/>
                     </div>
-                    <div id="spinner_icon" style="height: 40px;margin-top: 20px; display: none">
+                    <div id="spinner_icon" style="height: 40px;margin-top: 20px;">
                         <div class="row">
                             <div class="col-md-12">
                                 <div id="tip" class="text-center"></div>
