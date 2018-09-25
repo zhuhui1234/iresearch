@@ -151,7 +151,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             var inputNum = 7;
             var findTag = '.expnum';
             var checkNum = 8;
-            $("#login_tips").html("请输入8位手机或邮件验证码");
+            $("#login_tips").html("Please enter a special verification code");
         } else {
             //6位
             var inputNum = 7;
