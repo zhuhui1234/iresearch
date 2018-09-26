@@ -906,8 +906,10 @@ class IndexController extends Controller
         $data['ovt_oldurl_en'] = '?m=irdata&a=classicSys&ppname=ovt-en&pro=52';
 
         if ($this->userDetail) {
-            $data['apply_ivt'] = $data['apply_mvt'] = $data['apply_ovt'] = '申请试用(IVT)';
-//            $data['apply_beta_ivt'] = $data['apply_beta_mvt'] = '申请试用(老版本)';
+            $data['apply_ivt'] = '申请试用(IVT)';
+            $data['apply_mvt'] = '申请试用(MVT)';
+            $data['apply_ovt'] = '申请试用(OVT)';
+            $data['apply_beta_ivt'] = '申请试用(IVT经典版)';
             $data['apply_ivt_en'] = $data['apply_mvt_en'] = $data['apply_beta_ivt_en'] = $data['apply_beta_mvt_en'] = 'Trial';
 
             $data['ovt_oldurl'] = '?m=user&a=trialApply&ppname=移动视频市场监测&menuID=47';
