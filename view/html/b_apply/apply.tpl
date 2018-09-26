@@ -45,7 +45,7 @@
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">手机号<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="填写您的手机号" autocomplete="off" id="phone" type="text"/ value="{u_mobile}">
+                            <input class="main_left_line_input" disabled="disabled" placeholder="填写您的手机号" autocomplete="off" id="phone" type="text" value="{u_mobile}" >
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">邮箱<span class="main_left_line_title_re">*</span></div>
@@ -107,7 +107,7 @@
                             <img class="main_left_line_select_icon" src="./public/img/bj_login/jt.png"/>
                         </div>
                         <div class="main_left_line">
-                            <div class="main_left_line_title">验证码</div>
+                            <div class="main_left_line_title">验证码<span class="main_left_line_title_re">*</span></div>
                             <div class="main_left_line_input_yzm">
                                 <input class="main_left_line_input yzmInput" autocomplete="off" placeholder="请输入验证码" id="code" type="text"/>
                                 <img id="charCode" class="yzmInput_img" src="?m=service&a=charCode"/>
