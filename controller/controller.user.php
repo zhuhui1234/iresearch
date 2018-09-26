@@ -592,7 +592,7 @@ class UserController extends Controller
                 'username' => $userInfo['uname'],
                 'company' => $userInfo['company'],
 //                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
-                'mobile' => $userInfo['mobile'],
+                'u_mobile' => $userInfo['mobile'],
                 'expireDate' => substr($this->userInfo['validity'], 0, 10),
 //                'avatar' => $userInfo['headImg'],
 //                'permissions' => $this->userInfo['permissions'],
@@ -966,6 +966,25 @@ class UserController extends Controller
 
 
     public function trialApplyAPI()
+    {
+        $getVcode = Session::instance()->get('vcodes');
+        $data = $this->request()->post('data');
+//        var_dump($getVcode);
+//        exit();
+        if ($getVcode == $data['vCode']) {
+            $data['pdt_id'] = $data['menuID'];
+            $data['userID'] = $data['u_id'] = $this->userInfo['userID'];
+            $data['companyID'] = $this->userInfo['companyID'];
+            $data['mobile'] = $this->userInfo['mobile'];
+            $data['mail'] = $data['mail'];
+            $data['token'] = $data['TOKEN'] = $this->userInfo['token'];
+            echo $this->model->trialApply($data);
+        } else {
+            echo json_encode(['resCode' => -1, 'resMsg' => '输入的图形验证码错误']);
+        }
+    }
+
+    public function bjTrialApplyAPI()
     {
         $getVcode = Session::instance()->get('vcodes');
         $data = $this->request()->post('data');

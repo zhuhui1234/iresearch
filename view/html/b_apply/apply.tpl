@@ -45,7 +45,7 @@
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">手机号<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="填写您的手机号" autocomplete="off" id="phone" type="text"/ value="{mobile}">
+                            <input class="main_left_line_input" placeholder="填写您的手机号" autocomplete="off" id="phone" type="text"/ value="{u_mobile}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">邮箱<span class="main_left_line_title_re">*</span></div>
