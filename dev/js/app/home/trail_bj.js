@@ -61,7 +61,7 @@ define(['helper', 'app/main'], function (Helper) {
                 $('.alert').css('display','block');
             } else {
                 $('.alert').css('display','none');
-                Helper.post("trialApply", {data: pData}, function (ret) {
+                Helper.post("bjTrialApply", {data: pData}, function (ret) {
                     console.log(ret);
                     if (ret.resCode == "20000") {
                         alert("申请成功,我们的销售人员会在两个工作日之内联系您！");
