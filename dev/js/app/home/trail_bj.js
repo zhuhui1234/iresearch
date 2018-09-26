@@ -67,7 +67,24 @@ define(['helper', 'app/main'], function (Helper) {
                     console.log(ret);
                     if (ret.resCode == "20000") {
                         alert("申请成功,我们的销售人员会在两个工作日之内联系您！");
-                        window.location.href = "?m=index&a=index";
+
+                        switch (parseInt(pData.menuID)) {
+                            case 47:
+                                //vt
+                                window.location.href = "?m=index&a=vt";
+                                break;
+                            case 42:
+                                //adt
+                                window.location.href = "?m=index&a=ad";
+                                break;
+                            case 48:
+                                //ut
+                                window.location.href = "?m=index&a=ut";
+                                break;
+                            default:
+                                window.location.href = "?m=index&a=index";
+                                break;
+                        }
                     } else {
                         alert(ret.resMsg);
                     }
