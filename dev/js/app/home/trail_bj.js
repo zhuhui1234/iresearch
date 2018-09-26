@@ -19,8 +19,13 @@ define(['helper', 'app/main'], function (Helper) {
                 placeholder: '请选择行业(必选)'
             });//启动select2
         }
-        ;
+        
 
+    }
+
+    var validateEmail = function (email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 
 
@@ -52,13 +57,15 @@ define(['helper', 'app/main'], function (Helper) {
                 "remark": $("#ppname").text(),
                 "vCode": $("#code").val()
             };
-            console.log(pData);
+            console.log(pData)
+            console.log(validateEmail(pData.mail) );
             if (($.trim(pData.username).length <= 0) ||
                 ($.trim(pData.companyName).length <= 0) ||
                 // ($.trim(pData.position).length <= 0) ||
                 ($.trim(pData.menuID).length <= 0) ||
                 ($.trim(pData.mail).length <= 0) ||
                 pData.vCode.length <= 0 ||
+                !validateEmail(pData.mail) ||
                 ($.trim(pData.region).length <= 1 && pData.region == '0') || pData.industry == '0') {
                 $('.alert').css('display', 'block');
             } else {

@@ -30,7 +30,7 @@
 <div class="main">
     <div class="alert" style="display: none">
         <img class="alert_img" src="./public/img/bj_login/csicon.png" />
-        <div class="alert_txt">必填项不能为空</div>
+        <div class="alert_txt">必填项不能为空且邮箱正确填写</div>
     </div>
     <div class="row jumbotron login" id="jumbotron">
         <!-- +row-->
@@ -144,12 +144,12 @@
                 </div>
                 <div class="main_right_ewm">
                     <div class="main_right_ewm_left">
-                        <img  class="main_right_ewm_left_img" src="./public/img/bj_login/Group 7@3x.png"/>
+                        <img  class="main_right_ewm_left_img" src="./public/img/bj_login/APP@3x.png"/>
                         <div class="main_right_ewm_txt">艾瑞研究院APP</div>
                     </div>
                     <div class="main_right_ewm_left">
-                        <img  class="main_right_ewm_left_img" src="./public/img/bj_login/Bitmap@3x.png"/>
-                        <div class="main_right_ewm_txt">微信扫一扫使用小程序</div>
+                        <img  class="main_right_ewm_left_img" src="./public/img/bj_login/minapp@3x.png"/>
+                        <div class="main_right_ewm_txt">艾瑞咨询小程序</div>
                     </div>
                 </div>
             </div>
