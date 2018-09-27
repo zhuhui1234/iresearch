@@ -28,6 +28,13 @@
 <body>
 <div class="main-image"></div>
 <div class="main">
+    <div id="alert_dialog" class="alert_back" style="display: none">
+        <div class="alert_ts">
+            <img class="alert_ts_img" src="./public/img/bj_login/alert_icon.png"/>
+            <div class="alert_ts_txt">申请成功，我们销售人员会在两个工作日内联系您！</div>
+            <div id="confirm_btn" class="alert_ts_button">确定</div>
+        </div>
+    </div>
     <div class="alert" style="display: none">
         <img class="alert_img" src="./public/img/bj_login/csicon.png" />
         <div class="alert_txt">必填项不能为空且邮箱正确填写</div>

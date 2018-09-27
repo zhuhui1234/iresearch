@@ -10,7 +10,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.select2-container{
+.select2-container {
     width: 63px;
     top: 11px;
     position: relative;
@@ -63,10 +63,14 @@ body button {
     position: absolute;
     z-index: 400;
     height: 100%;
-    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
-    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
-    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
-    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: -webkit-box;
+    /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;
+    /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;
+    /* 混合版本语法: IE 10 */
+    display: -webkit-flex;
+    /* 新版本语法: Chrome 21+ */
     display: flex;
     /* min-width:1200px; */
 }
@@ -77,10 +81,14 @@ body button {
     margin: 0 auto;
     flex-direction: column;
     -ms-flex-direction: column;
-    display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
-    display: -moz-box;     /* 老版本语法: Firefox (buggy) */
-    display: -ms-flexbox;  /* 混合版本语法: IE 10 */
-    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: -webkit-box;
+    /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;
+    /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;
+    /* 混合版本语法: IE 10 */
+    display: -webkit-flex;
+    /* 新版本语法: Chrome 21+ */
     display: flex;
     justify-content: center;
     -ms-justify-content: center;
@@ -107,7 +115,7 @@ body button {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-    width:1000px;
+    width: 1000px;
 }
 
 .bgBack_opa {
@@ -247,6 +255,18 @@ body button {
     background-size: 100% 100%;
     float: left;
     margin-top: 14px;
+    margin-right: 12.5px;
+}
+
+.main_left_body_line_iconemail {
+    width: 22px;
+    height: 17px;
+    background-image: url(//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/email.png);
+    /*background-image: url(../img/email.png);*/
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    margin-top: 17px;
     margin-right: 12.5px;
 }
 
@@ -629,7 +649,7 @@ select:-webkit-autofill {
         bottom: 0;
         right: 0;
     }
-    .main{
+    .main {
         display: block;
     }
     .main-image {
@@ -728,6 +748,12 @@ select:-webkit-autofill {
         width: 14.5px;
         height: 20px;
         margin-top: 15px;
+        margin-right: 0;
+    }
+    .main_left_body_line_iconemail {
+        width: 20px;
+        height: 14px;
+        margin-top: 19px;
         margin-right: 0;
     }
     .main_left_body_line_icon2 {
@@ -834,6 +860,7 @@ select:-webkit-autofill {
         display: none;
     }
 }
+
 @media (min-width: 450px) and (max-width: 1099px) {
     .alert {
         display: block;
@@ -869,7 +896,7 @@ select:-webkit-autofill {
     }
     #row2 {
         margin-top: 110px;
-        background: none;;
+        background: none;
         box-shadow: none;
         width: auto;
     }
@@ -893,6 +920,11 @@ select:-webkit-autofill {
         width: 29px;
         height: 40px;
         margin-top: 0;
+    }
+    .main_left_body_line_iconemail{
+        width: 37px;
+        height: 28px;
+        margin-top: 13px;
     }
     .main_left_body_line_icon2 {
         margin-top: 3px;

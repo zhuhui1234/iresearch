@@ -36,6 +36,8 @@ define(['helper', 'app/main'], function (Helper) {
             $(this).css('border-color', '#69C72B');
         });
 
+
+
         resizeBackground();
 
         window.onresize = function () {
@@ -71,27 +73,31 @@ define(['helper', 'app/main'], function (Helper) {
             } else {
                 $('.alert').css('display', 'none');
                 Helper.post("bjTrialApply", {data: pData}, function (ret) {
-                    console.log(ret);
-                    if (ret.resCode == "20000") {
-                        alert("申请成功,我们的销售人员会在两个工作日之内联系您！");
 
-                        switch (parseInt(pData.menuID)) {
-                            case 47:
-                                //vt
-                                window.location.href = "?m=index&a=vt";
-                                break;
-                            case 42:
-                                //adt
-                                window.location.href = "?m=index&a=ad";
-                                break;
-                            case 48:
-                                //ut
-                                window.location.href = "?m=index&a=ut";
-                                break;
-                            default:
-                                window.location.href = "?m=index&a=index";
-                                break;
-                        }
+                    if (ret.resCode == "20000") {
+                        $("#alert_dialog").fadeIn();
+                        // alert("申请成功,我们的销售人员会在两个工作日之内联系您！");
+                        $("#confirm_btn").click(function(){
+                            $("#alert_dialog").fadeOut();
+                            switch (parseInt(pData.menuID)) {
+                                case 47:
+                                    //vt
+                                    window.location.href = "?m=index&a=vt";
+                                    break;
+                                case 42:
+                                    //adt
+                                    window.location.href = "?m=index&a=ad";
+                                    break;
+                                case 48:
+                                    //ut
+                                    window.location.href = "?m=index&a=ut";
+                                    break;
+                                default:
+                                    window.location.href = "?m=index&a=index";
+                                    break;
+                            }
+                        });
+
                     } else {
                         alert(ret.resMsg);
                     }

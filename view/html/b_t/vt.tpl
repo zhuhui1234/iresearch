@@ -157,7 +157,7 @@
             },
             productInfo: [{
                 img: './public/img/b_t/vtbg3.png',
-                logo: './public/img/b_t/vtPC.png',
+                logo: './public/img/b_t/logos/VideoTracker@3x.png',
                 item: [{
                     title: '产品价值',
                     list: [{
