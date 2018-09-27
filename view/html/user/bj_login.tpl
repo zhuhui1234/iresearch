@@ -47,8 +47,8 @@
                         <div class="find_nav_left">
                             <div class="find_nav_list" id="pagenavi1">
                                 <ul>
-                                    <li id="yx" style="display: none;"><a>邮箱登录</a></li>
-                                    <li id="phone" style="display: none;"><a >手机登录</a></li>
+                                    <li class="nav_tab" id="yx" style="display: none;"><a>邮箱登录</a></li>
+                                    <li class="nav_tab" id="phone" style="display: none;"><a >手机登录</a></li>
                                     <li class="sideline" style="display: none;"></li>
                                 </ul>
                             </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="main_left_body">
                         <div class="main_left_body_line" id="yxLine" style="display: none">
-                            <div class="main_left_body_line_icon"></div>
+                            <div class="main_left_body_line_iconemail"></div>
                             <input type="text" class="yxInput" id="yxInput" placeholder="请输入邮箱..."
                                    autocomplete="off"
                             />
@@ -92,7 +92,7 @@
                             <h4 class="return"><span id="spaner"></span>返回登录页</h4>
                         </a>
                     </div>
-                    <h5 id="login_tips">请输入6位手机或邮件验证码</h5>
+                    <h5 id="login_tips">请输入6位手机验证码</h5>
                     <div class="input-item">
                         <input type="number" name="code" fvalue="" class="now expnum hid" min="0" max="9" maxlength="1"
                                data-index="" autocomplete="off" style="display: none"/>
