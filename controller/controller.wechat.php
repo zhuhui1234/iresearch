@@ -91,7 +91,7 @@ class WeChatController extends Controller
                     if ($ret !== null) {
                         write_to_log('ppname: '. $ppName, '_debug');
                         write_to_log('pdtid: '. $pdtID, '_debug');
-                        header('Location: ?m=index&a=ut');
+                        header('Location: ?m=index&a=xut');
 
                     } else {
                         header('Location: ?m=user&a=login?recode=402');
@@ -115,7 +115,7 @@ class WeChatController extends Controller
                     if ($ret !== null) {
                         write_to_log('ppname: '. $ppName, '_debug');
                         write_to_log('pdtid: '. $pdtID, '_debug');
-                        header('Location: ?m=index&a=vt');
+                        header('Location: ?m=index&a=xvt');
                     } else {
                         header('Location: ?m=user&a=login?recode=402');
                     }
