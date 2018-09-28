@@ -19,15 +19,15 @@
     <!-- bootstrap核心样式 -->
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="http://data.iresearch.com.cn/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./public/css/bj_login/index.css?2342" rel="stylesheet">
+    <link href="./public/css/bj_login/index.css?234323" rel="stylesheet">
     <link href="./public/css/bj_login/wechat.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="mobileSelect.js-master/css/mobileSelect.css"> -->
+    <!-- <link rel="stylesheet" href="mobileSelect.js-master/css/mobileSelect.css?3432"> -->
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="http://data.iresearch.com.cn/js/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="http://data.iresearch.com.cn/js/bootstrap.min.js"></script>
     <script src="./dev/js/lib/intl-tel/js/utils.js"></script>
-    <link rel="stylesheet" href="./dev/js/lib/intl-tel/css/intlTelInput.css ">
+    <link rel="stylesheet" href="./dev/js/lib/intl-tel/css/intlTelInput.css?2342 ">
 </head>
 
 <body>
