@@ -342,7 +342,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                         login_type: login_type(),
                         mobile: find_mob(),
                         email: $('#yxInput').val(),
-                        country_code: countryCode,
+                        country_code: countryCode
                     };
 
                     $('.circular').show();

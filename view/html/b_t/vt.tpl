@@ -203,7 +203,7 @@
         },
         methods: {
             jumpDialog: function (item) {
-                console.log(typeof item.status);
+                // console.log(typeof item.status);
                 if (item.status == 0 || this.osType() === 'mobile') {
                     $('#myModal').modal('show')
                 }

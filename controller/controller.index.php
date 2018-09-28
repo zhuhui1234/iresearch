@@ -727,7 +727,7 @@ class IndexController extends Controller
         return $ret;
     }
 
-    public function xvt()
+    public function vt()
     {
 
         $userInfo = Session::instance()->get('userInfo');
@@ -875,7 +875,7 @@ class IndexController extends Controller
     /**
      * 新版的vt页面
      */
-    public function vt()
+    public function xvt()
     {
 
         $userInfo = Session::instance()->get('userInfo');
@@ -1025,7 +1025,7 @@ class IndexController extends Controller
      * ut
      *
      */
-    public function ut()
+    public function xut()
     {
         $data = [];
         $userInfo = Session::instance()->get('userInfo');
@@ -1112,7 +1112,7 @@ class IndexController extends Controller
                         if ($datum['pdt_id'] == 48) {
 
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_beta_iut'] = '标准版';
+                                $data['apply_beta_iut'] = '标准版(BETA)';
                                 $data['apply_beta_iut_en'] = 'English Version';
                             } else {
                                 $data['apply_beta_iut'] = '申请试用';
@@ -1247,7 +1247,7 @@ class IndexController extends Controller
 //    }
 
 
-    public function xut()
+    public function ut()
     {
         $data = [];
         $userInfo = Session::instance()->get('userInfo');

@@ -45,7 +45,7 @@
             <div class="content">
                 <div class="row" id="adnavs">
                     <div class="col-md-4" v-for="item in productHeader.productList" :key="item.name">
-                        <a :href="item.link" class="ad-box">
+                        <a :href="item.link" class="ad-box"  v-on:click="jumpDialog(item)">
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
                                 [[item.title ]]<br />[[item.name ]]
@@ -80,16 +80,35 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3 col-xs-12">
-                            <a class="link" :href="item.jumpList.base.link">
+                    <div class="row" v-if="osType() !== 'mobile'">
+                        <!-- IF token=="1" -->
+                        <div class="col-md-3 col-xs-12" v-for="(links, index) in item.jumpList.old" :key="index" v-if="links.title !== '' ">
+                            <a class="link" :href="links.link"  >[[links.title ]]</a>
+                        </div>
+                        <!-- ELSE -->
+                        <div class="col-md-3 col-xs-12" v-for="(links, index) in item.jumpList.old" :key="index" v-if="links.title !== '' ">
+                            <a class="old-link" :href="links.link"  >[[links.title ]]</a>
+                        </div>
+                        <div class="col-md-3 col-xs-12" v-if="item.jumpList.base.link !== ''">
+                            <a class="old-link" :href="item.jumpList.base.link">
                                 [[item.jumpList.base.title ]]
                             </a>
                         </div>
-                        <div class="col-md-2 col-xs-12" v-for="(links, index) in item.jumpList.old" :key="index">
-                            <a class="old-link" :href="links.link">[[links.title ]]</a>
-                        </div>
+                        <!-- ENDIF -->
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm custom-dialog" :class="productName" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">提示</h4>
+                </div>
+                <div class="modal-body">
+                    移动版上线准备中
                 </div>
             </div>
         </div>
@@ -100,8 +119,9 @@
 <script>
     <!-- IF token=="1" -->
     var ut_beta_url = "?m=user&a=login&cb=ut";
-    var ut_beta = "登录使用";
-    var apply_iut = "";
+    var ut_beta = "";
+    var apply_iut = "登录使用";
+    var iut_oldurl = "?m=user&a=login&cb=ut";
     var apply_iut_en = "";
     var apply_mut = "";
     var apply_mut_en = "";
@@ -113,6 +133,7 @@
     var apply_iut_en = '{apply_iut_en}';
     var apply_mut = '{apply_mut}';
     var apply_mut_en = '{apply_mut_en}';
+    var iut_oldurl = '{iut_oldurl}';
     <!-- ENDIF -->
 
 
@@ -128,7 +149,7 @@
                 img: './public/img/b_t/UT.png',
                 productList: [
                     {
-                    title: '标准版',
+                    title: '标准版(BETA)',
                     name: 'UserTracker',
                     icon: './public/img/b_t/standard.png',
                     link: '?m=user&a=jump&pro=48'
@@ -174,7 +195,7 @@
                     old: [
                         {
                             title: apply_iut,
-                            link: '{iut_oldurl}'
+                            link: iut_oldurl
                         },
                         {
                             title: apply_iut_en,
@@ -191,8 +212,32 @@
                     ]
                 }
             }]
+        },
+        methods: {
+            jumpDialog: function (item) {
+                // console.log(typeof item.status);
+                if (this.osType() === 'mobile' && item.link == "#" ) {
+                    $('#myModal').modal('show')
+                }
+            },
+            osType() {
+                if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                    return 'mobile'
+                } else {
+                    return 'pc'
+                }
+            }
+        },
+        computed:{
+            changeTitle(){
+                if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                    this.productHeader.productList[0].title = '移动版'
+                    this.productHeader.productList[0].link = '#'
+                }
+            }
         }
-    })
+    });
+    app.changeTitle;
 </script>
 </body>
 </html>
