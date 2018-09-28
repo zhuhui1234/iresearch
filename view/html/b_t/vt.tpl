@@ -43,7 +43,7 @@
             </div>
             <div class="content">
                 <div class="row" id="adnavs">
-                    <div class="col-md-6" v-for="item in productHeader.productList" :key="item.name">
+                    <div class="col-md-12" v-for="item in productHeader.productList" :key="item.name">
                         <a :href="item.link" class="ad-box" v-on:click="jumpDialog(item)">
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
@@ -80,8 +80,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 col-xs-12" id="VT"  v-if="osType() !== 'mobile'">
-                            <a class="link" :href="item.jumpList.base.link" v-on:click="jumpDialog(item.jumpList.base)">
+                        <div class="col-md-4 col-xs-12" id="VT"  v-if="renderBtn">
+                            <a class="link" :href="item.jumpList.base.link" v-on:click="jumpDialog(item.jumpList.base)" >
                                 [[ item.jumpList.base.title ]]
                             </a>
                         </div>
@@ -121,7 +121,7 @@
     var apply_ovt = "";
 
     <!-- ELSE -->
-    var vt_beta = "标准版";
+    var vt_beta = "";
     var status = 0;
     var vt_beta_url = "#";
     var apply_ivt = '{apply_ivt}';
@@ -140,12 +140,13 @@
                 title: 'VideoTracker 第三方视频内容监测',
                 desc: '艾瑞睿见VT系列产品包括移动端、OTT端和PC端视频内容监测产品，完成对家庭跨屏视频内容受众收视行为的全景监测。提供主流视频平台不同频道、类型和产地的视频收视情况，洞察视频内容在不同平台的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好，监控视频内容在各时段的收视趋势。为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。',
                 img: './public/img/b_t/backgroundvt.png',
-                productList: [{
-                    title: '标准版',
-                    name: 'VideoTracker',
-                    icon: './public/img/b_t/criterion.png',
-                    status: 0
-                },
+                productList: [
+                //     {
+                //     title: '标准版',
+                //     name: 'VideoTracker',
+                //     icon: './public/img/b_t/criterion.png',
+                //     status: 0
+                // },
                     {
                         title: '网络影视指数',
                         name: 'Online Video Index',
@@ -222,6 +223,9 @@
                 if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
                     this.productHeader.productList[0].title = '移动版'
                 }
+            },
+            renderBtn(){
+                return (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)) || this.productInfo.jumpList.base.title !== '')
             }
         }
     });
