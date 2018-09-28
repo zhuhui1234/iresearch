@@ -424,6 +424,12 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                                             case 'm':
                                                                 window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
                                                                 break;
+                                                            case 'ut':
+                                                                window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut';
+                                                                break;
+                                                            case 'vt':
+                                                                window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt';
+                                                                break;
                                                         }
 
                                                     }
@@ -475,6 +481,12 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                                                 break;
                                                             case 'm':
                                                                 window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
+                                                                break;
+                                                            case 'ut':
+                                                                window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut';
+                                                                break;
+                                                            case 'vt':
+                                                                window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt';
                                                                 break;
                                                         }
 
