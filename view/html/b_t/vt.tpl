@@ -225,7 +225,7 @@
             }
         }
     });
-    app.changeTitle();
+    app.changeTitle
 </script>
 </body>
 </html>
