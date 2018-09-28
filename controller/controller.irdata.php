@@ -53,7 +53,7 @@ class IRDataController extends Controller
 
 
         } else {
-            View::instance('user/b_login.tpl')->show(['mobile' => 1]);
+            View::instance('user/bj_login.tpl')->show(['mobile' => 1]);
         }
 
     }
@@ -147,7 +147,7 @@ class IRDataController extends Controller
 //                $this->errorPage('你并没有权限访问该模块功能');
             }
         } else {
-            View::instance('user/b_login.tpl')->show([]);
+            View::instance('user/bj_login.tpl')->show([]);
         }
     }
 
@@ -299,7 +299,7 @@ class IRDataController extends Controller
                 </SCRIPT>");
             }
         } else {
-            View::instance('user/b_login.tpl')->show(['msg' => '', 'mobile' => $mobile]);
+            View::instance('user/bj_login.tpl')->show(['msg' => '', 'mobile' => $mobile]);
         }
 
 
