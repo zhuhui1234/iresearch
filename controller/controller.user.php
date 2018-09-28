@@ -497,7 +497,7 @@ class UserController extends Controller
             ];
         }
         $mobile_industry = json_encode($mobile_industry,JSON_UNESCAPED_UNICODE);
-        var_dump($userInfo['mobile']);exit;
+//        var_dump($userInfo['mobile']);exit;
         View::instance('b_apply/apply.tpl')->show(
             [
                 'username' => $userInfo['uname'],
@@ -533,22 +533,33 @@ class UserController extends Controller
         $data['token'] = $this->userInfo['token'];
         $data = $this->userDetail;
         $data['loginStatus'] = $this->loginStatus;
-//        $userInfo = json_decode($this->model->getMyInfo(), true);
         $userInfo = json_decode($this->userDetail, true);
-//        $bindingUserInfo = json_decode($this->model->bindUserInfo($userInfo), true);
         $userInfo = $userInfo['data'];
         $userModel = Model::instance('user');
-//        $menu = json_decode($userModel->showMenu(), true);
-//        $menu = $menu['data']['dataList'];
-//        $menu = fillMenu($menu);
+
         $region = json_decode($userModel->regionList([
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
         ]), true);
+
         $industry = json_decode($userModel->industryList([
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
         ]), true);
+        foreach($industry['data'] as $in){
+            $mobile_industry[] = [
+                'id' => $in['id'],
+                'value' =>$in['title']
+            ];
+        }
+        $mobile_industry = json_encode($mobile_industry,JSON_UNESCAPED_UNICODE);
+        foreach($region['data'] as $re){
+            $mobile_region[] = [
+                'id' => $re['id'],
+                'value' =>$re['title']
+            ];
+        }
+        $mobile_region = json_encode($mobile_region,JSON_UNESCAPED_UNICODE);
         $productInfo = json_decode($userModel->productInfo([
             'pdt_id' => $this->request()->get('menuID'),
             'token' => $this->userInfo['token'],
@@ -559,11 +570,7 @@ class UserController extends Controller
          * 显示三端图标
          */
         switch ($this->request()->get('menuID')) {
-//            case 11:
-//                //只有mobile
-//                $pc = $ott = 'none';
-//                $mobile = 'block';
-//                break;
+
             case 11:
             case 41:
             case 46:
@@ -586,32 +593,25 @@ class UserController extends Controller
                 break;
 
         }
-
+        $mobile_industry = json_encode($mobile_industry,JSON_UNESCAPED_UNICODE);
         View::instance('b_apply/apply.tpl')->show(
             [
                 'username' => $userInfo['uname'],
                 'company' => $userInfo['company'],
-//                'mobile' => substr_replace($userInfo['mobile'], '****', 3, 4),
-                'mobile' => $userInfo['mobile'],
+                'u_mobile' => $userInfo['mobile'],
                 'expireDate' => substr($this->userInfo['validity'], 0, 10),
-//                'avatar' => $userInfo['headImg'],
-//                'permissions' => $this->userInfo['permissions'],
                 'uname' => $userInfo['uname'],
                 'u_mail' => $userInfo['companyEmail'],
                 'position' => $userInfo['position'],
-//                'wechat' => $bindingUserInfo['data']['weixin']['type'],
-//                'weChatNickName' => $bindingUserInfo['data']['weixin']['name'],
-//                'menu' => $menu,
-//                'titleMenu' => $menu[1]['subMenu'],
-//                'ppname' => $this->request()->get('ppname'),
-//                'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null,
                 'regionList' => $region['data'],
                 'industrylist' => $industry['data'],
                 'productIntroduce' => $productInfo['data'][0]['pdt_intro'],
                 'productLogoUrl' => $productInfo['data'][0]['pdt_logo_url'],
                 'pc' => $pc,
                 'mobile' => $mobile,
-                'ott' => $ott
+                'ott' => $ott,
+                'mobile_region' => $mobile_region,
+                'mobile_industry' => $mobile_industry
             ]
         );
     }

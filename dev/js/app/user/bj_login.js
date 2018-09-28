@@ -157,9 +157,19 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             var inputNum = 7;
             var findTag = '.eightNow'
             var checkNum = 6;
+
+            switch (login_type()) {
+                case 'mail':
+                    $("#login_tips").html("请输入6位邮箱验证码");
+                    break;
+                case 'mobile':
+                    $("#login_tips").html("请输入6位手机验证码");
+                    break;
+            }
+
         }
 
-        console.log(findTag);
+        // console.log(findTag);
 
         $('#spinner').css('display', "none");
         $('.input-item ' + findTag + ':first').focus();
@@ -187,13 +197,13 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 $(this).next('input').focus();
             }
 
-            console.log($(this).val());
-            console.log($(this).next().val());
-            console.log($(this).prev().val());
-            console.log($(this).siblings().val());
+            // console.log($(this).val());
+            // console.log($(this).next().val());
+            // console.log($(this).prev().val());
+            // console.log($(this).siblings().val());
 
             var vcode = '';
-            console.log(vcode.length);
+            // console.log(vcode.length);
             $(findTag).each(function (i, n) {
                 if (vcode !== null) {
                     vcode = vcode + $(n).val();
@@ -202,8 +212,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 }
             });
 
-            // if ($(this).val() !== '' && $(this).next().val() !== '' && $(this).prev().val() !== '' && $(this).siblings()
-            //     .val() !== '') {
+
             if (vcode.length == checkNum) {
                 var Arr = [];
                 var value = $('.input-item').find(findTag);
@@ -239,6 +248,10 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
     //action
     $(function () {
+
+        $('.nav_tab').click(function(){
+            $('#tipone').fadeOut();
+        });
 
         $('.tab-p a').click(function () {
             $(this).addClass('actives').siblings().removeClass('actives');
@@ -341,7 +354,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     }
 
                     Helper.post("sendCode", da, function (ret) {
-                        console.log(ret);
+                        // console.log(ret);
                         if (ret.resCode == "000000") {
                             var pdtID = Helper.getQuery('pro');
                             var ppName = Helper.getQuery('ppname');
@@ -372,9 +385,9 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                     vCode: da.vCode,
                                     login_type: da.login_type
                                 }
-                                console.log(login_data);
-                                console.log(eightIn)
-                                console.log(String(code).length);
+                                // console.log(login_data);
+                                // console.log(eightIn)
+                                // console.log(String(code).length);
 
 
                                 if (eightIn) {
@@ -466,7 +479,6 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                                     }
 
                                                 } else {
-                                                    // console.log('no all');
                                                     window.location.href = '?m=index&a=index';
                                                 }
                                             } else {
@@ -567,12 +579,10 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
     // WeChat login
 
-    console.log(Helper.userAgent);
     var pdtID = Helper.getQuery('pro');
     var ppName = Helper.getQuery('ppname');
     var cb = Helper.getQuery('cb');
 
-    console.log(ppName);
     // var u = new URL(window.location.href)
     // var ppName = u.searchParams.get('ppname');
     if (pdtID !== null && ppName == null) {

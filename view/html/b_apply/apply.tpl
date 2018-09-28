@@ -28,9 +28,16 @@
 <body>
 <div class="main-image"></div>
 <div class="main">
+    <div id="alert_dialog" class="alert_back" style="display: none">
+        <div class="alert_ts">
+            <img class="alert_ts_img" src="./public/img/bj_login/alert_icon.png"/>
+            <div class="alert_ts_txt">申请成功，我们销售人员会在两个工作日内联系您！</div>
+            <div id="confirm_btn" class="alert_ts_button">确定</div>
+        </div>
+    </div>
     <div class="alert" style="display: none">
         <img class="alert_img" src="./public/img/bj_login/csicon.png" />
-        <div class="alert_txt">必填项不能为空</div>
+        <div class="alert_txt">必填项不能为空且邮箱正确填写</div>
     </div>
     <div class="row jumbotron login" id="jumbotron">
         <!-- +row-->
@@ -45,7 +52,7 @@
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">手机号<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="填写您的手机号" autocomplete="off" id="phone" type="text"/ value="{mobile}">
+                            <input class="main_left_line_input" disabled="disabled" placeholder="填写您的手机号" autocomplete="off" id="phone" type="text" value="{u_mobile}" >
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">邮箱<span class="main_left_line_title_re">*</span></div>
@@ -107,7 +114,7 @@
                             <img class="main_left_line_select_icon" src="./public/img/bj_login/jt.png"/>
                         </div>
                         <div class="main_left_line">
-                            <div class="main_left_line_title">验证码</div>
+                            <div class="main_left_line_title">验证码<span class="main_left_line_title_re">*</span></div>
                             <div class="main_left_line_input_yzm">
                                 <input class="main_left_line_input yzmInput" autocomplete="off" placeholder="请输入验证码" id="code" type="text"/>
                                 <img id="charCode" class="yzmInput_img" src="?m=service&a=charCode"/>
@@ -144,12 +151,12 @@
                 </div>
                 <div class="main_right_ewm">
                     <div class="main_right_ewm_left">
-                        <img  class="main_right_ewm_left_img" src="./public/img/bj_login/Group 7@3x.png"/>
+                        <img  class="main_right_ewm_left_img" src="./public/img/bj_login/APP@3x.png"/>
                         <div class="main_right_ewm_txt">艾瑞研究院APP</div>
                     </div>
                     <div class="main_right_ewm_left">
-                        <img  class="main_right_ewm_left_img" src="./public/img/bj_login/Bitmap@3x.png"/>
-                        <div class="main_right_ewm_txt">微信扫一扫使用小程序</div>
+                        <img  class="main_right_ewm_left_img" src="./public/img/bj_login/minapp@3x.png"/>
+                        <div class="main_right_ewm_txt">艾瑞咨询小程序</div>
                     </div>
                 </div>
             </div>

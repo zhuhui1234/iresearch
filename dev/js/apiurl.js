@@ -23,6 +23,7 @@ define({
     setState              : '?m=user&a=setStateAPI',
     updateUserInfo        : '?m=user&a=setUserInfoAPI',
     trialApply            : '?m=user&a=trialApplyAPI',
+    bjTrialApply            : '?m=user&a=bjTrialApplyAPI',
     //industry
     getPermissionsListAPI : '?m=industry&a=getPermissionsListAPI',
     getConfigListJsonAPI  : '?m=industry&a=getConfigListJsonAPI',
