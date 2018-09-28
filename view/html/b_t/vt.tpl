@@ -47,7 +47,7 @@
                         <a :href="item.link" class="ad-box" v-on:click="jumpDialog(item)">
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
-                                [[ item.title ]]<br />[[ item.name ]]
+                                [[ item.title ]]<br/>[[ item.name ]]
                             </span>
                         </a>
                     </div>
@@ -80,12 +80,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 col-xs-12" id="VT">
+                        <div class="col-md-4 col-xs-12" id="VT"  v-if="osType() !== 'mobile'">
                             <a class="link" :href="item.jumpList.base.link" v-on:click="jumpDialog(item.jumpList.base)">
                                 [[ item.jumpList.base.title ]]
                             </a>
                         </div>
-                        <div class="col-md-2 col-xs-12" v-for="(links, index) in item.jumpList.old" :key="index">
+                        <div class="col-md-2 col-xs-12"
+                             v-for="(links, index) in item.jumpList.old" :key="index">
                             <a class="old-link" :href="links.link">[[ links.title ]]</a>
                         </div>
                     </div>
@@ -128,8 +129,7 @@
     var apply_mvt = '{apply_mvt}';
     var apply_ovt = '{apply_ovt}';
     <!-- ENDIF -->
-    console.log(status);
-    console.log(typeof status);
+
 
     var app = new Vue({
         el: '#app',
@@ -204,12 +204,28 @@
         methods: {
             jumpDialog: function (item) {
                 console.log(typeof item.status);
-                if (item.status == 0) {
+                if (item.status == 0 || this.osType() === 'mobile') {
                     $('#myModal').modal('show')
+                }
+            },
+            osType() {
+                if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                    return 'mobile'
+                } else {
+                    return 'pc'
+                }
+            },
+
+        },
+        computed:{
+            changeTitle(){
+                if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                    this.productHeader.productList[0].title = '移动版'
                 }
             }
         }
-    })
+    });
+    app.changeTitle();
 </script>
 </body>
 </html>
