@@ -258,6 +258,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         });
         var resource = Helper.getQuery('resource');
 
+
+
         if (resource == 'overseas') {
             $(".sideline").fadeIn();
             // $("#yx").hidden();
@@ -340,7 +342,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                         login_type: login_type(),
                         mobile: find_mob(),
                         email: $('#yxInput').val(),
-                        country_code: countryCode
+                        country_code: countryCode,
                     };
 
                     $('.circular').show();
@@ -613,7 +615,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         }
 
     } else {
-        Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css');
+        Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
     }
 
 
