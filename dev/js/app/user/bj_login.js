@@ -449,6 +449,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                         })
                                     } else {
                                         $("#tipone").fadeIn().text('验证码字数错误');
+                                        $('.spinner').fadeOut();
                                     }
                                 } else {
 
@@ -506,6 +507,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                         })
                                     } else {
                                         $("#tipone").fadeIn().text('验证码字数错误');
+                                        $('.spinner').fadeOut();
                                     }
 
                                 }

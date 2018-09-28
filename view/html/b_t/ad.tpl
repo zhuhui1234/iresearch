@@ -45,7 +45,7 @@
             <div class="content">
                 <div class="row" id="adnavs">
                     <div class="col-md-4" v-for="item in productHeader.productList" :key="item.name">
-                        <a class="ad-box" :href="item.link">
+                        <a class="ad-box" :href="item.link" v-on:click="jumpDialog(item)">
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
                                 [[ item.title ]]<br />[[ item.name ]]
@@ -81,15 +81,28 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3 col-xs-12">
+                        <div class="col-md-3 col-xs-12" v-if="osType()!=='mobile'">
                             <a class="link" :href="item.jumpList.base.link">
                                 [[ item.jumpList.base.title ]]
                             </a>
                         </div>
-                        <div class="col-md-2 col-xs-12" v-for="(links, index) in item.jumpList.old" :key="index">
+                        <div class="col-md-2 col-xs-12" v-for="(links, index) in item.jumpList.old" :key="index" v-if="osType()!=='mobile'">
                             <a class="old-link" :href="links.link">[[ links.title ]]</a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm custom-dialog" :class="productName" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">提示</h4>
+                </div>
+                <div class="modal-body">
+                    移动版本上线准备中
                 </div>
             </div>
         </div>
@@ -127,7 +140,6 @@
     var feedad_url = '?m=user&a=b_trialApply&menuID=42';
     <!-- ENDIF -->
     <!-- ENDIF -->
-
 
     var app = new Vue({
         el: '#app',
@@ -215,8 +227,32 @@
                         }
                     }
                 }]
+        },
+        methods: {
+            jumpDialog: function (item) {
+                console.log(typeof item.status);
+                if (this.osType() === 'mobile') {
+                    $('#myModal').modal('show')
+                }
+            },
+            osType() {
+                if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                    return 'mobile'
+                } else {
+                    return 'pc'
+                }
+            }
+        },
+        computed:{
+            changeTitle(){
+                if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                    this.productHeader.productList[0].link = '#'
+                    this.productHeader.productList[1].link = '#'
+                }
+            }
         }
-    })
+    });
+    app.changeTitle
 </script>
 
 </body>
