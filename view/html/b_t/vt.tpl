@@ -86,7 +86,7 @@
                             </a>
                         </div>
                         <div class="col-md-2 col-xs-12"
-                             v-for="(links, index) in item.jumpList.old" :key="index">
+                             v-for="(links, index) in item.jumpList.old" :key="index" v-if="links.title !==''">
                             <a class="old-link" :href="links.link">[[ links.title ]]</a>
                         </div>
                     </div>
