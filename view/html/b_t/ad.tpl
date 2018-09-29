@@ -16,7 +16,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <link href="//data.iresearch.com.cn/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./public/css/b_t/index.css?1234222342" rel="stylesheet">
+    <link href="./public/css/b_t/index.css?v2" rel="stylesheet">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="http://data.iresearch.com.cn/js/jquery.min.js?"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
@@ -49,6 +49,9 @@
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
                                 [[ item.title ]]<br />[[ item.name ]]
+                            </span>
+                            <span class="mark" v-if="item.free">
+                              <i>FREE</i>
                             </span>
                         </a>
                     </div>
@@ -166,7 +169,8 @@
                         title: '网络广告指数',
                         name: 'Online Ad Index',
                         icon: './public/img/b_t/index.png',
-                        link: '//index.iresearch.com.cn/ad'
+                        link: '//index.iresearch.com.cn/ad',
+                        free: true
                     }
                 ]
             },

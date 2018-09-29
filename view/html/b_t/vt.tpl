@@ -148,20 +148,20 @@
                     title: 'PC端视频内容监测',
                     name: 'iVideoTracker',
                     icon: './public/img/b_t/ivt@2x.png',
-                    link: '?m=irdata&a=classicSys&ppname=网络视频内容市场监测_老版&pro=47',
+                    link: '?m=user&a=jump&pro=45',
                     status: 1
                 },
                     {
                     title: '移动端视频内容监测',
                     name: 'mVideoTracker',
                     icon: './public/img/b_t/mvt@2x.png',
-                    link: '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47',
+                    link: '?m=user&a=jump&pro=18',
                     status: 1
                 },   {
                     title: 'OTT端视频内容监测',
                     name: 'oVideoTracker',
                     icon: './public/img/b_t/ovt@2x.png',
-                    link: '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47',
+                    link: '?m=user&a=jump&pro=19',
                     status: 1
                 },
                     {
@@ -241,8 +241,11 @@
             changeTitle(){
                 if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
                     this.productHeader.productList[0].title = '移动版'
+                    this.productHeader.productList[0].link = '#'
                     this.productHeader.productList[1].title = '移动版'
+                    this.productHeader.productList[1].link = '#'
                     this.productHeader.productList[2].title = '移动版'
+                    this.productHeader.productList[2].link = '#'
                 }
             },
             renderBtn(){
