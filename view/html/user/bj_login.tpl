@@ -89,7 +89,7 @@
                 <div class="row coderow" id="codeRow">
                     <div class="tit">
                         <a href="">
-                            <h4 class="return"><span id="spaner"></span>返回登录页</h4>
+                            <h4 class="return">返回登录页</h4>
                         </a>
                     </div>
                     <h5 id="login_tips">请输入6位手机验证码</h5>

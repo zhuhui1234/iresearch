@@ -15,7 +15,7 @@
     <!-- bootstrap核心样式 -->
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="//data.iresearch.com.cn/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./public/css/b_t/index.css" rel="stylesheet">
+    <link href="./public/css/b_t/index.css?v2" rel="stylesheet">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="//data.iresearch.com.cn/js/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
@@ -34,7 +34,7 @@
                 <div class="col-md-6 col-md-push-6">
                     <img class="img" :src="productHeader.img">
                 </div>
-                <div class="col-md-6 col-md-pull-6" id="title">
+                <div class="col-md-6  col-md-pull-6" id="title">
                     <div class="title">[[ productHeader.title ]]</div>
                     <div class="desc">
                         [[ productHeader.desc ]]
@@ -43,11 +43,14 @@
             </div>
             <div class="content">
                 <div class="row" id="adnavs">
-                    <div class="col-md-12" v-for="item in productHeader.productList" :key="item.name">
+                    <div class="col-md-3" v-for="item in productHeader.productList" :key="item.name">
                         <a :href="item.link" class="ad-box" v-on:click="jumpDialog(item)">
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
                                 [[ item.title ]]<br/>[[ item.name ]]
+                            </span>
+                            <span class="mark" v-if="item.free">
+                              <i>FREE</i>
                             </span>
                         </a>
                     </div>
@@ -79,13 +82,13 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4 col-xs-12" id="VT"  v-if="renderBtn">
+                    <div class="row" v-if="osType() !== 'mobile'">
+                        <div class="col-md-3 col-xs-12" id="VT"  v-if="osType() !== 'mobile' && item.jumpList.base.title !==''">
                             <a class="link" :href="item.jumpList.base.link" v-on:click="jumpDialog(item.jumpList.base)" >
                                 [[ item.jumpList.base.title ]]
                             </a>
                         </div>
-                        <div class="col-md-2 col-xs-12"
+                        <div class="col-md-3 col-xs-12"
                              v-for="(links, index) in item.jumpList.old" :key="index" v-if="links.title !==''">
                             <a class="old-link" :href="links.link">[[ links.title ]]</a>
                         </div>
@@ -141,18 +144,33 @@
                 desc: '艾瑞睿见VT系列产品包括移动端、OTT端和PC端视频内容监测产品，完成对家庭跨屏视频内容受众收视行为的全景监测。提供主流视频平台不同频道、类型和产地的视频收视情况，洞察视频内容在不同平台的收视差异及行业收视热度，分析不同受众人群观看视频内容的偏好，监控视频内容在各时段的收视趋势。为视频广告媒介优化、视频内容竞争分析、视频内容制作及投资价值，提供客观、准确、快速的第三方监测分析数据。',
                 img: './public/img/b_t/backgroundvt.png',
                 productList: [
-                //     {
-                //     title: '标准版',
-                //     name: 'VideoTracker',
-                //     icon: './public/img/b_t/criterion.png',
-                //     status: 0
-                // },
+                    {
+                    title: 'PC端视频内容监测',
+                    name: 'iVideoTracker',
+                    icon: './public/img/b_t/ivt@2x.png',
+                    link: '?m=irdata&a=classicSys&ppname=网络视频内容市场监测_老版&pro=47',
+                    status: 1
+                },
+                    {
+                    title: '移动端视频内容监测',
+                    name: 'mVideoTracker',
+                    icon: './public/img/b_t/mvt@2x.png',
+                    link: '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47',
+                    status: 1
+                },   {
+                    title: 'OTT端视频内容监测',
+                    name: 'oVideoTracker',
+                    icon: './public/img/b_t/ovt@2x.png',
+                    link: '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=47',
+                    status: 1
+                },
                     {
                         title: '网络影视指数',
                         name: 'Online Video Index',
                         icon: './public/img/b_t/OTT.png',
                         link: '//index.iresearch.com.cn/Video',
-                        status: 1
+                        status: 1,
+                        free:true
                     }
                 ]
             },
@@ -187,17 +205,18 @@
                             link: '?m=user&a=jump&pro=45'
                         },
                         {
-                            title: apply_beta_ivt,
-                            link: '{ivt_oldurl}'
-                        },
-                        {
                             title: apply_mvt,
                             link: '?m=user&a=jump&pro=18'
                         },
                         {
                             title: apply_ovt,
                             link: '?m=user&a=jump&pro=19'
+                        },
+                        {
+                            title: apply_beta_ivt,
+                            link: '{ivt_oldurl}'
                         }
+
                     ]
                 }
             }]
@@ -222,6 +241,8 @@
             changeTitle(){
                 if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
                     this.productHeader.productList[0].title = '移动版'
+                    this.productHeader.productList[1].title = '移动版'
+                    this.productHeader.productList[2].title = '移动版'
                 }
             },
             renderBtn(){

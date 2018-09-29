@@ -16,7 +16,7 @@
     <!-- bootstrap核心样式 -->
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="//data.iresearch.com.cn/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./public/css/b_t/index.css" rel="stylesheet">
+    <link href="./public/css/b_t/index.css?v2" rel="stylesheet">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="//data.iresearch.com.cn/js/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
@@ -44,11 +44,14 @@
             </div>
             <div class="content">
                 <div class="row" id="adnavs">
-                    <div class="col-md-4" v-for="item in productHeader.productList" :key="item.name">
+                    <div class="col-md-3" v-for="item in productHeader.productList" :key="item.name">
                         <a :href="item.link" class="ad-box"  v-on:click="jumpDialog(item)">
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
                                 [[item.title ]]<br />[[item.name ]]
+                            </span>
+                            <span class="mark" v-if="item.free">
+                              <i>FREE</i>
                             </span>
                         </a>
                     </div>
@@ -87,11 +90,11 @@
                         </div>
                         <!-- ELSE -->
                         <div class="col-md-3 col-xs-12" v-for="(links, index) in item.jumpList.old" :key="index" v-if="links.title !== '' ">
-                            <a class="old-link" :href="links.link"  >[[links.title ]]</a>
+                            <a class="link" :href="links.link"  >[[links.title ]]</a>
                         </div>
-                        <div class="col-md-3 col-xs-12" v-if="item.jumpList.base.link !== ''">
-                            <a class="old-link" :href="item.jumpList.base.link">
-                                [[item.jumpList.base.title ]]
+                        <div class="col-md-2 col-xs-12" v-for="(b_l, b_in) in item.jumpList.base" :key="b_in" v-if="b_l.link !== ''">
+                            <a class="old-link" :href="b_l.link">
+                                [[b_l.title ]]
                             </a>
                         </div>
                         <!-- ENDIF -->
@@ -149,22 +152,30 @@
                 img: './public/img/b_t/UT.png',
                 productList: [
                     {
-                    title: '标准版(BETA)',
-                    name: 'UserTracker',
-                    icon: './public/img/b_t/standard.png',
-                    link: '?m=user&a=jump&pro=48'
+                        title: 'PC端网络行为监测',
+                        name: 'iUserTracker',
+                        icon: './public/img/b_t/iut@2x.png',
+                        link: '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48'
+                    },
+                    {
+                        title: '移动端网络行为监测',
+                        name: 'mUserTracker',
+                        icon: './public/img/b_t/mut@2x.png',
+                        link: '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=48'
                     },
                     {
                         title: '移动APP指数',
                         name: 'Mobile App Index',
                         icon: './public/img/b_t/move.png',
-                        link: '//index.iresearch.com.cn/app'
+                        link: '//index.iresearch.com.cn/app',
+                        free:true
                     },
                     {
                         title: 'PC Web指数',
                         name: 'PC Web Index',
                         icon: './public/img/b_t/PC.png',
-                        link: '//index.iresearch.com.cn/pc'
+                        link: '//index.iresearch.com.cn/pc',
+                        free: true
                     }
                 ]
             },
@@ -188,27 +199,31 @@
                     ]
                 }],
                 jumpList: {
-                    base: {
-                        title: ut_beta,
-                        link: ut_beta_url
-                    },
+                    base: [
+                        {
+                            title: apply_iut_en,
+                            link: '{iut_oldurl_en}'
+                        },
+                        {
+                            title: apply_mut_en,
+                            link: '{mut_oldurl_en}'
+                        },
+                        {
+                            title: ut_beta,
+                            link: ut_beta_url
+                        }
+                    ],
                     old: [
                         {
                             title: apply_iut,
                             link: iut_oldurl
                         },
                         {
-                            title: apply_iut_en,
-                            link: '{iut_oldurl_en}'
-                        },
-                        {
                             title: apply_mut,
                             link: '{mut_oldurl}'
                         },
-                        {
-                            title: apply_mut_en,
-                            link: '{mut_oldurl_en}'
-                        }
+
+
                     ]
                 }
             }]
@@ -233,6 +248,8 @@
                 if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
                     this.productHeader.productList[0].title = '移动版'
                     this.productHeader.productList[0].link = '#'
+                    this.productHeader.productList[1].title = '移动版'
+                    this.productHeader.productList[1].link = '#'
                 }
             }
         }

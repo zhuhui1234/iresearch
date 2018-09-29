@@ -609,22 +609,22 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         console.log(cb);
         switch (cb) {
             case 'usercenter':
-                Helper.WeChatQRCode('wxLogin', 'wxLoginUserCenter', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css');
+                Helper.WeChatQRCode('wxLogin', 'wxLoginUserCenter', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
                 break;
             case 'k':
-                Helper.WeChatQRCode('wxLogin', 'wxLoginKnowledge', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css');
+                Helper.WeChatQRCode('wxLogin', 'wxLoginKnowledge', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
                 break;
             case 'm':
-                Helper.WeChatQRCode('wxLogin', 'wxLoginMsg', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css');
+                Helper.WeChatQRCode('wxLogin', 'wxLoginMsg', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
                 break;
             case 'ut':
-                Helper.WeChatQRCode('wxLogin', 'goToUt', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css');
+                Helper.WeChatQRCode('wxLogin', 'goToUt', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
                 break;
             case 'vt':
-                Helper.WeChatQRCode('wxLogin', 'goToVT', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css');
+                Helper.WeChatQRCode('wxLogin', 'goToVT', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
                 break;
             default:
-                Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css');
+                Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
                 break;
         }
 
