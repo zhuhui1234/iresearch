@@ -1091,7 +1091,7 @@ class IndexController extends Controller
 
                         if ($datum['pdt_id'] == 51) {
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_iut_en'] = 'IUT Classic(EN)';
+                                $data['apply_iut_en'] = 'IUT(EN)';
                                 $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
 
                             } else {
@@ -1100,7 +1100,7 @@ class IndexController extends Controller
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_mut_en'] = 'MUT Classic(EN)';
+                                $data['apply_mut_en'] = 'MUT(EN)';
                                 $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
                             } else {
                                 $data['apply_mut_en'] = 'Trial(MUT)';
