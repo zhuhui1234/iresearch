@@ -92,7 +92,7 @@
                         <div class="col-md-3 col-xs-12" v-for="(links, index) in item.jumpList.old" :key="index" v-if="links.title !== '' ">
                             <a class="link" :href="links.link"  >[[links.title ]]</a>
                         </div>
-                        <div class="col-md-2 col-xs-12" v-for="(b_l, b_in) in item.jumpList.base" :key="b_in" v-if="b_l.link !== ''">
+                        <div class="col-md-2 col-xs-12" v-for="(b_l, b_in) in item.jumpList.base" :key="b_in" v-if="b_l.title !== ''">
                             <a class="old-link" :href="b_l.link">
                                 [[b_l.title ]]
                             </a>
@@ -120,141 +120,143 @@
 <script src="http://data.iresearch.com.cn/js/IRS_index_foot_html.js"></script>
 <script></script>
 <script>
-    <!-- IF token=="1" -->
-    var ut_beta_url = "?m=user&a=login&cb=ut";
-    var ut_beta = "";
-    var apply_iut = "登录使用";
-    var iut_oldurl = "?m=user&a=login&cb=ut";
-    var apply_iut_en = "";
-    var apply_mut = "";
-    var apply_mut_en = "";
+    $(function(){
+        <!-- IF token=="1" -->
+        var ut_beta_url = "?m=user&a=login&cb=ut";
+        var ut_beta = "";
+        var apply_iut = "登录使用";
+        var iut_oldurl = "?m=user&a=login&cb=ut";
+        var apply_iut_en = "";
+        var apply_mut = "";
+        var apply_mut_en = "";
 
-    <!-- ELSE -->
-    var ut_beta_url = "?m=user&a=jump&pro=48";
-    var ut_beta = '{apply_beta_iut}';
-    var apply_iut = '{apply_iut}';
-    var apply_iut_en = '{apply_iut_en}';
-    var apply_mut = '{apply_mut}';
-    var apply_mut_en = '{apply_mut_en}';
-    var iut_oldurl = '{iut_oldurl}';
-    <!-- ENDIF -->
+        <!-- ELSE -->
+        var ut_beta_url = "?m=user&a=jump&pro=48";
+        var ut_beta = '{apply_beta_iut}';
+        var apply_iut = '{apply_iut}';
+        var apply_iut_en = '{apply_iut_en}';
+        var apply_mut = '{apply_mut}';
+        var apply_mut_en = '{apply_mut_en}';
+        var iut_oldurl = '{iut_oldurl}';
+        <!-- ENDIF -->
 
 
 
-    var app = new Vue({
-        el: '#app',
-        delimiters: ["[[", "]]"],
-        data: {
-            productName: 'ut',
-            productHeader: {
-                title: 'UserTracker 第三方网民网络行为监测',
-                desc: 'UserTracker为艾瑞自主研发的网民网络行为监测系统，包含PC、Mobile 两端网民网络行为监测数据。 UserTracker产品自2007年开始，基于亿级PC及移动样本行为数据采集，获取中国网民网站浏览、软件使用、APP打开等行为数据，并通过海量数据分析建立了多个用户行为指标，真实反映中国PC及移动互联网市场客观情况。',
-                img: './public/img/b_t/UT.png',
-                productList: [
-                    {
-                        title: 'PC端网络行为监测',
-                        name: 'iUserTracker',
-                        icon: './public/img/b_t/iut@2x.png',
-                        link: '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48'
-                    },
-                    {
-                        title: '移动端网络行为监测',
-                        name: 'mUserTracker',
-                        icon: './public/img/b_t/mut@2x.png',
-                        link: '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=48'
-                    },
-                    {
-                        title: '移动APP指数',
-                        name: 'Mobile App Index',
-                        icon: './public/img/b_t/move.png',
-                        link: '//index.iresearch.com.cn/app',
-                        free:true
-                    },
-                    {
-                        title: 'PC Web指数',
-                        name: 'PC Web Index',
-                        icon: './public/img/b_t/PC.png',
-                        link: '//index.iresearch.com.cn/pc',
-                        free: true
+        var app = new Vue({
+            el: '#app',
+            delimiters: ["[[", "]]"],
+            data: {
+                productName: 'ut',
+                productHeader: {
+                    title: 'UserTracker 第三方网民网络行为监测',
+                    desc: 'UserTracker为艾瑞自主研发的网民网络行为监测系统，包含PC、Mobile 两端网民网络行为监测数据。 UserTracker产品自2007年开始，基于亿级PC及移动样本行为数据采集，获取中国网民网站浏览、软件使用、APP打开等行为数据，并通过海量数据分析建立了多个用户行为指标，真实反映中国PC及移动互联网市场客观情况。',
+                    img: './public/img/b_t/UT.png',
+                    productList: [
+                        {
+                            title: 'PC端网络行为监测',
+                            name: 'iUserTracker',
+                            icon: './public/img/b_t/iut@2x.png',
+                            link: '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48'
+                        },
+                        {
+                            title: '移动端网络行为监测',
+                            name: 'mUserTracker',
+                            icon: './public/img/b_t/mut@2x.png',
+                            link: '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=48'
+                        },
+                        {
+                            title: '移动APP指数',
+                            name: 'Mobile App Index',
+                            icon: './public/img/b_t/move.png',
+                            link: '//index.iresearch.com.cn/app',
+                            free:true
+                        },
+                        {
+                            title: 'PC Web指数',
+                            name: 'PC Web Index',
+                            icon: './public/img/b_t/PC.png',
+                            link: '//index.iresearch.com.cn/pc',
+                            free: true
+                        }
+                    ]
+                },
+                productInfo: [{
+                    img: './public/img/b_t/utbg2.png',
+                    logo: './public/img/b_t/UserTracker@3x.png',
+                    item: [{
+                        title: '产品价值',
+                        list: [{
+                            title: '互联网公司',
+                            desc: '帮助互联网公司掌握自身与竞品网站、APP流量变化，及时了解行业格局变化，优化自身产品运营。'
+                        },
+                            {
+                                title: '投资者及分析师',
+                                desc: '帮助投资者及分析师在财报发布前及时了解网站及APP流量变化，为投资决策提供有效支持。'
+                            },
+                            {
+                                title: '广告公司及广告主',
+                                desc: '帮助广告公司及广告主了解不同细分领域网站及APP格局变化，不同品牌目标人群网站及APP访问习惯差异，优化网络媒体投放方案。'
+                            }
+                        ]
+                    }],
+                    jumpList: {
+                        base: [
+                            {
+                                title: apply_iut_en,
+                                link: '{iut_oldurl_en}'
+                            },
+                            {
+                                title: apply_mut_en,
+                                link: '{mut_oldurl_en}'
+                            },
+                            {
+                                title: ut_beta,
+                                link: ut_beta_url
+                            }
+                        ],
+                        old: [
+                            {
+                                title: apply_iut,
+                                link: iut_oldurl
+                            },
+                            {
+                                title: apply_mut,
+                                link: '{mut_oldurl}'
+                            },
+
+
+                        ]
                     }
-                ]
+                }]
             },
-            productInfo: [{
-                img: './public/img/b_t/utbg2.png',
-                logo: './public/img/b_t/UserTracker@3x.png',
-                item: [{
-                    title: '产品价值',
-                    list: [{
-                        title: '互联网公司',
-                        desc: '帮助互联网公司掌握自身与竞品网站、APP流量变化，及时了解行业格局变化，优化自身产品运营。'
-                    },
-                        {
-                            title: '投资者及分析师',
-                            desc: '帮助投资者及分析师在财报发布前及时了解网站及APP流量变化，为投资决策提供有效支持。'
-                        },
-                        {
-                            title: '广告公司及广告主',
-                            desc: '帮助广告公司及广告主了解不同细分领域网站及APP格局变化，不同品牌目标人群网站及APP访问习惯差异，优化网络媒体投放方案。'
-                        }
-                    ]
-                }],
-                jumpList: {
-                    base: [
-                        {
-                            title: apply_iut_en,
-                            link: '{iut_oldurl_en}'
-                        },
-                        {
-                            title: apply_mut_en,
-                            link: '{mut_oldurl_en}'
-                        },
-                        {
-                            title: ut_beta,
-                            link: ut_beta_url
-                        }
-                    ],
-                    old: [
-                        {
-                            title: apply_iut,
-                            link: iut_oldurl
-                        },
-                        {
-                            title: apply_mut,
-                            link: '{mut_oldurl}'
-                        },
-
-
-                    ]
-                }
-            }]
-        },
-        methods: {
-            jumpDialog: function (item) {
-                // console.log(typeof item.status);
-                if (this.osType() === 'mobile' && item.link == "#" ) {
-                    $('#myModal').modal('show')
+            methods: {
+                jumpDialog: function (item) {
+                    // console.log(typeof item.status);
+                    if (this.osType() === 'mobile' && item.link == "#" ) {
+                        $('#myModal').modal('show')
+                    }
+                },
+                osType() {
+                    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                        return 'mobile'
+                    } else {
+                        return 'pc'
+                    }
                 }
             },
-            osType() {
-                if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-                    return 'mobile'
-                } else {
-                    return 'pc'
+            computed:{
+                changeTitle(){
+                    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                        this.productHeader.productList[0].title = '移动版'
+                        this.productHeader.productList[0].link = '#'
+                        this.productHeader.productList[1].title = '移动版'
+                        this.productHeader.productList[1].link = '#'
+                    }
                 }
             }
-        },
-        computed:{
-            changeTitle(){
-                if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-                    this.productHeader.productList[0].title = '移动版'
-                    this.productHeader.productList[0].link = '#'
-                    this.productHeader.productList[1].title = '移动版'
-                    this.productHeader.productList[1].link = '#'
-                }
-            }
-        }
+        });
+        app.changeTitle;
     });
-    app.changeTitle;
 </script>
 </body>
 </html>
