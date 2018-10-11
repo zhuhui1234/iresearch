@@ -45,7 +45,7 @@ class UserModel extends API
             $data['ird_user'] = $ird_account;
         }
         write_to_log($getVcode, '_session');
-        if ($getVcode == $data['vCode']) {
+        if (strtolower($getVcode) == strtolower($data['vCode'])) {
             $url = API_URL . '?m=User&a=login';
             write_to_log('login url :' . $url, '_login');
             write_to_log('post data: ' . json_encode($data), '_login');

@@ -69,7 +69,7 @@ class ServiceController extends Controller
                 break;
         }
 
-        if ($vcode == $getVcode) {
+        if (strtolower($vcode) == strtolower($getVcode)) {
             jsonHead();
             echo $this->model->sendCode($data);
         } else {
