@@ -54,6 +54,8 @@ a:focus, a:hover {
     display: -ms-flex;
     align-items: center;
     -ms-align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 .ad-box:hover{
     cursor: pointer;
@@ -78,6 +80,31 @@ a:focus, a:hover {
     font-size: 13px;
     line-height: 20px;
     text-align: center;
+}
+.ad-box .mark {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.9);
+    transform: rotate(-45deg) translateX(35px);
+}
+.ad-box .mark i {
+    display: inline-block;
+    font-size: 12px;
+    transform: rotate(90deg) translateX(12px) translateY(10px) scale(0.8);
+    font-style: normal;
+    font-weight: bold;
+}
+.ad .ad-box .mark i {
+    color: #69C72B;
+}
+.ut .ad-box .mark i {
+    color: #3dc0f0;
+}
+.vt .ad-box .mark i {
+    color: #8EC63F;
 }
 /* item */
 .introduce{

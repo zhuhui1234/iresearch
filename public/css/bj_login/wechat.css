@@ -15,12 +15,12 @@ body {
     }
 }
 iframe{
-    height: 290px;
+    height: 327px;
     width:100%;
 }
 @media (min-width: 1400px) {
     iframe{
-       height: 290px;
+        height: 327px;
     }
 }
 .impowerBox .title {
