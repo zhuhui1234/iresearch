@@ -25,6 +25,9 @@ iframe{
 }
 .impowerBox .title {
     display: none;
+    font-size: 18px;
+    line-height: 18px;
+    padding-top: 10px;
 }
 
 .impowerBox .info {
