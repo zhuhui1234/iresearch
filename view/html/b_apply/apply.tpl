@@ -37,7 +37,7 @@
     </div>
     <div class="alert" style="display: none">
         <img class="alert_img" src="./public/img/bj_login/csicon.png" />
-        <div class="alert_txt">必填项不能为空且邮箱正确填写</div>
+        <div class="alert_txt">必填项不能为空且邮箱必须正确填写</div>
     </div>
     <div class="row jumbotron login" id="jumbotron">
         <!-- +row-->
@@ -48,7 +48,7 @@
                     <div class="main_left_line_box">
                         <div class="main_left_line">
                             <div class="main_left_line_title">姓名<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="请输入名字" autocomplete="off" id="name" type="text"/ value="{username}">
+                            <input class="main_left_line_input" required="required" placeholder="请输入名字" autocomplete="off" id="name" type="text"/ value="{username}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">手机号<span class="main_left_line_title_re">*</span></div>
@@ -56,15 +56,15 @@
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">邮箱<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="请输入邮箱" autocomplete="off" id="mail" type="text"/  value="{u_mail}">
+                            <input class="main_left_line_input" required="required" placeholder="请输入邮箱" autocomplete="off" id="mail" type="text"/  value="{u_mail}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">公司<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="请输入公司" autocomplete="off" id="company" type="text"/ value="{company}">
+                            <input class="main_left_line_input" required="required" placeholder="请输入公司" autocomplete="off" id="company" type="text"/ value="{company}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">职位<span class="main_left_line_title_re">*</span></div>
-                            <input class="main_left_line_input" placeholder="请输入职位" autocomplete="off" id="job" type="text"/ value="{position}">
+                            <input class="main_left_line_input" required="required" placeholder="请输入职位" autocomplete="off" id="job" type="text"/ value="{position}">
                         </div>
                         <div class="main_left_line">
                             <div class="main_left_line_title">行业<span class="main_left_line_title_re">*</span></div>
