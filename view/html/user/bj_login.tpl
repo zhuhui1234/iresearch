@@ -61,6 +61,12 @@
                                    autocomplete="off"
                             />
                         </div>
+                        <div class="main_left_body_line" id="spMail" style="display: none">
+                            <div class="main_left_body_line_iconemail"></div>
+                            <input type="text" class="yxInput" id="sp_email" placeholder="请输入邮箱..."
+                                   autocomplete="off"
+                            />
+                        </div>
                         <div class="main_left_body_line" id="phoneLine">
                             <div class="main_left_body_line_icon"></div>
 
@@ -68,12 +74,20 @@
                                    autocomplete="off"/>
                         </div>
 
-                        <div class="main_left_body_line">
+                        <div class="main_left_body_line" id="vcodeLayer">
                             <div class="main_left_body_line_icon3"></div>
                             <input type="text" class="main_left_body_line_input" id="vernum" placeholder="请输入图形验证码..."
                                    autocomplete="off"
                             />
                             <div class="main_left_body_line_yzm"><img src="?m=service&a=charCode" id="code_img"></div>
+                        </div>
+
+                        <div class="main_left_body_line" id="passwordLayer" style="display: none;">
+                            <div class="main_left_body_line_icon3"></div>
+                            <input type="text" class="main_left_body_line_input" id="passwordNum" placeholder="请输入密码" required="required"
+                                   autocomplete="off"
+                            />
+
                         </div>
                     </div>
                     <button type="button" class="loading_app main_left_button" id="send_code">

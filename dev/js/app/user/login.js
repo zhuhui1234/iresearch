@@ -61,10 +61,10 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             $("#mobile").focus();
             return false;
         }
-        if (!(/^1[3456789]\d{9}$/.test(phoneVal)) && !(/^4[0]\d{9}$/.test(phoneVal))) {
-            $(".alert").eq(1).fadeIn().text("手机号码有误，请重填！");
-            return false;
-        }
+        // if (!(/^1[3456789]\d{9}$/.test(phoneVal)) && !(/^4[0]\d{9}$/.test(phoneVal))) {
+        //     $(".alert").eq(1).fadeIn().text("手机号码有误，请重填！");
+        //     return false;
+        // }
         return true;
     };
 

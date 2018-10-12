@@ -249,7 +249,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
     //action
     $(function () {
 
-        $('.nav_tab').click(function(){
+        $('.nav_tab').click(function () {
             $('#tipone').fadeOut();
         });
 
@@ -258,14 +258,23 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         });
         var resource = Helper.getQuery('resource');
 
+        if (resource == 'sp') {
 
+            $("#spMail").show();
+            $("#phone").hide();
+            $("#phoneLine").hide();
+            $("#vcodeLayer").hide();
+            $("#passwordLayer").show();
+            $("#yx").show();
+            $('#sent').text('登入')
 
-        if (resource == 'overseas') {
+        } else if (resource == 'overseas') {
+
             $(".sideline").fadeIn();
             // $("#yx").hidden();
             $("#phone").show();
             $("#yx").show();
-            // $("#phone").fadeIn();
+            // $("#phone").fadeIn();z
             // $("#yx").fadeIn();
             $("#yxLine").css({display: "block"});
             $("#phoneLine").css({display: "none"});
@@ -317,273 +326,296 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         window.localStorage.clear();
 
         // $("#verification").getSms();
-        $("#send_code").click(function (e) {
+        if (resource !== 'sp') {
+            //正常登入
+            $("#send_code").click(function (e) {
 
+                var regExp = /[A-Za-z]+/;
+                if (!regExp.test($('#tel').val())) {
+                    var countryCode = $("#tel").intlTelInput("getSelectedCountryData").iso2.toUpperCase();
 
-            // console.log('send code');
-            var regExp = /[A-Za-z]+/;
-            if (!regExp.test($('#tel').val())) {
-                var countryCode = $("#tel").intlTelInput("getSelectedCountryData").iso2.toUpperCase();
-
-                var find_mob = function () {
-                    // var country_code = $("#tel").intlTelInput("getSelectedCountryData").dialCode
-                    // if (country_code == 86) {
-                    //     return $('#tel').val();
-                    // } else {
-                    //     country_code = country_code;
-                    return String(parseInt($('#tel').val()))
-                    // }
-                }
-
-                if (checkFormat(login_type()) && checkCaptcha()) {
-
-                    var da = {
-                        vCode: $("#vernum").val(),
-                        login_type: login_type(),
-                        mobile: find_mob(),
-                        email: $('#yxInput').val(),
-                        country_code: countryCode
-                    };
-
-                    $('.circular').show();
-                    $("#sent").text("发送中 ...");
-                    $("#send_code").prop('disabled', true);
-                    console.log(eightIn);
-                    if (eightIn) {
-                        $('.expnum').show();
-                    } else {
-                        $('.hid').hide();
+                    var find_mob = function () {
+                        return String(parseInt($('#tel').val()))
                     }
 
-                    Helper.post("sendCode", da, function (ret) {
-                        // console.log(ret);
-                        if (ret.resCode == "000000") {
-                            var pdtID = Helper.getQuery('pro');
-                            var ppName = Helper.getQuery('ppname');
-                            var cb = Helper.getQuery('cb');
+                    if (checkFormat(login_type()) && checkCaptcha()) {
 
-                            $("#login").fadeOut();
-                            $('#test').fadeIn();
-                            login_check(function () {
-                                var code = null;
-                                if (eightIn) {
-                                    var findTag = '.expnum';
-                                } else {
-                                    var findTag = '.eightNow'
-                                }
-                                $(findTag).each(function (i, n) {
-                                    if (code !== null) {
-                                        code = code + $(n).val();
+                        var da = {
+                            vCode: $("#vernum").val(),
+                            login_type: login_type(),
+                            mobile: find_mob(),
+                            email: $('#yxInput').val(),
+                            country_code: countryCode
+                        };
+
+                        $('.circular').show();
+                        $("#sent").text("发送中 ...");
+                        $("#send_code").prop('disabled', true);
+                        if (eightIn) {
+                            $('.expnum').show();
+                        } else {
+                            $('.hid').hide();
+                        }
+
+                        Helper.post("sendCode", da, function (ret) {
+                            // console.log(ret);
+                            if (ret.resCode == "000000") {
+                                var pdtID = Helper.getQuery('pro');
+                                var ppName = Helper.getQuery('ppname');
+                                var cb = Helper.getQuery('cb');
+
+                                $("#login").fadeOut();
+                                $('#test').fadeIn();
+                                login_check(function () {
+                                    var code = null;
+                                    if (eightIn) {
+                                        var findTag = '.expnum';
                                     } else {
-                                        code = $(n).val();
+                                        var findTag = '.eightNow'
                                     }
+                                    $(findTag).each(function (i, n) {
+                                        if (code !== null) {
+                                            code = code + $(n).val();
+                                        } else {
+                                            code = $(n).val();
+                                        }
+                                    });
+
+                                    // console.log(code);
+                                    var login_data = {
+                                        mobile: da.mobile,
+                                        mail: $('#yxInput').val(),
+                                        verNum: code,
+                                        vCode: da.vCode,
+                                        login_type: da.login_type
+                                    }
+                                    // console.log(login_data);
+                                    // console.log(eightIn)
+                                    // console.log(String(code).length);
+
+
+                                    if (eightIn) {
+                                        if (String(code).length == 8) {
+
+                                            Helper.post('b_login', login_data, function (ret) {
+                                                if (ret.resCode == "000000") {
+                                                    if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
+
+                                                        if (pdtID !== null) {
+                                                            if (pdtID.length > 0) {
+                                                                window.location.reload();
+                                                            } else {
+                                                                // console.log('no pdtID');
+                                                                window.location.href = '?m=index&a=index';
+                                                            }
+                                                        } else if (ppName !== null) {
+                                                            if (ppName.length > 0) {
+                                                                window.location.reload();
+                                                            } else {
+                                                                window.location.href = '?m=index&a=index';
+                                                                // console.log('no ppName');
+                                                            }
+                                                        } else if (cb !== null) {
+                                                            switch (cb) {
+                                                                case 'usercenter':
+                                                                    window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
+                                                                    break;
+                                                                case 'k':
+                                                                    window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
+                                                                    break;
+                                                                case 'm':
+                                                                    window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
+                                                                    break;
+                                                                case 'ut':
+                                                                    window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut';
+                                                                    break;
+                                                                case 'vt':
+                                                                    window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt';
+                                                                    break;
+                                                            }
+
+                                                        }
+
+                                                    } else {
+                                                        // console.log('no all');
+                                                        window.location.href = '?m=index&a=index';
+                                                    }
+                                                } else {
+                                                    $('.spinner').fadeOut();
+                                                    $(findTag).val(null);
+                                                    $('.input-item ' + findTag + ':first').focus();
+                                                    $('#tip').fadeIn().text(ret.resMsg);
+
+                                                }
+
+                                            })
+                                        } else {
+                                            $("#tipone").fadeIn().text('验证码字数错误');
+                                            $('.spinner').fadeOut();
+                                        }
+                                    } else {
+
+                                        if (String(code).length == 6) {
+                                            Helper.post('b_login', login_data, function (ret) {
+                                                if (ret.resCode == "000000") {
+                                                    if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
+
+                                                        if (pdtID !== null) {
+                                                            if (pdtID.length > 0) {
+                                                                window.location.reload();
+                                                            } else {
+                                                                // console.log('no pdtID');
+                                                                window.location.href = '?m=index&a=index';
+                                                            }
+                                                        } else if (ppName !== null) {
+                                                            if (ppName.length > 0) {
+                                                                window.location.reload();
+                                                            } else {
+                                                                window.location.href = '?m=index&a=index';
+                                                                // console.log('no ppName');
+                                                            }
+                                                        } else if (cb !== null) {
+                                                            switch (cb) {
+                                                                case 'usercenter':
+                                                                    window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
+                                                                    break;
+                                                                case 'k':
+                                                                    window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
+                                                                    break;
+                                                                case 'm':
+                                                                    window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
+                                                                    break;
+                                                                case 'ut':
+                                                                    window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut';
+                                                                    break;
+                                                                case 'vt':
+                                                                    window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt';
+                                                                    break;
+                                                            }
+
+                                                        }
+
+                                                    } else {
+                                                        window.location.href = '?m=index&a=index';
+                                                    }
+                                                } else {
+                                                    $('.spinner').fadeOut();
+                                                    $(findTag).val(null);
+                                                    $('.input-item ' + findTag + ':first').focus();
+                                                    $('#tip').fadeIn().text(ret.resMsg);
+
+                                                }
+
+                                            })
+                                        } else {
+                                            $("#tipone").fadeIn().text('验证码字数错误');
+                                            $('.spinner').fadeOut();
+                                        }
+
+                                    }
+
                                 });
 
-                                // console.log(code);
-                                var login_data = {
-                                    mobile: da.mobile,
-                                    mail: $('#yxInput').val(),
-                                    verNum: code,
-                                    vCode: da.vCode,
-                                    login_type: da.login_type
-                                }
-                                // console.log(login_data);
-                                // console.log(eightIn)
-                                // console.log(String(code).length);
+                            } else {
+                                // $("#loading_send_code").fadeOut();
+                                $("#sent").text("发送验证码");
+                                $('.circular').hide();
+                                $("#send_code").prop('disabled', false);
+                                $("#tipone").fadeIn().text(ret.resMsg);
+                            }
+                        });
 
 
-                                if (eightIn) {
-                                    if (String(code).length == 8) {
-
-                                        Helper.post('b_login', login_data, function (ret) {
-                                            if (ret.resCode == "000000") {
-                                                if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
-
-                                                    if (pdtID !== null) {
-                                                        if (pdtID.length > 0) {
-                                                            window.location.reload();
-                                                        } else {
-                                                            // console.log('no pdtID');
-                                                            window.location.href = '?m=index&a=index';
-                                                        }
-                                                    } else if (ppName !== null) {
-                                                        if (ppName.length > 0) {
-                                                            window.location.reload();
-                                                        } else {
-                                                            window.location.href = '?m=index&a=index';
-                                                            // console.log('no ppName');
-                                                        }
-                                                    } else if (cb !== null) {
-                                                        switch (cb) {
-                                                            case 'usercenter':
-                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
-                                                                break;
-                                                            case 'k':
-                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
-                                                                break;
-                                                            case 'm':
-                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
-                                                                break;
-                                                            case 'ut':
-                                                                window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut';
-                                                                break;
-                                                            case 'vt':
-                                                                window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt';
-                                                                break;
-                                                        }
-
-                                                    }
-
-                                                } else {
-                                                    // console.log('no all');
-                                                    window.location.href = '?m=index&a=index';
-                                                }
-                                            } else {
-                                                $('.spinner').fadeOut();
-                                                $(findTag).val(null);
-                                                $('.input-item ' + findTag + ':first').focus();
-                                                $('#tip').fadeIn().text(ret.resMsg);
-
-                                            }
-
-                                        })
-                                    } else {
-                                        $("#tipone").fadeIn().text('验证码字数错误');
-                                        $('.spinner').fadeOut();
-                                    }
-                                } else {
-
-                                    if (String(code).length == 6) {
-                                        Helper.post('b_login', login_data, function (ret) {
-                                            if (ret.resCode == "000000") {
-                                                if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
-
-                                                    if (pdtID !== null) {
-                                                        if (pdtID.length > 0) {
-                                                            window.location.reload();
-                                                        } else {
-                                                            // console.log('no pdtID');
-                                                            window.location.href = '?m=index&a=index';
-                                                        }
-                                                    } else if (ppName !== null) {
-                                                        if (ppName.length > 0) {
-                                                            window.location.reload();
-                                                        } else {
-                                                            window.location.href = '?m=index&a=index';
-                                                            // console.log('no ppName');
-                                                        }
-                                                    } else if (cb !== null) {
-                                                        switch (cb) {
-                                                            case 'usercenter':
-                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
-                                                                break;
-                                                            case 'k':
-                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
-                                                                break;
-                                                            case 'm':
-                                                                window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
-                                                                break;
-                                                            case 'ut':
-                                                                window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut';
-                                                                break;
-                                                            case 'vt':
-                                                                window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt';
-                                                                break;
-                                                        }
-
-                                                    }
-
-                                                } else {
-                                                    window.location.href = '?m=index&a=index';
-                                                }
-                                            } else {
-                                                $('.spinner').fadeOut();
-                                                $(findTag).val(null);
-                                                $('.input-item ' + findTag + ':first').focus();
-                                                $('#tip').fadeIn().text(ret.resMsg);
-
-                                            }
-
-                                        })
-                                    } else {
-                                        $("#tipone").fadeIn().text('验证码字数错误');
-                                        $('.spinner').fadeOut();
-                                    }
-
-                                }
-
-
-                                // if (String(code).length == 6 || String(code).length == 8) {
-                                //     Helper.post('b_login', login_data, function (ret) {
-                                //         if (ret.resCode == "000000") {
-                                //             if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
-                                //
-                                //                 if (pdtID !== null) {
-                                //                     if (pdtID.length > 0) {
-                                //                         window.location.reload();
-                                //                     } else {
-                                //                         // console.log('no pdtID');
-                                //                         window.location.href = '?m=index&a=index';
-                                //                     }
-                                //                 } else if (ppName !== null) {
-                                //                     if (ppName.length > 0) {
-                                //                         window.location.reload();
-                                //                     } else {
-                                //                         window.location.href = '?m=index&a=index';
-                                //                         // console.log('no ppName');
-                                //                     }
-                                //                 } else if (cb !== null) {
-                                //                     switch (cb) {
-                                //                         case 'usercenter':
-                                //                             window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
-                                //                             break;
-                                //                         case 'k':
-                                //                             window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
-                                //                             break;
-                                //                         case 'm':
-                                //                             window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
-                                //                             break;
-                                //                     }
-                                //
-                                //                 }
-                                //
-                                //             } else {
-                                //                 // console.log('no all');
-                                //                 window.location.href = '?m=index&a=index';
-                                //             }
-                                //         } else {
-                                //             $('.spinner').fadeOut();
-                                //             $(findTag).val(null);
-                                //             $('.input-item ' + findTag + ':first').focus();
-                                //             $('#tip').fadeIn().text(ret.resMsg);
-                                //
-                                //         }
-                                //
-                                //     })
-                                // } else {
-                                //     $("#tipone").fadeIn().text('验证码字数错误');
-                                // }
-                            });
-
-                        } else {
-                            // $("#loading_send_code").fadeOut();
-                            $("#sent").text("发送验证码");
-                            $('.circular').hide();
-                            $("#send_code").prop('disabled', false);
-                            $("#tipone").fadeIn().text(ret.resMsg);
-                        }
-                    });
-
-
+                    } else {
+                        da = null;
+                    }
                 } else {
-                    da = null;
+                    $('#tipone').fadeIn().text('手机为空或不正确');
                 }
-            } else {
-                $('#tipone').fadeIn().text('手机为空或不正确');
-            }
 
 
-        });
+            });
+        } else {
+            //sp mail login
+            $('#send_code').click(function () {
+
+                var checkEmails = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+                if (!checkEmails.test($("#sp_email").val())) {
+                    $('#tipone').show().text('邮箱不能为空且需要符合邮箱规范')
+                }else if ( $('#passwordNum').val() == ''){
+                    $('#tipone').show().text('密码不能为空')
+                }else{
+                    $('#tipone').hide();
+                    //登入
+                    var pdtID = Helper.getQuery('pro');
+
+                    var login_data = {
+                        mobile: null,
+                        mail: $('#sp_email').val(),
+                        verNum: $("#passwordNum").val(),
+                        vCode: null,
+                        login_type: 'sp_mail'
+                    }
+
+                    Helper.post('b_login', login_data, function (ret) {
+                        if (ret.resCode == "000000") {
+                            if (typeof pdtID == 'string' || typeof ppName == 'string' || typeof cb == 'string') {
+
+                                if (pdtID !== null) {
+                                    if (pdtID.length > 0) {
+                                        window.location.reload();
+                                    } else {
+                                        // console.log('no pdtID');
+                                        window.location.href = '?m=index&a=index';
+                                    }
+                                } else if (ppName !== null) {
+                                    if (ppName.length > 0) {
+                                        window.location.reload();
+                                    } else {
+                                        window.location.href = '?m=index&a=index';
+                                        // console.log('no ppName');
+                                    }
+                                } else if (cb !== null) {
+                                    switch (cb) {
+                                        case 'usercenter':
+                                            window.location.href = 'http://irv.iresearch.com.cn/user-center/check';
+                                            break;
+                                        case 'k':
+                                            window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=k';
+                                            break;
+                                        case 'm':
+                                            window.location.href = 'http://irv.iresearch.com.cn/user-center/check??type=m';
+                                            break;
+                                        case 'ut':
+                                            window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xut';
+                                            break;
+                                        case 'vt':
+                                            window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt';
+                                            break;
+                                    }
+
+                                }
+
+                            } else {
+                                window.location.href = '?m=index&a=index';
+                            }
+                        } else {
+                            // $('.spinner').fadeOut();
+                            // $(findTag).val(null);
+                            // $('.input-item ' + findTag + ':first').focus();
+                            $('#tipone').fadeIn().text(ret.resMsg);
+
+                        }
+
+                    })
+
+
+                }
+
+
+
+            });
+        }
 
 
         if (Helper.getQuery('recode') == '404') {
