@@ -97,6 +97,7 @@ class UserModel extends API
         write_to_log('post data: ' . json_encode($data), '_login');
         $ret = $this->_curlPost($url, $data, 'cs_login');
         $rs = json_decode($ret, true);
+
         if ($rs['resCode'] == '000000') {
             write_to_log('mobile login: ' . $ret, '_login');
             Session::instance()->set('userInfo', $rs['data']);
