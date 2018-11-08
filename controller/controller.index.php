@@ -317,6 +317,17 @@ class IndexController extends Controller
         header("Location:" . 'http://ect.itracker.cn/nloginv2/?token=' . $this->userInfo['token'] . $redirect);
     }
 
+    public function soft_adt()
+    {
+        if (!empty($this->request()->requestAll()['redirect'])) {
+            $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
+        } else {
+            $redirect = '';
+        }
+
+        header("Location:" . 'http://irv.iresearch.com.cn/soft/login?token=' . $this->userInfo['token'] . $redirect);
+    }
+
     public function test_adt()
     {
         if (!empty($this->request()->requestAll()['redirect'])) {
