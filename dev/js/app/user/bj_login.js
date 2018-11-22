@@ -622,6 +622,10 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
             alert('账号被冻结')
         }
 
+
+        if (Helper.getQuery('recode') == '502') {
+            alert('您所在的区域不允许使用产品')
+        }
     });
 
 

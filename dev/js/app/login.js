@@ -37,10 +37,10 @@ define(['app/main','canvas'], function() {
                 $("#mobile").focus();
                 return false;
             }
-            if(!(/^1[34578]\d{9}$/.test(phoneVal))){
-                $(".alert:first").fadeIn().text("手机号码有误，请重填！");
-                return false;
-            }
+            // if(!(/^1[34578]\d{9}$/.test(phoneVal))){
+            //     $(".alert:first").fadeIn().text("手机号码有误，请重填！");
+            //     return false;
+            // }
             return true;
         });
 

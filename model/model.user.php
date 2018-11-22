@@ -186,6 +186,11 @@ class UserModel extends API
             return TRUE;
         } else {
             write_to_log('wechat error login: ' . $ret, '_login');
+
+            if ($rs['resCode'] == '000006') {
+                return 20;
+            }
+
             if ($rs['resCode'] == '000010') {
                 return null;
             } else {

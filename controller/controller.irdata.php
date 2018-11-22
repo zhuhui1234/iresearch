@@ -258,7 +258,7 @@ class IRDataController extends Controller
                         'type' => 'irv用户日志',
                         'sub_id' => $pdtID,
                         'resource' => 'iData',
-                        'action' => '跳转产品',
+                        'action' => '跳转产品_'.$ppname,
                         'level' => '0',
                         'log_ip' => getIp()
                     ]);

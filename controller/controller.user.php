@@ -479,24 +479,24 @@ class UserController extends Controller
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
         ]), true);
-        foreach($region['data'] as $re){
+        foreach ($region['data'] as $re) {
             $mobile_region[] = [
                 'id' => $re['id'],
-                'value' =>$re['title']
+                'value' => $re['title']
             ];
         }
-        $mobile_region = json_encode($mobile_region,JSON_UNESCAPED_UNICODE);
+        $mobile_region = json_encode($mobile_region, JSON_UNESCAPED_UNICODE);
         $industry = json_decode($userModel->industryList([
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
         ]), true);
-        foreach($industry['data'] as $in){
+        foreach ($industry['data'] as $in) {
             $mobile_industry[] = [
                 'id' => $in['id'],
-                'value' =>$in['title']
+                'value' => $in['title']
             ];
         }
-        $mobile_industry = json_encode($mobile_industry,JSON_UNESCAPED_UNICODE);
+        $mobile_industry = json_encode($mobile_industry, JSON_UNESCAPED_UNICODE);
 //        var_dump($userInfo['mobile']);exit;
         View::instance('b_apply/apply.tpl')->show(
             [
@@ -546,20 +546,20 @@ class UserController extends Controller
             'token' => $this->userInfo['token'],
             'userID' => $this->userInfo['userID']
         ]), true);
-        foreach($industry['data'] as $in){
+        foreach ($industry['data'] as $in) {
             $mobile_industry[] = [
                 'id' => $in['id'],
-                'value' =>$in['title']
+                'value' => $in['title']
             ];
         }
-        $mobile_industry = json_encode($mobile_industry,JSON_UNESCAPED_UNICODE);
-        foreach($region['data'] as $re){
+        $mobile_industry = json_encode($mobile_industry, JSON_UNESCAPED_UNICODE);
+        foreach ($region['data'] as $re) {
             $mobile_region[] = [
                 'id' => $re['id'],
-                'value' =>$re['title']
+                'value' => $re['title']
             ];
         }
-        $mobile_region = json_encode($mobile_region,JSON_UNESCAPED_UNICODE);
+        $mobile_region = json_encode($mobile_region, JSON_UNESCAPED_UNICODE);
         $productInfo = json_decode($userModel->productInfo([
             'pdt_id' => $this->request()->get('menuID'),
             'token' => $this->userInfo['token'],
@@ -593,7 +593,7 @@ class UserController extends Controller
                 break;
 
         }
-        $mobile_industry = json_encode($mobile_industry,JSON_UNESCAPED_UNICODE);
+        $mobile_industry = json_encode($mobile_industry, JSON_UNESCAPED_UNICODE);
         View::instance('b_apply/apply.tpl')->show(
             [
                 'username' => $userInfo['uname'],

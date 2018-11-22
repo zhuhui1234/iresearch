@@ -58,6 +58,11 @@ class WeChatController extends Controller
 
                 write_to_log('ret: ' . json_encode($ret), '_wx');
                 if ($ret) {
+                    if ($ret === 20) {
+                        header('Location: ?m=user&a=login&recode=502');
+                        exit();
+                    }
+
                     if ($ret !== null) {
                         write_to_log('ppname: '. $ppName, '_debug');
                         write_to_log('pdtid: '. $pdtID, '_debug');
@@ -70,7 +75,7 @@ class WeChatController extends Controller
                             header('Location: ?m=index');
                         }
                     } else {
-                        header('Location: ?m=user&a=login?recode=402');
+                        header('Location: ?m=user&a=login&recode=402');
                     }
 
                 } else {
@@ -88,6 +93,10 @@ class WeChatController extends Controller
 
                 write_to_log('ret: ' . json_encode($ret), '_wx');
                 if ($ret) {
+                    if ($ret === 20) {
+                        header('Location: ?m=user&a=login&recode=502');
+                        exit();
+                    }
                     if ($ret !== null) {
                         write_to_log('ppname: '. $ppName, '_debug');
                         write_to_log('pdtid: '. $pdtID, '_debug');
@@ -112,6 +121,10 @@ class WeChatController extends Controller
 
                 write_to_log('ret: ' . json_encode($ret), '_wx');
                 if ($ret) {
+                    if ($ret === 20) {
+                        header('Location: ?m=user&a=login&recode=502');
+                        exit();
+                    }
                     if ($ret !== null) {
                         write_to_log('ppname: '. $ppName, '_debug');
                         write_to_log('pdtid: '. $pdtID, '_debug');
@@ -136,6 +149,11 @@ class WeChatController extends Controller
 //                exit();
                 write_to_log('ret: ' . json_encode($ret), '_wx');
                 if ($ret) {
+                    if ($ret === 20) {
+                        header('Location: ?m=user&a=login&recode=502');
+                        exit();
+                    }
+
                     if ($ret !== null) {
                         if (!empty($pdtID) ) {
                             header('Location: ' . $jumpURI);
@@ -165,6 +183,11 @@ class WeChatController extends Controller
 //                exit();
                 write_to_log('ret: ' . json_encode($ret), '_wx');
                 if ($ret) {
+                    if ($ret === 20) {
+                        header('Location: ?m=user&a=login&recode=502');
+                        exit();
+                    }
+
                     if ($ret !== null) {
                         if (!empty($pdtID) ) {
                             header('Location: ' . $jumpURI);
@@ -195,6 +218,11 @@ class WeChatController extends Controller
 //                exit();
                 write_to_log('ret: ' . json_encode($ret), '_wx');
                 if ($ret) {
+                    if ($ret === 20) {
+                        header('Location: ?m=user&a=login&recode=502');
+                        exit();
+                    }
+
                     if ($ret !== null) {
                         if (!empty($pdtID) ) {
                             header('Location: ' . $jumpURI);
