@@ -1,0 +1,1279 @@
+html {
+    /* height: 100%; */
+}
+
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: PingFang SC, Microsoft YaHei, Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, \\5FAE\8F6F\96C5\9ED1, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.select2-container {
+    width: 63px;
+    top: 11px;
+    position: relative;
+    float: left;
+}
+
+.main-background {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.main-image {
+    height: 100%;
+    z-index: 300;
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bg2x.jpg") no-repeat center;
+    /*background: url(../img/bg2x.jpg) no-repeat center;*/
+    position: relative;
+    background-size: 100% 100%;
+    width: 100%;
+}
+
+body button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.form-control::-moz-placeholder {
+    color: #C4C4C4;
+    font-size: 14px;
+    opacity: 1
+}
+
+.form-control:-ms-input-placeholder {
+    color: #C4C4C4;
+    font-size: 14px;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #C4C4C4;
+    font-size: 14px;
+}
+
+.main {
+    top: 0;
+    width: 100%;
+    position: absolute;
+    z-index: 400;
+    height: 100%;
+    display: -webkit-box;
+    /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;
+    /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;
+    /* 混合版本语法: IE 10 */
+    display: -webkit-flex;
+    /* 新版本语法: Chrome 21+ */
+    display: flex;
+    /* min-width:1200px; */
+}
+
+.jumbotron {
+    background: none;
+    width: 1000px;
+    margin: 0 auto;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    display: -webkit-box;
+    /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;
+    /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;
+    /* 混合版本语法: IE 10 */
+    display: -webkit-flex;
+    /* 新版本语法: Chrome 21+ */
+    display: flex;
+    justify-content: center;
+    -ms-justify-content: center;
+    align-items: flex-start;
+    -ms-align-items: flex-start;
+    padding: 0 !important;
+}
+
+.four #row1 img {
+    width: 120px;
+    height: auto;
+}
+
+.four #row2 {
+    background: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+}
+
+#row2 {
+    margin: 30px 0 0 0;
+    height: 416px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+}
+
+.bgBack_opa {
+    width: 95.5%;
+    height: 20px;
+    background: rgba(255, 255, 255, 1);
+    opacity: 0.3;
+    border-radius: 0 0 10px 10px;
+    z-index: 500;
+    margin: 0 auto;
+    float: left;
+    margin-left: 2.25%;
+}
+
+.bgBack_opa2 {
+    width: 90.4%;
+    height: 40px;
+    background: rgba(255, 255, 255, 1);
+    opacity: 0.3;
+    border-radius: 0 0 10px 10px;
+    z-index: 600;
+    margin: 0 auto;
+    position: relative;
+    top: -20px;
+    float: left;
+    margin-left: 4.8%;
+}
+
+.main_left {
+    padding: 37px;
+    width: 55%;
+    float: left;
+    box-sizing: border-box;
+    border-right: 1px solid #eeeeee;
+    background-color: #fff;
+    border-radius: 10px 0 0 10px;
+    height: 416px;
+}
+
+/*.aa_click{*/
+
+/*font-weight:bold;*/
+
+/*color: #515354;*/
+
+/*}*/
+
+#vernum {
+    margin-left: 9px;
+}
+
+.find_nav {
+    width: 100%;
+    height: 57px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: rgba(153, 153, 153, 1);
+    line-height: 57px;
+    display: -moz-box;
+    display: -webkit-box;
+}
+
+.find_nav_left {
+    height: 57px;
+    position: relative;
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    text-align: center;
+}
+
+.find_nav_list {}
+
+.find_nav_list ul {
+    position: relative;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.find_nav_list ul li {
+    display: inline-block;
+    padding: 0;
+    margin: 0 23px;
+}
+
+.find_nav_list ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #999999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.find_nav_cur a {
+    font-weight: bold;
+    color: #515354 !important;
+}
+
+.find_nav_list a.active {
+    color: #999999;
+}
+
+.sideline {
+    display: block;
+    position: absolute;
+    border: 0;
+    height: 2px;
+    background-color: #69C72B;
+    left: 0;
+    top: 48px;
+    pointer-events: none;
+}
+
+.main_left_body {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.main_left_body_line {
+    height: 50px;
+    border-bottom: 1px solid #B2D234;
+    box-sizing: border-box;
+    padding: 0 15px;
+    margin-top: 52px
+}
+
+.main_left_body_line_icon {
+    width: 16px;
+    height: 22px;
+    background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/iphone.png");
+    /*background-image: url("../img/iphone.png");*/
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    margin-top: 14px;
+    margin-right: 12.5px;
+}
+
+.main_left_body_line_iconemail {
+    width: 22px;
+    height: 17px;
+    background-image: url(//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/email.png);
+    /*background-image: url(../img/email.png);*/
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    margin-top: 17px;
+    margin-right: 12.5px;
+}
+
+.main_left_body_line_icon2Pc {
+    width: 63px;
+    height: 25px;
+    background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/icon.jpg");
+    /*background-image: url("../img/icon.jpg");*/
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    margin-top: 12.5px;
+    margin-left: 15px;
+}
+
+.main_left_body_line_icon2 {
+    width: 63px;
+    height: 25px;
+    float: left;
+    margin-top: 12.5px;
+    margin-left: 15px;
+}
+
+.main_left_body_line_icon3 {
+    width: 22px;
+    height: 22px;
+    background-image: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/code.png");
+    /*background-image: url("../img/code.png");*/
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    margin-top: 14px;
+}
+
+.tel {
+    width: 200px;
+}
+
+.yxInput {
+    width: 237px;
+}
+
+.tel,
+.yxInput {
+    height: 24px;
+    font-size: 16px;
+    color: #333;
+    float: left;
+    display: block;
+    margin-left: 7px;
+    line-height: 24px;
+    outline: none;
+    border: 0;
+    margin-top: 12px;
+}
+
+.intl-tel-input {
+    margin-top: 12px;
+}
+
+.main_left_body_line_input {
+    width: 130px;
+    height: 24px;
+    font-size: 16px;
+    color: #333;
+    float: left;
+    display: block;
+    margin-left: 7px;
+    line-height: 24px;
+    outline: none;
+    border: 0;
+    margin-top: 12px;
+}
+
+.main_left_body_line_input::-webkit-input-placeholder,
+.tel::-webkit-input-placeholder,
+.yxInput::-webkit-input-placeholder {
+    font-size: 12px;
+    line-height: 24px;
+    color: #B3B3B3;
+}
+
+.main_left_body_line_yzm {
+    width: 96px;
+    height: 44px;
+    margin-top: 5px;
+    float: right;
+}
+
+.main_left_body_line_yzm img {
+    width: 100%;
+    height: 100%;
+    float: right;
+}
+
+.main_right {
+    width: 45%;
+    border-radius: 0px 10px 10px 0px;
+    /*box-shadow: -1px 0px 0px 0px rgba(0, 0, 0, 0.1);*/
+    background-color: #fff;
+    float: right;
+    padding-bottom: 62px;
+    padding-top: 38px;
+    height: 416px;
+}
+
+.main_right_ewm {
+    width: 179px;
+    height: 178px;
+    box-sizing: border-box;
+    border: 1px solid #E2E2E2;
+    margin: 104px auto 0 auto;
+    padding: 5px;
+}
+
+.main_right_ewm img {
+    width: 100%;
+    height: 100%;
+}
+
+.main_right_txt {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(178, 210, 52, 1);
+    line-height: 18px;
+    margin: 18px auto 0 auto;
+    width: 126px;
+}
+
+.main_right_txt p {
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+}
+
+#yxInput {
+    margin-left: 0;
+    margin-top: 12px;
+}
+
+.main_left_button {
+    width: 100px;
+    height: 40px;
+    background: #69C72B;
+    border-radius: 3px;
+    float: right;
+    margin-top: 41px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    line-height: 40px;
+    text-align: center;
+    border: 0;
+    outline: none;
+}
+
+.row_img {
+    width: 129px;
+    height: 62px;
+}
+
+.footer {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    text-align: center;
+    position: relative;
+    top: 44px;
+    width: 100%;
+}
+
+#tipone {
+    color: red;
+    margin-top: 52px;
+    text-align: center;
+    padding: 0
+}
+
+.return {
+    color: #666666;
+    letter-spacing: 1.03px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    padding-left: 35px;
+}
+
+.return:hover {
+    color: #69c72b !important;
+}
+
+/*.tit:hover {
+    color: #69c72b !important;
+    background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/b_login/lefttwo.png") no-repeat;
+    background-position: left center;
+    background-size: 20px 20px;
+    text-decoration: none;
+}*/
+
+#test .input-item {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#test .now {
+    background: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    width: 50px;
+    height: 50px;
+    border: 1px #eeeeee solid;
+    text-align: center;
+    font-size: 20px;
+    margin-right: 2%;
+}
+
+#triggerM {
+    display: none;
+}
+
+.spinner_bak {
+    font-size: 30px;
+    width: 1em;
+    height: 1em;
+    line-height: 30px;
+    margin: 30px auto 50px auto;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 .1em rgba(58, 168, 237, .2);
+}
+
+.spinner_bak i {
+    position: absolute;
+    clip: rect(0, 1em, 1em, .5em);
+    width: 1em;
+    height: 1em;
+    animation: spinner-circle-clipper 1s ease-in-out infinite;
+}
+
+.alert {
+    width: 280px;
+    height: 50px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    line-height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 30px auto 0 auto;
+    z-index: 9999;
+    padding: 0;
+    display: block;
+}
+
+.alert_img {
+    width: 26px;
+    height: 26px;
+    float: left;
+    margin-left: 30px;
+    margin-top: 12px;
+    display: block;
+}
+
+.alert_txt {
+    width: 190px;
+    height: 50px;
+    float: left;
+    margin-left: 20px;
+    font-size: 16px;
+    color: #515354;
+}
+
+@keyframes spinner-circle-clipper {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+.spinner_bak i:after {
+    position: absolute;
+    clip: rect(0, 1em, 1em, .5em);
+    width: 1em;
+    height: 1em;
+    content: '';
+    animation: spinner-circle 1s ease-in-out infinite;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 .1em #74CA51;
+}
+
+@keyframes spinner-circle {
+    0% {
+        transform: rotate(-180deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+#test #tip {
+    color: red;
+}
+
+#test {
+    overflow: hidden;
+    width: 55%;
+    padding: 37px 0px;
+    padding-bottom: 66px;
+    float: left;
+    box-sizing: border-box;
+    border-right: 1px solid #E8E8E8;
+    background-color: #fff;
+    border-radius: 10px 0 0 10px;
+    height: 416px;
+}
+
+#test .now:focus {
+    border: 1px #B4EC51 solid;
+    outline: none;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#test {
+    padding-bottom: 62px;
+    padding-top: 40px;
+}
+
+#test h5 {
+    font-size: 16px;
+    color: #515354;
+    letter-spacing: 0.8px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.coderow {
+    width: 100% !important;
+    padding: 0 0px !important;
+    margin-left: 5px !important;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: rgb(250, 255, 189);
+    background-image: none;
+    color: rgb(0, 0, 0);
+}
+
+@media only screen and (max-width: 1365px) {
+    #test .now {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 450px) {
+    .alert {
+        display: block;
+        width: 62%;
+        margin-top: 0;
+        height: 45px;
+        top: 30px;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    .main {
+        display: block;
+    }
+    .main-image {
+        background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.jpg") no-repeat;
+        /*background: url(../img/bgpic.jpg) no-repeat;*/
+        background-size: cover;
+    }
+    #main_right_tohiden {
+        display: none;
+    }
+    .row_img {
+        margin: 0 auto;
+        display: block;
+        width: 217px;
+        height: 104px;
+    }
+    .bgBack_opa {
+        display: none;
+    }
+    .bgBack_opa2 {
+        display: none;
+    }
+    .footer {
+        display: none;
+    }
+    #triggerM {
+        display: block;
+    }
+    #trigger1 {
+        display: none;
+    }
+    .alert_img {
+        width: 15px;
+        height: 15px;
+        margin-left: 7.31707317073171%;
+        margin-top: 15px;
+    }
+    .alert_txt {
+        width: auto;
+        height: 45px;
+        line-height: 45px;
+        margin-left: 4.8780487804878%;
+        font-size: 15px;
+    }
+    .jumbotron {
+        background: none;
+        margin: 0 auto;
+        padding-top: 60px !important;
+        width: 76.47058823529412%;
+        display: block;
+    }
+    #row2 {
+        margin-top: 35px;
+        background: none;
+        box-shadow: none;
+        width: auto;
+    }
+    .main_left {
+        width: 100%;
+        padding: 0;
+        border-radius: 10px 10px 10px 10px;
+        border: 0;
+        background: none;
+    }
+    #row1 {
+        text-align: center;
+    }
+    #row1 img {
+        width: 110px;
+        height: 53px;
+    }
+    .find_nav_list ul li {
+        width: 42%;
+        margin: 0px 4%;
+    }
+    #pagenavi1 ul {
+        width: 80%;
+    }
+    #pagenavi1 ul li a {
+        width: auto;
+        font-size: 17px;
+        letter-spacing: 5px;
+    }
+    .sideline {}
+    #main_right_tohiden {
+        display: none;
+    }
+    .main_left_body_line {
+        height: 50px;
+        border-bottom: 1px solid #E5E5E5;
+        box-sizing: border-box;
+        margin-top: 40px;
+        padding: 0;
+    }
+    .main_left_body_line_icon {
+        width: 14.5px;
+        height: 20px;
+        margin-top: 15px;
+        margin-right: 0;
+    }
+    .main_left_body_line_iconemail {
+        width: 20px;
+        height: 14px;
+        margin-top: 19px;
+        margin-right: 0;
+    }
+    .main_left_body_line_icon2 {
+        background: #ffffff;
+        height: 20px;
+        width: 50px;
+        margin-left: 15px;
+        margin-top: 15px;
+        border: 0;
+        outline: none;
+        background: none;
+    }
+    .yxInput {
+        width: 80%;
+    }
+    .tel {
+        width: 188px;
+    }
+    .main_left_body_line_input {
+        width: 60%;
+    }
+    .main_left_body_line_input,
+    .tel,
+    .yxInput {
+        height: 24px;
+        font-size: 14px;
+        color: #333;
+        float: left;
+        display: block;
+        margin-left: 13px;
+        line-height: 24px;
+        outline: none;
+        border: 0;
+        background: none;
+        margin-top: 12px;
+    }
+    .main_left_body_line_input::-webkit-input-placeholder,
+    .tel::-webkit-input-placeholder,
+    .yxInput::-webkit-input-placeholder {
+        font-size: 14px;
+    }
+    .main_left_body_line_icon3 {
+        width: 20px;
+        height: 20px;
+        margin-top: 15px;
+    }
+    #vernum {
+        margin-left: 11px;
+        width: 55%;
+    }
+    #yxInput {
+        margin-left: 16.5px;
+    }
+    .main_left_body_line_yzm {
+        width: 78px;
+        height: 26.5px;
+        margin-top: 11.25px;
+    }
+    .main_left_button {
+        width: 100%;
+        height: 40px;
+        background: #69C72B;
+        border-radius: 5px;
+        margin-top: 35px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #FFFFFF;
+        line-height: 40px;
+        text-align: center;
+        border: 0;
+        outline: none;
+    }
+    #test {
+        padding: 20px;
+        width: 100%;
+        border-radius: 10px;
+        border: 0;
+        min-height: 300px;
+    }
+    .tit a h4 {
+        font-size: 15px;
+        padding: 0;
+        margin-left: 40px;
+    }
+    #test h5 {
+        font-size: 15px;
+    }
+    #codeRow .input-item {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    #codeRow .input-item input {
+        margin-right: 5px;
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+    #tipone {
+        color: red;
+        margin-top: 52px;
+        text-align: center;
+        padding: 0;
+        font-size: 13px;
+        display: none;
+    }
+}
+
+@media (min-width: 450px) and (max-width: 1099px) {
+    .alert {
+        display: block;
+    }
+    .main-image {
+        background: url("//irv.iresearch.com.cn/iResearchDataWeb/public/img/bj_login/bgpic.jpg") no-repeat;
+        /*background: url(../img/bgpic.jpg) no-repeat;*/
+        background-size: cover;
+    }
+    #main_right_tohiden {
+        display: none;
+    }
+    .row_img {
+        margin: 0 auto;
+        display: block;
+        width: 217px;
+        height: 104px;
+    }
+    .bgBack_opa {
+        display: none;
+    }
+    .bgBack_opa2 {
+        display: none;
+    }
+    .footer {
+        display: none;
+    }
+    #triggerM {
+        display: block;
+    }
+    #trigger1 {
+        display: none;
+    }
+    #row2 {
+        margin-top: 110px;
+        background: none;
+        box-shadow: none;
+        width: auto;
+    }
+    .jumbotron {
+        background: none;
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 91px !important;
+        display: block;
+    }
+    #pagenavi1 ul li a {
+        width: 156px;
+        font-size: 34px;
+        letter-spacing: 5px;
+    }
+    .sideline {
+        width: 156px;
+        top: 67px;
+    }
+    .main_left_body_line_icon {
+        width: 29px;
+        height: 40px;
+        margin-top: 0;
+    }
+    .main_left_body_line_iconemail{
+        width: 37px;
+        height: 28px;
+        margin-top: 13px;
+    }
+    .main_left_body_line_icon2 {
+        margin-top: 3px;
+        width: 63px;
+        height: 37px;
+        margin-left: 30px;
+    }
+    .main_left {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        background: none;
+    }
+    .main_left_body_line_input,
+    .tel {
+        width: 350px;
+    }
+    .yxInput {
+        width: 450px;
+    }
+    .main_left_body_line_input,
+    .tel,
+    .yxInput {
+        height: 28px;
+        font-size: 28px;
+        color: #333;
+        float: left;
+        display: block;
+        margin-left: 7px;
+        line-height: 28px;
+        outline: none;
+        border: 0;
+        background: none;
+        margin-top: 12px;
+    }
+    .main_left_body_line_input::-webkit-input-placeholder,
+    .tel::-webkit-input-placeholder,
+    .yxInput::-webkit-input-placeholder {
+        font-size: 28px;
+    }
+    .main_left_body_line_icon3 {
+        width: 40px;
+        height: 40px;
+        margin-top: 0;
+    }
+    .find_nav_list ul li {
+        margin: 0 50px;
+    }
+    #vernum {
+        margin-left: 30px;
+    }
+    #yxInput {
+        margin-left: 41px;
+    }
+    .main_left_body_line_yzm {
+        width: 156px;
+        height: 53px;
+        margin-top: 0;
+    }
+    .main_left_body_line {
+        padding: 0;
+        border-bottom: 1px solid #B2D234;
+        box-sizing: border-box;
+        margin-top: 100px;
+        height: 70px;
+    }
+    .main_left_button {
+        width: 100%;
+        height: 80px;
+        background: #69C72B;
+        border-radius: 5px;
+        margin-top: 70px;
+        font-size: 32px;
+        font-weight: 400;
+        color: #FFFFFF;
+        line-height: 80px;
+        text-align: center;
+        border: 0;
+        outline: none;
+    }
+    #test {
+        padding: 45px;
+        width: 100%;
+    }
+    .tit a h4 {
+        font-size: 30px;
+    }
+    #test h5 {
+        font-size: 30px;
+    }
+    #codeRow .input-item input {
+        margin-right: 20px;
+        width: 60px;
+        height: 60px;
+    }
+    #tipone {
+        color: red;
+        margin-top: 52px;
+        text-align: center;
+        padding: 0;
+        font-size: 13px;
+        display: none
+    }
+}
+
+@media (min-width: 1099px) and (max-width: 1300px) {
+    .jumbotron {
+        background: none;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .main_left_body_line_input {
+        width: 200px;
+        height: 36px;
+        font-size: 14px;
+        color: #333;
+        float: left;
+        display: block;
+        margin-left: 7px;
+        line-height: 36px;
+        outline: none;
+        border: 0;
+    }
+    .main_left_body_line_yzm {
+        width: 70px;
+        height: 38px;
+        margin-top: 11px;
+        float: right;
+    }
+    .main_left_body_line {
+        height: 50px;
+        border-bottom: 1px solid #B2D234;
+        box-sizing: border-box;
+        padding: 0 10px;
+    }
+    #tipone {
+        color: red;
+        margin-top: 52px;
+        text-align: center;
+        padding: 0;
+        font-size: 13px
+    }
+}
+
+#code_img {
+    cursor: pointer
+}
+
+.loading_app .circular {
+    vertical-align: middle;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    animation: loading-rotate 2s linear infinite;
+}
+
+.loading_app .circular .path {
+    animation: loading-dash 1.5s ease-in-out infinite;
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: 0;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-linecap: round;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@-webkit-keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes loading-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loading-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -40px;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -120px;
+    }
+}
+
+.intl-tel-input.allow-dropdown .flag-container:hover .selected-flag {
+    background: #ffffff !important;
+}
+.shade{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(147,147,147,0.4);
+}
+.conceal{
+    z-index: 1000;
+    border-radius: 10px;
+    background: #ffffff;
+    width: 1000px;
+    top:50%;
+    left:50%;
+    position: fixed;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    overflow: hidden;
+}
+
+
+.conceal_head{
+    margin-top: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+    text-align: center;
+    background: url('../img/logo1.png')no-repeat;
+    background-size: auto 50px;
+}
+.line{
+    width: 100%;
+    height: 1px;
+    background: rgba(238,238,238,1);
+}
+
+/*滚动条样式*/
+.conceal_content::-webkit-scrollbar{
+    display: none;
+}
+/*.conceal_content::-webkit-scrollbar{*/
+/*width: 10px;*/
+/*}*/
+/*.conceal_content::-webkit-scrollbar-thumb{*/
+/*border-radius: 10px;*/
+/*background-color: rgba(105, 199, 43, 0.4);*/
+/*}*/
+/*.conceal_content::-webkit-scrollbar-track{*/
+/*border-radius: 10px;*/
+/*background: #ffffff;*/
+/*}*/
+/*.conceal_content::-webkit-scrollbar-button {*/
+/*background-color:#ffffff;*/
+/*}*/
+/*.conceal_content::-webkit-scrollbar-corner {*/
+/*background:#ffffff;*/
+/*}*/
+.conceal_content{
+    margin:0 40px;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.conceal_title{
+    color: #333333;
+    font-size: 16px;
+    line-height: 65px;
+    text-align: center;
+}
+.stage,.sentence{
+    color: #333333;
+    font-size: 12px;
+    line-height: 24px;
+}
+.stage{
+    margin-top: 20px;
+}
+.conceal_footer{
+    border-top: 1px solid rgba(238,238,238,1);
+    text-align: center;
+    height: 80px;
+}
+#agree,#disagree{
+    cursor: pointer;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    margin-top: 20px;
+    border-radius: 3px;
+    padding: 10px 15px;
+}
+#disagree:focus,#agree:focus{
+    outline: 0;
+}
+#disagree{
+    background: #CCCCCC;
+}
+#agree{
+    background: #69C72B;
+    margin-left: 20px;
+}
+.declare{
+    background: #f6f6f6;
+    width: 100%;
+    z-index: 111;
+}
+.declare_head{
+    padding-top: 30px;
+}
+.declare_title{
+    font-size: 18px;
+    color: #333333;
+    font-weight: bold;
+    line-height: 52px;
+    vertical-align: middle;
+    margin-left: 40px;
+    margin-right: 40px;
+    text-align: center;
+    background: url('//irv.iresearch.com.cn/iResearchDataWeb/public/img/logo1.png')no-repeat;
+    background-size: auto 52px;
+}
+.declare_content{
+    width: 1000px;
+    margin: 0 auto;
+}
+.declare_title{
+    font-size:18px;
+    font-family:MicrosoftYaHei-Bold;
+    color:rgba(51,51,51,1);
+    text-align: center;
+}
+.declare_nav{
+    background: #ffffff;
+    margin-top: 20px;
+}
+.declare_main{
+    margin: 0 30px;
+    padding-top: 20px;
+}
+.nav_stage{
+    padding:10px 0;
+    font-size: 12px;
+    color: #333333;
+}
+.declare_footer{
+    text-align: center;
+    padding: 20px 0 40px 0;
+}

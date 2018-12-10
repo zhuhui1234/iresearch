@@ -541,6 +541,18 @@ class UserModel extends API
     }
 
     /**
+     * agree rule
+     * @param $data
+     * @return bool|string
+     */
+    public function agreeRule($data)
+    {
+        $url = API_URL . '?m=User&a=agreeRule';
+        $ret = $this->_curlPost($url, $data, 'agreeRule');
+        return $ret;
+    }
+
+    /**
      * unblock user
      *
      * @param array $data

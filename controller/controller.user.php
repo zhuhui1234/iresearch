@@ -179,6 +179,7 @@ class UserController extends Controller
                 'userID' => $this->userInfo['userID']
             ]), true);
 
+
             if (!empty($userInfo)) {
 
                 $d = [
@@ -191,6 +192,11 @@ class UserController extends Controller
 
                 if (!$this->loginStatus)
                     $d['expire'] = 1;
+
+                if ($userInfo['data']['checkAgree'] !== '1') {
+                    View::instance('user/private_rules.tpl')->show([]);
+                    exit();
+                }
 
                 if ($userInfo['resCode'] != 000000) {
                     View::instance('user/bj_login.tpl')->show($d);
@@ -1441,6 +1447,16 @@ class UserController extends Controller
         } else {
             _ERROR('000001', '超时登入');
         }
+    }
+
+    public function upAgree()
+    {
+        $userInfo = [
+            'userID' => $this->userInfo['userID'],
+            'token' => $this->userInfo['token']
+        ];
+        echo $this->model->agreeRule($userInfo);
+
     }
 
     public function msgDetail()

@@ -32,4 +32,5 @@ define({
     upAudit               : '?m=industry&a=upAudit',
     setAudit              : '?m=industry&a=setAudit',
     getAuditInfo          : '?m=industry&a=getAuditInfo',
+    agree                 : '?m=user&a=upAgree',
 });
