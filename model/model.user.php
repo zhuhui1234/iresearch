@@ -698,6 +698,11 @@ class UserModel extends API
         return $this->_curlPost($url, $data, 'productInfo');
     }
 
+    public function suicide($data)
+    {
+        $url = API_URL . '?m=user&a=suicide';
+        return $this->_curlPost($url, $data, 'suicide');
+    }
 
     ######################################################################################
     ##################################                     ###############################

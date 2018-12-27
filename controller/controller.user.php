@@ -1459,6 +1459,11 @@ class UserController extends Controller
 
     }
 
+    public function suicide()
+    {
+        echo $this->model->suicide(['userID'=>$this->userInfo['userID']]);
+    }
+
     public function msgDetail()
     {
         $getData = json_decode(file_get_contents('php://input'), true);
