@@ -1461,7 +1461,9 @@ class UserController extends Controller
 
     public function suicide()
     {
-        echo $this->model->suicide(['userID'=>$this->userInfo['userID'],'token' => $this->userInfo['token']]);
+        $ret = $this->model->suicide(['userID' => $this->userInfo['userID'], 'token' => $this->userInfo['token']]);
+        $this->logOut();
+        echo $ret;
     }
 
     public function msgDetail()
