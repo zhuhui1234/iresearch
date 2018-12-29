@@ -212,7 +212,7 @@ class Api extends Url
                 unset($content_log['data']['avatar_base64']);
             }
             $content_log = json_encode($content_log);
-        }else{
+        } else {
             $content_log = $content;
         }
         //LOG
@@ -270,6 +270,36 @@ class Api extends Url
         return $content;
     }
 
+    public function curlJsonPost($url, $data = array(), $cookiepath = '/', $timeout = 300)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json",
+                "cache-control: no-cache"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            return false;
+        } else {
+            return $response;
+        }
+    }
 
 }
 
