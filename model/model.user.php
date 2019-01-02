@@ -704,6 +704,13 @@ class UserModel extends API
         return $this->_curlPost($url, $data, 'suicide');
     }
 
+    public function rules()
+    {
+        $url = 'https://bottle.irs01.com/oaapi/law/rules/get';
+        $ret =  $this->curlJsonPost($url, ['data'=>['id'=>3]]);
+        return $ret;
+    }
+
     ######################################################################################
     ##################################                     ###############################
     #################################   PRIVATE METHODS   ################################

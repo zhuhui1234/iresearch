@@ -101,9 +101,9 @@ class UserController extends Controller
 
     public function test()
     {
-        $this->__json();
-        echo $this->userDetail;
-
+        $rules = $this->model->rules();
+        $rules = json_decode($rules, true);
+        View::instance('user/private_rules.tpl')->show(['content'=>urldecode($rules['data'])]);
     }
 
     /**
@@ -194,7 +194,9 @@ class UserController extends Controller
                     $d['expire'] = 1;
 
                 if ($userInfo['data']['checkAgree'] !== '1') {
-                    View::instance('user/private_rules.tpl')->show([]);
+                    $rules = $this->model->rules();
+                    $rules = json_decode($rules, true);
+                    View::instance('user/private_rules.tpl')->show(['content'=>$rules]);
                     exit();
                 }
 
@@ -1462,7 +1464,29 @@ class UserController extends Controller
     public function suicide()
     {
         $ret = $this->model->suicide(['userID' => $this->userInfo['userID'], 'token' => $this->userInfo['token']]);
-        $this->logOut();
+        $cache_key = $this->userInfo['token'] . '_cache';
+        $this->cache->hDel($cache_key);
+        $this->cache->del($cache_key);
+        $this->model->logOut();
+
+        Session::instance()->destroy();
+        setcookie('yh_irv_url', 'https://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=login&expired=1', time() + 2400, '/');
+        setcookie('PHPSESSID', '', time() - 3600, '/');
+        setcookie('JSESSIONID', '', time() - 3600, '/');
+        setcookie('kittyID', '', time() - 3600, '/');
+        // unset cookies
+        if (isset($_SERVER['HTTP_COOKIE'])) {
+            $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+            foreach ($cookies as $cookie) {
+                $parts = explode('=', $cookie);
+                $name = trim($parts[0]);
+                setcookie($name, '', time() - 1000);
+                setcookie($name, '', time() - 1000, '/');
+            }
+        }
+
+        write_to_log('cookie:' . json_encode($_COOKIE), '_session');
+
         echo $ret;
     }
 
