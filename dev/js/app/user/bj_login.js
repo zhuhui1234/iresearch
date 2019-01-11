@@ -315,8 +315,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
         $("#tel").intlTelInput({
             formatOnDisplay: false,
-            preferredCountries: ["cn", "hk", "tw", "us", "jp","it"],
-            onlyCountries: ["cn", "hk", "mo", "tw", "us", "gb", "fr", "de", "au", "kr", "jp", "sg","it"],
+            preferredCountries: ["cn", "hk", "tw", "us", "jp","it","ru"],
+            onlyCountries: ["cn", "hk", "mo", "tw", "us", "gb", "fr", "de", "au", "kr", "jp", "sg","it","ru"],
             initialCountry: "cn",
             utilsScript: "./dev/js/lib/intl-tel/js/utils.js"
         });
