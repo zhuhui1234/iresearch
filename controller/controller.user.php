@@ -101,9 +101,7 @@ class UserController extends Controller
 
     public function test()
     {
-        $rules = $this->model->rules();
-        $rules = json_decode($rules, true);
-        View::instance('user/private_rules.tpl')->show(['content'=>urldecode($rules['data'])]);
+        var_dump($this->userInfo);
     }
 
     /**
@@ -141,7 +139,8 @@ class UserController extends Controller
 
             if ($irdAccount['iUserID'] !== 0) {
                 write_to_log($reIrdAccount . '  success ', '_irdLogin');
-                $userInfo = json_decode($this->model->getUserInfoByIRD(['iUserID' => $irdAccount['iUserID']]), true);
+                $userInfo = json_decode($this->model->getUserInfoByIRD(['iUserID' => $irdAccount['iUserID'],
+                    'token'=>$this->userInfo['token']]), true);
 
                 Session::instance()->set('irdAccount', $irdAccount);
                 Session::instance()->set('irdGuid', $guid);
@@ -182,6 +181,7 @@ class UserController extends Controller
 
             if (!empty($userInfo)) {
 
+
                 $d = [
                     'loginStatus' => $this->loginStatus,
                     'mobile' => $mobile,
@@ -193,20 +193,24 @@ class UserController extends Controller
                 if (!$this->loginStatus)
                     $d['expire'] = 1;
 
-                if ($userInfo['data']['checkAgree'] !== '1') {
-                    $rules = $this->model->rules();
-                    $rules = json_decode($rules, true);
-                    View::instance('user/private_rules.tpl')->show(['content'=>$rules]);
-                    exit();
-                }
-
                 if ($userInfo['resCode'] != 000000) {
                     View::instance('user/bj_login.tpl')->show($d);
                     exit();
                 }
             }
 
+
+
+
             if (!$this->loginStatus) {
+
+                if (empty($this->userInfo['checkAgree'])) {
+                    $rules = $this->model->rules();
+                    $rules = json_decode($rules, true);
+                    View::instance('user/private_rules.tpl')->show(['content'=>urldecode($rules['data'])]);
+                    exit();
+                }
+
                 if ($from == 'ird' and !empty($guid)) {
                     $uid = ['iUserID' => $irdAccount['iUserID']];
                     $uid = json_decode($this->model->getIRVuserid($uid), true);
@@ -228,6 +232,10 @@ class UserController extends Controller
                         return;
                     }
                 }
+
+
+
+
                 //登入成功
                 $getPermission = json_decode($this->model->getPermission([
                     'token' => $this->userInfo['token'],
@@ -1457,7 +1465,30 @@ class UserController extends Controller
             'userID' => $this->userInfo['userID'],
             'token' => $this->userInfo['token']
         ];
-        echo $this->model->agreeRule($userInfo);
+        $ret = $this->model->agreeRule($userInfo);
+        $r = json_decode($ret, true);
+        if ($r['resCode'] == '000000') {
+            $this->userInfo['checkAgree'] = 1;
+            Session::instance()->set('userInfo', $this->userInfo);
+            echo $ret;
+        }else{
+            Session::instance()->destroy();
+            setcookie('yh_irv_url', 'https://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=login&expired=1', time() + 2400, '/');
+            setcookie('PHPSESSID', '', time() - 3600, '/');
+            setcookie('JSESSIONID', '', time() - 3600, '/');
+            setcookie('kittyID', '', time() - 3600, '/');
+            // unset cookies
+            if (isset($_SERVER['HTTP_COOKIE'])) {
+                $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+                foreach ($cookies as $cookie) {
+                    $parts = explode('=', $cookie);
+                    $name = trim($parts[0]);
+                    setcookie($name, '', time() - 1000);
+                    setcookie($name, '', time() - 1000, '/');
+                }
+            }
+        }
+
 
     }
 

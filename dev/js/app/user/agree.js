@@ -3,7 +3,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         $(function(){
             console.log('helo');
             $('#disagree').click(function(){
-                window.location.href="//irv.iresearch.com.cn";
+                window.location.href="//irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=logOut";
             });
             $('#agree').click(function () {
                 Helper.post('agree', null, function (ret) {
@@ -15,6 +15,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                     }
                 });
             });
+
         });
 
     }

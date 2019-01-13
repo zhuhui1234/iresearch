@@ -13,7 +13,7 @@
                 {content}
             </div>
             <div class="declare_footer">
-                <button id="disagree">不接受</button>
+                <button id="disagree">拒绝</button>
                 <button id="agree">我已同意</button>
             </div>
         </div>

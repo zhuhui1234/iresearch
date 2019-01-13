@@ -273,7 +273,7 @@ class Api extends Url
     public function curlJsonPost($url, $data = array(), $cookiepath = '/', $timeout = 300)
     {
         $curl = curl_init();
-
+        $data = json_encode($data);
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
@@ -282,7 +282,7 @@ class Api extends Url
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_POSTFIELDS => $data,
             CURLOPT_HTTPHEADER => array(
                 "Content-Type: application/json",
                 "cache-control: no-cache"
@@ -293,7 +293,9 @@ class Api extends Url
         $err = curl_error($curl);
 
         curl_close($curl);
-
+        write_to_log('POST URL:' . $url, '_ird');
+        write_to_log('POST VALUE' . $data, '_ird');
+        write_to_log('RETURN: ' . $data, '_ird');
         if ($err) {
             return false;
         } else {

@@ -100,10 +100,19 @@ class IndexController extends Controller
                 unset($data['titleMenu'][$i]);
             }
         }
-//        pr($data);
-        View::instance('index/home.tpl')->show($data);
+        if (!empty($userInfo)) {
+            if (empty($userInfo['checkAgree'])) {
+                $rules = $userModel->rules();
+                $rules = json_decode($rules, true);
+                View::instance('user/private_rules.tpl')->show(['content'=>urldecode($rules['data'])]);
+                exit();
+            }else{
+                header('Location: http://data.iresearch.com.cn/iRView.shtml');
+            }
+        }else{
+            header('Location: http://data.iresearch.com.cn/iRView.shtml');
+        }
 
-//        header('Location: http://data.iresearch.com.cn/iRView.shtml');
     }
 
     public function irIndex()
@@ -122,6 +131,7 @@ class IndexController extends Controller
             'titleMenu' => $menu[1]['subMenu'],
             'mainMenu' => is_array($menu[1]['subMenu']) ? $this->__mainMenu($menu[1]['subMenu']) : null
         );
+
         View::instance('index/irIndex.tpl')->show($data);
     }
 
@@ -190,6 +200,7 @@ class IndexController extends Controller
 
     public function iadt_feedad()
     {
+
         if (!empty($this->request()->requestAll()['redirect'])) {
             $redirect = '&redirect=' . urlencode($this->request()->requestAll()['redirect']);;
         } else {
@@ -316,6 +327,7 @@ class IndexController extends Controller
 
         header("Location:" . 'http://ect.itracker.cn/nloginv2/?token=' . $this->userInfo['token'] . $redirect);
     }
+
 
     public function soft_adt()
     {
@@ -1029,6 +1041,15 @@ class IndexController extends Controller
             pr($this->userDetail);
             exit();
         }
+        if (!empty($userInfo)) {
+            if (empty($userInfo['checkAgree'])) {
+                $userModel = Model::instance('user');
+                $rules = $userModel->rules();
+                $rules = json_decode($rules, true);
+                View::instance('user/private_rules.tpl')->show(['content'=>urldecode($rules['data'])]);
+                exit();
+            }
+        }
         View::instance('b_t/vt.tpl')->show($data);
     }
 
@@ -1175,6 +1196,17 @@ class IndexController extends Controller
             pr($userInfo);
             exit();
         }
+
+        if (!empty($userInfo)) {
+            if (empty($userInfo['checkAgree'])) {
+                $userModel = Model::instance('user');
+                $rules = $userModel->rules();
+                $rules = json_decode($rules, true);
+                View::instance('user/private_rules.tpl')->show(['content'=>urldecode($rules['data'])]);
+                exit();
+            }
+        }
+
         View::instance('b_t/ut.tpl')->show($data);
     }
 
@@ -1232,7 +1264,18 @@ class IndexController extends Controller
             $data['adUrl'] = '?m=irdata&a=classicSys&ppname=old-ad';
         }
 
+        if (!empty($userInfo)) {
+            if (empty($userInfo['checkAgree'])) {
+                $userModel = Model::instance('user');
+                $rules = $userModel->rules();
+                $rules = json_decode($rules, true);
+                View::instance('user/private_rules.tpl')->show(['content'=>urldecode($rules['data'])]);
+                exit();
+            }
+        }
+
         View::instance('b_t/ad.tpl')->show($data);
+
     }
 
 
@@ -1452,6 +1495,15 @@ class IndexController extends Controller
             $data['adUrl'] = '?m=irdata&a=classicSys&ppname=old-ad';
         }
 
+        if (!empty($userInfo)) {
+            if (empty($userInfo['checkAgree'])) {
+                $userModel = Model::instance('user');
+                $rules = $userModel->rules();
+                $rules = json_decode($rules, true);
+                View::instance('user/private_rules.tpl')->show(['content'=>urldecode($rules['data'])]);
+                exit();
+            }
+        }
 
         View::instance('xvt/ad.tpl')->show($data);
     }
