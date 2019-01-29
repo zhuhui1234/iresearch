@@ -342,6 +342,19 @@ class UserController extends Controller
                                 exit();
                             }
 
+                        } elseif ($pdt_id == 57) {
+                            $rq = [
+                                'u_id' => $this->userInfo['userID']
+                            ];
+                            $p57 = json_decode($this->model->getProList($rq), true);
+
+                            if (in_array('iut', $p57['data']) or in_array('mut', $p57['data'])) {
+                                header('Location: ' . $getPermission['data']['data']['pdt_url'] . $redirect);
+                                exit();
+                            } else {
+                                header('Location: ?m=user&a=trialApply&ppname=' . $getPermission['data']['data']['pdt_name'] . '&menuID=' . $pdt_id);
+                                exit();
+                            }
                         }
 
                         if (empty($getPermission['data']['data'])) {
