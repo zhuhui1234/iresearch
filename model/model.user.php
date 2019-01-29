@@ -706,7 +706,7 @@ class UserModel extends API
 
     public function rules()
     {
-        $url = 'http://bottle.irs01.com/oaapi/law/rules/get';
+        $url = 'https://bottle.irs01.com/oaapi/law/rules/get';
         $ret =  $this->curlJsonPost($url, ['data'=>['id'=>3]]);
         return $ret;
     }
