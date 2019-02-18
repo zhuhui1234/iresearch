@@ -190,7 +190,7 @@ class IRDataController extends Controller
     public function classicSys()
     {
         $ppname = $this->request()->get('ppname');
-        $pdtID = $this->request()->get('pro');
+        $pdtID = (int)$this->request()->get('pro');
         $expired = $this->request()->get('expired');
 
         if ($expired == 1) {
