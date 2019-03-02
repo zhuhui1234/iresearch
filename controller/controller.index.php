@@ -1515,7 +1515,156 @@ class IndexController extends Controller
     public function test()
     {
 
-        var_dump(urlencode($this->request()->requestAll()['redirect']));
+        $data = [];
+        $userInfo = Session::instance()->get('userInfo');
+
+
+        if (preg_match('/^400/', $userInfo['mobile'])) {
+            $data['authType'] = 1;
+        } else {
+            $data['authType'] = 2;
+        }
+
+
+        $data['ut_beta_url'] = $data['ut_beta_url'] = '登录使用';
+        $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48';
+        $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pro=51';
+        $data['mut_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=48';
+        $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
+
+
+        if ($this->userDetail) {
+
+            $data['apply_beta_iut']  = 'UserTrack标准版';
+            $data['apply_iut'] = '';
+            $data['apply_mut'] = '';
+            $data['apply_beta_mut']= 'mUserTracker';
+            $data['iut_oldurl'] = '?m=user&a=trialApply&menuID=48';
+            $data['iut_oldurl_en'] = '?m=user&a=trialApply&menuID=51';
+            $data['mut_oldurl'] = '?m=user&a=trialApply&menuID=48';
+            $data['mut_oldurl_en'] = '?m=user&a=trialApply&menuID=48';
+
+            if (isset($userInfo['token'])) {
+                $data['token'] = $userInfo['token'];
+
+                $date = date('Y-m-d');
+
+                if (is_array($this->userDetail['data']['productList'])) {
+                    foreach ($this->userDetail['data']['productList'] as $datum) {
+                        if ($datum['pdt_id'] == 48) {
+                            if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
+                                $data['apply_iut'] = 'iUserTracker';
+//                                $data['apply_iut_en'] = 'English Version';
+                                $data['iut_oldurl'] = '?m=irdata&a=classicSys&ppname=PC端用户行为监测_经典版&pro=48';
+//                                $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
+
+                            } else {
+                                $data['apply_iut'] = 'iUserTracker';
+//                                $data['apply_iut_en'] = 'Trial';
+                                $data['iut_oldurl'] = '?m=user&a=trialApply&menuID=48';
+//                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&ppname=网络视频市场监测(英文版)&menuID=48';
+                            }
+
+                            if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
+                                $data['apply_mut'] = 'mUserTracker';
+//                                $data['apply_mut_en'] = 'English Version';
+                                $data['mut_oldurl'] = '?m=irdata&a=classicSys&ppname=移动端用户行为监测_经典版&pro=48';
+//                                $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
+                            } else {
+                                $data['apply_mut'] = 'mUserTracker';
+//                                $data['apply_mut_en'] = 'Trial';
+                                $data['mut_oldurl'] = '?m=user&a=trialApply&menuID=48';
+//                                $data['mut_oldurl_en'] = '?m=user&a=trialApply&ppname=移动端视频市场监测(英文版)&menuID=51';
+                            }
+                        }
+
+                        if ($datum['pdt_id'] == 51) {
+                            if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
+                                $data['apply_iut_en'] = 'IUT(EN)';
+                                $data['iut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=iut-en&pdtID=51';
+
+                            } else {
+                                $data['apply_iut_en'] = 'Trial(IUT)';
+                                $data['iut_oldurl_en'] = '?m=user&a=trialApply&menuID=48';
+                            }
+
+                            if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
+                                $data['apply_mut_en'] = 'MUT(EN)';
+                                $data['mut_oldurl_en'] = '?m=irdata&a=classicSys&ppname=mut-en&pro=51';
+                            } else {
+                                $data['apply_mut_en'] = 'Trial(MUT)';
+                                $data['mut_oldurl_en'] = '?m=user&a=trialApply&menuID=48';
+                            }
+                        }
+
+
+                        if ($datum['pdt_id'] == 48) {
+
+                            if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
+                                $data['apply_beta_iut'] = 'UserTrack标准版';
+                                $data['apply_beta_iut_en'] = 'English Version';
+                            } else {
+                                $data['apply_beta_iut'] = 'UT标准版';
+                                $data['apply_beta_iut_en'] = 'Trial';
+                            }
+
+                            if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
+                                $data['apply_beta_mut'] = 'UserTrack标准版';
+                                $data['apply_beta_mut_en'] = 'English Version';
+                            } else {
+                                $data['apply_beta_mut'] = 'UT标准版';
+                                $data['apply_beta_mut_en'] = 'Trial';
+                            }
+                        }
+
+                    }
+                } else {
+                    if (DEBUG) {
+                        echo 'ahahaahahaha';
+                    }
+                }
+
+            } else {
+                if (DEBUG) {
+                    echo 'ahahaahahaha1';
+                }
+                $data['token'] = 1;
+            }
+
+        } else {
+            if (DEBUG) {
+                var_dump($this->userDetail);
+            }
+            $data['token'] = 1;
+        }
+
+
+        if (empty(trim($userInfo['productKey']))) {
+            //没有绑定
+            $data['irdStatus'] = 1;
+        } else {
+            //绑定
+            $data['irdStatus'] = 2;
+        }
+//
+        if (DEBUG) {
+            pr($data);
+            pr($this->userDetail);
+            pr($userInfo);
+            exit();
+        }
+
+        if (!empty($userInfo)) {
+            if (empty($userInfo['checkAgree'])) {
+                $userModel = Model::instance('user');
+                $rules = $userModel->rules();
+                $rules = json_decode($rules, true);
+                View::instance('user/private_rules.tpl')->show(['content'=>urldecode($rules['data'])]);
+                exit();
+            }
+        }
+
+        View::instance('b_t/xut.tpl')->show($data);
     }
 
     /**
