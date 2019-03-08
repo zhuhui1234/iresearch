@@ -1054,10 +1054,10 @@ class IndexController extends Controller
     }
 
     /**
-     * ut
+     * test
      *
      */
-    public function xut()
+    public function test()
     {
         $data = [];
         $userInfo = Session::instance()->get('userInfo');
@@ -1510,9 +1510,9 @@ class IndexController extends Controller
 
 
     /**
-     * test function
+     * xut function
      */
-    public function test()
+    public function xut()
     {
 
         $data = [];
@@ -1601,18 +1601,18 @@ class IndexController extends Controller
                         if ($datum['pdt_id'] == 48) {
 
                             if ($date >= $datum['pc_start_time'] and $date <= $datum['pc_due_time']) {
-                                $data['apply_beta_iut'] = 'UserTrack标准版';
+                                $data['apply_beta_iut'] = 'UserTracker beta';
                                 $data['apply_beta_iut_en'] = 'English Version';
                             } else {
-                                $data['apply_beta_iut'] = 'UT标准版';
+                                $data['apply_beta_iut'] = 'UserTracker beta';
                                 $data['apply_beta_iut_en'] = 'Trial';
                             }
 
                             if ($date >= $datum['mobile_start_time'] and $date <= $datum['mobile_due_time']) {
-                                $data['apply_beta_mut'] = 'UserTrack标准版';
+                                $data['apply_beta_mut'] = 'UserTracker beta';
                                 $data['apply_beta_mut_en'] = 'English Version';
                             } else {
-                                $data['apply_beta_mut'] = 'UT标准版';
+                                $data['apply_beta_mut'] = 'UserTracker beta';
                                 $data['apply_beta_mut_en'] = 'Trial';
                             }
                         }

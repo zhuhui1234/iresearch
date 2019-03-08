@@ -104,6 +104,12 @@ class UserController extends Controller
         var_dump($this->userInfo);
     }
 
+    public function jump_ut()
+    {
+        header('Location: http://irv.iresearch.com.cn/ut_slave/login?language=zh&token=' . $this->userInfo['token']);
+        exit();
+    }
+
     /**
      * jump jump jump, take me out..............
      */
@@ -140,7 +146,7 @@ class UserController extends Controller
             if ($irdAccount['iUserID'] !== 0) {
                 write_to_log($reIrdAccount . '  success ', '_irdLogin');
                 $userInfo = json_decode($this->model->getUserInfoByIRD(['iUserID' => $irdAccount['iUserID'],
-                    'token'=>$this->userInfo['token']]), true);
+                    'token' => $this->userInfo['token']]), true);
 
                 Session::instance()->set('irdAccount', $irdAccount);
                 Session::instance()->set('irdGuid', $guid);
@@ -200,14 +206,12 @@ class UserController extends Controller
             }
 
 
-
-
             if (!$this->loginStatus) {
 
                 if (empty($this->userInfo['checkAgree'])) {
                     $rules = $this->model->rules();
                     $rules = json_decode($rules, true);
-                    View::instance('user/private_rules.tpl')->show(['content'=>urldecode($rules['data'])]);
+                    View::instance('user/private_rules.tpl')->show(['content' => urldecode($rules['data'])]);
                     exit();
                 }
 
@@ -232,8 +236,6 @@ class UserController extends Controller
                         return;
                     }
                 }
-
-
 
 
                 //登入成功
@@ -1484,7 +1486,7 @@ class UserController extends Controller
             $this->userInfo['checkAgree'] = 1;
             Session::instance()->set('userInfo', $this->userInfo);
             echo $ret;
-        }else{
+        } else {
             Session::instance()->destroy();
             setcookie('yh_irv_url', 'https://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=login&expired=1', time() + 2400, '/');
             setcookie('PHPSESSID', '', time() - 3600, '/');
