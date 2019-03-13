@@ -163,6 +163,7 @@ class IndexController extends Controller
         View::instance('index/publicFrame.tpl')->show($data);
     }
 
+
     public function checkMail()
     {
         $data = [
@@ -188,6 +189,12 @@ class IndexController extends Controller
     {
 
         header("Location:" . 'http://ircloud.iresearchdata.cn/irbase/check/?token=' . $this->userInfo['token']);
+    }
+
+
+    public function oneZone()
+    {
+        header("Location:" . 'http://ircloud.iresearchdata.cn/one-zone/login?token='.$this->userInfo['token']);
     }
 
     /**
