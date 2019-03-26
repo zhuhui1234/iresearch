@@ -538,6 +538,15 @@ class IndexController extends Controller
 //        View::instance('index/publicFrame.tpl')->show($data);
     }
 
+    public function mt()
+    {
+        $data = array(
+
+            'url' => YH_REPORT71 . '&guid=8BDCF4C1-E1AB-FA26-4DE8-DA382156B946&token=' . $this->userInfo['token'] . '&userID=' . $this->userInfo['userID'] . '&pdt_id=63'
+        );
+        header("Location:" . $data['url']);
+    }
+
     /**
      * mvt
      */
