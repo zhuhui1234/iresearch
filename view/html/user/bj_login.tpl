@@ -27,7 +27,7 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="http://data.iresearch.com.cn/js/bootstrap.min.js"></script>
     <script src="./dev/js/lib/intl-tel/js/utils.js"></script>
-    <link rel="stylesheet" href="./dev/js/lib/intl-tel/css/intlTelInput.css?2342 ">
+    <link rel="stylesheet" href="./dev/js/lib/intl-tel/css/intlTelInput.css?2343 ">
 </head>
 
 <body>
