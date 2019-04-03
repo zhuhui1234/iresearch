@@ -1238,6 +1238,9 @@ class UserController extends Controller
         ];
 
         $pdt_id = $this->request()->get('pdtid');
+        if (empty($pdt_id)) {
+            $pdt_id = 0;
+        }
 
         $this->__json();
         if ($this->userInfo['permissions'] != 0) {
@@ -1253,12 +1256,12 @@ class UserController extends Controller
             $m = [
                 'msg' => [
                     'name' => '系统公告',
-                    'uri' => urlencode('//irv.iresearch.com.cn/user-center/check?type=m'),
+                    'uri' => urlencode('//irv.iresearch.com.cn/user-center/check?type=m&pdtid='.$pdt_id),
                     'new' => $m
                 ],
                 'knowledge' => [
                     'name' => '知识库',
-                    'uri' => urlencode('//irv.iresearch.com.cn/user-center/check?type=k'),
+                    'uri' => urlencode('//irv.iresearch.com.cn/user-center/check?type=k&pdtid='.$pdt_id),
                     'new' => $k
                 ],
                 'userInfo' => [

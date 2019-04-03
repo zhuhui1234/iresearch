@@ -213,7 +213,7 @@ class IndexController extends Controller
         } else {
             $redirect = '';
         }
-        header('Location: http://irv.iresearch.com.cn/adt-streaming/login?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
+        header('Location: http://irv.iresearch.com.cn/adt-streaming/login?language=zh-CN&pdtid=42&token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**
@@ -227,7 +227,7 @@ class IndexController extends Controller
             $redirect = '';
         }
 
-        header("Location:" . 'http://irv.iresearch.com.cn/adt-test/login?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt-test/login?language=zh-CN&pdtid=42&token=' . $this->userInfo['token'] . $redirect);
     }
 
     /**
@@ -255,7 +255,7 @@ class IndexController extends Controller
             $redirect = '';
         }
 
-        header("Location:" . 'http://irv.iresearch.com.cn/adt/login?language=zh-CN&token=' . $this->userInfo['token'] . $redirect);
+        header("Location:" . 'http://irv.iresearch.com.cn/adt/login?language=zh-CN&pdtid=42&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function xUserTracker()
@@ -265,7 +265,7 @@ class IndexController extends Controller
         } else {
             $redirect = '';
         }
-        header("Location:" . 'http://irv.iresearch.com.cn/ut/login?language=zh&token=' . $this->userInfo['token'] . $redirect);
+        header("Location:" . 'http://irv.iresearch.com.cn/ut/login?language=zh&pdtid=48&token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function testUserTracker()
@@ -275,7 +275,7 @@ class IndexController extends Controller
         } else {
             $redirect = '';
         }
-        header("Location:" . 'http://irv.iresearch.com.cn/ut_test/login?language=zh&token=' . $this->userInfo['token'] . $redirect);
+        header("Location:" . 'http://irv.iresearch.com.cn/ut_test/login?language=zh&pdtid=48token=' . $this->userInfo['token'] . $redirect);
     }
 
     public function mst()
