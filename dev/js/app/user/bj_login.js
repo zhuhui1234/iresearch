@@ -315,8 +315,8 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
         $("#tel").intlTelInput({
             formatOnDisplay: false,
-            preferredCountries: ["cn", "hk", "tw","us", "jp","it","ru"],
-            onlyCountries: ["cn", "hk", "tw","mo", "us", "gb", "fr", "de", "au", "kr", "jp", "sg","it","ru"],
+            preferredCountries: ["cn", "hk", "tw", "us", "jp", "it", "ru"],
+            onlyCountries: ["cn", "hk", "tw", "mo", "us", "gb", "fr", "de", "au", "kr", "jp", "sg", "it", "ru"],
             initialCountry: "cn",
             utilsScript: "./dev/js/lib/intl-tel/js/utils.js"
         });
@@ -363,7 +363,6 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                 var pdtID = Helper.getQuery('pro');
                                 var ppName = Helper.getQuery('ppname');
                                 var cb = Helper.getQuery('cb');
-
                                 $("#login").fadeOut();
                                 $('#test').fadeIn();
                                 login_check(function () {
@@ -431,6 +430,13 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                                                     break;
                                                                 case 'vt':
                                                                     window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt';
+                                                                case 'ut_video':
+                                                                    var redirect = encodeURIComponent(Helper.getQuery('redirect'));
+                                                                    if (typeof redirect == "undefined" || redirect == null) {
+                                                                        window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=video_manual';
+                                                                    } else {
+                                                                        window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=video_manual&redirect=' + redirect;
+                                                                    }
                                                                     break;
                                                             }
 
@@ -491,6 +497,14 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                                                 case 'vt':
                                                                     window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt';
                                                                     break;
+                                                                case 'ut_video':
+                                                                    var redirect = encodeURIComponent(Helper.getQuery('redirect'));
+                                                                    if (typeof redirect == "undefined" || redirect == null) {
+                                                                        windows.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=video_manual';
+                                                                    } else {
+                                                                        windows.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=video_manual&redirect=' + redirect;
+                                                                    }
+                                                                    break;
                                                             }
 
                                                         }
@@ -542,9 +556,9 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 var checkEmails = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
                 if (!checkEmails.test($("#sp_email").val())) {
                     $('#tipone').show().text('邮箱不能为空且需要符合邮箱规范')
-                }else if ( $('#passwordNum').val() == ''){
+                } else if ($('#passwordNum').val() == '') {
                     $('#tipone').show().text('密码不能为空')
-                }else{
+                } else {
                     $('#tipone').hide();
                     //登入
                     var pdtID = Helper.getQuery('pro');
@@ -592,6 +606,14 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                                         case 'vt':
                                             window.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=xvt';
                                             break;
+                                        case 'ut_video':
+                                            var redirect = encodeURIComponent(Helper.getQuery('redirect'));
+                                            if (typeof redirect == "undefined" || redirect == null) {
+                                                windows.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=video_manual';
+                                            } else {
+                                                windows.location.href = 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=index&a=video_manual&redirect=' + redirect;
+                                            }
+                                            break;
                                     }
 
                                 }
@@ -611,7 +633,6 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
 
 
                 }
-
 
 
             });
@@ -634,12 +655,12 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
     var pdtID = Helper.getQuery('pro');
     var ppName = Helper.getQuery('ppname');
     var cb = Helper.getQuery('cb');
-
+    var redirect = encodeURIComponent(Helper.getQuery('redirect'));
     // var u = new URL(window.location.href)
     // var ppName = u.searchParams.get('ppname');
     if (pdtID !== null && ppName == null) {
         Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css', pdtID);
-    } else if (ppName !== null) {
+    } else if (ppName !== null && pdtID !== null) {
         Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css', pdtID, ppName);
     } else if (cb !== null) {
         console.log(cb);
@@ -658,6 +679,9 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 break;
             case 'vt':
                 Helper.WeChatQRCode('wxLogin', 'goToVT', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');
+                break;
+            case 'ut_video':
+                Helper.WeChatQRCode('wxLogin', 'wxLoginUtVideo', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css', null, null, redirect);
                 break;
             default:
                 Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat.css');

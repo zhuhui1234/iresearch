@@ -162,7 +162,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
         // $("#verification").getSms();
         $("#send_code").click(function (e) {
             var regExp = /[A-Za-z]+/;
-            if(!regExp.test($('#tel').val())){
+            if (!regExp.test($('#tel').val())) {
                 var countryCode = $("#tel").intlTelInput("getSelectedCountryData").iso2.toUpperCase();
 
                 var find_mob = function () {
@@ -309,6 +309,7 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
     var pdtID = Helper.getQuery('pro');
     var ppName = Helper.getQuery('ppname');
     var cb = Helper.getQuery('cb');
+    var redirect = encodeURIComponent(Helper.getQuery('redirect'));
     console.log(ppName);
     // var u = new URL(window.location.href)
     // var ppName = u.searchParams.get('ppname');
@@ -327,6 +328,9 @@ define(['helper', 'app/main', 'validator', 'canvas'], function (Helper) {
                 break;
             case 'm':
                 Helper.WeChatQRCode('wxLogin', 'wxLoginMsg', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css');
+                break;
+            case 'ut_video':
+                Helper.WeChatQRCode('wxLogin', 'wxLoginUtVideo', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css', null, null, redirect);
                 break;
             default:
                 Helper.WeChatQRCode('wxLogin', 'wxLogin', '//irv.iresearch.com.cn/iResearchDataWeb/public/css/wechat2.css');

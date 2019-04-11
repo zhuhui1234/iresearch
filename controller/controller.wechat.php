@@ -27,6 +27,11 @@ class WeChatController extends Controller
         $code = $this->request()->get('code');
         $state = $this->request()->get('state');
         $pdtID = $this->request()->get('pdtID');
+        if (!empty($_REQUEST['redirect'])) {
+            $redirect = urlencode($_REQUEST['redirect']);
+        } else {
+            $redirect = null;
+        }
         $ppName = urldecode($this->request()->get('ppname'));
         $jumpURI = '?m=user&a=jump&pro=' . $pdtID;
         $classicSysURI = '?m=irdata&a=classicSys&ppname=' . $ppName . '&pro=' . $pdtID;
@@ -64,8 +69,8 @@ class WeChatController extends Controller
                     }
 
                     if ($ret !== null) {
-                        write_to_log('ppname: '. $ppName, '_debug');
-                        write_to_log('pdtid: '. $pdtID, '_debug');
+                        write_to_log('ppname: ' . $ppName, '_debug');
+                        write_to_log('pdtid: ' . $pdtID, '_debug');
 
                         if (!empty($pdtID) and empty($ppName)) {
                             header('Location: ' . $jumpURI);
@@ -98,8 +103,8 @@ class WeChatController extends Controller
                         exit();
                     }
                     if ($ret !== null) {
-                        write_to_log('ppname: '. $ppName, '_debug');
-                        write_to_log('pdtid: '. $pdtID, '_debug');
+                        write_to_log('ppname: ' . $ppName, '_debug');
+                        write_to_log('pdtid: ' . $pdtID, '_debug');
                         header('Location: ?m=index&a=xut');
 
                     } else {
@@ -126,8 +131,8 @@ class WeChatController extends Controller
                         exit();
                     }
                     if ($ret !== null) {
-                        write_to_log('ppname: '. $ppName, '_debug');
-                        write_to_log('pdtid: '. $pdtID, '_debug');
+                        write_to_log('ppname: ' . $ppName, '_debug');
+                        write_to_log('pdtid: ' . $pdtID, '_debug');
                         header('Location: ?m=index&a=xvt');
                     } else {
                         header('Location: ?m=user&a=login?recode=402');
@@ -155,12 +160,12 @@ class WeChatController extends Controller
                     }
 
                     if ($ret !== null) {
-                        if (!empty($pdtID) ) {
+                        if (!empty($pdtID)) {
                             header('Location: ' . $jumpURI);
                         } else if (!empty($ppName)) {
                             header('Location: ' . $classicSysURI);
                         } else {
-                            header('Location: https://irv.iresearch.com.cn/user-center/check/?'.USERCENTER_VERSION);
+                            header('Location: https://irv.iresearch.com.cn/user-center/check/?' . USERCENTER_VERSION);
                         }
                     } else {
                         header('Location: ?m=user&a=login?recode=402');
@@ -189,7 +194,7 @@ class WeChatController extends Controller
                     }
 
                     if ($ret !== null) {
-                        if (!empty($pdtID) ) {
+                        if (!empty($pdtID)) {
                             header('Location: ' . $jumpURI);
                         } else if (!empty($ppName)) {
                             header('Location: ' . $classicSysURI);
@@ -206,7 +211,35 @@ class WeChatController extends Controller
 
                 break;
 
+            case 'wxLoginUtVideo':
+                $ret = $this->__weChatAutoLogin(array(
+                    'Account' => $weChatObj['openid'],
+                    'LoginKey' => $weChatObj['unionid'],
+                    'wxName' => $weChatUser['nickname'],
+                ), $wechatModel->getUserInfo($code));
 
+                write_to_log('ret: ' . json_encode($ret), '_wx');
+                if ($ret) {
+                    if ($ret === 20) {
+                        header('Location: ?m=user&a=login&recode=502');
+                        exit();
+                    }
+
+                    if ($ret !== null) {
+                        if (!empty($redirect)) {
+                            header('Location: ?m=index&a=video_manual&redirect=' . $redirect);
+                        } else {
+                            header('Location: ?m=index&a=video_manual');
+                        }
+                    } else {
+                        header('Location: ?m=user&a=login?recode=402');
+                    }
+
+                } else {
+                    header("Location: ?m=user&a=BindingWeChat");
+                }
+
+                break;
 
             case 'wxLoginMsg':
                 $ret = $this->__weChatAutoLogin(array(
@@ -224,7 +257,7 @@ class WeChatController extends Controller
                     }
 
                     if ($ret !== null) {
-                        if (!empty($pdtID) ) {
+                        if (!empty($pdtID)) {
                             header('Location: ' . $jumpURI);
                         } else if (!empty($ppName)) {
                             header('Location: ' . $classicSysURI);
@@ -240,8 +273,6 @@ class WeChatController extends Controller
                 }
 
                 break;
-
-
 
 
             //binding weChat

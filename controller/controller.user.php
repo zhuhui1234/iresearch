@@ -1248,7 +1248,7 @@ class UserController extends Controller
             $k = (bool)((int)$this->__checkUnread('k'));
 //            $k = false;
 //            $m = (bool)((int)$this->__checkUnread('m'));
-            $m = false;
+            $m = true;
 
 
             $role = 'member';

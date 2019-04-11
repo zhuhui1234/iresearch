@@ -199,11 +199,11 @@
                             title: bt_title,
                             link: '?m=user&a=jump&pro=42'
                         },
-                        old: [{
-                            title: old_bt_title,
-                            link: '{adUrl}'
-                        }
-                        ]
+                        //old: [{
+                        //    title: old_bt_title,
+                        //    link: '{adUrl}'
+                        //}
+                        //]
                     }
                 },
                     {

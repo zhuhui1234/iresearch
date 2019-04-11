@@ -123,7 +123,7 @@ define(["api", "WxLogin", "jquery"], function (api) {
                 return null;
             };
 
-            this.tel = function(){
+            this.tel = function () {
                 $("#tel").intlTelInput({
                     formatOnDisplay: false,
                     preferredCountries: ["cn", "hk"],
@@ -152,7 +152,7 @@ define(["api", "WxLogin", "jquery"], function (api) {
              * @param state
              * @constructor
              */
-            this.WeChatQRCode = function (qrCodeID, state, cssFileUrl, pdtID, ppName) {
+            this.WeChatQRCode = function (qrCodeID, state, cssFileUrl, pdtID, ppName, redirect) {
 
                 var wxURI = api.wxURI;
                 console.log(typeof pdtID);
@@ -166,6 +166,12 @@ define(["api", "WxLogin", "jquery"], function (api) {
                 if (typeof ppName !== "undefined" && ppName !== null) {
                     if (ppName.length > 0) {
                         wxURI = wxURI + '&ppname=' + ppName;
+                    }
+                }
+
+                if (typeof redirect !== "undefined" && redirect !== null) {
+                    if (redirect.length > 0) {
+                        wxURI = wxURI + '&redirect=' + redirect;
                     }
                 }
 

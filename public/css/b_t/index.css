@@ -352,3 +352,34 @@ a:focus, a:hover {
 .custom-dialog .modal-body {
     text-align: center;
 }
+
+.ad-box .new{
+    background: #fcaf13 !important;
+
+}
+.ad-box .new i{
+    color: #ffffff !important;
+}
+.header .video {
+    cursor: pointer;
+    width: 142px;
+    height: 24px;
+    margin-top: 10px;
+    background-color: #39B4DE;
+    border-radius: 12px;
+    color: #FFFFFF;
+}
+.header .video span {
+    position: relative;
+    right: 2px;
+}
+.header a {
+    text-decoration: none;
+    margin-left: 5px;
+}
+.header a:visited {
+    color: #FFFFFF;
+}
+.header img {
+    vertical-align: middle;
+}
