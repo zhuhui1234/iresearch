@@ -16,7 +16,7 @@
     <!-- bootstrap核心样式 -->
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="//data.iresearch.com.cn/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./public/css/b_t/index.css?v5" rel="stylesheet">
+    <link href="./public/css/b_t/index.css?v6" rel="stylesheet">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="//data.iresearch.com.cn/js/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
@@ -40,7 +40,7 @@
                     <div class="desc">
                         [[productHeader.desc ]]
                         <div class="video">
-                            <a :href="productHeader.video_link">
+                            <a :href="productHeader.video_link" target="_blank">
                             <span>[[ productHeader.video ]]</span>
                            <img :src="productHeader.videoImg"></a>
                         </div>
