@@ -44,7 +44,7 @@
             </div>
             <div class="content">
                 <div class="row" id="adnavs">
-                    <div class="col-md-4" v-for="item in productHeader.productList" :key="item.name">
+                    <div class="col-md-3" v-for="item in productHeader.productList" :key="item.name">
                         <a class="ad-box" :href="item.link" v-on:click="jumpDialog(item)">
                             <span class="icon"><img :src="item.icon"></span>
                             <span class="span">
@@ -52,6 +52,9 @@
                             </span>
                             <span class="mark" v-if="item.free">
                               <i>FREE</i>
+                            </span>
+                            <span class="mark new" v-if="item.new">
+                              <i>NEW</i>
                             </span>
                         </a>
                     </div>
@@ -165,6 +168,13 @@
                             name: 'AdTracker',
                             icon: './public/img/b_t/flow.png',
                             link: '?m=user&a=jump&pro=60'
+                        },
+                        {
+                            title: '软广监测专用版',
+                            name: 'AdTracker(BETA)',
+                            icon: './public/img/b_t/flow.png',
+                            link: '?m=user&a=jump&pro=61',
+                            new: true
                         },
                         {
                             title: '网络广告指数',
