@@ -53,8 +53,8 @@
                             <span class="mark" v-if="item.free">
                               <i>FREE</i>
                             </span>
-                            <span class="mark new" v-if="item.new">
-                              <i>NEW</i>
+                            <span class="mark" v-if="item.new">
+                              <i>BETA</i>
                             </span>
                         </a>
                     </div>
@@ -172,7 +172,7 @@
                         {
                             title: '软广监测专用版',
                             name: 'AdTracker(BETA)',
-                            icon: './public/img/b_t/flow.png',
+                            icon: './public/img/b_t/soft.png',
                             link: '?m=user&a=jump&pro=61',
                             new: true
                         },
